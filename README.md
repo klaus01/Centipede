@@ -1,2 +1,2 @@
 # Centipede
-A pure Swift implemented library for UIKit control delegate and data source closures extension
+一个纯Swift实现的库，使用闭包实现UIKit组件的delegate和dataSource方法
