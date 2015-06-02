@@ -6,7 +6,6 @@
 //  Copyright (c) 2015年 kelei. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIGestureRecognizer {

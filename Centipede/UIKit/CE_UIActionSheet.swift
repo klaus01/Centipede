@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 kelei. All rights reserved.
 //
 
+import UIKit
+
 extension UIActionSheet {
     
     private var ce: UIActionSheet_Delegate {
