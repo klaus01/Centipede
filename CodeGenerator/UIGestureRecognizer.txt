@@ -1,0 +1,22 @@
+UIGestureRecognizer: NSObject, UIGestureRecognizerDelegate
+
+    // called when a gesture recognizer attempts to transition out of UIGestureRecognizerStatePossible. returning NO causes it to transition to UIGestureRecognizerStateFailed
+    optional func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
+    
+    // called when the recognition of one of gestureRecognizer or otherGestureRecognizer would be blocked by the other
+    // return YES to allow both to recognize simultaneously. the default implementation returns NO (by default no two gestures can be recognized simultaneously)
+    //
+    // note: returning YES is guaranteed to allow simultaneous recognition. returning NO is not guaranteed to prevent simultaneous recognition, as the other gesture's delegate may return YES
+    optional func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool
+    
+    // called once per attempt to recognize, so failure requirements can be determined lazily and may be set up between recognizers across view hierarchies
+    // return YES to set up a dynamic failure requirement between gestureRecognizer and otherGestureRecognizer
+    //
+    // note: returning YES is guaranteed to set up the failure requirement. returning NO does not guarantee that there will not be a failure requirement as the other gesture's counterpart delegate or subclass methods may return YES
+    @availability(iOS, introduced=7.0)
+    optional func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOfGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool
+    @availability(iOS, introduced=7.0)
+    optional func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailByGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool
+    
+    // called before touchesBegan:withEvent: is called on the gesture recognizer for a new touch. return NO to prevent the gesture recognizer from seeing this touch
+    optional func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool

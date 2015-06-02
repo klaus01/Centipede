@@ -1,0 +1,5 @@
+UIImagePickerController: UINavigationController_Delegate, UIImagePickerControllerDelegate
+
+
+    optional func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
+    optional func imagePickerControllerDidCancel(picker: UIImagePickerController)

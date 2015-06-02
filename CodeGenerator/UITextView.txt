@@ -1,0 +1,17 @@
+UITextView: UIScrollView_Delegate, UITextViewDelegate
+
+    optional func textViewShouldBeginEditing(textView: UITextView) -> Bool
+    optional func textViewShouldEndEditing(textView: UITextView) -> Bool
+    
+    optional func textViewDidBeginEditing(textView: UITextView)
+    optional func textViewDidEndEditing(textView: UITextView)
+    
+    optional func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool
+    optional func textViewDidChange(textView: UITextView)
+    
+    optional func textViewDidChangeSelection(textView: UITextView)
+    
+    @availability(iOS, introduced=7.0)
+    optional func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool
+    @availability(iOS, introduced=7.0)
+    optional func textView(textView: UITextView, shouldInteractWithTextAttachment textAttachment: NSTextAttachment, inRange characterRange: NSRange) -> Bool
