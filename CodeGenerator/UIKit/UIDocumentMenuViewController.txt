@@ -1,0 +1,7 @@
+UIDocumentMenuViewController: UIViewController, UIDocumentMenuDelegate
+
+DELEGATE_LIST:delegate, transitioningDelegate
+
+    func documentMenu(documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController)
+    
+    optional func documentMenuWasCancelled(documentMenu: UIDocumentMenuViewController)

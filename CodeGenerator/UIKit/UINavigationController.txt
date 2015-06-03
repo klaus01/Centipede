@@ -1,4 +1,4 @@
-UINavigationController: UIViewController_Delegate, UINavigationControllerDelegate
+UINavigationController: UIViewController, UINavigationControllerDelegate
 
 
     // Called when the navigation controller shows a new top view controller via a push, pop or setting of the view controller stack.

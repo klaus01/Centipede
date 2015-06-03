@@ -1,0 +1,36 @@
+UISearchDisplayController: UITableView, UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate
+
+
+DELEGATE_LIST:delegate, searchResultsDataSource, searchResultsDelegate
+
+    // when we start/end showing the search UI
+    @availability(iOS, introduced=3.0, deprecated=8.0)
+    optional func searchDisplayControllerWillBeginSearch(controller: UISearchDisplayController)
+    @availability(iOS, introduced=3.0, deprecated=8.0)
+    optional func searchDisplayControllerDidBeginSearch(controller: UISearchDisplayController)
+    @availability(iOS, introduced=3.0, deprecated=8.0)
+    optional func searchDisplayControllerWillEndSearch(controller: UISearchDisplayController)
+    @availability(iOS, introduced=3.0, deprecated=8.0)
+    optional func searchDisplayControllerDidEndSearch(controller: UISearchDisplayController)
+    
+    // called when the table is created destroyed, shown or hidden. configure as necessary.
+    @availability(iOS, introduced=3.0, deprecated=8.0)
+    optional func searchDisplayController(controller: UISearchDisplayController, didLoadSearchResultsTableView tableView: UITableView)
+    @availability(iOS, introduced=3.0, deprecated=8.0)
+    optional func searchDisplayController(controller: UISearchDisplayController, willUnloadSearchResultsTableView tableView: UITableView)
+    
+    // called when table is shown/hidden
+    @availability(iOS, introduced=3.0, deprecated=8.0)
+    optional func searchDisplayController(controller: UISearchDisplayController, willShowSearchResultsTableView tableView: UITableView)
+    @availability(iOS, introduced=3.0, deprecated=8.0)
+    optional func searchDisplayController(controller: UISearchDisplayController, didShowSearchResultsTableView tableView: UITableView)
+    @availability(iOS, introduced=3.0, deprecated=8.0)
+    optional func searchDisplayController(controller: UISearchDisplayController, willHideSearchResultsTableView tableView: UITableView)
+    @availability(iOS, introduced=3.0, deprecated=8.0)
+    optional func searchDisplayController(controller: UISearchDisplayController, didHideSearchResultsTableView tableView: UITableView)
+    
+    // return YES to reload table. called when search string/option changes. convenience methods on top UISearchBar delegate methods
+    @availability(iOS, introduced=3.0, deprecated=8.0)
+    optional func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool
+    @availability(iOS, introduced=3.0, deprecated=8.0)
+    optional func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool

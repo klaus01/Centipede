@@ -1,0 +1,8 @@
+UIToolbar: NSObject, UIToolbarDelegate
+
+
+    /* Implement this method on your manual bar delegate when not managed by a UIKit controller.
+     UINavigationBar and UISearchBar default to UIBarPositionTop, UIToolbar defaults to UIBarPositionBottom.
+     This message will be sent when the bar moves to a window.
+     */
+    optional func positionForBar(bar: UIBarPositioning) -> UIBarPosition // UINavigationBarDelegate, UIToolbarDelegate, and UISearchBarDelegate all extend from this

@@ -2,7 +2,7 @@
 //  CE_UIImagePickerController.swift
 //  Centipede
 //
-//  Created by kelei on 15/4/16.
+//  Created by kelei on 2015/6/4.
 //  Copyright (c) 2015年 kelei. All rights reserved.
 //
 

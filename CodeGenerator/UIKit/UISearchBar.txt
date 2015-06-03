@@ -1,0 +1,19 @@
+UISearchBar: NSObject, UISearchBarDelegate
+
+
+    optional func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool // return NO to not become first responder
+    optional func searchBarTextDidBeginEditing(searchBar: UISearchBar) // called when text starts editing
+    optional func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool // return NO to not resign first responder
+    optional func searchBarTextDidEndEditing(searchBar: UISearchBar) // called when text ends editing
+    optional func searchBar(searchBar: UISearchBar, textDidChange searchText: String) // called when text changes (including clear)
+    @availability(iOS, introduced=3.0)
+    optional func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool // called before text changes
+    
+    optional func searchBarSearchButtonClicked(searchBar: UISearchBar) // called when keyboard search button pressed
+    optional func searchBarBookmarkButtonClicked(searchBar: UISearchBar) // called when bookmark button pressed
+    optional func searchBarCancelButtonClicked(searchBar: UISearchBar) // called when cancel button pressed
+    @availability(iOS, introduced=3.2)
+    optional func searchBarResultsListButtonClicked(searchBar: UISearchBar) // called when search results button pressed
+    
+    @availability(iOS, introduced=3.0)
+    optional func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int)

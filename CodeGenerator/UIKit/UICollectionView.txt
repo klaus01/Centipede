@@ -1,4 +1,4 @@
-UICollectionView: UIScrollView_Delegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+UICollectionView: UIScrollView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 
 DELEGATE_LIST:delegate, dataSource
 

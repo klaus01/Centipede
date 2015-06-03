@@ -1,0 +1,17 @@
+UIPrintInteractionController: NSObject, UIPrintInteractionControllerDelegate
+
+
+    optional func printInteractionControllerParentViewController(printInteractionController: UIPrintInteractionController) -> UIViewController?
+    
+    optional func printInteractionController(printInteractionController: UIPrintInteractionController, choosePaper paperList: [AnyObject]) -> UIPrintPaper?
+    
+    optional func printInteractionControllerWillPresentPrinterOptions(printInteractionController: UIPrintInteractionController)
+    optional func printInteractionControllerDidPresentPrinterOptions(printInteractionController: UIPrintInteractionController)
+    optional func printInteractionControllerWillDismissPrinterOptions(printInteractionController: UIPrintInteractionController)
+    optional func printInteractionControllerDidDismissPrinterOptions(printInteractionController: UIPrintInteractionController)
+    
+    optional func printInteractionControllerWillStartJob(printInteractionController: UIPrintInteractionController)
+    optional func printInteractionControllerDidFinishJob(printInteractionController: UIPrintInteractionController)
+    
+    @availability(iOS, introduced=7.0)
+    optional func printInteractionController(printInteractionController: UIPrintInteractionController, cutLengthForPaper paper: UIPrintPaper) -> CGFloat

@@ -1,0 +1,24 @@
+UITabBarController: UIViewController, UITabBarControllerDelegate
+
+DELEGATE_LIST:delegate, transitioningDelegate
+
+    @availability(iOS, introduced=3.0)
+    optional func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool
+    optional func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController)
+    
+    @availability(iOS, introduced=3.0)
+    optional func tabBarController(tabBarController: UITabBarController, willBeginCustomizingViewControllers viewControllers: [AnyObject])
+    @availability(iOS, introduced=3.0)
+    optional func tabBarController(tabBarController: UITabBarController, willEndCustomizingViewControllers viewControllers: [AnyObject], changed: Bool)
+    optional func tabBarController(tabBarController: UITabBarController, didEndCustomizingViewControllers viewControllers: [AnyObject], changed: Bool)
+    
+    @availability(iOS, introduced=7.0)
+    optional func tabBarControllerSupportedInterfaceOrientations(tabBarController: UITabBarController) -> Int
+    @availability(iOS, introduced=7.0)
+    optional func tabBarControllerPreferredInterfaceOrientationForPresentation(tabBarController: UITabBarController) -> UIInterfaceOrientation
+    
+    @availability(iOS, introduced=7.0)
+    optional func tabBarController(tabBarController: UITabBarController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?
+    
+    @availability(iOS, introduced=7.0)
+    optional func tabBarController(tabBarController: UITabBarController, animationControllerForTransitionFromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?

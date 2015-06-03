@@ -1,0 +1,9 @@
+UIVideoEditorController: UINavigationController, UIVideoEditorControllerDelegate
+
+
+    // The editor does not dismiss itself; the client dismisses it in these callbacks.
+    // The delegate will receive exactly one of the following callbacks, depending whether the user
+    // confirms or cancels or if the operation fails.
+    optional func videoEditorController(editor: UIVideoEditorController, didSaveEditedVideoToPath editedVideoPath: String) // edited video is saved to a path in app's temporary directory
+    optional func videoEditorController(editor: UIVideoEditorController, didFailWithError error: NSError)
+    optional func videoEditorControllerDidCancel(editor: UIVideoEditorController)

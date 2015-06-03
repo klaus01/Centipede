@@ -1,4 +1,4 @@
-UIImagePickerController: UINavigationController_Delegate, UIImagePickerControllerDelegate
+UIImagePickerController: UINavigationController, UIImagePickerControllerDelegate
 
 
     optional func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])

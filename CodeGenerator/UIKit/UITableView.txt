@@ -1,4 +1,4 @@
-UITableView: UIScrollView_Delegate, UITableViewDataSource, UITableViewDelegate
+UITableView: UIScrollView, UITableViewDataSource, UITableViewDelegate
 
 DELEGATE_LIST:delegate, dataSource
 

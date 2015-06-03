@@ -1,0 +1,15 @@
+UIPopoverController: NSObject, UIPopoverControllerDelegate
+
+
+    /* Called on the delegate when the popover controller will dismiss the popover. Return NO to prevent the dismissal of the view.
+     */
+    optional func popoverControllerShouldDismissPopover(popoverController: UIPopoverController) -> Bool
+    
+    /* Called on the delegate when the user has taken action to dismiss the popover. This is not called when -dismissPopoverAnimated: is called directly.
+     */
+    optional func popoverControllerDidDismissPopover(popoverController: UIPopoverController)
+    
+    /* -popoverController:willRepositionPopoverToRect:inView: is called on your delegate when the popover may require a different view or rectangle
+     */
+    @availability(iOS, introduced=7.0)
+    optional func popoverController(popoverController: UIPopoverController, willRepositionPopoverToRect rect: UnsafeMutablePointer<CGRect>, inView view: AutoreleasingUnsafeMutablePointer<UIView?>)

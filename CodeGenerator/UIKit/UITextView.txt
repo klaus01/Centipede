@@ -1,4 +1,4 @@
-UITextView: UIScrollView_Delegate, UITextViewDelegate
+UITextView: UIScrollView, UITextViewDelegate
 
     optional func textViewShouldBeginEditing(textView: UITextView) -> Bool
     optional func textViewShouldEndEditing(textView: UITextView) -> Bool

@@ -1,0 +1,5 @@
+UIDynamicAnimator: NSObject, UIDynamicAnimatorDelegate
+
+
+    optional func dynamicAnimatorWillResume(animator: UIDynamicAnimator)
+    optional func dynamicAnimatorDidPause(animator: UIDynamicAnimator)

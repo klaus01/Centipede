@@ -1,8 +1,8 @@
 //
-//  UICollectionView+CE.swift
+//  CE_UICollectionView.swift
 //  Centipede
 //
-//  Created by kelei on 15/4/8.
+//  Created by kelei on 2015/6/4.
 //  Copyright (c) 2015年 kelei. All rights reserved.
 //
 

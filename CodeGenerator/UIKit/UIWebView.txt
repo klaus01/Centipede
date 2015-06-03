@@ -1,0 +1,7 @@
+UIWebView: NSObject, UIWebViewDelegate
+
+
+    optional func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool
+    optional func webViewDidStartLoad(webView: UIWebView)
+    optional func webViewDidFinishLoad(webView: UIWebView)
+    optional func webView(webView: UIWebView, didFailLoadWithError error: NSError)
