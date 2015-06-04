@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		247C062C1B208E220079E14C /* CE_NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247C062B1B208E220079E14C /* CE_NotificationCenter.swift */; };
 		24A6BAF91B1F545D0005476B /* CE_UIActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BAD91B1F545D0005476B /* CE_UIActionSheet.swift */; };
 		24A6BAFA1B1F545D0005476B /* CE_UIAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BADA1B1F545D0005476B /* CE_UIAlertView.swift */; };
 		24A6BAFB1B1F545D0005476B /* CE_UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BADB1B1F545D0005476B /* CE_UICollectionView.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		247C062B1B208E220079E14C /* CE_NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NotificationCenter.swift; sourceTree = "<group>"; };
 		24A6BAD91B1F545D0005476B /* CE_UIActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIActionSheet.swift; sourceTree = "<group>"; };
 		24A6BADA1B1F545D0005476B /* CE_UIAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIAlertView.swift; sourceTree = "<group>"; };
 		24A6BADB1B1F545D0005476B /* CE_UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UICollectionView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		247C062A1B208E220079E14C /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				247C062B1B208E220079E14C /* CE_NotificationCenter.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		24E8A73C1B1E056A008D963A = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +147,7 @@
 			children = (
 				24E8A74B1B1E056A008D963A /* Centipede.h */,
 				24E8A7621B1E0990008D963A /* UIKit */,
+				247C062A1B208E220079E14C /* Other */,
 				24E8A7491B1E056A008D963A /* Supporting Files */,
 			);
 			path = Centipede;
@@ -328,6 +339,7 @@
 				24A6BB081B1F545D0005476B /* CE_UIPresentationController.swift in Sources */,
 				24A6BAFD1B1F545D0005476B /* CE_UIDocumentMenuViewController.swift in Sources */,
 				24A6BB021B1F545D0005476B /* CE_UINavigationBar.swift in Sources */,
+				247C062C1B208E220079E14C /* CE_NotificationCenter.swift in Sources */,
 				24A6BB041B1F545D0005476B /* CE_UIPageViewController.swift in Sources */,
 				24A6BB051B1F545D0005476B /* CE_UIPickerView.swift in Sources */,
 				24A6BB061B1F545D0005476B /* CE_UIPopoverController.swift in Sources */,
