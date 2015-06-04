@@ -4,15 +4,15 @@
 UIKit Delegate
 ```swift
 collectionView
-    .ce_NumberOfItemsInSection { \[weak self\] (collectionView, section) -> Int in
+    .ce_NumberOfItemsInSection { [weak self] (collectionView, section) -> Int in
         return self!.friends.count
     }
-    .ce_CellForItemAtIndexPath { \[weak self\] (collectionView, indexPath) -> UICollectionViewCell in
+    .ce_CellForItemAtIndexPath { [weak self] (collectionView, indexPath) -> UICollectionViewCell in
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! UserCollectionViewCell
         cell.user = self!.friends[indexPath.item]
         return cell;
     }
-    .ce_DidSelectItemAtIndexPath { \[weak self\] (collectionView, indexPath) -> Void in
+    .ce_DidSelectItemAtIndexPath { [weak self] (collectionView, indexPath) -> Void in
         let friend = self!.friends[indexPath.item]
         self!.performSegueWithIdentifier("showMessage", sender: nil)
     }
