@@ -10,21 +10,24 @@ import UIKit
 
 public extension UIAlertView {
     
+    private struct Static { static var AssociationKey: UInt8 = 0 }
+    private var _delegate: UIAlertView_Delegate? {
+        get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIAlertView_Delegate }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+    }
+    
     private var ce: UIAlertView_Delegate {
-        struct Static {
-            static var AssociationKey: UInt8 = 0
-        }
-        if let obj = objc_getAssociatedObject(self, &Static.AssociationKey) as? UIAlertView_Delegate {
+        if let obj = _delegate {
             return obj
         }
-        if let delegate: AnyObject = self.delegate {
-            if delegate is UIAlertView_Delegate {
-                return delegate as! UIAlertView_Delegate
+        if let obj: AnyObject = self.delegate {
+            if obj is UIAlertView_Delegate {
+                return obj as! UIAlertView_Delegate
             }
         }
-        let delegate = getDelegateInstance()
-        objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
-        return delegate
+        let obj = getDelegateInstance()
+        _delegate = obj
+        return obj
     }
     
     private func rebindingDelegate() {
@@ -35,6 +38,21 @@ public extension UIAlertView {
     
     internal func getDelegateInstance() -> UIAlertView_Delegate {
         return UIAlertView_Delegate()
+    }
+    
+    public convenience init(title: String?, message: String?, cancelButtonTitle: String?, otherButtonTitles firstButtonTitle: String, _ moreButtonTitles: String...) {
+        self.init(title: title, message: message, cancelButtonTitle: cancelButtonTitle)
+        addButtonWithTitle(firstButtonTitle)
+        
+        for buttonTitle in moreButtonTitles {
+            addButtonWithTitle(buttonTitle)
+        }
+    }
+    
+    public convenience init(title: String?, message: String?, cancelButtonTitle: String?) {
+        let obj = UIAlertView_Delegate()
+        self.init(title: title, message: message, delegate: obj, cancelButtonTitle: cancelButtonTitle)
+        _delegate = obj
     }
     
     public func ce_clickedButtonAtIndex(handle: (alertView: UIAlertView, buttonIndex: Int) -> Void) -> Self {

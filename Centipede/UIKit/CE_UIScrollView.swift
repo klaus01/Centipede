@@ -10,21 +10,24 @@ import UIKit
 
 public extension UIScrollView {
     
+    private struct Static { static var AssociationKey: UInt8 = 0 }
+    private var _delegate: UIScrollView_Delegate? {
+        get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIScrollView_Delegate }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+    }
+    
     private var ce: UIScrollView_Delegate {
-        struct Static {
-            static var AssociationKey: UInt8 = 0
-        }
-        if let obj = objc_getAssociatedObject(self, &Static.AssociationKey) as? UIScrollView_Delegate {
+        if let obj = _delegate {
             return obj
         }
-        if let delegate = self.delegate {
-            if delegate is UIScrollView_Delegate {
-                return delegate as! UIScrollView_Delegate
+        if let obj = self.delegate {
+            if obj is UIScrollView_Delegate {
+                return obj as! UIScrollView_Delegate
             }
         }
-        let delegate = getDelegateInstance()
-        objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
-        return delegate
+        let obj = getDelegateInstance()
+        _delegate = obj
+        return obj
     }
     
     private func rebindingDelegate() {

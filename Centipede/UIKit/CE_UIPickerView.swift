@@ -10,21 +10,24 @@ import UIKit
 
 public extension UIPickerView {
     
+    private struct Static { static var AssociationKey: UInt8 = 0 }
+    private var _delegate: UIPickerView_Delegate? {
+        get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIPickerView_Delegate }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+    }
+    
     private var ce: UIPickerView_Delegate {
-        struct Static {
-            static var AssociationKey: UInt8 = 0
-        }
-        if let obj = objc_getAssociatedObject(self, &Static.AssociationKey) as? UIPickerView_Delegate {
+        if let obj = _delegate {
             return obj
         }
-        if let delegate = self.dataSource {
-            if delegate is UIPickerView_Delegate {
-                return delegate as! UIPickerView_Delegate
+        if let obj = self.dataSource {
+            if obj is UIPickerView_Delegate {
+                return obj as! UIPickerView_Delegate
             }
         }
-        let delegate = getDelegateInstance()
-        objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
-        return delegate
+        let obj = getDelegateInstance()
+        _delegate = obj
+        return obj
     }
     
     private func rebindingDelegate() {

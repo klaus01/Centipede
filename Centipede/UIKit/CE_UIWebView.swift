@@ -10,21 +10,24 @@ import UIKit
 
 public extension UIWebView {
     
+    private struct Static { static var AssociationKey: UInt8 = 0 }
+    private var _delegate: UIWebView_Delegate? {
+        get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIWebView_Delegate }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+    }
+    
     private var ce: UIWebView_Delegate {
-        struct Static {
-            static var AssociationKey: UInt8 = 0
-        }
-        if let obj = objc_getAssociatedObject(self, &Static.AssociationKey) as? UIWebView_Delegate {
+        if let obj = _delegate {
             return obj
         }
-        if let delegate = self.delegate {
-            if delegate is UIWebView_Delegate {
-                return delegate as! UIWebView_Delegate
+        if let obj = self.delegate {
+            if obj is UIWebView_Delegate {
+                return obj as! UIWebView_Delegate
             }
         }
-        let delegate = getDelegateInstance()
-        objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
-        return delegate
+        let obj = getDelegateInstance()
+        _delegate = obj
+        return obj
     }
     
     private func rebindingDelegate() {

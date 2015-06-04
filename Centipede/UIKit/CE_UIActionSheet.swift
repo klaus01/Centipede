@@ -10,21 +10,24 @@ import UIKit
 
 public extension UIActionSheet {
     
+    private struct Static { static var AssociationKey: UInt8 = 0 }
+    private var _delegate: UIActionSheet_Delegate? {
+        get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIActionSheet_Delegate }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+    }
+    
     private var ce: UIActionSheet_Delegate {
-        struct Static {
-            static var AssociationKey: UInt8 = 0
-        }
-        if let obj = objc_getAssociatedObject(self, &Static.AssociationKey) as? UIActionSheet_Delegate {
+        if let obj = _delegate {
             return obj
         }
-        if let delegate = self.delegate {
-            if delegate is UIActionSheet_Delegate {
-                return delegate as! UIActionSheet_Delegate
+        if let obj = self.delegate {
+            if obj is UIActionSheet_Delegate {
+                return obj as! UIActionSheet_Delegate
             }
         }
-        let delegate = getDelegateInstance()
-        objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
-        return delegate
+        let obj = getDelegateInstance()
+        _delegate = obj
+        return obj
     }
     
     private func rebindingDelegate() {
@@ -35,6 +38,21 @@ public extension UIActionSheet {
     
     internal func getDelegateInstance() -> UIActionSheet_Delegate {
         return UIActionSheet_Delegate()
+    }
+    
+    public convenience init(title: String?, cancelButtonTitle: String?, destructiveButtonTitle: String?, otherButtonTitles firstButtonTitle: String, _ moreButtonTitles: String...) {
+        self.init(title: title, cancelButtonTitle: cancelButtonTitle, destructiveButtonTitle: destructiveButtonTitle)
+        addButtonWithTitle(firstButtonTitle)
+        
+        for buttonTitle in moreButtonTitles {
+            addButtonWithTitle(buttonTitle)
+        }
+    }
+    
+    public convenience init(title: String?, cancelButtonTitle: String?, destructiveButtonTitle: String?) {
+        let obj = UIActionSheet_Delegate()
+        self.init(title: title, delegate: obj, cancelButtonTitle: cancelButtonTitle, destructiveButtonTitle: destructiveButtonTitle)
+        _delegate = obj
     }
     
     public func ce_clickedButtonAtIndex(handle: (actionSheet: UIActionSheet, buttonIndex: Int) -> Void) -> Self {

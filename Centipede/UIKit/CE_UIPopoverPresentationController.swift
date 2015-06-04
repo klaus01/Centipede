@@ -10,21 +10,24 @@ import UIKit
 
 public extension UIPopoverPresentationController {
     
+    private struct Static { static var AssociationKey: UInt8 = 0 }
+    private var _delegate: UIPopoverPresentationController_Delegate? {
+        get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIPopoverPresentationController_Delegate }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+    }
+    
     private var ce: UIPopoverPresentationController_Delegate {
-        struct Static {
-            static var AssociationKey: UInt8 = 0
-        }
-        if let obj = objc_getAssociatedObject(self, &Static.AssociationKey) as? UIPopoverPresentationController_Delegate {
+        if let obj = _delegate {
             return obj
         }
-        if let delegate = self.delegate {
-            if delegate is UIPopoverPresentationController_Delegate {
-                return delegate as! UIPopoverPresentationController_Delegate
+        if let obj = self.delegate {
+            if obj is UIPopoverPresentationController_Delegate {
+                return obj as! UIPopoverPresentationController_Delegate
             }
         }
-        let delegate = getDelegateInstance()
-        objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
-        return delegate
+        let obj = getDelegateInstance()
+        _delegate = obj
+        return obj
     }
     
     private func rebindingDelegate() {

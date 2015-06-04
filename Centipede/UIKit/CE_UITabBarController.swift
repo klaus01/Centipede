@@ -10,21 +10,24 @@ import UIKit
 
 public extension UITabBarController {
     
+    private struct Static { static var AssociationKey: UInt8 = 0 }
+    private var _delegate: UITabBarController_Delegate? {
+        get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UITabBarController_Delegate }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+    }
+    
     private var ce: UITabBarController_Delegate {
-        struct Static {
-            static var AssociationKey: UInt8 = 0
-        }
-        if let obj = objc_getAssociatedObject(self, &Static.AssociationKey) as? UITabBarController_Delegate {
+        if let obj = _delegate {
             return obj
         }
-        if let delegate = self.delegate {
-            if delegate is UITabBarController_Delegate {
-                return delegate as! UITabBarController_Delegate
+        if let obj = self.delegate {
+            if obj is UITabBarController_Delegate {
+                return obj as! UITabBarController_Delegate
             }
         }
-        let delegate = getDelegateInstance()
-        objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
-        return delegate
+        let obj = getDelegateInstance()
+        _delegate = obj
+        return obj
     }
     
     private func rebindingDelegate() {

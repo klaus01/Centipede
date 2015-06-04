@@ -6,20 +6,21 @@
 //  Copyright (c) 2015年 kelei. All rights reserved.
 //
 
-import Foundation
-
 extension NSObject {
     
+    private struct Static { static var AssociationKey: UInt8 = 0 }
+    private var _delegate: NSObject_Delegate? {
+        get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? NSObject_Delegate }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+    }
+    
     private var ce: NSObject_Delegate {
-        struct Static {
-            static var AssociationKey: UInt8 = 0
-        }
-        if let obj = objc_getAssociatedObject(self, &Static.AssociationKey) as? NSObject_Delegate {
+        if let obj = _delegate {
             return obj
         }
-        let delegate = NSObject_Delegate()
-        objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
-        return delegate
+        let obj = NSObject_Delegate()
+        _delegate = obj
+        return obj
     }
     
     public func ce_addObserverForName(name: String, handle: (notification: NSNotification) -> Void) -> Self {

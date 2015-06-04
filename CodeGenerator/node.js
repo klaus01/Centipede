@@ -208,21 +208,24 @@ import UIKit\n\
 \n\
 public extension " + sourceObj.className + " {\n\
     \n\
+    private struct Static { static var AssociationKey: UInt8 = 0 }\n\
+    private var _delegate: " + CLASS_DELEGATE_NAME + "? {\n\
+        get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? " + CLASS_DELEGATE_NAME + " }\n\
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }\n\
+    }\n\
+    \n\
     private var " + EXT_NAME_ACRONYM + ": " + CLASS_DELEGATE_NAME + " {\n\
-        struct Static {\n\
-            static var AssociationKey: UInt8 = 0\n\
-        }\n\
-        if let obj = objc_getAssociatedObject(self, &Static.AssociationKey) as? " + CLASS_DELEGATE_NAME + " {\n\
+        if let obj = _delegate {\n\
             return obj\n\
         }\n\
-        if let delegate = self." + sourceObj.delegateAttributeNames[0] + " {\n\
-            if delegate is " + CLASS_DELEGATE_NAME + " {\n\
-                return delegate as! " + CLASS_DELEGATE_NAME + "\n\
+        if let obj = self." + sourceObj.delegateAttributeNames[0] + " {\n\
+            if obj is " + CLASS_DELEGATE_NAME + " {\n\
+                return obj as! " + CLASS_DELEGATE_NAME + "\n\
             }\n\
         }\n\
-        let delegate = getDelegateInstance()\n\
-        objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))\n\
-        return delegate\n\
+        let obj = getDelegateInstance()\n\
+        _delegate = obj\n\
+        return obj\n\
     }\n\
     \n\
     private func rebindingDelegate() {\n\
