@@ -11,12 +11,14 @@ delegate很好的解决的自定义与耦合问题，但在实现delegate的各�
 ```
 这让代码很难看、不易读、不易维护。
 
-##### 做到
+#### 做到
 - 代码连续。组件的构造、样式设置和各delegate实现方法可写在一个位置。
 - 独立。如有多个UITableView时，tableViewA和tableViewB的delegate方法实现是独立的，互不干扰。
 
 ### 使用
-UIKit Delegate
+所有方法名称以`cd_`开头
+
+#### UIKit Delegate
 ```swift
 collectionView
     .ce_NumberOfItemsInSection { [weak self] (collectionView, section) -> Int in
@@ -33,7 +35,7 @@ collectionView
     }
 ```
 
-UIControl Add Target For Control Events
+#### UIControl Add Target For Control Events
 ```swift
 btn.ce_addControlEvents(UIControlEvents.TouchDown) { (control, touches) -> Void in
     println("TouchDown")
@@ -44,7 +46,7 @@ btn.ce_addControlEvents(UIControlEvents.TouchDown) { (control, touches) -> Void 
 btn.ce_removeControlEvents(UIControlEvents.TouchDown)
 ```
 
-Notification Center Add Observer
+#### Notification Center Add Observer
 ```swift
 override func viewDidLoad() {
     super.viewDidLoad()
