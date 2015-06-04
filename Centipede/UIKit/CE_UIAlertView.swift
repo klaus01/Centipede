@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIAlertView {
+public extension UIAlertView {
     
     private var ce: UIAlertView_Delegate {
         struct Static {

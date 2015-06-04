@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIPresentationController {
+public extension UIPresentationController {
     
     private var ce: UIPresentationController_Delegate {
         struct Static {

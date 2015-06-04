@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIDynamicAnimator {
+public extension UIDynamicAnimator {
     
     private var ce: UIDynamicAnimator_Delegate {
         struct Static {

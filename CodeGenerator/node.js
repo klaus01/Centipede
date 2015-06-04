@@ -206,7 +206,7 @@
 \n\
 import UIKit\n\
 \n\
-extension " + sourceObj.className + " {\n\
+public extension " + sourceObj.className + " {\n\
     \n\
     private var " + EXT_NAME_ACRONYM + ": " + CLASS_DELEGATE_NAME + " {\n\
         struct Static {\n\

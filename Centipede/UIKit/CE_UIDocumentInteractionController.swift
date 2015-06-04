@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIDocumentInteractionController {
+public extension UIDocumentInteractionController {
     
     private var ce: UIDocumentInteractionController_Delegate {
         struct Static {

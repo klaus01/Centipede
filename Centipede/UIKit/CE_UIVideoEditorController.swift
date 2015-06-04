@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIVideoEditorController {
+public extension UIVideoEditorController {
     
     private var ce: UIVideoEditorController_Delegate {
         struct Static {

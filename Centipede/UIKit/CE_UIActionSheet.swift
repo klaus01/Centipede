@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIActionSheet {
+public extension UIActionSheet {
     
     private var ce: UIActionSheet_Delegate {
         struct Static {

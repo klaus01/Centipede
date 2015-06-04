@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     
     private var ce: UIViewController_Delegate {
         struct Static {

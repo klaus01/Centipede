@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIPrintInteractionController {
+public extension UIPrintInteractionController {
     
     private var ce: UIPrintInteractionController_Delegate {
         struct Static {

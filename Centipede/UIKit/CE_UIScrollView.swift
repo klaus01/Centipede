@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIScrollView {
+public extension UIScrollView {
     
     private var ce: UIScrollView_Delegate {
         struct Static {

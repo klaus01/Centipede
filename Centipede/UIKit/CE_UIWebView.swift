@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIWebView {
+public extension UIWebView {
     
     private var ce: UIWebView_Delegate {
         struct Static {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIDocumentMenuViewController {
+public extension UIDocumentMenuViewController {
     
     private var ce: UIDocumentMenuViewController_Delegate {
         struct Static {

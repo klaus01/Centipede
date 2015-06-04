@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIPrinterPickerController {
+public extension UIPrinterPickerController {
     
     private var ce: UIPrinterPickerController_Delegate {
         struct Static {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UINavigationController {
+public extension UINavigationController {
     
     private var ce: UINavigationController_Delegate {
         struct Static {

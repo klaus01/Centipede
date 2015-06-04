@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIImagePickerController {
+public extension UIImagePickerController {
     
     private var ce: UIImagePickerController_Delegate {
         struct Static {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIToolbar {
+public extension UIToolbar {
     
     private var ce: UIToolbar_Delegate {
         struct Static {

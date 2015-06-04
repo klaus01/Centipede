@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIDocumentPickerViewController {
+public extension UIDocumentPickerViewController {
     
     private var ce: UIDocumentPickerViewController_Delegate {
         struct Static {

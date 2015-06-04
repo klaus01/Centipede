@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UISearchController {
+public extension UISearchController {
     
     private var ce: UISearchController_Delegate {
         struct Static {

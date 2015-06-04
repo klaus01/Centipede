@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UITabBarController {
+public extension UITabBarController {
     
     private var ce: UITabBarController_Delegate {
         struct Static {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UITextField {
+public extension UITextField {
     
     private var ce: UITextField_Delegate {
         struct Static {

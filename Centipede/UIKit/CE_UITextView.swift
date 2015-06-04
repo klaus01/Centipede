@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UITextView {
+public extension UITextView {
     
     private var ce: UITextView_Delegate {
         struct Static {

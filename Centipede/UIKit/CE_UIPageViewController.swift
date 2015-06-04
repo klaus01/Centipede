@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIPageViewController {
+public extension UIPageViewController {
     
     private var ce: UIPageViewController_Delegate {
         struct Static {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIPickerView {
+public extension UIPickerView {
     
     private var ce: UIPickerView_Delegate {
         struct Static {

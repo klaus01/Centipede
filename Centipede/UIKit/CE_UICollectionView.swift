@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UICollectionView {
+public extension UICollectionView {
     
     private var ce: UICollectionView_Delegate {
         struct Static {

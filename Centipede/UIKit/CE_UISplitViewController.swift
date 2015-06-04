@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UISplitViewController {
+public extension UISplitViewController {
     
     private var ce: UISplitViewController_Delegate {
         struct Static {

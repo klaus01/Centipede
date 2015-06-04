@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UITableView {
+public extension UITableView {
     
     private var ce: UITableView_Delegate {
         struct Static {

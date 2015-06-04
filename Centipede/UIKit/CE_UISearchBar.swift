@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UISearchBar {
+public extension UISearchBar {
     
     private var ce: UISearchBar_Delegate {
         struct Static {

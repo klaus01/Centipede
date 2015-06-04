@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIGestureRecognizer {
+public extension UIGestureRecognizer {
     
     private var ce: UIGestureRecognizer_Delegate {
         struct Static {

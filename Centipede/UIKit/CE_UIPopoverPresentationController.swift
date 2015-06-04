@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIPopoverPresentationController {
+public extension UIPopoverPresentationController {
     
     private var ce: UIPopoverPresentationController_Delegate {
         struct Static {
