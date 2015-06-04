@@ -37,23 +37,23 @@ extension UIPopoverPresentationController {
         return UIPopoverPresentationController_Delegate()
     }
     
-    public func ce_PrepareForPopoverPresentation(handle: (popoverPresentationController: UIPopoverPresentationController) -> Void) -> Self {
-        ce.PrepareForPopoverPresentation = handle
+    public func ce_prepareForPopoverPresentation(handle: (popoverPresentationController: UIPopoverPresentationController) -> Void) -> Self {
+        ce._prepareForPopoverPresentation = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ShouldDismissPopover(handle: (popoverPresentationController: UIPopoverPresentationController) -> Bool) -> Self {
-        ce.ShouldDismissPopover = handle
+    public func ce_shouldDismissPopover(handle: (popoverPresentationController: UIPopoverPresentationController) -> Bool) -> Self {
+        ce._shouldDismissPopover = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidDismissPopover(handle: (popoverPresentationController: UIPopoverPresentationController) -> Void) -> Self {
-        ce.DidDismissPopover = handle
+    public func ce_didDismissPopover(handle: (popoverPresentationController: UIPopoverPresentationController) -> Void) -> Self {
+        ce._didDismissPopover = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillRepositionPopoverToRect(handle: (popoverPresentationController: UIPopoverPresentationController, rect: UnsafeMutablePointer<CGRect>, view: AutoreleasingUnsafeMutablePointer<UIView?>) -> Void) -> Self {
-        ce.WillRepositionPopoverToRect = handle
+    public func ce_willRepositionPopoverToRect(handle: (popoverPresentationController: UIPopoverPresentationController, rect: UnsafeMutablePointer<CGRect>, view: AutoreleasingUnsafeMutablePointer<UIView?>) -> Void) -> Self {
+        ce._willRepositionPopoverToRect = handle
         rebindingDelegate()
         return self
     }
@@ -62,19 +62,19 @@ extension UIPopoverPresentationController {
 
 internal class UIPopoverPresentationController_Delegate: UIPresentationController_Delegate, UIPopoverPresentationControllerDelegate {
     
-    var PrepareForPopoverPresentation: ((UIPopoverPresentationController) -> Void)?
-    var ShouldDismissPopover: ((UIPopoverPresentationController) -> Bool)?
-    var DidDismissPopover: ((UIPopoverPresentationController) -> Void)?
-    var WillRepositionPopoverToRect: ((UIPopoverPresentationController, UnsafeMutablePointer<CGRect>, AutoreleasingUnsafeMutablePointer<UIView?>) -> Void)?
+    var _prepareForPopoverPresentation: ((UIPopoverPresentationController) -> Void)?
+    var _shouldDismissPopover: ((UIPopoverPresentationController) -> Bool)?
+    var _didDismissPopover: ((UIPopoverPresentationController) -> Void)?
+    var _willRepositionPopoverToRect: ((UIPopoverPresentationController, UnsafeMutablePointer<CGRect>, AutoreleasingUnsafeMutablePointer<UIView?>) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "prepareForPopoverPresentation:" : PrepareForPopoverPresentation,
-            "popoverPresentationControllerShouldDismissPopover:" : ShouldDismissPopover,
-            "popoverPresentationControllerDidDismissPopover:" : DidDismissPopover,
-            "popoverPresentationController:willRepositionPopoverToRect:inView:" : WillRepositionPopoverToRect,
+            "prepareForPopoverPresentation:" : _prepareForPopoverPresentation,
+            "popoverPresentationControllerShouldDismissPopover:" : _shouldDismissPopover,
+            "popoverPresentationControllerDidDismissPopover:" : _didDismissPopover,
+            "popoverPresentationController:willRepositionPopoverToRect:inView:" : _willRepositionPopoverToRect,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -85,15 +85,15 @@ internal class UIPopoverPresentationController_Delegate: UIPresentationControlle
     
     
     @objc func prepareForPopoverPresentation(popoverPresentationController: UIPopoverPresentationController) {
-        PrepareForPopoverPresentation!(popoverPresentationController)
+        _prepareForPopoverPresentation!(popoverPresentationController)
     }
     @objc func popoverPresentationControllerShouldDismissPopover(popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        return ShouldDismissPopover!(popoverPresentationController)
+        return _shouldDismissPopover!(popoverPresentationController)
     }
     @objc func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
-        DidDismissPopover!(popoverPresentationController)
+        _didDismissPopover!(popoverPresentationController)
     }
     @objc func popoverPresentationController(popoverPresentationController: UIPopoverPresentationController, willRepositionPopoverToRect rect: UnsafeMutablePointer<CGRect>, inView view: AutoreleasingUnsafeMutablePointer<UIView?>) {
-        WillRepositionPopoverToRect!(popoverPresentationController, rect, view)
+        _willRepositionPopoverToRect!(popoverPresentationController, rect, view)
     }
 }

@@ -39,13 +39,13 @@ extension UIDocumentMenuViewController {
         return UIDocumentMenuViewController_Delegate()
     }
     
-    public func ce_DocumentMenu(handle: (documentMenu: UIDocumentMenuViewController, documentPicker: UIDocumentPickerViewController) -> Void) -> Self {
-        ce.DocumentMenu = handle
+    public func ce_documentMenu(handle: (documentMenu: UIDocumentMenuViewController, documentPicker: UIDocumentPickerViewController) -> Void) -> Self {
+        ce._documentMenu = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DocumentMenuWasCancelled(handle: (documentMenu: UIDocumentMenuViewController) -> Void) -> Self {
-        ce.DocumentMenuWasCancelled = handle
+    public func ce_documentMenuWasCancelled(handle: (documentMenu: UIDocumentMenuViewController) -> Void) -> Self {
+        ce._documentMenuWasCancelled = handle
         rebindingDelegate()
         return self
     }
@@ -54,15 +54,15 @@ extension UIDocumentMenuViewController {
 
 internal class UIDocumentMenuViewController_Delegate: UIViewController_Delegate, UIDocumentMenuDelegate {
     
-    var DocumentMenu: ((UIDocumentMenuViewController, UIDocumentPickerViewController) -> Void)?
-    var DocumentMenuWasCancelled: ((UIDocumentMenuViewController) -> Void)?
+    var _documentMenu: ((UIDocumentMenuViewController, UIDocumentPickerViewController) -> Void)?
+    var _documentMenuWasCancelled: ((UIDocumentMenuViewController) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "documentMenu:didPickDocumentPicker:" : DocumentMenu,
-            "documentMenuWasCancelled:" : DocumentMenuWasCancelled,
+            "documentMenu:didPickDocumentPicker:" : _documentMenu,
+            "documentMenuWasCancelled:" : _documentMenuWasCancelled,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -73,9 +73,9 @@ internal class UIDocumentMenuViewController_Delegate: UIViewController_Delegate,
     
     
     @objc func documentMenu(documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
-        DocumentMenu!(documentMenu, documentPicker)
+        _documentMenu!(documentMenu, documentPicker)
     }
     @objc func documentMenuWasCancelled(documentMenu: UIDocumentMenuViewController) {
-        DocumentMenuWasCancelled!(documentMenu)
+        _documentMenuWasCancelled!(documentMenu)
     }
 }

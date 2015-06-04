@@ -37,23 +37,23 @@ extension UIPresentationController {
         return UIPresentationController_Delegate()
     }
     
-    public func ce_AdaptivePresentationStyleFor(handle: (controller: UIPresentationController) -> UIModalPresentationStyle) -> Self {
-        ce.AdaptivePresentationStyleFor = handle
+    public func ce_adaptivePresentationStyleFor(handle: (controller: UIPresentationController) -> UIModalPresentationStyle) -> Self {
+        ce._adaptivePresentationStyleFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_AdaptivePresentationStyleForAndTraitCollection(handle: (controller: UIPresentationController, traitCollection: UITraitCollection!) -> UIModalPresentationStyle) -> Self {
-        ce.AdaptivePresentationStyleForAndTraitCollection = handle
+    public func ce_adaptivePresentationStyleForAndTraitCollection(handle: (controller: UIPresentationController, traitCollection: UITraitCollection!) -> UIModalPresentationStyle) -> Self {
+        ce._adaptivePresentationStyleForAndTraitCollection = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ViewControllerForAdaptivePresentationStyle(handle: (controller: UIPresentationController, style: UIModalPresentationStyle) -> UIViewController?) -> Self {
-        ce.ViewControllerForAdaptivePresentationStyle = handle
+    public func ce_viewControllerForAdaptivePresentationStyle(handle: (controller: UIPresentationController, style: UIModalPresentationStyle) -> UIViewController?) -> Self {
+        ce._viewControllerForAdaptivePresentationStyle = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillPresentWithAdaptiveStyle(handle: (presentationController: UIPresentationController, style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator!) -> Void) -> Self {
-        ce.WillPresentWithAdaptiveStyle = handle
+    public func ce_willPresentWithAdaptiveStyle(handle: (presentationController: UIPresentationController, style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator!) -> Void) -> Self {
+        ce._willPresentWithAdaptiveStyle = handle
         rebindingDelegate()
         return self
     }
@@ -62,19 +62,19 @@ extension UIPresentationController {
 
 internal class UIPresentationController_Delegate: NSObject, UIAdaptivePresentationControllerDelegate {
     
-    var AdaptivePresentationStyleFor: ((UIPresentationController) -> UIModalPresentationStyle)?
-    var AdaptivePresentationStyleForAndTraitCollection: ((UIPresentationController, UITraitCollection!) -> UIModalPresentationStyle)?
-    var ViewControllerForAdaptivePresentationStyle: ((UIPresentationController, UIModalPresentationStyle) -> UIViewController?)?
-    var WillPresentWithAdaptiveStyle: ((UIPresentationController, UIModalPresentationStyle, UIViewControllerTransitionCoordinator!) -> Void)?
+    var _adaptivePresentationStyleFor: ((UIPresentationController) -> UIModalPresentationStyle)?
+    var _adaptivePresentationStyleForAndTraitCollection: ((UIPresentationController, UITraitCollection!) -> UIModalPresentationStyle)?
+    var _viewControllerForAdaptivePresentationStyle: ((UIPresentationController, UIModalPresentationStyle) -> UIViewController?)?
+    var _willPresentWithAdaptiveStyle: ((UIPresentationController, UIModalPresentationStyle, UIViewControllerTransitionCoordinator!) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "adaptivePresentationStyleForPresentationController:" : AdaptivePresentationStyleFor,
-            "adaptivePresentationStyleForPresentationController:traitCollection:" : AdaptivePresentationStyleForAndTraitCollection,
-            "presentationController:viewControllerForAdaptivePresentationStyle:" : ViewControllerForAdaptivePresentationStyle,
-            "presentationController:willPresentWithAdaptiveStyle:transitionCoordinator:" : WillPresentWithAdaptiveStyle,
+            "adaptivePresentationStyleForPresentationController:" : _adaptivePresentationStyleFor,
+            "adaptivePresentationStyleForPresentationController:traitCollection:" : _adaptivePresentationStyleForAndTraitCollection,
+            "presentationController:viewControllerForAdaptivePresentationStyle:" : _viewControllerForAdaptivePresentationStyle,
+            "presentationController:willPresentWithAdaptiveStyle:transitionCoordinator:" : _willPresentWithAdaptiveStyle,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -85,15 +85,15 @@ internal class UIPresentationController_Delegate: NSObject, UIAdaptivePresentati
     
     
     @objc func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return AdaptivePresentationStyleFor!(controller)
+        return _adaptivePresentationStyleFor!(controller)
     }
     @objc func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection!) -> UIModalPresentationStyle {
-        return AdaptivePresentationStyleForAndTraitCollection!(controller, traitCollection)
+        return _adaptivePresentationStyleForAndTraitCollection!(controller, traitCollection)
     }
     @objc func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-        return ViewControllerForAdaptivePresentationStyle!(controller, style)
+        return _viewControllerForAdaptivePresentationStyle!(controller, style)
     }
     @objc func presentationController(presentationController: UIPresentationController, willPresentWithAdaptiveStyle style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator!) {
-        WillPresentWithAdaptiveStyle!(presentationController, style, transitionCoordinator)
+        _willPresentWithAdaptiveStyle!(presentationController, style, transitionCoordinator)
     }
 }

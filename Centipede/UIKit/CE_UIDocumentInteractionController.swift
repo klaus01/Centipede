@@ -37,58 +37,58 @@ extension UIDocumentInteractionController {
         return UIDocumentInteractionController_Delegate()
     }
     
-    public func ce_ViewControllerForPreview(handle: (controller: UIDocumentInteractionController) -> UIViewController) -> Self {
-        ce.ViewControllerForPreview = handle
+    public func ce_viewControllerForPreview(handle: (controller: UIDocumentInteractionController) -> UIViewController) -> Self {
+        ce._viewControllerForPreview = handle
         rebindingDelegate()
         return self
     }
-    public func ce_RectForPreview(handle: (controller: UIDocumentInteractionController) -> CGRect) -> Self {
-        ce.RectForPreview = handle
+    public func ce_rectForPreview(handle: (controller: UIDocumentInteractionController) -> CGRect) -> Self {
+        ce._rectForPreview = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ViewForPreview(handle: (controller: UIDocumentInteractionController) -> UIView?) -> Self {
-        ce.ViewForPreview = handle
+    public func ce_viewForPreview(handle: (controller: UIDocumentInteractionController) -> UIView?) -> Self {
+        ce._viewForPreview = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillBeginPreview(handle: (controller: UIDocumentInteractionController) -> Void) -> Self {
-        ce.WillBeginPreview = handle
+    public func ce_willBeginPreview(handle: (controller: UIDocumentInteractionController) -> Void) -> Self {
+        ce._willBeginPreview = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidEndPreview(handle: (controller: UIDocumentInteractionController) -> Void) -> Self {
-        ce.DidEndPreview = handle
+    public func ce_didEndPreview(handle: (controller: UIDocumentInteractionController) -> Void) -> Self {
+        ce._didEndPreview = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillPresentOptionsMenu(handle: (controller: UIDocumentInteractionController) -> Void) -> Self {
-        ce.WillPresentOptionsMenu = handle
+    public func ce_willPresentOptionsMenu(handle: (controller: UIDocumentInteractionController) -> Void) -> Self {
+        ce._willPresentOptionsMenu = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidDismissOptionsMenu(handle: (controller: UIDocumentInteractionController) -> Void) -> Self {
-        ce.DidDismissOptionsMenu = handle
+    public func ce_didDismissOptionsMenu(handle: (controller: UIDocumentInteractionController) -> Void) -> Self {
+        ce._didDismissOptionsMenu = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillPresentOpenInMenu(handle: (controller: UIDocumentInteractionController) -> Void) -> Self {
-        ce.WillPresentOpenInMenu = handle
+    public func ce_willPresentOpenInMenu(handle: (controller: UIDocumentInteractionController) -> Void) -> Self {
+        ce._willPresentOpenInMenu = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidDismissOpenInMenu(handle: (controller: UIDocumentInteractionController) -> Void) -> Self {
-        ce.DidDismissOpenInMenu = handle
+    public func ce_didDismissOpenInMenu(handle: (controller: UIDocumentInteractionController) -> Void) -> Self {
+        ce._didDismissOpenInMenu = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillBeginSendingToApplication(handle: (controller: UIDocumentInteractionController, application: String) -> Void) -> Self {
-        ce.WillBeginSendingToApplication = handle
+    public func ce_willBeginSendingToApplication(handle: (controller: UIDocumentInteractionController, application: String) -> Void) -> Self {
+        ce._willBeginSendingToApplication = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidEndSendingToApplication(handle: (controller: UIDocumentInteractionController, application: String) -> Void) -> Self {
-        ce.DidEndSendingToApplication = handle
+    public func ce_didEndSendingToApplication(handle: (controller: UIDocumentInteractionController, application: String) -> Void) -> Self {
+        ce._didEndSendingToApplication = handle
         rebindingDelegate()
         return self
     }
@@ -97,39 +97,39 @@ extension UIDocumentInteractionController {
 
 internal class UIDocumentInteractionController_Delegate: NSObject, UIDocumentInteractionControllerDelegate {
     
-    var ViewControllerForPreview: ((UIDocumentInteractionController) -> UIViewController)?
-    var RectForPreview: ((UIDocumentInteractionController) -> CGRect)?
-    var ViewForPreview: ((UIDocumentInteractionController) -> UIView?)?
-    var WillBeginPreview: ((UIDocumentInteractionController) -> Void)?
-    var DidEndPreview: ((UIDocumentInteractionController) -> Void)?
-    var WillPresentOptionsMenu: ((UIDocumentInteractionController) -> Void)?
-    var DidDismissOptionsMenu: ((UIDocumentInteractionController) -> Void)?
-    var WillPresentOpenInMenu: ((UIDocumentInteractionController) -> Void)?
-    var DidDismissOpenInMenu: ((UIDocumentInteractionController) -> Void)?
-    var WillBeginSendingToApplication: ((UIDocumentInteractionController, String) -> Void)?
-    var DidEndSendingToApplication: ((UIDocumentInteractionController, String) -> Void)?
+    var _viewControllerForPreview: ((UIDocumentInteractionController) -> UIViewController)?
+    var _rectForPreview: ((UIDocumentInteractionController) -> CGRect)?
+    var _viewForPreview: ((UIDocumentInteractionController) -> UIView?)?
+    var _willBeginPreview: ((UIDocumentInteractionController) -> Void)?
+    var _didEndPreview: ((UIDocumentInteractionController) -> Void)?
+    var _willPresentOptionsMenu: ((UIDocumentInteractionController) -> Void)?
+    var _didDismissOptionsMenu: ((UIDocumentInteractionController) -> Void)?
+    var _willPresentOpenInMenu: ((UIDocumentInteractionController) -> Void)?
+    var _didDismissOpenInMenu: ((UIDocumentInteractionController) -> Void)?
+    var _willBeginSendingToApplication: ((UIDocumentInteractionController, String) -> Void)?
+    var _didEndSendingToApplication: ((UIDocumentInteractionController, String) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "documentInteractionControllerViewControllerForPreview:" : ViewControllerForPreview,
-            "documentInteractionControllerRectForPreview:" : RectForPreview,
-            "documentInteractionControllerViewForPreview:" : ViewForPreview,
-            "documentInteractionControllerWillBeginPreview:" : WillBeginPreview,
-            "documentInteractionControllerDidEndPreview:" : DidEndPreview,
-            "documentInteractionControllerWillPresentOptionsMenu:" : WillPresentOptionsMenu,
-            "documentInteractionControllerDidDismissOptionsMenu:" : DidDismissOptionsMenu,
+            "documentInteractionControllerViewControllerForPreview:" : _viewControllerForPreview,
+            "documentInteractionControllerRectForPreview:" : _rectForPreview,
+            "documentInteractionControllerViewForPreview:" : _viewForPreview,
+            "documentInteractionControllerWillBeginPreview:" : _willBeginPreview,
+            "documentInteractionControllerDidEndPreview:" : _didEndPreview,
+            "documentInteractionControllerWillPresentOptionsMenu:" : _willPresentOptionsMenu,
+            "documentInteractionControllerDidDismissOptionsMenu:" : _didDismissOptionsMenu,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "documentInteractionControllerWillPresentOpenInMenu:" : WillPresentOpenInMenu,
-            "documentInteractionControllerDidDismissOpenInMenu:" : DidDismissOpenInMenu,
-            "documentInteractionController:willBeginSendingToApplication:" : WillBeginSendingToApplication,
-            "documentInteractionController:didEndSendingToApplication:" : DidEndSendingToApplication,
+            "documentInteractionControllerWillPresentOpenInMenu:" : _willPresentOpenInMenu,
+            "documentInteractionControllerDidDismissOpenInMenu:" : _didDismissOpenInMenu,
+            "documentInteractionController:willBeginSendingToApplication:" : _willBeginSendingToApplication,
+            "documentInteractionController:didEndSendingToApplication:" : _didEndSendingToApplication,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
@@ -140,36 +140,36 @@ internal class UIDocumentInteractionController_Delegate: NSObject, UIDocumentInt
     
     
     @objc func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
-        return ViewControllerForPreview!(controller)
+        return _viewControllerForPreview!(controller)
     }
     @objc func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
-        return RectForPreview!(controller)
+        return _rectForPreview!(controller)
     }
     @objc func documentInteractionControllerViewForPreview(controller: UIDocumentInteractionController) -> UIView? {
-        return ViewForPreview!(controller)
+        return _viewForPreview!(controller)
     }
     @objc func documentInteractionControllerWillBeginPreview(controller: UIDocumentInteractionController) {
-        WillBeginPreview!(controller)
+        _willBeginPreview!(controller)
     }
     @objc func documentInteractionControllerDidEndPreview(controller: UIDocumentInteractionController) {
-        DidEndPreview!(controller)
+        _didEndPreview!(controller)
     }
     @objc func documentInteractionControllerWillPresentOptionsMenu(controller: UIDocumentInteractionController) {
-        WillPresentOptionsMenu!(controller)
+        _willPresentOptionsMenu!(controller)
     }
     @objc func documentInteractionControllerDidDismissOptionsMenu(controller: UIDocumentInteractionController) {
-        DidDismissOptionsMenu!(controller)
+        _didDismissOptionsMenu!(controller)
     }
     @objc func documentInteractionControllerWillPresentOpenInMenu(controller: UIDocumentInteractionController) {
-        WillPresentOpenInMenu!(controller)
+        _willPresentOpenInMenu!(controller)
     }
     @objc func documentInteractionControllerDidDismissOpenInMenu(controller: UIDocumentInteractionController) {
-        DidDismissOpenInMenu!(controller)
+        _didDismissOpenInMenu!(controller)
     }
     @objc func documentInteractionController(controller: UIDocumentInteractionController, willBeginSendingToApplication application: String) {
-        WillBeginSendingToApplication!(controller, application)
+        _willBeginSendingToApplication!(controller, application)
     }
     @objc func documentInteractionController(controller: UIDocumentInteractionController, didEndSendingToApplication application: String) {
-        DidEndSendingToApplication!(controller, application)
+        _didEndSendingToApplication!(controller, application)
     }
 }

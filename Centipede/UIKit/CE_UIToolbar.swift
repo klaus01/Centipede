@@ -37,8 +37,8 @@ extension UIToolbar {
         return UIToolbar_Delegate()
     }
     
-    public func ce_PositionForBar(handle: (bar: UIBarPositioning) -> UIBarPosition) -> Self {
-        ce.PositionForBar = handle
+    public func ce_positionForBar(handle: (bar: UIBarPositioning) -> UIBarPosition) -> Self {
+        ce._positionForBar = handle
         rebindingDelegate()
         return self
     }
@@ -47,13 +47,13 @@ extension UIToolbar {
 
 internal class UIToolbar_Delegate: NSObject, UIToolbarDelegate {
     
-    var PositionForBar: ((UIBarPositioning) -> UIBarPosition)?
+    var _positionForBar: ((UIBarPositioning) -> UIBarPosition)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "positionForBar:" : PositionForBar,
+            "positionForBar:" : _positionForBar,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -64,6 +64,6 @@ internal class UIToolbar_Delegate: NSObject, UIToolbarDelegate {
     
     
     @objc func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return PositionForBar!(bar)
+        return _positionForBar!(bar)
     }
 }

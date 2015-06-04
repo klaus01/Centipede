@@ -37,23 +37,23 @@ extension UINavigationBar {
         return UINavigationBar_Delegate()
     }
     
-    public func ce_ShouldPushItem(handle: (navigationBar: UINavigationBar, item: UINavigationItem) -> Bool) -> Self {
-        ce.ShouldPushItem = handle
+    public func ce_shouldPushItem(handle: (navigationBar: UINavigationBar, item: UINavigationItem) -> Bool) -> Self {
+        ce._shouldPushItem = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidPushItem(handle: (navigationBar: UINavigationBar, item: UINavigationItem) -> Void) -> Self {
-        ce.DidPushItem = handle
+    public func ce_didPushItem(handle: (navigationBar: UINavigationBar, item: UINavigationItem) -> Void) -> Self {
+        ce._didPushItem = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ShouldPopItem(handle: (navigationBar: UINavigationBar, item: UINavigationItem) -> Bool) -> Self {
-        ce.ShouldPopItem = handle
+    public func ce_shouldPopItem(handle: (navigationBar: UINavigationBar, item: UINavigationItem) -> Bool) -> Self {
+        ce._shouldPopItem = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidPopItem(handle: (navigationBar: UINavigationBar, item: UINavigationItem) -> Void) -> Self {
-        ce.DidPopItem = handle
+    public func ce_didPopItem(handle: (navigationBar: UINavigationBar, item: UINavigationItem) -> Void) -> Self {
+        ce._didPopItem = handle
         rebindingDelegate()
         return self
     }
@@ -62,19 +62,19 @@ extension UINavigationBar {
 
 internal class UINavigationBar_Delegate: NSObject, UINavigationBarDelegate {
     
-    var ShouldPushItem: ((UINavigationBar, UINavigationItem) -> Bool)?
-    var DidPushItem: ((UINavigationBar, UINavigationItem) -> Void)?
-    var ShouldPopItem: ((UINavigationBar, UINavigationItem) -> Bool)?
-    var DidPopItem: ((UINavigationBar, UINavigationItem) -> Void)?
+    var _shouldPushItem: ((UINavigationBar, UINavigationItem) -> Bool)?
+    var _didPushItem: ((UINavigationBar, UINavigationItem) -> Void)?
+    var _shouldPopItem: ((UINavigationBar, UINavigationItem) -> Bool)?
+    var _didPopItem: ((UINavigationBar, UINavigationItem) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "navigationBar:shouldPushItem:" : ShouldPushItem,
-            "navigationBar:didPushItem:" : DidPushItem,
-            "navigationBar:shouldPopItem:" : ShouldPopItem,
-            "navigationBar:didPopItem:" : DidPopItem,
+            "navigationBar:shouldPushItem:" : _shouldPushItem,
+            "navigationBar:didPushItem:" : _didPushItem,
+            "navigationBar:shouldPopItem:" : _shouldPopItem,
+            "navigationBar:didPopItem:" : _didPopItem,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -85,15 +85,15 @@ internal class UINavigationBar_Delegate: NSObject, UINavigationBarDelegate {
     
     
     @objc func navigationBar(navigationBar: UINavigationBar, shouldPushItem item: UINavigationItem) -> Bool {
-        return ShouldPushItem!(navigationBar, item)
+        return _shouldPushItem!(navigationBar, item)
     }
     @objc func navigationBar(navigationBar: UINavigationBar, didPushItem item: UINavigationItem) {
-        DidPushItem!(navigationBar, item)
+        _didPushItem!(navigationBar, item)
     }
     @objc func navigationBar(navigationBar: UINavigationBar, shouldPopItem item: UINavigationItem) -> Bool {
-        return ShouldPopItem!(navigationBar, item)
+        return _shouldPopItem!(navigationBar, item)
     }
     @objc func navigationBar(navigationBar: UINavigationBar, didPopItem item: UINavigationItem) {
-        DidPopItem!(navigationBar, item)
+        _didPopItem!(navigationBar, item)
     }
 }

@@ -39,223 +39,223 @@ extension UITableView {
         return UITableView_Delegate()
     }
     
-    public func ce_NumberOfRowsInSection(handle: (tableView: UITableView, section: Int) -> Int) -> Self {
-        ce.NumberOfRowsInSection = handle
+    public func ce_numberOfRowsInSection(handle: (tableView: UITableView, section: Int) -> Int) -> Self {
+        ce._numberOfRowsInSection = handle
         rebindingDelegate()
         return self
     }
-    public func ce_CellForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell) -> Self {
-        ce.CellForRowAtIndexPath = handle
+    public func ce_cellForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell) -> Self {
+        ce._cellForRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_NumberOfSectionsIn(handle: (tableView: UITableView) -> Int) -> Self {
-        ce.NumberOfSectionsIn = handle
+    public func ce_numberOfSectionsIn(handle: (tableView: UITableView) -> Int) -> Self {
+        ce._numberOfSectionsIn = handle
         rebindingDelegate()
         return self
     }
-    public func ce_TitleForHeaderInSection(handle: (tableView: UITableView, section: Int) -> String?) -> Self {
-        ce.TitleForHeaderInSection = handle
+    public func ce_titleForHeaderInSection(handle: (tableView: UITableView, section: Int) -> String?) -> Self {
+        ce._titleForHeaderInSection = handle
         rebindingDelegate()
         return self
     }
-    public func ce_TitleForFooterInSection(handle: (tableView: UITableView, section: Int) -> String?) -> Self {
-        ce.TitleForFooterInSection = handle
+    public func ce_titleForFooterInSection(handle: (tableView: UITableView, section: Int) -> String?) -> Self {
+        ce._titleForFooterInSection = handle
         rebindingDelegate()
         return self
     }
-    public func ce_CanEditRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
-        ce.CanEditRowAtIndexPath = handle
+    public func ce_canEditRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
+        ce._canEditRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_CanMoveRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
-        ce.CanMoveRowAtIndexPath = handle
+    public func ce_canMoveRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
+        ce._canMoveRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_SectionIndexTitlesFor(handle: (tableView: UITableView) -> [AnyObject]!) -> Self {
-        ce.SectionIndexTitlesFor = handle
+    public func ce_sectionIndexTitlesFor(handle: (tableView: UITableView) -> [AnyObject]!) -> Self {
+        ce._sectionIndexTitlesFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_SectionForSectionIndexTitle(handle: (tableView: UITableView, title: String, index: Int) -> Int) -> Self {
-        ce.SectionForSectionIndexTitle = handle
+    public func ce_sectionForSectionIndexTitle(handle: (tableView: UITableView, title: String, index: Int) -> Int) -> Self {
+        ce._sectionForSectionIndexTitle = handle
         rebindingDelegate()
         return self
     }
-    public func ce_CommitEditingStyle(handle: (tableView: UITableView, editingStyle: UITableViewCellEditingStyle, indexPath: NSIndexPath) -> Void) -> Self {
-        ce.CommitEditingStyle = handle
+    public func ce_commitEditingStyle(handle: (tableView: UITableView, editingStyle: UITableViewCellEditingStyle, indexPath: NSIndexPath) -> Void) -> Self {
+        ce._commitEditingStyle = handle
         rebindingDelegate()
         return self
     }
-    public func ce_MoveRowAtIndexPath(handle: (tableView: UITableView, sourceIndexPath: NSIndexPath, destinationIndexPath: NSIndexPath) -> Void) -> Self {
-        ce.MoveRowAtIndexPath = handle
+    public func ce_moveRowAtIndexPath(handle: (tableView: UITableView, sourceIndexPath: NSIndexPath, destinationIndexPath: NSIndexPath) -> Void) -> Self {
+        ce._moveRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillDisplayCell(handle: (tableView: UITableView, cell: UITableViewCell, indexPath: NSIndexPath) -> Void) -> Self {
-        ce.WillDisplayCell = handle
+    public func ce_willDisplayCell(handle: (tableView: UITableView, cell: UITableViewCell, indexPath: NSIndexPath) -> Void) -> Self {
+        ce._willDisplayCell = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillDisplayHeaderView(handle: (tableView: UITableView, view: UIView, section: Int) -> Void) -> Self {
-        ce.WillDisplayHeaderView = handle
+    public func ce_willDisplayHeaderView(handle: (tableView: UITableView, view: UIView, section: Int) -> Void) -> Self {
+        ce._willDisplayHeaderView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillDisplayFooterView(handle: (tableView: UITableView, view: UIView, section: Int) -> Void) -> Self {
-        ce.WillDisplayFooterView = handle
+    public func ce_willDisplayFooterView(handle: (tableView: UITableView, view: UIView, section: Int) -> Void) -> Self {
+        ce._willDisplayFooterView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidEndDisplayingCell(handle: (tableView: UITableView, cell: UITableViewCell, indexPath: NSIndexPath) -> Void) -> Self {
-        ce.DidEndDisplayingCell = handle
+    public func ce_didEndDisplayingCell(handle: (tableView: UITableView, cell: UITableViewCell, indexPath: NSIndexPath) -> Void) -> Self {
+        ce._didEndDisplayingCell = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidEndDisplayingHeaderView(handle: (tableView: UITableView, view: UIView, section: Int) -> Void) -> Self {
-        ce.DidEndDisplayingHeaderView = handle
+    public func ce_didEndDisplayingHeaderView(handle: (tableView: UITableView, view: UIView, section: Int) -> Void) -> Self {
+        ce._didEndDisplayingHeaderView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidEndDisplayingFooterView(handle: (tableView: UITableView, view: UIView, section: Int) -> Void) -> Self {
-        ce.DidEndDisplayingFooterView = handle
+    public func ce_didEndDisplayingFooterView(handle: (tableView: UITableView, view: UIView, section: Int) -> Void) -> Self {
+        ce._didEndDisplayingFooterView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_HeightForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> CGFloat) -> Self {
-        ce.HeightForRowAtIndexPath = handle
+    public func ce_heightForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> CGFloat) -> Self {
+        ce._heightForRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_HeightForHeaderInSection(handle: (tableView: UITableView, section: Int) -> CGFloat) -> Self {
-        ce.HeightForHeaderInSection = handle
+    public func ce_heightForHeaderInSection(handle: (tableView: UITableView, section: Int) -> CGFloat) -> Self {
+        ce._heightForHeaderInSection = handle
         rebindingDelegate()
         return self
     }
-    public func ce_HeightForFooterInSection(handle: (tableView: UITableView, section: Int) -> CGFloat) -> Self {
-        ce.HeightForFooterInSection = handle
+    public func ce_heightForFooterInSection(handle: (tableView: UITableView, section: Int) -> CGFloat) -> Self {
+        ce._heightForFooterInSection = handle
         rebindingDelegate()
         return self
     }
-    public func ce_EstimatedHeightForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> CGFloat) -> Self {
-        ce.EstimatedHeightForRowAtIndexPath = handle
+    public func ce_estimatedHeightForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> CGFloat) -> Self {
+        ce._estimatedHeightForRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_EstimatedHeightForHeaderInSection(handle: (tableView: UITableView, section: Int) -> CGFloat) -> Self {
-        ce.EstimatedHeightForHeaderInSection = handle
+    public func ce_estimatedHeightForHeaderInSection(handle: (tableView: UITableView, section: Int) -> CGFloat) -> Self {
+        ce._estimatedHeightForHeaderInSection = handle
         rebindingDelegate()
         return self
     }
-    public func ce_EstimatedHeightForFooterInSection(handle: (tableView: UITableView, section: Int) -> CGFloat) -> Self {
-        ce.EstimatedHeightForFooterInSection = handle
+    public func ce_estimatedHeightForFooterInSection(handle: (tableView: UITableView, section: Int) -> CGFloat) -> Self {
+        ce._estimatedHeightForFooterInSection = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ViewForHeaderInSection(handle: (tableView: UITableView, section: Int) -> UIView?) -> Self {
-        ce.ViewForHeaderInSection = handle
+    public func ce_viewForHeaderInSection(handle: (tableView: UITableView, section: Int) -> UIView?) -> Self {
+        ce._viewForHeaderInSection = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ViewForFooterInSection(handle: (tableView: UITableView, section: Int) -> UIView?) -> Self {
-        ce.ViewForFooterInSection = handle
+    public func ce_viewForFooterInSection(handle: (tableView: UITableView, section: Int) -> UIView?) -> Self {
+        ce._viewForFooterInSection = handle
         rebindingDelegate()
         return self
     }
-    public func ce_AccessoryButtonTappedForRowWithIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
-        ce.AccessoryButtonTappedForRowWithIndexPath = handle
+    public func ce_accessoryButtonTappedForRowWithIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
+        ce._accessoryButtonTappedForRowWithIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ShouldHighlightRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
-        ce.ShouldHighlightRowAtIndexPath = handle
+    public func ce_shouldHighlightRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
+        ce._shouldHighlightRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidHighlightRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
-        ce.DidHighlightRowAtIndexPath = handle
+    public func ce_didHighlightRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
+        ce._didHighlightRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidUnhighlightRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
-        ce.DidUnhighlightRowAtIndexPath = handle
+    public func ce_didUnhighlightRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
+        ce._didUnhighlightRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillSelectRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> NSIndexPath?) -> Self {
-        ce.WillSelectRowAtIndexPath = handle
+    public func ce_willSelectRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> NSIndexPath?) -> Self {
+        ce._willSelectRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillDeselectRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> NSIndexPath?) -> Self {
-        ce.WillDeselectRowAtIndexPath = handle
+    public func ce_willDeselectRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> NSIndexPath?) -> Self {
+        ce._willDeselectRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidSelectRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
-        ce.DidSelectRowAtIndexPath = handle
+    public func ce_didSelectRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
+        ce._didSelectRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidDeselectRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
-        ce.DidDeselectRowAtIndexPath = handle
+    public func ce_didDeselectRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
+        ce._didDeselectRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_EditingStyleForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCellEditingStyle) -> Self {
-        ce.EditingStyleForRowAtIndexPath = handle
+    public func ce_editingStyleForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCellEditingStyle) -> Self {
+        ce._editingStyleForRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_TitleForDeleteConfirmationButtonForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> String!) -> Self {
-        ce.TitleForDeleteConfirmationButtonForRowAtIndexPath = handle
+    public func ce_titleForDeleteConfirmationButtonForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> String!) -> Self {
+        ce._titleForDeleteConfirmationButtonForRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_EditActionsForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> [AnyObject]?) -> Self {
-        ce.EditActionsForRowAtIndexPath = handle
+    public func ce_editActionsForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> [AnyObject]?) -> Self {
+        ce._editActionsForRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ShouldIndentWhileEditingRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
-        ce.ShouldIndentWhileEditingRowAtIndexPath = handle
+    public func ce_shouldIndentWhileEditingRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
+        ce._shouldIndentWhileEditingRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillBeginEditingRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
-        ce.WillBeginEditingRowAtIndexPath = handle
+    public func ce_willBeginEditingRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
+        ce._willBeginEditingRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidEndEditingRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
-        ce.DidEndEditingRowAtIndexPath = handle
+    public func ce_didEndEditingRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
+        ce._didEndEditingRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_TargetIndexPathForMoveFromRowAtIndexPath(handle: (tableView: UITableView, sourceIndexPath: NSIndexPath, proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath) -> Self {
-        ce.TargetIndexPathForMoveFromRowAtIndexPath = handle
+    public func ce_targetIndexPathForMoveFromRowAtIndexPath(handle: (tableView: UITableView, sourceIndexPath: NSIndexPath, proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath) -> Self {
+        ce._targetIndexPathForMoveFromRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_IndentationLevelForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Int) -> Self {
-        ce.IndentationLevelForRowAtIndexPath = handle
+    public func ce_indentationLevelForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Int) -> Self {
+        ce._indentationLevelForRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ShouldShowMenuForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
-        ce.ShouldShowMenuForRowAtIndexPath = handle
+    public func ce_shouldShowMenuForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
+        ce._shouldShowMenuForRowAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_CanPerformAction(handle: (tableView: UITableView, action: Selector, indexPath: NSIndexPath, sender: AnyObject) -> Bool) -> Self {
-        ce.CanPerformAction = handle
+    public func ce_canPerformAction(handle: (tableView: UITableView, action: Selector, indexPath: NSIndexPath, sender: AnyObject) -> Bool) -> Self {
+        ce._canPerformAction = handle
         rebindingDelegate()
         return self
     }
-    public func ce_PerformAction(handle: (tableView: UITableView, action: Selector, indexPath: NSIndexPath, sender: AnyObject!) -> Void) -> Self {
-        ce.PerformAction = handle
+    public func ce_performAction(handle: (tableView: UITableView, action: Selector, indexPath: NSIndexPath, sender: AnyObject!) -> Void) -> Self {
+        ce._performAction = handle
         rebindingDelegate()
         return self
     }
@@ -264,135 +264,135 @@ extension UITableView {
 
 internal class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSource, UITableViewDelegate {
     
-    var NumberOfRowsInSection: ((UITableView, Int) -> Int)?
-    var CellForRowAtIndexPath: ((UITableView, NSIndexPath) -> UITableViewCell)?
-    var NumberOfSectionsIn: ((UITableView) -> Int)?
-    var TitleForHeaderInSection: ((UITableView, Int) -> String?)?
-    var TitleForFooterInSection: ((UITableView, Int) -> String?)?
-    var CanEditRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
-    var CanMoveRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
-    var SectionIndexTitlesFor: ((UITableView) -> [AnyObject]!)?
-    var SectionForSectionIndexTitle: ((UITableView, String, Int) -> Int)?
-    var CommitEditingStyle: ((UITableView, UITableViewCellEditingStyle, NSIndexPath) -> Void)?
-    var MoveRowAtIndexPath: ((UITableView, NSIndexPath, NSIndexPath) -> Void)?
-    var WillDisplayCell: ((UITableView, UITableViewCell, NSIndexPath) -> Void)?
-    var WillDisplayHeaderView: ((UITableView, UIView, Int) -> Void)?
-    var WillDisplayFooterView: ((UITableView, UIView, Int) -> Void)?
-    var DidEndDisplayingCell: ((UITableView, UITableViewCell, NSIndexPath) -> Void)?
-    var DidEndDisplayingHeaderView: ((UITableView, UIView, Int) -> Void)?
-    var DidEndDisplayingFooterView: ((UITableView, UIView, Int) -> Void)?
-    var HeightForRowAtIndexPath: ((UITableView, NSIndexPath) -> CGFloat)?
-    var HeightForHeaderInSection: ((UITableView, Int) -> CGFloat)?
-    var HeightForFooterInSection: ((UITableView, Int) -> CGFloat)?
-    var EstimatedHeightForRowAtIndexPath: ((UITableView, NSIndexPath) -> CGFloat)?
-    var EstimatedHeightForHeaderInSection: ((UITableView, Int) -> CGFloat)?
-    var EstimatedHeightForFooterInSection: ((UITableView, Int) -> CGFloat)?
-    var ViewForHeaderInSection: ((UITableView, Int) -> UIView?)?
-    var ViewForFooterInSection: ((UITableView, Int) -> UIView?)?
-    var AccessoryButtonTappedForRowWithIndexPath: ((UITableView, NSIndexPath) -> Void)?
-    var ShouldHighlightRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
-    var DidHighlightRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
-    var DidUnhighlightRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
-    var WillSelectRowAtIndexPath: ((UITableView, NSIndexPath) -> NSIndexPath?)?
-    var WillDeselectRowAtIndexPath: ((UITableView, NSIndexPath) -> NSIndexPath?)?
-    var DidSelectRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
-    var DidDeselectRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
-    var EditingStyleForRowAtIndexPath: ((UITableView, NSIndexPath) -> UITableViewCellEditingStyle)?
-    var TitleForDeleteConfirmationButtonForRowAtIndexPath: ((UITableView, NSIndexPath) -> String!)?
-    var EditActionsForRowAtIndexPath: ((UITableView, NSIndexPath) -> [AnyObject]?)?
-    var ShouldIndentWhileEditingRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
-    var WillBeginEditingRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
-    var DidEndEditingRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
-    var TargetIndexPathForMoveFromRowAtIndexPath: ((UITableView, NSIndexPath, NSIndexPath) -> NSIndexPath)?
-    var IndentationLevelForRowAtIndexPath: ((UITableView, NSIndexPath) -> Int)?
-    var ShouldShowMenuForRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
-    var CanPerformAction: ((UITableView, Selector, NSIndexPath, AnyObject) -> Bool)?
-    var PerformAction: ((UITableView, Selector, NSIndexPath, AnyObject!) -> Void)?
+    var _numberOfRowsInSection: ((UITableView, Int) -> Int)?
+    var _cellForRowAtIndexPath: ((UITableView, NSIndexPath) -> UITableViewCell)?
+    var _numberOfSectionsIn: ((UITableView) -> Int)?
+    var _titleForHeaderInSection: ((UITableView, Int) -> String?)?
+    var _titleForFooterInSection: ((UITableView, Int) -> String?)?
+    var _canEditRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
+    var _canMoveRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
+    var _sectionIndexTitlesFor: ((UITableView) -> [AnyObject]!)?
+    var _sectionForSectionIndexTitle: ((UITableView, String, Int) -> Int)?
+    var _commitEditingStyle: ((UITableView, UITableViewCellEditingStyle, NSIndexPath) -> Void)?
+    var _moveRowAtIndexPath: ((UITableView, NSIndexPath, NSIndexPath) -> Void)?
+    var _willDisplayCell: ((UITableView, UITableViewCell, NSIndexPath) -> Void)?
+    var _willDisplayHeaderView: ((UITableView, UIView, Int) -> Void)?
+    var _willDisplayFooterView: ((UITableView, UIView, Int) -> Void)?
+    var _didEndDisplayingCell: ((UITableView, UITableViewCell, NSIndexPath) -> Void)?
+    var _didEndDisplayingHeaderView: ((UITableView, UIView, Int) -> Void)?
+    var _didEndDisplayingFooterView: ((UITableView, UIView, Int) -> Void)?
+    var _heightForRowAtIndexPath: ((UITableView, NSIndexPath) -> CGFloat)?
+    var _heightForHeaderInSection: ((UITableView, Int) -> CGFloat)?
+    var _heightForFooterInSection: ((UITableView, Int) -> CGFloat)?
+    var _estimatedHeightForRowAtIndexPath: ((UITableView, NSIndexPath) -> CGFloat)?
+    var _estimatedHeightForHeaderInSection: ((UITableView, Int) -> CGFloat)?
+    var _estimatedHeightForFooterInSection: ((UITableView, Int) -> CGFloat)?
+    var _viewForHeaderInSection: ((UITableView, Int) -> UIView?)?
+    var _viewForFooterInSection: ((UITableView, Int) -> UIView?)?
+    var _accessoryButtonTappedForRowWithIndexPath: ((UITableView, NSIndexPath) -> Void)?
+    var _shouldHighlightRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
+    var _didHighlightRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
+    var _didUnhighlightRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
+    var _willSelectRowAtIndexPath: ((UITableView, NSIndexPath) -> NSIndexPath?)?
+    var _willDeselectRowAtIndexPath: ((UITableView, NSIndexPath) -> NSIndexPath?)?
+    var _didSelectRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
+    var _didDeselectRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
+    var _editingStyleForRowAtIndexPath: ((UITableView, NSIndexPath) -> UITableViewCellEditingStyle)?
+    var _titleForDeleteConfirmationButtonForRowAtIndexPath: ((UITableView, NSIndexPath) -> String!)?
+    var _editActionsForRowAtIndexPath: ((UITableView, NSIndexPath) -> [AnyObject]?)?
+    var _shouldIndentWhileEditingRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
+    var _willBeginEditingRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
+    var _didEndEditingRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
+    var _targetIndexPathForMoveFromRowAtIndexPath: ((UITableView, NSIndexPath, NSIndexPath) -> NSIndexPath)?
+    var _indentationLevelForRowAtIndexPath: ((UITableView, NSIndexPath) -> Int)?
+    var _shouldShowMenuForRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
+    var _canPerformAction: ((UITableView, Selector, NSIndexPath, AnyObject) -> Bool)?
+    var _performAction: ((UITableView, Selector, NSIndexPath, AnyObject!) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "tableView:numberOfRowsInSection:" : NumberOfRowsInSection,
-            "tableView:cellForRowAtIndexPath:" : CellForRowAtIndexPath,
-            "numberOfSectionsInTableView:" : NumberOfSectionsIn,
-            "tableView:titleForHeaderInSection:" : TitleForHeaderInSection,
-            "tableView:titleForFooterInSection:" : TitleForFooterInSection,
-            "tableView:canEditRowAtIndexPath:" : CanEditRowAtIndexPath,
-            "tableView:canMoveRowAtIndexPath:" : CanMoveRowAtIndexPath,
+            "tableView:numberOfRowsInSection:" : _numberOfRowsInSection,
+            "tableView:cellForRowAtIndexPath:" : _cellForRowAtIndexPath,
+            "numberOfSectionsInTableView:" : _numberOfSectionsIn,
+            "tableView:titleForHeaderInSection:" : _titleForHeaderInSection,
+            "tableView:titleForFooterInSection:" : _titleForFooterInSection,
+            "tableView:canEditRowAtIndexPath:" : _canEditRowAtIndexPath,
+            "tableView:canMoveRowAtIndexPath:" : _canMoveRowAtIndexPath,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "sectionIndexTitlesForTableView:" : SectionIndexTitlesFor,
-            "tableView:sectionForSectionIndexTitle:atIndex:" : SectionForSectionIndexTitle,
-            "tableView:commitEditingStyle:forRowAtIndexPath:" : CommitEditingStyle,
-            "tableView:moveRowAtIndexPath:toIndexPath:" : MoveRowAtIndexPath,
-            "tableView:willDisplayCell:forRowAtIndexPath:" : WillDisplayCell,
-            "tableView:willDisplayHeaderView:forSection:" : WillDisplayHeaderView,
-            "tableView:willDisplayFooterView:forSection:" : WillDisplayFooterView,
+            "sectionIndexTitlesForTableView:" : _sectionIndexTitlesFor,
+            "tableView:sectionForSectionIndexTitle:atIndex:" : _sectionForSectionIndexTitle,
+            "tableView:commitEditingStyle:forRowAtIndexPath:" : _commitEditingStyle,
+            "tableView:moveRowAtIndexPath:toIndexPath:" : _moveRowAtIndexPath,
+            "tableView:willDisplayCell:forRowAtIndexPath:" : _willDisplayCell,
+            "tableView:willDisplayHeaderView:forSection:" : _willDisplayHeaderView,
+            "tableView:willDisplayFooterView:forSection:" : _willDisplayFooterView,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
         let funcDic3: [Selector : Any?] = [
-            "tableView:didEndDisplayingCell:forRowAtIndexPath:" : DidEndDisplayingCell,
-            "tableView:didEndDisplayingHeaderView:forSection:" : DidEndDisplayingHeaderView,
-            "tableView:didEndDisplayingFooterView:forSection:" : DidEndDisplayingFooterView,
-            "tableView:heightForRowAtIndexPath:" : HeightForRowAtIndexPath,
-            "tableView:heightForHeaderInSection:" : HeightForHeaderInSection,
-            "tableView:heightForFooterInSection:" : HeightForFooterInSection,
-            "tableView:estimatedHeightForRowAtIndexPath:" : EstimatedHeightForRowAtIndexPath,
+            "tableView:didEndDisplayingCell:forRowAtIndexPath:" : _didEndDisplayingCell,
+            "tableView:didEndDisplayingHeaderView:forSection:" : _didEndDisplayingHeaderView,
+            "tableView:didEndDisplayingFooterView:forSection:" : _didEndDisplayingFooterView,
+            "tableView:heightForRowAtIndexPath:" : _heightForRowAtIndexPath,
+            "tableView:heightForHeaderInSection:" : _heightForHeaderInSection,
+            "tableView:heightForFooterInSection:" : _heightForFooterInSection,
+            "tableView:estimatedHeightForRowAtIndexPath:" : _estimatedHeightForRowAtIndexPath,
         ]
         if let f = funcDic3[aSelector] {
             return f != nil
         }
         
         let funcDic4: [Selector : Any?] = [
-            "tableView:estimatedHeightForHeaderInSection:" : EstimatedHeightForHeaderInSection,
-            "tableView:estimatedHeightForFooterInSection:" : EstimatedHeightForFooterInSection,
-            "tableView:viewForHeaderInSection:" : ViewForHeaderInSection,
-            "tableView:viewForFooterInSection:" : ViewForFooterInSection,
-            "tableView:accessoryButtonTappedForRowWithIndexPath:" : AccessoryButtonTappedForRowWithIndexPath,
-            "tableView:shouldHighlightRowAtIndexPath:" : ShouldHighlightRowAtIndexPath,
-            "tableView:didHighlightRowAtIndexPath:" : DidHighlightRowAtIndexPath,
+            "tableView:estimatedHeightForHeaderInSection:" : _estimatedHeightForHeaderInSection,
+            "tableView:estimatedHeightForFooterInSection:" : _estimatedHeightForFooterInSection,
+            "tableView:viewForHeaderInSection:" : _viewForHeaderInSection,
+            "tableView:viewForFooterInSection:" : _viewForFooterInSection,
+            "tableView:accessoryButtonTappedForRowWithIndexPath:" : _accessoryButtonTappedForRowWithIndexPath,
+            "tableView:shouldHighlightRowAtIndexPath:" : _shouldHighlightRowAtIndexPath,
+            "tableView:didHighlightRowAtIndexPath:" : _didHighlightRowAtIndexPath,
         ]
         if let f = funcDic4[aSelector] {
             return f != nil
         }
         
         let funcDic5: [Selector : Any?] = [
-            "tableView:didUnhighlightRowAtIndexPath:" : DidUnhighlightRowAtIndexPath,
-            "tableView:willSelectRowAtIndexPath:" : WillSelectRowAtIndexPath,
-            "tableView:willDeselectRowAtIndexPath:" : WillDeselectRowAtIndexPath,
-            "tableView:didSelectRowAtIndexPath:" : DidSelectRowAtIndexPath,
-            "tableView:didDeselectRowAtIndexPath:" : DidDeselectRowAtIndexPath,
-            "tableView:editingStyleForRowAtIndexPath:" : EditingStyleForRowAtIndexPath,
-            "tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:" : TitleForDeleteConfirmationButtonForRowAtIndexPath,
+            "tableView:didUnhighlightRowAtIndexPath:" : _didUnhighlightRowAtIndexPath,
+            "tableView:willSelectRowAtIndexPath:" : _willSelectRowAtIndexPath,
+            "tableView:willDeselectRowAtIndexPath:" : _willDeselectRowAtIndexPath,
+            "tableView:didSelectRowAtIndexPath:" : _didSelectRowAtIndexPath,
+            "tableView:didDeselectRowAtIndexPath:" : _didDeselectRowAtIndexPath,
+            "tableView:editingStyleForRowAtIndexPath:" : _editingStyleForRowAtIndexPath,
+            "tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:" : _titleForDeleteConfirmationButtonForRowAtIndexPath,
         ]
         if let f = funcDic5[aSelector] {
             return f != nil
         }
         
         let funcDic6: [Selector : Any?] = [
-            "tableView:editActionsForRowAtIndexPath:" : EditActionsForRowAtIndexPath,
-            "tableView:shouldIndentWhileEditingRowAtIndexPath:" : ShouldIndentWhileEditingRowAtIndexPath,
-            "tableView:willBeginEditingRowAtIndexPath:" : WillBeginEditingRowAtIndexPath,
-            "tableView:didEndEditingRowAtIndexPath:" : DidEndEditingRowAtIndexPath,
-            "tableView:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:" : TargetIndexPathForMoveFromRowAtIndexPath,
-            "tableView:indentationLevelForRowAtIndexPath:" : IndentationLevelForRowAtIndexPath,
-            "tableView:shouldShowMenuForRowAtIndexPath:" : ShouldShowMenuForRowAtIndexPath,
+            "tableView:editActionsForRowAtIndexPath:" : _editActionsForRowAtIndexPath,
+            "tableView:shouldIndentWhileEditingRowAtIndexPath:" : _shouldIndentWhileEditingRowAtIndexPath,
+            "tableView:willBeginEditingRowAtIndexPath:" : _willBeginEditingRowAtIndexPath,
+            "tableView:didEndEditingRowAtIndexPath:" : _didEndEditingRowAtIndexPath,
+            "tableView:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:" : _targetIndexPathForMoveFromRowAtIndexPath,
+            "tableView:indentationLevelForRowAtIndexPath:" : _indentationLevelForRowAtIndexPath,
+            "tableView:shouldShowMenuForRowAtIndexPath:" : _shouldShowMenuForRowAtIndexPath,
         ]
         if let f = funcDic6[aSelector] {
             return f != nil
         }
         
         let funcDic7: [Selector : Any?] = [
-            "tableView:canPerformAction:forRowAtIndexPath:withSender:" : CanPerformAction,
-            "tableView:performAction:forRowAtIndexPath:withSender:" : PerformAction,
+            "tableView:canPerformAction:forRowAtIndexPath:withSender:" : _canPerformAction,
+            "tableView:performAction:forRowAtIndexPath:withSender:" : _performAction,
         ]
         if let f = funcDic7[aSelector] {
             return f != nil
@@ -403,135 +403,135 @@ internal class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSourc
     
     
     @objc func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return NumberOfRowsInSection!(tableView, section)
+        return _numberOfRowsInSection!(tableView, section)
     }
     @objc func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return CellForRowAtIndexPath!(tableView, indexPath)
+        return _cellForRowAtIndexPath!(tableView, indexPath)
     }
     @objc func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return NumberOfSectionsIn!(tableView)
+        return _numberOfSectionsIn!(tableView)
     }
     @objc func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return TitleForHeaderInSection!(tableView, section)
+        return _titleForHeaderInSection!(tableView, section)
     }
     @objc func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return TitleForFooterInSection!(tableView, section)
+        return _titleForFooterInSection!(tableView, section)
     }
     @objc func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return CanEditRowAtIndexPath!(tableView, indexPath)
+        return _canEditRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return CanMoveRowAtIndexPath!(tableView, indexPath)
+        return _canMoveRowAtIndexPath!(tableView, indexPath)
     }
     @objc func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
-        return SectionIndexTitlesFor!(tableView)
+        return _sectionIndexTitlesFor!(tableView)
     }
     @objc func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-        return SectionForSectionIndexTitle!(tableView, title, index)
+        return _sectionForSectionIndexTitle!(tableView, title, index)
     }
     @objc func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        CommitEditingStyle!(tableView, editingStyle, indexPath)
+        _commitEditingStyle!(tableView, editingStyle, indexPath)
     }
     @objc func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        MoveRowAtIndexPath!(tableView, sourceIndexPath, destinationIndexPath)
+        _moveRowAtIndexPath!(tableView, sourceIndexPath, destinationIndexPath)
     }
     @objc func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        WillDisplayCell!(tableView, cell, indexPath)
+        _willDisplayCell!(tableView, cell, indexPath)
     }
     @objc func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        WillDisplayHeaderView!(tableView, view, section)
+        _willDisplayHeaderView!(tableView, view, section)
     }
     @objc func tableView(tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-        WillDisplayFooterView!(tableView, view, section)
+        _willDisplayFooterView!(tableView, view, section)
     }
     @objc func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        DidEndDisplayingCell!(tableView, cell, indexPath)
+        _didEndDisplayingCell!(tableView, cell, indexPath)
     }
     @objc func tableView(tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
-        DidEndDisplayingHeaderView!(tableView, view, section)
+        _didEndDisplayingHeaderView!(tableView, view, section)
     }
     @objc func tableView(tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
-        DidEndDisplayingFooterView!(tableView, view, section)
+        _didEndDisplayingFooterView!(tableView, view, section)
     }
     @objc func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return HeightForRowAtIndexPath!(tableView, indexPath)
+        return _heightForRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return HeightForHeaderInSection!(tableView, section)
+        return _heightForHeaderInSection!(tableView, section)
     }
     @objc func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return HeightForFooterInSection!(tableView, section)
+        return _heightForFooterInSection!(tableView, section)
     }
     @objc func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return EstimatedHeightForRowAtIndexPath!(tableView, indexPath)
+        return _estimatedHeightForRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return EstimatedHeightForHeaderInSection!(tableView, section)
+        return _estimatedHeightForHeaderInSection!(tableView, section)
     }
     @objc func tableView(tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-        return EstimatedHeightForFooterInSection!(tableView, section)
+        return _estimatedHeightForFooterInSection!(tableView, section)
     }
     @objc func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return ViewForHeaderInSection!(tableView, section)
+        return _viewForHeaderInSection!(tableView, section)
     }
     @objc func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return ViewForFooterInSection!(tableView, section)
+        return _viewForFooterInSection!(tableView, section)
     }
     @objc func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
-        AccessoryButtonTappedForRowWithIndexPath!(tableView, indexPath)
+        _accessoryButtonTappedForRowWithIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return ShouldHighlightRowAtIndexPath!(tableView, indexPath)
+        return _shouldHighlightRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
-        DidHighlightRowAtIndexPath!(tableView, indexPath)
+        _didHighlightRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
-        DidUnhighlightRowAtIndexPath!(tableView, indexPath)
+        _didUnhighlightRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        return WillSelectRowAtIndexPath!(tableView, indexPath)
+        return _willSelectRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, willDeselectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        return WillDeselectRowAtIndexPath!(tableView, indexPath)
+        return _willDeselectRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        DidSelectRowAtIndexPath!(tableView, indexPath)
+        _didSelectRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        DidDeselectRowAtIndexPath!(tableView, indexPath)
+        _didDeselectRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return EditingStyleForRowAtIndexPath!(tableView, indexPath)
+        return _editingStyleForRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String! {
-        return TitleForDeleteConfirmationButtonForRowAtIndexPath!(tableView, indexPath)
+        return _titleForDeleteConfirmationButtonForRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        return EditActionsForRowAtIndexPath!(tableView, indexPath)
+        return _editActionsForRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return ShouldIndentWhileEditingRowAtIndexPath!(tableView, indexPath)
+        return _shouldIndentWhileEditingRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
-        WillBeginEditingRowAtIndexPath!(tableView, indexPath)
+        _willBeginEditingRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
-        DidEndEditingRowAtIndexPath!(tableView, indexPath)
+        _didEndEditingRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
-        return TargetIndexPathForMoveFromRowAtIndexPath!(tableView, sourceIndexPath, proposedDestinationIndexPath)
+        return _targetIndexPathForMoveFromRowAtIndexPath!(tableView, sourceIndexPath, proposedDestinationIndexPath)
     }
     @objc func tableView(tableView: UITableView, indentationLevelForRowAtIndexPath indexPath: NSIndexPath) -> Int {
-        return IndentationLevelForRowAtIndexPath!(tableView, indexPath)
+        return _indentationLevelForRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, shouldShowMenuForRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return ShouldShowMenuForRowAtIndexPath!(tableView, indexPath)
+        return _shouldShowMenuForRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject) -> Bool {
-        return CanPerformAction!(tableView, action, indexPath, sender)
+        return _canPerformAction!(tableView, action, indexPath, sender)
     }
     @objc func tableView(tableView: UITableView, performAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) {
-        PerformAction!(tableView, action, indexPath, sender)
+        _performAction!(tableView, action, indexPath, sender)
     }
 }

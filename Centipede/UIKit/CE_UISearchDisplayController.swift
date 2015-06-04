@@ -41,63 +41,63 @@ extension UISearchDisplayController {
         return UISearchDisplayController_Delegate()
     }
     
-    public func ce_WillBeginSearch(handle: (controller: UISearchDisplayController) -> Void) -> Self {
-        ce.WillBeginSearch = handle
+    public func ce_willBeginSearch(handle: (controller: UISearchDisplayController) -> Void) -> Self {
+        ce._willBeginSearch = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidBeginSearch(handle: (controller: UISearchDisplayController) -> Void) -> Self {
-        ce.DidBeginSearch = handle
+    public func ce_didBeginSearch(handle: (controller: UISearchDisplayController) -> Void) -> Self {
+        ce._didBeginSearch = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillEndSearch(handle: (controller: UISearchDisplayController) -> Void) -> Self {
-        ce.WillEndSearch = handle
+    public func ce_willEndSearch(handle: (controller: UISearchDisplayController) -> Void) -> Self {
+        ce._willEndSearch = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidEndSearch(handle: (controller: UISearchDisplayController) -> Void) -> Self {
-        ce.DidEndSearch = handle
+    public func ce_didEndSearch(handle: (controller: UISearchDisplayController) -> Void) -> Self {
+        ce._didEndSearch = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidLoadSearchResultsTableView(handle: (controller: UISearchDisplayController, tableView: UITableView) -> Void) -> Self {
-        ce.DidLoadSearchResultsTableView = handle
+    public func ce_didLoadSearchResultsTableView(handle: (controller: UISearchDisplayController, tableView: UITableView) -> Void) -> Self {
+        ce._didLoadSearchResultsTableView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillUnloadSearchResultsTableView(handle: (controller: UISearchDisplayController, tableView: UITableView) -> Void) -> Self {
-        ce.WillUnloadSearchResultsTableView = handle
+    public func ce_willUnloadSearchResultsTableView(handle: (controller: UISearchDisplayController, tableView: UITableView) -> Void) -> Self {
+        ce._willUnloadSearchResultsTableView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillShowSearchResultsTableView(handle: (controller: UISearchDisplayController, tableView: UITableView) -> Void) -> Self {
-        ce.WillShowSearchResultsTableView = handle
+    public func ce_willShowSearchResultsTableView(handle: (controller: UISearchDisplayController, tableView: UITableView) -> Void) -> Self {
+        ce._willShowSearchResultsTableView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidShowSearchResultsTableView(handle: (controller: UISearchDisplayController, tableView: UITableView) -> Void) -> Self {
-        ce.DidShowSearchResultsTableView = handle
+    public func ce_didShowSearchResultsTableView(handle: (controller: UISearchDisplayController, tableView: UITableView) -> Void) -> Self {
+        ce._didShowSearchResultsTableView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillHideSearchResultsTableView(handle: (controller: UISearchDisplayController, tableView: UITableView) -> Void) -> Self {
-        ce.WillHideSearchResultsTableView = handle
+    public func ce_willHideSearchResultsTableView(handle: (controller: UISearchDisplayController, tableView: UITableView) -> Void) -> Self {
+        ce._willHideSearchResultsTableView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidHideSearchResultsTableView(handle: (controller: UISearchDisplayController, tableView: UITableView) -> Void) -> Self {
-        ce.DidHideSearchResultsTableView = handle
+    public func ce_didHideSearchResultsTableView(handle: (controller: UISearchDisplayController, tableView: UITableView) -> Void) -> Self {
+        ce._didHideSearchResultsTableView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ShouldReloadTableForSearchString(handle: (controller: UISearchDisplayController, searchString: String!) -> Bool) -> Self {
-        ce.ShouldReloadTableForSearchString = handle
+    public func ce_shouldReloadTableForSearchString(handle: (controller: UISearchDisplayController, searchString: String!) -> Bool) -> Self {
+        ce._shouldReloadTableForSearchString = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ShouldReloadTableForSearchScope(handle: (controller: UISearchDisplayController, searchOption: Int) -> Bool) -> Self {
-        ce.ShouldReloadTableForSearchScope = handle
+    public func ce_shouldReloadTableForSearchScope(handle: (controller: UISearchDisplayController, searchOption: Int) -> Bool) -> Self {
+        ce._shouldReloadTableForSearchScope = handle
         rebindingDelegate()
         return self
     }
@@ -106,41 +106,41 @@ extension UISearchDisplayController {
 
 internal class UISearchDisplayController_Delegate: UITableView_Delegate, UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    var WillBeginSearch: ((UISearchDisplayController) -> Void)?
-    var DidBeginSearch: ((UISearchDisplayController) -> Void)?
-    var WillEndSearch: ((UISearchDisplayController) -> Void)?
-    var DidEndSearch: ((UISearchDisplayController) -> Void)?
-    var DidLoadSearchResultsTableView: ((UISearchDisplayController, UITableView) -> Void)?
-    var WillUnloadSearchResultsTableView: ((UISearchDisplayController, UITableView) -> Void)?
-    var WillShowSearchResultsTableView: ((UISearchDisplayController, UITableView) -> Void)?
-    var DidShowSearchResultsTableView: ((UISearchDisplayController, UITableView) -> Void)?
-    var WillHideSearchResultsTableView: ((UISearchDisplayController, UITableView) -> Void)?
-    var DidHideSearchResultsTableView: ((UISearchDisplayController, UITableView) -> Void)?
-    var ShouldReloadTableForSearchString: ((UISearchDisplayController, String!) -> Bool)?
-    var ShouldReloadTableForSearchScope: ((UISearchDisplayController, Int) -> Bool)?
+    var _willBeginSearch: ((UISearchDisplayController) -> Void)?
+    var _didBeginSearch: ((UISearchDisplayController) -> Void)?
+    var _willEndSearch: ((UISearchDisplayController) -> Void)?
+    var _didEndSearch: ((UISearchDisplayController) -> Void)?
+    var _didLoadSearchResultsTableView: ((UISearchDisplayController, UITableView) -> Void)?
+    var _willUnloadSearchResultsTableView: ((UISearchDisplayController, UITableView) -> Void)?
+    var _willShowSearchResultsTableView: ((UISearchDisplayController, UITableView) -> Void)?
+    var _didShowSearchResultsTableView: ((UISearchDisplayController, UITableView) -> Void)?
+    var _willHideSearchResultsTableView: ((UISearchDisplayController, UITableView) -> Void)?
+    var _didHideSearchResultsTableView: ((UISearchDisplayController, UITableView) -> Void)?
+    var _shouldReloadTableForSearchString: ((UISearchDisplayController, String!) -> Bool)?
+    var _shouldReloadTableForSearchScope: ((UISearchDisplayController, Int) -> Bool)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "searchDisplayControllerWillBeginSearch:" : WillBeginSearch,
-            "searchDisplayControllerDidBeginSearch:" : DidBeginSearch,
-            "searchDisplayControllerWillEndSearch:" : WillEndSearch,
-            "searchDisplayControllerDidEndSearch:" : DidEndSearch,
-            "searchDisplayController:didLoadSearchResultsTableView:" : DidLoadSearchResultsTableView,
-            "searchDisplayController:willUnloadSearchResultsTableView:" : WillUnloadSearchResultsTableView,
-            "searchDisplayController:willShowSearchResultsTableView:" : WillShowSearchResultsTableView,
+            "searchDisplayControllerWillBeginSearch:" : _willBeginSearch,
+            "searchDisplayControllerDidBeginSearch:" : _didBeginSearch,
+            "searchDisplayControllerWillEndSearch:" : _willEndSearch,
+            "searchDisplayControllerDidEndSearch:" : _didEndSearch,
+            "searchDisplayController:didLoadSearchResultsTableView:" : _didLoadSearchResultsTableView,
+            "searchDisplayController:willUnloadSearchResultsTableView:" : _willUnloadSearchResultsTableView,
+            "searchDisplayController:willShowSearchResultsTableView:" : _willShowSearchResultsTableView,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "searchDisplayController:didShowSearchResultsTableView:" : DidShowSearchResultsTableView,
-            "searchDisplayController:willHideSearchResultsTableView:" : WillHideSearchResultsTableView,
-            "searchDisplayController:didHideSearchResultsTableView:" : DidHideSearchResultsTableView,
-            "searchDisplayController:shouldReloadTableForSearchString:" : ShouldReloadTableForSearchString,
-            "searchDisplayController:shouldReloadTableForSearchScope:" : ShouldReloadTableForSearchScope,
+            "searchDisplayController:didShowSearchResultsTableView:" : _didShowSearchResultsTableView,
+            "searchDisplayController:willHideSearchResultsTableView:" : _willHideSearchResultsTableView,
+            "searchDisplayController:didHideSearchResultsTableView:" : _didHideSearchResultsTableView,
+            "searchDisplayController:shouldReloadTableForSearchString:" : _shouldReloadTableForSearchString,
+            "searchDisplayController:shouldReloadTableForSearchScope:" : _shouldReloadTableForSearchScope,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
@@ -151,39 +151,39 @@ internal class UISearchDisplayController_Delegate: UITableView_Delegate, UISearc
     
     
     @objc func searchDisplayControllerWillBeginSearch(controller: UISearchDisplayController) {
-        WillBeginSearch!(controller)
+        _willBeginSearch!(controller)
     }
     @objc func searchDisplayControllerDidBeginSearch(controller: UISearchDisplayController) {
-        DidBeginSearch!(controller)
+        _didBeginSearch!(controller)
     }
     @objc func searchDisplayControllerWillEndSearch(controller: UISearchDisplayController) {
-        WillEndSearch!(controller)
+        _willEndSearch!(controller)
     }
     @objc func searchDisplayControllerDidEndSearch(controller: UISearchDisplayController) {
-        DidEndSearch!(controller)
+        _didEndSearch!(controller)
     }
     @objc func searchDisplayController(controller: UISearchDisplayController, didLoadSearchResultsTableView tableView: UITableView) {
-        DidLoadSearchResultsTableView!(controller, tableView)
+        _didLoadSearchResultsTableView!(controller, tableView)
     }
     @objc func searchDisplayController(controller: UISearchDisplayController, willUnloadSearchResultsTableView tableView: UITableView) {
-        WillUnloadSearchResultsTableView!(controller, tableView)
+        _willUnloadSearchResultsTableView!(controller, tableView)
     }
     @objc func searchDisplayController(controller: UISearchDisplayController, willShowSearchResultsTableView tableView: UITableView) {
-        WillShowSearchResultsTableView!(controller, tableView)
+        _willShowSearchResultsTableView!(controller, tableView)
     }
     @objc func searchDisplayController(controller: UISearchDisplayController, didShowSearchResultsTableView tableView: UITableView) {
-        DidShowSearchResultsTableView!(controller, tableView)
+        _didShowSearchResultsTableView!(controller, tableView)
     }
     @objc func searchDisplayController(controller: UISearchDisplayController, willHideSearchResultsTableView tableView: UITableView) {
-        WillHideSearchResultsTableView!(controller, tableView)
+        _willHideSearchResultsTableView!(controller, tableView)
     }
     @objc func searchDisplayController(controller: UISearchDisplayController, didHideSearchResultsTableView tableView: UITableView) {
-        DidHideSearchResultsTableView!(controller, tableView)
+        _didHideSearchResultsTableView!(controller, tableView)
     }
     @objc func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
-        return ShouldReloadTableForSearchString!(controller, searchString)
+        return _shouldReloadTableForSearchString!(controller, searchString)
     }
     @objc func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
-        return ShouldReloadTableForSearchScope!(controller, searchOption)
+        return _shouldReloadTableForSearchScope!(controller, searchOption)
     }
 }

@@ -37,13 +37,13 @@ extension UIImagePickerController {
         return UIImagePickerController_Delegate()
     }
     
-    public func ce_DidFinishPickingMediaWithInfo(handle: (picker: UIImagePickerController, info: [NSObject : AnyObject]) -> Void) -> Self {
-        ce.DidFinishPickingMediaWithInfo = handle
+    public func ce_didFinishPickingMediaWithInfo(handle: (picker: UIImagePickerController, info: [NSObject : AnyObject]) -> Void) -> Self {
+        ce._didFinishPickingMediaWithInfo = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidCancel(handle: (picker: UIImagePickerController) -> Void) -> Self {
-        ce.DidCancel = handle
+    public func ce_didCancel(handle: (picker: UIImagePickerController) -> Void) -> Self {
+        ce._didCancel = handle
         rebindingDelegate()
         return self
     }
@@ -52,15 +52,15 @@ extension UIImagePickerController {
 
 internal class UIImagePickerController_Delegate: UINavigationController_Delegate, UIImagePickerControllerDelegate {
     
-    var DidFinishPickingMediaWithInfo: ((UIImagePickerController, [NSObject : AnyObject]) -> Void)?
-    var DidCancel: ((UIImagePickerController) -> Void)?
+    var _didFinishPickingMediaWithInfo: ((UIImagePickerController, [NSObject : AnyObject]) -> Void)?
+    var _didCancel: ((UIImagePickerController) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "imagePickerController:didFinishPickingMediaWithInfo:" : DidFinishPickingMediaWithInfo,
-            "imagePickerControllerDidCancel:" : DidCancel,
+            "imagePickerController:didFinishPickingMediaWithInfo:" : _didFinishPickingMediaWithInfo,
+            "imagePickerControllerDidCancel:" : _didCancel,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -71,9 +71,9 @@ internal class UIImagePickerController_Delegate: UINavigationController_Delegate
     
     
     @objc func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        DidFinishPickingMediaWithInfo!(picker, info)
+        _didFinishPickingMediaWithInfo!(picker, info)
     }
     @objc func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        DidCancel!(picker)
+        _didCancel!(picker)
     }
 }

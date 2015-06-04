@@ -37,33 +37,33 @@ extension UINavigationController {
         return UINavigationController_Delegate()
     }
     
-    public func ce_WillShowViewController(handle: (navigationController: UINavigationController, viewController: UIViewController, animated: Bool) -> Void) -> Self {
-        ce.WillShowViewController = handle
+    public func ce_willShowViewController(handle: (navigationController: UINavigationController, viewController: UIViewController, animated: Bool) -> Void) -> Self {
+        ce._willShowViewController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidShowViewController(handle: (navigationController: UINavigationController, viewController: UIViewController, animated: Bool) -> Void) -> Self {
-        ce.DidShowViewController = handle
+    public func ce_didShowViewController(handle: (navigationController: UINavigationController, viewController: UIViewController, animated: Bool) -> Void) -> Self {
+        ce._didShowViewController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_SupportedInterfaceOrientations(handle: (navigationController: UINavigationController) -> Int) -> Self {
-        ce.SupportedInterfaceOrientations = handle
+    public func ce_supportedInterfaceOrientations(handle: (navigationController: UINavigationController) -> Int) -> Self {
+        ce._supportedInterfaceOrientations = handle
         rebindingDelegate()
         return self
     }
-    public func ce_PreferredInterfaceOrientationForPresentation(handle: (navigationController: UINavigationController) -> UIInterfaceOrientation) -> Self {
-        ce.PreferredInterfaceOrientationForPresentation = handle
+    public func ce_preferredInterfaceOrientationForPresentation(handle: (navigationController: UINavigationController) -> UIInterfaceOrientation) -> Self {
+        ce._preferredInterfaceOrientationForPresentation = handle
         rebindingDelegate()
         return self
     }
-    public func ce_InteractionControllerForAnimationController(handle: (navigationController: UINavigationController, animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> Self {
-        ce.InteractionControllerForAnimationController = handle
+    public func ce_interactionControllerForAnimationController(handle: (navigationController: UINavigationController, animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> Self {
+        ce._interactionControllerForAnimationController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_AnimationControllerForOperation(handle: (navigationController: UINavigationController, operation: UINavigationControllerOperation, fromVC: UIViewController, toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?) -> Self {
-        ce.AnimationControllerForOperation = handle
+    public func ce_animationControllerForOperation(handle: (navigationController: UINavigationController, operation: UINavigationControllerOperation, fromVC: UIViewController, toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?) -> Self {
+        ce._animationControllerForOperation = handle
         rebindingDelegate()
         return self
     }
@@ -72,23 +72,23 @@ extension UINavigationController {
 
 internal class UINavigationController_Delegate: UIViewController_Delegate, UINavigationControllerDelegate {
     
-    var WillShowViewController: ((UINavigationController, UIViewController, Bool) -> Void)?
-    var DidShowViewController: ((UINavigationController, UIViewController, Bool) -> Void)?
-    var SupportedInterfaceOrientations: ((UINavigationController) -> Int)?
-    var PreferredInterfaceOrientationForPresentation: ((UINavigationController) -> UIInterfaceOrientation)?
-    var InteractionControllerForAnimationController: ((UINavigationController, UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)?
-    var AnimationControllerForOperation: ((UINavigationController, UINavigationControllerOperation, UIViewController, UIViewController) -> UIViewControllerAnimatedTransitioning?)?
+    var _willShowViewController: ((UINavigationController, UIViewController, Bool) -> Void)?
+    var _didShowViewController: ((UINavigationController, UIViewController, Bool) -> Void)?
+    var _supportedInterfaceOrientations: ((UINavigationController) -> Int)?
+    var _preferredInterfaceOrientationForPresentation: ((UINavigationController) -> UIInterfaceOrientation)?
+    var _interactionControllerForAnimationController: ((UINavigationController, UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)?
+    var _animationControllerForOperation: ((UINavigationController, UINavigationControllerOperation, UIViewController, UIViewController) -> UIViewControllerAnimatedTransitioning?)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "navigationController:willShowViewController:animated:" : WillShowViewController,
-            "navigationController:didShowViewController:animated:" : DidShowViewController,
-            "navigationControllerSupportedInterfaceOrientations:" : SupportedInterfaceOrientations,
-            "navigationControllerPreferredInterfaceOrientationForPresentation:" : PreferredInterfaceOrientationForPresentation,
-            "navigationController:interactionControllerForAnimationController:" : InteractionControllerForAnimationController,
-            "navigationController:animationControllerForOperation:fromViewController:toViewController:" : AnimationControllerForOperation,
+            "navigationController:willShowViewController:animated:" : _willShowViewController,
+            "navigationController:didShowViewController:animated:" : _didShowViewController,
+            "navigationControllerSupportedInterfaceOrientations:" : _supportedInterfaceOrientations,
+            "navigationControllerPreferredInterfaceOrientationForPresentation:" : _preferredInterfaceOrientationForPresentation,
+            "navigationController:interactionControllerForAnimationController:" : _interactionControllerForAnimationController,
+            "navigationController:animationControllerForOperation:fromViewController:toViewController:" : _animationControllerForOperation,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -99,21 +99,21 @@ internal class UINavigationController_Delegate: UIViewController_Delegate, UINav
     
     
     @objc func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-        WillShowViewController!(navigationController, viewController, animated)
+        _willShowViewController!(navigationController, viewController, animated)
     }
     @objc func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
-        DidShowViewController!(navigationController, viewController, animated)
+        _didShowViewController!(navigationController, viewController, animated)
     }
     @objc func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> Int {
-        return SupportedInterfaceOrientations!(navigationController)
+        return _supportedInterfaceOrientations!(navigationController)
     }
     @objc func navigationControllerPreferredInterfaceOrientationForPresentation(navigationController: UINavigationController) -> UIInterfaceOrientation {
-        return PreferredInterfaceOrientationForPresentation!(navigationController)
+        return _preferredInterfaceOrientationForPresentation!(navigationController)
     }
     @objc func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return InteractionControllerForAnimationController!(navigationController, animationController)
+        return _interactionControllerForAnimationController!(navigationController, animationController)
     }
     @objc func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimationControllerForOperation!(navigationController, operation, fromVC, toVC)
+        return _animationControllerForOperation!(navigationController, operation, fromVC, toVC)
     }
 }

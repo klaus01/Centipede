@@ -39,43 +39,43 @@ extension UIPickerView {
         return UIPickerView_Delegate()
     }
     
-    public func ce_NumberOfComponentsIn(handle: (pickerView: UIPickerView) -> Int) -> Self {
-        ce.NumberOfComponentsIn = handle
+    public func ce_numberOfComponentsIn(handle: (pickerView: UIPickerView) -> Int) -> Self {
+        ce._numberOfComponentsIn = handle
         rebindingDelegate()
         return self
     }
-    public func ce_NumberOfRowsInComponent(handle: (pickerView: UIPickerView, component: Int) -> Int) -> Self {
-        ce.NumberOfRowsInComponent = handle
+    public func ce_numberOfRowsInComponent(handle: (pickerView: UIPickerView, component: Int) -> Int) -> Self {
+        ce._numberOfRowsInComponent = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WidthForComponent(handle: (pickerView: UIPickerView, component: Int) -> CGFloat) -> Self {
-        ce.WidthForComponent = handle
+    public func ce_widthForComponent(handle: (pickerView: UIPickerView, component: Int) -> CGFloat) -> Self {
+        ce._widthForComponent = handle
         rebindingDelegate()
         return self
     }
-    public func ce_RowHeightForComponent(handle: (pickerView: UIPickerView, component: Int) -> CGFloat) -> Self {
-        ce.RowHeightForComponent = handle
+    public func ce_rowHeightForComponent(handle: (pickerView: UIPickerView, component: Int) -> CGFloat) -> Self {
+        ce._rowHeightForComponent = handle
         rebindingDelegate()
         return self
     }
-    public func ce_TitleForRow(handle: (pickerView: UIPickerView, row: Int, component: Int) -> String!) -> Self {
-        ce.TitleForRow = handle
+    public func ce_titleForRow(handle: (pickerView: UIPickerView, row: Int, component: Int) -> String!) -> Self {
+        ce._titleForRow = handle
         rebindingDelegate()
         return self
     }
-    public func ce_AttributedTitleForRow(handle: (pickerView: UIPickerView, row: Int, component: Int) -> NSAttributedString?) -> Self {
-        ce.AttributedTitleForRow = handle
+    public func ce_attributedTitleForRow(handle: (pickerView: UIPickerView, row: Int, component: Int) -> NSAttributedString?) -> Self {
+        ce._attributedTitleForRow = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ViewForRow(handle: (pickerView: UIPickerView, row: Int, component: Int, view: UIView!) -> UIView) -> Self {
-        ce.ViewForRow = handle
+    public func ce_viewForRow(handle: (pickerView: UIPickerView, row: Int, component: Int, view: UIView!) -> UIView) -> Self {
+        ce._viewForRow = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidSelectRow(handle: (pickerView: UIPickerView, row: Int, component: Int) -> Void) -> Self {
-        ce.DidSelectRow = handle
+    public func ce_didSelectRow(handle: (pickerView: UIPickerView, row: Int, component: Int) -> Void) -> Self {
+        ce._didSelectRow = handle
         rebindingDelegate()
         return self
     }
@@ -84,33 +84,33 @@ extension UIPickerView {
 
 internal class UIPickerView_Delegate: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var NumberOfComponentsIn: ((UIPickerView) -> Int)?
-    var NumberOfRowsInComponent: ((UIPickerView, Int) -> Int)?
-    var WidthForComponent: ((UIPickerView, Int) -> CGFloat)?
-    var RowHeightForComponent: ((UIPickerView, Int) -> CGFloat)?
-    var TitleForRow: ((UIPickerView, Int, Int) -> String!)?
-    var AttributedTitleForRow: ((UIPickerView, Int, Int) -> NSAttributedString?)?
-    var ViewForRow: ((UIPickerView, Int, Int, UIView!) -> UIView)?
-    var DidSelectRow: ((UIPickerView, Int, Int) -> Void)?
+    var _numberOfComponentsIn: ((UIPickerView) -> Int)?
+    var _numberOfRowsInComponent: ((UIPickerView, Int) -> Int)?
+    var _widthForComponent: ((UIPickerView, Int) -> CGFloat)?
+    var _rowHeightForComponent: ((UIPickerView, Int) -> CGFloat)?
+    var _titleForRow: ((UIPickerView, Int, Int) -> String!)?
+    var _attributedTitleForRow: ((UIPickerView, Int, Int) -> NSAttributedString?)?
+    var _viewForRow: ((UIPickerView, Int, Int, UIView!) -> UIView)?
+    var _didSelectRow: ((UIPickerView, Int, Int) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "numberOfComponentsInPickerView:" : NumberOfComponentsIn,
-            "pickerView:numberOfRowsInComponent:" : NumberOfRowsInComponent,
-            "pickerView:widthForComponent:" : WidthForComponent,
-            "pickerView:rowHeightForComponent:" : RowHeightForComponent,
-            "pickerView:titleForRow:forComponent:" : TitleForRow,
-            "pickerView:attributedTitleForRow:forComponent:" : AttributedTitleForRow,
-            "pickerView:viewForRow:forComponent:reusingView:" : ViewForRow,
+            "numberOfComponentsInPickerView:" : _numberOfComponentsIn,
+            "pickerView:numberOfRowsInComponent:" : _numberOfRowsInComponent,
+            "pickerView:widthForComponent:" : _widthForComponent,
+            "pickerView:rowHeightForComponent:" : _rowHeightForComponent,
+            "pickerView:titleForRow:forComponent:" : _titleForRow,
+            "pickerView:attributedTitleForRow:forComponent:" : _attributedTitleForRow,
+            "pickerView:viewForRow:forComponent:reusingView:" : _viewForRow,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "pickerView:didSelectRow:inComponent:" : DidSelectRow,
+            "pickerView:didSelectRow:inComponent:" : _didSelectRow,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
@@ -121,27 +121,27 @@ internal class UIPickerView_Delegate: NSObject, UIPickerViewDataSource, UIPicker
     
     
     @objc func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return NumberOfComponentsIn!(pickerView)
+        return _numberOfComponentsIn!(pickerView)
     }
     @objc func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return NumberOfRowsInComponent!(pickerView, component)
+        return _numberOfRowsInComponent!(pickerView, component)
     }
     @objc func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        return WidthForComponent!(pickerView, component)
+        return _widthForComponent!(pickerView, component)
     }
     @objc func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return RowHeightForComponent!(pickerView, component)
+        return _rowHeightForComponent!(pickerView, component)
     }
     @objc func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return TitleForRow!(pickerView, row, component)
+        return _titleForRow!(pickerView, row, component)
     }
     @objc func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return AttributedTitleForRow!(pickerView, row, component)
+        return _attributedTitleForRow!(pickerView, row, component)
     }
     @objc func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
-        return ViewForRow!(pickerView, row, component, view)
+        return _viewForRow!(pickerView, row, component, view)
     }
     @objc func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        DidSelectRow!(pickerView, row, component)
+        _didSelectRow!(pickerView, row, component)
     }
 }

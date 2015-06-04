@@ -37,28 +37,28 @@ extension UITabBar {
         return UITabBar_Delegate()
     }
     
-    public func ce_DidSelectItem(handle: (tabBar: UITabBar, item: UITabBarItem!) -> Void) -> Self {
-        ce.DidSelectItem = handle
+    public func ce_didSelectItem(handle: (tabBar: UITabBar, item: UITabBarItem!) -> Void) -> Self {
+        ce._didSelectItem = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillBeginCustomizingItems(handle: (tabBar: UITabBar, items: [AnyObject]) -> Void) -> Self {
-        ce.WillBeginCustomizingItems = handle
+    public func ce_willBeginCustomizingItems(handle: (tabBar: UITabBar, items: [AnyObject]) -> Void) -> Self {
+        ce._willBeginCustomizingItems = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidBeginCustomizingItems(handle: (tabBar: UITabBar, items: [AnyObject]) -> Void) -> Self {
-        ce.DidBeginCustomizingItems = handle
+    public func ce_didBeginCustomizingItems(handle: (tabBar: UITabBar, items: [AnyObject]) -> Void) -> Self {
+        ce._didBeginCustomizingItems = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillEndCustomizingItems(handle: (tabBar: UITabBar, items: [AnyObject], changed: Bool) -> Void) -> Self {
-        ce.WillEndCustomizingItems = handle
+    public func ce_willEndCustomizingItems(handle: (tabBar: UITabBar, items: [AnyObject], changed: Bool) -> Void) -> Self {
+        ce._willEndCustomizingItems = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidEndCustomizingItems(handle: (tabBar: UITabBar, items: [AnyObject], changed: Bool) -> Void) -> Self {
-        ce.DidEndCustomizingItems = handle
+    public func ce_didEndCustomizingItems(handle: (tabBar: UITabBar, items: [AnyObject], changed: Bool) -> Void) -> Self {
+        ce._didEndCustomizingItems = handle
         rebindingDelegate()
         return self
     }
@@ -67,21 +67,21 @@ extension UITabBar {
 
 internal class UITabBar_Delegate: NSObject, UITabBarDelegate {
     
-    var DidSelectItem: ((UITabBar, UITabBarItem!) -> Void)?
-    var WillBeginCustomizingItems: ((UITabBar, [AnyObject]) -> Void)?
-    var DidBeginCustomizingItems: ((UITabBar, [AnyObject]) -> Void)?
-    var WillEndCustomizingItems: ((UITabBar, [AnyObject], Bool) -> Void)?
-    var DidEndCustomizingItems: ((UITabBar, [AnyObject], Bool) -> Void)?
+    var _didSelectItem: ((UITabBar, UITabBarItem!) -> Void)?
+    var _willBeginCustomizingItems: ((UITabBar, [AnyObject]) -> Void)?
+    var _didBeginCustomizingItems: ((UITabBar, [AnyObject]) -> Void)?
+    var _willEndCustomizingItems: ((UITabBar, [AnyObject], Bool) -> Void)?
+    var _didEndCustomizingItems: ((UITabBar, [AnyObject], Bool) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "tabBar:didSelectItem:" : DidSelectItem,
-            "tabBar:willBeginCustomizingItems:" : WillBeginCustomizingItems,
-            "tabBar:didBeginCustomizingItems:" : DidBeginCustomizingItems,
-            "tabBar:willEndCustomizingItems:changed:" : WillEndCustomizingItems,
-            "tabBar:didEndCustomizingItems:changed:" : DidEndCustomizingItems,
+            "tabBar:didSelectItem:" : _didSelectItem,
+            "tabBar:willBeginCustomizingItems:" : _willBeginCustomizingItems,
+            "tabBar:didBeginCustomizingItems:" : _didBeginCustomizingItems,
+            "tabBar:willEndCustomizingItems:changed:" : _willEndCustomizingItems,
+            "tabBar:didEndCustomizingItems:changed:" : _didEndCustomizingItems,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -92,18 +92,18 @@ internal class UITabBar_Delegate: NSObject, UITabBarDelegate {
     
     
     @objc func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
-        DidSelectItem!(tabBar, item)
+        _didSelectItem!(tabBar, item)
     }
     @objc func tabBar(tabBar: UITabBar, willBeginCustomizingItems items: [AnyObject]) {
-        WillBeginCustomizingItems!(tabBar, items)
+        _willBeginCustomizingItems!(tabBar, items)
     }
     @objc func tabBar(tabBar: UITabBar, didBeginCustomizingItems items: [AnyObject]) {
-        DidBeginCustomizingItems!(tabBar, items)
+        _didBeginCustomizingItems!(tabBar, items)
     }
     @objc func tabBar(tabBar: UITabBar, willEndCustomizingItems items: [AnyObject], changed: Bool) {
-        WillEndCustomizingItems!(tabBar, items, changed)
+        _willEndCustomizingItems!(tabBar, items, changed)
     }
     @objc func tabBar(tabBar: UITabBar, didEndCustomizingItems items: [AnyObject], changed: Bool) {
-        DidEndCustomizingItems!(tabBar, items, changed)
+        _didEndCustomizingItems!(tabBar, items, changed)
     }
 }

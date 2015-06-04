@@ -77,7 +77,7 @@
             var reg = new RegExp(classChildName, "i");
             var funcObj = {
                 oldName: result[1],
-                newName: firstLetterUppercase(result[1].replace(reg, "")),
+                newName: firstLetterLowercase(result[1].replace(reg, "")),
                 parameters: [{
                     name: result[2],
                     variate: result[2],
@@ -104,7 +104,7 @@
                     return null;
                 }
                 if (funcObj.parameters[1].name.match(/([A-Z])/))
-                    funcObj.newName = firstLetterUppercase(funcObj.parameters[1].name);
+                    funcObj.newName = firstLetterLowercase(funcObj.parameters[1].name);
                 else if (funcObj.parameters.length < 3) {
                     // 第二个参数不存在大写字母，及需要第三个参数来确定方法名
                     console.log(funcObj);
@@ -112,19 +112,21 @@
                     return null;
                 }
                 else {
-                    funcObj.newName = firstLetterUppercase(funcObj.parameters[1].name) + firstLetterUppercase(funcObj.parameters[2].name);
+                    funcObj.newName = firstLetterLowercase(funcObj.parameters[1].name) + firstLetterUppercase(funcObj.parameters[2].name);
                 }
             }
+            funcObj.newName = "_" + funcObj.newName;
             // 判断方法名是否已存在，存在则在方法名上加上第二个参数名
             // func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle
             // func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection!) -> UIModalPresentationStyle
+            var i = 1;
             while (sourceObj.funcs.find(function(item){ return item.newName === funcObj.newName; })) {
-                if (funcObj.parameters.length < 2) {
+                if (funcObj.parameters.length <= i) {
                     console.log(funcObj);
-                    console.error("无法解析，需要第二个参数来确定方法名。请看控制台日志");
+                    console.error("无法解析，需要第" + i + "个参数来确定方法名。请看控制台日志");
                     return null;
                 }
-                funcObj.newName += "And" + firstLetterUppercase(funcObj.parameters[1].name);
+                funcObj.newName += "And" + firstLetterUppercase(funcObj.parameters[i].name);
             }
 
             // 返回类型
@@ -183,7 +185,7 @@
             };
 
             funcStr += "\
-    public func " + EXT_NAME_ACRONYM + "_" + funcObj.newName + "(handle: (" + paramtStr + ") -> " + getFuncReturnType(funcObj.returnType) + ") -> Self {\n\
+    public func " + EXT_NAME_ACRONYM + funcObj.newName + "(handle: (" + paramtStr + ") -> " + getFuncReturnType(funcObj.returnType) + ") -> Self {\n\
         " + EXT_NAME_ACRONYM + "." + funcObj.newName + " = handle\n\
         rebindingDelegate()\n\
         return self\n\

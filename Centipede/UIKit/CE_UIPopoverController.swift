@@ -37,18 +37,18 @@ extension UIPopoverController {
         return UIPopoverController_Delegate()
     }
     
-    public func ce_ShouldDismissPopover(handle: (popoverController: UIPopoverController) -> Bool) -> Self {
-        ce.ShouldDismissPopover = handle
+    public func ce_shouldDismissPopover(handle: (popoverController: UIPopoverController) -> Bool) -> Self {
+        ce._shouldDismissPopover = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidDismissPopover(handle: (popoverController: UIPopoverController) -> Void) -> Self {
-        ce.DidDismissPopover = handle
+    public func ce_didDismissPopover(handle: (popoverController: UIPopoverController) -> Void) -> Self {
+        ce._didDismissPopover = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillRepositionPopoverToRect(handle: (popoverController: UIPopoverController, rect: UnsafeMutablePointer<CGRect>, view: AutoreleasingUnsafeMutablePointer<UIView?>) -> Void) -> Self {
-        ce.WillRepositionPopoverToRect = handle
+    public func ce_willRepositionPopoverToRect(handle: (popoverController: UIPopoverController, rect: UnsafeMutablePointer<CGRect>, view: AutoreleasingUnsafeMutablePointer<UIView?>) -> Void) -> Self {
+        ce._willRepositionPopoverToRect = handle
         rebindingDelegate()
         return self
     }
@@ -57,17 +57,17 @@ extension UIPopoverController {
 
 internal class UIPopoverController_Delegate: NSObject, UIPopoverControllerDelegate {
     
-    var ShouldDismissPopover: ((UIPopoverController) -> Bool)?
-    var DidDismissPopover: ((UIPopoverController) -> Void)?
-    var WillRepositionPopoverToRect: ((UIPopoverController, UnsafeMutablePointer<CGRect>, AutoreleasingUnsafeMutablePointer<UIView?>) -> Void)?
+    var _shouldDismissPopover: ((UIPopoverController) -> Bool)?
+    var _didDismissPopover: ((UIPopoverController) -> Void)?
+    var _willRepositionPopoverToRect: ((UIPopoverController, UnsafeMutablePointer<CGRect>, AutoreleasingUnsafeMutablePointer<UIView?>) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "popoverControllerShouldDismissPopover:" : ShouldDismissPopover,
-            "popoverControllerDidDismissPopover:" : DidDismissPopover,
-            "popoverController:willRepositionPopoverToRect:inView:" : WillRepositionPopoverToRect,
+            "popoverControllerShouldDismissPopover:" : _shouldDismissPopover,
+            "popoverControllerDidDismissPopover:" : _didDismissPopover,
+            "popoverController:willRepositionPopoverToRect:inView:" : _willRepositionPopoverToRect,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -78,12 +78,12 @@ internal class UIPopoverController_Delegate: NSObject, UIPopoverControllerDelega
     
     
     @objc func popoverControllerShouldDismissPopover(popoverController: UIPopoverController) -> Bool {
-        return ShouldDismissPopover!(popoverController)
+        return _shouldDismissPopover!(popoverController)
     }
     @objc func popoverControllerDidDismissPopover(popoverController: UIPopoverController) {
-        DidDismissPopover!(popoverController)
+        _didDismissPopover!(popoverController)
     }
     @objc func popoverController(popoverController: UIPopoverController, willRepositionPopoverToRect rect: UnsafeMutablePointer<CGRect>, inView view: AutoreleasingUnsafeMutablePointer<UIView?>) {
-        WillRepositionPopoverToRect!(popoverController, rect, view)
+        _willRepositionPopoverToRect!(popoverController, rect, view)
     }
 }

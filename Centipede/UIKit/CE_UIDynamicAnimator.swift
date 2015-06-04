@@ -37,13 +37,13 @@ extension UIDynamicAnimator {
         return UIDynamicAnimator_Delegate()
     }
     
-    public func ce_WillResume(handle: (animator: UIDynamicAnimator) -> Void) -> Self {
-        ce.WillResume = handle
+    public func ce_willResume(handle: (animator: UIDynamicAnimator) -> Void) -> Self {
+        ce._willResume = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidPause(handle: (animator: UIDynamicAnimator) -> Void) -> Self {
-        ce.DidPause = handle
+    public func ce_didPause(handle: (animator: UIDynamicAnimator) -> Void) -> Self {
+        ce._didPause = handle
         rebindingDelegate()
         return self
     }
@@ -52,15 +52,15 @@ extension UIDynamicAnimator {
 
 internal class UIDynamicAnimator_Delegate: NSObject, UIDynamicAnimatorDelegate {
     
-    var WillResume: ((UIDynamicAnimator) -> Void)?
-    var DidPause: ((UIDynamicAnimator) -> Void)?
+    var _willResume: ((UIDynamicAnimator) -> Void)?
+    var _didPause: ((UIDynamicAnimator) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "dynamicAnimatorWillResume:" : WillResume,
-            "dynamicAnimatorDidPause:" : DidPause,
+            "dynamicAnimatorWillResume:" : _willResume,
+            "dynamicAnimatorDidPause:" : _didPause,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -71,9 +71,9 @@ internal class UIDynamicAnimator_Delegate: NSObject, UIDynamicAnimatorDelegate {
     
     
     @objc func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
-        WillResume!(animator)
+        _willResume!(animator)
     }
     @objc func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
-        DidPause!(animator)
+        _didPause!(animator)
     }
 }

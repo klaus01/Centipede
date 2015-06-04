@@ -37,38 +37,38 @@ extension UIAlertView {
         return UIAlertView_Delegate()
     }
     
-    public func ce_ClickedButtonAtIndex(handle: (alertView: UIAlertView, buttonIndex: Int) -> Void) -> Self {
-        ce.ClickedButtonAtIndex = handle
+    public func ce_clickedButtonAtIndex(handle: (alertView: UIAlertView, buttonIndex: Int) -> Void) -> Self {
+        ce._clickedButtonAtIndex = handle
         rebindingDelegate()
         return self
     }
-    public func ce_Cancel(handle: (alertView: UIAlertView) -> Void) -> Self {
-        ce.Cancel = handle
+    public func ce_cancel(handle: (alertView: UIAlertView) -> Void) -> Self {
+        ce._cancel = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillPresent(handle: (alertView: UIAlertView) -> Void) -> Self {
-        ce.WillPresent = handle
+    public func ce_willPresent(handle: (alertView: UIAlertView) -> Void) -> Self {
+        ce._willPresent = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidPresent(handle: (alertView: UIAlertView) -> Void) -> Self {
-        ce.DidPresent = handle
+    public func ce_didPresent(handle: (alertView: UIAlertView) -> Void) -> Self {
+        ce._didPresent = handle
         rebindingDelegate()
         return self
     }
-    public func ce_WillDismissWithButtonIndex(handle: (alertView: UIAlertView, buttonIndex: Int) -> Void) -> Self {
-        ce.WillDismissWithButtonIndex = handle
+    public func ce_willDismissWithButtonIndex(handle: (alertView: UIAlertView, buttonIndex: Int) -> Void) -> Self {
+        ce._willDismissWithButtonIndex = handle
         rebindingDelegate()
         return self
     }
-    public func ce_DidDismissWithButtonIndex(handle: (alertView: UIAlertView, buttonIndex: Int) -> Void) -> Self {
-        ce.DidDismissWithButtonIndex = handle
+    public func ce_didDismissWithButtonIndex(handle: (alertView: UIAlertView, buttonIndex: Int) -> Void) -> Self {
+        ce._didDismissWithButtonIndex = handle
         rebindingDelegate()
         return self
     }
-    public func ce_ShouldEnableFirstOtherButton(handle: (alertView: UIAlertView) -> Bool) -> Self {
-        ce.ShouldEnableFirstOtherButton = handle
+    public func ce_shouldEnableFirstOtherButton(handle: (alertView: UIAlertView) -> Bool) -> Self {
+        ce._shouldEnableFirstOtherButton = handle
         rebindingDelegate()
         return self
     }
@@ -77,25 +77,25 @@ extension UIAlertView {
 
 internal class UIAlertView_Delegate: NSObject, UIAlertViewDelegate {
     
-    var ClickedButtonAtIndex: ((UIAlertView, Int) -> Void)?
-    var Cancel: ((UIAlertView) -> Void)?
-    var WillPresent: ((UIAlertView) -> Void)?
-    var DidPresent: ((UIAlertView) -> Void)?
-    var WillDismissWithButtonIndex: ((UIAlertView, Int) -> Void)?
-    var DidDismissWithButtonIndex: ((UIAlertView, Int) -> Void)?
-    var ShouldEnableFirstOtherButton: ((UIAlertView) -> Bool)?
+    var _clickedButtonAtIndex: ((UIAlertView, Int) -> Void)?
+    var _cancel: ((UIAlertView) -> Void)?
+    var _willPresent: ((UIAlertView) -> Void)?
+    var _didPresent: ((UIAlertView) -> Void)?
+    var _willDismissWithButtonIndex: ((UIAlertView, Int) -> Void)?
+    var _didDismissWithButtonIndex: ((UIAlertView, Int) -> Void)?
+    var _shouldEnableFirstOtherButton: ((UIAlertView) -> Bool)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "alertView:clickedButtonAtIndex:" : ClickedButtonAtIndex,
-            "alertViewCancel:" : Cancel,
-            "willPresentAlertView:" : WillPresent,
-            "didPresentAlertView:" : DidPresent,
-            "alertView:willDismissWithButtonIndex:" : WillDismissWithButtonIndex,
-            "alertView:didDismissWithButtonIndex:" : DidDismissWithButtonIndex,
-            "alertViewShouldEnableFirstOtherButton:" : ShouldEnableFirstOtherButton,
+            "alertView:clickedButtonAtIndex:" : _clickedButtonAtIndex,
+            "alertViewCancel:" : _cancel,
+            "willPresentAlertView:" : _willPresent,
+            "didPresentAlertView:" : _didPresent,
+            "alertView:willDismissWithButtonIndex:" : _willDismissWithButtonIndex,
+            "alertView:didDismissWithButtonIndex:" : _didDismissWithButtonIndex,
+            "alertViewShouldEnableFirstOtherButton:" : _shouldEnableFirstOtherButton,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -106,24 +106,24 @@ internal class UIAlertView_Delegate: NSObject, UIAlertViewDelegate {
     
     
     @objc func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        ClickedButtonAtIndex!(alertView, buttonIndex)
+        _clickedButtonAtIndex!(alertView, buttonIndex)
     }
     @objc func alertViewCancel(alertView: UIAlertView) {
-        Cancel!(alertView)
+        _cancel!(alertView)
     }
     @objc func willPresentAlertView(alertView: UIAlertView) {
-        WillPresent!(alertView)
+        _willPresent!(alertView)
     }
     @objc func didPresentAlertView(alertView: UIAlertView) {
-        DidPresent!(alertView)
+        _didPresent!(alertView)
     }
     @objc func alertView(alertView: UIAlertView, willDismissWithButtonIndex buttonIndex: Int) {
-        WillDismissWithButtonIndex!(alertView, buttonIndex)
+        _willDismissWithButtonIndex!(alertView, buttonIndex)
     }
     @objc func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
-        DidDismissWithButtonIndex!(alertView, buttonIndex)
+        _didDismissWithButtonIndex!(alertView, buttonIndex)
     }
     @objc func alertViewShouldEnableFirstOtherButton(alertView: UIAlertView) -> Bool {
-        return ShouldEnableFirstOtherButton!(alertView)
+        return _shouldEnableFirstOtherButton!(alertView)
     }
 }
