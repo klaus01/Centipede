@@ -8,7 +8,7 @@
 
 import UIKit
 
-public typealias CE_UIControlAction = (UIControl, NSSet) -> Void
+public typealias CE_UIControlAction = (control: UIControl, touches: NSSet) -> Void
 
 public extension UIControl {
     
@@ -37,7 +37,7 @@ internal class UIControlProxy : NSObject {
     }
     
     func act(source: UIControl, touches: NSSet) {
-        action(source, touches)
+        action(control: source, touches: touches)
     }
 }
 
