@@ -1,6 +1,7 @@
 # Centipede `第一版还在完善中`
 一个纯Swift实现的库，使用闭包实现UIKit组件的delegate和dataSource方法
-### 为什么
+
+### 解决什么问题
 delegate很好的解决的自定义与耦合问题，但在实现delegate的各个方法时，方法遍布整个ViewController很散。
 并且如果当前ViewController中有多个UITableView或其它实现delegate的组件时，在delegate实现方法中需要判断当前触发的组件是哪个。如：
 ```swift
@@ -8,10 +9,12 @@ delegate很好的解决的自定义与耦合问题，但在实现delegate的各�
     return tableView == leftTableView ? leftDatas.count : rightDatas.count
 }
 ```
-这让代码很难看，不容易维护。
-### 解决代码易读易维护问题
+这让代码很难看、不易读、不易维护。
+
+##### 做到
 - 代码连续。组件的构造、样式设置和各delegate实现方法可写在一个位置。
 - 独立。如有多个UITableView时，tableViewA和tableViewB的delegate方法实现是独立的，互不干扰。
+
 ### 使用
 UIKit Delegate
 ```swift
