@@ -41,6 +41,8 @@
 		24A6BB161B1F545D0005476B /* CE_UIVideoEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BAF61B1F545D0005476B /* CE_UIVideoEditorController.swift */; };
 		24A6BB171B1F545D0005476B /* CE_UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BAF71B1F545D0005476B /* CE_UIViewController.swift */; };
 		24A6BB181B1F545D0005476B /* CE_UIWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BAF81B1F545D0005476B /* CE_UIWebView.swift */; };
+		24B873711B25C9BC00B2B705 /* CE_UIGestureRecognizer_Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B873701B25C9BC00B2B705 /* CE_UIGestureRecognizer_Action.swift */; };
+		24B873731B25D0E000B2B705 /* CE_UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B873721B25D0E000B2B705 /* CE_UIBarButtonItem.swift */; };
 		24E8A74C1B1E056A008D963A /* Centipede.h in Headers */ = {isa = PBXBuildFile; fileRef = 24E8A74B1B1E056A008D963A /* Centipede.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		24E8A7521B1E056A008D963A /* Centipede.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E8A7461B1E056A008D963A /* Centipede.framework */; };
 		24E8A7591B1E056A008D963A /* CentipedeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8A7581B1E056A008D963A /* CentipedeTests.swift */; };
@@ -91,6 +93,8 @@
 		24A6BAF61B1F545D0005476B /* CE_UIVideoEditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIVideoEditorController.swift; sourceTree = "<group>"; };
 		24A6BAF71B1F545D0005476B /* CE_UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIViewController.swift; sourceTree = "<group>"; };
 		24A6BAF81B1F545D0005476B /* CE_UIWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIWebView.swift; sourceTree = "<group>"; };
+		24B873701B25C9BC00B2B705 /* CE_UIGestureRecognizer_Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIGestureRecognizer_Action.swift; sourceTree = "<group>"; };
+		24B873721B25D0E000B2B705 /* CE_UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIBarButtonItem.swift; sourceTree = "<group>"; };
 		24E8A7461B1E056A008D963A /* Centipede.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Centipede.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E8A74A1B1E056A008D963A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E8A74B1B1E056A008D963A /* Centipede.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Centipede.h; sourceTree = "<group>"; };
@@ -122,7 +126,9 @@
 			isa = PBXGroup;
 			children = (
 				247C062B1B208E220079E14C /* CE_NotificationCenter.swift */,
+				24B873721B25D0E000B2B705 /* CE_UIBarButtonItem.swift */,
 				247C062D1B209B940079E14C /* CE_UIControl.swift */,
+				24B873701B25C9BC00B2B705 /* CE_UIGestureRecognizer_Action.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 				24A6BB0B1B1F545D0005476B /* CE_UIScrollView.swift in Sources */,
 				24A6BB0E1B1F545D0005476B /* CE_UISearchDisplayController.swift in Sources */,
 				24A6BAF91B1F545D0005476B /* CE_UIActionSheet.swift in Sources */,
+				24B873731B25D0E000B2B705 /* CE_UIBarButtonItem.swift in Sources */,
 				24A6BB0C1B1F545D0005476B /* CE_UISearchBar.swift in Sources */,
 				24A6BB091B1F545D0005476B /* CE_UIPrinterPickerController.swift in Sources */,
 				24A6BAFE1B1F545D0005476B /* CE_UIDocumentPickerViewController.swift in Sources */,
@@ -343,6 +350,7 @@
 				24A6BB081B1F545D0005476B /* CE_UIPresentationController.swift in Sources */,
 				24A6BAFD1B1F545D0005476B /* CE_UIDocumentMenuViewController.swift in Sources */,
 				24A6BB021B1F545D0005476B /* CE_UINavigationBar.swift in Sources */,
+				24B873711B25C9BC00B2B705 /* CE_UIGestureRecognizer_Action.swift in Sources */,
 				247C062C1B208E220079E14C /* CE_NotificationCenter.swift in Sources */,
 				24A6BB041B1F545D0005476B /* CE_UIPageViewController.swift in Sources */,
 				24A6BB051B1F545D0005476B /* CE_UIPickerView.swift in Sources */,
