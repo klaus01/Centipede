@@ -17,7 +17,7 @@ delegate很好的解决的自定义与耦合问题，但在实现delegate的各�
 
 ### 使用
 - >= iOS 7
-- 所有方法名称以`cd_`开头
+- 所有方法名称以`ce_`开头
 
 ##### UIKit Delegate
 ```swift
