@@ -11,13 +11,14 @@ delegate很好的解决的自定义与耦合问题，但在实现delegate的各�
 ```
 这让代码不易维护和阅读。
 
-希望解决：
+希望：
 - 代码连续。组件的构造、样式设置和各delegate实现方法可写在一个位置。
 - 独立。有多个UITableView时，tableViewA和tableViewB的delegate方法实现是独立的，互不干扰。
 
 ### 使用
 - >= iOS 7
 - 所有方法名称以`ce_`开头
+
 `使用闭包需要注意循环引用问题，Swift使用weak或unowned关键字解决循环引用问题`
 
 ##### UIKit `delegate` and `dataSource` method
