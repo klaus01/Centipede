@@ -1,5 +1,3 @@
 machine:
   environment:
     XCODE_SCHEME: Centipede
-  xcode:
-    version: "6.3.2"
