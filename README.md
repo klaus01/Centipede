@@ -1,4 +1,7 @@
 # Centipede
+
+[![CircleCI](https://img.shields.io/circleci/project/klaus01/Centipede.svg)](https://circleci.com/gh/klaus01/Centipede)
+
 一个纯Swift实现的库，使用闭包实现UIKit组件的delegate和dataSource方法
 
 ### 解决什么问题
