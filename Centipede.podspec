@@ -12,13 +12,14 @@ Pod::Spec.new do |s|
 
   s.license      = { :type => "MIT", :file => "LICENSE" }
 
-  s.authors            = { "klaus01" => "kl0017@163.com" }
+  s.authors            = { "柯磊" => "kl0017@163.com" }
   s.social_media_url   = "http://weibo.com/klaus01"
 
   s.ios.deployment_target = "6.0"
 
   s.source       = { :git => "https://github.com/klaus01/Centipede.git", :tag => s.version }
-  s.source_files = "Centipede/*.swift"
+  s.source_files = "Centipede/*"
   s.requires_arc = true
 
+  s.frameworks   = "UIKit"
 end
