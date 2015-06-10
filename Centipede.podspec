@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Centipede"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "一个纯Swift实现的库，使用闭包实现UIKit组件的delegate和dataSource方法。"
 
   s.description  = <<-DESC
