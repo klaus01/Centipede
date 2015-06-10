@@ -15,10 +15,10 @@ Pod::Spec.new do |s|
   s.authors            = { "柯磊" => "kelei0017@gmail.com" }
   s.social_media_url   = "http://twitter.com/kelei0017"
 
-  s.ios.deployment_target = "7.0"
+  s.ios.deployment_target = "8.0"
 
   s.source       = { :git => "https://github.com/klaus01/Centipede.git", :tag => s.version }
-  s.source_files = "Centipede/*"
+  s.source_files = "Centipede/**/*.swift"
   s.requires_arc = true
 
   s.weak_framework = "UIKit"

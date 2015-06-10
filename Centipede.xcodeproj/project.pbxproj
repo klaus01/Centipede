@@ -30,7 +30,6 @@
 		24A6BB0B1B1F545D0005476B /* CE_UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BAEB1B1F545D0005476B /* CE_UIScrollView.swift */; };
 		24A6BB0C1B1F545D0005476B /* CE_UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BAEC1B1F545D0005476B /* CE_UISearchBar.swift */; };
 		24A6BB0D1B1F545D0005476B /* CE_UISearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BAED1B1F545D0005476B /* CE_UISearchController.swift */; };
-		24A6BB0E1B1F545D0005476B /* CE_UISearchDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BAEE1B1F545D0005476B /* CE_UISearchDisplayController.swift */; };
 		24A6BB0F1B1F545D0005476B /* CE_UISplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BAEF1B1F545D0005476B /* CE_UISplitViewController.swift */; };
 		24A6BB101B1F545D0005476B /* CE_UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BAF01B1F545D0005476B /* CE_UITabBar.swift */; };
 		24A6BB111B1F545D0005476B /* CE_UITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BAF11B1F545D0005476B /* CE_UITabBarController.swift */; };
@@ -82,7 +81,6 @@
 		24A6BAEB1B1F545D0005476B /* CE_UIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIScrollView.swift; sourceTree = "<group>"; };
 		24A6BAEC1B1F545D0005476B /* CE_UISearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchBar.swift; sourceTree = "<group>"; };
 		24A6BAED1B1F545D0005476B /* CE_UISearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchController.swift; sourceTree = "<group>"; };
-		24A6BAEE1B1F545D0005476B /* CE_UISearchDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchDisplayController.swift; sourceTree = "<group>"; };
 		24A6BAEF1B1F545D0005476B /* CE_UISplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISplitViewController.swift; sourceTree = "<group>"; };
 		24A6BAF01B1F545D0005476B /* CE_UITabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITabBar.swift; sourceTree = "<group>"; };
 		24A6BAF11B1F545D0005476B /* CE_UITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITabBarController.swift; sourceTree = "<group>"; };
@@ -211,7 +209,6 @@
 				24A6BAEB1B1F545D0005476B /* CE_UIScrollView.swift */,
 				24A6BAEC1B1F545D0005476B /* CE_UISearchBar.swift */,
 				24A6BAED1B1F545D0005476B /* CE_UISearchController.swift */,
-				24A6BAEE1B1F545D0005476B /* CE_UISearchDisplayController.swift */,
 				24A6BAEF1B1F545D0005476B /* CE_UISplitViewController.swift */,
 				24A6BAF01B1F545D0005476B /* CE_UITabBar.swift */,
 				24A6BAF11B1F545D0005476B /* CE_UITabBarController.swift */,
@@ -335,7 +332,6 @@
 			files = (
 				24A6BB031B1F545D0005476B /* CE_UINavigationController.swift in Sources */,
 				24A6BB0B1B1F545D0005476B /* CE_UIScrollView.swift in Sources */,
-				24A6BB0E1B1F545D0005476B /* CE_UISearchDisplayController.swift in Sources */,
 				24A6BAF91B1F545D0005476B /* CE_UIActionSheet.swift in Sources */,
 				24B873731B25D0E000B2B705 /* CE_UIBarButtonItem.swift in Sources */,
 				24A6BB0C1B1F545D0005476B /* CE_UISearchBar.swift in Sources */,
@@ -428,7 +424,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -470,7 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
