@@ -17,9 +17,10 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = "8.0"
 
-  s.source       = { :git => "https://github.com/klaus01/Centipede.git", :tag => s.version }
-  s.source_files = "Centipede/**/*.swift"
-  s.requires_arc = true
+  s.source        = { :git => "https://github.com/klaus01/Centipede.git", :tag => s.version }
+  s.source_files  = "Centipede/**/*.swift"
+  s.exclude_files = "Centipede/UIKit/CE_UISearchDisplayController.swift"
+  s.requires_arc  = true
 
   s.weak_framework = "UIKit"
 end
