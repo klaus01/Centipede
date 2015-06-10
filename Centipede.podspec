@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Centipede"
-  s.version      = "1.0"
+  s.version      = "1.0.0"
   s.summary      = "一个纯Swift实现的库，使用闭包实现UIKit组件的delegate和dataSource方法。"
 
   s.description  = <<-DESC
@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
 
   s.license      = { :type => "MIT", :file => "LICENSE" }
 
-  s.authors            = { "柯磊" => "kl0017@163.com" }
-  s.social_media_url   = "http://weibo.com/klaus01"
+  s.authors            = { "柯磊" => "kelei0017@gmail.com" }
+  s.social_media_url   = "http://twitter.com/kelei0017"
 
   s.ios.deployment_target = "7.0"
 
@@ -21,5 +21,5 @@ Pod::Spec.new do |s|
   s.source_files = "Centipede/*"
   s.requires_arc = true
 
-  s.frameworks   = "UIKit"
+  s.weak_framework = "UIKit"
 end
