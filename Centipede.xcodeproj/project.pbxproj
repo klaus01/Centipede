@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		242EB8BD1B282525002CF47E /* CE_UISearchDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242EB8BC1B282525002CF47E /* CE_UISearchDisplayController.swift */; };
 		247C062C1B208E220079E14C /* CE_NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247C062B1B208E220079E14C /* CE_NotificationCenter.swift */; };
 		247C062E1B209B940079E14C /* CE_UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247C062D1B209B940079E14C /* CE_UIControl.swift */; };
 		24A6BAF91B1F545D0005476B /* CE_UIActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6BAD91B1F545D0005476B /* CE_UIActionSheet.swift */; };
@@ -43,21 +44,10 @@
 		24B873711B25C9BC00B2B705 /* CE_UIGestureRecognizer_Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B873701B25C9BC00B2B705 /* CE_UIGestureRecognizer_Action.swift */; };
 		24B873731B25D0E000B2B705 /* CE_UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B873721B25D0E000B2B705 /* CE_UIBarButtonItem.swift */; };
 		24E8A74C1B1E056A008D963A /* Centipede.h in Headers */ = {isa = PBXBuildFile; fileRef = 24E8A74B1B1E056A008D963A /* Centipede.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		24E8A7521B1E056A008D963A /* Centipede.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E8A7461B1E056A008D963A /* Centipede.framework */; };
-		24E8A7591B1E056A008D963A /* CentipedeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8A7581B1E056A008D963A /* CentipedeTests.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		24E8A7531B1E056A008D963A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 24E8A73D1B1E056A008D963A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 24E8A7451B1E056A008D963A;
-			remoteInfo = Centipede;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		242EB8BC1B282525002CF47E /* CE_UISearchDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchDisplayController.swift; sourceTree = "<group>"; };
 		247C062B1B208E220079E14C /* CE_NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NotificationCenter.swift; sourceTree = "<group>"; };
 		247C062D1B209B940079E14C /* CE_UIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIControl.swift; sourceTree = "<group>"; };
 		24A6BAD91B1F545D0005476B /* CE_UIActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIActionSheet.swift; sourceTree = "<group>"; };
@@ -96,9 +86,6 @@
 		24E8A7461B1E056A008D963A /* Centipede.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Centipede.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E8A74A1B1E056A008D963A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E8A74B1B1E056A008D963A /* Centipede.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Centipede.h; sourceTree = "<group>"; };
-		24E8A7511B1E056A008D963A /* CentipedeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CentipedeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		24E8A7571B1E056A008D963A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24E8A7581B1E056A008D963A /* CentipedeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentipedeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,14 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		24E8A74E1B1E056A008D963A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				24E8A7521B1E056A008D963A /* Centipede.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				24E8A7481B1E056A008D963A /* Centipede */,
-				24E8A7551B1E056A008D963A /* CentipedeTests */,
 				24E8A7471B1E056A008D963A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -144,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				24E8A7461B1E056A008D963A /* Centipede.framework */,
-				24E8A7511B1E056A008D963A /* CentipedeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,23 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				24E8A74A1B1E056A008D963A /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		24E8A7551B1E056A008D963A /* CentipedeTests */ = {
-			isa = PBXGroup;
-			children = (
-				24E8A7581B1E056A008D963A /* CentipedeTests.swift */,
-				24E8A7561B1E056A008D963A /* Supporting Files */,
-			);
-			path = CentipedeTests;
-			sourceTree = "<group>";
-		};
-		24E8A7561B1E056A008D963A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				24E8A7571B1E056A008D963A /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -209,6 +169,7 @@
 				24A6BAEB1B1F545D0005476B /* CE_UIScrollView.swift */,
 				24A6BAEC1B1F545D0005476B /* CE_UISearchBar.swift */,
 				24A6BAED1B1F545D0005476B /* CE_UISearchController.swift */,
+				242EB8BC1B282525002CF47E /* CE_UISearchDisplayController.swift */,
 				24A6BAEF1B1F545D0005476B /* CE_UISplitViewController.swift */,
 				24A6BAF01B1F545D0005476B /* CE_UITabBar.swift */,
 				24A6BAF11B1F545D0005476B /* CE_UITabBarController.swift */,
@@ -255,24 +216,6 @@
 			productReference = 24E8A7461B1E056A008D963A /* Centipede.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		24E8A7501B1E056A008D963A /* CentipedeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 24E8A75F1B1E056A008D963A /* Build configuration list for PBXNativeTarget "CentipedeTests" */;
-			buildPhases = (
-				24E8A74D1B1E056A008D963A /* Sources */,
-				24E8A74E1B1E056A008D963A /* Frameworks */,
-				24E8A74F1B1E056A008D963A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				24E8A7541B1E056A008D963A /* PBXTargetDependency */,
-			);
-			name = CentipedeTests;
-			productName = CentipedeTests;
-			productReference = 24E8A7511B1E056A008D963A /* CentipedeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -283,9 +226,6 @@
 				ORGANIZATIONNAME = kelei;
 				TargetAttributes = {
 					24E8A7451B1E056A008D963A = {
-						CreatedOnToolsVersion = 6.3.2;
-					};
-					24E8A7501B1E056A008D963A = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
 				};
@@ -303,20 +243,12 @@
 			projectRoot = "";
 			targets = (
 				24E8A7451B1E056A008D963A /* Centipede */,
-				24E8A7501B1E056A008D963A /* CentipedeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		24E8A7441B1E056A008D963A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		24E8A74F1B1E056A008D963A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -340,6 +272,7 @@
 				247C062E1B209B940079E14C /* CE_UIControl.swift in Sources */,
 				24A6BB141B1F545D0005476B /* CE_UITextView.swift in Sources */,
 				24A6BB151B1F545D0005476B /* CE_UIToolbar.swift in Sources */,
+				242EB8BD1B282525002CF47E /* CE_UISearchDisplayController.swift in Sources */,
 				24A6BB0A1B1F545D0005476B /* CE_UIPrintInteractionController.swift in Sources */,
 				24A6BB0D1B1F545D0005476B /* CE_UISearchController.swift in Sources */,
 				24A6BB181B1F545D0005476B /* CE_UIWebView.swift in Sources */,
@@ -368,23 +301,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		24E8A74D1B1E056A008D963A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				24E8A7591B1E056A008D963A /* CentipedeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		24E8A7541B1E056A008D963A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 24E8A7451B1E056A008D963A /* Centipede */;
-			targetProxy = 24E8A7531B1E056A008D963A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		24E8A75A1B1E056A008D963A /* Debug */ = {
@@ -424,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -466,7 +383,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -509,36 +426,6 @@
 			};
 			name = Release;
 		};
-		24E8A7601B1E056A008D963A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CentipedeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		24E8A7611B1E056A008D963A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CentipedeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -556,15 +443,6 @@
 			buildConfigurations = (
 				24E8A75D1B1E056A008D963A /* Debug */,
 				24E8A75E1B1E056A008D963A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		24E8A75F1B1E056A008D963A /* Build configuration list for PBXNativeTarget "CentipedeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				24E8A7601B1E056A008D963A /* Debug */,
-				24E8A7611B1E056A008D963A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

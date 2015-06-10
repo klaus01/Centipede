@@ -1,10 +1,5 @@
 # Centipede
 
-[![CircleCI](https://img.shields.io/circleci/project/klaus01/Centipede.svg)](https://circleci.com/gh/klaus01/Centipede)
-![CocoaPods Version](https://img.shields.io/cocoapods/v/Centipede.svg?style=flat)
-![License](https://img.shields.io/cocoapods/l/Centipede.svg?style=flat)
-![Platform](https://img.shields.io/cocoapods/p/Centipede.svg?style=flat)
-
 一个纯Swift实现的库，使用闭包实现UIKit组件的delegate和dataSource方法
 
 ### 解决什么问题
@@ -25,6 +20,9 @@ delegate很好的解决的自定义与耦合问题，但在实现delegate的各�
 - 独立。有多个UITableView时，tableViewA和tableViewB的delegate方法实现是独立的，互不干扰。
 
 ### 使用
+
+将`Centipede`目录复制到您的工程中及可。
+
 - \>= iOS 7
 - 所有方法名称以`ce_`开头
 
@@ -99,9 +97,18 @@ textField.ce_addControlEvents(UIControlEvents.EditingChanged | UIControlEvents.E
 }
 ```
 
- - UIControl
- - UIBarButtonItem
- - UIGestureRecognizer
+- UIControl
+	- UIButton
+	- UIDatePicker
+	- UIPageControl
+	- UIRefreshControl
+	- UISegmentedControl
+	- UISlider
+	- UIStepper
+	- UISwitch
+	- UITextField
+- UIBarButtonItem
+- UIGestureRecognizer
 
 ##### Notification center add observer
 

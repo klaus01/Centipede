@@ -6,7 +6,9 @@
 //  Copyright (c) 2015年 kelei. All rights reserved.
 //
 
-extension NSObject {
+import Foundation
+
+public extension NSObject {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSObject_Delegate? {
