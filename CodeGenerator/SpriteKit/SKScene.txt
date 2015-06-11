@@ -1,0 +1,8 @@
+SKScene: NSObject, SKSceneDelegate
+
+    optional func update(currentTime: NSTimeInterval, forScene scene: SKScene)
+    optional func didEvaluateActionsForScene(scene: SKScene)
+    optional func didSimulatePhysicsForScene(scene: SKScene)
+    
+    optional func didApplyConstraintsForScene(scene: SKScene)
+    optional func didFinishUpdateForScene(scene: SKScene)

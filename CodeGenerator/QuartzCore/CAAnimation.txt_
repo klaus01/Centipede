@@ -1,0 +1,12 @@
+CAAnimation: NSObject
+
+    /* Called when the animation begins its active duration. */
+    
+    func animationDidStart(anim: CAAnimation!)
+    
+    /* Called when the animation either completes its active duration or
+     * is removed from the object it is attached to (i.e. the layer). 'flag'
+     * is true if the animation reached the end of its active duration
+     * without being removed. */
+    
+    func animationDidStop(anim: CAAnimation!, finished flag: Bool)

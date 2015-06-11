@@ -1,0 +1,20 @@
+AVAudioRecorder: NSObject, AVAudioRecorderDelegate
+
+    /* audioRecorderDidFinishRecording:successfully: is called when a recording has been finished or stopped. This method is NOT called if the recorder is stopped due to an interruption. */
+    optional func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool)
+    
+    /* if an error occurs while encoding it will be reported to the delegate. */
+    optional func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder!, error: NSError!)
+    
+    /* AVAudioRecorder INTERRUPTION NOTIFICATIONS ARE DEPRECATED - Use AVAudioSession instead. */
+    
+    /* audioRecorderBeginInterruption: is called when the audio session has been interrupted while the recorder was recording. The recorded file will be closed. */
+    @availability(iOS, introduced=2.2, deprecated=8.0)
+    optional func audioRecorderBeginInterruption(recorder: AVAudioRecorder!)
+    
+    /* audioRecorderEndInterruption:withOptions: is called when the audio session interruption has ended and this recorder had been interrupted while recording. */
+    /* Currently the only flag is AVAudioSessionInterruptionFlags_ShouldResume. */
+    @availability(iOS, introduced=6.0, deprecated=8.0)
+    optional func audioRecorderEndInterruption(recorder: AVAudioRecorder!, withOptions flags: Int)
+    
+    

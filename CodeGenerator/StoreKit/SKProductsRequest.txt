@@ -1,0 +1,5 @@
+SKProductsRequest: SKRequest, SKProductsRequestDelegate
+
+    // Sent immediately before -requestDidFinish:
+    @availability(iOS, introduced=3.0)
+    func productsRequest(request: SKProductsRequest!, didReceiveResponse response: SKProductsResponse!)

@@ -1,0 +1,277 @@
+HMHome : NSObject, HMHomeDelegate
+
+    /*!
+     * @brief Informs the delegate of a change in the name of a home.
+     *
+     * @param home Sender of this message.
+     */
+    optional func homeDidUpdateName(home: HMHome)
+    
+    /*!
+     * @brief Informs the delegate of addition of an accessory to the home.
+     *
+     * @param home Sender of the message.
+     *
+     * @param accessory Accessory that was added to the home.
+     */
+    optional func home(home: HMHome, didAddAccessory accessory: HMAccessory!)
+    
+    /*!
+     * @brief Informs the delegate of removal of an accessory from the home.
+     *
+     * @param home Sender of the message.
+     *
+     * @param accessory Accessory that was removed from the home.
+     */
+    optional func home(home: HMHome, didRemoveAccessory accessory: HMAccessory!)
+    
+    /*!
+     * @brief Informs the delegate that a user was added to the home.
+     *
+     * @param home Sender of this message.
+     *
+     * @param user User who       was granted access to the home.
+     */
+    optional func home(home: HMHome, didAddUser user: HMUser!)
+    
+    /*!
+     * @brief Informs the delegate that a user was removed from the home.
+     *
+     * @param home Sender of this message.
+     *
+     * @param user User whose access was revoked from the home.
+     */
+    optional func home(home: HMHome, didRemoveUser user: HMUser!)
+    
+    /*!
+     * @brief Informs the delegate when a new room is assigned to an an accessory
+     *
+     * @param home Sender of the message.
+     *
+     * @param room New room for the accessory.
+     *
+     * @param accessory Accessory that was assigned a new room.
+     */
+    optional func home(home: HMHome, didUpdateRoom room: HMRoom!, forAccessory accessory: HMAccessory!)
+    
+    /*!
+     * @brief Informs the delegate of addition of a room to the home.
+     *
+     * @param home Sender of the message.
+     *
+     * @param room Room that was added to the home.
+     */
+    optional func home(home: HMHome, didAddRoom room: HMRoom!)
+    
+    /*!
+     * @brief Informs the delegate of removal of a room from the home.
+     *
+     * @param home Sender of the message.
+     *
+     * @param room Room that was removed from the home.
+     */
+    optional func home(home: HMHome, didRemoveRoom room: HMRoom!)
+    
+    /*!
+     * @brief Informs the delegate that the name of a room was modified
+     *
+     * @param home Sender of this message.
+     *
+     * @param room Room that was modified.
+     */
+    optional func home(home: HMHome, didUpdateNameForRoom room: HMRoom!)
+    
+    /*!
+     * @brief Informs the delegate of addition of a zone to the home.
+     *
+     * @param home Sender of the message.
+     *
+     * @param zone Zone that was added to the home.
+     */
+    optional func home(home: HMHome, didAddZone zone: HMZone!)
+    
+    /*!
+     * @brief Informs the delegate of removal of a zone from the home.
+     *
+     * @param home Sender of the message.
+     *
+     * @param zone Zone that was removed from the home.
+     */
+    optional func home(home: HMHome, didRemoveZone zone: HMZone!)
+    
+    /*!
+     * @brief Informs the delegate that the name of a zone was modified.
+     *
+     * @param home Sender of this message.
+     *
+     * @param zone Zone that was modified.
+     */
+    optional func home(home: HMHome, didUpdateNameForZone zone: HMZone!)
+    
+    /*!
+     * @brief Informs the delegate that the room was added to a zone.
+     *
+     * @param home Sender of this message.
+     *
+     * @param room Room that was added to the zone.
+     *
+     * @param zone Zone that was modified.
+     */
+    optional func home(home: HMHome, didAddRoom room: HMRoom!, toZone zone: HMZone!)
+    
+    /*!
+     * @brief Informs the delegate that the room was removed from a zone.
+     *
+     * @param home Sender of this message.
+     *
+     * @param room Room that was removed from the zone.
+     *
+     * @param zone Zone that was modified.
+     */
+    optional func home(home: HMHome, didRemoveRoom room: HMRoom!, fromZone zone: HMZone!)
+    
+    /*!
+     * @brief Informs the delegate that a service group was added to the home.
+     *
+     * @param home Sender of the message.
+     *
+     * @param group Service group that was added to the home.
+     */
+    optional func home(home: HMHome, didAddServiceGroup group: HMServiceGroup!)
+    
+    /*!
+     * @brief Informs the delegate that a service group was removed from the home.
+     *
+     * @param home Sender of the message.
+     *
+     * @param group Service group that was removed from the home.
+     */
+    optional func home(home: HMHome, didRemoveServiceGroup group: HMServiceGroup!)
+    
+    /*!
+     * @brief Informs the delegate that the name of a service group was modified.
+     *
+     * @param home Sender of this message.
+     *
+     * @param group The service group that was modfied.
+     */
+    optional func home(home: HMHome, didUpdateNameForServiceGroup group: HMServiceGroup!)
+    
+    /*!
+     * @brief Informs the delegate that a service was added to a service group.
+     *
+     * @param home Sender of this message.
+     *
+     * @param service Service that was added to the service group.
+     *
+     * @param group Service group that was modified.
+     */
+    optional func home(home: HMHome, didAddService service: HMService!, toServiceGroup group: HMServiceGroup!)
+    
+    /*!
+     * @brief Informs the delegate that a service was removed from a service group.
+     *
+     * @param home Sender of this message.
+     *
+     * @param service Service that was removed from the service group.
+     *
+     * @param group Service group that was modified.
+     */
+    optional func home(home: HMHome, didRemoveService service: HMService!, fromServiceGroup group: HMServiceGroup!)
+    
+    /*!
+     * @brief Informs the delegate that an action set was added to the home.
+     *
+     * @param home Sender of this message.
+     *
+     * @param actionSet Action set that was added to the home.
+     */
+    optional func home(home: HMHome, didAddActionSet actionSet: HMActionSet!)
+    
+    /*!
+     * @brief Informs the delegate that an action set was removed from the home.
+     *
+     * @param home Sender of this message.
+     *
+     * @param actionSet Action set that was removed from the home.
+     */
+    optional func home(home: HMHome, didRemoveActionSet actionSet: HMActionSet!)
+    
+    /*!
+     * @brief Informs the delegate that the name of an action set was modified.
+     *
+     * @param home Sender of this message.
+     *
+     * @param actionSet Action set that was modified.
+     */
+    optional func home(home: HMHome, didUpdateNameForActionSet actionSet: HMActionSet!)
+    
+    /*!
+     * @brief Informs the delegate that the actions of an action set was modified.
+     * This indicates that an action was added/removed or modified (value replaced)
+     *
+     * @param home Sender of this message.
+     *
+     * @param actionSet Action set that was modified.
+     */
+    optional func home(home: HMHome, didUpdateActionsForActionSet actionSet: HMActionSet!)
+    
+    /*!
+     * @brief Informs the delegate of the addition of a trigger to the home.
+     *
+     * @param home Sender of the message.
+     *
+     * @param trigger Trigger that was added to the home.
+     */
+    optional func home(home: HMHome, didAddTrigger trigger: HMTrigger!)
+    
+    /*!
+     * @brief Informs the delegate of removal of a trigger from the home.
+     *
+     * @param home Sender of the message.
+     *
+     * @param trigger Trigger that was removed from the home.
+     */
+    optional func home(home: HMHome, didRemoveTrigger trigger: HMTrigger!)
+    
+    /*!
+     * @brief Informs the delegate that the name of the trigger was modified.
+     *
+     * @param home Sender of this message.
+     *
+     * @param trigger Trigger that was modified.
+     */
+    optional func home(home: HMHome, didUpdateNameForTrigger trigger: HMTrigger!)
+    
+    /*!
+     * @brief Informs the delegate whenever a trigger is updated. For example, this method may be
+     *        invoked when a trigger is activated, when a trigger fires, or when the action sets 
+     *        associated with a trigger are modified.
+     *
+     * @param home Sender of this message.
+     *
+     * @param trigger The trigger that was updated.
+     */
+    optional func home(home: HMHome, didUpdateTrigger trigger: HMTrigger!)
+    
+    /*!
+     * @brief Informs the delegate that an accessory has been unblocked
+     *
+     * @param home Sender of this message.
+     *
+     * @param accessory Accessory that was unblocked
+     */
+    optional func home(home: HMHome, didUnblockAccessory accessory: HMAccessory!)
+    
+    
+    /*!
+     * @brief Informs the delegate that a configured accessory encountered an error. The 
+     *        delegate should check the blocked state of the accessory
+     *
+     * @param home Sender of this message.
+     *
+     * @param error Error encountered by accessory.
+     *
+     * @param accessory Accessory that encountered the error
+     */
+    optional func home(home: HMHome, didEncounterError error: NSError!, forAccessory accessory: HMAccessory!)

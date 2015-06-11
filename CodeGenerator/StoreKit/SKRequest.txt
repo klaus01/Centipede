@@ -1,0 +1,6 @@
+SKRequest: NSObject, SKRequestDelegate
+
+    @availability(iOS, introduced=3.0)
+    optional func requestDidFinish(request: SKRequest!)
+    @availability(iOS, introduced=3.0)
+    optional func request(request: SKRequest!, didFailWithError error: NSError!)

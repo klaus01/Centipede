@@ -1,0 +1,13 @@
+GLKViewController : UIViewController, GLKViewControllerDelegate
+
+    /*
+     Required method for implementing GLKViewControllerDelegate. This update method variant should be used
+     when not subclassing GLKViewController. This method will not be called if the GLKViewController object
+     has been subclassed and implements -(void)update.
+     */
+    func glkViewControllerUpdate(controller: GLKViewController!)
+    
+    /*
+     Delegate method that gets called when the pause state changes. 
+     */
+    optional func glkViewController(controller: GLKViewController!, willPause pause: Bool)

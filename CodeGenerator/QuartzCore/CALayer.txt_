@@ -1,0 +1,26 @@
+CALayer: NSObject
+
+    /* If defined, called by the default implementation of the -display
+     * method, in which case it should implement the entire display
+     * process (typically by setting the `contents' property). */
+    
+    func displayLayer(layer: CALayer!)
+    
+    /* If defined, called by the default implementation of -drawInContext: */
+    
+    func drawLayer(layer: CALayer!, inContext ctx: CGContext!)
+    
+    /* Called by the default -layoutSublayers implementation before the layout
+     * manager is checked. Note that if the delegate method is invoked, the
+     * layout manager will be ignored. */
+    
+    func layoutSublayersOfLayer(layer: CALayer!)
+    
+    /* If defined, called by the default implementation of the
+     * -actionForKey: method. Should return an object implementating the
+     * CAAction protocol. May return 'nil' if the delegate doesn't specify
+     * a behavior for the current event. Returning the null object (i.e.
+     * '[NSNull null]') explicitly forces no further search. (I.e. the
+     * +defaultActionForKey: method will not be called.) */
+    
+    func actionForLayer(layer: CALayer!, forKey event: String!) -> CAAction!

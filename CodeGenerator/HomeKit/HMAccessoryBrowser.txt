@@ -1,0 +1,20 @@
+HMAccessoryBrowser : NSObject, HMAccessoryBrowserDelegate
+
+    /*!
+     * @brief Informs the delegate about new accessories discovered in the home.
+     *
+     * @param browser Sender of the message.
+     *
+     * @param accessory New accessory that was discovered.
+     */
+    optional func accessoryBrowser(browser: HMAccessoryBrowser, didFindNewAccessory accessory: HMAccessory!)
+    
+    /*!
+     * @brief Informs the delegate about new accessories removed from the home.
+     *
+     * @param browser Sender of the message.
+     *
+     * @param accessory Accessory that was previously discovered but are no longer reachable.
+     * 	            This method is also invoked when an accessory is added to a home.
+     */
+    optional func accessoryBrowser(browser: HMAccessoryBrowser, didRemoveNewAccessory accessory: HMAccessory!)

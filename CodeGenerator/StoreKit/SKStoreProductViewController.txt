@@ -1,0 +1,5 @@
+SKStoreProductViewController: UIViewController, SKStoreProductViewControllerDelegate
+
+    // Sent if the user requests that the page be dismissed
+    @availability(iOS, introduced=6.0)
+    optional func productViewControllerDidFinish(viewController: SKStoreProductViewController!)

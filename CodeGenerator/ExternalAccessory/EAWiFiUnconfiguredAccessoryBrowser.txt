@@ -1,0 +1,52 @@
+EAWiFiUnconfiguredAccessoryBrowser: NSObject, EAWiFiUnconfiguredAccessoryBrowserDelegate
+
+    /*!
+     *  @method accessoryBrowser:didUpdateState:
+     *
+     *  @discussion Invoked whenever the EAWiFiUnconfiguredAccessoryBrowser's state has changed.
+     *
+     *  @param browser The EAWiFiUnconfiguredAccessoryBrowser instance generating the event.
+     *  @param state   The current state of the EAWiFiUnconfiguredAccessoryBrowser.
+     *
+     */
+    @availability(iOS, introduced=8.0)
+    func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser!, didUpdateState state: EAWiFiUnconfiguredAccessoryBrowserState)
+    
+    /*!
+     *  @method accessoryBrowser:didFindUnconfiguredAccessories:
+     *
+     *  @discussion Invoked whenever the EAWiFiUnconfiguredAccessoryBrowser has found new unconfigured accessories that match
+     *              the filter predicate defined when starting the search.
+     *
+     *  @param browser     The EAWiFiUnconfiguredAccessoryBrowser instance generating the event.
+     *  @param accessories The set of EAWiFiUnconfiguredAccessory objects that have been found since the last update.
+     *
+     */
+    @availability(iOS, introduced=8.0)
+    func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser!, didFindUnconfiguredAccessories accessories: Set<NSObject>!)
+    
+    /*!
+     *  @method accessoryBrowser:didRemoveUnconfiguredAccessories:
+     *
+     *  @discussion Invoked whenever the EAWiFiUnconfiguredAccessoryBrowser has removed unconfigured accessories from the scan results
+     *              that match the filter predicate defined when starting the search.
+     *
+     *  @param browser     The EAWiFiUnconfiguredAccessoryBrowser instance generating the event.
+     *  @param accessories The set of EAWiFiUnconfiguredAccessory objects that have been removed from the scan results since the last update.
+     *
+     */
+    @availability(iOS, introduced=8.0)
+    func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser!, didRemoveUnconfiguredAccessories accessories: Set<NSObject>!)
+    
+    /*!
+     *  @method accessoryBrowser:didFinishConfiguringAccessory:withError:
+     *
+     *  @discussion Invoked whenever the EAWiFiUnconfiguredAccessoryBrowser has completed configuring the selected EAWiFiUnconfiguredAccessory.
+     *
+     *  @param browser   The EAWiFiUnconfiguredAccessoryBrowser instance generating the event.
+     *  @param accessory The EAWiFiUnconfiguredAccessory whose configuration process has completed.
+     *  @param status    The status of the configuration process that has completed.
+     *
+     */
+    @availability(iOS, introduced=8.0)
+    func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser!, didFinishConfiguringAccessory accessory: EAWiFiUnconfiguredAccessory!, withStatus status: EAWiFiUnconfiguredAccessoryConfigurationStatus)

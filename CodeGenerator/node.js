@@ -32,7 +32,7 @@
 
 
         // 解析类定义
-        var re = /^ *(UI(\w+)): (\w+)(?:, \w+)+/;
+        var re = /^ *([A-Z]{2}(\w+)) *: *(\w+)(?:, \w+)*/;
         var result = re.exec(sourceText);
         if (result == null) {
             console.error("缺少类定义信息");
@@ -157,7 +157,7 @@
         return returnType ? returnType : "Void";
     }
 
-    function getConvertContent(sourceObj) {
+    function getConvertContent(frameworkName, sourceObj) {
         // 扩展缩写名
         var EXT_NAME_ACRONYM = "ce";
         var CLASS_DELEGATE_NAME = sourceObj.className + "_Delegate"
@@ -204,7 +204,7 @@
 //  Copyright (c) " + (new Date()).getFullYear() + "年 kelei. All rights reserved.\n\
 //\n\
 \n\
-import UIKit\n\
+import " + frameworkName + "\n\
 \n\
 public extension " + sourceObj.className + " {\n\
     \n\
@@ -218,7 +218,7 @@ public extension " + sourceObj.className + " {\n\
         if let obj = _delegate {\n\
             return obj\n\
         }\n\
-        if let obj = self." + sourceObj.delegateAttributeNames[0] + " {\n\
+        if let obj: AnyObject = self." + sourceObj.delegateAttributeNames[0] + " {\n\
             if obj is " + CLASS_DELEGATE_NAME + " {\n\
                 return obj as! " + CLASS_DELEGATE_NAME + "\n\
             }\n\
@@ -318,7 +318,7 @@ public extension " + sourceObj.className + " {\n\
         };
         //      最终实现的协议对象
         resultContent += "\n\
-internal class " + CLASS_DELEGATE_NAME + ": " + sourceObj.superClass + (sourceObj.superClass === "NSObject" ? "" : "_Delegate") + ", " + protocolStr + " {\n\
+internal class " + CLASS_DELEGATE_NAME + ": " + sourceObj.superClass + (sourceObj.superClass === "NSObject" ? "" : "_Delegate") + (protocolStr.length > 0 ? ", " + protocolStr : "")+ " {\n\
     \n" + classVarStr + "\n\
     \n\
     override func respondsToSelector(aSelector: Selector) -> Bool {\n\
@@ -336,30 +336,31 @@ var fs = require('fs');
 var path = require('path');
 
 // 取得path目录下所有文件列表（包含子目录）
-function walk(path){
+function walk(aPath){
     var ret = [];
 
-    function headle(path) {
-        var dirList = fs.readdirSync(path);
+    function headle(aPath) {
+        var dirList = fs.readdirSync(aPath);
 
         dirList.forEach(function(item){
-            if(fs.statSync(path + '/' + item).isFile()){
-                ret.push(path + '/' + item);
+            if(fs.statSync(aPath + '/' + item).isFile()){
+                ret.push(aPath + '/' + item);
             }
         });
 
         dirList.forEach(function(item){
-            if(fs.statSync(path + '/' + item).isDirectory()){
-                headle(path + '/' + item);
+            if(fs.statSync(aPath + '/' + item).isDirectory()){
+                headle(aPath + '/' + item);
             }
         });
 
     }
-    headle(path);
+    headle(aPath);
 
     return ret;
 }
 
+var currentDirLevel = __dirname.split(path.sep).length;
 var files = walk(__dirname);
 // 生成文件
 files.forEach(function(item){
@@ -370,8 +371,9 @@ files.forEach(function(item){
                 console.error(err); 
             } else{ 
                 var sourceObj = getSourceObj(data);
-                if (sourceObj) {
-                    var resultContent = getConvertContent(sourceObj);
+                if (sourceObj != null) {
+                    var frameworkName = item.split(path.sep)[currentDirLevel];
+                    var resultContent = getConvertContent(frameworkName, sourceObj);
 
                     var dirnames = item.split(path.sep);
                     var filename = path.basename(dirnames.pop(), '.txt');
@@ -382,15 +384,13 @@ files.forEach(function(item){
                     var targetPath = dirnames.join(path.sep);
                     var targetFile = 'CE_' + filename + '.swift';
 
-                    fs.exists(targetPath, function (exists) {
-                        if (!exists) {
-                            fs.mkdirSync(targetPath);
-                        }
-                        var target = path.join(targetPath, targetFile);
-                        console.log(target); 
-                        fs.writeFile(target, resultContent, {encoding: 'utf8'}, function(err) {
-                            if (err) throw err;
-                        });
+                    if (!fs.existsSync(targetPath)) {
+                        fs.mkdirSync(targetPath);
+                    }
+                    var target = path.join(targetPath, targetFile);
+                    console.log(target); 
+                    fs.writeFile(target, resultContent, {encoding: 'utf8'}, function(err) {
+                        if (err) throw err;
                     });
                 }
             } 

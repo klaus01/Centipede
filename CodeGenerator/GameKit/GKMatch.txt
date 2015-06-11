@@ -1,0 +1,23 @@
+GKMatch : NSObject, GKMatchDelegate
+
+    // The match received data sent from the player.
+    @availability(iOS, introduced=8.0)
+    optional func match(match: GKMatch!, didReceiveData data: NSData!, fromRemotePlayer player: GKPlayer!)
+    @availability(iOS, introduced=4.1, deprecated=8.0, message="use match:didReceiveData:fromRemotePlayer:")
+    optional func match(match: GKMatch!, didReceiveData data: NSData!, fromPlayer playerID: String!)
+    
+    // The player state changed (eg. connected or disconnected)
+    @availability(iOS, introduced=4.1)
+    optional func match(match: GKMatch!, player: GKPlayer!, didChangeConnectionState state: GKPlayerConnectionState)
+    @availability(iOS, introduced=4.1, deprecated=8.0, message="use match:player:didChangeConnectionState:")
+    optional func match(match: GKMatch!, player playerID: String!, didChangeState state: GKPlayerConnectionState)
+    
+    // The match was unable to be established with any players due to an error.
+    @availability(iOS, introduced=4.1)
+    optional func match(match: GKMatch!, didFailWithError error: NSError!)
+    
+    // This method is called when the match is interrupted; if it returns YES, a new invite will be sent to attempt reconnection. This is supported only for 1v1 games
+    @availability(iOS, introduced=8.0)
+    optional func match(match: GKMatch!, shouldReinviteDisconnectedPlayer player: GKPlayer!) -> Bool
+    @availability(iOS, introduced=5.0, deprecated=8.0, message="use shouldReinviteDisconnectedPlayer:")
+    optional func match(match: GKMatch!, shouldReinvitePlayer playerID: String!) -> Bool
