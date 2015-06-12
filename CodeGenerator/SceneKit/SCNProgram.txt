@@ -1,0 +1,10 @@
+SCNProgram : NSObject, SCNProgramDelegate
+
+    /*!
+     @method handleError
+     @abstract Invoked on the delegate whenever a compilation error occurs.
+     @discussion Error domain is SCNErrorDomain.
+     @param program The program that generated a compilation error.
+     @param error The compilation error.
+     */
+    optional func program(program: SCNProgram, handleError error: NSError)

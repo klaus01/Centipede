@@ -2,7 +2,7 @@
 //  CE_GKMatch.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/11.
+//  Created by kelei on 2015/6/12.
 //  Copyright (c) 2015年 kelei. All rights reserved.
 //
 
@@ -20,7 +20,7 @@ public extension GKMatch {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is GKMatch_Delegate {
                 return obj as! GKMatch_Delegate
             }

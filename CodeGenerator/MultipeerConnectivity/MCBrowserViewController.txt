@@ -1,0 +1,10 @@
+MCBrowserViewController : UIViewController, MCBrowserViewControllerDelegate
+
+    // Notifies the delegate, when the user taps the done button
+    func browserViewControllerDidFinish(browserViewController: MCBrowserViewController!)
+    
+    // Notifies delegate that the user taps the cancel button.
+    func browserViewControllerWasCancelled(browserViewController: MCBrowserViewController!)
+    
+    // Notifies delegate that a peer was found; discoveryInfo can be used to determine whether the peer should be presented to the user, and the delegate should return a YES if the peer should be presented; this method is optional, if not implemented every nearby peer will be presented to the user.
+    optional func browserViewController(browserViewController: MCBrowserViewController!, shouldPresentNearbyPeer peerID: MCPeerID!, withDiscoveryInfo info: [NSObject : AnyObject]!) -> Bool

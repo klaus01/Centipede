@@ -1,0 +1,7 @@
+MCAdvertiserAssistant : NSObject, MCAdvertiserAssistantDelegate
+
+    // An invitation will be presented to the user
+    optional func advertiserAssistantWillPresentInvitation(advertiserAssistant: MCAdvertiserAssistant!)
+    
+    // An invitation was dismissed from screen
+    optional func advertiserAssistantDidDismissInvitation(advertiserAssistant: MCAdvertiserAssistant!)

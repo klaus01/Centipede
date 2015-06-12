@@ -1,0 +1,40 @@
+PKPaymentAuthorizationViewController : UIViewController, PKPaymentAuthorizationViewControllerDelegate
+
+    // Sent to the delegate after the user has acted on the payment request.  The application
+    // should inspect the payment to determine whether the payment request was authorized.
+    //
+    // If the application requested a shipping address then the full addresses is now part of the payment.
+    //
+    // The delegate must call completion with an appropriate authorization status, as may be determined
+    // by submitting the payment credential to a processing gateway for payment authorization.
+    func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController!, didAuthorizePayment payment: PKPayment!, completion: ((PKPaymentAuthorizationStatus) -> Void)!)
+    
+    // Sent to the delegate when payment authorization is finished.  This may occur when
+    // the user cancels the request, or after the PKPaymentAuthorizationStatus parameter of the
+    // paymentAuthorizationViewController:didAuthorizePayment:completion: has been shown to the user.
+    //
+    // The delegate is responsible for dismissing the view controller in this method.
+    func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController!)
+    
+    // Sent to the delegate before the payment is authorized, but after the user has authenticated using
+    // passcode or Touch ID. Optional.
+    @availability(iOS, introduced=8.3)
+    optional func paymentAuthorizationViewControllerWillAuthorizePayment(controller: PKPaymentAuthorizationViewController!)
+    
+    // Sent when the user has selected a new shipping method.  The delegate should determine
+    // shipping costs based on the shipping method and either the shipping address supplied in the original
+    // PKPaymentRequest or the address fragment provided by the last call to paymentAuthorizationViewController:
+    // didSelectShippingAddress:completion:.
+    //
+    // The delegate must invoke the completion block with an updated array of PKPaymentSummaryItem objects.
+    //
+    // The delegate will receive no further callbacks except paymentAuthorizationViewControllerDidFinish:
+    // until it has invoked the completion block.
+    optional func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController!, didSelectShippingMethod shippingMethod: PKShippingMethod!, completion: ((PKPaymentAuthorizationStatus, [AnyObject]!) -> Void)!)
+    
+    // Sent when the user has selected a new shipping address.  The delegate should inspect the
+    // address and must invoke the completion block with an updated array of PKPaymentSummaryItem objects.
+    //
+    // The delegate will receive no further callbacks except paymentAuthorizationViewControllerDidFinish:
+    // until it has invoked the completion block.
+    optional func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController!, didSelectShippingAddress address: ABRecord!, completion: ((PKPaymentAuthorizationStatus, [AnyObject]!, [AnyObject]!) -> Void)!)

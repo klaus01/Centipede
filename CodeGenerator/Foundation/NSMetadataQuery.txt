@@ -1,0 +1,4 @@
+NSMetadataQuery : NSObject, NSMetadataQueryDelegate
+
+    optional func metadataQuery(query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> AnyObject
+    optional func metadataQuery(query: NSMetadataQuery, replacementValueForAttribute attrName: String, value attrValue: AnyObject) -> AnyObject

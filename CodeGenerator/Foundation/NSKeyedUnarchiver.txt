@@ -1,0 +1,30 @@
+NSKeyedUnarchiver : NSObject, NSKeyedUnarchiverDelegate
+
+    // error handling
+    optional func unarchiver(unarchiver: NSKeyedUnarchiver, cannotDecodeObjectOfClassName name: String, originalClasses classNames: [AnyObject]) -> AnyClass
+    // Informs the delegate that the named class is not available during decoding.
+    // The delegate may, for example, load some code to introduce the class to the
+    // runtime and return it, or substitute a different class object.  If the
+    // delegate returns nil, unarchiving aborts with an exception.  The first class
+    // name string in the array is the class of the encoded object, the second is
+    // the immediate superclass, and so on.
+    
+    // substitution
+    optional func unarchiver(unarchiver: NSKeyedUnarchiver, didDecodeObject object: AnyObject?) -> AnyObject?
+    // Informs the delegate that the object has been decoded.  The delegate
+    // either returns this object or can return a different object to replace
+    // the decoded one.  The object may be nil.  If the delegate returns nil,
+    // the decoded value will be unchanged (that is, the original object will be
+    // decoded). The delegate may use this to keep track of the decoded objects.
+    
+    // notification
+    optional func unarchiver(unarchiver: NSKeyedUnarchiver, willReplaceObject object: AnyObject, withObject newObject: AnyObject)
+    // Informs the delegate that the newObject is being substituted for the
+    // object. This is also called when the delegate itself is doing/has done
+    // the substitution. The delegate may use this method if it is keeping track
+    // of the encoded or decoded objects.
+    
+    optional func unarchiverWillFinish(unarchiver: NSKeyedUnarchiver)
+    // Notifies the delegate that decoding is about to finish.
+    
+    optional func unarchiverDidFinish(unarchiver: NSKeyedUnarchiver)

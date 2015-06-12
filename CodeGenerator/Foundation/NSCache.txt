@@ -1,0 +1,3 @@
+NSCache : NSObject, NSCacheDelegate
+
+    optional func cache(cache: NSCache, willEvictObject obj: AnyObject)

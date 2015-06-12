@@ -1,0 +1,11 @@
+MCNearbyServiceBrowser : NSObject, MCNearbyServiceBrowserDelegate
+
+
+    // Found a nearby advertising peer
+    func browser(browser: MCNearbyServiceBrowser!, foundPeer peerID: MCPeerID!, withDiscoveryInfo info: [NSObject : AnyObject]!)
+    
+    // A nearby peer has stopped advertising
+    func browser(browser: MCNearbyServiceBrowser!, lostPeer peerID: MCPeerID!)
+    
+    // Browsing did not start due to an error
+    optional func browser(browser: MCNearbyServiceBrowser!, didNotStartBrowsingForPeers error: NSError!)

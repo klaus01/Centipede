@@ -7,134 +7,180 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		247C062C1B208E220079E14C /* CE_NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247C062B1B208E220079E14C /* CE_NotificationCenter.swift */; };
-		247C062E1B209B940079E14C /* CE_UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247C062D1B209B940079E14C /* CE_UIControl.swift */; };
-		248D8BCB1B29D53F00882E44 /* CE_AVAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B7B1B29D53F00882E44 /* CE_AVAudioPlayer.swift */; };
-		248D8BCC1B29D53F00882E44 /* CE_AVAudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B7C1B29D53F00882E44 /* CE_AVAudioRecorder.swift */; };
-		248D8BD01B29D53F00882E44 /* CE_AVSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B801B29D53F00882E44 /* CE_AVSpeechSynthesizer.swift */; };
-		248D8BD11B29D53F00882E44 /* CE_CBCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B821B29D53F00882E44 /* CE_CBCentralManager.swift */; };
-		248D8BD21B29D53F00882E44 /* CE_CBPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B831B29D53F00882E44 /* CE_CBPeripheral.swift */; };
-		248D8BD31B29D53F00882E44 /* CE_CBPeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B841B29D53F00882E44 /* CE_CBPeripheralManager.swift */; };
-		248D8BD51B29D53F00882E44 /* CE_CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B871B29D53F00882E44 /* CE_CLLocationManager.swift */; };
-		248D8BD61B29D53F00882E44 /* CE_EKCalendarChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B891B29D53F00882E44 /* CE_EKCalendarChooser.swift */; };
-		248D8BD71B29D53F00882E44 /* CE_EKEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B8A1B29D53F00882E44 /* CE_EKEventViewController.swift */; };
-		248D8BD81B29D53F00882E44 /* CE_EAAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B8C1B29D53F00882E44 /* CE_EAAccessory.swift */; };
-		248D8BD91B29D53F00882E44 /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B8D1B29D53F00882E44 /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift */; };
-		248D8BDA1B29D53F00882E44 /* CE_GKMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B8F1B29D53F00882E44 /* CE_GKMatch.swift */; };
-		248D8BDB1B29D53F00882E44 /* CE_GLKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B911B29D53F00882E44 /* CE_GLKView.swift */; };
-		248D8BDC1B29D53F00882E44 /* CE_GLKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B921B29D53F00882E44 /* CE_GLKViewController.swift */; };
-		248D8BDD1B29D53F00882E44 /* CE_HMAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B941B29D53F00882E44 /* CE_HMAccessory.swift */; };
-		248D8BDE1B29D53F00882E44 /* CE_HMAccessoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B951B29D53F00882E44 /* CE_HMAccessoryBrowser.swift */; };
-		248D8BDF1B29D53F00882E44 /* CE_HMHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B961B29D53F00882E44 /* CE_HMHome.swift */; };
-		248D8BE01B29D53F00882E44 /* CE_HMHomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B971B29D53F00882E44 /* CE_HMHomeManager.swift */; };
-		248D8BE11B29D53F00882E44 /* CE_ADBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B991B29D53F00882E44 /* CE_ADBannerView.swift */; };
-		248D8BE21B29D53F00882E44 /* CE_ADInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8B9A1B29D53F00882E44 /* CE_ADInterstitialAd.swift */; };
-		248D8BE71B29D53F00882E44 /* CE_CAAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BA11B29D53F00882E44 /* CE_CAAnimation.swift */; };
-		248D8BE81B29D53F00882E44 /* CE_CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BA21B29D53F00882E44 /* CE_CALayer.swift */; };
-		248D8BE91B29D53F00882E44 /* CE_SKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BA41B29D53F00882E44 /* CE_SKScene.swift */; };
-		248D8BEA1B29D53F00882E44 /* CE_SKProductsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BA61B29D53F00882E44 /* CE_SKProductsRequest.swift */; };
-		248D8BEB1B29D53F00882E44 /* CE_SKRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BA71B29D53F00882E44 /* CE_SKRequest.swift */; };
-		248D8BEC1B29D53F00882E44 /* CE_SKStoreProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BA81B29D53F00882E44 /* CE_SKStoreProductViewController.swift */; };
-		248D8BED1B29D53F00882E44 /* CE_UIActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BAA1B29D53F00882E44 /* CE_UIActionSheet.swift */; };
-		248D8BEE1B29D53F00882E44 /* CE_UIAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BAB1B29D53F00882E44 /* CE_UIAlertView.swift */; };
-		248D8BEF1B29D53F00882E44 /* CE_UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BAC1B29D53F00882E44 /* CE_UICollectionView.swift */; };
-		248D8BF01B29D53F00882E44 /* CE_UIDocumentInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BAD1B29D53F00882E44 /* CE_UIDocumentInteractionController.swift */; };
-		248D8BF11B29D53F00882E44 /* CE_UIDocumentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BAE1B29D53F00882E44 /* CE_UIDocumentMenuViewController.swift */; };
-		248D8BF21B29D53F00882E44 /* CE_UIDocumentPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BAF1B29D53F00882E44 /* CE_UIDocumentPickerViewController.swift */; };
-		248D8BF31B29D53F00882E44 /* CE_UIDynamicAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BB01B29D53F00882E44 /* CE_UIDynamicAnimator.swift */; };
-		248D8BF41B29D53F00882E44 /* CE_UIGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BB11B29D53F00882E44 /* CE_UIGestureRecognizer.swift */; };
-		248D8BF51B29D53F00882E44 /* CE_UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BB21B29D53F00882E44 /* CE_UIImagePickerController.swift */; };
-		248D8BF61B29D53F00882E44 /* CE_UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BB31B29D53F00882E44 /* CE_UINavigationBar.swift */; };
-		248D8BF71B29D53F00882E44 /* CE_UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BB41B29D53F00882E44 /* CE_UINavigationController.swift */; };
-		248D8BF81B29D53F00882E44 /* CE_UIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BB51B29D53F00882E44 /* CE_UIPageViewController.swift */; };
-		248D8BF91B29D53F00882E44 /* CE_UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BB61B29D53F00882E44 /* CE_UIPickerView.swift */; };
-		248D8BFA1B29D53F00882E44 /* CE_UIPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BB71B29D53F00882E44 /* CE_UIPopoverController.swift */; };
-		248D8BFB1B29D53F00882E44 /* CE_UIPopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BB81B29D53F00882E44 /* CE_UIPopoverPresentationController.swift */; };
-		248D8BFC1B29D53F00882E44 /* CE_UIPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BB91B29D53F00882E44 /* CE_UIPresentationController.swift */; };
-		248D8BFD1B29D53F00882E44 /* CE_UIPrinterPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BBA1B29D53F00882E44 /* CE_UIPrinterPickerController.swift */; };
-		248D8BFE1B29D53F00882E44 /* CE_UIPrintInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BBB1B29D53F00882E44 /* CE_UIPrintInteractionController.swift */; };
-		248D8BFF1B29D53F00882E44 /* CE_UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BBC1B29D53F00882E44 /* CE_UIScrollView.swift */; };
-		248D8C001B29D53F00882E44 /* CE_UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BBD1B29D53F00882E44 /* CE_UISearchBar.swift */; };
-		248D8C011B29D53F00882E44 /* CE_UISearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BBE1B29D53F00882E44 /* CE_UISearchController.swift */; };
-		248D8C021B29D53F00882E44 /* CE_UISearchDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BBF1B29D53F00882E44 /* CE_UISearchDisplayController.swift */; };
-		248D8C031B29D53F00882E44 /* CE_UISplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BC01B29D53F00882E44 /* CE_UISplitViewController.swift */; };
-		248D8C041B29D53F00882E44 /* CE_UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BC11B29D53F00882E44 /* CE_UITabBar.swift */; };
-		248D8C051B29D53F00882E44 /* CE_UITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BC21B29D53F00882E44 /* CE_UITabBarController.swift */; };
-		248D8C061B29D53F00882E44 /* CE_UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BC31B29D53F00882E44 /* CE_UITableView.swift */; };
-		248D8C071B29D53F00882E44 /* CE_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BC41B29D53F00882E44 /* CE_UITextField.swift */; };
-		248D8C081B29D53F00882E44 /* CE_UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BC51B29D53F00882E44 /* CE_UITextView.swift */; };
-		248D8C091B29D53F00882E44 /* CE_UIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BC61B29D53F00882E44 /* CE_UIToolbar.swift */; };
-		248D8C0A1B29D53F00882E44 /* CE_UIVideoEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BC71B29D53F00882E44 /* CE_UIVideoEditorController.swift */; };
-		248D8C0B1B29D53F00882E44 /* CE_UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BC81B29D53F00882E44 /* CE_UIViewController.swift */; };
-		248D8C0C1B29D53F00882E44 /* CE_UIWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D8BC91B29D53F00882E44 /* CE_UIWebView.swift */; };
-		24B873711B25C9BC00B2B705 /* CE_UIGestureRecognizer_Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B873701B25C9BC00B2B705 /* CE_UIGestureRecognizer_Action.swift */; };
-		24B873731B25D0E000B2B705 /* CE_UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B873721B25D0E000B2B705 /* CE_UIBarButtonItem.swift */; };
+		240B748C1B2B14500067475E /* CE_NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B742C1B2B14500067475E /* CE_NotificationCenter.swift */; };
+		240B748D1B2B14500067475E /* CE_UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B742D1B2B14500067475E /* CE_UIBarButtonItem.swift */; };
+		240B748E1B2B14500067475E /* CE_UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B742E1B2B14500067475E /* CE_UIControl.swift */; };
+		240B748F1B2B14500067475E /* CE_UIGestureRecognizer_Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B742F1B2B14500067475E /* CE_UIGestureRecognizer_Action.swift */; };
+		240B749C1B2B14500067475E /* CE_UIActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74441B2B14500067475E /* CE_UIActionSheet.swift */; };
+		240B749D1B2B14500067475E /* CE_UIAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74451B2B14500067475E /* CE_UIAlertView.swift */; };
+		240B749E1B2B14500067475E /* CE_UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74461B2B14500067475E /* CE_UICollectionView.swift */; };
+		240B749F1B2B14500067475E /* CE_UIDocumentInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74471B2B14500067475E /* CE_UIDocumentInteractionController.swift */; };
+		240B74A01B2B14500067475E /* CE_UIDocumentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74481B2B14500067475E /* CE_UIDocumentMenuViewController.swift */; };
+		240B74A11B2B14500067475E /* CE_UIDocumentPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74491B2B14500067475E /* CE_UIDocumentPickerViewController.swift */; };
+		240B74A21B2B14500067475E /* CE_UIDynamicAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B744A1B2B14500067475E /* CE_UIDynamicAnimator.swift */; };
+		240B74A31B2B14500067475E /* CE_UIGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B744B1B2B14500067475E /* CE_UIGestureRecognizer.swift */; };
+		240B74A41B2B14500067475E /* CE_UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B744C1B2B14500067475E /* CE_UIImagePickerController.swift */; };
+		240B74A51B2B14500067475E /* CE_UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B744D1B2B14500067475E /* CE_UINavigationBar.swift */; };
+		240B74A61B2B14500067475E /* CE_UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B744E1B2B14500067475E /* CE_UINavigationController.swift */; };
+		240B74A71B2B14500067475E /* CE_UIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B744F1B2B14500067475E /* CE_UIPageViewController.swift */; };
+		240B74A81B2B14500067475E /* CE_UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74501B2B14500067475E /* CE_UIPickerView.swift */; };
+		240B74A91B2B14500067475E /* CE_UIPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74511B2B14500067475E /* CE_UIPopoverController.swift */; };
+		240B74AA1B2B14500067475E /* CE_UIPopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74521B2B14500067475E /* CE_UIPopoverPresentationController.swift */; };
+		240B74AB1B2B14500067475E /* CE_UIPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74531B2B14500067475E /* CE_UIPresentationController.swift */; };
+		240B74AC1B2B14500067475E /* CE_UIPrinterPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74541B2B14500067475E /* CE_UIPrinterPickerController.swift */; };
+		240B74AD1B2B14500067475E /* CE_UIPrintInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74551B2B14500067475E /* CE_UIPrintInteractionController.swift */; };
+		240B74AE1B2B14500067475E /* CE_UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74561B2B14500067475E /* CE_UIScrollView.swift */; };
+		240B74AF1B2B14500067475E /* CE_UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74571B2B14500067475E /* CE_UISearchBar.swift */; };
+		240B74B01B2B14500067475E /* CE_UISearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74581B2B14500067475E /* CE_UISearchController.swift */; };
+		240B74B11B2B14500067475E /* CE_UISearchDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74591B2B14500067475E /* CE_UISearchDisplayController.swift */; };
+		240B74B21B2B14500067475E /* CE_UISplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B745A1B2B14500067475E /* CE_UISplitViewController.swift */; };
+		240B74B31B2B14500067475E /* CE_UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B745B1B2B14500067475E /* CE_UITabBar.swift */; };
+		240B74B41B2B14500067475E /* CE_UITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B745C1B2B14500067475E /* CE_UITabBarController.swift */; };
+		240B74B51B2B14500067475E /* CE_UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B745D1B2B14500067475E /* CE_UITableView.swift */; };
+		240B74B61B2B14500067475E /* CE_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B745E1B2B14500067475E /* CE_UITextField.swift */; };
+		240B74B71B2B14500067475E /* CE_UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B745F1B2B14500067475E /* CE_UITextView.swift */; };
+		240B74B81B2B14500067475E /* CE_UIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74601B2B14500067475E /* CE_UIToolbar.swift */; };
+		240B74B91B2B14500067475E /* CE_UIVideoEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74611B2B14500067475E /* CE_UIVideoEditorController.swift */; };
+		240B74BA1B2B14500067475E /* CE_UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74621B2B14500067475E /* CE_UIViewController.swift */; };
+		240B74BB1B2B14500067475E /* CE_UIWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74631B2B14500067475E /* CE_UIWebView.swift */; };
+		240B75801B2B22140067475E /* CE_AVAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B753B1B2B22130067475E /* CE_AVAudioPlayer.swift */; };
+		240B75811B2B22140067475E /* CE_AVAudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B753C1B2B22130067475E /* CE_AVAudioRecorder.swift */; };
+		240B75821B2B22140067475E /* CE_AVSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B753D1B2B22130067475E /* CE_AVSpeechSynthesizer.swift */; };
+		240B75831B2B22140067475E /* CE_CBCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B753F1B2B22130067475E /* CE_CBCentralManager.swift */; };
+		240B75841B2B22140067475E /* CE_CBPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75401B2B22130067475E /* CE_CBPeripheral.swift */; };
+		240B75851B2B22140067475E /* CE_CBPeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75411B2B22130067475E /* CE_CBPeripheralManager.swift */; };
+		240B75861B2B22140067475E /* CE_NSFetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75431B2B22130067475E /* CE_NSFetchedResultsController.swift */; };
+		240B75871B2B22140067475E /* CE_CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75451B2B22130067475E /* CE_CLLocationManager.swift */; };
+		240B75881B2B22140067475E /* CE_EKCalendarChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75471B2B22130067475E /* CE_EKCalendarChooser.swift */; };
+		240B75891B2B22140067475E /* CE_EKEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75481B2B22130067475E /* CE_EKEventViewController.swift */; };
+		240B758A1B2B22140067475E /* CE_EAAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B754A1B2B22130067475E /* CE_EAAccessory.swift */; };
+		240B758B1B2B22140067475E /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B754B1B2B22130067475E /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift */; };
+		240B758C1B2B22140067475E /* CE_NSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B754D1B2B22130067475E /* CE_NSCache.swift */; };
+		240B758D1B2B22140067475E /* CE_NSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B754E1B2B22130067475E /* CE_NSFileManager.swift */; };
+		240B758E1B2B22140067475E /* CE_NSKeyedArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B754F1B2B22130067475E /* CE_NSKeyedArchiver.swift */; };
+		240B758F1B2B22140067475E /* CE_NSKeyedUnarchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75501B2B22130067475E /* CE_NSKeyedUnarchiver.swift */; };
+		240B75901B2B22140067475E /* CE_NSMetadataQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75511B2B22130067475E /* CE_NSMetadataQuery.swift */; };
+		240B75911B2B22140067475E /* CE_NSNetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75521B2B22130067475E /* CE_NSNetService.swift */; };
+		240B75921B2B22140067475E /* CE_NSNetServiceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75531B2B22130067475E /* CE_NSNetServiceBrowser.swift */; };
+		240B75931B2B22140067475E /* CE_NSStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75541B2B22130067475E /* CE_NSStream.swift */; };
+		240B75941B2B22140067475E /* CE_NSUserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75551B2B22130067475E /* CE_NSUserActivity.swift */; };
+		240B75951B2B22140067475E /* CE_NSXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75561B2B22130067475E /* CE_NSXMLParser.swift */; };
+		240B75961B2B22140067475E /* CE_GKMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75581B2B22140067475E /* CE_GKMatch.swift */; };
+		240B75971B2B22140067475E /* CE_GLKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B755A1B2B22140067475E /* CE_GLKView.swift */; };
+		240B75981B2B22140067475E /* CE_GLKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B755B1B2B22140067475E /* CE_GLKViewController.swift */; };
+		240B75991B2B22140067475E /* CE_HMAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B755D1B2B22140067475E /* CE_HMAccessory.swift */; };
+		240B759A1B2B22140067475E /* CE_HMAccessoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B755E1B2B22140067475E /* CE_HMAccessoryBrowser.swift */; };
+		240B759B1B2B22140067475E /* CE_HMHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B755F1B2B22140067475E /* CE_HMHome.swift */; };
+		240B759C1B2B22140067475E /* CE_HMHomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75601B2B22140067475E /* CE_HMHomeManager.swift */; };
+		240B759D1B2B22140067475E /* CE_ADBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75621B2B22140067475E /* CE_ADBannerView.swift */; };
+		240B759E1B2B22140067475E /* CE_ADInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75631B2B22140067475E /* CE_ADInterstitialAd.swift */; };
+		240B759F1B2B22140067475E /* CE_MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75651B2B22140067475E /* CE_MKMapView.swift */; };
+		240B75A01B2B22140067475E /* CE_MPMediaPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75671B2B22140067475E /* CE_MPMediaPickerController.swift */; };
+		240B75A11B2B22140067475E /* CE_MPPlayableContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75681B2B22140067475E /* CE_MPPlayableContentManager.swift */; };
+		240B75A21B2B22140067475E /* CE_MCAdvertiserAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B756A1B2B22140067475E /* CE_MCAdvertiserAssistant.swift */; };
+		240B75A31B2B22140067475E /* CE_MCBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B756B1B2B22140067475E /* CE_MCBrowserViewController.swift */; };
+		240B75A41B2B22140067475E /* CE_MCNearbyServiceAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B756C1B2B22140067475E /* CE_MCNearbyServiceAdvertiser.swift */; };
+		240B75A51B2B22140067475E /* CE_MCNearbyServiceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B756D1B2B22140067475E /* CE_MCNearbyServiceBrowser.swift */; };
+		240B75A61B2B22140067475E /* CE_MCSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B756E1B2B22140067475E /* CE_MCSession.swift */; };
+		240B75A71B2B22140067475E /* CE_PKAddPassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75701B2B22140067475E /* CE_PKAddPassesViewController.swift */; };
+		240B75A81B2B22140067475E /* CE_PKPaymentAuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75711B2B22140067475E /* CE_PKPaymentAuthorizationViewController.swift */; };
+		240B75A91B2B22140067475E /* CE_PKPushRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75731B2B22140067475E /* CE_PKPushRegistry.swift */; };
+		240B75AA1B2B22140067475E /* CE_QLPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75751B2B22140067475E /* CE_QLPreviewController.swift */; };
+		240B75AB1B2B22140067475E /* CE_SCNProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75771B2B22140067475E /* CE_SCNProgram.swift */; };
+		240B75AD1B2B22140067475E /* CE_SKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B757A1B2B22140067475E /* CE_SKScene.swift */; };
+		240B75AE1B2B22140067475E /* CE_SKProductsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B757C1B2B22140067475E /* CE_SKProductsRequest.swift */; };
+		240B75AF1B2B22140067475E /* CE_SKRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B757D1B2B22140067475E /* CE_SKRequest.swift */; };
+		240B75B01B2B22140067475E /* CE_SKStoreProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B757E1B2B22140067475E /* CE_SKStoreProductViewController.swift */; };
+		240B75B21B2B23090067475E /* CE_NSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75B11B2B23090067475E /* CE_NSURLSession.swift */; };
 		24E8A74C1B1E056A008D963A /* Centipede.h in Headers */ = {isa = PBXBuildFile; fileRef = 24E8A74B1B1E056A008D963A /* Centipede.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		247C062B1B208E220079E14C /* CE_NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NotificationCenter.swift; sourceTree = "<group>"; };
-		247C062D1B209B940079E14C /* CE_UIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIControl.swift; sourceTree = "<group>"; };
-		248D8B7B1B29D53F00882E44 /* CE_AVAudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_AVAudioPlayer.swift; sourceTree = "<group>"; };
-		248D8B7C1B29D53F00882E44 /* CE_AVAudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_AVAudioRecorder.swift; sourceTree = "<group>"; };
-		248D8B801B29D53F00882E44 /* CE_AVSpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_AVSpeechSynthesizer.swift; sourceTree = "<group>"; };
-		248D8B821B29D53F00882E44 /* CE_CBCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CBCentralManager.swift; sourceTree = "<group>"; };
-		248D8B831B29D53F00882E44 /* CE_CBPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CBPeripheral.swift; sourceTree = "<group>"; };
-		248D8B841B29D53F00882E44 /* CE_CBPeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CBPeripheralManager.swift; sourceTree = "<group>"; };
-		248D8B871B29D53F00882E44 /* CE_CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CLLocationManager.swift; sourceTree = "<group>"; };
-		248D8B891B29D53F00882E44 /* CE_EKCalendarChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EKCalendarChooser.swift; sourceTree = "<group>"; };
-		248D8B8A1B29D53F00882E44 /* CE_EKEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EKEventViewController.swift; sourceTree = "<group>"; };
-		248D8B8C1B29D53F00882E44 /* CE_EAAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EAAccessory.swift; sourceTree = "<group>"; };
-		248D8B8D1B29D53F00882E44 /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EAWiFiUnconfiguredAccessoryBrowser.swift; sourceTree = "<group>"; };
-		248D8B8F1B29D53F00882E44 /* CE_GKMatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_GKMatch.swift; sourceTree = "<group>"; };
-		248D8B911B29D53F00882E44 /* CE_GLKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_GLKView.swift; sourceTree = "<group>"; };
-		248D8B921B29D53F00882E44 /* CE_GLKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_GLKViewController.swift; sourceTree = "<group>"; };
-		248D8B941B29D53F00882E44 /* CE_HMAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_HMAccessory.swift; sourceTree = "<group>"; };
-		248D8B951B29D53F00882E44 /* CE_HMAccessoryBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_HMAccessoryBrowser.swift; sourceTree = "<group>"; };
-		248D8B961B29D53F00882E44 /* CE_HMHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_HMHome.swift; sourceTree = "<group>"; };
-		248D8B971B29D53F00882E44 /* CE_HMHomeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_HMHomeManager.swift; sourceTree = "<group>"; };
-		248D8B991B29D53F00882E44 /* CE_ADBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_ADBannerView.swift; sourceTree = "<group>"; };
-		248D8B9A1B29D53F00882E44 /* CE_ADInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_ADInterstitialAd.swift; sourceTree = "<group>"; };
-		248D8BA11B29D53F00882E44 /* CE_CAAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CAAnimation.swift; sourceTree = "<group>"; };
-		248D8BA21B29D53F00882E44 /* CE_CALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CALayer.swift; sourceTree = "<group>"; };
-		248D8BA41B29D53F00882E44 /* CE_SKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SKScene.swift; sourceTree = "<group>"; };
-		248D8BA61B29D53F00882E44 /* CE_SKProductsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SKProductsRequest.swift; sourceTree = "<group>"; };
-		248D8BA71B29D53F00882E44 /* CE_SKRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SKRequest.swift; sourceTree = "<group>"; };
-		248D8BA81B29D53F00882E44 /* CE_SKStoreProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SKStoreProductViewController.swift; sourceTree = "<group>"; };
-		248D8BAA1B29D53F00882E44 /* CE_UIActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIActionSheet.swift; sourceTree = "<group>"; };
-		248D8BAB1B29D53F00882E44 /* CE_UIAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIAlertView.swift; sourceTree = "<group>"; };
-		248D8BAC1B29D53F00882E44 /* CE_UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UICollectionView.swift; sourceTree = "<group>"; };
-		248D8BAD1B29D53F00882E44 /* CE_UIDocumentInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIDocumentInteractionController.swift; sourceTree = "<group>"; };
-		248D8BAE1B29D53F00882E44 /* CE_UIDocumentMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIDocumentMenuViewController.swift; sourceTree = "<group>"; };
-		248D8BAF1B29D53F00882E44 /* CE_UIDocumentPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIDocumentPickerViewController.swift; sourceTree = "<group>"; };
-		248D8BB01B29D53F00882E44 /* CE_UIDynamicAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIDynamicAnimator.swift; sourceTree = "<group>"; };
-		248D8BB11B29D53F00882E44 /* CE_UIGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIGestureRecognizer.swift; sourceTree = "<group>"; };
-		248D8BB21B29D53F00882E44 /* CE_UIImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIImagePickerController.swift; sourceTree = "<group>"; };
-		248D8BB31B29D53F00882E44 /* CE_UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UINavigationBar.swift; sourceTree = "<group>"; };
-		248D8BB41B29D53F00882E44 /* CE_UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UINavigationController.swift; sourceTree = "<group>"; };
-		248D8BB51B29D53F00882E44 /* CE_UIPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPageViewController.swift; sourceTree = "<group>"; };
-		248D8BB61B29D53F00882E44 /* CE_UIPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPickerView.swift; sourceTree = "<group>"; };
-		248D8BB71B29D53F00882E44 /* CE_UIPopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPopoverController.swift; sourceTree = "<group>"; };
-		248D8BB81B29D53F00882E44 /* CE_UIPopoverPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPopoverPresentationController.swift; sourceTree = "<group>"; };
-		248D8BB91B29D53F00882E44 /* CE_UIPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPresentationController.swift; sourceTree = "<group>"; };
-		248D8BBA1B29D53F00882E44 /* CE_UIPrinterPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPrinterPickerController.swift; sourceTree = "<group>"; };
-		248D8BBB1B29D53F00882E44 /* CE_UIPrintInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPrintInteractionController.swift; sourceTree = "<group>"; };
-		248D8BBC1B29D53F00882E44 /* CE_UIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIScrollView.swift; sourceTree = "<group>"; };
-		248D8BBD1B29D53F00882E44 /* CE_UISearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchBar.swift; sourceTree = "<group>"; };
-		248D8BBE1B29D53F00882E44 /* CE_UISearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchController.swift; sourceTree = "<group>"; };
-		248D8BBF1B29D53F00882E44 /* CE_UISearchDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchDisplayController.swift; sourceTree = "<group>"; };
-		248D8BC01B29D53F00882E44 /* CE_UISplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISplitViewController.swift; sourceTree = "<group>"; };
-		248D8BC11B29D53F00882E44 /* CE_UITabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITabBar.swift; sourceTree = "<group>"; };
-		248D8BC21B29D53F00882E44 /* CE_UITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITabBarController.swift; sourceTree = "<group>"; };
-		248D8BC31B29D53F00882E44 /* CE_UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITableView.swift; sourceTree = "<group>"; };
-		248D8BC41B29D53F00882E44 /* CE_UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITextField.swift; sourceTree = "<group>"; };
-		248D8BC51B29D53F00882E44 /* CE_UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITextView.swift; sourceTree = "<group>"; };
-		248D8BC61B29D53F00882E44 /* CE_UIToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIToolbar.swift; sourceTree = "<group>"; };
-		248D8BC71B29D53F00882E44 /* CE_UIVideoEditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIVideoEditorController.swift; sourceTree = "<group>"; };
-		248D8BC81B29D53F00882E44 /* CE_UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIViewController.swift; sourceTree = "<group>"; };
-		248D8BC91B29D53F00882E44 /* CE_UIWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIWebView.swift; sourceTree = "<group>"; };
-		24B873701B25C9BC00B2B705 /* CE_UIGestureRecognizer_Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIGestureRecognizer_Action.swift; sourceTree = "<group>"; };
-		24B873721B25D0E000B2B705 /* CE_UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIBarButtonItem.swift; sourceTree = "<group>"; };
+		240B742C1B2B14500067475E /* CE_NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NotificationCenter.swift; sourceTree = "<group>"; };
+		240B742D1B2B14500067475E /* CE_UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIBarButtonItem.swift; sourceTree = "<group>"; };
+		240B742E1B2B14500067475E /* CE_UIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIControl.swift; sourceTree = "<group>"; };
+		240B742F1B2B14500067475E /* CE_UIGestureRecognizer_Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIGestureRecognizer_Action.swift; sourceTree = "<group>"; };
+		240B74441B2B14500067475E /* CE_UIActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIActionSheet.swift; sourceTree = "<group>"; };
+		240B74451B2B14500067475E /* CE_UIAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIAlertView.swift; sourceTree = "<group>"; };
+		240B74461B2B14500067475E /* CE_UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UICollectionView.swift; sourceTree = "<group>"; };
+		240B74471B2B14500067475E /* CE_UIDocumentInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIDocumentInteractionController.swift; sourceTree = "<group>"; };
+		240B74481B2B14500067475E /* CE_UIDocumentMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIDocumentMenuViewController.swift; sourceTree = "<group>"; };
+		240B74491B2B14500067475E /* CE_UIDocumentPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIDocumentPickerViewController.swift; sourceTree = "<group>"; };
+		240B744A1B2B14500067475E /* CE_UIDynamicAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIDynamicAnimator.swift; sourceTree = "<group>"; };
+		240B744B1B2B14500067475E /* CE_UIGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIGestureRecognizer.swift; sourceTree = "<group>"; };
+		240B744C1B2B14500067475E /* CE_UIImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIImagePickerController.swift; sourceTree = "<group>"; };
+		240B744D1B2B14500067475E /* CE_UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UINavigationBar.swift; sourceTree = "<group>"; };
+		240B744E1B2B14500067475E /* CE_UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UINavigationController.swift; sourceTree = "<group>"; };
+		240B744F1B2B14500067475E /* CE_UIPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPageViewController.swift; sourceTree = "<group>"; };
+		240B74501B2B14500067475E /* CE_UIPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPickerView.swift; sourceTree = "<group>"; };
+		240B74511B2B14500067475E /* CE_UIPopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPopoverController.swift; sourceTree = "<group>"; };
+		240B74521B2B14500067475E /* CE_UIPopoverPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPopoverPresentationController.swift; sourceTree = "<group>"; };
+		240B74531B2B14500067475E /* CE_UIPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPresentationController.swift; sourceTree = "<group>"; };
+		240B74541B2B14500067475E /* CE_UIPrinterPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPrinterPickerController.swift; sourceTree = "<group>"; };
+		240B74551B2B14500067475E /* CE_UIPrintInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPrintInteractionController.swift; sourceTree = "<group>"; };
+		240B74561B2B14500067475E /* CE_UIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIScrollView.swift; sourceTree = "<group>"; };
+		240B74571B2B14500067475E /* CE_UISearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchBar.swift; sourceTree = "<group>"; };
+		240B74581B2B14500067475E /* CE_UISearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchController.swift; sourceTree = "<group>"; };
+		240B74591B2B14500067475E /* CE_UISearchDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchDisplayController.swift; sourceTree = "<group>"; };
+		240B745A1B2B14500067475E /* CE_UISplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISplitViewController.swift; sourceTree = "<group>"; };
+		240B745B1B2B14500067475E /* CE_UITabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITabBar.swift; sourceTree = "<group>"; };
+		240B745C1B2B14500067475E /* CE_UITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITabBarController.swift; sourceTree = "<group>"; };
+		240B745D1B2B14500067475E /* CE_UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITableView.swift; sourceTree = "<group>"; };
+		240B745E1B2B14500067475E /* CE_UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITextField.swift; sourceTree = "<group>"; };
+		240B745F1B2B14500067475E /* CE_UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITextView.swift; sourceTree = "<group>"; };
+		240B74601B2B14500067475E /* CE_UIToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIToolbar.swift; sourceTree = "<group>"; };
+		240B74611B2B14500067475E /* CE_UIVideoEditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIVideoEditorController.swift; sourceTree = "<group>"; };
+		240B74621B2B14500067475E /* CE_UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIViewController.swift; sourceTree = "<group>"; };
+		240B74631B2B14500067475E /* CE_UIWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIWebView.swift; sourceTree = "<group>"; };
+		240B753B1B2B22130067475E /* CE_AVAudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_AVAudioPlayer.swift; sourceTree = "<group>"; };
+		240B753C1B2B22130067475E /* CE_AVAudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_AVAudioRecorder.swift; sourceTree = "<group>"; };
+		240B753D1B2B22130067475E /* CE_AVSpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_AVSpeechSynthesizer.swift; sourceTree = "<group>"; };
+		240B753F1B2B22130067475E /* CE_CBCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CBCentralManager.swift; sourceTree = "<group>"; };
+		240B75401B2B22130067475E /* CE_CBPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CBPeripheral.swift; sourceTree = "<group>"; };
+		240B75411B2B22130067475E /* CE_CBPeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CBPeripheralManager.swift; sourceTree = "<group>"; };
+		240B75431B2B22130067475E /* CE_NSFetchedResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSFetchedResultsController.swift; sourceTree = "<group>"; };
+		240B75451B2B22130067475E /* CE_CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CLLocationManager.swift; sourceTree = "<group>"; };
+		240B75471B2B22130067475E /* CE_EKCalendarChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EKCalendarChooser.swift; sourceTree = "<group>"; };
+		240B75481B2B22130067475E /* CE_EKEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EKEventViewController.swift; sourceTree = "<group>"; };
+		240B754A1B2B22130067475E /* CE_EAAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EAAccessory.swift; sourceTree = "<group>"; };
+		240B754B1B2B22130067475E /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EAWiFiUnconfiguredAccessoryBrowser.swift; sourceTree = "<group>"; };
+		240B754D1B2B22130067475E /* CE_NSCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSCache.swift; sourceTree = "<group>"; };
+		240B754E1B2B22130067475E /* CE_NSFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSFileManager.swift; sourceTree = "<group>"; };
+		240B754F1B2B22130067475E /* CE_NSKeyedArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSKeyedArchiver.swift; sourceTree = "<group>"; };
+		240B75501B2B22130067475E /* CE_NSKeyedUnarchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSKeyedUnarchiver.swift; sourceTree = "<group>"; };
+		240B75511B2B22130067475E /* CE_NSMetadataQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSMetadataQuery.swift; sourceTree = "<group>"; };
+		240B75521B2B22130067475E /* CE_NSNetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSNetService.swift; sourceTree = "<group>"; };
+		240B75531B2B22130067475E /* CE_NSNetServiceBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSNetServiceBrowser.swift; sourceTree = "<group>"; };
+		240B75541B2B22130067475E /* CE_NSStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSStream.swift; sourceTree = "<group>"; };
+		240B75551B2B22130067475E /* CE_NSUserActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSUserActivity.swift; sourceTree = "<group>"; };
+		240B75561B2B22130067475E /* CE_NSXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSXMLParser.swift; sourceTree = "<group>"; };
+		240B75581B2B22140067475E /* CE_GKMatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_GKMatch.swift; sourceTree = "<group>"; };
+		240B755A1B2B22140067475E /* CE_GLKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_GLKView.swift; sourceTree = "<group>"; };
+		240B755B1B2B22140067475E /* CE_GLKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_GLKViewController.swift; sourceTree = "<group>"; };
+		240B755D1B2B22140067475E /* CE_HMAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_HMAccessory.swift; sourceTree = "<group>"; };
+		240B755E1B2B22140067475E /* CE_HMAccessoryBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_HMAccessoryBrowser.swift; sourceTree = "<group>"; };
+		240B755F1B2B22140067475E /* CE_HMHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_HMHome.swift; sourceTree = "<group>"; };
+		240B75601B2B22140067475E /* CE_HMHomeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_HMHomeManager.swift; sourceTree = "<group>"; };
+		240B75621B2B22140067475E /* CE_ADBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_ADBannerView.swift; sourceTree = "<group>"; };
+		240B75631B2B22140067475E /* CE_ADInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_ADInterstitialAd.swift; sourceTree = "<group>"; };
+		240B75651B2B22140067475E /* CE_MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_MKMapView.swift; sourceTree = "<group>"; };
+		240B75671B2B22140067475E /* CE_MPMediaPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_MPMediaPickerController.swift; sourceTree = "<group>"; };
+		240B75681B2B22140067475E /* CE_MPPlayableContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_MPPlayableContentManager.swift; sourceTree = "<group>"; };
+		240B756A1B2B22140067475E /* CE_MCAdvertiserAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_MCAdvertiserAssistant.swift; sourceTree = "<group>"; };
+		240B756B1B2B22140067475E /* CE_MCBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_MCBrowserViewController.swift; sourceTree = "<group>"; };
+		240B756C1B2B22140067475E /* CE_MCNearbyServiceAdvertiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_MCNearbyServiceAdvertiser.swift; sourceTree = "<group>"; };
+		240B756D1B2B22140067475E /* CE_MCNearbyServiceBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_MCNearbyServiceBrowser.swift; sourceTree = "<group>"; };
+		240B756E1B2B22140067475E /* CE_MCSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_MCSession.swift; sourceTree = "<group>"; };
+		240B75701B2B22140067475E /* CE_PKAddPassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_PKAddPassesViewController.swift; sourceTree = "<group>"; };
+		240B75711B2B22140067475E /* CE_PKPaymentAuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_PKPaymentAuthorizationViewController.swift; sourceTree = "<group>"; };
+		240B75731B2B22140067475E /* CE_PKPushRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_PKPushRegistry.swift; sourceTree = "<group>"; };
+		240B75751B2B22140067475E /* CE_QLPreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_QLPreviewController.swift; sourceTree = "<group>"; };
+		240B75771B2B22140067475E /* CE_SCNProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SCNProgram.swift; sourceTree = "<group>"; };
+		240B757A1B2B22140067475E /* CE_SKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SKScene.swift; sourceTree = "<group>"; };
+		240B757C1B2B22140067475E /* CE_SKProductsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SKProductsRequest.swift; sourceTree = "<group>"; };
+		240B757D1B2B22140067475E /* CE_SKRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SKRequest.swift; sourceTree = "<group>"; };
+		240B757E1B2B22140067475E /* CE_SKStoreProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SKStoreProductViewController.swift; sourceTree = "<group>"; };
+		240B75B11B2B23090067475E /* CE_NSURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSURLSession.swift; sourceTree = "<group>"; };
 		24E8A7461B1E056A008D963A /* Centipede.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Centipede.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E8A74A1B1E056A008D963A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E8A74B1B1E056A008D963A /* Centipede.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Centipede.h; sourceTree = "<group>"; };
@@ -151,164 +197,243 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		247C062A1B208E220079E14C /* Other */ = {
+		240B742B1B2B14500067475E /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				247C062B1B208E220079E14C /* CE_NotificationCenter.swift */,
-				24B873721B25D0E000B2B705 /* CE_UIBarButtonItem.swift */,
-				247C062D1B209B940079E14C /* CE_UIControl.swift */,
-				24B873701B25C9BC00B2B705 /* CE_UIGestureRecognizer_Action.swift */,
+				240B742C1B2B14500067475E /* CE_NotificationCenter.swift */,
+				240B742D1B2B14500067475E /* CE_UIBarButtonItem.swift */,
+				240B742E1B2B14500067475E /* CE_UIControl.swift */,
+				240B742F1B2B14500067475E /* CE_UIGestureRecognizer_Action.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
 		};
-		248D8B791B29D53F00882E44 /* AVFoundation */ = {
+		240B74431B2B14500067475E /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				248D8B7B1B29D53F00882E44 /* CE_AVAudioPlayer.swift */,
-				248D8B7C1B29D53F00882E44 /* CE_AVAudioRecorder.swift */,
-				248D8B801B29D53F00882E44 /* CE_AVSpeechSynthesizer.swift */,
+				240B74441B2B14500067475E /* CE_UIActionSheet.swift */,
+				240B74451B2B14500067475E /* CE_UIAlertView.swift */,
+				240B74461B2B14500067475E /* CE_UICollectionView.swift */,
+				240B74471B2B14500067475E /* CE_UIDocumentInteractionController.swift */,
+				240B74481B2B14500067475E /* CE_UIDocumentMenuViewController.swift */,
+				240B74491B2B14500067475E /* CE_UIDocumentPickerViewController.swift */,
+				240B744A1B2B14500067475E /* CE_UIDynamicAnimator.swift */,
+				240B744B1B2B14500067475E /* CE_UIGestureRecognizer.swift */,
+				240B744C1B2B14500067475E /* CE_UIImagePickerController.swift */,
+				240B744D1B2B14500067475E /* CE_UINavigationBar.swift */,
+				240B744E1B2B14500067475E /* CE_UINavigationController.swift */,
+				240B744F1B2B14500067475E /* CE_UIPageViewController.swift */,
+				240B74501B2B14500067475E /* CE_UIPickerView.swift */,
+				240B74511B2B14500067475E /* CE_UIPopoverController.swift */,
+				240B74521B2B14500067475E /* CE_UIPopoverPresentationController.swift */,
+				240B74531B2B14500067475E /* CE_UIPresentationController.swift */,
+				240B74541B2B14500067475E /* CE_UIPrinterPickerController.swift */,
+				240B74551B2B14500067475E /* CE_UIPrintInteractionController.swift */,
+				240B74561B2B14500067475E /* CE_UIScrollView.swift */,
+				240B74571B2B14500067475E /* CE_UISearchBar.swift */,
+				240B74581B2B14500067475E /* CE_UISearchController.swift */,
+				240B74591B2B14500067475E /* CE_UISearchDisplayController.swift */,
+				240B745A1B2B14500067475E /* CE_UISplitViewController.swift */,
+				240B745B1B2B14500067475E /* CE_UITabBar.swift */,
+				240B745C1B2B14500067475E /* CE_UITabBarController.swift */,
+				240B745D1B2B14500067475E /* CE_UITableView.swift */,
+				240B745E1B2B14500067475E /* CE_UITextField.swift */,
+				240B745F1B2B14500067475E /* CE_UITextView.swift */,
+				240B74601B2B14500067475E /* CE_UIToolbar.swift */,
+				240B74611B2B14500067475E /* CE_UIVideoEditorController.swift */,
+				240B74621B2B14500067475E /* CE_UIViewController.swift */,
+				240B74631B2B14500067475E /* CE_UIWebView.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		240B753A1B2B22130067475E /* AVFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				240B753B1B2B22130067475E /* CE_AVAudioPlayer.swift */,
+				240B753C1B2B22130067475E /* CE_AVAudioRecorder.swift */,
+				240B753D1B2B22130067475E /* CE_AVSpeechSynthesizer.swift */,
 			);
 			path = AVFoundation;
 			sourceTree = "<group>";
 		};
-		248D8B811B29D53F00882E44 /* CoreBluetooth */ = {
+		240B753E1B2B22130067475E /* CoreBluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				248D8B821B29D53F00882E44 /* CE_CBCentralManager.swift */,
-				248D8B831B29D53F00882E44 /* CE_CBPeripheral.swift */,
-				248D8B841B29D53F00882E44 /* CE_CBPeripheralManager.swift */,
+				240B753F1B2B22130067475E /* CE_CBCentralManager.swift */,
+				240B75401B2B22130067475E /* CE_CBPeripheral.swift */,
+				240B75411B2B22130067475E /* CE_CBPeripheralManager.swift */,
 			);
 			path = CoreBluetooth;
 			sourceTree = "<group>";
 		};
-		248D8B861B29D53F00882E44 /* CoreLocation */ = {
+		240B75421B2B22130067475E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				248D8B871B29D53F00882E44 /* CE_CLLocationManager.swift */,
+				240B75431B2B22130067475E /* CE_NSFetchedResultsController.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		240B75441B2B22130067475E /* CoreLocation */ = {
+			isa = PBXGroup;
+			children = (
+				240B75451B2B22130067475E /* CE_CLLocationManager.swift */,
 			);
 			path = CoreLocation;
 			sourceTree = "<group>";
 		};
-		248D8B881B29D53F00882E44 /* EventKitUI */ = {
+		240B75461B2B22130067475E /* EventKitUI */ = {
 			isa = PBXGroup;
 			children = (
-				248D8B891B29D53F00882E44 /* CE_EKCalendarChooser.swift */,
-				248D8B8A1B29D53F00882E44 /* CE_EKEventViewController.swift */,
+				240B75471B2B22130067475E /* CE_EKCalendarChooser.swift */,
+				240B75481B2B22130067475E /* CE_EKEventViewController.swift */,
 			);
 			path = EventKitUI;
 			sourceTree = "<group>";
 		};
-		248D8B8B1B29D53F00882E44 /* ExternalAccessory */ = {
+		240B75491B2B22130067475E /* ExternalAccessory */ = {
 			isa = PBXGroup;
 			children = (
-				248D8B8C1B29D53F00882E44 /* CE_EAAccessory.swift */,
-				248D8B8D1B29D53F00882E44 /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift */,
+				240B754A1B2B22130067475E /* CE_EAAccessory.swift */,
+				240B754B1B2B22130067475E /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift */,
 			);
 			path = ExternalAccessory;
 			sourceTree = "<group>";
 		};
-		248D8B8E1B29D53F00882E44 /* GameKit */ = {
+		240B754C1B2B22130067475E /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				248D8B8F1B29D53F00882E44 /* CE_GKMatch.swift */,
+				240B754D1B2B22130067475E /* CE_NSCache.swift */,
+				240B754E1B2B22130067475E /* CE_NSFileManager.swift */,
+				240B754F1B2B22130067475E /* CE_NSKeyedArchiver.swift */,
+				240B75501B2B22130067475E /* CE_NSKeyedUnarchiver.swift */,
+				240B75511B2B22130067475E /* CE_NSMetadataQuery.swift */,
+				240B75521B2B22130067475E /* CE_NSNetService.swift */,
+				240B75531B2B22130067475E /* CE_NSNetServiceBrowser.swift */,
+				240B75541B2B22130067475E /* CE_NSStream.swift */,
+				240B75B11B2B23090067475E /* CE_NSURLSession.swift */,
+				240B75551B2B22130067475E /* CE_NSUserActivity.swift */,
+				240B75561B2B22130067475E /* CE_NSXMLParser.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		240B75571B2B22130067475E /* GameKit */ = {
+			isa = PBXGroup;
+			children = (
+				240B75581B2B22140067475E /* CE_GKMatch.swift */,
 			);
 			path = GameKit;
 			sourceTree = "<group>";
 		};
-		248D8B901B29D53F00882E44 /* GLKit */ = {
+		240B75591B2B22140067475E /* GLKit */ = {
 			isa = PBXGroup;
 			children = (
-				248D8B911B29D53F00882E44 /* CE_GLKView.swift */,
-				248D8B921B29D53F00882E44 /* CE_GLKViewController.swift */,
+				240B755A1B2B22140067475E /* CE_GLKView.swift */,
+				240B755B1B2B22140067475E /* CE_GLKViewController.swift */,
 			);
 			path = GLKit;
 			sourceTree = "<group>";
 		};
-		248D8B931B29D53F00882E44 /* HomeKit */ = {
+		240B755C1B2B22140067475E /* HomeKit */ = {
 			isa = PBXGroup;
 			children = (
-				248D8B941B29D53F00882E44 /* CE_HMAccessory.swift */,
-				248D8B951B29D53F00882E44 /* CE_HMAccessoryBrowser.swift */,
-				248D8B961B29D53F00882E44 /* CE_HMHome.swift */,
-				248D8B971B29D53F00882E44 /* CE_HMHomeManager.swift */,
+				240B755D1B2B22140067475E /* CE_HMAccessory.swift */,
+				240B755E1B2B22140067475E /* CE_HMAccessoryBrowser.swift */,
+				240B755F1B2B22140067475E /* CE_HMHome.swift */,
+				240B75601B2B22140067475E /* CE_HMHomeManager.swift */,
 			);
 			path = HomeKit;
 			sourceTree = "<group>";
 		};
-		248D8B981B29D53F00882E44 /* iAd */ = {
+		240B75611B2B22140067475E /* iAd */ = {
 			isa = PBXGroup;
 			children = (
-				248D8B991B29D53F00882E44 /* CE_ADBannerView.swift */,
-				248D8B9A1B29D53F00882E44 /* CE_ADInterstitialAd.swift */,
+				240B75621B2B22140067475E /* CE_ADBannerView.swift */,
+				240B75631B2B22140067475E /* CE_ADInterstitialAd.swift */,
 			);
 			path = iAd;
 			sourceTree = "<group>";
 		};
-		248D8BA01B29D53F00882E44 /* QuartzCore */ = {
+		240B75641B2B22140067475E /* MapKit */ = {
 			isa = PBXGroup;
 			children = (
-				248D8BA11B29D53F00882E44 /* CE_CAAnimation.swift */,
-				248D8BA21B29D53F00882E44 /* CE_CALayer.swift */,
+				240B75651B2B22140067475E /* CE_MKMapView.swift */,
 			);
-			path = QuartzCore;
+			path = MapKit;
 			sourceTree = "<group>";
 		};
-		248D8BA31B29D53F00882E44 /* SpriteKit */ = {
+		240B75661B2B22140067475E /* MediaPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				248D8BA41B29D53F00882E44 /* CE_SKScene.swift */,
+				240B75671B2B22140067475E /* CE_MPMediaPickerController.swift */,
+				240B75681B2B22140067475E /* CE_MPPlayableContentManager.swift */,
+			);
+			path = MediaPlayer;
+			sourceTree = "<group>";
+		};
+		240B75691B2B22140067475E /* MultipeerConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				240B756A1B2B22140067475E /* CE_MCAdvertiserAssistant.swift */,
+				240B756B1B2B22140067475E /* CE_MCBrowserViewController.swift */,
+				240B756C1B2B22140067475E /* CE_MCNearbyServiceAdvertiser.swift */,
+				240B756D1B2B22140067475E /* CE_MCNearbyServiceBrowser.swift */,
+				240B756E1B2B22140067475E /* CE_MCSession.swift */,
+			);
+			path = MultipeerConnectivity;
+			sourceTree = "<group>";
+		};
+		240B756F1B2B22140067475E /* PassKit */ = {
+			isa = PBXGroup;
+			children = (
+				240B75701B2B22140067475E /* CE_PKAddPassesViewController.swift */,
+				240B75711B2B22140067475E /* CE_PKPaymentAuthorizationViewController.swift */,
+			);
+			path = PassKit;
+			sourceTree = "<group>";
+		};
+		240B75721B2B22140067475E /* PushKit */ = {
+			isa = PBXGroup;
+			children = (
+				240B75731B2B22140067475E /* CE_PKPushRegistry.swift */,
+			);
+			path = PushKit;
+			sourceTree = "<group>";
+		};
+		240B75741B2B22140067475E /* QuickLook */ = {
+			isa = PBXGroup;
+			children = (
+				240B75751B2B22140067475E /* CE_QLPreviewController.swift */,
+			);
+			path = QuickLook;
+			sourceTree = "<group>";
+		};
+		240B75761B2B22140067475E /* SceneKit */ = {
+			isa = PBXGroup;
+			children = (
+				240B75771B2B22140067475E /* CE_SCNProgram.swift */,
+			);
+			path = SceneKit;
+			sourceTree = "<group>";
+		};
+		240B75791B2B22140067475E /* SpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				240B757A1B2B22140067475E /* CE_SKScene.swift */,
 			);
 			path = SpriteKit;
 			sourceTree = "<group>";
 		};
-		248D8BA51B29D53F00882E44 /* StoreKit */ = {
+		240B757B1B2B22140067475E /* StoreKit */ = {
 			isa = PBXGroup;
 			children = (
-				248D8BA61B29D53F00882E44 /* CE_SKProductsRequest.swift */,
-				248D8BA71B29D53F00882E44 /* CE_SKRequest.swift */,
-				248D8BA81B29D53F00882E44 /* CE_SKStoreProductViewController.swift */,
+				240B757C1B2B22140067475E /* CE_SKProductsRequest.swift */,
+				240B757D1B2B22140067475E /* CE_SKRequest.swift */,
+				240B757E1B2B22140067475E /* CE_SKStoreProductViewController.swift */,
 			);
 			path = StoreKit;
-			sourceTree = "<group>";
-		};
-		248D8BA91B29D53F00882E44 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				248D8BAA1B29D53F00882E44 /* CE_UIActionSheet.swift */,
-				248D8BAB1B29D53F00882E44 /* CE_UIAlertView.swift */,
-				248D8BAC1B29D53F00882E44 /* CE_UICollectionView.swift */,
-				248D8BAD1B29D53F00882E44 /* CE_UIDocumentInteractionController.swift */,
-				248D8BAE1B29D53F00882E44 /* CE_UIDocumentMenuViewController.swift */,
-				248D8BAF1B29D53F00882E44 /* CE_UIDocumentPickerViewController.swift */,
-				248D8BB01B29D53F00882E44 /* CE_UIDynamicAnimator.swift */,
-				248D8BB11B29D53F00882E44 /* CE_UIGestureRecognizer.swift */,
-				248D8BB21B29D53F00882E44 /* CE_UIImagePickerController.swift */,
-				248D8BB31B29D53F00882E44 /* CE_UINavigationBar.swift */,
-				248D8BB41B29D53F00882E44 /* CE_UINavigationController.swift */,
-				248D8BB51B29D53F00882E44 /* CE_UIPageViewController.swift */,
-				248D8BB61B29D53F00882E44 /* CE_UIPickerView.swift */,
-				248D8BB71B29D53F00882E44 /* CE_UIPopoverController.swift */,
-				248D8BB81B29D53F00882E44 /* CE_UIPopoverPresentationController.swift */,
-				248D8BB91B29D53F00882E44 /* CE_UIPresentationController.swift */,
-				248D8BBA1B29D53F00882E44 /* CE_UIPrinterPickerController.swift */,
-				248D8BBB1B29D53F00882E44 /* CE_UIPrintInteractionController.swift */,
-				248D8BBC1B29D53F00882E44 /* CE_UIScrollView.swift */,
-				248D8BBD1B29D53F00882E44 /* CE_UISearchBar.swift */,
-				248D8BBE1B29D53F00882E44 /* CE_UISearchController.swift */,
-				248D8BBF1B29D53F00882E44 /* CE_UISearchDisplayController.swift */,
-				248D8BC01B29D53F00882E44 /* CE_UISplitViewController.swift */,
-				248D8BC11B29D53F00882E44 /* CE_UITabBar.swift */,
-				248D8BC21B29D53F00882E44 /* CE_UITabBarController.swift */,
-				248D8BC31B29D53F00882E44 /* CE_UITableView.swift */,
-				248D8BC41B29D53F00882E44 /* CE_UITextField.swift */,
-				248D8BC51B29D53F00882E44 /* CE_UITextView.swift */,
-				248D8BC61B29D53F00882E44 /* CE_UIToolbar.swift */,
-				248D8BC71B29D53F00882E44 /* CE_UIVideoEditorController.swift */,
-				248D8BC81B29D53F00882E44 /* CE_UIViewController.swift */,
-				248D8BC91B29D53F00882E44 /* CE_UIWebView.swift */,
-			);
-			path = UIKit;
 			sourceTree = "<group>";
 		};
 		24E8A73C1B1E056A008D963A = {
@@ -331,20 +456,28 @@
 			isa = PBXGroup;
 			children = (
 				24E8A74B1B1E056A008D963A /* Centipede.h */,
-				248D8B791B29D53F00882E44 /* AVFoundation */,
-				248D8B811B29D53F00882E44 /* CoreBluetooth */,
-				248D8B861B29D53F00882E44 /* CoreLocation */,
-				248D8B881B29D53F00882E44 /* EventKitUI */,
-				248D8B8B1B29D53F00882E44 /* ExternalAccessory */,
-				248D8B8E1B29D53F00882E44 /* GameKit */,
-				248D8B901B29D53F00882E44 /* GLKit */,
-				248D8B931B29D53F00882E44 /* HomeKit */,
-				248D8B981B29D53F00882E44 /* iAd */,
-				248D8BA01B29D53F00882E44 /* QuartzCore */,
-				248D8BA31B29D53F00882E44 /* SpriteKit */,
-				248D8BA51B29D53F00882E44 /* StoreKit */,
-				248D8BA91B29D53F00882E44 /* UIKit */,
-				247C062A1B208E220079E14C /* Other */,
+				240B753A1B2B22130067475E /* AVFoundation */,
+				240B753E1B2B22130067475E /* CoreBluetooth */,
+				240B75421B2B22130067475E /* CoreData */,
+				240B75441B2B22130067475E /* CoreLocation */,
+				240B75461B2B22130067475E /* EventKitUI */,
+				240B75491B2B22130067475E /* ExternalAccessory */,
+				240B754C1B2B22130067475E /* Foundation */,
+				240B75571B2B22130067475E /* GameKit */,
+				240B75591B2B22140067475E /* GLKit */,
+				240B755C1B2B22140067475E /* HomeKit */,
+				240B75611B2B22140067475E /* iAd */,
+				240B75641B2B22140067475E /* MapKit */,
+				240B75661B2B22140067475E /* MediaPlayer */,
+				240B75691B2B22140067475E /* MultipeerConnectivity */,
+				240B756F1B2B22140067475E /* PassKit */,
+				240B75721B2B22140067475E /* PushKit */,
+				240B75741B2B22140067475E /* QuickLook */,
+				240B75761B2B22140067475E /* SceneKit */,
+				240B75791B2B22140067475E /* SpriteKit */,
+				240B757B1B2B22140067475E /* StoreKit */,
+				240B74431B2B14500067475E /* UIKit */,
+				240B742B1B2B14500067475E /* Other */,
 				24E8A7491B1E056A008D963A /* Supporting Files */,
 			);
 			path = Centipede;
@@ -436,68 +569,91 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				248D8BFD1B29D53F00882E44 /* CE_UIPrinterPickerController.swift in Sources */,
-				248D8BD11B29D53F00882E44 /* CE_CBCentralManager.swift in Sources */,
-				248D8BEC1B29D53F00882E44 /* CE_SKStoreProductViewController.swift in Sources */,
-				248D8BE01B29D53F00882E44 /* CE_HMHomeManager.swift in Sources */,
-				248D8BF71B29D53F00882E44 /* CE_UINavigationController.swift in Sources */,
-				248D8C031B29D53F00882E44 /* CE_UISplitViewController.swift in Sources */,
-				248D8BF91B29D53F00882E44 /* CE_UIPickerView.swift in Sources */,
-				248D8BCB1B29D53F00882E44 /* CE_AVAudioPlayer.swift in Sources */,
-				248D8BCC1B29D53F00882E44 /* CE_AVAudioRecorder.swift in Sources */,
-				248D8C051B29D53F00882E44 /* CE_UITabBarController.swift in Sources */,
-				248D8BD21B29D53F00882E44 /* CE_CBPeripheral.swift in Sources */,
-				248D8C091B29D53F00882E44 /* CE_UIToolbar.swift in Sources */,
-				24B873731B25D0E000B2B705 /* CE_UIBarButtonItem.swift in Sources */,
-				247C062E1B209B940079E14C /* CE_UIControl.swift in Sources */,
-				248D8BD81B29D53F00882E44 /* CE_EAAccessory.swift in Sources */,
-				248D8BF11B29D53F00882E44 /* CE_UIDocumentMenuViewController.swift in Sources */,
-				248D8C001B29D53F00882E44 /* CE_UISearchBar.swift in Sources */,
-				248D8BF41B29D53F00882E44 /* CE_UIGestureRecognizer.swift in Sources */,
-				248D8BF01B29D53F00882E44 /* CE_UIDocumentInteractionController.swift in Sources */,
-				248D8BE21B29D53F00882E44 /* CE_ADInterstitialAd.swift in Sources */,
-				248D8BD61B29D53F00882E44 /* CE_EKCalendarChooser.swift in Sources */,
-				248D8BF21B29D53F00882E44 /* CE_UIDocumentPickerViewController.swift in Sources */,
-				248D8C011B29D53F00882E44 /* CE_UISearchController.swift in Sources */,
-				248D8BF61B29D53F00882E44 /* CE_UINavigationBar.swift in Sources */,
-				248D8C0A1B29D53F00882E44 /* CE_UIVideoEditorController.swift in Sources */,
-				248D8BE71B29D53F00882E44 /* CE_CAAnimation.swift in Sources */,
-				248D8BE11B29D53F00882E44 /* CE_ADBannerView.swift in Sources */,
-				24B873711B25C9BC00B2B705 /* CE_UIGestureRecognizer_Action.swift in Sources */,
-				247C062C1B208E220079E14C /* CE_NotificationCenter.swift in Sources */,
-				248D8BD31B29D53F00882E44 /* CE_CBPeripheralManager.swift in Sources */,
-				248D8BDD1B29D53F00882E44 /* CE_HMAccessory.swift in Sources */,
-				248D8C041B29D53F00882E44 /* CE_UITabBar.swift in Sources */,
-				248D8BEB1B29D53F00882E44 /* CE_SKRequest.swift in Sources */,
-				248D8C081B29D53F00882E44 /* CE_UITextView.swift in Sources */,
-				248D8C0C1B29D53F00882E44 /* CE_UIWebView.swift in Sources */,
-				248D8BDF1B29D53F00882E44 /* CE_HMHome.swift in Sources */,
-				248D8BEA1B29D53F00882E44 /* CE_SKProductsRequest.swift in Sources */,
-				248D8BED1B29D53F00882E44 /* CE_UIActionSheet.swift in Sources */,
-				248D8BE91B29D53F00882E44 /* CE_SKScene.swift in Sources */,
-				248D8BF31B29D53F00882E44 /* CE_UIDynamicAnimator.swift in Sources */,
-				248D8BD71B29D53F00882E44 /* CE_EKEventViewController.swift in Sources */,
-				248D8BDA1B29D53F00882E44 /* CE_GKMatch.swift in Sources */,
-				248D8BD01B29D53F00882E44 /* CE_AVSpeechSynthesizer.swift in Sources */,
-				248D8BFE1B29D53F00882E44 /* CE_UIPrintInteractionController.swift in Sources */,
-				248D8BEF1B29D53F00882E44 /* CE_UICollectionView.swift in Sources */,
-				248D8BFF1B29D53F00882E44 /* CE_UIScrollView.swift in Sources */,
-				248D8BDE1B29D53F00882E44 /* CE_HMAccessoryBrowser.swift in Sources */,
-				248D8BDB1B29D53F00882E44 /* CE_GLKView.swift in Sources */,
-				248D8C0B1B29D53F00882E44 /* CE_UIViewController.swift in Sources */,
-				248D8BF51B29D53F00882E44 /* CE_UIImagePickerController.swift in Sources */,
-				248D8BE81B29D53F00882E44 /* CE_CALayer.swift in Sources */,
-				248D8BFA1B29D53F00882E44 /* CE_UIPopoverController.swift in Sources */,
-				248D8BD51B29D53F00882E44 /* CE_CLLocationManager.swift in Sources */,
-				248D8BFC1B29D53F00882E44 /* CE_UIPresentationController.swift in Sources */,
-				248D8BD91B29D53F00882E44 /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift in Sources */,
-				248D8C071B29D53F00882E44 /* CE_UITextField.swift in Sources */,
-				248D8BDC1B29D53F00882E44 /* CE_GLKViewController.swift in Sources */,
-				248D8BEE1B29D53F00882E44 /* CE_UIAlertView.swift in Sources */,
-				248D8BF81B29D53F00882E44 /* CE_UIPageViewController.swift in Sources */,
-				248D8C061B29D53F00882E44 /* CE_UITableView.swift in Sources */,
-				248D8C021B29D53F00882E44 /* CE_UISearchDisplayController.swift in Sources */,
-				248D8BFB1B29D53F00882E44 /* CE_UIPopoverPresentationController.swift in Sources */,
+				240B74B51B2B14500067475E /* CE_UITableView.swift in Sources */,
+				240B759F1B2B22140067475E /* CE_MKMapView.swift in Sources */,
+				240B75A11B2B22140067475E /* CE_MPPlayableContentManager.swift in Sources */,
+				240B758C1B2B22140067475E /* CE_NSCache.swift in Sources */,
+				240B75A21B2B22140067475E /* CE_MCAdvertiserAssistant.swift in Sources */,
+				240B74AB1B2B14500067475E /* CE_UIPresentationController.swift in Sources */,
+				240B75A81B2B22140067475E /* CE_PKPaymentAuthorizationViewController.swift in Sources */,
+				240B74A81B2B14500067475E /* CE_UIPickerView.swift in Sources */,
+				240B74AE1B2B14500067475E /* CE_UIScrollView.swift in Sources */,
+				240B74AC1B2B14500067475E /* CE_UIPrinterPickerController.swift in Sources */,
+				240B758F1B2B22140067475E /* CE_NSKeyedUnarchiver.swift in Sources */,
+				240B75801B2B22140067475E /* CE_AVAudioPlayer.swift in Sources */,
+				240B758E1B2B22140067475E /* CE_NSKeyedArchiver.swift in Sources */,
+				240B75951B2B22140067475E /* CE_NSXMLParser.swift in Sources */,
+				240B748D1B2B14500067475E /* CE_UIBarButtonItem.swift in Sources */,
+				240B759E1B2B22140067475E /* CE_ADInterstitialAd.swift in Sources */,
+				240B75971B2B22140067475E /* CE_GLKView.swift in Sources */,
+				240B75891B2B22140067475E /* CE_EKEventViewController.swift in Sources */,
+				240B75871B2B22140067475E /* CE_CLLocationManager.swift in Sources */,
+				240B75A31B2B22140067475E /* CE_MCBrowserViewController.swift in Sources */,
+				240B749D1B2B14500067475E /* CE_UIAlertView.swift in Sources */,
+				240B75B01B2B22140067475E /* CE_SKStoreProductViewController.swift in Sources */,
+				240B75A91B2B22140067475E /* CE_PKPushRegistry.swift in Sources */,
+				240B75AD1B2B22140067475E /* CE_SKScene.swift in Sources */,
+				240B74B31B2B14500067475E /* CE_UITabBar.swift in Sources */,
+				240B75AE1B2B22140067475E /* CE_SKProductsRequest.swift in Sources */,
+				240B75921B2B22140067475E /* CE_NSNetServiceBrowser.swift in Sources */,
+				240B74AF1B2B14500067475E /* CE_UISearchBar.swift in Sources */,
+				240B75931B2B22140067475E /* CE_NSStream.swift in Sources */,
+				240B749E1B2B14500067475E /* CE_UICollectionView.swift in Sources */,
+				240B74BB1B2B14500067475E /* CE_UIWebView.swift in Sources */,
+				240B75851B2B22140067475E /* CE_CBPeripheralManager.swift in Sources */,
+				240B74B91B2B14500067475E /* CE_UIVideoEditorController.swift in Sources */,
+				240B74B81B2B14500067475E /* CE_UIToolbar.swift in Sources */,
+				240B759A1B2B22140067475E /* CE_HMAccessoryBrowser.swift in Sources */,
+				240B75A71B2B22140067475E /* CE_PKAddPassesViewController.swift in Sources */,
+				240B75AB1B2B22140067475E /* CE_SCNProgram.swift in Sources */,
+				240B75A01B2B22140067475E /* CE_MPMediaPickerController.swift in Sources */,
+				240B748E1B2B14500067475E /* CE_UIControl.swift in Sources */,
+				240B75B21B2B23090067475E /* CE_NSURLSession.swift in Sources */,
+				240B75811B2B22140067475E /* CE_AVAudioRecorder.swift in Sources */,
+				240B74A61B2B14500067475E /* CE_UINavigationController.swift in Sources */,
+				240B74A01B2B14500067475E /* CE_UIDocumentMenuViewController.swift in Sources */,
+				240B75961B2B22140067475E /* CE_GKMatch.swift in Sources */,
+				240B759C1B2B22140067475E /* CE_HMHomeManager.swift in Sources */,
+				240B74BA1B2B14500067475E /* CE_UIViewController.swift in Sources */,
+				240B75821B2B22140067475E /* CE_AVSpeechSynthesizer.swift in Sources */,
+				240B75831B2B22140067475E /* CE_CBCentralManager.swift in Sources */,
+				240B74B01B2B14500067475E /* CE_UISearchController.swift in Sources */,
+				240B75911B2B22140067475E /* CE_NSNetService.swift in Sources */,
+				240B748C1B2B14500067475E /* CE_NotificationCenter.swift in Sources */,
+				240B75981B2B22140067475E /* CE_GLKViewController.swift in Sources */,
+				240B75901B2B22140067475E /* CE_NSMetadataQuery.swift in Sources */,
+				240B74A71B2B14500067475E /* CE_UIPageViewController.swift in Sources */,
+				240B758B1B2B22140067475E /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift in Sources */,
+				240B74A91B2B14500067475E /* CE_UIPopoverController.swift in Sources */,
+				240B748F1B2B14500067475E /* CE_UIGestureRecognizer_Action.swift in Sources */,
+				240B75AF1B2B22140067475E /* CE_SKRequest.swift in Sources */,
+				240B74A41B2B14500067475E /* CE_UIImagePickerController.swift in Sources */,
+				240B74B21B2B14500067475E /* CE_UISplitViewController.swift in Sources */,
+				240B74B41B2B14500067475E /* CE_UITabBarController.swift in Sources */,
+				240B75941B2B22140067475E /* CE_NSUserActivity.swift in Sources */,
+				240B758D1B2B22140067475E /* CE_NSFileManager.swift in Sources */,
+				240B759B1B2B22140067475E /* CE_HMHome.swift in Sources */,
+				240B74B61B2B14500067475E /* CE_UITextField.swift in Sources */,
+				240B74B71B2B14500067475E /* CE_UITextView.swift in Sources */,
+				240B74B11B2B14500067475E /* CE_UISearchDisplayController.swift in Sources */,
+				240B749F1B2B14500067475E /* CE_UIDocumentInteractionController.swift in Sources */,
+				240B74AD1B2B14500067475E /* CE_UIPrintInteractionController.swift in Sources */,
+				240B74A31B2B14500067475E /* CE_UIGestureRecognizer.swift in Sources */,
+				240B75841B2B22140067475E /* CE_CBPeripheral.swift in Sources */,
+				240B75991B2B22140067475E /* CE_HMAccessory.swift in Sources */,
+				240B74AA1B2B14500067475E /* CE_UIPopoverPresentationController.swift in Sources */,
+				240B74A51B2B14500067475E /* CE_UINavigationBar.swift in Sources */,
+				240B75881B2B22140067475E /* CE_EKCalendarChooser.swift in Sources */,
+				240B75861B2B22140067475E /* CE_NSFetchedResultsController.swift in Sources */,
+				240B74A21B2B14500067475E /* CE_UIDynamicAnimator.swift in Sources */,
+				240B758A1B2B22140067475E /* CE_EAAccessory.swift in Sources */,
+				240B75A51B2B22140067475E /* CE_MCNearbyServiceBrowser.swift in Sources */,
+				240B75AA1B2B22140067475E /* CE_QLPreviewController.swift in Sources */,
+				240B75A41B2B22140067475E /* CE_MCNearbyServiceAdvertiser.swift in Sources */,
+				240B759D1B2B22140067475E /* CE_ADBannerView.swift in Sources */,
+				240B75A61B2B22140067475E /* CE_MCSession.swift in Sources */,
+				240B749C1B2B14500067475E /* CE_UIActionSheet.swift in Sources */,
+				240B74A11B2B14500067475E /* CE_UIDocumentPickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

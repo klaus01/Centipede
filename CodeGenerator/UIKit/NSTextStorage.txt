@@ -1,0 +1,10 @@
+NSTextStorage: NSObject, NSTextStorageDelegate
+
+
+    // Sent inside -processEditing right before fixing attributes.  Delegates can change the characters or attributes.
+    @availability(iOS, introduced=7.0)
+    optional func textStorage(textStorage: NSTextStorage, willProcessEditing editedMask: NSTextStorageEditActions, range editedRange: NSRange, changeInLength delta: Int)
+    
+    // Sent inside -processEditing right before notifying layout managers.  Delegates can change the attributes.
+    @availability(iOS, introduced=7.0)
+    optional func textStorage(textStorage: NSTextStorage, didProcessEditing editedMask: NSTextStorageEditActions, range editedRange: NSRange, changeInLength delta: Int)

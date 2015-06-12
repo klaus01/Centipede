@@ -87,7 +87,7 @@
             }
 
             // 更多的参数
-            var TYPE_REGEXP_STR = "[ <>\\[\\:\\]\\w\\!\\?]+";
+            var TYPE_REGEXP_STR = "[ <>\\[\\:\\]\\w\\!\\?]+|\\(?\\([ ,<>\\[\\:\\]\\w\\!\\?]+\\) -> Void\\)?!?\\??";
             var tRegExp = new RegExp(",(?: (\\w+))? (\\w+): (" + TYPE_REGEXP_STR + ")", "g");
             while ((r = tRegExp.exec(funcStr)) !== null) {
                 funcObj.parameters.push({

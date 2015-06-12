@@ -1,0 +1,35 @@
+MPPlayableContentManager : NSObject, MPPlayableContentDelegate, MPPlayableContentDataSource
+
+DELEGATE_LIST:delegate, dataSource
+
+
+
+    /// This method is called when a media player interface wants to play a requested
+    /// content item. The application should call the completion handler with an
+    /// appropriate error if there was an error beginning playback for the item.
+    optional func playableContentManager(contentManager: MPPlayableContentManager!, initiatePlaybackOfContentItemAtIndexPath indexPath: NSIndexPath!, completionHandler: ((NSError!) -> Void)!)
+
+
+    
+    /// Tells the data source to begin loading content items that are children of the
+    /// item specified by indexPath. This is provided so that applications can begin
+    /// asynchronous batched loading of content before MediaPlayer begins asking for
+    /// content items to display.
+    /// Client applications should always call the completion handler after loading
+    /// has finished, if this method is implemented.
+    optional func beginLoadingChildItemsAtIndexPath(indexPath: NSIndexPath!, completionHandler: ((NSError!) -> Void)!)
+    
+    /// Tells MediaPlayer whether the content provided by the data source supports
+    /// playback progress as a property of its metadata.
+    /// If this method is not implemented, MediaPlayer will assume that progress is
+    /// not supported for any content items.
+    optional func childItemsDisplayPlaybackProgressAtIndexPath(indexPath: NSIndexPath!) -> Bool
+    
+    /// Returns the number of child nodes at the specified index path. In a virtual
+    /// filesystem, this would be the number of files in a specific folder. An empty
+    /// index path represents the root node.
+    func numberOfChildItemsAtIndexPath(indexPath: NSIndexPath!) -> Int
+    
+    /// Returns the content item at the specified index path. If the content item is
+    /// mutated after returning, its updated contents will be sent to MediaPlayer.
+    func contentItemAtIndexPath(indexPath: NSIndexPath!) -> MPContentItem!

@@ -1,0 +1,3 @@
+PKAddPassesViewController : UIViewController, PKAddPassesViewControllerDelegate
+
+    optional func addPassesViewControllerDidFinish(controller: PKAddPassesViewController!) // delegate should dismiss presentation
