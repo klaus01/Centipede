@@ -13,7 +13,7 @@ public extension NSNetService {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSNetService_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? NSNetService_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: NSNetService_Delegate {
@@ -50,7 +50,7 @@ public extension NSNetService {
         rebindingDelegate()
         return self
     }
-    public func ce_didNotPublish(handle: (sender: NSNetService, errorDict: [NSObject : AnyObject]) -> Void) -> Self {
+    public func ce_didNotPublish(handle: (sender: NSNetService, errorDict: [String : NSNumber]) -> Void) -> Self {
         ce._didNotPublish = handle
         rebindingDelegate()
         return self
@@ -65,7 +65,7 @@ public extension NSNetService {
         rebindingDelegate()
         return self
     }
-    public func ce_didNotResolve(handle: (sender: NSNetService, errorDict: [NSObject : AnyObject]) -> Void) -> Self {
+    public func ce_didNotResolve(handle: (sender: NSNetService, errorDict: [String : NSNumber]) -> Void) -> Self {
         ce._didNotResolve = handle
         rebindingDelegate()
         return self
@@ -92,10 +92,10 @@ internal class NSNetService_Delegate: NSObject, NSNetServiceDelegate {
     
     var _willPublish: ((NSNetService) -> Void)?
     var _didPublish: ((NSNetService) -> Void)?
-    var _didNotPublish: ((NSNetService, [NSObject : AnyObject]) -> Void)?
+    var _didNotPublish: ((NSNetService, [String : NSNumber]) -> Void)?
     var _willResolve: ((NSNetService) -> Void)?
     var _didResolveAddress: ((NSNetService) -> Void)?
-    var _didNotResolve: ((NSNetService, [NSObject : AnyObject]) -> Void)?
+    var _didNotResolve: ((NSNetService, [String : NSNumber]) -> Void)?
     var _didStop: ((NSNetService) -> Void)?
     var _didUpdateTXTRecordData: ((NSNetService, NSData) -> Void)?
     var _didAcceptConnectionWithInputStream: ((NSNetService, NSInputStream, NSOutputStream) -> Void)?
@@ -134,7 +134,7 @@ internal class NSNetService_Delegate: NSObject, NSNetServiceDelegate {
     @objc func netServiceDidPublish(sender: NSNetService) {
         _didPublish!(sender)
     }
-    @objc func netService(sender: NSNetService, didNotPublish errorDict: [NSObject : AnyObject]) {
+    @objc func netService(sender: NSNetService, didNotPublish errorDict: [String : NSNumber]) {
         _didNotPublish!(sender, errorDict)
     }
     @objc func netServiceWillResolve(sender: NSNetService) {
@@ -143,7 +143,7 @@ internal class NSNetService_Delegate: NSObject, NSNetServiceDelegate {
     @objc func netServiceDidResolveAddress(sender: NSNetService) {
         _didResolveAddress!(sender)
     }
-    @objc func netService(sender: NSNetService, didNotResolve errorDict: [NSObject : AnyObject]) {
+    @objc func netService(sender: NSNetService, didNotResolve errorDict: [String : NSNumber]) {
         _didNotResolve!(sender, errorDict)
     }
     @objc func netServiceDidStop(sender: NSNetService) {

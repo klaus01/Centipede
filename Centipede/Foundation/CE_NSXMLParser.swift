@@ -13,7 +13,7 @@ public extension NSXMLParser {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSXMLParser_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? NSXMLParser_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: NSXMLParser_Delegate {
@@ -80,7 +80,7 @@ public extension NSXMLParser {
         rebindingDelegate()
         return self
     }
-    public func ce_parserAndDidStartElement(handle: (parser: NSXMLParser, elementName: String, namespaceURI: String?, qName: String?, attributeDict: [NSObject : AnyObject]) -> Void) -> Self {
+    public func ce_parserAndDidStartElement(handle: (parser: NSXMLParser, elementName: String, namespaceURI: String?, qName: String?, attributeDict: [String : String]) -> Void) -> Self {
         ce._parserAndDidStartElement = handle
         rebindingDelegate()
         return self
@@ -100,7 +100,7 @@ public extension NSXMLParser {
         rebindingDelegate()
         return self
     }
-    public func ce_parserAndFoundCharacters(handle: (parser: NSXMLParser, string: String?) -> Void) -> Self {
+    public func ce_parserAndFoundCharacters(handle: (parser: NSXMLParser, string: String) -> Void) -> Self {
         ce._parserAndFoundCharacters = handle
         rebindingDelegate()
         return self
@@ -115,7 +115,7 @@ public extension NSXMLParser {
         rebindingDelegate()
         return self
     }
-    public func ce_parserAndFoundComment(handle: (parser: NSXMLParser, comment: String?) -> Void) -> Self {
+    public func ce_parserAndFoundComment(handle: (parser: NSXMLParser, comment: String) -> Void) -> Self {
         ce._parserAndFoundComment = handle
         rebindingDelegate()
         return self
@@ -153,14 +153,14 @@ internal class NSXMLParser_Delegate: NSObject, NSXMLParserDelegate {
     var _parserAndFoundElementDeclarationWithName: ((NSXMLParser, String, String) -> Void)?
     var _parserAndFoundInternalEntityDeclarationWithName: ((NSXMLParser, String, String?) -> Void)?
     var _parserAndFoundExternalEntityDeclarationWithName: ((NSXMLParser, String, String?, String?) -> Void)?
-    var _parserAndDidStartElement: ((NSXMLParser, String, String?, String?, [NSObject : AnyObject]) -> Void)?
+    var _parserAndDidStartElement: ((NSXMLParser, String, String?, String?, [String : String]) -> Void)?
     var _parserAndDidEndElement: ((NSXMLParser, String, String?, String?) -> Void)?
     var _parserAndDidStartMappingPrefix: ((NSXMLParser, String, String) -> Void)?
     var _parserAndDidEndMappingPrefix: ((NSXMLParser, String) -> Void)?
-    var _parserAndFoundCharacters: ((NSXMLParser, String?) -> Void)?
+    var _parserAndFoundCharacters: ((NSXMLParser, String) -> Void)?
     var _parserAndFoundIgnorableWhitespace: ((NSXMLParser, String) -> Void)?
     var _parserAndFoundProcessingInstructionWithTarget: ((NSXMLParser, String, String?) -> Void)?
-    var _parserAndFoundComment: ((NSXMLParser, String?) -> Void)?
+    var _parserAndFoundComment: ((NSXMLParser, String) -> Void)?
     var _parserAndFoundCDATA: ((NSXMLParser, NSData) -> Void)?
     var _parserAndResolveExternalEntityName: ((NSXMLParser, String, String?) -> NSData?)?
     var _parserAndParseErrorOccurred: ((NSXMLParser, NSError) -> Void)?
@@ -235,7 +235,7 @@ internal class NSXMLParser_Delegate: NSObject, NSXMLParserDelegate {
     @objc func parser(parser: NSXMLParser, foundExternalEntityDeclarationWithName name: String, publicID: String?, systemID: String?) {
         _parserAndFoundExternalEntityDeclarationWithName!(parser, name, publicID, systemID)
     }
-    @objc func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [NSObject : AnyObject]) {
+    @objc func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         _parserAndDidStartElement!(parser, elementName, namespaceURI, qName, attributeDict)
     }
     @objc func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
@@ -247,7 +247,7 @@ internal class NSXMLParser_Delegate: NSObject, NSXMLParserDelegate {
     @objc func parser(parser: NSXMLParser, didEndMappingPrefix prefix: String) {
         _parserAndDidEndMappingPrefix!(parser, prefix)
     }
-    @objc func parser(parser: NSXMLParser, foundCharacters string: String?) {
+    @objc func parser(parser: NSXMLParser, foundCharacters string: String) {
         _parserAndFoundCharacters!(parser, string)
     }
     @objc func parser(parser: NSXMLParser, foundIgnorableWhitespace whitespaceString: String) {
@@ -256,7 +256,7 @@ internal class NSXMLParser_Delegate: NSObject, NSXMLParserDelegate {
     @objc func parser(parser: NSXMLParser, foundProcessingInstructionWithTarget target: String, data: String?) {
         _parserAndFoundProcessingInstructionWithTarget!(parser, target, data)
     }
-    @objc func parser(parser: NSXMLParser, foundComment comment: String?) {
+    @objc func parser(parser: NSXMLParser, foundComment comment: String) {
         _parserAndFoundComment!(parser, comment)
     }
     @objc func parser(parser: NSXMLParser, foundCDATA CDATABlock: NSData) {

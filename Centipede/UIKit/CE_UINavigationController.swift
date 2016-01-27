@@ -13,7 +13,7 @@ public extension UINavigationController {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UINavigationController_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UINavigationController_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: UINavigationController_Delegate {
@@ -50,7 +50,7 @@ public extension UINavigationController {
         rebindingDelegate()
         return self
     }
-    public func ce_supportedInterfaceOrientations(handle: (navigationController: UINavigationController) -> Int) -> Self {
+    public func ce_supportedInterfaceOrientations(handle: (navigationController: UINavigationController) -> UIInterfaceOrientationMask) -> Self {
         ce._supportedInterfaceOrientations = handle
         rebindingDelegate()
         return self
@@ -77,7 +77,7 @@ internal class UINavigationController_Delegate: UIViewController_Delegate, UINav
     
     var _willShowViewController: ((UINavigationController, UIViewController, Bool) -> Void)?
     var _didShowViewController: ((UINavigationController, UIViewController, Bool) -> Void)?
-    var _supportedInterfaceOrientations: ((UINavigationController) -> Int)?
+    var _supportedInterfaceOrientations: ((UINavigationController) -> UIInterfaceOrientationMask)?
     var _preferredInterfaceOrientationForPresentation: ((UINavigationController) -> UIInterfaceOrientation)?
     var _interactionControllerForAnimationController: ((UINavigationController, UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)?
     var _animationControllerForOperation: ((UINavigationController, UINavigationControllerOperation, UIViewController, UIViewController) -> UIViewControllerAnimatedTransitioning?)?
@@ -107,7 +107,7 @@ internal class UINavigationController_Delegate: UIViewController_Delegate, UINav
     @objc func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
         _didShowViewController!(navigationController, viewController, animated)
     }
-    @objc func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> Int {
+    @objc func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         return _supportedInterfaceOrientations!(navigationController)
     }
     @objc func navigationControllerPreferredInterfaceOrientationForPresentation(navigationController: UINavigationController) -> UIInterfaceOrientation {

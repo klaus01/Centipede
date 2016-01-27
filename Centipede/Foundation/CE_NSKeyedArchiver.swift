@@ -13,7 +13,7 @@ public extension NSKeyedArchiver {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSKeyedArchiver_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? NSKeyedArchiver_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: NSKeyedArchiver_Delegate {
@@ -50,7 +50,7 @@ public extension NSKeyedArchiver {
         rebindingDelegate()
         return self
     }
-    public func ce_archiverAndWillReplaceObject(handle: (archiver: NSKeyedArchiver, object: AnyObject, newObject: AnyObject) -> Void) -> Self {
+    public func ce_archiverAndWillReplaceObject(handle: (archiver: NSKeyedArchiver, object: AnyObject?, newObject: AnyObject?) -> Void) -> Self {
         ce._archiverAndWillReplaceObject = handle
         rebindingDelegate()
         return self
@@ -72,7 +72,7 @@ internal class NSKeyedArchiver_Delegate: NSObject, NSKeyedArchiverDelegate {
     
     var _archiver: ((NSKeyedArchiver, AnyObject) -> AnyObject?)?
     var _archiverAndDidEncodeObject: ((NSKeyedArchiver, AnyObject?) -> Void)?
-    var _archiverAndWillReplaceObject: ((NSKeyedArchiver, AnyObject, AnyObject) -> Void)?
+    var _archiverAndWillReplaceObject: ((NSKeyedArchiver, AnyObject?, AnyObject?) -> Void)?
     var _archiverWillFinish: ((NSKeyedArchiver) -> Void)?
     var _archiverDidFinish: ((NSKeyedArchiver) -> Void)?
     
@@ -100,7 +100,7 @@ internal class NSKeyedArchiver_Delegate: NSObject, NSKeyedArchiverDelegate {
     @objc func archiver(archiver: NSKeyedArchiver, didEncodeObject object: AnyObject?) {
         _archiverAndDidEncodeObject!(archiver, object)
     }
-    @objc func archiver(archiver: NSKeyedArchiver, willReplaceObject object: AnyObject, withObject newObject: AnyObject) {
+    @objc func archiver(archiver: NSKeyedArchiver, willReplaceObject object: AnyObject?, withObject newObject: AnyObject?) {
         _archiverAndWillReplaceObject!(archiver, object, newObject)
     }
     @objc func archiverWillFinish(archiver: NSKeyedArchiver) {

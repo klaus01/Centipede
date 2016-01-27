@@ -13,7 +13,7 @@ public extension NSNetServiceBrowser {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSNetServiceBrowser_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? NSNetServiceBrowser_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: NSNetServiceBrowser_Delegate {
@@ -50,7 +50,7 @@ public extension NSNetServiceBrowser {
         rebindingDelegate()
         return self
     }
-    public func ce_didNotSearch(handle: (aNetServiceBrowser: NSNetServiceBrowser, errorDict: [NSObject : AnyObject]) -> Void) -> Self {
+    public func ce_didNotSearch(handle: (aNetServiceBrowser: NSNetServiceBrowser, errorDict: [String : NSNumber]) -> Void) -> Self {
         ce._didNotSearch = handle
         rebindingDelegate()
         return self
@@ -82,7 +82,7 @@ internal class NSNetServiceBrowser_Delegate: NSObject, NSNetServiceBrowserDelega
     
     var _willSearch: ((NSNetServiceBrowser) -> Void)?
     var _didStopSearch: ((NSNetServiceBrowser) -> Void)?
-    var _didNotSearch: ((NSNetServiceBrowser, [NSObject : AnyObject]) -> Void)?
+    var _didNotSearch: ((NSNetServiceBrowser, [String : NSNumber]) -> Void)?
     var _didFindDomain: ((NSNetServiceBrowser, String, Bool) -> Void)?
     var _didFindService: ((NSNetServiceBrowser, NSNetService, Bool) -> Void)?
     var _didRemoveDomain: ((NSNetServiceBrowser, String, Bool) -> Void)?
@@ -114,7 +114,7 @@ internal class NSNetServiceBrowser_Delegate: NSObject, NSNetServiceBrowserDelega
     @objc func netServiceBrowserDidStopSearch(aNetServiceBrowser: NSNetServiceBrowser) {
         _didStopSearch!(aNetServiceBrowser)
     }
-    @objc func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didNotSearch errorDict: [NSObject : AnyObject]) {
+    @objc func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
         _didNotSearch!(aNetServiceBrowser, errorDict)
     }
     @objc func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didFindDomain domainString: String, moreComing: Bool) {

@@ -13,7 +13,7 @@ public extension MKMapView {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MKMapView_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? MKMapView_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: MKMapView_Delegate {
@@ -60,7 +60,7 @@ public extension MKMapView {
         rebindingDelegate()
         return self
     }
-    public func ce_didFailLoadingMap(handle: (mapView: MKMapView, error: NSError!) -> Void) -> Self {
+    public func ce_didFailLoadingMap(handle: (mapView: MKMapView, error: NSError) -> Void) -> Self {
         ce._didFailLoadingMap = handle
         rebindingDelegate()
         return self
@@ -75,27 +75,27 @@ public extension MKMapView {
         rebindingDelegate()
         return self
     }
-    public func ce_viewForAnnotation(handle: (mapView: MKMapView, annotation: MKAnnotation!) -> MKAnnotationView!) -> Self {
+    public func ce_viewForAnnotation(handle: (mapView: MKMapView, annotation: MKAnnotation) -> MKAnnotationView?) -> Self {
         ce._viewForAnnotation = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddAnnotationViews(handle: (mapView: MKMapView, views: [AnyObject]!) -> Void) -> Self {
+    public func ce_didAddAnnotationViews(handle: (mapView: MKMapView, views: [MKAnnotationView]) -> Void) -> Self {
         ce._didAddAnnotationViews = handle
         rebindingDelegate()
         return self
     }
-    public func ce_annotationView(handle: (mapView: MKMapView, view: MKAnnotationView!, control: UIControl!) -> Void) -> Self {
+    public func ce_annotationView(handle: (mapView: MKMapView, view: MKAnnotationView, control: UIControl) -> Void) -> Self {
         ce._annotationView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didSelectAnnotationView(handle: (mapView: MKMapView, view: MKAnnotationView!) -> Void) -> Self {
+    public func ce_didSelectAnnotationView(handle: (mapView: MKMapView, view: MKAnnotationView) -> Void) -> Self {
         ce._didSelectAnnotationView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDeselectAnnotationView(handle: (mapView: MKMapView, view: MKAnnotationView!) -> Void) -> Self {
+    public func ce_didDeselectAnnotationView(handle: (mapView: MKMapView, view: MKAnnotationView) -> Void) -> Self {
         ce._didDeselectAnnotationView = handle
         rebindingDelegate()
         return self
@@ -110,17 +110,17 @@ public extension MKMapView {
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateUserLocation(handle: (mapView: MKMapView, userLocation: MKUserLocation!) -> Void) -> Self {
+    public func ce_didUpdateUserLocation(handle: (mapView: MKMapView, userLocation: MKUserLocation) -> Void) -> Self {
         ce._didUpdateUserLocation = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFailToLocateUserWithError(handle: (mapView: MKMapView, error: NSError!) -> Void) -> Self {
+    public func ce_didFailToLocateUserWithError(handle: (mapView: MKMapView, error: NSError) -> Void) -> Self {
         ce._didFailToLocateUserWithError = handle
         rebindingDelegate()
         return self
     }
-    public func ce_annotationViewAndAnnotationView(handle: (mapView: MKMapView, view: MKAnnotationView!, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState) -> Void) -> Self {
+    public func ce_annotationViewAndAnnotationView(handle: (mapView: MKMapView, view: MKAnnotationView, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState) -> Void) -> Self {
         ce._annotationViewAndAnnotationView = handle
         rebindingDelegate()
         return self
@@ -130,12 +130,12 @@ public extension MKMapView {
         rebindingDelegate()
         return self
     }
-    public func ce_rendererForOverlay(handle: (mapView: MKMapView, overlay: MKOverlay!) -> MKOverlayRenderer!) -> Self {
+    public func ce_rendererForOverlay(handle: (mapView: MKMapView, overlay: MKOverlay) -> MKOverlayRenderer) -> Self {
         ce._rendererForOverlay = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddOverlayRenderers(handle: (mapView: MKMapView, renderers: [AnyObject]!) -> Void) -> Self {
+    public func ce_didAddOverlayRenderers(handle: (mapView: MKMapView, renderers: [MKOverlayRenderer]) -> Void) -> Self {
         ce._didAddOverlayRenderers = handle
         rebindingDelegate()
         return self
@@ -149,22 +149,22 @@ internal class MKMapView_Delegate: NSObject, MKMapViewDelegate {
     var _regionDidChangeAnimated: ((MKMapView, Bool) -> Void)?
     var _willStartLoadingMap: ((MKMapView) -> Void)?
     var _didFinishLoadingMap: ((MKMapView) -> Void)?
-    var _didFailLoadingMap: ((MKMapView, NSError!) -> Void)?
+    var _didFailLoadingMap: ((MKMapView, NSError) -> Void)?
     var _willStartRenderingMap: ((MKMapView) -> Void)?
     var _didFinishRenderingMap: ((MKMapView, Bool) -> Void)?
-    var _viewForAnnotation: ((MKMapView, MKAnnotation!) -> MKAnnotationView!)?
-    var _didAddAnnotationViews: ((MKMapView, [AnyObject]!) -> Void)?
-    var _annotationView: ((MKMapView, MKAnnotationView!, UIControl!) -> Void)?
-    var _didSelectAnnotationView: ((MKMapView, MKAnnotationView!) -> Void)?
-    var _didDeselectAnnotationView: ((MKMapView, MKAnnotationView!) -> Void)?
+    var _viewForAnnotation: ((MKMapView, MKAnnotation) -> MKAnnotationView?)?
+    var _didAddAnnotationViews: ((MKMapView, [MKAnnotationView]) -> Void)?
+    var _annotationView: ((MKMapView, MKAnnotationView, UIControl) -> Void)?
+    var _didSelectAnnotationView: ((MKMapView, MKAnnotationView) -> Void)?
+    var _didDeselectAnnotationView: ((MKMapView, MKAnnotationView) -> Void)?
     var _willStartLocatingUser: ((MKMapView) -> Void)?
     var _didStopLocatingUser: ((MKMapView) -> Void)?
-    var _didUpdateUserLocation: ((MKMapView, MKUserLocation!) -> Void)?
-    var _didFailToLocateUserWithError: ((MKMapView, NSError!) -> Void)?
-    var _annotationViewAndAnnotationView: ((MKMapView, MKAnnotationView!, MKAnnotationViewDragState, MKAnnotationViewDragState) -> Void)?
+    var _didUpdateUserLocation: ((MKMapView, MKUserLocation) -> Void)?
+    var _didFailToLocateUserWithError: ((MKMapView, NSError) -> Void)?
+    var _annotationViewAndAnnotationView: ((MKMapView, MKAnnotationView, MKAnnotationViewDragState, MKAnnotationViewDragState) -> Void)?
     var _didChangeUserTrackingMode: ((MKMapView, MKUserTrackingMode, Bool) -> Void)?
-    var _rendererForOverlay: ((MKMapView, MKOverlay!) -> MKOverlayRenderer!)?
-    var _didAddOverlayRenderers: ((MKMapView, [AnyObject]!) -> Void)?
+    var _rendererForOverlay: ((MKMapView, MKOverlay) -> MKOverlayRenderer)?
+    var _didAddOverlayRenderers: ((MKMapView, [MKOverlayRenderer]) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -223,7 +223,7 @@ internal class MKMapView_Delegate: NSObject, MKMapViewDelegate {
     @objc func mapViewDidFinishLoadingMap(mapView: MKMapView) {
         _didFinishLoadingMap!(mapView)
     }
-    @objc func mapViewDidFailLoadingMap(mapView: MKMapView, withError error: NSError!) {
+    @objc func mapViewDidFailLoadingMap(mapView: MKMapView, withError error: NSError) {
         _didFailLoadingMap!(mapView, error)
     }
     @objc func mapViewWillStartRenderingMap(mapView: MKMapView) {
@@ -232,19 +232,19 @@ internal class MKMapView_Delegate: NSObject, MKMapViewDelegate {
     @objc func mapViewDidFinishRenderingMap(mapView: MKMapView, fullyRendered: Bool) {
         _didFinishRenderingMap!(mapView, fullyRendered)
     }
-    @objc func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    @objc func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         return _viewForAnnotation!(mapView, annotation)
     }
-    @objc func mapView(mapView: MKMapView, didAddAnnotationViews views: [AnyObject]!) {
+    @objc func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
         _didAddAnnotationViews!(mapView, views)
     }
-    @objc func mapView(mapView: MKMapView, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+    @objc func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         _annotationView!(mapView, view, control)
     }
-    @objc func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView!) {
+    @objc func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         _didSelectAnnotationView!(mapView, view)
     }
-    @objc func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView!) {
+    @objc func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
         _didDeselectAnnotationView!(mapView, view)
     }
     @objc func mapViewWillStartLocatingUser(mapView: MKMapView) {
@@ -253,22 +253,22 @@ internal class MKMapView_Delegate: NSObject, MKMapViewDelegate {
     @objc func mapViewDidStopLocatingUser(mapView: MKMapView) {
         _didStopLocatingUser!(mapView)
     }
-    @objc func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation!) {
+    @objc func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         _didUpdateUserLocation!(mapView, userLocation)
     }
-    @objc func mapView(mapView: MKMapView, didFailToLocateUserWithError error: NSError!) {
+    @objc func mapView(mapView: MKMapView, didFailToLocateUserWithError error: NSError) {
         _didFailToLocateUserWithError!(mapView, error)
     }
-    @objc func mapView(mapView: MKMapView, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+    @objc func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
         _annotationViewAndAnnotationView!(mapView, view, newState, oldState)
     }
     @objc func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
         _didChangeUserTrackingMode!(mapView, mode, animated)
     }
-    @objc func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+    @objc func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         return _rendererForOverlay!(mapView, overlay)
     }
-    @objc func mapView(mapView: MKMapView, didAddOverlayRenderers renderers: [AnyObject]!) {
+    @objc func mapView(mapView: MKMapView, didAddOverlayRenderers renderers: [MKOverlayRenderer]) {
         _didAddOverlayRenderers!(mapView, renderers)
     }
 }

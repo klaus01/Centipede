@@ -13,7 +13,7 @@ public extension HMAccessory {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: HMAccessory_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? HMAccessory_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: HMAccessory_Delegate {
@@ -45,12 +45,12 @@ public extension HMAccessory {
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateNameForService(handle: (accessory: HMAccessory, service: HMService!) -> Void) -> Self {
+    public func ce_didUpdateNameForService(handle: (accessory: HMAccessory, service: HMService) -> Void) -> Self {
         ce._didUpdateNameForService = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateAssociatedServiceTypeForService(handle: (accessory: HMAccessory, service: HMService!) -> Void) -> Self {
+    public func ce_didUpdateAssociatedServiceTypeForService(handle: (accessory: HMAccessory, service: HMService) -> Void) -> Self {
         ce._didUpdateAssociatedServiceTypeForService = handle
         rebindingDelegate()
         return self
@@ -65,7 +65,7 @@ public extension HMAccessory {
         rebindingDelegate()
         return self
     }
-    public func ce_serviceDidUpdateValueForCharacteristic(handle: (accessory: HMAccessory, service: HMService!, characteristic: HMCharacteristic!) -> Void) -> Self {
+    public func ce_serviceDidUpdateValueForCharacteristic(handle: (accessory: HMAccessory, service: HMService, characteristic: HMCharacteristic) -> Void) -> Self {
         ce._serviceDidUpdateValueForCharacteristic = handle
         rebindingDelegate()
         return self
@@ -76,11 +76,11 @@ public extension HMAccessory {
 internal class HMAccessory_Delegate: NSObject, HMAccessoryDelegate {
     
     var _didUpdateName: ((HMAccessory) -> Void)?
-    var _didUpdateNameForService: ((HMAccessory, HMService!) -> Void)?
-    var _didUpdateAssociatedServiceTypeForService: ((HMAccessory, HMService!) -> Void)?
+    var _didUpdateNameForService: ((HMAccessory, HMService) -> Void)?
+    var _didUpdateAssociatedServiceTypeForService: ((HMAccessory, HMService) -> Void)?
     var _didUpdateServices: ((HMAccessory) -> Void)?
     var _didUpdateReachability: ((HMAccessory) -> Void)?
-    var _serviceDidUpdateValueForCharacteristic: ((HMAccessory, HMService!, HMCharacteristic!) -> Void)?
+    var _serviceDidUpdateValueForCharacteristic: ((HMAccessory, HMService, HMCharacteristic) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -104,10 +104,10 @@ internal class HMAccessory_Delegate: NSObject, HMAccessoryDelegate {
     @objc func accessoryDidUpdateName(accessory: HMAccessory) {
         _didUpdateName!(accessory)
     }
-    @objc func accessory(accessory: HMAccessory, didUpdateNameForService service: HMService!) {
+    @objc func accessory(accessory: HMAccessory, didUpdateNameForService service: HMService) {
         _didUpdateNameForService!(accessory, service)
     }
-    @objc func accessory(accessory: HMAccessory, didUpdateAssociatedServiceTypeForService service: HMService!) {
+    @objc func accessory(accessory: HMAccessory, didUpdateAssociatedServiceTypeForService service: HMService) {
         _didUpdateAssociatedServiceTypeForService!(accessory, service)
     }
     @objc func accessoryDidUpdateServices(accessory: HMAccessory) {
@@ -116,7 +116,7 @@ internal class HMAccessory_Delegate: NSObject, HMAccessoryDelegate {
     @objc func accessoryDidUpdateReachability(accessory: HMAccessory) {
         _didUpdateReachability!(accessory)
     }
-    @objc func accessory(accessory: HMAccessory, service: HMService!, didUpdateValueForCharacteristic characteristic: HMCharacteristic!) {
+    @objc func accessory(accessory: HMAccessory, service: HMService, didUpdateValueForCharacteristic characteristic: HMCharacteristic) {
         _serviceDidUpdateValueForCharacteristic!(accessory, service, characteristic)
     }
 }

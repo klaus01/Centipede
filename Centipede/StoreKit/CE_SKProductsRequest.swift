@@ -13,7 +13,7 @@ public extension SKProductsRequest {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: SKProductsRequest_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? SKProductsRequest_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: SKProductsRequest_Delegate {
@@ -40,7 +40,7 @@ public extension SKProductsRequest {
         return SKProductsRequest_Delegate()
     }
     
-    public func ce_didReceiveResponse(handle: (request: SKProductsRequest, response: SKProductsResponse!) -> Void) -> Self {
+    public func ce_didReceiveResponse(handle: (request: SKProductsRequest, response: SKProductsResponse) -> Void) -> Self {
         ce._didReceiveResponse = handle
         rebindingDelegate()
         return self
@@ -50,7 +50,7 @@ public extension SKProductsRequest {
 
 internal class SKProductsRequest_Delegate: SKRequest_Delegate, SKProductsRequestDelegate {
     
-    var _didReceiveResponse: ((SKProductsRequest, SKProductsResponse!) -> Void)?
+    var _didReceiveResponse: ((SKProductsRequest, SKProductsResponse) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -66,7 +66,7 @@ internal class SKProductsRequest_Delegate: SKRequest_Delegate, SKProductsRequest
     }
     
     
-    @objc func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse!) {
+    @objc func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
         _didReceiveResponse!(request, response)
     }
 }

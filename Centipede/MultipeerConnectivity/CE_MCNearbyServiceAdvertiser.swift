@@ -13,7 +13,7 @@ public extension MCNearbyServiceAdvertiser {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MCNearbyServiceAdvertiser_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? MCNearbyServiceAdvertiser_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: MCNearbyServiceAdvertiser_Delegate {
@@ -40,12 +40,12 @@ public extension MCNearbyServiceAdvertiser {
         return MCNearbyServiceAdvertiser_Delegate()
     }
     
-    public func ce_advertiser(handle: (advertiser: MCNearbyServiceAdvertiser, peerID: MCPeerID!, context: NSData!, invitationHandler: ((Bool, MCSession!) -> Void)!) -> Void) -> Self {
+    public func ce_advertiser(handle: (advertiser: MCNearbyServiceAdvertiser, peerID: MCPeerID, context: NSData?, invitationHandler: (Bool, MCSession) -> Void) -> Void) -> Self {
         ce._advertiser = handle
         rebindingDelegate()
         return self
     }
-    public func ce_advertiserAndDidNotStartAdvertisingPeer(handle: (advertiser: MCNearbyServiceAdvertiser, error: NSError!) -> Void) -> Self {
+    public func ce_advertiserAndDidNotStartAdvertisingPeer(handle: (advertiser: MCNearbyServiceAdvertiser, error: NSError) -> Void) -> Self {
         ce._advertiserAndDidNotStartAdvertisingPeer = handle
         rebindingDelegate()
         return self
@@ -55,8 +55,8 @@ public extension MCNearbyServiceAdvertiser {
 
 internal class MCNearbyServiceAdvertiser_Delegate: NSObject, MCNearbyServiceAdvertiserDelegate {
     
-    var _advertiser: ((MCNearbyServiceAdvertiser, MCPeerID!, NSData!, ((Bool, MCSession!) -> Void)!) -> Void)?
-    var _advertiserAndDidNotStartAdvertisingPeer: ((MCNearbyServiceAdvertiser, NSError!) -> Void)?
+    var _advertiser: ((MCNearbyServiceAdvertiser, MCPeerID, NSData?, (Bool, MCSession) -> Void) -> Void)?
+    var _advertiserAndDidNotStartAdvertisingPeer: ((MCNearbyServiceAdvertiser, NSError) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -73,10 +73,10 @@ internal class MCNearbyServiceAdvertiser_Delegate: NSObject, MCNearbyServiceAdve
     }
     
     
-    @objc func advertiser(advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID!, withContext context: NSData!, invitationHandler: ((Bool, MCSession!) -> Void)!) -> Void {
+    @objc func advertiser(advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: NSData?, invitationHandler: (Bool, MCSession) -> Void) -> Void {
         return _advertiser!(advertiser, peerID, context, invitationHandler)
     }
-    @objc func advertiser(advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: NSError!) {
+    @objc func advertiser(advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: NSError) {
         _advertiserAndDidNotStartAdvertisingPeer!(advertiser, error)
     }
 }

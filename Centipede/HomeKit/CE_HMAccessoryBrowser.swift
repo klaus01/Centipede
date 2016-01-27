@@ -13,7 +13,7 @@ public extension HMAccessoryBrowser {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: HMAccessoryBrowser_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? HMAccessoryBrowser_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: HMAccessoryBrowser_Delegate {
@@ -40,12 +40,12 @@ public extension HMAccessoryBrowser {
         return HMAccessoryBrowser_Delegate()
     }
     
-    public func ce_didFindNewAccessory(handle: (browser: HMAccessoryBrowser, accessory: HMAccessory!) -> Void) -> Self {
+    public func ce_didFindNewAccessory(handle: (browser: HMAccessoryBrowser, accessory: HMAccessory) -> Void) -> Self {
         ce._didFindNewAccessory = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveNewAccessory(handle: (browser: HMAccessoryBrowser, accessory: HMAccessory!) -> Void) -> Self {
+    public func ce_didRemoveNewAccessory(handle: (browser: HMAccessoryBrowser, accessory: HMAccessory) -> Void) -> Self {
         ce._didRemoveNewAccessory = handle
         rebindingDelegate()
         return self
@@ -55,8 +55,8 @@ public extension HMAccessoryBrowser {
 
 internal class HMAccessoryBrowser_Delegate: NSObject, HMAccessoryBrowserDelegate {
     
-    var _didFindNewAccessory: ((HMAccessoryBrowser, HMAccessory!) -> Void)?
-    var _didRemoveNewAccessory: ((HMAccessoryBrowser, HMAccessory!) -> Void)?
+    var _didFindNewAccessory: ((HMAccessoryBrowser, HMAccessory) -> Void)?
+    var _didRemoveNewAccessory: ((HMAccessoryBrowser, HMAccessory) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -73,10 +73,10 @@ internal class HMAccessoryBrowser_Delegate: NSObject, HMAccessoryBrowserDelegate
     }
     
     
-    @objc func accessoryBrowser(browser: HMAccessoryBrowser, didFindNewAccessory accessory: HMAccessory!) {
+    @objc func accessoryBrowser(browser: HMAccessoryBrowser, didFindNewAccessory accessory: HMAccessory) {
         _didFindNewAccessory!(browser, accessory)
     }
-    @objc func accessoryBrowser(browser: HMAccessoryBrowser, didRemoveNewAccessory accessory: HMAccessory!) {
+    @objc func accessoryBrowser(browser: HMAccessoryBrowser, didRemoveNewAccessory accessory: HMAccessory) {
         _didRemoveNewAccessory!(browser, accessory)
     }
 }

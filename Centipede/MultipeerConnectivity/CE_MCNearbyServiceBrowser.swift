@@ -13,7 +13,7 @@ public extension MCNearbyServiceBrowser {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MCNearbyServiceBrowser_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? MCNearbyServiceBrowser_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: MCNearbyServiceBrowser_Delegate {
@@ -40,17 +40,17 @@ public extension MCNearbyServiceBrowser {
         return MCNearbyServiceBrowser_Delegate()
     }
     
-    public func ce_browser(handle: (browser: MCNearbyServiceBrowser, peerID: MCPeerID!, info: [NSObject : AnyObject]!) -> Void) -> Self {
+    public func ce_browser(handle: (browser: MCNearbyServiceBrowser, peerID: MCPeerID, info: [String : String]?) -> Void) -> Self {
         ce._browser = handle
         rebindingDelegate()
         return self
     }
-    public func ce_browserAndLostPeer(handle: (browser: MCNearbyServiceBrowser, peerID: MCPeerID!) -> Void) -> Self {
+    public func ce_browserAndLostPeer(handle: (browser: MCNearbyServiceBrowser, peerID: MCPeerID) -> Void) -> Self {
         ce._browserAndLostPeer = handle
         rebindingDelegate()
         return self
     }
-    public func ce_browserAndDidNotStartBrowsingForPeers(handle: (browser: MCNearbyServiceBrowser, error: NSError!) -> Void) -> Self {
+    public func ce_browserAndDidNotStartBrowsingForPeers(handle: (browser: MCNearbyServiceBrowser, error: NSError) -> Void) -> Self {
         ce._browserAndDidNotStartBrowsingForPeers = handle
         rebindingDelegate()
         return self
@@ -60,9 +60,9 @@ public extension MCNearbyServiceBrowser {
 
 internal class MCNearbyServiceBrowser_Delegate: NSObject, MCNearbyServiceBrowserDelegate {
     
-    var _browser: ((MCNearbyServiceBrowser, MCPeerID!, [NSObject : AnyObject]!) -> Void)?
-    var _browserAndLostPeer: ((MCNearbyServiceBrowser, MCPeerID!) -> Void)?
-    var _browserAndDidNotStartBrowsingForPeers: ((MCNearbyServiceBrowser, NSError!) -> Void)?
+    var _browser: ((MCNearbyServiceBrowser, MCPeerID, [String : String]?) -> Void)?
+    var _browserAndLostPeer: ((MCNearbyServiceBrowser, MCPeerID) -> Void)?
+    var _browserAndDidNotStartBrowsingForPeers: ((MCNearbyServiceBrowser, NSError) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -80,13 +80,13 @@ internal class MCNearbyServiceBrowser_Delegate: NSObject, MCNearbyServiceBrowser
     }
     
     
-    @objc func browser(browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID!, withDiscoveryInfo info: [NSObject : AnyObject]!) {
+    @objc func browser(browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         _browser!(browser, peerID, info)
     }
-    @objc func browser(browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID!) {
+    @objc func browser(browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         _browserAndLostPeer!(browser, peerID)
     }
-    @objc func browser(browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: NSError!) {
+    @objc func browser(browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: NSError) {
         _browserAndDidNotStartBrowsingForPeers!(browser, error)
     }
 }

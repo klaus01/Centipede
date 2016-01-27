@@ -13,7 +13,7 @@ public extension AVAudioRecorder {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: AVAudioRecorder_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? AVAudioRecorder_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: AVAudioRecorder_Delegate {
@@ -45,7 +45,7 @@ public extension AVAudioRecorder {
         rebindingDelegate()
         return self
     }
-    public func ce_encodeErrorDidOccur(handle: (recorder: AVAudioRecorder, error: NSError!) -> Void) -> Self {
+    public func ce_encodeErrorDidOccur(handle: (recorder: AVAudioRecorder, error: NSError?) -> Void) -> Self {
         ce._encodeErrorDidOccur = handle
         rebindingDelegate()
         return self
@@ -66,7 +66,7 @@ public extension AVAudioRecorder {
 internal class AVAudioRecorder_Delegate: NSObject, AVAudioRecorderDelegate {
     
     var _didFinishRecording: ((AVAudioRecorder, Bool) -> Void)?
-    var _encodeErrorDidOccur: ((AVAudioRecorder, NSError!) -> Void)?
+    var _encodeErrorDidOccur: ((AVAudioRecorder, NSError?) -> Void)?
     var _beginInterruption: ((AVAudioRecorder) -> Void)?
     var _endInterruption: ((AVAudioRecorder, Int) -> Void)?
     
@@ -90,7 +90,7 @@ internal class AVAudioRecorder_Delegate: NSObject, AVAudioRecorderDelegate {
     @objc func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         _didFinishRecording!(recorder, flag)
     }
-    @objc func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder, error: NSError!) {
+    @objc func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder, error: NSError?) {
         _encodeErrorDidOccur!(recorder, error)
     }
     @objc func audioRecorderBeginInterruption(recorder: AVAudioRecorder) {

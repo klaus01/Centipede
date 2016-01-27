@@ -13,7 +13,7 @@ public extension CBPeripheralManager {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CBPeripheralManager_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? CBPeripheralManager_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: CBPeripheralManager_Delegate {
@@ -45,37 +45,37 @@ public extension CBPeripheralManager {
         rebindingDelegate()
         return self
     }
-    public func ce_willRestoreState(handle: (peripheral: CBPeripheralManager, dict: [NSObject : AnyObject]!) -> Void) -> Self {
+    public func ce_willRestoreState(handle: (peripheral: CBPeripheralManager, dict: [String : AnyObject]) -> Void) -> Self {
         ce._willRestoreState = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didStartAdvertising(handle: (peripheral: CBPeripheralManager, error: NSError!) -> Void) -> Self {
+    public func ce_didStartAdvertising(handle: (peripheral: CBPeripheralManager, error: NSError?) -> Void) -> Self {
         ce._didStartAdvertising = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddService(handle: (peripheral: CBPeripheralManager, service: CBService!, error: NSError!) -> Void) -> Self {
+    public func ce_didAddService(handle: (peripheral: CBPeripheralManager, service: CBService, error: NSError?) -> Void) -> Self {
         ce._didAddService = handle
         rebindingDelegate()
         return self
     }
-    public func ce_centralDidSubscribeToCharacteristic(handle: (peripheral: CBPeripheralManager, central: CBCentral!, characteristic: CBCharacteristic!) -> Void) -> Self {
+    public func ce_centralDidSubscribeToCharacteristic(handle: (peripheral: CBPeripheralManager, central: CBCentral, characteristic: CBCharacteristic) -> Void) -> Self {
         ce._centralDidSubscribeToCharacteristic = handle
         rebindingDelegate()
         return self
     }
-    public func ce_centralDidUnsubscribeFromCharacteristic(handle: (peripheral: CBPeripheralManager, central: CBCentral!, characteristic: CBCharacteristic!) -> Void) -> Self {
+    public func ce_centralDidUnsubscribeFromCharacteristic(handle: (peripheral: CBPeripheralManager, central: CBCentral, characteristic: CBCharacteristic) -> Void) -> Self {
         ce._centralDidUnsubscribeFromCharacteristic = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didReceiveReadRequest(handle: (peripheral: CBPeripheralManager, request: CBATTRequest!) -> Void) -> Self {
+    public func ce_didReceiveReadRequest(handle: (peripheral: CBPeripheralManager, request: CBATTRequest) -> Void) -> Self {
         ce._didReceiveReadRequest = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didReceiveWriteRequests(handle: (peripheral: CBPeripheralManager, requests: [AnyObject]!) -> Void) -> Self {
+    public func ce_didReceiveWriteRequests(handle: (peripheral: CBPeripheralManager, requests: [CBATTRequest]) -> Void) -> Self {
         ce._didReceiveWriteRequests = handle
         rebindingDelegate()
         return self
@@ -91,13 +91,13 @@ public extension CBPeripheralManager {
 internal class CBPeripheralManager_Delegate: NSObject, CBPeripheralManagerDelegate {
     
     var _didUpdateState: ((CBPeripheralManager) -> Void)?
-    var _willRestoreState: ((CBPeripheralManager, [NSObject : AnyObject]!) -> Void)?
-    var _didStartAdvertising: ((CBPeripheralManager, NSError!) -> Void)?
-    var _didAddService: ((CBPeripheralManager, CBService!, NSError!) -> Void)?
-    var _centralDidSubscribeToCharacteristic: ((CBPeripheralManager, CBCentral!, CBCharacteristic!) -> Void)?
-    var _centralDidUnsubscribeFromCharacteristic: ((CBPeripheralManager, CBCentral!, CBCharacteristic!) -> Void)?
-    var _didReceiveReadRequest: ((CBPeripheralManager, CBATTRequest!) -> Void)?
-    var _didReceiveWriteRequests: ((CBPeripheralManager, [AnyObject]!) -> Void)?
+    var _willRestoreState: ((CBPeripheralManager, [String : AnyObject]) -> Void)?
+    var _didStartAdvertising: ((CBPeripheralManager, NSError?) -> Void)?
+    var _didAddService: ((CBPeripheralManager, CBService, NSError?) -> Void)?
+    var _centralDidSubscribeToCharacteristic: ((CBPeripheralManager, CBCentral, CBCharacteristic) -> Void)?
+    var _centralDidUnsubscribeFromCharacteristic: ((CBPeripheralManager, CBCentral, CBCharacteristic) -> Void)?
+    var _didReceiveReadRequest: ((CBPeripheralManager, CBATTRequest) -> Void)?
+    var _didReceiveWriteRequests: ((CBPeripheralManager, [CBATTRequest]) -> Void)?
     var _isReadyToUpdateSubscribers: ((CBPeripheralManager) -> Void)?
     
     
@@ -131,25 +131,25 @@ internal class CBPeripheralManager_Delegate: NSObject, CBPeripheralManagerDelega
     @objc func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
         _didUpdateState!(peripheral)
     }
-    @objc func peripheralManager(peripheral: CBPeripheralManager, willRestoreState dict: [NSObject : AnyObject]!) {
+    @objc func peripheralManager(peripheral: CBPeripheralManager, willRestoreState dict: [String : AnyObject]) {
         _willRestoreState!(peripheral, dict)
     }
-    @objc func peripheralManagerDidStartAdvertising(peripheral: CBPeripheralManager, error: NSError!) {
+    @objc func peripheralManagerDidStartAdvertising(peripheral: CBPeripheralManager, error: NSError?) {
         _didStartAdvertising!(peripheral, error)
     }
-    @objc func peripheralManager(peripheral: CBPeripheralManager, didAddService service: CBService!, error: NSError!) {
+    @objc func peripheralManager(peripheral: CBPeripheralManager, didAddService service: CBService, error: NSError?) {
         _didAddService!(peripheral, service, error)
     }
-    @objc func peripheralManager(peripheral: CBPeripheralManager, central: CBCentral!, didSubscribeToCharacteristic characteristic: CBCharacteristic!) {
+    @objc func peripheralManager(peripheral: CBPeripheralManager, central: CBCentral, didSubscribeToCharacteristic characteristic: CBCharacteristic) {
         _centralDidSubscribeToCharacteristic!(peripheral, central, characteristic)
     }
-    @objc func peripheralManager(peripheral: CBPeripheralManager, central: CBCentral!, didUnsubscribeFromCharacteristic characteristic: CBCharacteristic!) {
+    @objc func peripheralManager(peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFromCharacteristic characteristic: CBCharacteristic) {
         _centralDidUnsubscribeFromCharacteristic!(peripheral, central, characteristic)
     }
-    @objc func peripheralManager(peripheral: CBPeripheralManager, didReceiveReadRequest request: CBATTRequest!) {
+    @objc func peripheralManager(peripheral: CBPeripheralManager, didReceiveReadRequest request: CBATTRequest) {
         _didReceiveReadRequest!(peripheral, request)
     }
-    @objc func peripheralManager(peripheral: CBPeripheralManager, didReceiveWriteRequests requests: [AnyObject]!) {
+    @objc func peripheralManager(peripheral: CBPeripheralManager, didReceiveWriteRequests requests: [CBATTRequest]) {
         _didReceiveWriteRequests!(peripheral, requests)
     }
     @objc func peripheralManagerIsReadyToUpdateSubscribers(peripheral: CBPeripheralManager) {

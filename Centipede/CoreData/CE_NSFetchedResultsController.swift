@@ -13,7 +13,7 @@ public extension NSFetchedResultsController {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSFetchedResultsController_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? NSFetchedResultsController_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: NSFetchedResultsController_Delegate {
@@ -60,7 +60,7 @@ public extension NSFetchedResultsController {
         rebindingDelegate()
         return self
     }
-    public func ce_controllerAndSectionIndexTitleForSectionName(handle: (controller: NSFetchedResultsController, sectionName: String?) -> String?) -> Self {
+    public func ce_controllerAndSectionIndexTitleForSectionName(handle: (controller: NSFetchedResultsController, sectionName: String) -> String?) -> Self {
         ce._controllerAndSectionIndexTitleForSectionName = handle
         rebindingDelegate()
         return self
@@ -74,7 +74,7 @@ internal class NSFetchedResultsController_Delegate: NSObject, NSFetchedResultsCo
     var _controllerAndDidChangeSection: ((NSFetchedResultsController, NSFetchedResultsSectionInfo, Int, NSFetchedResultsChangeType) -> Void)?
     var _controllerWillChangeContent: ((NSFetchedResultsController) -> Void)?
     var _controllerDidChangeContent: ((NSFetchedResultsController) -> Void)?
-    var _controllerAndSectionIndexTitleForSectionName: ((NSFetchedResultsController, String?) -> String?)?
+    var _controllerAndSectionIndexTitleForSectionName: ((NSFetchedResultsController, String) -> String?)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -106,7 +106,7 @@ internal class NSFetchedResultsController_Delegate: NSObject, NSFetchedResultsCo
     @objc func controllerDidChangeContent(controller: NSFetchedResultsController) {
         _controllerDidChangeContent!(controller)
     }
-    @objc func controller(controller: NSFetchedResultsController, sectionIndexTitleForSectionName sectionName: String?) -> String? {
+    @objc func controller(controller: NSFetchedResultsController, sectionIndexTitleForSectionName sectionName: String) -> String? {
         return _controllerAndSectionIndexTitleForSectionName!(controller, sectionName)
     }
 }

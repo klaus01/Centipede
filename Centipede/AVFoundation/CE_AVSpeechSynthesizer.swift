@@ -13,7 +13,7 @@ public extension AVSpeechSynthesizer {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: AVSpeechSynthesizer_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? AVSpeechSynthesizer_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: AVSpeechSynthesizer_Delegate {
@@ -40,32 +40,32 @@ public extension AVSpeechSynthesizer {
         return AVSpeechSynthesizer_Delegate()
     }
     
-    public func ce_didStartSpeechUtterance(handle: (synthesizer: AVSpeechSynthesizer, utterance: AVSpeechUtterance!) -> Void) -> Self {
+    public func ce_didStartSpeechUtterance(handle: (synthesizer: AVSpeechSynthesizer, utterance: AVSpeechUtterance) -> Void) -> Self {
         ce._didStartSpeechUtterance = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFinishSpeechUtterance(handle: (synthesizer: AVSpeechSynthesizer, utterance: AVSpeechUtterance!) -> Void) -> Self {
+    public func ce_didFinishSpeechUtterance(handle: (synthesizer: AVSpeechSynthesizer, utterance: AVSpeechUtterance) -> Void) -> Self {
         ce._didFinishSpeechUtterance = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didPauseSpeechUtterance(handle: (synthesizer: AVSpeechSynthesizer, utterance: AVSpeechUtterance!) -> Void) -> Self {
+    public func ce_didPauseSpeechUtterance(handle: (synthesizer: AVSpeechSynthesizer, utterance: AVSpeechUtterance) -> Void) -> Self {
         ce._didPauseSpeechUtterance = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didContinueSpeechUtterance(handle: (synthesizer: AVSpeechSynthesizer, utterance: AVSpeechUtterance!) -> Void) -> Self {
+    public func ce_didContinueSpeechUtterance(handle: (synthesizer: AVSpeechSynthesizer, utterance: AVSpeechUtterance) -> Void) -> Self {
         ce._didContinueSpeechUtterance = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didCancelSpeechUtterance(handle: (synthesizer: AVSpeechSynthesizer, utterance: AVSpeechUtterance!) -> Void) -> Self {
+    public func ce_didCancelSpeechUtterance(handle: (synthesizer: AVSpeechSynthesizer, utterance: AVSpeechUtterance) -> Void) -> Self {
         ce._didCancelSpeechUtterance = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willSpeakRangeOfSpeechString(handle: (synthesizer: AVSpeechSynthesizer, characterRange: NSRange, utterance: AVSpeechUtterance!) -> Void) -> Self {
+    public func ce_willSpeakRangeOfSpeechString(handle: (synthesizer: AVSpeechSynthesizer, characterRange: NSRange, utterance: AVSpeechUtterance) -> Void) -> Self {
         ce._willSpeakRangeOfSpeechString = handle
         rebindingDelegate()
         return self
@@ -75,12 +75,12 @@ public extension AVSpeechSynthesizer {
 
 internal class AVSpeechSynthesizer_Delegate: NSObject, AVSpeechSynthesizerDelegate {
     
-    var _didStartSpeechUtterance: ((AVSpeechSynthesizer, AVSpeechUtterance!) -> Void)?
-    var _didFinishSpeechUtterance: ((AVSpeechSynthesizer, AVSpeechUtterance!) -> Void)?
-    var _didPauseSpeechUtterance: ((AVSpeechSynthesizer, AVSpeechUtterance!) -> Void)?
-    var _didContinueSpeechUtterance: ((AVSpeechSynthesizer, AVSpeechUtterance!) -> Void)?
-    var _didCancelSpeechUtterance: ((AVSpeechSynthesizer, AVSpeechUtterance!) -> Void)?
-    var _willSpeakRangeOfSpeechString: ((AVSpeechSynthesizer, NSRange, AVSpeechUtterance!) -> Void)?
+    var _didStartSpeechUtterance: ((AVSpeechSynthesizer, AVSpeechUtterance) -> Void)?
+    var _didFinishSpeechUtterance: ((AVSpeechSynthesizer, AVSpeechUtterance) -> Void)?
+    var _didPauseSpeechUtterance: ((AVSpeechSynthesizer, AVSpeechUtterance) -> Void)?
+    var _didContinueSpeechUtterance: ((AVSpeechSynthesizer, AVSpeechUtterance) -> Void)?
+    var _didCancelSpeechUtterance: ((AVSpeechSynthesizer, AVSpeechUtterance) -> Void)?
+    var _willSpeakRangeOfSpeechString: ((AVSpeechSynthesizer, NSRange, AVSpeechUtterance) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -101,22 +101,22 @@ internal class AVSpeechSynthesizer_Delegate: NSObject, AVSpeechSynthesizerDelega
     }
     
     
-    @objc func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance!) {
+    @objc func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
         _didStartSpeechUtterance!(synthesizer, utterance)
     }
-    @objc func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
+    @objc func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
         _didFinishSpeechUtterance!(synthesizer, utterance)
     }
-    @objc func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didPauseSpeechUtterance utterance: AVSpeechUtterance!) {
+    @objc func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didPauseSpeechUtterance utterance: AVSpeechUtterance) {
         _didPauseSpeechUtterance!(synthesizer, utterance)
     }
-    @objc func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didContinueSpeechUtterance utterance: AVSpeechUtterance!) {
+    @objc func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didContinueSpeechUtterance utterance: AVSpeechUtterance) {
         _didContinueSpeechUtterance!(synthesizer, utterance)
     }
-    @objc func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance!) {
+    @objc func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance) {
         _didCancelSpeechUtterance!(synthesizer, utterance)
     }
-    @objc func speechSynthesizer(synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance!) {
+    @objc func speechSynthesizer(synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
         _willSpeakRangeOfSpeechString!(synthesizer, characterRange, utterance)
     }
 }

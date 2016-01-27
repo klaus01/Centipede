@@ -13,7 +13,7 @@ public extension UIToolbar {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIToolbar_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIToolbar_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: UIToolbar_Delegate {

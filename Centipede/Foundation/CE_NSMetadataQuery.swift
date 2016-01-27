@@ -13,7 +13,7 @@ public extension NSMetadataQuery {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSMetadataQuery_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? NSMetadataQuery_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: NSMetadataQuery_Delegate {

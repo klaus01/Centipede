@@ -13,7 +13,7 @@ public extension NSURLSession {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSURLSession_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? NSURLSession_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: NSURLSession_Delegate {
@@ -25,7 +25,7 @@ public extension NSURLSession {
         }
     }
     
-    public convenience init(configuration: NSURLSessionConfiguration?, delegateQueue queue: NSOperationQueue?) {
+    public convenience init(configuration: NSURLSessionConfiguration, delegateQueue queue: NSOperationQueue?) {
         let obj = NSURLSession_Delegate()
         self.init(configuration: configuration, delegate: obj, delegateQueue: queue)
         _delegate = obj

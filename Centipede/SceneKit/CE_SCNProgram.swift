@@ -13,7 +13,7 @@ public extension SCNProgram {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: SCNProgram_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? SCNProgram_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: SCNProgram_Delegate {

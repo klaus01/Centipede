@@ -13,7 +13,7 @@ public extension AVAudioPlayer {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: AVAudioPlayer_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? AVAudioPlayer_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: AVAudioPlayer_Delegate {
@@ -45,7 +45,7 @@ public extension AVAudioPlayer {
         rebindingDelegate()
         return self
     }
-    public func ce_decodeErrorDidOccur(handle: (player: AVAudioPlayer, error: NSError!) -> Void) -> Self {
+    public func ce_decodeErrorDidOccur(handle: (player: AVAudioPlayer, error: NSError?) -> Void) -> Self {
         ce._decodeErrorDidOccur = handle
         rebindingDelegate()
         return self
@@ -66,7 +66,7 @@ public extension AVAudioPlayer {
 internal class AVAudioPlayer_Delegate: NSObject, AVAudioPlayerDelegate {
     
     var _didFinishPlaying: ((AVAudioPlayer, Bool) -> Void)?
-    var _decodeErrorDidOccur: ((AVAudioPlayer, NSError!) -> Void)?
+    var _decodeErrorDidOccur: ((AVAudioPlayer, NSError?) -> Void)?
     var _beginInterruption: ((AVAudioPlayer) -> Void)?
     var _endInterruption: ((AVAudioPlayer, Int) -> Void)?
     
@@ -90,7 +90,7 @@ internal class AVAudioPlayer_Delegate: NSObject, AVAudioPlayerDelegate {
     @objc func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         _didFinishPlaying!(player, flag)
     }
-    @objc func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer, error: NSError!) {
+    @objc func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer, error: NSError?) {
         _decodeErrorDidOccur!(player, error)
     }
     @objc func audioPlayerBeginInterruption(player: AVAudioPlayer) {

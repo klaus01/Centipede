@@ -8,12 +8,13 @@
 
 import MediaPlayer
 
+@available(iOS 7.1, *)
 public extension MPPlayableContentManager {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MPPlayableContentManager_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? MPPlayableContentManager_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: MPPlayableContentManager_Delegate {
@@ -42,12 +43,12 @@ public extension MPPlayableContentManager {
         return MPPlayableContentManager_Delegate()
     }
     
-    public func ce_initiatePlaybackOfContentItemAtIndexPath(handle: (contentManager: MPPlayableContentManager, indexPath: NSIndexPath!, completionHandler: ((NSError!) -> Void)!) -> Void) -> Self {
+    public func ce_initiatePlaybackOfContentItemAtIndexPath(handle: (contentManager: MPPlayableContentManager, indexPath: NSIndexPath!, completionHandler: (NSError?) -> Void) -> Void) -> Self {
         ce._initiatePlaybackOfContentItemAtIndexPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_beginLoadingChildItemsAtIndexPath(handle: (indexPath: NSIndexPath, completionHandler: ((NSError!) -> Void)!) -> Void) -> Self {
+    public func ce_beginLoadingChildItemsAtIndexPath(handle: (indexPath: NSIndexPath, completionHandler: (NSError?) -> Void) -> Void) -> Self {
         ce._beginLoadingChildItemsAtIndexPath = handle
         rebindingDelegate()
         return self
@@ -62,7 +63,7 @@ public extension MPPlayableContentManager {
         rebindingDelegate()
         return self
     }
-    public func ce_contentItemAtIndexPath(handle: (indexPath: NSIndexPath) -> MPContentItem!) -> Self {
+    public func ce_contentItemAtIndexPath(handle: (indexPath: NSIndexPath) -> MPContentItem?) -> Self {
         ce._contentItemAtIndexPath = handle
         rebindingDelegate()
         return self
@@ -72,11 +73,11 @@ public extension MPPlayableContentManager {
 
 internal class MPPlayableContentManager_Delegate: NSObject, MPPlayableContentDelegate, MPPlayableContentDataSource {
     
-    var _initiatePlaybackOfContentItemAtIndexPath: ((MPPlayableContentManager, NSIndexPath!, ((NSError!) -> Void)!) -> Void)?
-    var _beginLoadingChildItemsAtIndexPath: ((NSIndexPath, ((NSError!) -> Void)!) -> Void)?
+    var _initiatePlaybackOfContentItemAtIndexPath: ((MPPlayableContentManager, NSIndexPath, (NSError?) -> Void) -> Void)?
+    var _beginLoadingChildItemsAtIndexPath: ((NSIndexPath, (NSError?) -> Void) -> Void)?
     var _childItemsDisplayPlaybackProgressAtIndexPath: ((NSIndexPath) -> Bool)?
     var _numberOfChildItemsAtIndexPath: ((NSIndexPath) -> Int)?
-    var _contentItemAtIndexPath: ((NSIndexPath) -> MPContentItem!)?
+    var _contentItemAtIndexPath: ((NSIndexPath) -> MPContentItem?)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -96,10 +97,10 @@ internal class MPPlayableContentManager_Delegate: NSObject, MPPlayableContentDel
     }
     
     
-    @objc func playableContentManager(contentManager: MPPlayableContentManager, initiatePlaybackOfContentItemAtIndexPath indexPath: NSIndexPath!, completionHandler: ((NSError!) -> Void)!) -> Void {
+    @objc func playableContentManager(contentManager: MPPlayableContentManager, initiatePlaybackOfContentItemAtIndexPath indexPath: NSIndexPath, completionHandler: ((NSError?) -> Void)) -> Void {
         return _initiatePlaybackOfContentItemAtIndexPath!(contentManager, indexPath, completionHandler)
     }
-    @objc func beginLoadingChildItemsAtIndexPath(indexPath: NSIndexPath, completionHandler: ((NSError!) -> Void)!) -> Void {
+    @objc func beginLoadingChildItemsAtIndexPath(indexPath: NSIndexPath, completionHandler: ((NSError?) -> Void)) -> Void {
         return _beginLoadingChildItemsAtIndexPath!(indexPath, completionHandler)
     }
     @objc func childItemsDisplayPlaybackProgressAtIndexPath(indexPath: NSIndexPath) -> Bool {
@@ -108,7 +109,7 @@ internal class MPPlayableContentManager_Delegate: NSObject, MPPlayableContentDel
     @objc func numberOfChildItemsAtIndexPath(indexPath: NSIndexPath) -> Int {
         return _numberOfChildItemsAtIndexPath!(indexPath)
     }
-    @objc func contentItemAtIndexPath(indexPath: NSIndexPath) -> MPContentItem! {
+    @objc func contentItemAtIndexPath(indexPath: NSIndexPath) -> MPContentItem? {
         return _contentItemAtIndexPath!(indexPath)
     }
 }

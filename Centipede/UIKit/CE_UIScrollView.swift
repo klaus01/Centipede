@@ -13,7 +13,7 @@ public extension UIScrollView {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIScrollView_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIScrollView_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: UIScrollView_Delegate {
@@ -85,12 +85,12 @@ public extension UIScrollView {
         rebindingDelegate()
         return self
     }
-    public func ce_willBeginZooming(handle: (scrollView: UIScrollView, view: UIView!) -> Void) -> Self {
+    public func ce_willBeginZooming(handle: (scrollView: UIScrollView, view: UIView?) -> Void) -> Self {
         ce._willBeginZooming = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didEndZooming(handle: (scrollView: UIScrollView, view: UIView!, scale: CGFloat) -> Void) -> Self {
+    public func ce_didEndZooming(handle: (scrollView: UIScrollView, view: UIView?, scale: CGFloat) -> Void) -> Self {
         ce._didEndZooming = handle
         rebindingDelegate()
         return self
@@ -119,8 +119,8 @@ internal class UIScrollView_Delegate: NSObject, UIScrollViewDelegate {
     var _didEndDecelerating: ((UIScrollView) -> Void)?
     var _didEndScrollingAnimation: ((UIScrollView) -> Void)?
     var _viewForZoomingIn: ((UIScrollView) -> UIView?)?
-    var _willBeginZooming: ((UIScrollView, UIView!) -> Void)?
-    var _didEndZooming: ((UIScrollView, UIView!, CGFloat) -> Void)?
+    var _willBeginZooming: ((UIScrollView, UIView?) -> Void)?
+    var _didEndZooming: ((UIScrollView, UIView?, CGFloat) -> Void)?
     var _shouldScrollToTop: ((UIScrollView) -> Bool)?
     var _didScrollToTop: ((UIScrollView) -> Void)?
     
@@ -183,10 +183,10 @@ internal class UIScrollView_Delegate: NSObject, UIScrollViewDelegate {
     @objc func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return _viewForZoomingIn!(scrollView)
     }
-    @objc func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView!) {
+    @objc func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
         _willBeginZooming!(scrollView, view)
     }
-    @objc func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
+    @objc func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
         _didEndZooming!(scrollView, view, scale)
     }
     @objc func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {

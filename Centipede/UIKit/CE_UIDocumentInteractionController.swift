@@ -13,7 +13,7 @@ public extension UIDocumentInteractionController {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIDocumentInteractionController_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIDocumentInteractionController_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: UIDocumentInteractionController_Delegate {
@@ -85,12 +85,12 @@ public extension UIDocumentInteractionController {
         rebindingDelegate()
         return self
     }
-    public func ce_willBeginSendingToApplication(handle: (controller: UIDocumentInteractionController, application: String) -> Void) -> Self {
+    public func ce_willBeginSendingToApplication(handle: (controller: UIDocumentInteractionController, application: String?) -> Void) -> Self {
         ce._willBeginSendingToApplication = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didEndSendingToApplication(handle: (controller: UIDocumentInteractionController, application: String) -> Void) -> Self {
+    public func ce_didEndSendingToApplication(handle: (controller: UIDocumentInteractionController, application: String?) -> Void) -> Self {
         ce._didEndSendingToApplication = handle
         rebindingDelegate()
         return self
@@ -109,8 +109,8 @@ internal class UIDocumentInteractionController_Delegate: NSObject, UIDocumentInt
     var _didDismissOptionsMenu: ((UIDocumentInteractionController) -> Void)?
     var _willPresentOpenInMenu: ((UIDocumentInteractionController) -> Void)?
     var _didDismissOpenInMenu: ((UIDocumentInteractionController) -> Void)?
-    var _willBeginSendingToApplication: ((UIDocumentInteractionController, String) -> Void)?
-    var _didEndSendingToApplication: ((UIDocumentInteractionController, String) -> Void)?
+    var _willBeginSendingToApplication: ((UIDocumentInteractionController, String?) -> Void)?
+    var _didEndSendingToApplication: ((UIDocumentInteractionController, String?) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -169,10 +169,10 @@ internal class UIDocumentInteractionController_Delegate: NSObject, UIDocumentInt
     @objc func documentInteractionControllerDidDismissOpenInMenu(controller: UIDocumentInteractionController) {
         _didDismissOpenInMenu!(controller)
     }
-    @objc func documentInteractionController(controller: UIDocumentInteractionController, willBeginSendingToApplication application: String) {
+    @objc func documentInteractionController(controller: UIDocumentInteractionController, willBeginSendingToApplication application: String?) {
         _willBeginSendingToApplication!(controller, application)
     }
-    @objc func documentInteractionController(controller: UIDocumentInteractionController, didEndSendingToApplication application: String) {
+    @objc func documentInteractionController(controller: UIDocumentInteractionController, didEndSendingToApplication application: String?) {
         _didEndSendingToApplication!(controller, application)
     }
 }
