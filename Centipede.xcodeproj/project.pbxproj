@@ -32,7 +32,6 @@
 		240B74AE1B2B14500067475E /* CE_UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74561B2B14500067475E /* CE_UIScrollView.swift */; };
 		240B74AF1B2B14500067475E /* CE_UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74571B2B14500067475E /* CE_UISearchBar.swift */; };
 		240B74B01B2B14500067475E /* CE_UISearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74581B2B14500067475E /* CE_UISearchController.swift */; };
-		240B74B11B2B14500067475E /* CE_UISearchDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74591B2B14500067475E /* CE_UISearchDisplayController.swift */; };
 		240B74B21B2B14500067475E /* CE_UISplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B745A1B2B14500067475E /* CE_UISplitViewController.swift */; };
 		240B74B31B2B14500067475E /* CE_UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B745B1B2B14500067475E /* CE_UITabBar.swift */; };
 		240B74B41B2B14500067475E /* CE_UITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B745C1B2B14500067475E /* CE_UITabBarController.swift */; };
@@ -121,7 +120,6 @@
 		240B74561B2B14500067475E /* CE_UIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIScrollView.swift; sourceTree = "<group>"; };
 		240B74571B2B14500067475E /* CE_UISearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchBar.swift; sourceTree = "<group>"; };
 		240B74581B2B14500067475E /* CE_UISearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchController.swift; sourceTree = "<group>"; };
-		240B74591B2B14500067475E /* CE_UISearchDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchDisplayController.swift; sourceTree = "<group>"; };
 		240B745A1B2B14500067475E /* CE_UISplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISplitViewController.swift; sourceTree = "<group>"; };
 		240B745B1B2B14500067475E /* CE_UITabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITabBar.swift; sourceTree = "<group>"; };
 		240B745C1B2B14500067475E /* CE_UITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITabBarController.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 				240B74561B2B14500067475E /* CE_UIScrollView.swift */,
 				240B74571B2B14500067475E /* CE_UISearchBar.swift */,
 				240B74581B2B14500067475E /* CE_UISearchController.swift */,
-				240B74591B2B14500067475E /* CE_UISearchDisplayController.swift */,
 				240B745A1B2B14500067475E /* CE_UISplitViewController.swift */,
 				240B745B1B2B14500067475E /* CE_UITabBar.swift */,
 				240B745C1B2B14500067475E /* CE_UITabBarController.swift */,
@@ -529,7 +526,9 @@
 		24E8A73D1B1E056A008D963A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = kelei;
 				TargetAttributes = {
 					24E8A7451B1E056A008D963A = {
@@ -635,7 +634,6 @@
 				240B759B1B2B22140067475E /* CE_HMHome.swift in Sources */,
 				240B74B61B2B14500067475E /* CE_UITextField.swift in Sources */,
 				240B74B71B2B14500067475E /* CE_UITextView.swift in Sources */,
-				240B74B11B2B14500067475E /* CE_UISearchDisplayController.swift in Sources */,
 				240B749F1B2B14500067475E /* CE_UIDocumentInteractionController.swift in Sources */,
 				240B74AD1B2B14500067475E /* CE_UIPrintInteractionController.swift in Sources */,
 				240B74A31B2B14500067475E /* CE_UIGestureRecognizer.swift in Sources */,
@@ -682,6 +680,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -697,7 +696,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -739,7 +738,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -760,6 +759,7 @@
 				INFOPLIST_FILE = Centipede/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kelei.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -777,6 +777,7 @@
 				INFOPLIST_FILE = Centipede/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kelei.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
