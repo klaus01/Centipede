@@ -22,6 +22,7 @@ public extension NSURLSession {
         }
         else {
             assert(false, "Use the init(configuration:delegateQueue:) method to instantiate the NSURLSession to use Centipede")
+            return _delegate!;
         }
     }
     
