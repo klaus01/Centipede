@@ -1,10 +1,13 @@
 # Centipede
 
-一个纯Swift实现的库，使用闭包实现UIKit组件的delegate和dataSource方法
+一个Swift库，使用闭包实现UIKit组件的delegate和dataSource方法
 
 ### 解决什么问题
-delegate很好的解决的自定义与耦合问题，但在实现delegate的各个方法时，方法遍布整个ViewController很散。
-并且如果当前ViewController中有多个UITableView或其它实现delegate的组件时，在delegate实现方法中需要判断当前触发的组件是哪个。如：
+在实现delegate的各个方法时：
+
+- 方法遍布整个ViewController，很散。
+- 具体的实现与成员变量被分开了，阅读时需要分开查看。
+- 如果当对象中实现多个UITableViewDataSource时，方法中需要判断组件来做出反应。如：（这很丑）
 
 ```swift
 @objc func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -12,24 +15,44 @@ delegate很好的解决的自定义与耦合问题，但在实现delegate的各�
 }
 ```
 
-这让代码不易维护和阅读。
+这些情况让代码不易阅读和维护。
 
-希望：
+**希望：**
 
 - 代码连续。组件的构造、样式设置和各delegate实现方法可写在一个位置。
 - 独立。有多个UITableView时，tableViewA和tableViewB的delegate方法实现是独立的，互不干扰。
 
 ### 使用
 
+- Xcode 7.0+
+- iOS 8+
+- 所有方法名称以`ce_`开头
+
+#### 直接源码
+
 将`Centipede`目录复制到您的项目中及可。
 
-- \>= iOS 7
-- 所有方法名称以`ce_`开头
+#### CocoaPods
+
+```
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'Centipede'
+```
+code
+
+```swift
+import Centipede
+
+button.ce_addControlEvents(UIControlEvents.TouchUpInside) { (control, touches) -> Void in
+    println("TouchUpInside")
+}
+```
 
 ### 注意
 
-- 使用闭包需要注意循环引用问题，Swift使用weak或unowned关键字解决循环引用问题
-- 如果您的项目`Deployment Target >= 8.0`那么编译时会警告`'UISearchDisplayController' was deprecated in iOS version 8.0`，请删除掉CE_UISearchDisplayController.swift文件及可。
+使用闭包需要注意循环引用问题，Swift使用weak或unowned关键字解决循环引用问题
 
 ##### UIKit `delegate` and `dataSource` method
 
@@ -121,7 +144,6 @@ collectionView
 - UIKit/UIScrollView
 - UIKit/UISearchBar
 - UIKit/UISearchController
-- UIKit/UISearchDisplayController
 - UIKit/UISplitViewController
 - UIKit/UITabBar
 - UIKit/UITabBarController
@@ -154,15 +176,15 @@ textField.ce_addControlEvents(UIControlEvents.EditingChanged | UIControlEvents.E
 ```
 
 - UIControl
-	- UIButton
-	- UIDatePicker
-	- UIPageControl
-	- UIRefreshControl
-	- UISegmentedControl
-	- UISlider
-	- UIStepper
-	- UISwitch
-	- UITextField
+    - UIButton
+    - UIDatePicker
+    - UIPageControl
+    - UIRefreshControl
+    - UISegmentedControl
+    - UISlider
+    - UIStepper
+    - UISwitch
+    - UITextField
 - UIBarButtonItem
 - UIGestureRecognizer
 
@@ -184,3 +206,9 @@ deinit {
     ce_removeObserver()
 }
 ```
+
+### License
+
+Centipede is released under the MIT license. See LICENSE for details.
+
+
