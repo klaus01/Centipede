@@ -91,6 +91,8 @@
 		240B75AF1B2B22140067475E /* CE_SKRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B757D1B2B22140067475E /* CE_SKRequest.swift */; };
 		240B75B01B2B22140067475E /* CE_SKStoreProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B757E1B2B22140067475E /* CE_SKStoreProductViewController.swift */; };
 		240B75B21B2B23090067475E /* CE_NSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75B11B2B23090067475E /* CE_NSURLSession.swift */; };
+		245CA93D1C59F2490006C533 /* CE_CAAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CA93B1C59F2490006C533 /* CE_CAAnimation.swift */; };
+		245CA93E1C59F2490006C533 /* CE_CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CA93C1C59F2490006C533 /* CE_CALayer.swift */; };
 		24E8A74C1B1E056A008D963A /* Centipede.h in Headers */ = {isa = PBXBuildFile; fileRef = 24E8A74B1B1E056A008D963A /* Centipede.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -179,6 +181,8 @@
 		240B757D1B2B22140067475E /* CE_SKRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SKRequest.swift; sourceTree = "<group>"; };
 		240B757E1B2B22140067475E /* CE_SKStoreProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SKStoreProductViewController.swift; sourceTree = "<group>"; };
 		240B75B11B2B23090067475E /* CE_NSURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSURLSession.swift; sourceTree = "<group>"; };
+		245CA93B1C59F2490006C533 /* CE_CAAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CAAnimation.swift; sourceTree = "<group>"; };
+		245CA93C1C59F2490006C533 /* CE_CALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CALayer.swift; sourceTree = "<group>"; };
 		24E8A7461B1E056A008D963A /* Centipede.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Centipede.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E8A74A1B1E056A008D963A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E8A74B1B1E056A008D963A /* Centipede.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Centipede.h; sourceTree = "<group>"; };
@@ -433,6 +437,15 @@
 			path = StoreKit;
 			sourceTree = "<group>";
 		};
+		245CA93A1C59F2490006C533 /* QuartzCore */ = {
+			isa = PBXGroup;
+			children = (
+				245CA93B1C59F2490006C533 /* CE_CAAnimation.swift */,
+				245CA93C1C59F2490006C533 /* CE_CALayer.swift */,
+			);
+			path = QuartzCore;
+			sourceTree = "<group>";
+		};
 		24E8A73C1B1E056A008D963A = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +482,7 @@
 				240B75691B2B22140067475E /* MultipeerConnectivity */,
 				240B756F1B2B22140067475E /* PassKit */,
 				240B75721B2B22140067475E /* PushKit */,
+				245CA93A1C59F2490006C533 /* QuartzCore */,
 				240B75741B2B22140067475E /* QuickLook */,
 				240B75761B2B22140067475E /* SceneKit */,
 				240B75791B2B22140067475E /* SpriteKit */,
@@ -601,6 +615,7 @@
 				240B74BB1B2B14500067475E /* CE_UIWebView.swift in Sources */,
 				240B75851B2B22140067475E /* CE_CBPeripheralManager.swift in Sources */,
 				240B74B91B2B14500067475E /* CE_UIVideoEditorController.swift in Sources */,
+				245CA93D1C59F2490006C533 /* CE_CAAnimation.swift in Sources */,
 				240B74B81B2B14500067475E /* CE_UIToolbar.swift in Sources */,
 				240B759A1B2B22140067475E /* CE_HMAccessoryBrowser.swift in Sources */,
 				240B75A71B2B22140067475E /* CE_PKAddPassesViewController.swift in Sources */,
@@ -628,6 +643,7 @@
 				240B75AF1B2B22140067475E /* CE_SKRequest.swift in Sources */,
 				240B74A41B2B14500067475E /* CE_UIImagePickerController.swift in Sources */,
 				240B74B21B2B14500067475E /* CE_UISplitViewController.swift in Sources */,
+				245CA93E1C59F2490006C533 /* CE_CALayer.swift in Sources */,
 				240B74B41B2B14500067475E /* CE_UITabBarController.swift in Sources */,
 				240B75941B2B22140067475E /* CE_NSUserActivity.swift in Sources */,
 				240B758D1B2B22140067475E /* CE_NSFileManager.swift in Sources */,

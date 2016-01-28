@@ -13,7 +13,7 @@ public extension CAAnimation {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CAAnimation_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? CAAnimation_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: CAAnimation_Delegate {
