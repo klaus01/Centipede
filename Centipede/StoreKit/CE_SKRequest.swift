@@ -13,7 +13,7 @@ public extension SKRequest {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: SKRequest_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? SKRequest_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: SKRequest_Delegate {
@@ -45,7 +45,7 @@ public extension SKRequest {
         rebindingDelegate()
         return self
     }
-    public func ce_didFailWithError(handle: (request: SKRequest, error: NSError!) -> Void) -> Self {
+    public func ce_didFailWithError(handle: (request: SKRequest, error: NSError) -> Void) -> Self {
         ce._didFailWithError = handle
         rebindingDelegate()
         return self
@@ -56,7 +56,7 @@ public extension SKRequest {
 internal class SKRequest_Delegate: NSObject, SKRequestDelegate {
     
     var _didFinish: ((SKRequest) -> Void)?
-    var _didFailWithError: ((SKRequest, NSError!) -> Void)?
+    var _didFailWithError: ((SKRequest, NSError) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -76,7 +76,7 @@ internal class SKRequest_Delegate: NSObject, SKRequestDelegate {
     @objc func requestDidFinish(request: SKRequest) {
         _didFinish!(request)
     }
-    @objc func request(request: SKRequest, didFailWithError error: NSError!) {
+    @objc func request(request: SKRequest, didFailWithError error: NSError) {
         _didFailWithError!(request, error)
     }
 }

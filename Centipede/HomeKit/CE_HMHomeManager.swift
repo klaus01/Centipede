@@ -13,7 +13,7 @@ public extension HMHomeManager {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: HMHomeManager_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? HMHomeManager_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: HMHomeManager_Delegate {
@@ -50,12 +50,12 @@ public extension HMHomeManager {
         rebindingDelegate()
         return self
     }
-    public func ce_didAddHome(handle: (manager: HMHomeManager, home: HMHome!) -> Void) -> Self {
+    public func ce_didAddHome(handle: (manager: HMHomeManager, home: HMHome) -> Void) -> Self {
         ce._didAddHome = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveHome(handle: (manager: HMHomeManager, home: HMHome!) -> Void) -> Self {
+    public func ce_didRemoveHome(handle: (manager: HMHomeManager, home: HMHome) -> Void) -> Self {
         ce._didRemoveHome = handle
         rebindingDelegate()
         return self
@@ -67,8 +67,8 @@ internal class HMHomeManager_Delegate: NSObject, HMHomeManagerDelegate {
     
     var _didUpdateHomes: ((HMHomeManager) -> Void)?
     var _didUpdatePrimaryHome: ((HMHomeManager) -> Void)?
-    var _didAddHome: ((HMHomeManager, HMHome!) -> Void)?
-    var _didRemoveHome: ((HMHomeManager, HMHome!) -> Void)?
+    var _didAddHome: ((HMHomeManager, HMHome) -> Void)?
+    var _didRemoveHome: ((HMHomeManager, HMHome) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -93,10 +93,10 @@ internal class HMHomeManager_Delegate: NSObject, HMHomeManagerDelegate {
     @objc func homeManagerDidUpdatePrimaryHome(manager: HMHomeManager) {
         _didUpdatePrimaryHome!(manager)
     }
-    @objc func homeManager(manager: HMHomeManager, didAddHome home: HMHome!) {
+    @objc func homeManager(manager: HMHomeManager, didAddHome home: HMHome) {
         _didAddHome!(manager, home)
     }
-    @objc func homeManager(manager: HMHomeManager, didRemoveHome home: HMHome!) {
+    @objc func homeManager(manager: HMHomeManager, didRemoveHome home: HMHome) {
         _didRemoveHome!(manager, home)
     }
 }

@@ -13,7 +13,7 @@ public extension MPMediaPickerController {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MPMediaPickerController_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? MPMediaPickerController_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: MPMediaPickerController_Delegate {
@@ -40,7 +40,7 @@ public extension MPMediaPickerController {
         return MPMediaPickerController_Delegate()
     }
     
-    public func ce_mediaPicker(handle: (mediaPicker: MPMediaPickerController, mediaItemCollection: MPMediaItemCollection!) -> Void) -> Self {
+    public func ce_mediaPicker(handle: (mediaPicker: MPMediaPickerController, mediaItemCollection: MPMediaItemCollection) -> Void) -> Self {
         ce._mediaPicker = handle
         rebindingDelegate()
         return self
@@ -55,7 +55,7 @@ public extension MPMediaPickerController {
 
 internal class MPMediaPickerController_Delegate: UIViewController_Delegate, MPMediaPickerControllerDelegate {
     
-    var _mediaPicker: ((MPMediaPickerController, MPMediaItemCollection!) -> Void)?
+    var _mediaPicker: ((MPMediaPickerController, MPMediaItemCollection) -> Void)?
     var _mediaPickerDidCancel: ((MPMediaPickerController) -> Void)?
     
     
@@ -73,7 +73,7 @@ internal class MPMediaPickerController_Delegate: UIViewController_Delegate, MPMe
     }
     
     
-    @objc func mediaPicker(mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection!) {
+    @objc func mediaPicker(mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
         _mediaPicker!(mediaPicker, mediaItemCollection)
     }
     @objc func mediaPickerDidCancel(mediaPicker: MPMediaPickerController) {

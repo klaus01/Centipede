@@ -13,7 +13,7 @@ public extension PKPaymentAuthorizationViewController {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: PKPaymentAuthorizationViewController_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? PKPaymentAuthorizationViewController_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: PKPaymentAuthorizationViewController_Delegate {
@@ -40,7 +40,7 @@ public extension PKPaymentAuthorizationViewController {
         return PKPaymentAuthorizationViewController_Delegate()
     }
     
-    public func ce_didAuthorizePayment(handle: (controller: PKPaymentAuthorizationViewController, payment: PKPayment!, completion: ((PKPaymentAuthorizationStatus) -> Void)!) -> Void) -> Self {
+    public func ce_didAuthorizePayment(handle: (controller: PKPaymentAuthorizationViewController, payment: PKPayment, completion: (PKPaymentAuthorizationStatus) -> Void) -> Void) -> Self {
         ce._didAuthorizePayment = handle
         rebindingDelegate()
         return self
@@ -55,12 +55,12 @@ public extension PKPaymentAuthorizationViewController {
         rebindingDelegate()
         return self
     }
-    public func ce_didSelectShippingMethod(handle: (controller: PKPaymentAuthorizationViewController, shippingMethod: PKShippingMethod!, completion: ((PKPaymentAuthorizationStatus, [AnyObject]!) -> Void)!) -> Void) -> Self {
+    public func ce_didSelectShippingMethod(handle: (controller: PKPaymentAuthorizationViewController, shippingMethod: PKShippingMethod, completion: (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> Void) -> Void) -> Self {
         ce._didSelectShippingMethod = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didSelectShippingAddress(handle: (controller: PKPaymentAuthorizationViewController, address: ABRecord!, completion: ((PKPaymentAuthorizationStatus, [AnyObject]!, [AnyObject]!) -> Void)!) -> Void) -> Self {
+    public func ce_didSelectShippingAddress(handle: (controller: PKPaymentAuthorizationViewController, address: ABRecord, completion: (PKPaymentAuthorizationStatus, [PKShippingMethod], [PKPaymentSummaryItem]) -> Void) -> Void) -> Self {
         ce._didSelectShippingAddress = handle
         rebindingDelegate()
         return self
@@ -70,11 +70,11 @@ public extension PKPaymentAuthorizationViewController {
 
 internal class PKPaymentAuthorizationViewController_Delegate: UIViewController_Delegate, PKPaymentAuthorizationViewControllerDelegate {
     
-    var _didAuthorizePayment: ((PKPaymentAuthorizationViewController, PKPayment!, ((PKPaymentAuthorizationStatus) -> Void)!) -> Void)?
+    var _didAuthorizePayment: ((PKPaymentAuthorizationViewController, PKPayment, (PKPaymentAuthorizationStatus) -> Void) -> Void)?
     var _didFinish: ((PKPaymentAuthorizationViewController) -> Void)?
     var _willAuthorizePayment: ((PKPaymentAuthorizationViewController) -> Void)?
-    var _didSelectShippingMethod: ((PKPaymentAuthorizationViewController, PKShippingMethod!, ((PKPaymentAuthorizationStatus, [AnyObject]!) -> Void)!) -> Void)?
-    var _didSelectShippingAddress: ((PKPaymentAuthorizationViewController, ABRecord!, ((PKPaymentAuthorizationStatus, [AnyObject]!, [AnyObject]!) -> Void)!) -> Void)?
+    var _didSelectShippingMethod: ((PKPaymentAuthorizationViewController, PKShippingMethod, (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> Void) -> Void)?
+    var _didSelectShippingAddress: ((PKPaymentAuthorizationViewController, ABRecord, (PKPaymentAuthorizationStatus, [PKShippingMethod], [PKPaymentSummaryItem]) -> Void) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -94,7 +94,7 @@ internal class PKPaymentAuthorizationViewController_Delegate: UIViewController_D
     }
     
     
-    @objc func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment!, completion: ((PKPaymentAuthorizationStatus) -> Void)!) -> Void {
+    @objc func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: ((PKPaymentAuthorizationStatus) -> Void)) -> Void {
         return _didAuthorizePayment!(controller, payment, completion)
     }
     @objc func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController) {
@@ -103,10 +103,10 @@ internal class PKPaymentAuthorizationViewController_Delegate: UIViewController_D
     @objc func paymentAuthorizationViewControllerWillAuthorizePayment(controller: PKPaymentAuthorizationViewController) {
         _willAuthorizePayment!(controller)
     }
-    @objc func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didSelectShippingMethod shippingMethod: PKShippingMethod!, completion: ((PKPaymentAuthorizationStatus, [AnyObject]!) -> Void)!) -> Void {
+    @objc func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didSelectShippingMethod shippingMethod: PKShippingMethod, completion: (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> Void) -> Void {
         return _didSelectShippingMethod!(controller, shippingMethod, completion)
     }
-    @objc func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didSelectShippingAddress address: ABRecord!, completion: ((PKPaymentAuthorizationStatus, [AnyObject]!, [AnyObject]!) -> Void)!) -> Void {
+    @objc func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didSelectShippingAddress address: ABRecord, completion: (PKPaymentAuthorizationStatus, [PKShippingMethod], [PKPaymentSummaryItem]) -> Void) -> Void {
         return _didSelectShippingAddress!(controller, address, completion)
     }
 }

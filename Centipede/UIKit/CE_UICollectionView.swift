@@ -13,7 +13,7 @@ public extension UICollectionView {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UICollectionView_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UICollectionView_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: UICollectionView_Delegate {
@@ -122,17 +122,17 @@ public extension UICollectionView {
         rebindingDelegate()
         return self
     }
-    public func ce_canPerformAction(handle: (collectionView: UICollectionView, action: Selector, indexPath: NSIndexPath, sender: AnyObject!) -> Bool) -> Self {
+    public func ce_canPerformAction(handle: (collectionView: UICollectionView, action: Selector, indexPath: NSIndexPath, sender: AnyObject?) -> Bool) -> Self {
         ce._canPerformAction = handle
         rebindingDelegate()
         return self
     }
-    public func ce_performAction(handle: (collectionView: UICollectionView, action: Selector, indexPath: NSIndexPath, sender: AnyObject!) -> Void) -> Self {
+    public func ce_performAction(handle: (collectionView: UICollectionView, action: Selector, indexPath: NSIndexPath, sender: AnyObject?) -> Void) -> Self {
         ce._performAction = handle
         rebindingDelegate()
         return self
     }
-    public func ce_transitionLayoutForOldLayout(handle: (collectionView: UICollectionView, fromLayout: UICollectionViewLayout, toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout!) -> Self {
+    public func ce_transitionLayoutForOldLayout(handle: (collectionView: UICollectionView, fromLayout: UICollectionViewLayout, toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout) -> Self {
         ce._transitionLayoutForOldLayout = handle
         rebindingDelegate()
         return self
@@ -188,9 +188,9 @@ internal class UICollectionView_Delegate: UIScrollView_Delegate, UICollectionVie
     var _didEndDisplayingCell: ((UICollectionView, UICollectionViewCell, NSIndexPath) -> Void)?
     var _didEndDisplayingSupplementaryView: ((UICollectionView, UICollectionReusableView, String, NSIndexPath) -> Void)?
     var _shouldShowMenuForItemAtIndexPath: ((UICollectionView, NSIndexPath) -> Bool)?
-    var _canPerformAction: ((UICollectionView, Selector, NSIndexPath, AnyObject!) -> Bool)?
-    var _performAction: ((UICollectionView, Selector, NSIndexPath, AnyObject!) -> Void)?
-    var _transitionLayoutForOldLayout: ((UICollectionView, UICollectionViewLayout, UICollectionViewLayout) -> UICollectionViewTransitionLayout!)?
+    var _canPerformAction: ((UICollectionView, Selector, NSIndexPath, AnyObject?) -> Bool)?
+    var _performAction: ((UICollectionView, Selector, NSIndexPath, AnyObject?) -> Void)?
+    var _transitionLayoutForOldLayout: ((UICollectionView, UICollectionViewLayout, UICollectionViewLayout) -> UICollectionViewTransitionLayout)?
     var _layoutSizeForItemAtIndexPath: ((UICollectionView, UICollectionViewLayout, NSIndexPath) -> CGSize)?
     var _layoutInsetForSectionAtIndex: ((UICollectionView, UICollectionViewLayout, Int) -> UIEdgeInsets)?
     var _layoutMinimumLineSpacingForSectionAtIndex: ((UICollectionView, UICollectionViewLayout, Int) -> CGFloat)?
@@ -302,13 +302,13 @@ internal class UICollectionView_Delegate: UIScrollView_Delegate, UICollectionVie
     @objc func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return _shouldShowMenuForItemAtIndexPath!(collectionView, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) -> Bool {
+    @objc func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
         return _canPerformAction!(collectionView, action, indexPath, sender)
     }
-    @objc func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) {
+    @objc func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
         _performAction!(collectionView, action, indexPath, sender)
     }
-    @objc func collectionView(collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout! {
+    @objc func collectionView(collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
         return _transitionLayoutForOldLayout!(collectionView, fromLayout, toLayout)
     }
     @objc func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

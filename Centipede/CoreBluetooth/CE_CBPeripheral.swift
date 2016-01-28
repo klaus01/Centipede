@@ -13,7 +13,7 @@ public extension CBPeripheral {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CBPeripheral_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? CBPeripheral_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: CBPeripheral_Delegate {
@@ -45,62 +45,62 @@ public extension CBPeripheral {
         rebindingDelegate()
         return self
     }
-    public func ce_didModifyServices(handle: (peripheral: CBPeripheral, invalidatedServices: [AnyObject]!) -> Void) -> Self {
+    public func ce_didModifyServices(handle: (peripheral: CBPeripheral, invalidatedServices: [CBService]) -> Void) -> Self {
         ce._didModifyServices = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateRSSI(handle: (peripheral: CBPeripheral, error: NSError!) -> Void) -> Self {
+    public func ce_didUpdateRSSI(handle: (peripheral: CBPeripheral, error: NSError?) -> Void) -> Self {
         ce._didUpdateRSSI = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didReadRSSI(handle: (peripheral: CBPeripheral, RSSI: NSNumber!, error: NSError!) -> Void) -> Self {
+    public func ce_didReadRSSI(handle: (peripheral: CBPeripheral, RSSI: NSNumber, error: NSError?) -> Void) -> Self {
         ce._didReadRSSI = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDiscoverServices(handle: (peripheral: CBPeripheral, error: NSError!) -> Void) -> Self {
+    public func ce_didDiscoverServices(handle: (peripheral: CBPeripheral, error: NSError?) -> Void) -> Self {
         ce._didDiscoverServices = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDiscoverIncludedServicesForService(handle: (peripheral: CBPeripheral, service: CBService!, error: NSError!) -> Void) -> Self {
+    public func ce_didDiscoverIncludedServicesForService(handle: (peripheral: CBPeripheral, service: CBService, error: NSError?) -> Void) -> Self {
         ce._didDiscoverIncludedServicesForService = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDiscoverCharacteristicsForService(handle: (peripheral: CBPeripheral, service: CBService!, error: NSError!) -> Void) -> Self {
+    public func ce_didDiscoverCharacteristicsForService(handle: (peripheral: CBPeripheral, service: CBService, error: NSError?) -> Void) -> Self {
         ce._didDiscoverCharacteristicsForService = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateValueForCharacteristic(handle: (peripheral: CBPeripheral, characteristic: CBCharacteristic!, error: NSError!) -> Void) -> Self {
+    public func ce_didUpdateValueForCharacteristic(handle: (peripheral: CBPeripheral, characteristic: CBCharacteristic, error: NSError?) -> Void) -> Self {
         ce._didUpdateValueForCharacteristic = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didWriteValueForCharacteristic(handle: (peripheral: CBPeripheral, characteristic: CBCharacteristic!, error: NSError!) -> Void) -> Self {
+    public func ce_didWriteValueForCharacteristic(handle: (peripheral: CBPeripheral, characteristic: CBCharacteristic, error: NSError?) -> Void) -> Self {
         ce._didWriteValueForCharacteristic = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateNotificationStateForCharacteristic(handle: (peripheral: CBPeripheral, characteristic: CBCharacteristic!, error: NSError!) -> Void) -> Self {
+    public func ce_didUpdateNotificationStateForCharacteristic(handle: (peripheral: CBPeripheral, characteristic: CBCharacteristic, error: NSError?) -> Void) -> Self {
         ce._didUpdateNotificationStateForCharacteristic = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDiscoverDescriptorsForCharacteristic(handle: (peripheral: CBPeripheral, characteristic: CBCharacteristic!, error: NSError!) -> Void) -> Self {
+    public func ce_didDiscoverDescriptorsForCharacteristic(handle: (peripheral: CBPeripheral, characteristic: CBCharacteristic, error: NSError?) -> Void) -> Self {
         ce._didDiscoverDescriptorsForCharacteristic = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateValueForDescriptor(handle: (peripheral: CBPeripheral, descriptor: CBDescriptor!, error: NSError!) -> Void) -> Self {
+    public func ce_didUpdateValueForDescriptor(handle: (peripheral: CBPeripheral, descriptor: CBDescriptor, error: NSError?) -> Void) -> Self {
         ce._didUpdateValueForDescriptor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didWriteValueForDescriptor(handle: (peripheral: CBPeripheral, descriptor: CBDescriptor!, error: NSError!) -> Void) -> Self {
+    public func ce_didWriteValueForDescriptor(handle: (peripheral: CBPeripheral, descriptor: CBDescriptor, error: NSError?) -> Void) -> Self {
         ce._didWriteValueForDescriptor = handle
         rebindingDelegate()
         return self
@@ -111,18 +111,18 @@ public extension CBPeripheral {
 internal class CBPeripheral_Delegate: NSObject, CBPeripheralDelegate {
     
     var _didUpdateName: ((CBPeripheral) -> Void)?
-    var _didModifyServices: ((CBPeripheral, [AnyObject]!) -> Void)?
-    var _didUpdateRSSI: ((CBPeripheral, NSError!) -> Void)?
-    var _didReadRSSI: ((CBPeripheral, NSNumber!, NSError!) -> Void)?
-    var _didDiscoverServices: ((CBPeripheral, NSError!) -> Void)?
-    var _didDiscoverIncludedServicesForService: ((CBPeripheral, CBService!, NSError!) -> Void)?
-    var _didDiscoverCharacteristicsForService: ((CBPeripheral, CBService!, NSError!) -> Void)?
-    var _didUpdateValueForCharacteristic: ((CBPeripheral, CBCharacteristic!, NSError!) -> Void)?
-    var _didWriteValueForCharacteristic: ((CBPeripheral, CBCharacteristic!, NSError!) -> Void)?
-    var _didUpdateNotificationStateForCharacteristic: ((CBPeripheral, CBCharacteristic!, NSError!) -> Void)?
-    var _didDiscoverDescriptorsForCharacteristic: ((CBPeripheral, CBCharacteristic!, NSError!) -> Void)?
-    var _didUpdateValueForDescriptor: ((CBPeripheral, CBDescriptor!, NSError!) -> Void)?
-    var _didWriteValueForDescriptor: ((CBPeripheral, CBDescriptor!, NSError!) -> Void)?
+    var _didModifyServices: ((CBPeripheral, [CBService]) -> Void)?
+    var _didUpdateRSSI: ((CBPeripheral, NSError?) -> Void)?
+    var _didReadRSSI: ((CBPeripheral, NSNumber, NSError?) -> Void)?
+    var _didDiscoverServices: ((CBPeripheral, NSError?) -> Void)?
+    var _didDiscoverIncludedServicesForService: ((CBPeripheral, CBService, NSError?) -> Void)?
+    var _didDiscoverCharacteristicsForService: ((CBPeripheral, CBService, NSError?) -> Void)?
+    var _didUpdateValueForCharacteristic: ((CBPeripheral, CBCharacteristic, NSError?) -> Void)?
+    var _didWriteValueForCharacteristic: ((CBPeripheral, CBCharacteristic, NSError?) -> Void)?
+    var _didUpdateNotificationStateForCharacteristic: ((CBPeripheral, CBCharacteristic, NSError?) -> Void)?
+    var _didDiscoverDescriptorsForCharacteristic: ((CBPeripheral, CBCharacteristic, NSError?) -> Void)?
+    var _didUpdateValueForDescriptor: ((CBPeripheral, CBDescriptor, NSError?) -> Void)?
+    var _didWriteValueForDescriptor: ((CBPeripheral, CBDescriptor, NSError?) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -159,40 +159,40 @@ internal class CBPeripheral_Delegate: NSObject, CBPeripheralDelegate {
     @objc func peripheralDidUpdateName(peripheral: CBPeripheral) {
         _didUpdateName!(peripheral)
     }
-    @objc func peripheral(peripheral: CBPeripheral, didModifyServices invalidatedServices: [AnyObject]!) {
+    @objc func peripheral(peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
         _didModifyServices!(peripheral, invalidatedServices)
     }
-    @objc func peripheralDidUpdateRSSI(peripheral: CBPeripheral, error: NSError!) {
+    @objc func peripheralDidUpdateRSSI(peripheral: CBPeripheral, error: NSError?) {
         _didUpdateRSSI!(peripheral, error)
     }
-    @objc func peripheral(peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber!, error: NSError!) {
+    @objc func peripheral(peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: NSError?) {
         _didReadRSSI!(peripheral, RSSI, error)
     }
-    @objc func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError!) {
+    @objc func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
         _didDiscoverServices!(peripheral, error)
     }
-    @objc func peripheral(peripheral: CBPeripheral, didDiscoverIncludedServicesForService service: CBService!, error: NSError!) {
+    @objc func peripheral(peripheral: CBPeripheral, didDiscoverIncludedServicesForService service: CBService, error: NSError?) {
         _didDiscoverIncludedServicesForService!(peripheral, service, error)
     }
-    @objc func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService!, error: NSError!) {
+    @objc func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
         _didDiscoverCharacteristicsForService!(peripheral, service, error)
     }
-    @objc func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+    @objc func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         _didUpdateValueForCharacteristic!(peripheral, characteristic, error)
     }
-    @objc func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+    @objc func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         _didWriteValueForCharacteristic!(peripheral, characteristic, error)
     }
-    @objc func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+    @objc func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         _didUpdateNotificationStateForCharacteristic!(peripheral, characteristic, error)
     }
-    @objc func peripheral(peripheral: CBPeripheral, didDiscoverDescriptorsForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+    @objc func peripheral(peripheral: CBPeripheral, didDiscoverDescriptorsForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         _didDiscoverDescriptorsForCharacteristic!(peripheral, characteristic, error)
     }
-    @objc func peripheral(peripheral: CBPeripheral, didUpdateValueForDescriptor descriptor: CBDescriptor!, error: NSError!) {
+    @objc func peripheral(peripheral: CBPeripheral, didUpdateValueForDescriptor descriptor: CBDescriptor, error: NSError?) {
         _didUpdateValueForDescriptor!(peripheral, descriptor, error)
     }
-    @objc func peripheral(peripheral: CBPeripheral, didWriteValueForDescriptor descriptor: CBDescriptor!, error: NSError!) {
+    @objc func peripheral(peripheral: CBPeripheral, didWriteValueForDescriptor descriptor: CBDescriptor, error: NSError?) {
         _didWriteValueForDescriptor!(peripheral, descriptor, error)
     }
 }

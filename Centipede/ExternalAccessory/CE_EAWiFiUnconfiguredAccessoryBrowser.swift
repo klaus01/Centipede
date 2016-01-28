@@ -13,7 +13,7 @@ public extension EAWiFiUnconfiguredAccessoryBrowser {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: EAWiFiUnconfiguredAccessoryBrowser_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? EAWiFiUnconfiguredAccessoryBrowser_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: EAWiFiUnconfiguredAccessoryBrowser_Delegate {
@@ -45,17 +45,17 @@ public extension EAWiFiUnconfiguredAccessoryBrowser {
         rebindingDelegate()
         return self
     }
-    public func ce_accessoryBrowserAndDidFindUnconfiguredAccessories(handle: (browser: EAWiFiUnconfiguredAccessoryBrowser, accessories: Set<NSObject>!) -> Void) -> Self {
+    public func ce_accessoryBrowserAndDidFindUnconfiguredAccessories(handle: (browser: EAWiFiUnconfiguredAccessoryBrowser, accessories: Set<EAWiFiUnconfiguredAccessory>) -> Void) -> Self {
         ce._accessoryBrowserAndDidFindUnconfiguredAccessories = handle
         rebindingDelegate()
         return self
     }
-    public func ce_accessoryBrowserAndDidRemoveUnconfiguredAccessories(handle: (browser: EAWiFiUnconfiguredAccessoryBrowser, accessories: Set<NSObject>!) -> Void) -> Self {
+    public func ce_accessoryBrowserAndDidRemoveUnconfiguredAccessories(handle: (browser: EAWiFiUnconfiguredAccessoryBrowser, accessories: Set<EAWiFiUnconfiguredAccessory>) -> Void) -> Self {
         ce._accessoryBrowserAndDidRemoveUnconfiguredAccessories = handle
         rebindingDelegate()
         return self
     }
-    public func ce_accessoryBrowserAndDidFinishConfiguringAccessory(handle: (browser: EAWiFiUnconfiguredAccessoryBrowser, accessory: EAWiFiUnconfiguredAccessory!, status: EAWiFiUnconfiguredAccessoryConfigurationStatus) -> Void) -> Self {
+    public func ce_accessoryBrowserAndDidFinishConfiguringAccessory(handle: (browser: EAWiFiUnconfiguredAccessoryBrowser, accessory: EAWiFiUnconfiguredAccessory, status: EAWiFiUnconfiguredAccessoryConfigurationStatus) -> Void) -> Self {
         ce._accessoryBrowserAndDidFinishConfiguringAccessory = handle
         rebindingDelegate()
         return self
@@ -66,9 +66,9 @@ public extension EAWiFiUnconfiguredAccessoryBrowser {
 internal class EAWiFiUnconfiguredAccessoryBrowser_Delegate: NSObject, EAWiFiUnconfiguredAccessoryBrowserDelegate {
     
     var _accessoryBrowser: ((EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessoryBrowserState) -> Void)?
-    var _accessoryBrowserAndDidFindUnconfiguredAccessories: ((EAWiFiUnconfiguredAccessoryBrowser, Set<NSObject>!) -> Void)?
-    var _accessoryBrowserAndDidRemoveUnconfiguredAccessories: ((EAWiFiUnconfiguredAccessoryBrowser, Set<NSObject>!) -> Void)?
-    var _accessoryBrowserAndDidFinishConfiguringAccessory: ((EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessory!, EAWiFiUnconfiguredAccessoryConfigurationStatus) -> Void)?
+    var _accessoryBrowserAndDidFindUnconfiguredAccessories: ((EAWiFiUnconfiguredAccessoryBrowser, Set<EAWiFiUnconfiguredAccessory>) -> Void)?
+    var _accessoryBrowserAndDidRemoveUnconfiguredAccessories: ((EAWiFiUnconfiguredAccessoryBrowser, Set<EAWiFiUnconfiguredAccessory>) -> Void)?
+    var _accessoryBrowserAndDidFinishConfiguringAccessory: ((EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessory, EAWiFiUnconfiguredAccessoryConfigurationStatus) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -90,13 +90,13 @@ internal class EAWiFiUnconfiguredAccessoryBrowser_Delegate: NSObject, EAWiFiUnco
     @objc func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser, didUpdateState state: EAWiFiUnconfiguredAccessoryBrowserState) {
         _accessoryBrowser!(browser, state)
     }
-    @objc func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser, didFindUnconfiguredAccessories accessories: Set<NSObject>!) {
+    @objc func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser, didFindUnconfiguredAccessories accessories: Set<EAWiFiUnconfiguredAccessory>) {
         _accessoryBrowserAndDidFindUnconfiguredAccessories!(browser, accessories)
     }
-    @objc func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser, didRemoveUnconfiguredAccessories accessories: Set<NSObject>!) {
+    @objc func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser, didRemoveUnconfiguredAccessories accessories: Set<EAWiFiUnconfiguredAccessory>) {
         _accessoryBrowserAndDidRemoveUnconfiguredAccessories!(browser, accessories)
     }
-    @objc func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser, didFinishConfiguringAccessory accessory: EAWiFiUnconfiguredAccessory!, withStatus status: EAWiFiUnconfiguredAccessoryConfigurationStatus) {
+    @objc func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser, didFinishConfiguringAccessory accessory: EAWiFiUnconfiguredAccessory, withStatus status: EAWiFiUnconfiguredAccessoryConfigurationStatus) {
         _accessoryBrowserAndDidFinishConfiguringAccessory!(browser, accessory, status)
     }
 }

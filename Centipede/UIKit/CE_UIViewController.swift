@@ -13,7 +13,7 @@ public extension UIViewController {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIViewController_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIViewController_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: UIViewController_Delegate {
@@ -60,7 +60,7 @@ public extension UIViewController {
         rebindingDelegate()
         return self
     }
-    public func ce_presentationControllerForPresented(handle: (presented: UIViewController, presenting: UIViewController!, source: UIViewController) -> UIPresentationController?) -> Self {
+    public func ce_presentationControllerForPresented(handle: (presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIPresentationController?) -> Self {
         ce._presentationControllerForPresented = handle
         rebindingDelegate()
         return self
@@ -74,7 +74,7 @@ internal class UIViewController_Delegate: NSObject, UIViewControllerTransitionin
     var _animationControllerForDismissedController: ((UIViewController) -> UIViewControllerAnimatedTransitioning?)?
     var _interactionControllerForPresentation: ((UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)?
     var _interactionControllerForDismissal: ((UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)?
-    var _presentationControllerForPresented: ((UIViewController, UIViewController!, UIViewController) -> UIPresentationController?)?
+    var _presentationControllerForPresented: ((UIViewController, UIViewController, UIViewController) -> UIPresentationController?)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -106,7 +106,7 @@ internal class UIViewController_Delegate: NSObject, UIViewControllerTransitionin
     @objc func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return _interactionControllerForDismissal!(animator)
     }
-    @objc func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
+    @objc func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         return _presentationControllerForPresented!(presented, presenting, source)
     }
 }

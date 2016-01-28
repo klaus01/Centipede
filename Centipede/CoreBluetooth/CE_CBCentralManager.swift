@@ -13,7 +13,7 @@ public extension CBCentralManager {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CBCentralManager_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? CBCentralManager_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: CBCentralManager_Delegate {
@@ -45,7 +45,7 @@ public extension CBCentralManager {
         rebindingDelegate()
         return self
     }
-    public func ce_willRestoreState(handle: (central: CBCentralManager, dict: [NSObject : AnyObject]!) -> Void) -> Self {
+    public func ce_willRestoreState(handle: (central: CBCentralManager, dict: [String : AnyObject]) -> Void) -> Self {
         ce._willRestoreState = handle
         rebindingDelegate()
         return self
@@ -60,22 +60,22 @@ public extension CBCentralManager {
         rebindingDelegate()
         return self
     }
-    public func ce_didDiscoverPeripheral(handle: (central: CBCentralManager, peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) -> Void) -> Self {
+    public func ce_didDiscoverPeripheral(handle: (central: CBCentralManager, peripheral: CBPeripheral!, advertisementData: [String : AnyObject], RSSI: NSNumber) -> Void) -> Self {
         ce._didDiscoverPeripheral = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didConnectPeripheral(handle: (central: CBCentralManager, peripheral: CBPeripheral!) -> Void) -> Self {
+    public func ce_didConnectPeripheral(handle: (central: CBCentralManager, peripheral: CBPeripheral) -> Void) -> Self {
         ce._didConnectPeripheral = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFailToConnectPeripheral(handle: (central: CBCentralManager, peripheral: CBPeripheral!, error: NSError!) -> Void) -> Self {
+    public func ce_didFailToConnectPeripheral(handle: (central: CBCentralManager, peripheral: CBPeripheral, error: NSError?) -> Void) -> Self {
         ce._didFailToConnectPeripheral = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDisconnectPeripheral(handle: (central: CBCentralManager, peripheral: CBPeripheral!, error: NSError!) -> Void) -> Self {
+    public func ce_didDisconnectPeripheral(handle: (central: CBCentralManager, peripheral: CBPeripheral, error: NSError?) -> Void) -> Self {
         ce._didDisconnectPeripheral = handle
         rebindingDelegate()
         return self
@@ -86,13 +86,13 @@ public extension CBCentralManager {
 internal class CBCentralManager_Delegate: NSObject, CBCentralManagerDelegate {
     
     var _didUpdateState: ((CBCentralManager) -> Void)?
-    var _willRestoreState: ((CBCentralManager, [NSObject : AnyObject]!) -> Void)?
+    var _willRestoreState: ((CBCentralManager, [String : AnyObject]) -> Void)?
     var _didRetrievePeripherals: ((CBCentralManager, [AnyObject]!) -> Void)?
     var _didRetrieveConnectedPeripherals: ((CBCentralManager, [AnyObject]!) -> Void)?
-    var _didDiscoverPeripheral: ((CBCentralManager, CBPeripheral!, [NSObject : AnyObject]!, NSNumber!) -> Void)?
-    var _didConnectPeripheral: ((CBCentralManager, CBPeripheral!) -> Void)?
-    var _didFailToConnectPeripheral: ((CBCentralManager, CBPeripheral!, NSError!) -> Void)?
-    var _didDisconnectPeripheral: ((CBCentralManager, CBPeripheral!, NSError!) -> Void)?
+    var _didDiscoverPeripheral: ((CBCentralManager, CBPeripheral!, [String : AnyObject], NSNumber) -> Void)?
+    var _didConnectPeripheral: ((CBCentralManager, CBPeripheral) -> Void)?
+    var _didFailToConnectPeripheral: ((CBCentralManager, CBPeripheral, NSError?) -> Void)?
+    var _didDisconnectPeripheral: ((CBCentralManager, CBPeripheral, NSError?) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -124,7 +124,7 @@ internal class CBCentralManager_Delegate: NSObject, CBCentralManagerDelegate {
     @objc func centralManagerDidUpdateState(central: CBCentralManager) {
         _didUpdateState!(central)
     }
-    @objc func centralManager(central: CBCentralManager, willRestoreState dict: [NSObject : AnyObject]!) {
+    @objc func centralManager(central: CBCentralManager, willRestoreState dict: [String : AnyObject]) {
         _willRestoreState!(central, dict)
     }
     @objc func centralManager(central: CBCentralManager, didRetrievePeripherals peripherals: [AnyObject]!) {
@@ -133,16 +133,16 @@ internal class CBCentralManager_Delegate: NSObject, CBCentralManagerDelegate {
     @objc func centralManager(central: CBCentralManager, didRetrieveConnectedPeripherals peripherals: [AnyObject]!) {
         _didRetrieveConnectedPeripherals!(central, peripherals)
     }
-    @objc func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
+    @objc func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
         _didDiscoverPeripheral!(central, peripheral, advertisementData, RSSI)
     }
-    @objc func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral!) {
+    @objc func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
         _didConnectPeripheral!(central, peripheral)
     }
-    @objc func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+    @objc func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         _didFailToConnectPeripheral!(central, peripheral, error)
     }
-    @objc func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+    @objc func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         _didDisconnectPeripheral!(central, peripheral, error)
     }
 }

@@ -53,7 +53,7 @@ internal extension UIBarButtonItem {
     }
     
     private func setter(newValue: UIBarButtonItemProxies) -> UIBarButtonItemProxies {
-        objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN));
+        objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
         return newValue
     }
     
@@ -73,7 +73,7 @@ internal extension UIBarButtonItem {
     }
     
     internal func off() -> Self {
-        if let proxy = proxies[""] {
+        if let _ = proxies[""] {
             target = nil
             action = ""
             proxies.removeValueForKey("")

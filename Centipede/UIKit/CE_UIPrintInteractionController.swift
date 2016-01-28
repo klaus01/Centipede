@@ -13,7 +13,7 @@ public extension UIPrintInteractionController {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIPrintInteractionController_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIPrintInteractionController_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: UIPrintInteractionController_Delegate {
@@ -40,12 +40,12 @@ public extension UIPrintInteractionController {
         return UIPrintInteractionController_Delegate()
     }
     
-    public func ce_parentViewController(handle: (printInteractionController: UIPrintInteractionController) -> UIViewController?) -> Self {
+    public func ce_parentViewController(handle: (printInteractionController: UIPrintInteractionController) -> UIViewController) -> Self {
         ce._parentViewController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_choosePaper(handle: (printInteractionController: UIPrintInteractionController, paperList: [AnyObject]) -> UIPrintPaper?) -> Self {
+    public func ce_choosePaper(handle: (printInteractionController: UIPrintInteractionController, paperList: [UIPrintPaper]) -> UIPrintPaper) -> Self {
         ce._choosePaper = handle
         rebindingDelegate()
         return self
@@ -90,8 +90,8 @@ public extension UIPrintInteractionController {
 
 internal class UIPrintInteractionController_Delegate: NSObject, UIPrintInteractionControllerDelegate {
     
-    var _parentViewController: ((UIPrintInteractionController) -> UIViewController?)?
-    var _choosePaper: ((UIPrintInteractionController, [AnyObject]) -> UIPrintPaper?)?
+    var _parentViewController: ((UIPrintInteractionController) -> UIViewController)?
+    var _choosePaper: ((UIPrintInteractionController, [UIPrintPaper]) -> UIPrintPaper)?
     var _willPresentPrinterOptions: ((UIPrintInteractionController) -> Void)?
     var _didPresentPrinterOptions: ((UIPrintInteractionController) -> Void)?
     var _willDismissPrinterOptions: ((UIPrintInteractionController) -> Void)?
@@ -128,10 +128,10 @@ internal class UIPrintInteractionController_Delegate: NSObject, UIPrintInteracti
     }
     
     
-    @objc func printInteractionControllerParentViewController(printInteractionController: UIPrintInteractionController) -> UIViewController? {
+    @objc func printInteractionControllerParentViewController(printInteractionController: UIPrintInteractionController) -> UIViewController {
         return _parentViewController!(printInteractionController)
     }
-    @objc func printInteractionController(printInteractionController: UIPrintInteractionController, choosePaper paperList: [AnyObject]) -> UIPrintPaper? {
+    @objc func printInteractionController(printInteractionController: UIPrintInteractionController, choosePaper paperList: [UIPrintPaper]) -> UIPrintPaper {
         return _choosePaper!(printInteractionController, paperList)
     }
     @objc func printInteractionControllerWillPresentPrinterOptions(printInteractionController: UIPrintInteractionController) {

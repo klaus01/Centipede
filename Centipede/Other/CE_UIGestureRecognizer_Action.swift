@@ -59,7 +59,7 @@ internal extension UIGestureRecognizer {
     }
     
     private func setter(newValue: UIGestureRecognizerProxies) -> UIGestureRecognizerProxies {
-        objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN));
+        objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
         return newValue
     }
     

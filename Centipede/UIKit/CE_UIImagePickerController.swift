@@ -13,7 +13,7 @@ public extension UIImagePickerController {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIImagePickerController_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIImagePickerController_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: UIImagePickerController_Delegate {
@@ -40,7 +40,7 @@ public extension UIImagePickerController {
         return UIImagePickerController_Delegate()
     }
     
-    public func ce_didFinishPickingMediaWithInfo(handle: (picker: UIImagePickerController, info: [NSObject : AnyObject]) -> Void) -> Self {
+    public func ce_didFinishPickingMediaWithInfo(handle: (picker: UIImagePickerController, info: [String : AnyObject]) -> Void) -> Self {
         ce._didFinishPickingMediaWithInfo = handle
         rebindingDelegate()
         return self
@@ -55,7 +55,7 @@ public extension UIImagePickerController {
 
 internal class UIImagePickerController_Delegate: UINavigationController_Delegate, UIImagePickerControllerDelegate {
     
-    var _didFinishPickingMediaWithInfo: ((UIImagePickerController, [NSObject : AnyObject]) -> Void)?
+    var _didFinishPickingMediaWithInfo: ((UIImagePickerController, [String : AnyObject]) -> Void)?
     var _didCancel: ((UIImagePickerController) -> Void)?
     
     
@@ -73,7 +73,7 @@ internal class UIImagePickerController_Delegate: UINavigationController_Delegate
     }
     
     
-    @objc func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    @objc func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         _didFinishPickingMediaWithInfo!(picker, info)
     }
     @objc func imagePickerControllerDidCancel(picker: UIImagePickerController) {

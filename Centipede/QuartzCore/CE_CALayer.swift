@@ -13,7 +13,7 @@ public extension CALayer {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CALayer_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? CALayer_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: CALayer_Delegate {
@@ -45,7 +45,7 @@ public extension CALayer {
         rebindingDelegate()
         return self
     }
-    public func ce_draw(handle: (layer: CALayer, ctx: CGContext!) -> Void) -> Self {
+    public func ce_draw(handle: (layer: CALayer, ctx: CGContext) -> Void) -> Self {
         ce._draw = handle
         rebindingDelegate()
         return self
@@ -55,7 +55,7 @@ public extension CALayer {
         rebindingDelegate()
         return self
     }
-    public func ce_actionFor(handle: (layer: CALayer, event: String!) -> CAAction!) -> Self {
+    public func ce_actionFor(handle: (layer: CALayer, event: String) -> CAAction) -> Self {
         ce._actionFor = handle
         rebindingDelegate()
         return self
@@ -66,9 +66,9 @@ public extension CALayer {
 internal class CALayer_Delegate: NSObject {
     
     var _display: ((CALayer) -> Void)?
-    var _draw: ((CALayer, CGContext!) -> Void)?
+    var _draw: ((CALayer, CGContext) -> Void)?
     var _layoutSubsOfLayer: ((CALayer) -> Void)?
-    var _actionFor: ((CALayer, String!) -> CAAction!)?
+    var _actionFor: ((CALayer, String) -> CAAction)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -91,7 +91,7 @@ internal class CALayer_Delegate: NSObject {
         super.displayLayer(layer)
         _display!(layer)
     }
-    @objc override func drawLayer(layer: CALayer, inContext ctx: CGContext!) {
+    @objc override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         super.drawLayer(layer, inContext: ctx)
         _draw!(layer, ctx)
     }
@@ -99,7 +99,7 @@ internal class CALayer_Delegate: NSObject {
         super.layoutSublayersOfLayer(layer)
         _layoutSubsOfLayer!(layer)
     }
-    @objc override func actionForLayer(layer: CALayer, forKey event: String!) -> CAAction! {
+    @objc override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction {
         super.actionForLayer(layer, forKey: event)
         return _actionFor!(layer, event)
     }

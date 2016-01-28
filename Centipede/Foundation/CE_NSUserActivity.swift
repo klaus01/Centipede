@@ -13,7 +13,7 @@ public extension NSUserActivity {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSUserActivity_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? NSUserActivity_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: NSUserActivity_Delegate {
@@ -50,7 +50,7 @@ public extension NSUserActivity {
         rebindingDelegate()
         return self
     }
-    public func ce_didReceiveInputStream(handle: (userActivity: NSUserActivity, inputStream: NSInputStream, outputStream: NSOutputStream) -> Void) -> Self {
+    public func ce_didReceiveInputStream(handle: (userActivity: NSUserActivity?, inputStream: NSInputStream, outputStream: NSOutputStream) -> Void) -> Self {
         ce._didReceiveInputStream = handle
         rebindingDelegate()
         return self
@@ -62,7 +62,7 @@ internal class NSUserActivity_Delegate: NSObject, NSUserActivityDelegate {
     
     var _willSave: ((NSUserActivity) -> Void)?
     var _wasContinued: ((NSUserActivity) -> Void)?
-    var _didReceiveInputStream: ((NSUserActivity, NSInputStream, NSOutputStream) -> Void)?
+    var _didReceiveInputStream: ((NSUserActivity?, NSInputStream, NSOutputStream) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -86,7 +86,7 @@ internal class NSUserActivity_Delegate: NSObject, NSUserActivityDelegate {
     @objc func userActivityWasContinued(userActivity: NSUserActivity) {
         _wasContinued!(userActivity)
     }
-    @objc func userActivity(userActivity: NSUserActivity, didReceiveInputStream inputStream: NSInputStream, outputStream: NSOutputStream) {
+    @objc func userActivity(userActivity: NSUserActivity?, didReceiveInputStream inputStream: NSInputStream, outputStream: NSOutputStream) {
         _didReceiveInputStream!(userActivity, inputStream, outputStream)
     }
 }

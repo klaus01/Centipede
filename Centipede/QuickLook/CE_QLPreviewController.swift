@@ -13,7 +13,7 @@ public extension QLPreviewController {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: QLPreviewController_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? QLPreviewController_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: QLPreviewController_Delegate {
@@ -47,7 +47,7 @@ public extension QLPreviewController {
         rebindingDelegate()
         return self
     }
-    public func ce_previewItemAtIndex(handle: (controller: QLPreviewController, index: Int) -> QLPreviewItem!) -> Self {
+    public func ce_previewItemAtIndex(handle: (controller: QLPreviewController, index: Int) -> QLPreviewItem) -> Self {
         ce._previewItemAtIndex = handle
         rebindingDelegate()
         return self
@@ -62,17 +62,17 @@ public extension QLPreviewController {
         rebindingDelegate()
         return self
     }
-    public func ce_shouldOpenURL(handle: (controller: QLPreviewController, url: NSURL!, item: QLPreviewItem!) -> Bool) -> Self {
+    public func ce_shouldOpenURL(handle: (controller: QLPreviewController, url: NSURL, item: QLPreviewItem) -> Bool) -> Self {
         ce._shouldOpenURL = handle
         rebindingDelegate()
         return self
     }
-    public func ce_frameForPreviewItem(handle: (controller: QLPreviewController, item: QLPreviewItem!, view: AutoreleasingUnsafeMutablePointer<UIView?>) -> CGRect) -> Self {
+    public func ce_frameForPreviewItem(handle: (controller: QLPreviewController, item: QLPreviewItem, view: AutoreleasingUnsafeMutablePointer<UIView?>) -> CGRect) -> Self {
         ce._frameForPreviewItem = handle
         rebindingDelegate()
         return self
     }
-    public func ce_transitionImageForPreviewItem(handle: (controller: QLPreviewController, item: QLPreviewItem!, contentRect: UnsafeMutablePointer<CGRect>) -> UIImage!) -> Self {
+    public func ce_transitionImageForPreviewItem(handle: (controller: QLPreviewController, item: QLPreviewItem, contentRect: UnsafeMutablePointer<CGRect>) -> UIImage) -> Self {
         ce._transitionImageForPreviewItem = handle
         rebindingDelegate()
         return self
@@ -83,12 +83,12 @@ public extension QLPreviewController {
 internal class QLPreviewController_Delegate: UIViewController_Delegate, QLPreviewControllerDelegate, QLPreviewControllerDataSource {
     
     var _numberOfPreviewItemsIn: ((QLPreviewController) -> Int)?
-    var _previewItemAtIndex: ((QLPreviewController, Int) -> QLPreviewItem!)?
+    var _previewItemAtIndex: ((QLPreviewController, Int) -> QLPreviewItem)?
     var _willDismiss: ((QLPreviewController) -> Void)?
     var _didDismiss: ((QLPreviewController) -> Void)?
-    var _shouldOpenURL: ((QLPreviewController, NSURL!, QLPreviewItem!) -> Bool)?
-    var _frameForPreviewItem: ((QLPreviewController, QLPreviewItem!, AutoreleasingUnsafeMutablePointer<UIView?>) -> CGRect)?
-    var _transitionImageForPreviewItem: ((QLPreviewController, QLPreviewItem!, UnsafeMutablePointer<CGRect>) -> UIImage!)?
+    var _shouldOpenURL: ((QLPreviewController, NSURL, QLPreviewItem) -> Bool)?
+    var _frameForPreviewItem: ((QLPreviewController, QLPreviewItem, AutoreleasingUnsafeMutablePointer<UIView?>) -> CGRect)?
+    var _transitionImageForPreviewItem: ((QLPreviewController, QLPreviewItem, UnsafeMutablePointer<CGRect>) -> UIImage)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -113,7 +113,7 @@ internal class QLPreviewController_Delegate: UIViewController_Delegate, QLPrevie
     @objc func numberOfPreviewItemsInPreviewController(controller: QLPreviewController) -> Int {
         return _numberOfPreviewItemsIn!(controller)
     }
-    @objc func previewController(controller: QLPreviewController, previewItemAtIndex index: Int) -> QLPreviewItem! {
+    @objc func previewController(controller: QLPreviewController, previewItemAtIndex index: Int) -> QLPreviewItem {
         return _previewItemAtIndex!(controller, index)
     }
     @objc func previewControllerWillDismiss(controller: QLPreviewController) {
@@ -122,13 +122,13 @@ internal class QLPreviewController_Delegate: UIViewController_Delegate, QLPrevie
     @objc func previewControllerDidDismiss(controller: QLPreviewController) {
         _didDismiss!(controller)
     }
-    @objc func previewController(controller: QLPreviewController, shouldOpenURL url: NSURL!, forPreviewItem item: QLPreviewItem!) -> Bool {
+    @objc func previewController(controller: QLPreviewController, shouldOpenURL url: NSURL, forPreviewItem item: QLPreviewItem) -> Bool {
         return _shouldOpenURL!(controller, url, item)
     }
-    @objc func previewController(controller: QLPreviewController, frameForPreviewItem item: QLPreviewItem!, inSourceView view: AutoreleasingUnsafeMutablePointer<UIView?>) -> CGRect {
+    @objc func previewController(controller: QLPreviewController, frameForPreviewItem item: QLPreviewItem, inSourceView view: AutoreleasingUnsafeMutablePointer<UIView?>) -> CGRect {
         return _frameForPreviewItem!(controller, item, view)
     }
-    @objc func previewController(controller: QLPreviewController, transitionImageForPreviewItem item: QLPreviewItem!, contentRect: UnsafeMutablePointer<CGRect>) -> UIImage! {
+    @objc func previewController(controller: QLPreviewController, transitionImageForPreviewItem item: QLPreviewItem, contentRect: UnsafeMutablePointer<CGRect>) -> UIImage {
         return _transitionImageForPreviewItem!(controller, item, contentRect)
     }
 }

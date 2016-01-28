@@ -61,7 +61,7 @@ internal extension UIControl {
     }
     
     private func setter(newValue: UIControlProxies) -> UIControlProxies {
-        objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN));
+        objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
         return newValue
     }
     

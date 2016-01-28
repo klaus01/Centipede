@@ -13,7 +13,7 @@ public extension UISplitViewController {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UISplitViewController_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UISplitViewController_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: UISplitViewController_Delegate {
@@ -72,17 +72,17 @@ public extension UISplitViewController {
         rebindingDelegate()
         return self
     }
-    public func ce_collapseSecondaryViewController(handle: (splitViewController: UISplitViewController, secondaryViewController: UIViewController!, primaryViewController: UIViewController!) -> Bool) -> Self {
+    public func ce_collapseSecondaryViewController(handle: (splitViewController: UISplitViewController, secondaryViewController: UIViewController, primaryViewController: UIViewController) -> Bool) -> Self {
         ce._collapseSecondaryViewController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_separateSecondaryViewControllerFromPrimaryViewController(handle: (splitViewController: UISplitViewController, primaryViewController: UIViewController!) -> UIViewController?) -> Self {
+    public func ce_separateSecondaryViewControllerFromPrimaryViewController(handle: (splitViewController: UISplitViewController, primaryViewController: UIViewController) -> UIViewController?) -> Self {
         ce._separateSecondaryViewControllerFromPrimaryViewController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_supportedInterfaceOrientations(handle: (splitViewController: UISplitViewController) -> Int) -> Self {
+    public func ce_supportedInterfaceOrientations(handle: (splitViewController: UISplitViewController) -> UIInterfaceOrientationMask) -> Self {
         ce._supportedInterfaceOrientations = handle
         rebindingDelegate()
         return self
@@ -123,9 +123,9 @@ internal class UISplitViewController_Delegate: UIViewController_Delegate, UISpli
     var _showDetailViewController: ((UISplitViewController, UIViewController, AnyObject?) -> Bool)?
     var _primaryViewControllerForCollapsing: ((UISplitViewController) -> UIViewController?)?
     var _primaryViewControllerForExpanding: ((UISplitViewController) -> UIViewController?)?
-    var _collapseSecondaryViewController: ((UISplitViewController, UIViewController!, UIViewController!) -> Bool)?
-    var _separateSecondaryViewControllerFromPrimaryViewController: ((UISplitViewController, UIViewController!) -> UIViewController?)?
-    var _supportedInterfaceOrientations: ((UISplitViewController) -> Int)?
+    var _collapseSecondaryViewController: ((UISplitViewController, UIViewController, UIViewController) -> Bool)?
+    var _separateSecondaryViewControllerFromPrimaryViewController: ((UISplitViewController, UIViewController) -> UIViewController?)?
+    var _supportedInterfaceOrientations: ((UISplitViewController) -> UIInterfaceOrientationMask)?
     var _preferredInterfaceOrientationForPresentation: ((UISplitViewController) -> UIInterfaceOrientation)?
     var _willHideViewController: ((UISplitViewController, UIViewController, UIBarButtonItem, UIPopoverController) -> Void)?
     var _willShowViewController: ((UISplitViewController, UIViewController, UIBarButtonItem) -> Void)?
@@ -183,13 +183,13 @@ internal class UISplitViewController_Delegate: UIViewController_Delegate, UISpli
     @objc func primaryViewControllerForExpandingSplitViewController(splitViewController: UISplitViewController) -> UIViewController? {
         return _primaryViewControllerForExpanding!(splitViewController)
     }
-    @objc func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController!, ontoPrimaryViewController primaryViewController: UIViewController!) -> Bool {
+    @objc func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
         return _collapseSecondaryViewController!(splitViewController, secondaryViewController, primaryViewController)
     }
-    @objc func splitViewController(splitViewController: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController!) -> UIViewController? {
+    @objc func splitViewController(splitViewController: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController) -> UIViewController? {
         return _separateSecondaryViewControllerFromPrimaryViewController!(splitViewController, primaryViewController)
     }
-    @objc func splitViewControllerSupportedInterfaceOrientations(splitViewController: UISplitViewController) -> Int {
+    @objc func splitViewControllerSupportedInterfaceOrientations(splitViewController: UISplitViewController) -> UIInterfaceOrientationMask {
         return _supportedInterfaceOrientations!(splitViewController)
     }
     @objc func splitViewControllerPreferredInterfaceOrientationForPresentation(splitViewController: UISplitViewController) -> UIInterfaceOrientation {

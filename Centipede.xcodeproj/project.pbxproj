@@ -32,7 +32,6 @@
 		240B74AE1B2B14500067475E /* CE_UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74561B2B14500067475E /* CE_UIScrollView.swift */; };
 		240B74AF1B2B14500067475E /* CE_UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74571B2B14500067475E /* CE_UISearchBar.swift */; };
 		240B74B01B2B14500067475E /* CE_UISearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74581B2B14500067475E /* CE_UISearchController.swift */; };
-		240B74B11B2B14500067475E /* CE_UISearchDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B74591B2B14500067475E /* CE_UISearchDisplayController.swift */; };
 		240B74B21B2B14500067475E /* CE_UISplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B745A1B2B14500067475E /* CE_UISplitViewController.swift */; };
 		240B74B31B2B14500067475E /* CE_UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B745B1B2B14500067475E /* CE_UITabBar.swift */; };
 		240B74B41B2B14500067475E /* CE_UITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B745C1B2B14500067475E /* CE_UITabBarController.swift */; };
@@ -92,6 +91,8 @@
 		240B75AF1B2B22140067475E /* CE_SKRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B757D1B2B22140067475E /* CE_SKRequest.swift */; };
 		240B75B01B2B22140067475E /* CE_SKStoreProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B757E1B2B22140067475E /* CE_SKStoreProductViewController.swift */; };
 		240B75B21B2B23090067475E /* CE_NSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75B11B2B23090067475E /* CE_NSURLSession.swift */; };
+		245CA93D1C59F2490006C533 /* CE_CAAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CA93B1C59F2490006C533 /* CE_CAAnimation.swift */; };
+		245CA93E1C59F2490006C533 /* CE_CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CA93C1C59F2490006C533 /* CE_CALayer.swift */; };
 		24E8A74C1B1E056A008D963A /* Centipede.h in Headers */ = {isa = PBXBuildFile; fileRef = 24E8A74B1B1E056A008D963A /* Centipede.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -121,7 +122,6 @@
 		240B74561B2B14500067475E /* CE_UIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIScrollView.swift; sourceTree = "<group>"; };
 		240B74571B2B14500067475E /* CE_UISearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchBar.swift; sourceTree = "<group>"; };
 		240B74581B2B14500067475E /* CE_UISearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchController.swift; sourceTree = "<group>"; };
-		240B74591B2B14500067475E /* CE_UISearchDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchDisplayController.swift; sourceTree = "<group>"; };
 		240B745A1B2B14500067475E /* CE_UISplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISplitViewController.swift; sourceTree = "<group>"; };
 		240B745B1B2B14500067475E /* CE_UITabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITabBar.swift; sourceTree = "<group>"; };
 		240B745C1B2B14500067475E /* CE_UITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITabBarController.swift; sourceTree = "<group>"; };
@@ -181,6 +181,8 @@
 		240B757D1B2B22140067475E /* CE_SKRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SKRequest.swift; sourceTree = "<group>"; };
 		240B757E1B2B22140067475E /* CE_SKStoreProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_SKStoreProductViewController.swift; sourceTree = "<group>"; };
 		240B75B11B2B23090067475E /* CE_NSURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSURLSession.swift; sourceTree = "<group>"; };
+		245CA93B1C59F2490006C533 /* CE_CAAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CAAnimation.swift; sourceTree = "<group>"; };
+		245CA93C1C59F2490006C533 /* CE_CALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CALayer.swift; sourceTree = "<group>"; };
 		24E8A7461B1E056A008D963A /* Centipede.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Centipede.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E8A74A1B1E056A008D963A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E8A74B1B1E056A008D963A /* Centipede.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Centipede.h; sourceTree = "<group>"; };
@@ -232,7 +234,6 @@
 				240B74561B2B14500067475E /* CE_UIScrollView.swift */,
 				240B74571B2B14500067475E /* CE_UISearchBar.swift */,
 				240B74581B2B14500067475E /* CE_UISearchController.swift */,
-				240B74591B2B14500067475E /* CE_UISearchDisplayController.swift */,
 				240B745A1B2B14500067475E /* CE_UISplitViewController.swift */,
 				240B745B1B2B14500067475E /* CE_UITabBar.swift */,
 				240B745C1B2B14500067475E /* CE_UITabBarController.swift */,
@@ -436,6 +437,15 @@
 			path = StoreKit;
 			sourceTree = "<group>";
 		};
+		245CA93A1C59F2490006C533 /* QuartzCore */ = {
+			isa = PBXGroup;
+			children = (
+				245CA93B1C59F2490006C533 /* CE_CAAnimation.swift */,
+				245CA93C1C59F2490006C533 /* CE_CALayer.swift */,
+			);
+			path = QuartzCore;
+			sourceTree = "<group>";
+		};
 		24E8A73C1B1E056A008D963A = {
 			isa = PBXGroup;
 			children = (
@@ -472,6 +482,7 @@
 				240B75691B2B22140067475E /* MultipeerConnectivity */,
 				240B756F1B2B22140067475E /* PassKit */,
 				240B75721B2B22140067475E /* PushKit */,
+				245CA93A1C59F2490006C533 /* QuartzCore */,
 				240B75741B2B22140067475E /* QuickLook */,
 				240B75761B2B22140067475E /* SceneKit */,
 				240B75791B2B22140067475E /* SpriteKit */,
@@ -529,7 +540,9 @@
 		24E8A73D1B1E056A008D963A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = kelei;
 				TargetAttributes = {
 					24E8A7451B1E056A008D963A = {
@@ -602,6 +615,7 @@
 				240B74BB1B2B14500067475E /* CE_UIWebView.swift in Sources */,
 				240B75851B2B22140067475E /* CE_CBPeripheralManager.swift in Sources */,
 				240B74B91B2B14500067475E /* CE_UIVideoEditorController.swift in Sources */,
+				245CA93D1C59F2490006C533 /* CE_CAAnimation.swift in Sources */,
 				240B74B81B2B14500067475E /* CE_UIToolbar.swift in Sources */,
 				240B759A1B2B22140067475E /* CE_HMAccessoryBrowser.swift in Sources */,
 				240B75A71B2B22140067475E /* CE_PKAddPassesViewController.swift in Sources */,
@@ -629,13 +643,13 @@
 				240B75AF1B2B22140067475E /* CE_SKRequest.swift in Sources */,
 				240B74A41B2B14500067475E /* CE_UIImagePickerController.swift in Sources */,
 				240B74B21B2B14500067475E /* CE_UISplitViewController.swift in Sources */,
+				245CA93E1C59F2490006C533 /* CE_CALayer.swift in Sources */,
 				240B74B41B2B14500067475E /* CE_UITabBarController.swift in Sources */,
 				240B75941B2B22140067475E /* CE_NSUserActivity.swift in Sources */,
 				240B758D1B2B22140067475E /* CE_NSFileManager.swift in Sources */,
 				240B759B1B2B22140067475E /* CE_HMHome.swift in Sources */,
 				240B74B61B2B14500067475E /* CE_UITextField.swift in Sources */,
 				240B74B71B2B14500067475E /* CE_UITextView.swift in Sources */,
-				240B74B11B2B14500067475E /* CE_UISearchDisplayController.swift in Sources */,
 				240B749F1B2B14500067475E /* CE_UIDocumentInteractionController.swift in Sources */,
 				240B74AD1B2B14500067475E /* CE_UIPrintInteractionController.swift in Sources */,
 				240B74A31B2B14500067475E /* CE_UIGestureRecognizer.swift in Sources */,
@@ -682,6 +696,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -697,7 +712,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -739,7 +754,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -760,6 +775,7 @@
 				INFOPLIST_FILE = Centipede/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kelei.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -777,6 +793,7 @@
 				INFOPLIST_FILE = Centipede/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kelei.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

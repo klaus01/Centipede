@@ -13,7 +13,7 @@ public extension UIWebView {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIWebView_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UIWebView_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: UIWebView_Delegate {
@@ -55,7 +55,7 @@ public extension UIWebView {
         rebindingDelegate()
         return self
     }
-    public func ce_didFailLoadWithError(handle: (webView: UIWebView, error: NSError) -> Void) -> Self {
+    public func ce_didFailLoadWithError(handle: (webView: UIWebView, error: NSError?) -> Void) -> Self {
         ce._didFailLoadWithError = handle
         rebindingDelegate()
         return self
@@ -68,7 +68,7 @@ internal class UIWebView_Delegate: NSObject, UIWebViewDelegate {
     var _shouldStartLoadWithRequest: ((UIWebView, NSURLRequest, UIWebViewNavigationType) -> Bool)?
     var _didStartLoad: ((UIWebView) -> Void)?
     var _didFinishLoad: ((UIWebView) -> Void)?
-    var _didFailLoadWithError: ((UIWebView, NSError) -> Void)?
+    var _didFailLoadWithError: ((UIWebView, NSError?) -> Void)?
     
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
@@ -96,7 +96,7 @@ internal class UIWebView_Delegate: NSObject, UIWebViewDelegate {
     @objc func webViewDidFinishLoad(webView: UIWebView) {
         _didFinishLoad!(webView)
     }
-    @objc func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+    @objc func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         _didFailLoadWithError!(webView, error)
     }
 }

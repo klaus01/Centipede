@@ -13,7 +13,7 @@ public extension UITabBarController {
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UITabBarController_Delegate? {
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? UITabBarController_Delegate }
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }
     }
     
     private var ce: UITabBarController_Delegate {
@@ -52,22 +52,22 @@ public extension UITabBarController {
         rebindingDelegate()
         return self
     }
-    public func ce_willBeginCustomizingViewControllers(handle: (tabBarController: UITabBarController, viewControllers: [AnyObject]) -> Void) -> Self {
+    public func ce_willBeginCustomizingViewControllers(handle: (tabBarController: UITabBarController, viewControllers: [UIViewController]) -> Void) -> Self {
         ce._willBeginCustomizingViewControllers = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willEndCustomizingViewControllers(handle: (tabBarController: UITabBarController, viewControllers: [AnyObject], changed: Bool) -> Void) -> Self {
+    public func ce_willEndCustomizingViewControllers(handle: (tabBarController: UITabBarController, viewControllers: [UIViewController], changed: Bool) -> Void) -> Self {
         ce._willEndCustomizingViewControllers = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didEndCustomizingViewControllers(handle: (tabBarController: UITabBarController, viewControllers: [AnyObject], changed: Bool) -> Void) -> Self {
+    public func ce_didEndCustomizingViewControllers(handle: (tabBarController: UITabBarController, viewControllers: [UIViewController], changed: Bool) -> Void) -> Self {
         ce._didEndCustomizingViewControllers = handle
         rebindingDelegate()
         return self
     }
-    public func ce_supportedInterfaceOrientations(handle: (tabBarController: UITabBarController) -> Int) -> Self {
+    public func ce_supportedInterfaceOrientations(handle: (tabBarController: UITabBarController) -> UIInterfaceOrientationMask) -> Self {
         ce._supportedInterfaceOrientations = handle
         rebindingDelegate()
         return self
@@ -94,10 +94,10 @@ internal class UITabBarController_Delegate: UIViewController_Delegate, UITabBarC
     
     var _shouldSelectViewController: ((UITabBarController, UIViewController) -> Bool)?
     var _didSelectViewController: ((UITabBarController, UIViewController) -> Void)?
-    var _willBeginCustomizingViewControllers: ((UITabBarController, [AnyObject]) -> Void)?
-    var _willEndCustomizingViewControllers: ((UITabBarController, [AnyObject], Bool) -> Void)?
-    var _didEndCustomizingViewControllers: ((UITabBarController, [AnyObject], Bool) -> Void)?
-    var _supportedInterfaceOrientations: ((UITabBarController) -> Int)?
+    var _willBeginCustomizingViewControllers: ((UITabBarController, [UIViewController]) -> Void)?
+    var _willEndCustomizingViewControllers: ((UITabBarController, [UIViewController], Bool) -> Void)?
+    var _didEndCustomizingViewControllers: ((UITabBarController, [UIViewController], Bool) -> Void)?
+    var _supportedInterfaceOrientations: ((UITabBarController) -> UIInterfaceOrientationMask)?
     var _preferredInterfaceOrientationForPresentation: ((UITabBarController) -> UIInterfaceOrientation)?
     var _interactionControllerForAnimationController: ((UITabBarController, UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)?
     var _animationControllerForTransitionFromViewController: ((UITabBarController, UIViewController, UIViewController) -> UIViewControllerAnimatedTransitioning?)?
@@ -136,16 +136,16 @@ internal class UITabBarController_Delegate: UIViewController_Delegate, UITabBarC
     @objc func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         _didSelectViewController!(tabBarController, viewController)
     }
-    @objc func tabBarController(tabBarController: UITabBarController, willBeginCustomizingViewControllers viewControllers: [AnyObject]) {
+    @objc func tabBarController(tabBarController: UITabBarController, willBeginCustomizingViewControllers viewControllers: [UIViewController]) {
         _willBeginCustomizingViewControllers!(tabBarController, viewControllers)
     }
-    @objc func tabBarController(tabBarController: UITabBarController, willEndCustomizingViewControllers viewControllers: [AnyObject], changed: Bool) {
+    @objc func tabBarController(tabBarController: UITabBarController, willEndCustomizingViewControllers viewControllers: [UIViewController], changed: Bool) {
         _willEndCustomizingViewControllers!(tabBarController, viewControllers, changed)
     }
-    @objc func tabBarController(tabBarController: UITabBarController, didEndCustomizingViewControllers viewControllers: [AnyObject], changed: Bool) {
+    @objc func tabBarController(tabBarController: UITabBarController, didEndCustomizingViewControllers viewControllers: [UIViewController], changed: Bool) {
         _didEndCustomizingViewControllers!(tabBarController, viewControllers, changed)
     }
-    @objc func tabBarControllerSupportedInterfaceOrientations(tabBarController: UITabBarController) -> Int {
+    @objc func tabBarControllerSupportedInterfaceOrientations(tabBarController: UITabBarController) -> UIInterfaceOrientationMask {
         return _supportedInterfaceOrientations!(tabBarController)
     }
     @objc func tabBarControllerPreferredInterfaceOrientationForPresentation(tabBarController: UITabBarController) -> UIInterfaceOrientation {
