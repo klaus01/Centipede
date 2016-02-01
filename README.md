@@ -1,6 +1,5 @@
-# Centipede
+# Centipede ![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat) ![CocoaPods](https://img.shields.io/cocoapods/v/Centipede.svg?style=flat) ![CocoaPods](http://img.shields.io/cocoapods/p/Centipede.svg?style=flat) ![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
 
-![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat) ![CocoaPods](https://img.shields.io/cocoapods/v/Centipede.svg?style=flat) ![CocoaPods](http://img.shields.io/cocoapods/p/Centipede.svg?style=flat) ![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
 一个Swift库，使用闭包实现UIKit组件的delegate和dataSource方法
 
 ### 解决什么问题
