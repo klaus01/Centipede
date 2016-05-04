@@ -56,7 +56,7 @@ internal class NSCache_Delegate: NSObject, NSCacheDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "cache:willEvictObject:" : _willEvictObject,
+            #selector(cache(_:willEvictObject:)) : _willEvictObject,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

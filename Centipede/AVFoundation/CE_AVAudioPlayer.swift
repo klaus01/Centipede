@@ -74,10 +74,10 @@ internal class AVAudioPlayer_Delegate: NSObject, AVAudioPlayerDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "audioPlayerDidFinishPlaying:successfully:" : _didFinishPlaying,
-            "audioPlayerDecodeErrorDidOccur:error:" : _decodeErrorDidOccur,
-            "audioPlayerBeginInterruption:" : _beginInterruption,
-            "audioPlayerEndInterruption:withOptions:" : _endInterruption,
+            #selector(audioPlayerDidFinishPlaying(_:successfully:)) : _didFinishPlaying,
+            #selector(audioPlayerDecodeErrorDidOccur(_:error:)) : _decodeErrorDidOccur,
+            #selector(audioPlayerBeginInterruption(_:)) : _beginInterruption,
+            #selector(audioPlayerEndInterruption(_:withOptions:)) : _endInterruption,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

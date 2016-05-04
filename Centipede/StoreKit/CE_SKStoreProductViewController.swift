@@ -56,7 +56,7 @@ internal class SKStoreProductViewController_Delegate: UIViewController_Delegate,
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "productViewControllerDidFinish:" : _productViewControllerDidFinish,
+            #selector(productViewControllerDidFinish(_:)) : _productViewControllerDidFinish,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

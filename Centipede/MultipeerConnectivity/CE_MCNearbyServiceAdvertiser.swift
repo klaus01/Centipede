@@ -62,8 +62,8 @@ internal class MCNearbyServiceAdvertiser_Delegate: NSObject, MCNearbyServiceAdve
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "advertiser:didReceiveInvitationFromPeer:withContext:invitationHandler:" : _advertiser,
-            "advertiser:didNotStartAdvertisingPeer:" : _advertiserAndDidNotStartAdvertisingPeer,
+            #selector(advertiser(_:didReceiveInvitationFromPeer:withContext:invitationHandler:)) : _advertiser,
+            #selector(advertiser(_:didNotStartAdvertisingPeer:)) : _advertiserAndDidNotStartAdvertisingPeer,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

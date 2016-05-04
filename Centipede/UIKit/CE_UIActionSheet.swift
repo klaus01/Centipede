@@ -101,12 +101,12 @@ internal class UIActionSheet_Delegate: NSObject, UIActionSheetDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "actionSheet:clickedButtonAtIndex:" : _clickedButtonAtIndex,
-            "actionSheetCancel:" : _cancel,
-            "willPresentActionSheet:" : _willPresent,
-            "didPresentActionSheet:" : _didPresent,
-            "actionSheet:willDismissWithButtonIndex:" : _willDismissWithButtonIndex,
-            "actionSheet:didDismissWithButtonIndex:" : _didDismissWithButtonIndex,
+            #selector(actionSheet(_:clickedButtonAtIndex:)) : _clickedButtonAtIndex,
+            #selector(actionSheetCancel(_:)) : _cancel,
+            #selector(willPresentActionSheet(_:)) : _willPresent,
+            #selector(didPresentActionSheet(_:)) : _didPresent,
+            #selector(actionSheet(_:willDismissWithButtonIndex:)) : _willDismissWithButtonIndex,
+            #selector(actionSheet(_:didDismissWithButtonIndex:)) : _didDismissWithButtonIndex,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

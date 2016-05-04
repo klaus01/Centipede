@@ -62,8 +62,8 @@ internal class UIDynamicAnimator_Delegate: NSObject, UIDynamicAnimatorDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "dynamicAnimatorWillResume:" : _willResume,
-            "dynamicAnimatorDidPause:" : _didPause,
+            #selector(dynamicAnimatorWillResume(_:)) : _willResume,
+            #selector(dynamicAnimatorDidPause(_:)) : _didPause,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

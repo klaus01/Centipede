@@ -80,11 +80,11 @@ internal class NSKeyedArchiver_Delegate: NSObject, NSKeyedArchiverDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "archiver:willEncodeObject:" : _archiver,
-            "archiver:didEncodeObject:" : _archiverAndDidEncodeObject,
-            "archiver:willReplaceObject:withObject:" : _archiverAndWillReplaceObject,
-            "archiverWillFinish:" : _archiverWillFinish,
-            "archiverDidFinish:" : _archiverDidFinish,
+            #selector(archiver(_:willEncodeObject:)) : _archiver,
+            #selector(archiver(_:didEncodeObject:)) : _archiverAndDidEncodeObject,
+            #selector(archiver(_:willReplaceObject:withObject:)) : _archiverAndWillReplaceObject,
+            #selector(archiverWillFinish(_:)) : _archiverWillFinish,
+            #selector(archiverDidFinish(_:)) : _archiverDidFinish,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

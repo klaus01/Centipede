@@ -90,12 +90,12 @@ internal class UISearchController_Delegate: UIViewController_Delegate, UISearchR
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "updateSearchResultsForSearchController:" : _updateSearchResultsFor,
-            "willPresentSearchController:" : _willPresent,
-            "didPresentSearchController:" : _didPresent,
-            "willDismissSearchController:" : _willDismiss,
-            "didDismissSearchController:" : _didDismiss,
-            "presentSearchController:" : _present,
+            #selector(updateSearchResultsForSearchController(_:)) : _updateSearchResultsFor,
+            #selector(willPresentSearchController(_:)) : _willPresent,
+            #selector(didPresentSearchController(_:)) : _didPresent,
+            #selector(willDismissSearchController(_:)) : _willDismiss,
+            #selector(didDismissSearchController(_:)) : _didDismiss,
+            #selector(presentSearchController(_:)) : _present,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

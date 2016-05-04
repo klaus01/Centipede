@@ -68,9 +68,9 @@ internal class UIPopoverController_Delegate: NSObject, UIPopoverControllerDelega
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "popoverControllerShouldDismissPopover:" : _shouldDismissPopover,
-            "popoverControllerDidDismissPopover:" : _didDismissPopover,
-            "popoverController:willRepositionPopoverToRect:inView:" : _willRepositionPopoverToRect,
+            #selector(popoverControllerShouldDismissPopover(_:)) : _shouldDismissPopover,
+            #selector(popoverControllerDidDismissPopover(_:)) : _didDismissPopover,
+            #selector(popoverController(_:willRepositionPopoverToRect:inView:)) : _willRepositionPopoverToRect,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

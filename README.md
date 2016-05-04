@@ -24,7 +24,8 @@
 
 ### 使用
 
-- Xcode 7.0+
+- Xcode 7.3
+- Swift 2.2
 - iOS 8+
 - 所有方法名称以`ce_`开头
 
@@ -45,8 +46,33 @@ code
 ```swift
 import Centipede
 
-button.ce_addControlEvents(UIControlEvents.TouchUpInside) { (control, touches) -> Void in
-    println("TouchUpInside")
+class ViewController: UIViewController {
+
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var button: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let cellReuseIdentifier = "MYCELL"
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.ce_didScroll { (scrollView) in
+            print(scrollView.contentOffset)
+        }.ce_numberOfSectionsIn { (tableView) -> Int in
+            return 3;
+        }.ce_numberOfRowsInSection { (tableView, section) -> Int in
+            return 20;
+        }.ce_cellForRowAtIndexPath { (tableView, indexPath) -> UITableViewCell in
+            return tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath)
+        }.ce_willDisplayCell { (tableView, cell, indexPath) in
+            cell.textLabel?.text = "\(indexPath.section) - \(indexPath.row)"
+        }
+        
+        button.ce_addControlEvents(UIControlEvents.TouchUpInside) { [weak self] (control, touches) in
+            self?.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1), atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+        }
+    }
+
 }
 ```
 

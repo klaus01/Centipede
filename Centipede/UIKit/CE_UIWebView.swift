@@ -74,10 +74,10 @@ internal class UIWebView_Delegate: NSObject, UIWebViewDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "webView:shouldStartLoadWithRequest:navigationType:" : _shouldStartLoadWithRequest,
-            "webViewDidStartLoad:" : _didStartLoad,
-            "webViewDidFinishLoad:" : _didFinishLoad,
-            "webView:didFailLoadWithError:" : _didFailLoadWithError,
+            #selector(webView(_:shouldStartLoadWithRequest:navigationType:)) : _shouldStartLoadWithRequest,
+            #selector(webViewDidStartLoad(_:)) : _didStartLoad,
+            #selector(webViewDidFinishLoad(_:)) : _didFinishLoad,
+            #selector(webView(_:didFailLoadWithError:)) : _didFailLoadWithError,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

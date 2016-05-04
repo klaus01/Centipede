@@ -146,34 +146,34 @@ internal class CLLocationManager_Delegate: NSObject, CLLocationManagerDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "locationManager:didUpdateLocations:" : _didUpdateLocations,
-            "locationManager:didUpdateHeading:" : _didUpdateHeading,
-            "locationManagerShouldDisplayHeadingCalibration:" : _shouldDisplayHeadingCalibration,
-            "locationManager:didDetermineState:forRegion:" : _didDetermineState,
-            "locationManager:didRangeBeacons:inRegion:" : _didRangeBeacons,
-            "locationManager:rangingBeaconsDidFailForRegion:withError:" : _rangingBeaconsDidFailForRegion,
-            "locationManager:didEnterRegion:" : _didEnterRegion,
+            #selector(locationManager(_:didUpdateLocations:)) : _didUpdateLocations,
+            #selector(locationManager(_:didUpdateHeading:)) : _didUpdateHeading,
+            #selector(locationManagerShouldDisplayHeadingCalibration(_:)) : _shouldDisplayHeadingCalibration,
+            #selector(locationManager(_:didDetermineState:forRegion:)) : _didDetermineState,
+            #selector(locationManager(_:didRangeBeacons:inRegion:)) : _didRangeBeacons,
+            #selector(locationManager(_:rangingBeaconsDidFailForRegion:withError:)) : _rangingBeaconsDidFailForRegion,
+            #selector(locationManager(_:didEnterRegion:)) : _didEnterRegion,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "locationManager:didExitRegion:" : _didExitRegion,
-            "locationManager:didFailWithError:" : _didFailWithError,
-            "locationManager:monitoringDidFailForRegion:withError:" : _monitoringDidFailForRegion,
-            "locationManager:didChangeAuthorizationStatus:" : _didChangeAuthorizationStatus,
-            "locationManager:didStartMonitoringForRegion:" : _didStartMonitoringForRegion,
-            "locationManagerDidPauseLocationUpdates:" : _didPauseLocationUpdates,
-            "locationManagerDidResumeLocationUpdates:" : _didResumeLocationUpdates,
+            #selector(locationManager(_:didExitRegion:)) : _didExitRegion,
+            #selector(locationManager(_:didFailWithError:)) : _didFailWithError,
+            #selector(locationManager(_:monitoringDidFailForRegion:withError:)) : _monitoringDidFailForRegion,
+            #selector(locationManager(_:didChangeAuthorizationStatus:)) : _didChangeAuthorizationStatus,
+            #selector(locationManager(_:didStartMonitoringForRegion:)) : _didStartMonitoringForRegion,
+            #selector(locationManagerDidPauseLocationUpdates(_:)) : _didPauseLocationUpdates,
+            #selector(locationManagerDidResumeLocationUpdates(_:)) : _didResumeLocationUpdates,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
         let funcDic3: [Selector : Any?] = [
-            "locationManager:didFinishDeferredUpdatesWithError:" : _didFinishDeferredUpdatesWithError,
-            "locationManager:didVisit:" : _didVisit,
+            #selector(locationManager(_:didFinishDeferredUpdatesWithError:)) : _didFinishDeferredUpdatesWithError,
+            #selector(locationManager(_:didVisit:)) : _didVisit,
         ]
         if let f = funcDic3[aSelector] {
             return f != nil

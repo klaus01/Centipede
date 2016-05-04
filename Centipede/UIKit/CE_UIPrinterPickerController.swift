@@ -92,13 +92,13 @@ internal class UIPrinterPickerController_Delegate: NSObject, UIPrinterPickerCont
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "printerPickerControllerParentViewController:" : _parentViewController,
-            "printerPickerController:shouldShowPrinter:" : _shouldShowPrinter,
-            "printerPickerControllerWillPresent:" : _willPresent,
-            "printerPickerControllerDidPresent:" : _didPresent,
-            "printerPickerControllerWillDismiss:" : _willDismiss,
-            "printerPickerControllerDidDismiss:" : _didDismiss,
-            "printerPickerControllerDidSelectPrinter:" : _didSelectPrinter,
+            #selector(printerPickerControllerParentViewController(_:)) : _parentViewController,
+            #selector(printerPickerController(_:shouldShowPrinter:)) : _shouldShowPrinter,
+            #selector(printerPickerControllerWillPresent(_:)) : _willPresent,
+            #selector(printerPickerControllerDidPresent(_:)) : _didPresent,
+            #selector(printerPickerControllerWillDismiss(_:)) : _willDismiss,
+            #selector(printerPickerControllerDidDismiss(_:)) : _didDismiss,
+            #selector(printerPickerControllerDidSelectPrinter(_:)) : _didSelectPrinter,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

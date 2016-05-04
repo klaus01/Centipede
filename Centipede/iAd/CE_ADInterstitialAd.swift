@@ -86,12 +86,12 @@ internal class ADInterstitialAd_Delegate: NSObject, ADInterstitialAdDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "interstitialAdDidUnload:" : _didUnload,
-            "interstitialAd:didFailWithError:" : _didFailWithError,
-            "interstitialAdWillLoad:" : _willLoad,
-            "interstitialAdDidLoad:" : _didLoad,
-            "interstitialAdActionShouldBegin:willLeaveApplication:" : _actionShouldBegin,
-            "interstitialAdActionDidFinish:" : _actionDidFinish,
+            #selector(interstitialAdDidUnload(_:)) : _didUnload,
+            #selector(interstitialAd(_:didFailWithError:)) : _didFailWithError,
+            #selector(interstitialAdWillLoad(_:)) : _willLoad,
+            #selector(interstitialAdDidLoad(_:)) : _didLoad,
+            #selector(interstitialAdActionShouldBegin(_:willLeaveApplication:)) : _actionShouldBegin,
+            #selector(interstitialAdActionDidFinish(_:)) : _actionDidFinish,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

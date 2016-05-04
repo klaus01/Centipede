@@ -104,21 +104,21 @@ internal class UITextView_Delegate: UIScrollView_Delegate, UITextViewDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "textViewShouldBeginEditing:" : _shouldBeginEditing,
-            "textViewShouldEndEditing:" : _shouldEndEditing,
-            "textViewDidBeginEditing:" : _didBeginEditing,
-            "textViewDidEndEditing:" : _didEndEditing,
-            "textView:shouldChangeTextInRange:replacementText:" : _shouldChangeTextInRange,
-            "textViewDidChange:" : _didChange,
-            "textViewDidChangeSelection:" : _didChangeSelection,
+            #selector(textViewShouldBeginEditing(_:)) : _shouldBeginEditing,
+            #selector(textViewShouldEndEditing(_:)) : _shouldEndEditing,
+            #selector(textViewDidBeginEditing(_:)) : _didBeginEditing,
+            #selector(textViewDidEndEditing(_:)) : _didEndEditing,
+            #selector(textView(_:shouldChangeTextInRange:replacementText:)) : _shouldChangeTextInRange,
+            #selector(textViewDidChange(_:)) : _didChange,
+            #selector(textViewDidChangeSelection(_:)) : _didChangeSelection,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "textView:shouldInteractWithURL:inRange:" : _shouldInteractWithURL,
-            "textView:shouldInteractWithTextAttachment:inRange:" : _shouldInteractWithTextAttachment,
+            #selector(textView(_:shouldInteractWithURL:inRange:)) : _shouldInteractWithURL,
+            #selector(textView(_:shouldInteractWithTextAttachment:inRange:)) : _shouldInteractWithTextAttachment,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

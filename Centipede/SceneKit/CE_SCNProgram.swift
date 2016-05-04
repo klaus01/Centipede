@@ -56,7 +56,7 @@ internal class SCNProgram_Delegate: NSObject, SCNProgramDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "program:handleError:" : _program,
+            #selector(program(_:handleError:)) : _program,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

@@ -86,12 +86,12 @@ internal class UINavigationController_Delegate: UIViewController_Delegate, UINav
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "navigationController:willShowViewController:animated:" : _willShowViewController,
-            "navigationController:didShowViewController:animated:" : _didShowViewController,
-            "navigationControllerSupportedInterfaceOrientations:" : _supportedInterfaceOrientations,
-            "navigationControllerPreferredInterfaceOrientationForPresentation:" : _preferredInterfaceOrientationForPresentation,
-            "navigationController:interactionControllerForAnimationController:" : _interactionControllerForAnimationController,
-            "navigationController:animationControllerForOperation:fromViewController:toViewController:" : _animationControllerForOperation,
+            #selector(navigationController(_:willShowViewController:animated:)) : _willShowViewController,
+            #selector(navigationController(_:didShowViewController:animated:)) : _didShowViewController,
+            #selector(navigationControllerSupportedInterfaceOrientations(_:)) : _supportedInterfaceOrientations,
+            #selector(navigationControllerPreferredInterfaceOrientationForPresentation(_:)) : _preferredInterfaceOrientationForPresentation,
+            #selector(navigationController(_:interactionControllerForAnimationController:)) : _interactionControllerForAnimationController,
+            #selector(navigationController(_:animationControllerForOperation:fromViewController:toViewController:)) : _animationControllerForOperation,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

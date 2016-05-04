@@ -83,11 +83,11 @@ internal class MPPlayableContentManager_Delegate: NSObject, MPPlayableContentDel
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "playableContentManager:initiatePlaybackOfContentItemAtIndexPath:completionHandler:" : _initiatePlaybackOfContentItemAtIndexPath,
-            "beginLoadingChildItemsAtIndexPath:completionHandler:" : _beginLoadingChildItemsAtIndexPath,
-            "childItemsDisplayPlaybackProgressAtIndexPath:" : _childItemsDisplayPlaybackProgressAtIndexPath,
-            "numberOfChildItemsAtIndexPath:" : _numberOfChildItemsAtIndexPath,
-            "contentItemAtIndexPath:" : _contentItemAtIndexPath,
+            #selector(playableContentManager(_:initiatePlaybackOfContentItemAtIndexPath:completionHandler:)) : _initiatePlaybackOfContentItemAtIndexPath,
+            #selector(beginLoadingChildItemsAtIndexPath(_:completionHandler:)) : _beginLoadingChildItemsAtIndexPath,
+            #selector(childItemsDisplayPlaybackProgressAtIndexPath(_:)) : _childItemsDisplayPlaybackProgressAtIndexPath,
+            #selector(numberOfChildItemsAtIndexPath(_:)) : _numberOfChildItemsAtIndexPath,
+            #selector(contentItemAtIndexPath(_:)) : _contentItemAtIndexPath,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

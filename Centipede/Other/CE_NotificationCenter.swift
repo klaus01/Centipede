@@ -27,7 +27,7 @@ public extension NSObject {
     
     public func ce_addObserverForName(name: String, handle: (notification: NSNotification) -> Void) -> Self {
         ce.addNotificationForName(name, handle: handle)
-        NSNotificationCenter.defaultCenter().addObserver(ce, selector: "observerHandlerAction:", name: name, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(ce, selector: #selector(NSObject_Delegate.observerHandlerAction(_:)), name: name, object: nil)
         return self
     }
     

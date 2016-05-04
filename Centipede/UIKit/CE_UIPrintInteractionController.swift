@@ -104,21 +104,21 @@ internal class UIPrintInteractionController_Delegate: NSObject, UIPrintInteracti
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "printInteractionControllerParentViewController:" : _parentViewController,
-            "printInteractionController:choosePaper:" : _choosePaper,
-            "printInteractionControllerWillPresentPrinterOptions:" : _willPresentPrinterOptions,
-            "printInteractionControllerDidPresentPrinterOptions:" : _didPresentPrinterOptions,
-            "printInteractionControllerWillDismissPrinterOptions:" : _willDismissPrinterOptions,
-            "printInteractionControllerDidDismissPrinterOptions:" : _didDismissPrinterOptions,
-            "printInteractionControllerWillStartJob:" : _willStartJob,
+            #selector(printInteractionControllerParentViewController(_:)) : _parentViewController,
+            #selector(printInteractionController(_:choosePaper:)) : _choosePaper,
+            #selector(printInteractionControllerWillPresentPrinterOptions(_:)) : _willPresentPrinterOptions,
+            #selector(printInteractionControllerDidPresentPrinterOptions(_:)) : _didPresentPrinterOptions,
+            #selector(printInteractionControllerWillDismissPrinterOptions(_:)) : _willDismissPrinterOptions,
+            #selector(printInteractionControllerDidDismissPrinterOptions(_:)) : _didDismissPrinterOptions,
+            #selector(printInteractionControllerWillStartJob(_:)) : _willStartJob,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "printInteractionControllerDidFinishJob:" : _didFinishJob,
-            "printInteractionController:cutLengthForPaper:" : _cutLengthForPaper,
+            #selector(printInteractionControllerDidFinishJob(_:)) : _didFinishJob,
+            #selector(printInteractionController(_:cutLengthForPaper:)) : _cutLengthForPaper,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

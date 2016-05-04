@@ -56,7 +56,7 @@ internal class EKEventViewController_Delegate: UIViewController_Delegate, EKEven
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "eventViewController:didCompleteWithAction:" : _didCompleteWithAction,
+            #selector(eventViewController(_:didCompleteWithAction:)) : _didCompleteWithAction,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

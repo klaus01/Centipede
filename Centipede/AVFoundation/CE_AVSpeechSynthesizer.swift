@@ -86,12 +86,12 @@ internal class AVSpeechSynthesizer_Delegate: NSObject, AVSpeechSynthesizerDelega
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "speechSynthesizer:didStartSpeechUtterance:" : _didStartSpeechUtterance,
-            "speechSynthesizer:didFinishSpeechUtterance:" : _didFinishSpeechUtterance,
-            "speechSynthesizer:didPauseSpeechUtterance:" : _didPauseSpeechUtterance,
-            "speechSynthesizer:didContinueSpeechUtterance:" : _didContinueSpeechUtterance,
-            "speechSynthesizer:didCancelSpeechUtterance:" : _didCancelSpeechUtterance,
-            "speechSynthesizer:willSpeakRangeOfSpeechString:utterance:" : _willSpeakRangeOfSpeechString,
+            #selector(speechSynthesizer(_:didStartSpeechUtterance:)) : _didStartSpeechUtterance,
+            #selector(speechSynthesizer(_:didFinishSpeechUtterance:)) : _didFinishSpeechUtterance,
+            #selector(speechSynthesizer(_:didPauseSpeechUtterance:)) : _didPauseSpeechUtterance,
+            #selector(speechSynthesizer(_:didContinueSpeechUtterance:)) : _didContinueSpeechUtterance,
+            #selector(speechSynthesizer(_:didCancelSpeechUtterance:)) : _didCancelSpeechUtterance,
+            #selector(speechSynthesizer(_:willSpeakRangeOfSpeechString:utterance:)) : _willSpeakRangeOfSpeechString,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

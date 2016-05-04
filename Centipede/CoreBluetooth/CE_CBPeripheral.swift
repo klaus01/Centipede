@@ -128,25 +128,25 @@ internal class CBPeripheral_Delegate: NSObject, CBPeripheralDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "peripheralDidUpdateName:" : _didUpdateName,
-            "peripheral:didModifyServices:" : _didModifyServices,
-            "peripheralDidUpdateRSSI:error:" : _didUpdateRSSI,
-            "peripheral:didReadRSSI:error:" : _didReadRSSI,
-            "peripheral:didDiscoverServices:" : _didDiscoverServices,
-            "peripheral:didDiscoverIncludedServicesForService:error:" : _didDiscoverIncludedServicesForService,
-            "peripheral:didDiscoverCharacteristicsForService:error:" : _didDiscoverCharacteristicsForService,
+            #selector(peripheralDidUpdateName(_:)) : _didUpdateName,
+            #selector(peripheral(_:didModifyServices:)) : _didModifyServices,
+            #selector(peripheralDidUpdateRSSI(_:error:)) : _didUpdateRSSI,
+            #selector(peripheral(_:didReadRSSI:error:)) : _didReadRSSI,
+            #selector(peripheral(_:didDiscoverServices:)) : _didDiscoverServices,
+            #selector(peripheral(_:didDiscoverIncludedServicesForService:error:)) : _didDiscoverIncludedServicesForService,
+            #selector(peripheral(_:didDiscoverCharacteristicsForService:error:)) : _didDiscoverCharacteristicsForService,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "peripheral:didUpdateValueForCharacteristic:error:" : _didUpdateValueForCharacteristic,
-            "peripheral:didWriteValueForCharacteristic:error:" : _didWriteValueForCharacteristic,
-            "peripheral:didUpdateNotificationStateForCharacteristic:error:" : _didUpdateNotificationStateForCharacteristic,
-            "peripheral:didDiscoverDescriptorsForCharacteristic:error:" : _didDiscoverDescriptorsForCharacteristic,
-            "peripheral:didUpdateValueForDescriptor:error:" : _didUpdateValueForDescriptor,
-            "peripheral:didWriteValueForDescriptor:error:" : _didWriteValueForDescriptor,
+            #selector(peripheral(_:didUpdateValueForCharacteristic:error:)) : _didUpdateValueForCharacteristic,
+            #selector(peripheral(_:didWriteValueForCharacteristic:error:)) : _didWriteValueForCharacteristic,
+            #selector(peripheral(_:didUpdateNotificationStateForCharacteristic:error:)) : _didUpdateNotificationStateForCharacteristic,
+            #selector(peripheral(_:didDiscoverDescriptorsForCharacteristic:error:)) : _didDiscoverDescriptorsForCharacteristic,
+            #selector(peripheral(_:didUpdateValueForDescriptor:error:)) : _didUpdateValueForDescriptor,
+            #selector(peripheral(_:didWriteValueForDescriptor:error:)) : _didWriteValueForDescriptor,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

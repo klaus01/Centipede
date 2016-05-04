@@ -68,9 +68,9 @@ internal class MCBrowserViewController_Delegate: UIViewController_Delegate, MCBr
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "browserViewControllerDidFinish:" : _didFinish,
-            "browserViewControllerWasCancelled:" : _wasCancelled,
-            "browserViewController:shouldPresentNearbyPeer:withDiscoveryInfo:" : _shouldPresentNearbyPeer,
+            #selector(browserViewControllerDidFinish(_:)) : _didFinish,
+            #selector(browserViewControllerWasCancelled(_:)) : _wasCancelled,
+            #selector(browserViewController(_:shouldPresentNearbyPeer:withDiscoveryInfo:)) : _shouldPresentNearbyPeer,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

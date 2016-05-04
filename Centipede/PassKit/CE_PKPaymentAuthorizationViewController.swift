@@ -80,11 +80,11 @@ internal class PKPaymentAuthorizationViewController_Delegate: UIViewController_D
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "paymentAuthorizationViewController:didAuthorizePayment:completion:" : _didAuthorizePayment,
-            "paymentAuthorizationViewControllerDidFinish:" : _didFinish,
-            "paymentAuthorizationViewControllerWillAuthorizePayment:" : _willAuthorizePayment,
-            "paymentAuthorizationViewController:didSelectShippingMethod:completion:" : _didSelectShippingMethod,
-            "paymentAuthorizationViewController:didSelectShippingAddress:completion:" : _didSelectShippingAddress,
+            #selector(paymentAuthorizationViewController(_:didAuthorizePayment:completion:)) : _didAuthorizePayment,
+            #selector(paymentAuthorizationViewControllerDidFinish(_:)) : _didFinish,
+            #selector(paymentAuthorizationViewControllerWillAuthorizePayment(_:)) : _willAuthorizePayment,
+            #selector(paymentAuthorizationViewController(_:didSelectShippingMethod:completion:)) : _didSelectShippingMethod,
+            #selector(paymentAuthorizationViewController(_:didSelectShippingAddress:completion:)) : _didSelectShippingAddress,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

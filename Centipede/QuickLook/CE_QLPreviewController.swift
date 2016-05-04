@@ -94,13 +94,13 @@ internal class QLPreviewController_Delegate: UIViewController_Delegate, QLPrevie
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "numberOfPreviewItemsInPreviewController:" : _numberOfPreviewItemsIn,
-            "previewController:previewItemAtIndex:" : _previewItemAtIndex,
-            "previewControllerWillDismiss:" : _willDismiss,
-            "previewControllerDidDismiss:" : _didDismiss,
-            "previewController:shouldOpenURL:forPreviewItem:" : _shouldOpenURL,
-            "previewController:frameForPreviewItem:inSourceView:" : _frameForPreviewItem,
-            "previewController:transitionImageForPreviewItem:contentRect:" : _transitionImageForPreviewItem,
+            #selector(numberOfPreviewItemsInPreviewController(_:)) : _numberOfPreviewItemsIn,
+            #selector(previewController(_:previewItemAtIndex:)) : _previewItemAtIndex,
+            #selector(previewControllerWillDismiss(_:)) : _willDismiss,
+            #selector(previewControllerDidDismiss(_:)) : _didDismiss,
+            #selector(previewController(_:shouldOpenURL:forPreviewItem:)) : _shouldOpenURL,
+            #selector(previewController(_:frameForPreviewItem:inSourceView:)) : _frameForPreviewItem,
+            #selector(previewController(_:transitionImageForPreviewItem:contentRect:)) : _transitionImageForPreviewItem,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

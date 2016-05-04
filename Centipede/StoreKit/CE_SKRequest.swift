@@ -62,8 +62,8 @@ internal class SKRequest_Delegate: NSObject, SKRequestDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "requestDidFinish:" : _didFinish,
-            "request:didFailWithError:" : _didFailWithError,
+            #selector(requestDidFinish(_:)) : _didFinish,
+            #selector(request(_:didFailWithError:)) : _didFailWithError,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

@@ -69,7 +69,7 @@ internal extension UIControl {
         self.off(controlEvents)
         
         let proxy = UIControlProxy(action)
-        self.addTarget(proxy, action: "act:touches:", forControlEvents: controlEvents)
+        self.addTarget(proxy, action: #selector(UIControlProxy.act(_:touches:)), forControlEvents: controlEvents)
         
         let eventKey: String = proxyKey(controlEvents)
         proxies[eventKey] = proxy
@@ -80,7 +80,7 @@ internal extension UIControl {
     internal func off(controlEvents: UIControlEvents) -> Self {
         
         if let proxy = proxies[proxyKey(controlEvents)] {
-            self.removeTarget(proxy, action: "act:touches:", forControlEvents: controlEvents)
+            self.removeTarget(proxy, action: #selector(UIControlProxy.act(_:touches:)), forControlEvents: controlEvents)
             proxies.removeValueForKey(proxyKey(controlEvents))
         }
         return self

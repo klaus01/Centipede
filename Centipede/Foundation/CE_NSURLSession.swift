@@ -57,9 +57,9 @@ internal class NSURLSession_Delegate: NSObject, NSURLSessionDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "URLSession:didBecomeInvalidWithError:" : _didBecomeInvalidWithError,
-            "URLSession:didReceiveChallenge:" : _didReceiveChallenge,
-            "URLSessionDidFinishEventsForBackgroundURLSession:" : _didFinishEventsForBackgroundURLSession,
+            #selector(URLSession(_:didBecomeInvalidWithError:)) : _didBecomeInvalidWithError,
+            #selector(URLSession(_:didReceiveChallenge:)) : _didReceiveChallenge,
+            #selector(URLSessionDidFinishEventsForBackgroundURLSession(_:)) : _didFinishEventsForBackgroundURLSession,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

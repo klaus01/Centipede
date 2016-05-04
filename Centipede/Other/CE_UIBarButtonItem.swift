@@ -66,7 +66,7 @@ internal extension UIBarButtonItem {
         
         let proxy = UIBarButtonItemProxy(action!)
         self.target = proxy
-        self.action = "act:"
+        self.action = #selector(UIBarButtonItemProxy.act(_:))
         proxies[""] = proxy
 
         return self
@@ -75,7 +75,7 @@ internal extension UIBarButtonItem {
     internal func off() -> Self {
         if let _ = proxies[""] {
             target = nil
-            action = ""
+            action = nil
             proxies.removeValueForKey("")
         }
         return self

@@ -80,11 +80,11 @@ internal class UIGestureRecognizer_Delegate: NSObject, UIGestureRecognizerDelega
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "gestureRecognizerShouldBegin:" : _shouldBegin,
-            "gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:" : _shouldRecognizeSimultaneouslyWithGestureRecognizer,
-            "gestureRecognizer:shouldRequireFailureOfGestureRecognizer:" : _shouldRequireFailureOfGestureRecognizer,
-            "gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:" : _shouldBeRequiredToFailByGestureRecognizer,
-            "gestureRecognizer:shouldReceiveTouch:" : _shouldReceiveTouch,
+            #selector(gestureRecognizerShouldBegin(_:)) : _shouldBegin,
+            #selector(gestureRecognizer(_:shouldRecognizeSimultaneouslyWithGestureRecognizer:)) : _shouldRecognizeSimultaneouslyWithGestureRecognizer,
+            #selector(gestureRecognizer(_:shouldRequireFailureOfGestureRecognizer:)) : _shouldRequireFailureOfGestureRecognizer,
+            #selector(gestureRecognizer(_:shouldBeRequiredToFailByGestureRecognizer:)) : _shouldBeRequiredToFailByGestureRecognizer,
+            #selector(gestureRecognizer(_:shouldReceiveTouch:)) : _shouldReceiveTouch,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

@@ -92,13 +92,13 @@ internal class NSNetServiceBrowser_Delegate: NSObject, NSNetServiceBrowserDelega
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "netServiceBrowserWillSearch:" : _willSearch,
-            "netServiceBrowserDidStopSearch:" : _didStopSearch,
-            "netServiceBrowser:didNotSearch:" : _didNotSearch,
-            "netServiceBrowser:didFindDomain:moreComing:" : _didFindDomain,
-            "netServiceBrowser:didFindService:moreComing:" : _didFindService,
-            "netServiceBrowser:didRemoveDomain:moreComing:" : _didRemoveDomain,
-            "netServiceBrowser:didRemoveService:moreComing:" : _didRemoveService,
+            #selector(netServiceBrowserWillSearch(_:)) : _willSearch,
+            #selector(netServiceBrowserDidStopSearch(_:)) : _didStopSearch,
+            #selector(netServiceBrowser(_:didNotSearch:)) : _didNotSearch,
+            #selector(netServiceBrowser(_:didFindDomain:moreComing:)) : _didFindDomain,
+            #selector(netServiceBrowser(_:didFindService:moreComing:)) : _didFindService,
+            #selector(netServiceBrowser(_:didRemoveDomain:moreComing:)) : _didRemoveDomain,
+            #selector(netServiceBrowser(_:didRemoveService:moreComing:)) : _didRemoveService,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

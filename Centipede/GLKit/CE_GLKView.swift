@@ -56,7 +56,7 @@ internal class GLKView_Delegate: NSObject, GLKViewDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "glkView:drawInRect:" : _gl,
+            #selector(glkView(_:drawInRect:)) : _gl,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

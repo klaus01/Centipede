@@ -104,21 +104,21 @@ internal class CBPeripheralManager_Delegate: NSObject, CBPeripheralManagerDelega
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "peripheralManagerDidUpdateState:" : _didUpdateState,
-            "peripheralManager:willRestoreState:" : _willRestoreState,
-            "peripheralManagerDidStartAdvertising:error:" : _didStartAdvertising,
-            "peripheralManager:didAddService:error:" : _didAddService,
-            "peripheralManager:central:didSubscribeToCharacteristic:" : _centralDidSubscribeToCharacteristic,
-            "peripheralManager:central:didUnsubscribeFromCharacteristic:" : _centralDidUnsubscribeFromCharacteristic,
-            "peripheralManager:didReceiveReadRequest:" : _didReceiveReadRequest,
+            #selector(peripheralManagerDidUpdateState(_:)) : _didUpdateState,
+            #selector(peripheralManager(_:willRestoreState:)) : _willRestoreState,
+            #selector(peripheralManagerDidStartAdvertising(_:error:)) : _didStartAdvertising,
+            #selector(peripheralManager(_:didAddService:error:)) : _didAddService,
+            #selector(peripheralManager(_:central:didSubscribeToCharacteristic:)) : _centralDidSubscribeToCharacteristic,
+            #selector(peripheralManager(_:central:didUnsubscribeFromCharacteristic:)) : _centralDidUnsubscribeFromCharacteristic,
+            #selector(peripheralManager(_:didReceiveReadRequest:)) : _didReceiveReadRequest,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "peripheralManager:didReceiveWriteRequests:" : _didReceiveWriteRequests,
-            "peripheralManagerIsReadyToUpdateSubscribers:" : _isReadyToUpdateSubscribers,
+            #selector(peripheralManager(_:didReceiveWriteRequests:)) : _didReceiveWriteRequests,
+            #selector(peripheralManagerIsReadyToUpdateSubscribers(_:)) : _isReadyToUpdateSubscribers,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

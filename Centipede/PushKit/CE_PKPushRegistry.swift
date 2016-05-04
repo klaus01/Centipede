@@ -68,9 +68,9 @@ internal class PKPushRegistry_Delegate: NSObject, PKPushRegistryDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "pushRegistry:didUpdatePushCredentials:forType:" : _didUpdatePushCredentials,
-            "pushRegistry:didReceiveIncomingPushWithPayload:forType:" : _didReceiveIncomingPushWithPayload,
-            "pushRegistry:didInvalidatePushTokenForType:" : _didInvalidatePushTokenForType,
+            #selector(pushRegistry(_:didUpdatePushCredentials:forType:)) : _didUpdatePushCredentials,
+            #selector(pushRegistry(_:didReceiveIncomingPushWithPayload:forType:)) : _didReceiveIncomingPushWithPayload,
+            #selector(pushRegistry(_:didInvalidatePushTokenForType:)) : _didInvalidatePushTokenForType,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

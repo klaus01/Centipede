@@ -86,12 +86,12 @@ internal class HMAccessory_Delegate: NSObject, HMAccessoryDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "accessoryDidUpdateName:" : _didUpdateName,
-            "accessory:didUpdateNameForService:" : _didUpdateNameForService,
-            "accessory:didUpdateAssociatedServiceTypeForService:" : _didUpdateAssociatedServiceTypeForService,
-            "accessoryDidUpdateServices:" : _didUpdateServices,
-            "accessoryDidUpdateReachability:" : _didUpdateReachability,
-            "accessory:service:didUpdateValueForCharacteristic:" : _serviceDidUpdateValueForCharacteristic,
+            #selector(accessoryDidUpdateName(_:)) : _didUpdateName,
+            #selector(accessory(_:didUpdateNameForService:)) : _didUpdateNameForService,
+            #selector(accessory(_:didUpdateAssociatedServiceTypeForService:)) : _didUpdateAssociatedServiceTypeForService,
+            #selector(accessoryDidUpdateServices(_:)) : _didUpdateServices,
+            #selector(accessoryDidUpdateReachability(_:)) : _didUpdateReachability,
+            #selector(accessory(_:service:didUpdateValueForCharacteristic:)) : _serviceDidUpdateValueForCharacteristic,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

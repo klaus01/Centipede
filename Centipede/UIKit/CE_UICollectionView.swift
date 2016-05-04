@@ -202,49 +202,49 @@ internal class UICollectionView_Delegate: UIScrollView_Delegate, UICollectionVie
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "collectionView:numberOfItemsInSection:" : _numberOfItemsInSection,
-            "collectionView:cellForItemAtIndexPath:" : _cellForItemAtIndexPath,
-            "numberOfSectionsInCollectionView:" : _numberOfSectionsIn,
-            "collectionView:viewForSupplementaryElementOfKind:atIndexPath:" : _viewForSupplementaryElementOfKind,
-            "collectionView:shouldHighlightItemAtIndexPath:" : _shouldHighlightItemAtIndexPath,
-            "collectionView:didHighlightItemAtIndexPath:" : _didHighlightItemAtIndexPath,
-            "collectionView:didUnhighlightItemAtIndexPath:" : _didUnhighlightItemAtIndexPath,
+            #selector(collectionView(_:numberOfItemsInSection:)) : _numberOfItemsInSection,
+            #selector(collectionView(_:cellForItemAtIndexPath:)) : _cellForItemAtIndexPath,
+            #selector(numberOfSectionsInCollectionView(_:)) : _numberOfSectionsIn,
+            #selector(collectionView(_:viewForSupplementaryElementOfKind:atIndexPath:)) : _viewForSupplementaryElementOfKind,
+            #selector(collectionView(_:shouldHighlightItemAtIndexPath:)) : _shouldHighlightItemAtIndexPath,
+            #selector(collectionView(_:didHighlightItemAtIndexPath:)) : _didHighlightItemAtIndexPath,
+            #selector(collectionView(_:didUnhighlightItemAtIndexPath:)) : _didUnhighlightItemAtIndexPath,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "collectionView:shouldSelectItemAtIndexPath:" : _shouldSelectItemAtIndexPath,
-            "collectionView:shouldDeselectItemAtIndexPath:" : _shouldDeselectItemAtIndexPath,
-            "collectionView:didSelectItemAtIndexPath:" : _didSelectItemAtIndexPath,
-            "collectionView:didDeselectItemAtIndexPath:" : _didDeselectItemAtIndexPath,
-            "collectionView:willDisplayCell:forItemAtIndexPath:" : _willDisplayCell,
-            "collectionView:willDisplaySupplementaryView:forElementKind:atIndexPath:" : _willDisplaySupplementaryView,
-            "collectionView:didEndDisplayingCell:forItemAtIndexPath:" : _didEndDisplayingCell,
+            #selector(collectionView(_:shouldSelectItemAtIndexPath:)) : _shouldSelectItemAtIndexPath,
+            #selector(collectionView(_:shouldDeselectItemAtIndexPath:)) : _shouldDeselectItemAtIndexPath,
+            #selector(collectionView(_:didSelectItemAtIndexPath:)) : _didSelectItemAtIndexPath,
+            #selector(collectionView(_:didDeselectItemAtIndexPath:)) : _didDeselectItemAtIndexPath,
+            #selector(collectionView(_:willDisplayCell:forItemAtIndexPath:)) : _willDisplayCell,
+            #selector(collectionView(_:willDisplaySupplementaryView:forElementKind:atIndexPath:)) : _willDisplaySupplementaryView,
+            #selector(collectionView(_:didEndDisplayingCell:forItemAtIndexPath:)) : _didEndDisplayingCell,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
         let funcDic3: [Selector : Any?] = [
-            "collectionView:didEndDisplayingSupplementaryView:forElementOfKind:atIndexPath:" : _didEndDisplayingSupplementaryView,
-            "collectionView:shouldShowMenuForItemAtIndexPath:" : _shouldShowMenuForItemAtIndexPath,
-            "collectionView:canPerformAction:forItemAtIndexPath:withSender:" : _canPerformAction,
-            "collectionView:performAction:forItemAtIndexPath:withSender:" : _performAction,
-            "collectionView:transitionLayoutForOldLayout:newLayout:" : _transitionLayoutForOldLayout,
-            "collectionView:layout:sizeForItemAtIndexPath:" : _layoutSizeForItemAtIndexPath,
-            "collectionView:layout:insetForSectionAtIndex:" : _layoutInsetForSectionAtIndex,
+            #selector(collectionView(_:didEndDisplayingSupplementaryView:forElementOfKind:atIndexPath:)) : _didEndDisplayingSupplementaryView,
+            #selector(collectionView(_:shouldShowMenuForItemAtIndexPath:)) : _shouldShowMenuForItemAtIndexPath,
+            #selector(collectionView(_:canPerformAction:forItemAtIndexPath:withSender:)) : _canPerformAction,
+            #selector(collectionView(_:performAction:forItemAtIndexPath:withSender:)) : _performAction,
+            #selector(collectionView(_:transitionLayoutForOldLayout:newLayout:)) : _transitionLayoutForOldLayout,
+            #selector(collectionView(_:layout:sizeForItemAtIndexPath:)) : _layoutSizeForItemAtIndexPath,
+            #selector(collectionView(_:layout:insetForSectionAtIndex:)) : _layoutInsetForSectionAtIndex,
         ]
         if let f = funcDic3[aSelector] {
             return f != nil
         }
         
         let funcDic4: [Selector : Any?] = [
-            "collectionView:layout:minimumLineSpacingForSectionAtIndex:" : _layoutMinimumLineSpacingForSectionAtIndex,
-            "collectionView:layout:minimumInteritemSpacingForSectionAtIndex:" : _layoutMinimumInteritemSpacingForSectionAtIndex,
-            "collectionView:layout:referenceSizeForHeaderInSection:" : _layoutReferenceSizeForHeaderInSection,
-            "collectionView:layout:referenceSizeForFooterInSection:" : _layoutReferenceSizeForFooterInSection,
+            #selector(collectionView(_:layout:minimumLineSpacingForSectionAtIndex:)) : _layoutMinimumLineSpacingForSectionAtIndex,
+            #selector(collectionView(_:layout:minimumInteritemSpacingForSectionAtIndex:)) : _layoutMinimumInteritemSpacingForSectionAtIndex,
+            #selector(collectionView(_:layout:referenceSizeForHeaderInSection:)) : _layoutReferenceSizeForHeaderInSection,
+            #selector(collectionView(_:layout:referenceSizeForFooterInSection:)) : _layoutReferenceSizeForFooterInSection,
         ]
         if let f = funcDic4[aSelector] {
             return f != nil

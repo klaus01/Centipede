@@ -80,11 +80,11 @@ internal class ADBannerView_Delegate: NSObject, ADBannerViewDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "bannerViewWillLoadAd:" : _willLoadAd,
-            "bannerViewDidLoadAd:" : _didLoadAd,
-            "bannerView:didFailToReceiveAdWithError:" : _didFailToReceiveAdWithError,
-            "bannerViewActionShouldBegin:willLeaveApplication:" : _actionShouldBegin,
-            "bannerViewActionDidFinish:" : _actionDidFinish,
+            #selector(bannerViewWillLoadAd(_:)) : _willLoadAd,
+            #selector(bannerViewDidLoadAd(_:)) : _didLoadAd,
+            #selector(bannerView(_:didFailToReceiveAdWithError:)) : _didFailToReceiveAdWithError,
+            #selector(bannerViewActionShouldBegin(_:willLeaveApplication:)) : _actionShouldBegin,
+            #selector(bannerViewActionDidFinish(_:)) : _actionDidFinish,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

@@ -62,8 +62,8 @@ internal class CAAnimation_Delegate: NSObject {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "animationDidStart:" : _didStart,
-            "animationDidStop:finished:" : _didStop,
+            #selector(animationDidStart(_:)) : _didStart,
+            #selector(animationDidStop(_:finished:)) : _didStop,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

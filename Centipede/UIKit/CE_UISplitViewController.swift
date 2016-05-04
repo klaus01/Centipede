@@ -136,26 +136,26 @@ internal class UISplitViewController_Delegate: UIViewController_Delegate, UISpli
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "splitViewController:willChangeToDisplayMode:" : _willChangeToDisplayMode,
-            "targetDisplayModeForActionInSplitViewController:" : _targetDisplayModeForActionIn,
-            "splitViewController:showViewController:sender:" : _showViewController,
-            "splitViewController:showDetailViewController:sender:" : _showDetailViewController,
-            "primaryViewControllerForCollapsingSplitViewController:" : _primaryViewControllerForCollapsing,
-            "primaryViewControllerForExpandingSplitViewController:" : _primaryViewControllerForExpanding,
-            "splitViewController:collapseSecondaryViewController:ontoPrimaryViewController:" : _collapseSecondaryViewController,
+            #selector(splitViewController(_:willChangeToDisplayMode:)) : _willChangeToDisplayMode,
+            #selector(targetDisplayModeForActionInSplitViewController(_:)) : _targetDisplayModeForActionIn,
+            #selector(splitViewController(_:showViewController:sender:)) : _showViewController,
+            #selector(splitViewController(_:showDetailViewController:sender:)) : _showDetailViewController,
+            #selector(primaryViewControllerForCollapsingSplitViewController(_:)) : _primaryViewControllerForCollapsing,
+            #selector(primaryViewControllerForExpandingSplitViewController(_:)) : _primaryViewControllerForExpanding,
+            #selector(splitViewController(_:collapseSecondaryViewController:ontoPrimaryViewController:)) : _collapseSecondaryViewController,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "splitViewController:separateSecondaryViewControllerFromPrimaryViewController:" : _separateSecondaryViewControllerFromPrimaryViewController,
-            "splitViewControllerSupportedInterfaceOrientations:" : _supportedInterfaceOrientations,
-            "splitViewControllerPreferredInterfaceOrientationForPresentation:" : _preferredInterfaceOrientationForPresentation,
-            "splitViewController:willHideViewController:withBarButtonItem:forPopoverController:" : _willHideViewController,
-            "splitViewController:willShowViewController:invalidatingBarButtonItem:" : _willShowViewController,
-            "splitViewController:popoverController:willPresentViewController:" : _popoverController,
-            "splitViewController:shouldHideViewController:inOrientation:" : _shouldHideViewController,
+            #selector(splitViewController(_:separateSecondaryViewControllerFromPrimaryViewController:)) : _separateSecondaryViewControllerFromPrimaryViewController,
+            #selector(splitViewControllerSupportedInterfaceOrientations(_:)) : _supportedInterfaceOrientations,
+            #selector(splitViewControllerPreferredInterfaceOrientationForPresentation(_:)) : _preferredInterfaceOrientationForPresentation,
+            #selector(splitViewController(_:willHideViewController:withBarButtonItem:forPopoverController:)) : _willHideViewController,
+            #selector(splitViewController(_:willShowViewController:invalidatingBarButtonItem:)) : _willShowViewController,
+            #selector(splitViewController(_:popoverController:willPresentViewController:)) : _popoverController,
+            #selector(splitViewController(_:shouldHideViewController:inOrientation:)) : _shouldHideViewController,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

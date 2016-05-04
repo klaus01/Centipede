@@ -75,10 +75,10 @@ internal class UIPresentationController_Delegate: NSObject, UIAdaptivePresentati
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "adaptivePresentationStyleForPresentationController:" : _adaptivePresentationStyleFor,
-            "adaptivePresentationStyleForPresentationController:traitCollection:" : _adaptivePresentationStyleForAndTraitCollection,
-            "presentationController:viewControllerForAdaptivePresentationStyle:" : _viewControllerForAdaptivePresentationStyle,
-            "presentationController:willPresentWithAdaptiveStyle:transitionCoordinator:" : _willPresentWithAdaptiveStyle,
+            #selector(adaptivePresentationStyleForPresentationController(_:)) : _adaptivePresentationStyleFor,
+            #selector(adaptivePresentationStyleForPresentationController(_:traitCollection:)) : _adaptivePresentationStyleForAndTraitCollection,
+            #selector(presentationController(_:viewControllerForAdaptivePresentationStyle:)) : _viewControllerForAdaptivePresentationStyle,
+            #selector(presentationController(_:willPresentWithAdaptiveStyle:transitionCoordinator:)) : _willPresentWithAdaptiveStyle,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

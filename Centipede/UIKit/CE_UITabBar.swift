@@ -80,11 +80,11 @@ internal class UITabBar_Delegate: NSObject, UITabBarDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "tabBar:didSelectItem:" : _didSelectItem,
-            "tabBar:willBeginCustomizingItems:" : _willBeginCustomizingItems,
-            "tabBar:didBeginCustomizingItems:" : _didBeginCustomizingItems,
-            "tabBar:willEndCustomizingItems:changed:" : _willEndCustomizingItems,
-            "tabBar:didEndCustomizingItems:changed:" : _didEndCustomizingItems,
+            #selector(tabBar(_:didSelectItem:)) : _didSelectItem,
+            #selector(tabBar(_:willBeginCustomizingItems:)) : _willBeginCustomizingItems,
+            #selector(tabBar(_:didBeginCustomizingItems:)) : _didBeginCustomizingItems,
+            #selector(tabBar(_:willEndCustomizingItems:changed:)) : _willEndCustomizingItems,
+            #selector(tabBar(_:didEndCustomizingItems:changed:)) : _didEndCustomizingItems,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

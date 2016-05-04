@@ -104,21 +104,21 @@ internal class NSNetService_Delegate: NSObject, NSNetServiceDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "netServiceWillPublish:" : _willPublish,
-            "netServiceDidPublish:" : _didPublish,
-            "netService:didNotPublish:" : _didNotPublish,
-            "netServiceWillResolve:" : _willResolve,
-            "netServiceDidResolveAddress:" : _didResolveAddress,
-            "netService:didNotResolve:" : _didNotResolve,
-            "netServiceDidStop:" : _didStop,
+            #selector(netServiceWillPublish(_:)) : _willPublish,
+            #selector(netServiceDidPublish(_:)) : _didPublish,
+            #selector(netService(_:didNotPublish:)) : _didNotPublish,
+            #selector(netServiceWillResolve(_:)) : _willResolve,
+            #selector(netServiceDidResolveAddress(_:)) : _didResolveAddress,
+            #selector(netService(_:didNotResolve:)) : _didNotResolve,
+            #selector(netServiceDidStop(_:)) : _didStop,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "netService:didUpdateTXTRecordData:" : _didUpdateTXTRecordData,
-            "netService:didAcceptConnectionWithInputStream:outputStream:" : _didAcceptConnectionWithInputStream,
+            #selector(netService(_:didUpdateTXTRecordData:)) : _didUpdateTXTRecordData,
+            #selector(netService(_:didAcceptConnectionWithInputStream:outputStream:)) : _didAcceptConnectionWithInputStream,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

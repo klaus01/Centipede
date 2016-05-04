@@ -68,9 +68,9 @@ internal class MCNearbyServiceBrowser_Delegate: NSObject, MCNearbyServiceBrowser
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "browser:foundPeer:withDiscoveryInfo:" : _browser,
-            "browser:lostPeer:" : _browserAndLostPeer,
-            "browser:didNotStartBrowsingForPeers:" : _browserAndDidNotStartBrowsingForPeers,
+            #selector(browser(_:foundPeer:withDiscoveryInfo:)) : _browser,
+            #selector(browser(_:lostPeer:)) : _browserAndLostPeer,
+            #selector(browser(_:didNotStartBrowsingForPeers:)) : _browserAndDidNotStartBrowsingForPeers,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

@@ -68,9 +68,9 @@ internal class NSUserActivity_Delegate: NSObject, NSUserActivityDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "userActivityWillSave:" : _willSave,
-            "userActivityWasContinued:" : _wasContinued,
-            "userActivity:didReceiveInputStream:outputStream:" : _didReceiveInputStream,
+            #selector(userActivityWillSave(_:)) : _willSave,
+            #selector(userActivityWasContinued(_:)) : _wasContinued,
+            #selector(userActivity(_:didReceiveInputStream:outputStream:)) : _didReceiveInputStream,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

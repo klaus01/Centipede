@@ -56,7 +56,7 @@ internal class NSStream_Delegate: NSObject, NSStreamDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "stream:handleEvent:" : _handleEvent,
+            #selector(stream(_:handleEvent:)) : _handleEvent,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

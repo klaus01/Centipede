@@ -80,11 +80,11 @@ internal class UIViewController_Delegate: NSObject, UIViewControllerTransitionin
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "animationControllerForPresentedController:presentingController:sourceController:" : _animationControllerForPresentedController,
-            "animationControllerForDismissedController:" : _animationControllerForDismissedController,
-            "interactionControllerForPresentation:" : _interactionControllerForPresentation,
-            "interactionControllerForDismissal:" : _interactionControllerForDismissal,
-            "presentationControllerForPresentedViewController:presentingViewController:sourceViewController:" : _presentationControllerForPresented,
+            #selector(animationControllerForPresentedController(_:presentingController:sourceController:)) : _animationControllerForPresentedController,
+            #selector(animationControllerForDismissedController(_:)) : _animationControllerForDismissedController,
+            #selector(interactionControllerForPresentation(_:)) : _interactionControllerForPresentation,
+            #selector(interactionControllerForDismissal(_:)) : _interactionControllerForDismissal,
+            #selector(presentationControllerForPresentedViewController(_:presentingViewController:sourceViewController:)) : _presentationControllerForPresented,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

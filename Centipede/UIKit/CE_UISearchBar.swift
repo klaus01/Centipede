@@ -116,23 +116,23 @@ internal class UISearchBar_Delegate: NSObject, UISearchBarDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "searchBarShouldBeginEditing:" : _shouldBeginEditing,
-            "searchBarTextDidBeginEditing:" : _textDidBeginEditing,
-            "searchBarShouldEndEditing:" : _shouldEndEditing,
-            "searchBarTextDidEndEditing:" : _textDidEndEditing,
-            "searchBar:textDidChange:" : _textDidChange,
-            "searchBar:shouldChangeTextInRange:replacementText:" : _shouldChangeTextInRange,
-            "searchBarSearchButtonClicked:" : _searchButtonClicked,
+            #selector(searchBarShouldBeginEditing(_:)) : _shouldBeginEditing,
+            #selector(searchBarTextDidBeginEditing(_:)) : _textDidBeginEditing,
+            #selector(searchBarShouldEndEditing(_:)) : _shouldEndEditing,
+            #selector(searchBarTextDidEndEditing(_:)) : _textDidEndEditing,
+            #selector(searchBar(_:textDidChange:)) : _textDidChange,
+            #selector(searchBar(_:shouldChangeTextInRange:replacementText:)) : _shouldChangeTextInRange,
+            #selector(searchBarSearchButtonClicked(_:)) : _searchButtonClicked,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "searchBarBookmarkButtonClicked:" : _bookmarkButtonClicked,
-            "searchBarCancelButtonClicked:" : _cancelButtonClicked,
-            "searchBarResultsListButtonClicked:" : _resultsListButtonClicked,
-            "searchBar:selectedScopeButtonIndexDidChange:" : _selectedScopeButtonIndexDidChange,
+            #selector(searchBarBookmarkButtonClicked(_:)) : _bookmarkButtonClicked,
+            #selector(searchBarCancelButtonClicked(_:)) : _cancelButtonClicked,
+            #selector(searchBarResultsListButtonClicked(_:)) : _resultsListButtonClicked,
+            #selector(searchBar(_:selectedScopeButtonIndexDidChange:)) : _selectedScopeButtonIndexDidChange,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

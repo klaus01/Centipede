@@ -100,20 +100,20 @@ internal class UIPickerView_Delegate: NSObject, UIPickerViewDataSource, UIPicker
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "numberOfComponentsInPickerView:" : _numberOfComponentsIn,
-            "pickerView:numberOfRowsInComponent:" : _numberOfRowsInComponent,
-            "pickerView:widthForComponent:" : _widthForComponent,
-            "pickerView:rowHeightForComponent:" : _rowHeightForComponent,
-            "pickerView:titleForRow:forComponent:" : _titleForRow,
-            "pickerView:attributedTitleForRow:forComponent:" : _attributedTitleForRow,
-            "pickerView:viewForRow:forComponent:reusingView:" : _viewForRow,
+            #selector(numberOfComponentsInPickerView(_:)) : _numberOfComponentsIn,
+            #selector(pickerView(_:numberOfRowsInComponent:)) : _numberOfRowsInComponent,
+            #selector(pickerView(_:widthForComponent:)) : _widthForComponent,
+            #selector(pickerView(_:rowHeightForComponent:)) : _rowHeightForComponent,
+            #selector(pickerView(_:titleForRow:forComponent:)) : _titleForRow,
+            #selector(pickerView(_:attributedTitleForRow:forComponent:)) : _attributedTitleForRow,
+            #selector(pickerView(_:viewForRow:forComponent:reusingView:)) : _viewForRow,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "pickerView:didSelectRow:inComponent:" : _didSelectRow,
+            #selector(pickerView(_:didSelectRow:inComponent:)) : _didSelectRow,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

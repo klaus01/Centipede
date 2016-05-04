@@ -92,13 +92,13 @@ internal class GKMatch_Delegate: NSObject, GKMatchDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "match:didReceiveData:fromRemotePlayer:" : _didReceiveData,
-            "match:didReceiveData:fromPlayer:" : _didReceiveDataAndDidReceiveData,
-            "match:player:didChangeConnectionState:" : _playerDidChangeConnectionState,
-            "match:player:didChangeState:" : _playerDidChangeState,
-            "match:didFailWithError:" : _didFailWithError,
-            "match:shouldReinviteDisconnectedPlayer:" : _shouldReinviteDisconnectedPlayer,
-            "match:shouldReinvitePlayer:" : _shouldReinvitePlayer,
+            #selector(match(_:didReceiveData:fromRemotePlayer:)) : _didReceiveData,
+            #selector(match(_:didReceiveData:fromPlayer:)) : _didReceiveDataAndDidReceiveData,
+            #selector(match(_:player:didChangeConnectionState:)) : _playerDidChangeConnectionState,
+            #selector(match(_:player:didChangeState:)) : _playerDidChangeState,
+            #selector(match(_:didFailWithError:)) : _didFailWithError,
+            #selector(match(_:shouldReinviteDisconnectedPlayer:)) : _shouldReinviteDisconnectedPlayer,
+            #selector(match(_:shouldReinvitePlayer:)) : _shouldReinvitePlayer,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

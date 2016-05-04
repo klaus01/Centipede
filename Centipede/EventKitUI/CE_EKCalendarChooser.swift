@@ -68,9 +68,9 @@ internal class EKCalendarChooser_Delegate: UIViewController_Delegate, EKCalendar
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "calendarChooserSelectionDidChange:" : _selectionDidChange,
-            "calendarChooserDidFinish:" : _didFinish,
-            "calendarChooserDidCancel:" : _didCancel,
+            #selector(calendarChooserSelectionDidChange(_:)) : _selectionDidChange,
+            #selector(calendarChooserDidFinish(_:)) : _didFinish,
+            #selector(calendarChooserDidCancel(_:)) : _didCancel,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

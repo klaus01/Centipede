@@ -107,13 +107,13 @@ internal class UIAlertView_Delegate: NSObject, UIAlertViewDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "alertView:clickedButtonAtIndex:" : _clickedButtonAtIndex,
-            "alertViewCancel:" : _cancel,
-            "willPresentAlertView:" : _willPresent,
-            "didPresentAlertView:" : _didPresent,
-            "alertView:willDismissWithButtonIndex:" : _willDismissWithButtonIndex,
-            "alertView:didDismissWithButtonIndex:" : _didDismissWithButtonIndex,
-            "alertViewShouldEnableFirstOtherButton:" : _shouldEnableFirstOtherButton,
+            #selector(alertView(_:clickedButtonAtIndex:)) : _clickedButtonAtIndex,
+            #selector(alertViewCancel(_:)) : _cancel,
+            #selector(willPresentAlertView(_:)) : _willPresent,
+            #selector(didPresentAlertView(_:)) : _didPresent,
+            #selector(alertView(_:willDismissWithButtonIndex:)) : _willDismissWithButtonIndex,
+            #selector(alertView(_:didDismissWithButtonIndex:)) : _didDismissWithButtonIndex,
+            #selector(alertViewShouldEnableFirstOtherButton(_:)) : _shouldEnableFirstOtherButton,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

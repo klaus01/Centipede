@@ -56,7 +56,7 @@ internal class UIToolbar_Delegate: NSObject, UIToolbarDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "positionForBar:" : _positionForBar,
+            #selector(positionForBar(_:)) : _positionForBar,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

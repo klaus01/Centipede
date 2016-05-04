@@ -64,8 +64,8 @@ internal class UIDocumentPickerViewController_Delegate: UIViewController_Delegat
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "documentPicker:didPickDocumentAtURL:" : _documentPicker,
-            "documentPickerWasCancelled:" : _documentPickerWasCancelled,
+            #selector(documentPicker(_:didPickDocumentAtURL:)) : _documentPicker,
+            #selector(documentPickerWasCancelled(_:)) : _documentPickerWasCancelled,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

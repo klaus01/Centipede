@@ -224,59 +224,59 @@ internal class HMHome_Delegate: NSObject, HMHomeDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "homeDidUpdateName:" : _didUpdateName,
-            "home:didAddAccessory:" : _didAddAccessory,
-            "home:didRemoveAccessory:" : _didRemoveAccessory,
-            "home:didAddUser:" : _didAddUser,
-            "home:didRemoveUser:" : _didRemoveUser,
-            "home:didUpdateRoom:forAccessory:" : _didUpdateRoom,
-            "home:didAddRoom:" : _didAddRoom,
+            #selector(homeDidUpdateName(_:)) : _didUpdateName,
+            #selector(home(_:didAddAccessory:)) : _didAddAccessory,
+            #selector(home(_:didRemoveAccessory:)) : _didRemoveAccessory,
+            #selector(home(_:didAddUser:)) : _didAddUser,
+            #selector(home(_:didRemoveUser:)) : _didRemoveUser,
+            #selector(home(_:didUpdateRoom:forAccessory:)) : _didUpdateRoom,
+            #selector(home(_:didAddRoom:)) : _didAddRoom,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "home:didRemoveRoom:" : _didRemoveRoom,
-            "home:didUpdateNameForRoom:" : _didUpdateNameForRoom,
-            "home:didAddZone:" : _didAddZone,
-            "home:didRemoveZone:" : _didRemoveZone,
-            "home:didUpdateNameForZone:" : _didUpdateNameForZone,
-            "home:didAddRoom:toZone:" : _didAddRoomAndDidAddRoom,
-            "home:didRemoveRoom:fromZone:" : _didRemoveRoomAndDidRemoveRoom,
+            #selector(home(_:didRemoveRoom:)) : _didRemoveRoom,
+            #selector(home(_:didUpdateNameForRoom:)) : _didUpdateNameForRoom,
+            #selector(home(_:didAddZone:)) : _didAddZone,
+            #selector(home(_:didRemoveZone:)) : _didRemoveZone,
+            #selector(home(_:didUpdateNameForZone:)) : _didUpdateNameForZone,
+            #selector(home(_:didAddRoom:toZone:)) : _didAddRoomAndDidAddRoom,
+            #selector(home(_:didRemoveRoom:fromZone:)) : _didRemoveRoomAndDidRemoveRoom,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
         let funcDic3: [Selector : Any?] = [
-            "home:didAddServiceGroup:" : _didAddServiceGroup,
-            "home:didRemoveServiceGroup:" : _didRemoveServiceGroup,
-            "home:didUpdateNameForServiceGroup:" : _didUpdateNameForServiceGroup,
-            "home:didAddService:toServiceGroup:" : _didAddService,
-            "home:didRemoveService:fromServiceGroup:" : _didRemoveService,
-            "home:didAddActionSet:" : _didAddActionSet,
-            "home:didRemoveActionSet:" : _didRemoveActionSet,
+            #selector(home(_:didAddServiceGroup:)) : _didAddServiceGroup,
+            #selector(home(_:didRemoveServiceGroup:)) : _didRemoveServiceGroup,
+            #selector(home(_:didUpdateNameForServiceGroup:)) : _didUpdateNameForServiceGroup,
+            #selector(home(_:didAddService:toServiceGroup:)) : _didAddService,
+            #selector(home(_:didRemoveService:fromServiceGroup:)) : _didRemoveService,
+            #selector(home(_:didAddActionSet:)) : _didAddActionSet,
+            #selector(home(_:didRemoveActionSet:)) : _didRemoveActionSet,
         ]
         if let f = funcDic3[aSelector] {
             return f != nil
         }
         
         let funcDic4: [Selector : Any?] = [
-            "home:didUpdateNameForActionSet:" : _didUpdateNameForActionSet,
-            "home:didUpdateActionsForActionSet:" : _didUpdateActionsForActionSet,
-            "home:didAddTrigger:" : _didAddTrigger,
-            "home:didRemoveTrigger:" : _didRemoveTrigger,
-            "home:didUpdateNameForTrigger:" : _didUpdateNameForTrigger,
-            "home:didUpdateTrigger:" : _didUpdateTrigger,
-            "home:didUnblockAccessory:" : _didUnblockAccessory,
+            #selector(home(_:didUpdateNameForActionSet:)) : _didUpdateNameForActionSet,
+            #selector(home(_:didUpdateActionsForActionSet:)) : _didUpdateActionsForActionSet,
+            #selector(home(_:didAddTrigger:)) : _didAddTrigger,
+            #selector(home(_:didRemoveTrigger:)) : _didRemoveTrigger,
+            #selector(home(_:didUpdateNameForTrigger:)) : _didUpdateNameForTrigger,
+            #selector(home(_:didUpdateTrigger:)) : _didUpdateTrigger,
+            #selector(home(_:didUnblockAccessory:)) : _didUnblockAccessory,
         ]
         if let f = funcDic4[aSelector] {
             return f != nil
         }
         
         let funcDic5: [Selector : Any?] = [
-            "home:didEncounterError:forAccessory:" : _didEncounterError,
+            #selector(home(_:didEncounterError:forAccessory:)) : _didEncounterError,
         ]
         if let f = funcDic5[aSelector] {
             return f != nil

@@ -170,38 +170,38 @@ internal class MKMapView_Delegate: NSObject, MKMapViewDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "mapView:regionWillChangeAnimated:" : _regionWillChangeAnimated,
-            "mapView:regionDidChangeAnimated:" : _regionDidChangeAnimated,
-            "mapViewWillStartLoadingMap:" : _willStartLoadingMap,
-            "mapViewDidFinishLoadingMap:" : _didFinishLoadingMap,
-            "mapViewDidFailLoadingMap:withError:" : _didFailLoadingMap,
-            "mapViewWillStartRenderingMap:" : _willStartRenderingMap,
-            "mapViewDidFinishRenderingMap:fullyRendered:" : _didFinishRenderingMap,
+            #selector(mapView(_:regionWillChangeAnimated:)) : _regionWillChangeAnimated,
+            #selector(mapView(_:regionDidChangeAnimated:)) : _regionDidChangeAnimated,
+            #selector(mapViewWillStartLoadingMap(_:)) : _willStartLoadingMap,
+            #selector(mapViewDidFinishLoadingMap(_:)) : _didFinishLoadingMap,
+            #selector(mapViewDidFailLoadingMap(_:withError:)) : _didFailLoadingMap,
+            #selector(mapViewWillStartRenderingMap(_:)) : _willStartRenderingMap,
+            #selector(mapViewDidFinishRenderingMap(_:fullyRendered:)) : _didFinishRenderingMap,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "mapView:viewForAnnotation:" : _viewForAnnotation,
-            "mapView:didAddAnnotationViews:" : _didAddAnnotationViews,
-            "mapView:annotationView:calloutAccessoryControlTapped:" : _annotationView,
-            "mapView:didSelectAnnotationView:" : _didSelectAnnotationView,
-            "mapView:didDeselectAnnotationView:" : _didDeselectAnnotationView,
-            "mapViewWillStartLocatingUser:" : _willStartLocatingUser,
-            "mapViewDidStopLocatingUser:" : _didStopLocatingUser,
+            #selector(mapView(_:viewForAnnotation:)) : _viewForAnnotation,
+            #selector(mapView(_:didAddAnnotationViews:)) : _didAddAnnotationViews,
+            #selector(mapView(_:annotationView:calloutAccessoryControlTapped:)) : _annotationView,
+            #selector(mapView(_:didSelectAnnotationView:)) : _didSelectAnnotationView,
+            #selector(mapView(_:didDeselectAnnotationView:)) : _didDeselectAnnotationView,
+            #selector(mapViewWillStartLocatingUser(_:)) : _willStartLocatingUser,
+            #selector(mapViewDidStopLocatingUser(_:)) : _didStopLocatingUser,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
         let funcDic3: [Selector : Any?] = [
-            "mapView:didUpdateUserLocation:" : _didUpdateUserLocation,
-            "mapView:didFailToLocateUserWithError:" : _didFailToLocateUserWithError,
-            "mapView:annotationView:didChangeDragState:fromOldState:" : _annotationViewAndAnnotationView,
-            "mapView:didChangeUserTrackingMode:animated:" : _didChangeUserTrackingMode,
-            "mapView:rendererForOverlay:" : _rendererForOverlay,
-            "mapView:didAddOverlayRenderers:" : _didAddOverlayRenderers,
+            #selector(mapView(_:didUpdateUserLocation:)) : _didUpdateUserLocation,
+            #selector(mapView(_:didFailToLocateUserWithError:)) : _didFailToLocateUserWithError,
+            #selector(mapView(_:annotationView:didChangeDragState:fromOldState:)) : _annotationViewAndAnnotationView,
+            #selector(mapView(_:didChangeUserTrackingMode:animated:)) : _didChangeUserTrackingMode,
+            #selector(mapView(_:rendererForOverlay:)) : _rendererForOverlay,
+            #selector(mapView(_:didAddOverlayRenderers:)) : _didAddOverlayRenderers,
         ]
         if let f = funcDic3[aSelector] {
             return f != nil

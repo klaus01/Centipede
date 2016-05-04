@@ -62,8 +62,8 @@ internal class MPMediaPickerController_Delegate: UIViewController_Delegate, MPMe
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "mediaPicker:didPickMediaItems:" : _mediaPicker,
-            "mediaPickerDidCancel:" : _mediaPickerDidCancel,
+            #selector(mediaPicker(_:didPickMediaItems:)) : _mediaPicker,
+            #selector(mediaPickerDidCancel(_:)) : _mediaPickerDidCancel,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

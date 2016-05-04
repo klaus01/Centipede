@@ -56,7 +56,7 @@ internal class EAAccessory_Delegate: NSObject, EAAccessoryDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "accessoryDidDisconnect:" : _didDisconnect,
+            #selector(accessoryDidDisconnect(_:)) : _didDisconnect,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

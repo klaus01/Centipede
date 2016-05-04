@@ -56,7 +56,7 @@ internal class PKAddPassesViewController_Delegate: UIViewController_Delegate, PK
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "addPassesViewControllerDidFinish:" : _didFinish,
+            #selector(addPassesViewControllerDidFinish(_:)) : _didFinish,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

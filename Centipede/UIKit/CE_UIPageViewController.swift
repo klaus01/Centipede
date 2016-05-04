@@ -108,21 +108,21 @@ internal class UIPageViewController_Delegate: UIViewController_Delegate, UIPageV
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "pageViewController:willTransitionToViewControllers:" : _willTransitionToViewControllers,
-            "pageViewController:didFinishAnimating:previousViewControllers:transitionCompleted:" : _didFinishAnimating,
-            "pageViewController:spineLocationForInterfaceOrientation:" : _spineLocationForInterfaceOrientation,
-            "pageViewControllerSupportedInterfaceOrientations:" : _supportedInterfaceOrientations,
-            "pageViewControllerPreferredInterfaceOrientationForPresentation:" : _preferredInterfaceOrientationForPresentation,
-            "pageViewController:viewControllerBeforeViewController:" : _viewControllerBeforeViewController,
-            "pageViewController:viewControllerAfterViewController:" : _viewControllerAfterViewController,
+            #selector(pageViewController(_:willTransitionToViewControllers:)) : _willTransitionToViewControllers,
+            #selector(pageViewController(_:didFinishAnimating:previousViewControllers:transitionCompleted:)) : _didFinishAnimating,
+            #selector(pageViewController(_:spineLocationForInterfaceOrientation:)) : _spineLocationForInterfaceOrientation,
+            #selector(pageViewControllerSupportedInterfaceOrientations(_:)) : _supportedInterfaceOrientations,
+            #selector(pageViewControllerPreferredInterfaceOrientationForPresentation(_:)) : _preferredInterfaceOrientationForPresentation,
+            #selector(pageViewController(_:viewControllerBeforeViewController:)) : _viewControllerBeforeViewController,
+            #selector(pageViewController(_:viewControllerAfterViewController:)) : _viewControllerAfterViewController,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "presentationCountForPageViewController:" : _presentationCountFor,
-            "presentationIndexForPageViewController:" : _presentationIndexFor,
+            #selector(presentationCountForPageViewController(_:)) : _presentationCountFor,
+            #selector(presentationIndexForPageViewController(_:)) : _presentationIndexFor,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

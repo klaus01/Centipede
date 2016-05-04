@@ -62,8 +62,8 @@ internal class MCAdvertiserAssistant_Delegate: NSObject, MCAdvertiserAssistantDe
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "advertiserAssistantWillPresentInvitation:" : _willPresentInvitation,
-            "advertiserAssistantDidDismissInvitation:" : _didDismissInvitation,
+            #selector(advertiserAssistantWillPresentInvitation(_:)) : _willPresentInvitation,
+            #selector(advertiserAssistantDidDismissInvitation(_:)) : _didDismissInvitation,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

@@ -74,10 +74,10 @@ internal class CALayer_Delegate: NSObject {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "displayLayer:" : _display,
-            "drawLayer:inContext:" : _draw,
-            "layoutSublayersOfLayer:" : _layoutSubsOfLayer,
-            "actionForLayer:forKey:" : _actionFor,
+            #selector(displayLayer(_:)) : _display,
+            #selector(drawLayer(_:inContext:)) : _draw,
+            #selector(layoutSublayersOfLayer(_:)) : _layoutSubsOfLayer,
+            #selector(actionForLayer(_:forKey:)) : _actionFor,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

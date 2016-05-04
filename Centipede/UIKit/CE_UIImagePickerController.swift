@@ -62,8 +62,8 @@ internal class UIImagePickerController_Delegate: UINavigationController_Delegate
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "imagePickerController:didFinishPickingMediaWithInfo:" : _didFinishPickingMediaWithInfo,
-            "imagePickerControllerDidCancel:" : _didCancel,
+            #selector(imagePickerController(_:didFinishPickingMediaWithInfo:)) : _didFinishPickingMediaWithInfo,
+            #selector(imagePickerControllerDidCancel(_:)) : _didCancel,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

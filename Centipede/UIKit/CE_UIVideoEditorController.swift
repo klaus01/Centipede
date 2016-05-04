@@ -68,9 +68,9 @@ internal class UIVideoEditorController_Delegate: UINavigationController_Delegate
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "videoEditorController:didSaveEditedVideoToPath:" : _didSaveEditedVideoToPath,
-            "videoEditorController:didFailWithError:" : _didFailWithError,
-            "videoEditorControllerDidCancel:" : _didCancel,
+            #selector(videoEditorController(_:didSaveEditedVideoToPath:)) : _didSaveEditedVideoToPath,
+            #selector(videoEditorController(_:didFailWithError:)) : _didFailWithError,
+            #selector(videoEditorControllerDidCancel(_:)) : _didCancel,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

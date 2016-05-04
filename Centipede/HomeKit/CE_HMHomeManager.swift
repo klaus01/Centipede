@@ -74,10 +74,10 @@ internal class HMHomeManager_Delegate: NSObject, HMHomeManagerDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "homeManagerDidUpdateHomes:" : _didUpdateHomes,
-            "homeManagerDidUpdatePrimaryHome:" : _didUpdatePrimaryHome,
-            "homeManager:didAddHome:" : _didAddHome,
-            "homeManager:didRemoveHome:" : _didRemoveHome,
+            #selector(homeManagerDidUpdateHomes(_:)) : _didUpdateHomes,
+            #selector(homeManagerDidUpdatePrimaryHome(_:)) : _didUpdatePrimaryHome,
+            #selector(homeManager(_:didAddHome:)) : _didAddHome,
+            #selector(homeManager(_:didRemoveHome:)) : _didRemoveHome,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

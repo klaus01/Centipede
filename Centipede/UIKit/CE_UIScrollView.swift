@@ -128,25 +128,25 @@ internal class UIScrollView_Delegate: NSObject, UIScrollViewDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "scrollViewDidScroll:" : _didScroll,
-            "scrollViewDidZoom:" : _didZoom,
-            "scrollViewWillBeginDragging:" : _willBeginDragging,
-            "scrollViewWillEndDragging:withVelocity:targetContentOffset:" : _willEndDragging,
-            "scrollViewDidEndDragging:willDecelerate:" : _didEndDragging,
-            "scrollViewWillBeginDecelerating:" : _willBeginDecelerating,
-            "scrollViewDidEndDecelerating:" : _didEndDecelerating,
+            #selector(scrollViewDidScroll(_:)) : _didScroll,
+            #selector(scrollViewDidZoom(_:)) : _didZoom,
+            #selector(scrollViewWillBeginDragging(_:)) : _willBeginDragging,
+            #selector(scrollViewWillEndDragging(_:withVelocity:targetContentOffset:)) : _willEndDragging,
+            #selector(scrollViewDidEndDragging(_:willDecelerate:)) : _didEndDragging,
+            #selector(scrollViewWillBeginDecelerating(_:)) : _willBeginDecelerating,
+            #selector(scrollViewDidEndDecelerating(_:)) : _didEndDecelerating,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "scrollViewDidEndScrollingAnimation:" : _didEndScrollingAnimation,
-            "viewForZoomingInScrollView:" : _viewForZoomingIn,
-            "scrollViewWillBeginZooming:withView:" : _willBeginZooming,
-            "scrollViewDidEndZooming:withView:atScale:" : _didEndZooming,
-            "scrollViewShouldScrollToTop:" : _shouldScrollToTop,
-            "scrollViewDidScrollToTop:" : _didScrollToTop,
+            #selector(scrollViewDidEndScrollingAnimation(_:)) : _didEndScrollingAnimation,
+            #selector(viewForZoomingInScrollView(_:)) : _viewForZoomingIn,
+            #selector(scrollViewWillBeginZooming(_:withView:)) : _willBeginZooming,
+            #selector(scrollViewDidEndZooming(_:withView:atScale:)) : _didEndZooming,
+            #selector(scrollViewShouldScrollToTop(_:)) : _shouldScrollToTop,
+            #selector(scrollViewDidScrollToTop(_:)) : _didScrollToTop,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

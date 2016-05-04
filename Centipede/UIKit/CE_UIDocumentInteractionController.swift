@@ -116,23 +116,23 @@ internal class UIDocumentInteractionController_Delegate: NSObject, UIDocumentInt
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "documentInteractionControllerViewControllerForPreview:" : _viewControllerForPreview,
-            "documentInteractionControllerRectForPreview:" : _rectForPreview,
-            "documentInteractionControllerViewForPreview:" : _viewForPreview,
-            "documentInteractionControllerWillBeginPreview:" : _willBeginPreview,
-            "documentInteractionControllerDidEndPreview:" : _didEndPreview,
-            "documentInteractionControllerWillPresentOptionsMenu:" : _willPresentOptionsMenu,
-            "documentInteractionControllerDidDismissOptionsMenu:" : _didDismissOptionsMenu,
+            #selector(documentInteractionControllerViewControllerForPreview(_:)) : _viewControllerForPreview,
+            #selector(documentInteractionControllerRectForPreview(_:)) : _rectForPreview,
+            #selector(documentInteractionControllerViewForPreview(_:)) : _viewForPreview,
+            #selector(documentInteractionControllerWillBeginPreview(_:)) : _willBeginPreview,
+            #selector(documentInteractionControllerDidEndPreview(_:)) : _didEndPreview,
+            #selector(documentInteractionControllerWillPresentOptionsMenu(_:)) : _willPresentOptionsMenu,
+            #selector(documentInteractionControllerDidDismissOptionsMenu(_:)) : _didDismissOptionsMenu,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "documentInteractionControllerWillPresentOpenInMenu:" : _willPresentOpenInMenu,
-            "documentInteractionControllerDidDismissOpenInMenu:" : _didDismissOpenInMenu,
-            "documentInteractionController:willBeginSendingToApplication:" : _willBeginSendingToApplication,
-            "documentInteractionController:didEndSendingToApplication:" : _didEndSendingToApplication,
+            #selector(documentInteractionControllerWillPresentOpenInMenu(_:)) : _willPresentOpenInMenu,
+            #selector(documentInteractionControllerDidDismissOpenInMenu(_:)) : _didDismissOpenInMenu,
+            #selector(documentInteractionController(_:willBeginSendingToApplication:)) : _willBeginSendingToApplication,
+            #selector(documentInteractionController(_:didEndSendingToApplication:)) : _didEndSendingToApplication,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

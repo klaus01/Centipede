@@ -62,8 +62,8 @@ internal class HMAccessoryBrowser_Delegate: NSObject, HMAccessoryBrowserDelegate
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "accessoryBrowser:didFindNewAccessory:" : _didFindNewAccessory,
-            "accessoryBrowser:didRemoveNewAccessory:" : _didRemoveNewAccessory,
+            #selector(accessoryBrowser(_:didFindNewAccessory:)) : _didFindNewAccessory,
+            #selector(accessoryBrowser(_:didRemoveNewAccessory:)) : _didRemoveNewAccessory,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

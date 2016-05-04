@@ -74,10 +74,10 @@ internal class EAWiFiUnconfiguredAccessoryBrowser_Delegate: NSObject, EAWiFiUnco
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "accessoryBrowser:didUpdateState:" : _accessoryBrowser,
-            "accessoryBrowser:didFindUnconfiguredAccessories:" : _accessoryBrowserAndDidFindUnconfiguredAccessories,
-            "accessoryBrowser:didRemoveUnconfiguredAccessories:" : _accessoryBrowserAndDidRemoveUnconfiguredAccessories,
-            "accessoryBrowser:didFinishConfiguringAccessory:withStatus:" : _accessoryBrowserAndDidFinishConfiguringAccessory,
+            #selector(accessoryBrowser(_:didUpdateState:)) : _accessoryBrowser,
+            #selector(accessoryBrowser(_:didFindUnconfiguredAccessories:)) : _accessoryBrowserAndDidFindUnconfiguredAccessories,
+            #selector(accessoryBrowser(_:didRemoveUnconfiguredAccessories:)) : _accessoryBrowserAndDidRemoveUnconfiguredAccessories,
+            #selector(accessoryBrowser(_:didFinishConfiguringAccessory:withStatus:)) : _accessoryBrowserAndDidFinishConfiguringAccessory,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

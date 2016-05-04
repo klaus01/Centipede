@@ -14,7 +14,7 @@ public extension UIGestureRecognizer {
     
     public convenience init(action: CE_UIGestureRecognizerAction) {
         let proxy = UIGestureRecognizerProxy(action)
-        self.init(target:proxy, action:"act:")
+        self.init(target:proxy, action:#selector(UIGestureRecognizerProxy.act(_:)))
         proxies[""] = proxy
     }
     
@@ -71,7 +71,7 @@ internal extension UIGestureRecognizer {
         }
         
         let proxy = UIGestureRecognizerProxy(action!)
-        addTarget(proxy, action: "act:")
+        addTarget(proxy, action: #selector(UIGestureRecognizerProxy.act(_:)))
         proxies[""] = proxy
         
         return self
@@ -79,7 +79,7 @@ internal extension UIGestureRecognizer {
     
     internal func off() -> Self {
         if let proxy = proxies[""] {
-            self.removeTarget(proxy, action: "act:")
+            self.removeTarget(proxy, action: #selector(UIGestureRecognizerProxy.act(_:)))
             proxies.removeValueForKey("")
         }
         return self

@@ -80,11 +80,11 @@ internal class NSKeyedUnarchiver_Delegate: NSObject, NSKeyedUnarchiverDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "unarchiver:cannotDecodeObjectOfClassName:originalClasses:" : _unarchiver,
-            "unarchiver:didDecodeObject:" : _unarchiverAndDidDecodeObject,
-            "unarchiver:willReplaceObject:withObject:" : _unarchiverAndWillReplaceObject,
-            "unarchiverWillFinish:" : _unarchiverWillFinish,
-            "unarchiverDidFinish:" : _unarchiverDidFinish,
+            #selector(unarchiver(_:cannotDecodeObjectOfClassName:originalClasses:)) : _unarchiver,
+            #selector(unarchiver(_:didDecodeObject:)) : _unarchiverAndDidDecodeObject,
+            #selector(unarchiver(_:willReplaceObject:withObject:)) : _unarchiverAndWillReplaceObject,
+            #selector(unarchiverWillFinish(_:)) : _unarchiverWillFinish,
+            #selector(unarchiverDidFinish(_:)) : _unarchiverDidFinish,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

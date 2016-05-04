@@ -170,38 +170,38 @@ internal class NSXMLParser_Delegate: NSObject, NSXMLParserDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "parserDidStartDocument:" : _parserDidStartDocument,
-            "parserDidEndDocument:" : _parserDidEndDocument,
-            "parser:foundNotationDeclarationWithName:publicID:systemID:" : _parser,
-            "parser:foundUnparsedEntityDeclarationWithName:publicID:systemID:notationName:" : _parserAndFoundUnparsedEntityDeclarationWithName,
-            "parser:foundAttributeDeclarationWithName:forElement:type:defaultValue:" : _parserAndFoundAttributeDeclarationWithName,
-            "parser:foundElementDeclarationWithName:model:" : _parserAndFoundElementDeclarationWithName,
-            "parser:foundInternalEntityDeclarationWithName:value:" : _parserAndFoundInternalEntityDeclarationWithName,
+            #selector(parserDidStartDocument(_:)) : _parserDidStartDocument,
+            #selector(parserDidEndDocument(_:)) : _parserDidEndDocument,
+            #selector(parser(_:foundNotationDeclarationWithName:publicID:systemID:)) : _parser,
+            #selector(parser(_:foundUnparsedEntityDeclarationWithName:publicID:systemID:notationName:)) : _parserAndFoundUnparsedEntityDeclarationWithName,
+            #selector(parser(_:foundAttributeDeclarationWithName:forElement:type:defaultValue:)) : _parserAndFoundAttributeDeclarationWithName,
+            #selector(parser(_:foundElementDeclarationWithName:model:)) : _parserAndFoundElementDeclarationWithName,
+            #selector(parser(_:foundInternalEntityDeclarationWithName:value:)) : _parserAndFoundInternalEntityDeclarationWithName,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "parser:foundExternalEntityDeclarationWithName:publicID:systemID:" : _parserAndFoundExternalEntityDeclarationWithName,
-            "parser:didStartElement:namespaceURI:qualifiedName:attributes:" : _parserAndDidStartElement,
-            "parser:didEndElement:namespaceURI:qualifiedName:" : _parserAndDidEndElement,
-            "parser:didStartMappingPrefix:toURI:" : _parserAndDidStartMappingPrefix,
-            "parser:didEndMappingPrefix:" : _parserAndDidEndMappingPrefix,
-            "parser:foundCharacters:" : _parserAndFoundCharacters,
-            "parser:foundIgnorableWhitespace:" : _parserAndFoundIgnorableWhitespace,
+            #selector(parser(_:foundExternalEntityDeclarationWithName:publicID:systemID:)) : _parserAndFoundExternalEntityDeclarationWithName,
+            #selector(parser(_:didStartElement:namespaceURI:qualifiedName:attributes:)) : _parserAndDidStartElement,
+            #selector(parser(_:didEndElement:namespaceURI:qualifiedName:)) : _parserAndDidEndElement,
+            #selector(parser(_:didStartMappingPrefix:toURI:)) : _parserAndDidStartMappingPrefix,
+            #selector(parser(_:didEndMappingPrefix:)) : _parserAndDidEndMappingPrefix,
+            #selector(parser(_:foundCharacters:)) : _parserAndFoundCharacters,
+            #selector(parser(_:foundIgnorableWhitespace:)) : _parserAndFoundIgnorableWhitespace,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
         let funcDic3: [Selector : Any?] = [
-            "parser:foundProcessingInstructionWithTarget:data:" : _parserAndFoundProcessingInstructionWithTarget,
-            "parser:foundComment:" : _parserAndFoundComment,
-            "parser:foundCDATA:" : _parserAndFoundCDATA,
-            "parser:resolveExternalEntityName:systemID:" : _parserAndResolveExternalEntityName,
-            "parser:parseErrorOccurred:" : _parserAndParseErrorOccurred,
-            "parser:validationErrorOccurred:" : _parserAndValidationErrorOccurred,
+            #selector(parser(_:foundProcessingInstructionWithTarget:data:)) : _parserAndFoundProcessingInstructionWithTarget,
+            #selector(parser(_:foundComment:)) : _parserAndFoundComment,
+            #selector(parser(_:foundCDATA:)) : _parserAndFoundCDATA,
+            #selector(parser(_:resolveExternalEntityName:systemID:)) : _parserAndResolveExternalEntityName,
+            #selector(parser(_:parseErrorOccurred:)) : _parserAndParseErrorOccurred,
+            #selector(parser(_:validationErrorOccurred:)) : _parserAndValidationErrorOccurred,
         ]
         if let f = funcDic3[aSelector] {
             return f != nil

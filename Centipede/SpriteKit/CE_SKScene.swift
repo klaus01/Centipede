@@ -80,11 +80,11 @@ internal class SKScene_Delegate: NSObject, SKSceneDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "update:forScene:" : _update,
-            "didEvaluateActionsForScene:" : _didEvaluateActionsFor,
-            "didSimulatePhysicsForScene:" : _didSimulatePhysicsFor,
-            "didApplyConstraintsForScene:" : _didApplyConstraintsFor,
-            "didFinishUpdateForScene:" : _didFinishUpdateFor,
+            #selector(update(_:forScene:)) : _update,
+            #selector(didEvaluateActionsForScene(_:)) : _didEvaluateActionsFor,
+            #selector(didSimulatePhysicsForScene(_:)) : _didSimulatePhysicsFor,
+            #selector(didApplyConstraintsForScene(_:)) : _didApplyConstraintsFor,
+            #selector(didFinishUpdateForScene(_:)) : _didFinishUpdateFor,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

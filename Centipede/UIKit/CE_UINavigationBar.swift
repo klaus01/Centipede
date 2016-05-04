@@ -74,10 +74,10 @@ internal class UINavigationBar_Delegate: NSObject, UINavigationBarDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "navigationBar:shouldPushItem:" : _shouldPushItem,
-            "navigationBar:didPushItem:" : _didPushItem,
-            "navigationBar:shouldPopItem:" : _shouldPopItem,
-            "navigationBar:didPopItem:" : _didPopItem,
+            #selector(navigationBar(_:shouldPushItem:)) : _shouldPushItem,
+            #selector(navigationBar(_:didPushItem:)) : _didPushItem,
+            #selector(navigationBar(_:shouldPopItem:)) : _shouldPopItem,
+            #selector(navigationBar(_:didPopItem:)) : _didPopItem,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

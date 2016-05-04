@@ -62,8 +62,8 @@ internal class GLKViewController_Delegate: UIViewController_Delegate, GLKViewCon
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "glkViewControllerUpdate:" : _glUpdate,
-            "glkViewController:willPause:" : _gl,
+            #selector(glkViewControllerUpdate(_:)) : _glUpdate,
+            #selector(glkViewController(_:willPause:)) : _gl,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

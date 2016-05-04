@@ -106,21 +106,21 @@ internal class UITabBarController_Delegate: UIViewController_Delegate, UITabBarC
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "tabBarController:shouldSelectViewController:" : _shouldSelectViewController,
-            "tabBarController:didSelectViewController:" : _didSelectViewController,
-            "tabBarController:willBeginCustomizingViewControllers:" : _willBeginCustomizingViewControllers,
-            "tabBarController:willEndCustomizingViewControllers:changed:" : _willEndCustomizingViewControllers,
-            "tabBarController:didEndCustomizingViewControllers:changed:" : _didEndCustomizingViewControllers,
-            "tabBarControllerSupportedInterfaceOrientations:" : _supportedInterfaceOrientations,
-            "tabBarControllerPreferredInterfaceOrientationForPresentation:" : _preferredInterfaceOrientationForPresentation,
+            #selector(tabBarController(_:shouldSelectViewController:)) : _shouldSelectViewController,
+            #selector(tabBarController(_:didSelectViewController:)) : _didSelectViewController,
+            #selector(tabBarController(_:willBeginCustomizingViewControllers:)) : _willBeginCustomizingViewControllers,
+            #selector(tabBarController(_:willEndCustomizingViewControllers:changed:)) : _willEndCustomizingViewControllers,
+            #selector(tabBarController(_:didEndCustomizingViewControllers:changed:)) : _didEndCustomizingViewControllers,
+            #selector(tabBarControllerSupportedInterfaceOrientations(_:)) : _supportedInterfaceOrientations,
+            #selector(tabBarControllerPreferredInterfaceOrientationForPresentation(_:)) : _preferredInterfaceOrientationForPresentation,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "tabBarController:interactionControllerForAnimationController:" : _interactionControllerForAnimationController,
-            "tabBarController:animationControllerForTransitionFromViewController:toViewController:" : _animationControllerForTransitionFromViewController,
+            #selector(tabBarController(_:interactionControllerForAnimationController:)) : _interactionControllerForAnimationController,
+            #selector(tabBarController(_:animationControllerForTransitionFromViewController:toViewController:)) : _animationControllerForTransitionFromViewController,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

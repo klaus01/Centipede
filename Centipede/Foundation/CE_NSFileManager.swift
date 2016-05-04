@@ -146,34 +146,34 @@ internal class NSFileManager_Delegate: NSObject, NSFileManagerDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "fileManager:shouldCopyItemAtPath:toPath:" : _shouldCopyItemAtPath,
-            "fileManager:shouldCopyItemAtURL:toURL:" : _shouldCopyItemAtURL,
-            "fileManager:shouldProceedAfterError:copyingItemAtPath:toPath:" : _shouldProceedAfterError,
-            "fileManager:shouldProceedAfterError:copyingItemAtURL:toURL:" : _shouldProceedAfterErrorAndShouldProceedAfterError,
-            "fileManager:shouldMoveItemAtPath:toPath:" : _shouldMoveItemAtPath,
-            "fileManager:shouldMoveItemAtURL:toURL:" : _shouldMoveItemAtURL,
-            "fileManager:shouldProceedAfterError:movingItemAtPath:toPath:" : _shouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterError,
+            #selector(fileManager(_:shouldCopyItemAtPath:toPath:)) : _shouldCopyItemAtPath,
+            #selector(fileManager(_:shouldCopyItemAtURL:toURL:)) : _shouldCopyItemAtURL,
+            #selector(fileManager(_:shouldProceedAfterError:copyingItemAtPath:toPath:)) : _shouldProceedAfterError,
+            #selector(fileManager(_:shouldProceedAfterError:copyingItemAtURL:toURL:)) : _shouldProceedAfterErrorAndShouldProceedAfterError,
+            #selector(fileManager(_:shouldMoveItemAtPath:toPath:)) : _shouldMoveItemAtPath,
+            #selector(fileManager(_:shouldMoveItemAtURL:toURL:)) : _shouldMoveItemAtURL,
+            #selector(fileManager(_:shouldProceedAfterError:movingItemAtPath:toPath:)) : _shouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterError,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "fileManager:shouldProceedAfterError:movingItemAtURL:toURL:" : _shouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterError,
-            "fileManager:shouldLinkItemAtPath:toPath:" : _shouldLinkItemAtPath,
-            "fileManager:shouldLinkItemAtURL:toURL:" : _shouldLinkItemAtURL,
-            "fileManager:shouldProceedAfterError:linkingItemAtPath:toPath:" : _shouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterError,
-            "fileManager:shouldProceedAfterError:linkingItemAtURL:toURL:" : _shouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterError,
-            "fileManager:shouldRemoveItemAtPath:" : _shouldRemoveItemAtPath,
-            "fileManager:shouldRemoveItemAtURL:" : _shouldRemoveItemAtURL,
+            #selector(fileManager(_:shouldProceedAfterError:movingItemAtURL:toURL:)) : _shouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterError,
+            #selector(fileManager(_:shouldLinkItemAtPath:toPath:)) : _shouldLinkItemAtPath,
+            #selector(fileManager(_:shouldLinkItemAtURL:toURL:)) : _shouldLinkItemAtURL,
+            #selector(fileManager(_:shouldProceedAfterError:linkingItemAtPath:toPath:)) : _shouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterError,
+            #selector(fileManager(_:shouldProceedAfterError:linkingItemAtURL:toURL:)) : _shouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterError,
+            #selector(fileManager(_:shouldRemoveItemAtPath:)) : _shouldRemoveItemAtPath,
+            #selector(fileManager(_:shouldRemoveItemAtURL:)) : _shouldRemoveItemAtURL,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
         let funcDic3: [Selector : Any?] = [
-            "fileManager:shouldProceedAfterError:removingItemAtPath:" : _shouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterError,
-            "fileManager:shouldProceedAfterError:removingItemAtURL:" : _shouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterError,
+            #selector(fileManager(_:shouldProceedAfterError:removingItemAtPath:)) : _shouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterError,
+            #selector(fileManager(_:shouldProceedAfterError:removingItemAtURL:)) : _shouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterErrorAndShouldProceedAfterError,
         ]
         if let f = funcDic3[aSelector] {
             return f != nil

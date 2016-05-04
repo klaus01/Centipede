@@ -64,8 +64,8 @@ internal class UIDocumentMenuViewController_Delegate: UIViewController_Delegate,
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "documentMenu:didPickDocumentPicker:" : _documentMenu,
-            "documentMenuWasCancelled:" : _documentMenuWasCancelled,
+            #selector(documentMenu(_:didPickDocumentPicker:)) : _documentMenu,
+            #selector(documentMenuWasCancelled(_:)) : _documentMenuWasCancelled,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

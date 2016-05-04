@@ -86,12 +86,12 @@ internal class MCSession_Delegate: NSObject, MCSessionDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "session:peer:didChangeState:" : _peerDidChangeState,
-            "session:didReceiveData:fromPeer:" : _didReceiveData,
-            "session:didReceiveStream:withName:fromPeer:" : _didReceiveStream,
-            "session:didStartReceivingResourceWithName:fromPeer:withProgress:" : _didStartReceivingResourceWithName,
-            "session:didFinishReceivingResourceWithName:fromPeer:atURL:withError:" : _didFinishReceivingResourceWithName,
-            "session:didReceiveCertificate:fromPeer:certificateHandler:" : _didReceiveCertificate,
+            #selector(session(_:peer:didChangeState:)) : _peerDidChangeState,
+            #selector(session(_:didReceiveData:fromPeer:)) : _didReceiveData,
+            #selector(session(_:didReceiveStream:withName:fromPeer:)) : _didReceiveStream,
+            #selector(session(_:didStartReceivingResourceWithName:fromPeer:withProgress:)) : _didStartReceivingResourceWithName,
+            #selector(session(_:didFinishReceivingResourceWithName:fromPeer:atURL:withError:)) : _didFinishReceivingResourceWithName,
+            #selector(session(_:didReceiveCertificate:fromPeer:certificateHandler:)) : _didReceiveCertificate,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

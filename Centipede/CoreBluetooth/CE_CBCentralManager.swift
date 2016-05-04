@@ -98,20 +98,20 @@ internal class CBCentralManager_Delegate: NSObject, CBCentralManagerDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "centralManagerDidUpdateState:" : _didUpdateState,
-            "centralManager:willRestoreState:" : _willRestoreState,
-            "centralManager:didRetrievePeripherals:" : _didRetrievePeripherals,
-            "centralManager:didRetrieveConnectedPeripherals:" : _didRetrieveConnectedPeripherals,
-            "centralManager:didDiscoverPeripheral:advertisementData:RSSI:" : _didDiscoverPeripheral,
-            "centralManager:didConnectPeripheral:" : _didConnectPeripheral,
-            "centralManager:didFailToConnectPeripheral:error:" : _didFailToConnectPeripheral,
+            #selector(centralManagerDidUpdateState(_:)) : _didUpdateState,
+            #selector(centralManager(_:willRestoreState:)) : _willRestoreState,
+            #selector(centralManager(_:didRetrievePeripherals:)) : _didRetrievePeripherals,
+            #selector(centralManager(_:didRetrieveConnectedPeripherals:)) : _didRetrieveConnectedPeripherals,
+            #selector(centralManager(_:didDiscoverPeripheral:advertisementData:RSSI:)) : _didDiscoverPeripheral,
+            #selector(centralManager(_:didConnectPeripheral:)) : _didConnectPeripheral,
+            #selector(centralManager(_:didFailToConnectPeripheral:error:)) : _didFailToConnectPeripheral,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "centralManager:didDisconnectPeripheral:error:" : _didDisconnectPeripheral,
+            #selector(centralManager(_:didDisconnectPeripheral:error:)) : _didDisconnectPeripheral,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil

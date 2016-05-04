@@ -92,13 +92,13 @@ internal class UITextField_Delegate: NSObject, UITextFieldDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "textFieldShouldBeginEditing:" : _shouldBeginEditing,
-            "textFieldDidBeginEditing:" : _didBeginEditing,
-            "textFieldShouldEndEditing:" : _shouldEndEditing,
-            "textFieldDidEndEditing:" : _didEndEditing,
-            "textField:shouldChangeCharactersInRange:replacementString:" : _shouldChangeCharactersInRange,
-            "textFieldShouldClear:" : _shouldClear,
-            "textFieldShouldReturn:" : _shouldReturn,
+            #selector(textFieldShouldBeginEditing(_:)) : _shouldBeginEditing,
+            #selector(textFieldDidBeginEditing(_:)) : _didBeginEditing,
+            #selector(textFieldShouldEndEditing(_:)) : _shouldEndEditing,
+            #selector(textFieldDidEndEditing(_:)) : _didEndEditing,
+            #selector(textField(_:shouldChangeCharactersInRange:replacementString:)) : _shouldChangeCharactersInRange,
+            #selector(textFieldShouldClear(_:)) : _shouldClear,
+            #selector(textFieldShouldReturn(_:)) : _shouldReturn,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

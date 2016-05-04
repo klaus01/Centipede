@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Centipede"
-  s.version      = "1.1.0"
+  s.version      = "1.2.0"
   s.summary      = "Swift achieve a pure library closures achieve UIKit assembly delegate and dataSource methods."
   s.description  = <<-DESC
 一个Swift库，使用闭包实现UIKit组件的delegate和dataSource方法

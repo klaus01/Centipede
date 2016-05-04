@@ -56,7 +56,7 @@ internal class SKProductsRequest_Delegate: SKRequest_Delegate, SKProductsRequest
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "productsRequest:didReceiveResponse:" : _didReceiveResponse,
+            #selector(productsRequest(_:didReceiveResponse:)) : _didReceiveResponse,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

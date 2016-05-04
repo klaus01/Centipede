@@ -211,7 +211,7 @@ public extension " + sourceObj.className + " {\n\
     private struct Static { static var AssociationKey: UInt8 = 0 }\n\
     private var _delegate: " + CLASS_DELEGATE_NAME + "? {\n\
         get { return objc_getAssociatedObject(self, &Static.AssociationKey) as? " + CLASS_DELEGATE_NAME + " }\n\
-        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN)) }\n\
+        set { objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN) }\n\
     }\n\
     \n\
     private var " + EXT_NAME_ACRONYM + ": " + CLASS_DELEGATE_NAME + " {\n\
@@ -268,12 +268,18 @@ public extension " + sourceObj.className + " {\n\
                 respondsStr += "\n        let funcDic" + groupIndex + ": [Selector : Any?] = [\n";
             }
             // 内容
-            respondsStr += "            \""
+            respondsStr += "            #selector("
             for (var j = 0; j < funcObj.parameters.length; j++) {
                 var paramtObj = funcObj.parameters[j];
-                respondsStr += (j === 0 ? funcObj.oldName : paramtObj.name) + ":";
+
+                if (j === 0) {
+                    respondsStr += funcObj.oldName + "(_:"
+                }
+                else {
+                    respondsStr += paramtObj.name + ":"
+                }
             };
-            respondsStr += "\" : " + funcObj.newName + ",\n";
+            respondsStr += ")) : " + funcObj.newName + ",\n";
             // 尾
             count++;
             i++;

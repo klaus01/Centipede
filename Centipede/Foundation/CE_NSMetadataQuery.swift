@@ -62,8 +62,8 @@ internal class NSMetadataQuery_Delegate: NSObject, NSMetadataQueryDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "metadataQuery:replacementObjectForResultObject:" : _replacementObjectForResultObject,
-            "metadataQuery:replacementValueForAttribute:value:" : _replacementValueForAttribute,
+            #selector(metadataQuery(_:replacementObjectForResultObject:)) : _replacementObjectForResultObject,
+            #selector(metadataQuery(_:replacementValueForAttribute:value:)) : _replacementValueForAttribute,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

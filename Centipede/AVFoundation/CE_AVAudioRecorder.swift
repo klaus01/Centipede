@@ -74,10 +74,10 @@ internal class AVAudioRecorder_Delegate: NSObject, AVAudioRecorderDelegate {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "audioRecorderDidFinishRecording:successfully:" : _didFinishRecording,
-            "audioRecorderEncodeErrorDidOccur:error:" : _encodeErrorDidOccur,
-            "audioRecorderBeginInterruption:" : _beginInterruption,
-            "audioRecorderEndInterruption:withOptions:" : _endInterruption,
+            #selector(audioRecorderDidFinishRecording(_:successfully:)) : _didFinishRecording,
+            #selector(audioRecorderEncodeErrorDidOccur(_:error:)) : _encodeErrorDidOccur,
+            #selector(audioRecorderBeginInterruption(_:)) : _beginInterruption,
+            #selector(audioRecorderEndInterruption(_:withOptions:)) : _endInterruption,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

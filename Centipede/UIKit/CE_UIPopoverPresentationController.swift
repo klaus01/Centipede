@@ -74,10 +74,10 @@ internal class UIPopoverPresentationController_Delegate: UIPresentationControlle
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "prepareForPopoverPresentation:" : _prepareForPopoverPresentation,
-            "popoverPresentationControllerShouldDismissPopover:" : _shouldDismissPopover,
-            "popoverPresentationControllerDidDismissPopover:" : _didDismissPopover,
-            "popoverPresentationController:willRepositionPopoverToRect:inView:" : _willRepositionPopoverToRect,
+            #selector(prepareForPopoverPresentation(_:)) : _prepareForPopoverPresentation,
+            #selector(popoverPresentationControllerShouldDismissPopover(_:)) : _shouldDismissPopover,
+            #selector(popoverPresentationControllerDidDismissPopover(_:)) : _didDismissPopover,
+            #selector(popoverPresentationController(_:willRepositionPopoverToRect:inView:)) : _willRepositionPopoverToRect,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil

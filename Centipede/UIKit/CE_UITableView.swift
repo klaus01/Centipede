@@ -316,86 +316,86 @@ internal class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSourc
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "tableView:numberOfRowsInSection:" : _numberOfRowsInSection,
-            "tableView:cellForRowAtIndexPath:" : _cellForRowAtIndexPath,
-            "numberOfSectionsInTableView:" : _numberOfSectionsIn,
-            "tableView:titleForHeaderInSection:" : _titleForHeaderInSection,
-            "tableView:titleForFooterInSection:" : _titleForFooterInSection,
-            "tableView:canEditRowAtIndexPath:" : _canEditRowAtIndexPath,
-            "tableView:canMoveRowAtIndexPath:" : _canMoveRowAtIndexPath,
+            #selector(tableView(_:numberOfRowsInSection:)) : _numberOfRowsInSection,
+            #selector(tableView(_:cellForRowAtIndexPath:)) : _cellForRowAtIndexPath,
+            #selector(numberOfSectionsInTableView(_:)) : _numberOfSectionsIn,
+            #selector(tableView(_:titleForHeaderInSection:)) : _titleForHeaderInSection,
+            #selector(tableView(_:titleForFooterInSection:)) : _titleForFooterInSection,
+            #selector(tableView(_:canEditRowAtIndexPath:)) : _canEditRowAtIndexPath,
+            #selector(tableView(_:canMoveRowAtIndexPath:)) : _canMoveRowAtIndexPath,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            "sectionIndexTitlesForTableView:" : _sectionIndexTitlesFor,
-            "tableView:sectionForSectionIndexTitle:atIndex:" : _sectionForSectionIndexTitle,
-            "tableView:commitEditingStyle:forRowAtIndexPath:" : _commitEditingStyle,
-            "tableView:moveRowAtIndexPath:toIndexPath:" : _moveRowAtIndexPath,
-            "tableView:willDisplayCell:forRowAtIndexPath:" : _willDisplayCell,
-            "tableView:willDisplayHeaderView:forSection:" : _willDisplayHeaderView,
-            "tableView:willDisplayFooterView:forSection:" : _willDisplayFooterView,
+            #selector(sectionIndexTitlesForTableView(_:)) : _sectionIndexTitlesFor,
+            #selector(tableView(_:sectionForSectionIndexTitle:atIndex:)) : _sectionForSectionIndexTitle,
+            #selector(tableView(_:commitEditingStyle:forRowAtIndexPath:)) : _commitEditingStyle,
+            #selector(tableView(_:moveRowAtIndexPath:toIndexPath:)) : _moveRowAtIndexPath,
+            #selector(tableView(_:willDisplayCell:forRowAtIndexPath:)) : _willDisplayCell,
+            #selector(tableView(_:willDisplayHeaderView:forSection:)) : _willDisplayHeaderView,
+            #selector(tableView(_:willDisplayFooterView:forSection:)) : _willDisplayFooterView,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
         let funcDic3: [Selector : Any?] = [
-            "tableView:didEndDisplayingCell:forRowAtIndexPath:" : _didEndDisplayingCell,
-            "tableView:didEndDisplayingHeaderView:forSection:" : _didEndDisplayingHeaderView,
-            "tableView:didEndDisplayingFooterView:forSection:" : _didEndDisplayingFooterView,
-            "tableView:heightForRowAtIndexPath:" : _heightForRowAtIndexPath,
-            "tableView:heightForHeaderInSection:" : _heightForHeaderInSection,
-            "tableView:heightForFooterInSection:" : _heightForFooterInSection,
-            "tableView:estimatedHeightForRowAtIndexPath:" : _estimatedHeightForRowAtIndexPath,
+            #selector(tableView(_:didEndDisplayingCell:forRowAtIndexPath:)) : _didEndDisplayingCell,
+            #selector(tableView(_:didEndDisplayingHeaderView:forSection:)) : _didEndDisplayingHeaderView,
+            #selector(tableView(_:didEndDisplayingFooterView:forSection:)) : _didEndDisplayingFooterView,
+            #selector(tableView(_:heightForRowAtIndexPath:)) : _heightForRowAtIndexPath,
+            #selector(tableView(_:heightForHeaderInSection:)) : _heightForHeaderInSection,
+            #selector(tableView(_:heightForFooterInSection:)) : _heightForFooterInSection,
+            #selector(tableView(_:estimatedHeightForRowAtIndexPath:)) : _estimatedHeightForRowAtIndexPath,
         ]
         if let f = funcDic3[aSelector] {
             return f != nil
         }
         
         let funcDic4: [Selector : Any?] = [
-            "tableView:estimatedHeightForHeaderInSection:" : _estimatedHeightForHeaderInSection,
-            "tableView:estimatedHeightForFooterInSection:" : _estimatedHeightForFooterInSection,
-            "tableView:viewForHeaderInSection:" : _viewForHeaderInSection,
-            "tableView:viewForFooterInSection:" : _viewForFooterInSection,
-            "tableView:accessoryButtonTappedForRowWithIndexPath:" : _accessoryButtonTappedForRowWithIndexPath,
-            "tableView:shouldHighlightRowAtIndexPath:" : _shouldHighlightRowAtIndexPath,
-            "tableView:didHighlightRowAtIndexPath:" : _didHighlightRowAtIndexPath,
+            #selector(tableView(_:estimatedHeightForHeaderInSection:)) : _estimatedHeightForHeaderInSection,
+            #selector(tableView(_:estimatedHeightForFooterInSection:)) : _estimatedHeightForFooterInSection,
+            #selector(tableView(_:viewForHeaderInSection:)) : _viewForHeaderInSection,
+            #selector(tableView(_:viewForFooterInSection:)) : _viewForFooterInSection,
+            #selector(tableView(_:accessoryButtonTappedForRowWithIndexPath:)) : _accessoryButtonTappedForRowWithIndexPath,
+            #selector(tableView(_:shouldHighlightRowAtIndexPath:)) : _shouldHighlightRowAtIndexPath,
+            #selector(tableView(_:didHighlightRowAtIndexPath:)) : _didHighlightRowAtIndexPath,
         ]
         if let f = funcDic4[aSelector] {
             return f != nil
         }
         
         let funcDic5: [Selector : Any?] = [
-            "tableView:didUnhighlightRowAtIndexPath:" : _didUnhighlightRowAtIndexPath,
-            "tableView:willSelectRowAtIndexPath:" : _willSelectRowAtIndexPath,
-            "tableView:willDeselectRowAtIndexPath:" : _willDeselectRowAtIndexPath,
-            "tableView:didSelectRowAtIndexPath:" : _didSelectRowAtIndexPath,
-            "tableView:didDeselectRowAtIndexPath:" : _didDeselectRowAtIndexPath,
-            "tableView:editingStyleForRowAtIndexPath:" : _editingStyleForRowAtIndexPath,
-            "tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:" : _titleForDeleteConfirmationButtonForRowAtIndexPath,
+            #selector(tableView(_:didUnhighlightRowAtIndexPath:)) : _didUnhighlightRowAtIndexPath,
+            #selector(tableView(_:willSelectRowAtIndexPath:)) : _willSelectRowAtIndexPath,
+            #selector(tableView(_:willDeselectRowAtIndexPath:)) : _willDeselectRowAtIndexPath,
+            #selector(tableView(_:didSelectRowAtIndexPath:)) : _didSelectRowAtIndexPath,
+            #selector(tableView(_:didDeselectRowAtIndexPath:)) : _didDeselectRowAtIndexPath,
+            #selector(tableView(_:editingStyleForRowAtIndexPath:)) : _editingStyleForRowAtIndexPath,
+            #selector(tableView(_:titleForDeleteConfirmationButtonForRowAtIndexPath:)) : _titleForDeleteConfirmationButtonForRowAtIndexPath,
         ]
         if let f = funcDic5[aSelector] {
             return f != nil
         }
         
         let funcDic6: [Selector : Any?] = [
-            "tableView:editActionsForRowAtIndexPath:" : _editActionsForRowAtIndexPath,
-            "tableView:shouldIndentWhileEditingRowAtIndexPath:" : _shouldIndentWhileEditingRowAtIndexPath,
-            "tableView:willBeginEditingRowAtIndexPath:" : _willBeginEditingRowAtIndexPath,
-            "tableView:didEndEditingRowAtIndexPath:" : _didEndEditingRowAtIndexPath,
-            "tableView:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:" : _targetIndexPathForMoveFromRowAtIndexPath,
-            "tableView:indentationLevelForRowAtIndexPath:" : _indentationLevelForRowAtIndexPath,
-            "tableView:shouldShowMenuForRowAtIndexPath:" : _shouldShowMenuForRowAtIndexPath,
+            #selector(tableView(_:editActionsForRowAtIndexPath:)) : _editActionsForRowAtIndexPath,
+            #selector(tableView(_:shouldIndentWhileEditingRowAtIndexPath:)) : _shouldIndentWhileEditingRowAtIndexPath,
+            #selector(tableView(_:willBeginEditingRowAtIndexPath:)) : _willBeginEditingRowAtIndexPath,
+            #selector(tableView(_:didEndEditingRowAtIndexPath:)) : _didEndEditingRowAtIndexPath,
+            #selector(tableView(_:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:)) : _targetIndexPathForMoveFromRowAtIndexPath,
+            #selector(tableView(_:indentationLevelForRowAtIndexPath:)) : _indentationLevelForRowAtIndexPath,
+            #selector(tableView(_:shouldShowMenuForRowAtIndexPath:)) : _shouldShowMenuForRowAtIndexPath,
         ]
         if let f = funcDic6[aSelector] {
             return f != nil
         }
         
         let funcDic7: [Selector : Any?] = [
-            "tableView:canPerformAction:forRowAtIndexPath:withSender:" : _canPerformAction,
-            "tableView:performAction:forRowAtIndexPath:withSender:" : _performAction,
+            #selector(tableView(_:canPerformAction:forRowAtIndexPath:withSender:)) : _canPerformAction,
+            #selector(tableView(_:performAction:forRowAtIndexPath:withSender:)) : _performAction,
         ]
         if let f = funcDic7[aSelector] {
             return f != nil

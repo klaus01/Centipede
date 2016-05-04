@@ -80,11 +80,11 @@ internal class NSFetchedResultsController_Delegate: NSObject, NSFetchedResultsCo
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            "controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:" : _controller,
-            "controller:didChangeSection:atIndex:forChangeType:" : _controllerAndDidChangeSection,
-            "controllerWillChangeContent:" : _controllerWillChangeContent,
-            "controllerDidChangeContent:" : _controllerDidChangeContent,
-            "controller:sectionIndexTitleForSectionName:" : _controllerAndSectionIndexTitleForSectionName,
+            #selector(controller(_:didChangeObject:atIndexPath:forChangeType:newIndexPath:)) : _controller,
+            #selector(controller(_:didChangeSection:atIndex:forChangeType:)) : _controllerAndDidChangeSection,
+            #selector(controllerWillChangeContent(_:)) : _controllerWillChangeContent,
+            #selector(controllerDidChangeContent(_:)) : _controllerDidChangeContent,
+            #selector(controller(_:sectionIndexTitleForSectionName:)) : _controllerAndSectionIndexTitleForSectionName,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
