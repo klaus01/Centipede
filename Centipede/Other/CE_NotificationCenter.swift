@@ -8,6 +8,8 @@
 
 import Foundation
 
+public typealias CE_NotificationAction = (NSNotification) -> Void
+
 public extension NSObject {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
@@ -25,34 +27,33 @@ public extension NSObject {
         return obj
     }
     
-    public func ce_addObserverForName(name: String, handle: (notification: NSNotification) -> Void) -> Self {
-        ce.addNotificationForName(name, handle: handle)
-        NSNotificationCenter.defaultCenter().addObserver(ce, selector: #selector(NSObject_Delegate.observerHandlerAction(_:)), name: name, object: nil)
+    public func ce_addObserver(forName name: String, handle: CE_NotificationAction) -> Self {
+        ce.addNotification(forName: name, handle: handle)
+        NotificationCenter.default.addObserver(ce, selector: #selector(NSObject_Delegate.observerHandlerAction(_:)), name: NSNotification.Name(rawValue: name), object: nil)
         return self
     }
     
     public func ce_removeObserverForName(name: String) -> Self {
-        NSNotificationCenter.defaultCenter().removeObserver(ce, name: name, object: nil)
+        NotificationCenter.default.removeObserver(ce, name: NSNotification.Name(rawValue: name), object: nil)
         return self
     }
     
     public func ce_removeObserver() {
-        NSNotificationCenter.defaultCenter().removeObserver(ce)
+        NotificationCenter.default.removeObserver(ce)
     }
     
 }
 
 private class NSObject_Delegate: NSObject {
     
-    typealias NotificationAction = (NSNotification) -> Void
-    private var dic = [String : NotificationAction]()
+    private var dic = [String : CE_NotificationAction]()
     
-    func addNotificationForName(name: String, handle: (notification: NSNotification) -> Void) {
+    func addNotification(forName name: String, handle: CE_NotificationAction) {
         dic[name] = handle
     }
     
-    @objc func observerHandlerAction(notification: NSNotification) {
-        if let action = dic[notification.name] {
+    @objc func observerHandlerAction(_ notification: NSNotification) {
+        if let action = dic[notification.name.rawValue] {
             action(notification)
         }
     }

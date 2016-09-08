@@ -8,7 +8,7 @@
 
 import UIKit
 
-public typealias CE_UIBarButtonItemAction = (gestureRecognizer: UIBarButtonItem) -> Void
+public typealias CE_UIBarButtonItemAction = (UIBarButtonItem) -> Void
 
 public extension UIBarButtonItem {
     
@@ -33,7 +33,7 @@ internal class UIBarButtonItemProxy : NSObject {
     }
     
     func act(gestureRecognizer: UIBarButtonItem) {
-        action(gestureRecognizer: gestureRecognizer)
+        action(gestureRecognizer)
     }
 }
 
@@ -52,12 +52,13 @@ internal extension UIBarButtonItem {
         }
     }
     
-    private func setter(newValue: UIBarButtonItemProxies) -> UIBarButtonItemProxies {
+    @discardableResult
+    private func setter(_ newValue: UIBarButtonItemProxies) -> UIBarButtonItemProxies {
         objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
         return newValue
     }
     
-    internal func on(action: CE_UIBarButtonItemAction?) -> Self {
+    internal func on(_ action: CE_UIBarButtonItemAction?) -> Self {
         self.off()
         
         if action == nil {
@@ -66,17 +67,18 @@ internal extension UIBarButtonItem {
         
         let proxy = UIBarButtonItemProxy(action!)
         self.target = proxy
-        self.action = #selector(UIBarButtonItemProxy.act(_:))
+        self.action = #selector(UIBarButtonItemProxy.act(gestureRecognizer:))
         proxies[""] = proxy
 
         return self
     }
     
+    @discardableResult
     internal func off() -> Self {
         if let _ = proxies[""] {
             target = nil
             action = nil
-            proxies.removeValueForKey("")
+            proxies.removeValue(forKey: "")
         }
         return self
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public typealias CE_UIControlAction = (control: UIControl, touches: NSSet) -> Void
+public typealias CE_UIControlAction = (UIControl, NSSet) -> Void
 
 public extension UIControl {
     
@@ -37,7 +37,7 @@ internal class UIControlProxy : NSObject {
     }
     
     func act(source: UIControl, touches: NSSet) {
-        action(control: source, touches: touches)
+        action(source, touches)
     }
 }
 
@@ -56,20 +56,21 @@ internal extension UIControl {
         }
     }
     
-    private func proxyKey(event: UIControlEvents) -> String {
+    private func proxyKey(_ event: UIControlEvents) -> String {
         return "UIControl:\(event.rawValue)"
     }
     
-    private func setter(newValue: UIControlProxies) -> UIControlProxies {
+    @discardableResult
+    private func setter(_ newValue: UIControlProxies) -> UIControlProxies {
         objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
         return newValue
     }
     
-    internal func on(controlEvents: UIControlEvents, action: CE_UIControlAction) -> Self {
+    internal func on(_ controlEvents: UIControlEvents, action: CE_UIControlAction) -> Self {
         self.off(controlEvents)
         
         let proxy = UIControlProxy(action)
-        self.addTarget(proxy, action: #selector(UIControlProxy.act(_:touches:)), forControlEvents: controlEvents)
+        self.addTarget(proxy, action: #selector(UIControlProxy.act(source:touches:)), for: controlEvents)
         
         let eventKey: String = proxyKey(controlEvents)
         proxies[eventKey] = proxy
@@ -77,11 +78,11 @@ internal extension UIControl {
         return self
     }
     
-    internal func off(controlEvents: UIControlEvents) -> Self {
-        
+    @discardableResult
+    internal func off(_ controlEvents: UIControlEvents) -> Self {
         if let proxy = proxies[proxyKey(controlEvents)] {
-            self.removeTarget(proxy, action: #selector(UIControlProxy.act(_:touches:)), forControlEvents: controlEvents)
-            proxies.removeValueForKey(proxyKey(controlEvents))
+            self.removeTarget(proxy, action: #selector(UIControlProxy.act(source:touches:)), for: controlEvents)
+            proxies.removeValue(forKey: proxyKey(controlEvents))
         }
         return self
     }
