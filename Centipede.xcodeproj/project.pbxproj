@@ -93,6 +93,9 @@
 		240B75B21B2B23090067475E /* CE_NSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B75B11B2B23090067475E /* CE_NSURLSession.swift */; };
 		245CA93D1C59F2490006C533 /* CE_CAAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CA93B1C59F2490006C533 /* CE_CAAnimation.swift */; };
 		245CA93E1C59F2490006C533 /* CE_CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CA93C1C59F2490006C533 /* CE_CALayer.swift */; };
+		24BCBE7F1D81BD140031CFA0 /* CE_NSLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BCBE7C1D81BD140031CFA0 /* CE_NSLayoutManager.swift */; };
+		24BCBE801D81BD140031CFA0 /* CE_NSTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BCBE7D1D81BD140031CFA0 /* CE_NSTextStorage.swift */; };
+		24BCBE811D81BD140031CFA0 /* CE_UISearchDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BCBE7E1D81BD140031CFA0 /* CE_UISearchDisplayController.swift */; };
 		24E8A74C1B1E056A008D963A /* Centipede.h in Headers */ = {isa = PBXBuildFile; fileRef = 24E8A74B1B1E056A008D963A /* Centipede.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -183,6 +186,9 @@
 		240B75B11B2B23090067475E /* CE_NSURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSURLSession.swift; sourceTree = "<group>"; };
 		245CA93B1C59F2490006C533 /* CE_CAAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CAAnimation.swift; sourceTree = "<group>"; };
 		245CA93C1C59F2490006C533 /* CE_CALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CALayer.swift; sourceTree = "<group>"; };
+		24BCBE7C1D81BD140031CFA0 /* CE_NSLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSLayoutManager.swift; sourceTree = "<group>"; };
+		24BCBE7D1D81BD140031CFA0 /* CE_NSTextStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSTextStorage.swift; sourceTree = "<group>"; };
+		24BCBE7E1D81BD140031CFA0 /* CE_UISearchDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UISearchDisplayController.swift; sourceTree = "<group>"; };
 		24E8A7461B1E056A008D963A /* Centipede.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Centipede.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E8A74A1B1E056A008D963A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E8A74B1B1E056A008D963A /* Centipede.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Centipede.h; sourceTree = "<group>"; };
@@ -213,6 +219,8 @@
 		240B74431B2B14500067475E /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				24BCBE7C1D81BD140031CFA0 /* CE_NSLayoutManager.swift */,
+				24BCBE7D1D81BD140031CFA0 /* CE_NSTextStorage.swift */,
 				240B74441B2B14500067475E /* CE_UIActionSheet.swift */,
 				240B74451B2B14500067475E /* CE_UIAlertView.swift */,
 				240B74461B2B14500067475E /* CE_UICollectionView.swift */,
@@ -234,6 +242,7 @@
 				240B74561B2B14500067475E /* CE_UIScrollView.swift */,
 				240B74571B2B14500067475E /* CE_UISearchBar.swift */,
 				240B74581B2B14500067475E /* CE_UISearchController.swift */,
+				24BCBE7E1D81BD140031CFA0 /* CE_UISearchDisplayController.swift */,
 				240B745A1B2B14500067475E /* CE_UISplitViewController.swift */,
 				240B745B1B2B14500067475E /* CE_UITabBar.swift */,
 				240B745C1B2B14500067475E /* CE_UITabBarController.swift */,
@@ -586,6 +595,7 @@
 				240B74B51B2B14500067475E /* CE_UITableView.swift in Sources */,
 				240B759F1B2B22140067475E /* CE_MKMapView.swift in Sources */,
 				240B75A11B2B22140067475E /* CE_MPPlayableContentManager.swift in Sources */,
+				24BCBE801D81BD140031CFA0 /* CE_NSTextStorage.swift in Sources */,
 				240B758C1B2B22140067475E /* CE_NSCache.swift in Sources */,
 				240B75A21B2B22140067475E /* CE_MCAdvertiserAssistant.swift in Sources */,
 				240B74AB1B2B14500067475E /* CE_UIPresentationController.swift in Sources */,
@@ -608,6 +618,7 @@
 				240B75A91B2B22140067475E /* CE_PKPushRegistry.swift in Sources */,
 				240B75AD1B2B22140067475E /* CE_SKScene.swift in Sources */,
 				240B74B31B2B14500067475E /* CE_UITabBar.swift in Sources */,
+				24BCBE811D81BD140031CFA0 /* CE_UISearchDisplayController.swift in Sources */,
 				240B75AE1B2B22140067475E /* CE_SKProductsRequest.swift in Sources */,
 				240B75921B2B22140067475E /* CE_NSNetServiceBrowser.swift in Sources */,
 				240B74AF1B2B14500067475E /* CE_UISearchBar.swift in Sources */,
@@ -651,6 +662,7 @@
 				240B759B1B2B22140067475E /* CE_HMHome.swift in Sources */,
 				240B74B61B2B14500067475E /* CE_UITextField.swift in Sources */,
 				240B74B71B2B14500067475E /* CE_UITextView.swift in Sources */,
+				24BCBE7F1D81BD140031CFA0 /* CE_NSLayoutManager.swift in Sources */,
 				240B749F1B2B14500067475E /* CE_UIDocumentInteractionController.swift in Sources */,
 				240B74AD1B2B14500067475E /* CE_UIPrintInteractionController.swift in Sources */,
 				240B74A31B2B14500067475E /* CE_UIGestureRecognizer.swift in Sources */,
