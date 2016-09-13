@@ -22,13 +22,13 @@ public extension UIControl {
     
 }
 
-// MARK: - Internal
+// MARK: - private
 
 private struct Static { static var AssociationKey: UInt8 = 0 }
 
 private typealias UIControlProxies = [String: UIControlProxy]
 
-internal class UIControlProxy : NSObject {
+fileprivate class UIControlProxy : NSObject {
     
     var action: CE_UIControlAction
     
@@ -41,7 +41,7 @@ internal class UIControlProxy : NSObject {
     }
 }
 
-internal extension UIControl {
+fileprivate extension UIControl {
     
     private var proxies: UIControlProxies {
         get {
@@ -66,7 +66,7 @@ internal extension UIControl {
         return newValue
     }
     
-    internal func on(_ controlEvents: UIControlEvents, action: CE_UIControlAction) -> Self {
+    fileprivate func on(_ controlEvents: UIControlEvents, action: CE_UIControlAction) -> Self {
         self.off(controlEvents)
         
         let proxy = UIControlProxy(action)
@@ -79,7 +79,7 @@ internal extension UIControl {
     }
     
     @discardableResult
-    internal func off(_ controlEvents: UIControlEvents) -> Self {
+    fileprivate func off(_ controlEvents: UIControlEvents) -> Self {
         if let proxy = proxies[proxyKey(controlEvents)] {
             self.removeTarget(proxy, action: #selector(UIControlProxy.act(source:touches:)), for: controlEvents)
             proxies.removeValue(forKey: proxyKey(controlEvents))

@@ -18,13 +18,13 @@ public extension UIBarButtonItem {
     
 }
 
-// MARK: - Internal
+// MARK: - private
 
 private struct Static { static var AssociationKey: UInt8 = 0 }
 
 private typealias UIBarButtonItemProxies = [String: UIBarButtonItemProxy]
 
-internal class UIBarButtonItemProxy : NSObject {
+fileprivate class UIBarButtonItemProxy : NSObject {
     
     var action: CE_UIBarButtonItemAction
     
@@ -37,7 +37,7 @@ internal class UIBarButtonItemProxy : NSObject {
     }
 }
 
-internal extension UIBarButtonItem {
+fileprivate extension UIBarButtonItem {
     
     private var proxies: UIBarButtonItemProxies {
         get {
@@ -58,7 +58,7 @@ internal extension UIBarButtonItem {
         return newValue
     }
     
-    internal func on(_ action: CE_UIBarButtonItemAction?) -> Self {
+    fileprivate func on(_ action: CE_UIBarButtonItemAction?) -> Self {
         self.off()
         
         if action == nil {
@@ -74,7 +74,7 @@ internal extension UIBarButtonItem {
     }
     
     @discardableResult
-    internal func off() -> Self {
+    fileprivate func off() -> Self {
         if let _ = proxies[""] {
             target = nil
             action = nil
