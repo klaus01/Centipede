@@ -2,8 +2,8 @@
 //  CE_CLLocationManager.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import CoreLocation
@@ -40,83 +40,83 @@ public extension CLLocationManager {
         return CLLocationManager_Delegate()
     }
     
-    public func ce_didUpdateLocations(handle: (manager: CLLocationManager, locations: [CLLocation]) -> Void) -> Self {
-        ce._didUpdateLocations = handle
+    public func ce_locationManager(handle: ((CLLocationManager, [CLLocation]) -> Void)) -> Self {
+        ce._locationManager = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateHeading(handle: (manager: CLLocationManager, newHeading: CLHeading!) -> Void) -> Self {
-        ce._didUpdateHeading = handle
+    public func ce_locationManager_didUpdateHeading(handle: ((CLLocationManager, CLHeading) -> Void)) -> Self {
+        ce._locationManager_didUpdateHeading = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldDisplayHeadingCalibration(handle: (manager: CLLocationManager) -> Bool) -> Self {
-        ce._shouldDisplayHeadingCalibration = handle
+    public func ce_locationManagerShouldDisplayHeadingCalibration(handle: ((CLLocationManager) -> Bool)) -> Self {
+        ce._locationManagerShouldDisplayHeadingCalibration = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDetermineState(handle: (manager: CLLocationManager, state: CLRegionState, region: CLRegion) -> Void) -> Self {
-        ce._didDetermineState = handle
+    public func ce_locationManager_didDetermineState(handle: ((CLLocationManager, CLRegionState, CLRegion) -> Void)) -> Self {
+        ce._locationManager_didDetermineState = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRangeBeacons(handle: (manager: CLLocationManager, beacons: [CLBeacon], region: CLBeaconRegion) -> Void) -> Self {
-        ce._didRangeBeacons = handle
+    public func ce_locationManager_didRangeBeacons(handle: ((CLLocationManager, [CLBeacon], CLBeaconRegion) -> Void)) -> Self {
+        ce._locationManager_didRangeBeacons = handle
         rebindingDelegate()
         return self
     }
-    public func ce_rangingBeaconsDidFailForRegion(handle: (manager: CLLocationManager, region: CLBeaconRegion, error: NSError) -> Void) -> Self {
-        ce._rangingBeaconsDidFailForRegion = handle
+    public func ce_locationManager_rangingBeaconsDidFailFor(handle: ((CLLocationManager, CLBeaconRegion, Error) -> Void)) -> Self {
+        ce._locationManager_rangingBeaconsDidFailFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didEnterRegion(handle: (manager: CLLocationManager, region: CLRegion) -> Void) -> Self {
-        ce._didEnterRegion = handle
+    public func ce_locationManager_didEnterRegion(handle: ((CLLocationManager, CLRegion) -> Void)) -> Self {
+        ce._locationManager_didEnterRegion = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didExitRegion(handle: (manager: CLLocationManager, region: CLRegion) -> Void) -> Self {
-        ce._didExitRegion = handle
+    public func ce_locationManager_didExitRegion(handle: ((CLLocationManager, CLRegion) -> Void)) -> Self {
+        ce._locationManager_didExitRegion = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFailWithError(handle: (manager: CLLocationManager, error: NSError) -> Void) -> Self {
-        ce._didFailWithError = handle
+    public func ce_locationManager_didFailWithError(handle: ((CLLocationManager, Error) -> Void)) -> Self {
+        ce._locationManager_didFailWithError = handle
         rebindingDelegate()
         return self
     }
-    public func ce_monitoringDidFailForRegion(handle: (manager: CLLocationManager, region: CLRegion?, error: NSError) -> Void) -> Self {
-        ce._monitoringDidFailForRegion = handle
+    public func ce_locationManager_monitoringDidFailFor(handle: ((CLLocationManager, CLRegion?, Error) -> Void)) -> Self {
+        ce._locationManager_monitoringDidFailFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didChangeAuthorizationStatus(handle: (manager: CLLocationManager, status: CLAuthorizationStatus) -> Void) -> Self {
-        ce._didChangeAuthorizationStatus = handle
+    public func ce_locationManager_didChangeAuthorization(handle: ((CLLocationManager, CLAuthorizationStatus) -> Void)) -> Self {
+        ce._locationManager_didChangeAuthorization = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didStartMonitoringForRegion(handle: (manager: CLLocationManager, region: CLRegion) -> Void) -> Self {
-        ce._didStartMonitoringForRegion = handle
+    public func ce_locationManager_didStartMonitoringFor(handle: ((CLLocationManager, CLRegion) -> Void)) -> Self {
+        ce._locationManager_didStartMonitoringFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didPauseLocationUpdates(handle: (manager: CLLocationManager) -> Void) -> Self {
-        ce._didPauseLocationUpdates = handle
+    public func ce_locationManagerDidPauseLocationUpdates(handle: ((CLLocationManager) -> Void)) -> Self {
+        ce._locationManagerDidPauseLocationUpdates = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didResumeLocationUpdates(handle: (manager: CLLocationManager) -> Void) -> Self {
-        ce._didResumeLocationUpdates = handle
+    public func ce_locationManagerDidResumeLocationUpdates(handle: ((CLLocationManager) -> Void)) -> Self {
+        ce._locationManagerDidResumeLocationUpdates = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFinishDeferredUpdatesWithError(handle: (manager: CLLocationManager, error: NSError?) -> Void) -> Self {
-        ce._didFinishDeferredUpdatesWithError = handle
+    public func ce_locationManager_didFinishDeferredUpdatesWithError(handle: ((CLLocationManager, Error?) -> Void)) -> Self {
+        ce._locationManager_didFinishDeferredUpdatesWithError = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didVisit(handle: (manager: CLLocationManager, visit: CLVisit) -> Void) -> Self {
-        ce._didVisit = handle
+    public func ce_locationManager_didVisit(handle: ((CLLocationManager, CLVisit) -> Void)) -> Self {
+        ce._locationManager_didVisit = handle
         rebindingDelegate()
         return self
     }
@@ -125,110 +125,110 @@ public extension CLLocationManager {
 
 internal class CLLocationManager_Delegate: NSObject, CLLocationManagerDelegate {
     
-    var _didUpdateLocations: ((CLLocationManager, [CLLocation]) -> Void)?
-    var _didUpdateHeading: ((CLLocationManager, CLHeading) -> Void)?
-    var _shouldDisplayHeadingCalibration: ((CLLocationManager) -> Bool)?
-    var _didDetermineState: ((CLLocationManager, CLRegionState, CLRegion) -> Void)?
-    var _didRangeBeacons: ((CLLocationManager, [CLBeacon], CLBeaconRegion) -> Void)?
-    var _rangingBeaconsDidFailForRegion: ((CLLocationManager, CLBeaconRegion, NSError) -> Void)?
-    var _didEnterRegion: ((CLLocationManager, CLRegion) -> Void)?
-    var _didExitRegion: ((CLLocationManager, CLRegion) -> Void)?
-    var _didFailWithError: ((CLLocationManager, NSError) -> Void)?
-    var _monitoringDidFailForRegion: ((CLLocationManager, CLRegion?, NSError) -> Void)?
-    var _didChangeAuthorizationStatus: ((CLLocationManager, CLAuthorizationStatus) -> Void)?
-    var _didStartMonitoringForRegion: ((CLLocationManager, CLRegion) -> Void)?
-    var _didPauseLocationUpdates: ((CLLocationManager) -> Void)?
-    var _didResumeLocationUpdates: ((CLLocationManager) -> Void)?
-    var _didFinishDeferredUpdatesWithError: ((CLLocationManager, NSError?) -> Void)?
-    var _didVisit: ((CLLocationManager, CLVisit) -> Void)?
+    var _locationManager: ((CLLocationManager, [CLLocation]) -> Void)?
+    var _locationManager_didUpdateHeading: ((CLLocationManager, CLHeading) -> Void)?
+    var _locationManagerShouldDisplayHeadingCalibration: ((CLLocationManager) -> Bool)?
+    var _locationManager_didDetermineState: ((CLLocationManager, CLRegionState, CLRegion) -> Void)?
+    var _locationManager_didRangeBeacons: ((CLLocationManager, [CLBeacon], CLBeaconRegion) -> Void)?
+    var _locationManager_rangingBeaconsDidFailFor: ((CLLocationManager, CLBeaconRegion, Error) -> Void)?
+    var _locationManager_didEnterRegion: ((CLLocationManager, CLRegion) -> Void)?
+    var _locationManager_didExitRegion: ((CLLocationManager, CLRegion) -> Void)?
+    var _locationManager_didFailWithError: ((CLLocationManager, Error) -> Void)?
+    var _locationManager_monitoringDidFailFor: ((CLLocationManager, CLRegion?, Error) -> Void)?
+    var _locationManager_didChangeAuthorization: ((CLLocationManager, CLAuthorizationStatus) -> Void)?
+    var _locationManager_didStartMonitoringFor: ((CLLocationManager, CLRegion) -> Void)?
+    var _locationManagerDidPauseLocationUpdates: ((CLLocationManager) -> Void)?
+    var _locationManagerDidResumeLocationUpdates: ((CLLocationManager) -> Void)?
+    var _locationManager_didFinishDeferredUpdatesWithError: ((CLLocationManager, Error?) -> Void)?
+    var _locationManager_didVisit: ((CLLocationManager, CLVisit) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(locationManager(_:didUpdateLocations:)) : _didUpdateLocations,
-            #selector(locationManager(_:didUpdateHeading:)) : _didUpdateHeading,
-            #selector(locationManagerShouldDisplayHeadingCalibration(_:)) : _shouldDisplayHeadingCalibration,
-            #selector(locationManager(_:didDetermineState:forRegion:)) : _didDetermineState,
-            #selector(locationManager(_:didRangeBeacons:inRegion:)) : _didRangeBeacons,
-            #selector(locationManager(_:rangingBeaconsDidFailForRegion:withError:)) : _rangingBeaconsDidFailForRegion,
-            #selector(locationManager(_:didEnterRegion:)) : _didEnterRegion,
+            #selector(locationManager(_:didUpdateLocations:)) : _locationManager,
+            #selector(locationManager(_:didUpdateHeading:)) : _locationManager_didUpdateHeading,
+            #selector(locationManagerShouldDisplayHeadingCalibration(_:)) : _locationManagerShouldDisplayHeadingCalibration,
+            #selector(locationManager(_:didDetermineState:for:)) : _locationManager_didDetermineState,
+            #selector(locationManager(_:didRangeBeacons:in:)) : _locationManager_didRangeBeacons,
+            #selector(locationManager(_:rangingBeaconsDidFailFor:withError:)) : _locationManager_rangingBeaconsDidFailFor,
+            #selector(locationManager(_:didEnterRegion:)) : _locationManager_didEnterRegion,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            #selector(locationManager(_:didExitRegion:)) : _didExitRegion,
-            #selector(locationManager(_:didFailWithError:)) : _didFailWithError,
-            #selector(locationManager(_:monitoringDidFailForRegion:withError:)) : _monitoringDidFailForRegion,
-            #selector(locationManager(_:didChangeAuthorizationStatus:)) : _didChangeAuthorizationStatus,
-            #selector(locationManager(_:didStartMonitoringForRegion:)) : _didStartMonitoringForRegion,
-            #selector(locationManagerDidPauseLocationUpdates(_:)) : _didPauseLocationUpdates,
-            #selector(locationManagerDidResumeLocationUpdates(_:)) : _didResumeLocationUpdates,
+            #selector(locationManager(_:didExitRegion:)) : _locationManager_didExitRegion,
+            #selector(locationManager(_:didFailWithError:)) : _locationManager_didFailWithError,
+            #selector(locationManager(_:monitoringDidFailFor:withError:)) : _locationManager_monitoringDidFailFor,
+            #selector(locationManager(_:didChangeAuthorization:)) : _locationManager_didChangeAuthorization,
+            #selector(locationManager(_:didStartMonitoringFor:)) : _locationManager_didStartMonitoringFor,
+            #selector(locationManagerDidPauseLocationUpdates(_:)) : _locationManagerDidPauseLocationUpdates,
+            #selector(locationManagerDidResumeLocationUpdates(_:)) : _locationManagerDidResumeLocationUpdates,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
         let funcDic3: [Selector : Any?] = [
-            #selector(locationManager(_:didFinishDeferredUpdatesWithError:)) : _didFinishDeferredUpdatesWithError,
-            #selector(locationManager(_:didVisit:)) : _didVisit,
+            #selector(locationManager(_:didFinishDeferredUpdatesWithError:)) : _locationManager_didFinishDeferredUpdatesWithError,
+            #selector(locationManager(_:didVisit:)) : _locationManager_didVisit,
         ]
         if let f = funcDic3[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        _didUpdateLocations!(manager, locations)
+    @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        _locationManager!(manager, locations)
     }
-    @objc func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        _didUpdateHeading!(manager, newHeading)
+    @objc func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        _locationManager_didUpdateHeading!(manager, newHeading)
     }
-    @objc func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager) -> Bool {
-        return _shouldDisplayHeadingCalibration!(manager)
+    @objc func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
+        return _locationManagerShouldDisplayHeadingCalibration!(manager)
     }
-    @objc func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion) {
-        _didDetermineState!(manager, state, region)
+    @objc func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
+        _locationManager_didDetermineState!(manager, state, region)
     }
-    @objc func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
-        _didRangeBeacons!(manager, beacons, region)
+    @objc func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        _locationManager_didRangeBeacons!(manager, beacons, region)
     }
-    @objc func locationManager(manager: CLLocationManager, rangingBeaconsDidFailForRegion region: CLBeaconRegion, withError error: NSError) {
-        _rangingBeaconsDidFailForRegion!(manager, region, error)
+    @objc func locationManager(_ manager: CLLocationManager, rangingBeaconsDidFailFor region: CLBeaconRegion, withError error: Error) {
+        _locationManager_rangingBeaconsDidFailFor!(manager, region, error)
     }
-    @objc func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        _didEnterRegion!(manager, region)
+    @objc func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        _locationManager_didEnterRegion!(manager, region)
     }
-    @objc func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-        _didExitRegion!(manager, region)
+    @objc func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        _locationManager_didExitRegion!(manager, region)
     }
-    @objc func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        _didFailWithError!(manager, error)
+    @objc func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        _locationManager_didFailWithError!(manager, error)
     }
-    @objc func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
-        _monitoringDidFailForRegion!(manager, region, error)
+    @objc func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
+        _locationManager_monitoringDidFailFor!(manager, region, error)
     }
-    @objc func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        _didChangeAuthorizationStatus!(manager, status)
+    @objc func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        _locationManager_didChangeAuthorization!(manager, status)
     }
-    @objc func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
-        _didStartMonitoringForRegion!(manager, region)
+    @objc func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        _locationManager_didStartMonitoringFor!(manager, region)
     }
-    @objc func locationManagerDidPauseLocationUpdates(manager: CLLocationManager) {
-        _didPauseLocationUpdates!(manager)
+    @objc func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
+        _locationManagerDidPauseLocationUpdates!(manager)
     }
-    @objc func locationManagerDidResumeLocationUpdates(manager: CLLocationManager) {
-        _didResumeLocationUpdates!(manager)
+    @objc func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
+        _locationManagerDidResumeLocationUpdates!(manager)
     }
-    @objc func locationManager(manager: CLLocationManager, didFinishDeferredUpdatesWithError error: NSError?) {
-        _didFinishDeferredUpdatesWithError!(manager, error)
+    @objc func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
+        _locationManager_didFinishDeferredUpdatesWithError!(manager, error)
     }
-    @objc func locationManager(manager: CLLocationManager, didVisit visit: CLVisit) {
-        _didVisit!(manager, visit)
+    @objc func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
+        _locationManager_didVisit!(manager, visit)
     }
 }

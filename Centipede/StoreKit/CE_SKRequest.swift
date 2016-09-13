@@ -2,8 +2,8 @@
 //  CE_SKRequest.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import StoreKit
@@ -40,13 +40,13 @@ public extension SKRequest {
         return SKRequest_Delegate()
     }
     
-    public func ce_didFinish(handle: (request: SKRequest) -> Void) -> Self {
-        ce._didFinish = handle
+    public func ce_requestDidFinish(handle: ((SKRequest) -> Void)) -> Self {
+        ce._requestDidFinish = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFailWithError(handle: (request: SKRequest, error: NSError) -> Void) -> Self {
-        ce._didFailWithError = handle
+    public func ce_request(handle: ((SKRequest, Error) -> Void)) -> Self {
+        ce._request = handle
         rebindingDelegate()
         return self
     }
@@ -55,28 +55,28 @@ public extension SKRequest {
 
 internal class SKRequest_Delegate: NSObject, SKRequestDelegate {
     
-    var _didFinish: ((SKRequest) -> Void)?
-    var _didFailWithError: ((SKRequest, NSError) -> Void)?
+    var _requestDidFinish: ((SKRequest) -> Void)?
+    var _request: ((SKRequest, Error) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(requestDidFinish(_:)) : _didFinish,
-            #selector(request(_:didFailWithError:)) : _didFailWithError,
+            #selector(requestDidFinish(_:)) : _requestDidFinish,
+            #selector(request(_:didFailWithError:)) : _request,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func requestDidFinish(request: SKRequest) {
-        _didFinish!(request)
+    @objc func requestDidFinish(_ request: SKRequest) {
+        _requestDidFinish!(request)
     }
-    @objc func request(request: SKRequest, didFailWithError error: NSError) {
-        _didFailWithError!(request, error)
+    @objc func request(_ request: SKRequest, didFailWithError error: Error) {
+        _request!(request, error)
     }
 }

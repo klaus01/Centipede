@@ -2,8 +2,8 @@
 //  CE_UITextView.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
@@ -20,7 +20,7 @@ public extension UITextView {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UITextView_Delegate {
                 return obj as! UITextView_Delegate
             }
@@ -40,48 +40,38 @@ public extension UITextView {
         return UITextView_Delegate()
     }
     
-    public func ce_shouldBeginEditing(handle: (textView: UITextView) -> Bool) -> Self {
-        ce._shouldBeginEditing = handle
+    public func ce_textViewShouldBeginEditing(handle: ((UITextView) -> Bool)) -> Self {
+        ce._textViewShouldBeginEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldEndEditing(handle: (textView: UITextView) -> Bool) -> Self {
-        ce._shouldEndEditing = handle
+    public func ce_textViewShouldEndEditing(handle: ((UITextView) -> Bool)) -> Self {
+        ce._textViewShouldEndEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didBeginEditing(handle: (textView: UITextView) -> Void) -> Self {
-        ce._didBeginEditing = handle
+    public func ce_textViewDidBeginEditing(handle: ((UITextView) -> Void)) -> Self {
+        ce._textViewDidBeginEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didEndEditing(handle: (textView: UITextView) -> Void) -> Self {
-        ce._didEndEditing = handle
+    public func ce_textViewDidEndEditing(handle: ((UITextView) -> Void)) -> Self {
+        ce._textViewDidEndEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldChangeTextInRange(handle: (textView: UITextView, range: NSRange, text: String) -> Bool) -> Self {
-        ce._shouldChangeTextInRange = handle
+    public func ce_textView(handle: ((UITextView, NSRange, String) -> Bool)) -> Self {
+        ce._textView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didChange(handle: (textView: UITextView) -> Void) -> Self {
-        ce._didChange = handle
+    public func ce_textViewDidChange(handle: ((UITextView) -> Void)) -> Self {
+        ce._textViewDidChange = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didChangeSelection(handle: (textView: UITextView) -> Void) -> Self {
-        ce._didChangeSelection = handle
-        rebindingDelegate()
-        return self
-    }
-    public func ce_shouldInteractWithURL(handle: (textView: UITextView, URL: NSURL, characterRange: NSRange) -> Bool) -> Self {
-        ce._shouldInteractWithURL = handle
-        rebindingDelegate()
-        return self
-    }
-    public func ce_shouldInteractWithTextAttachment(handle: (textView: UITextView, textAttachment: NSTextAttachment, characterRange: NSRange) -> Bool) -> Self {
-        ce._shouldInteractWithTextAttachment = handle
+    public func ce_textViewDidChangeSelection(handle: ((UITextView) -> Void)) -> Self {
+        ce._textViewDidChangeSelection = handle
         rebindingDelegate()
         return self
     }
@@ -90,69 +80,53 @@ public extension UITextView {
 
 internal class UITextView_Delegate: UIScrollView_Delegate, UITextViewDelegate {
     
-    var _shouldBeginEditing: ((UITextView) -> Bool)?
-    var _shouldEndEditing: ((UITextView) -> Bool)?
-    var _didBeginEditing: ((UITextView) -> Void)?
-    var _didEndEditing: ((UITextView) -> Void)?
-    var _shouldChangeTextInRange: ((UITextView, NSRange, String) -> Bool)?
-    var _didChange: ((UITextView) -> Void)?
-    var _didChangeSelection: ((UITextView) -> Void)?
-    var _shouldInteractWithURL: ((UITextView, NSURL, NSRange) -> Bool)?
-    var _shouldInteractWithTextAttachment: ((UITextView, NSTextAttachment, NSRange) -> Bool)?
+    var _textViewShouldBeginEditing: ((UITextView) -> Bool)?
+    var _textViewShouldEndEditing: ((UITextView) -> Bool)?
+    var _textViewDidBeginEditing: ((UITextView) -> Void)?
+    var _textViewDidEndEditing: ((UITextView) -> Void)?
+    var _textView: ((UITextView, NSRange, String) -> Bool)?
+    var _textViewDidChange: ((UITextView) -> Void)?
+    var _textViewDidChangeSelection: ((UITextView) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(textViewShouldBeginEditing(_:)) : _shouldBeginEditing,
-            #selector(textViewShouldEndEditing(_:)) : _shouldEndEditing,
-            #selector(textViewDidBeginEditing(_:)) : _didBeginEditing,
-            #selector(textViewDidEndEditing(_:)) : _didEndEditing,
-            #selector(textView(_:shouldChangeTextInRange:replacementText:)) : _shouldChangeTextInRange,
-            #selector(textViewDidChange(_:)) : _didChange,
-            #selector(textViewDidChangeSelection(_:)) : _didChangeSelection,
+            #selector(textViewShouldBeginEditing(_:)) : _textViewShouldBeginEditing,
+            #selector(textViewShouldEndEditing(_:)) : _textViewShouldEndEditing,
+            #selector(textViewDidBeginEditing(_:)) : _textViewDidBeginEditing,
+            #selector(textViewDidEndEditing(_:)) : _textViewDidEndEditing,
+            #selector(textView(_:shouldChangeTextIn:replacementText:)) : _textView,
+            #selector(textViewDidChange(_:)) : _textViewDidChange,
+            #selector(textViewDidChangeSelection(_:)) : _textViewDidChangeSelection,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        let funcDic2: [Selector : Any?] = [
-            #selector(textView(_:shouldInteractWithURL:inRange:)) : _shouldInteractWithURL,
-            #selector(textView(_:shouldInteractWithTextAttachment:inRange:)) : _shouldInteractWithTextAttachment,
-        ]
-        if let f = funcDic2[aSelector] {
-            return f != nil
-        }
-        
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-        return _shouldBeginEditing!(textView)
+    @objc func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        return _textViewShouldBeginEditing!(textView)
     }
-    @objc func textViewShouldEndEditing(textView: UITextView) -> Bool {
-        return _shouldEndEditing!(textView)
+    @objc func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        return _textViewShouldEndEditing!(textView)
     }
-    @objc func textViewDidBeginEditing(textView: UITextView) {
-        _didBeginEditing!(textView)
+    @objc func textViewDidBeginEditing(_ textView: UITextView) {
+        _textViewDidBeginEditing!(textView)
     }
-    @objc func textViewDidEndEditing(textView: UITextView) {
-        _didEndEditing!(textView)
+    @objc func textViewDidEndEditing(_ textView: UITextView) {
+        _textViewDidEndEditing!(textView)
     }
-    @objc func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        return _shouldChangeTextInRange!(textView, range, text)
+    @objc func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        return _textView!(textView, range, text)
     }
-    @objc func textViewDidChange(textView: UITextView) {
-        _didChange!(textView)
+    @objc func textViewDidChange(_ textView: UITextView) {
+        _textViewDidChange!(textView)
     }
-    @objc func textViewDidChangeSelection(textView: UITextView) {
-        _didChangeSelection!(textView)
-    }
-    @objc func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
-        return _shouldInteractWithURL!(textView, URL, characterRange)
-    }
-    @objc func textView(textView: UITextView, shouldInteractWithTextAttachment textAttachment: NSTextAttachment, inRange characterRange: NSRange) -> Bool {
-        return _shouldInteractWithTextAttachment!(textView, textAttachment, characterRange)
+    @objc func textViewDidChangeSelection(_ textView: UITextView) {
+        _textViewDidChangeSelection!(textView)
     }
 }

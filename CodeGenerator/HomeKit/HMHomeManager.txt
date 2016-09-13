@@ -9,14 +9,16 @@ HMHomeManager : NSObject, HMHomeManagerDelegate
      *
      * @param manager Sender of this message.
      */
-    optional func homeManagerDidUpdateHomes(manager: HMHomeManager)
+    optional public func homeManagerDidUpdateHomes(_ manager: HMHomeManager)
+
     
     /*!
      * @brief Informs the delegate when the primary home is modified.
      *
      * @param manager Sender of this message.
      */
-    optional func homeManagerDidUpdatePrimaryHome(manager: HMHomeManager)
+    optional public func homeManagerDidUpdatePrimaryHome(_ manager: HMHomeManager)
+
     
     /*!
      * @brief Informs the delegate when a new home is added.
@@ -25,7 +27,8 @@ HMHomeManager : NSObject, HMHomeManagerDelegate
      *
      * @param home New home that was added.
      */
-    optional func homeManager(manager: HMHomeManager, didAddHome home: HMHome!)
+    optional public func homeManager(_ manager: HMHomeManager, didAdd home: HMHome)
+
     
     /*!
      * @brief Informs the delegate when an existing home is removed.
@@ -34,4 +37,4 @@ HMHomeManager : NSObject, HMHomeManagerDelegate
      *
      * @param home Home that was removed.
      */
-    optional func homeManager(manager: HMHomeManager, didRemoveHome home: HMHome!)
+    optional public func homeManager(_ manager: HMHomeManager, didRemove home: HMHome)

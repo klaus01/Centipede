@@ -2,8 +2,8 @@
 //  CE_MCAdvertiserAssistant.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import MultipeerConnectivity
@@ -40,13 +40,13 @@ public extension MCAdvertiserAssistant {
         return MCAdvertiserAssistant_Delegate()
     }
     
-    public func ce_willPresentInvitation(handle: (advertiserAssistant: MCAdvertiserAssistant) -> Void) -> Self {
-        ce._willPresentInvitation = handle
+    public func ce_advertiserAssistantWillPresentInvitation(handle: ((MCAdvertiserAssistant) -> Void)) -> Self {
+        ce._advertiserAssistantWillPresentInvitation = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDismissInvitation(handle: (advertiserAssistant: MCAdvertiserAssistant) -> Void) -> Self {
-        ce._didDismissInvitation = handle
+    public func ce_advertiserAssistantDidDismissInvitation(handle: ((MCAdvertiserAssistant) -> Void)) -> Self {
+        ce._advertiserAssistantDidDismissInvitation = handle
         rebindingDelegate()
         return self
     }
@@ -55,28 +55,28 @@ public extension MCAdvertiserAssistant {
 
 internal class MCAdvertiserAssistant_Delegate: NSObject, MCAdvertiserAssistantDelegate {
     
-    var _willPresentInvitation: ((MCAdvertiserAssistant) -> Void)?
-    var _didDismissInvitation: ((MCAdvertiserAssistant) -> Void)?
+    var _advertiserAssistantWillPresentInvitation: ((MCAdvertiserAssistant) -> Void)?
+    var _advertiserAssistantDidDismissInvitation: ((MCAdvertiserAssistant) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(advertiserAssistantWillPresentInvitation(_:)) : _willPresentInvitation,
-            #selector(advertiserAssistantDidDismissInvitation(_:)) : _didDismissInvitation,
+            #selector(advertiserAssistantWillPresentInvitation(_:)) : _advertiserAssistantWillPresentInvitation,
+            #selector(advertiserAssistantDidDismissInvitation(_:)) : _advertiserAssistantDidDismissInvitation,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func advertiserAssistantWillPresentInvitation(advertiserAssistant: MCAdvertiserAssistant) {
-        _willPresentInvitation!(advertiserAssistant)
+    @objc func advertiserAssistantWillPresentInvitation(_ advertiserAssistant: MCAdvertiserAssistant) {
+        _advertiserAssistantWillPresentInvitation!(advertiserAssistant)
     }
-    @objc func advertiserAssistantDidDismissInvitation(advertiserAssistant: MCAdvertiserAssistant) {
-        _didDismissInvitation!(advertiserAssistant)
+    @objc func advertiserAssistantDidDismissInvitation(_ advertiserAssistant: MCAdvertiserAssistant) {
+        _advertiserAssistantDidDismissInvitation!(advertiserAssistant)
     }
 }

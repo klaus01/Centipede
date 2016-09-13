@@ -2,8 +2,8 @@
 //  CE_CALayer.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/11.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import QuartzCore
@@ -40,67 +40,63 @@ public extension CALayer {
         return CALayer_Delegate()
     }
     
-    public func ce_display(handle: (layer: CALayer) -> Void) -> Self {
+    public func ce_display(handle: ((CALayer) -> Void)) -> Self {
         ce._display = handle
         rebindingDelegate()
         return self
     }
-    public func ce_draw(handle: (layer: CALayer, ctx: CGContext) -> Void) -> Self {
+    public func ce_draw(handle: ((CALayer, CGContext) -> Void)) -> Self {
         ce._draw = handle
         rebindingDelegate()
         return self
     }
-    public func ce_layoutSubsOfLayer(handle: (layer: CALayer) -> Void) -> Self {
-        ce._layoutSubsOfLayer = handle
+    public func ce_layoutSublayers(handle: ((CALayer) -> Void)) -> Self {
+        ce._layoutSublayers = handle
         rebindingDelegate()
         return self
     }
-    public func ce_actionFor(handle: (layer: CALayer, event: String) -> CAAction) -> Self {
-        ce._actionFor = handle
+    public func ce_action(handle: ((CALayer, String) -> CAAction?)) -> Self {
+        ce._action = handle
         rebindingDelegate()
         return self
     }
     
 }
 
-internal class CALayer_Delegate: NSObject {
+internal class CALayer_Delegate: NSObject, CALayerDelegate {
     
     var _display: ((CALayer) -> Void)?
     var _draw: ((CALayer, CGContext) -> Void)?
-    var _layoutSubsOfLayer: ((CALayer) -> Void)?
-    var _actionFor: ((CALayer, String) -> CAAction)?
+    var _layoutSublayers: ((CALayer) -> Void)?
+    var _action: ((CALayer, String) -> CAAction?)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(displayLayer(_:)) : _display,
-            #selector(drawLayer(_:inContext:)) : _draw,
-            #selector(layoutSublayersOfLayer(_:)) : _layoutSubsOfLayer,
-            #selector(actionForLayer(_:forKey:)) : _actionFor,
+            #selector(display(_:)) : _display,
+            #selector(draw(_:in:)) : _draw,
+            #selector(layoutSublayers(of:)) : _layoutSublayers,
+            #selector(action(for:forKey:)) : _action,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc override func displayLayer(layer: CALayer) {
-        super.displayLayer(layer)
+    @objc func display(_ layer: CALayer) {
         _display!(layer)
     }
-    @objc override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        super.drawLayer(layer, inContext: ctx)
+    @objc func draw(_ layer: CALayer, in ctx: CGContext) {
         _draw!(layer, ctx)
     }
-    @objc override func layoutSublayersOfLayer(layer: CALayer) {
-        super.layoutSublayersOfLayer(layer)
-        _layoutSubsOfLayer!(layer)
+    @objc func layoutSublayers(of layer: CALayer) {
+        _layoutSublayers!(layer)
     }
-    @objc override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction {
-        super.actionForLayer(layer, forKey: event)
-        return _actionFor!(layer, event)
+    @objc func action(for layer: CALayer, forKey event: String) -> CAAction? {
+        return _action!(layer, event)
     }
 }

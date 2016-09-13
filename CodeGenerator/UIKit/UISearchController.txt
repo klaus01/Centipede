@@ -3,18 +3,28 @@ UISearchController: UIViewController, UISearchResultsUpdating, UISearchControlle
 
 DELEGATE_LIST:delegate, searchResultsUpdater, transitioningDelegate
 
-
+// UISearchResultsUpdating
     // Called when the search bar's text or scope has changed or when the search bar becomes first responder.
-    func updateSearchResultsForSearchController(searchController: UISearchController)
-
+    @available(iOS 8.0, *)
+    public func updateSearchResults(for searchController: UISearchController)
 
 
     
+// UISearchControllerDelegate
     // These methods are called when automatic presentation or dismissal occurs. They will not be called if you present or dismiss the search controller yourself.
-    optional func willPresentSearchController(searchController: UISearchController)
-    optional func didPresentSearchController(searchController: UISearchController)
-    optional func willDismissSearchController(searchController: UISearchController)
-    optional func didDismissSearchController(searchController: UISearchController)
+    @available(iOS 8.0, *)
+    optional public func willPresentSearchController(_ searchController: UISearchController)
+
+    @available(iOS 8.0, *)
+    optional public func didPresentSearchController(_ searchController: UISearchController)
+
+    @available(iOS 8.0, *)
+    optional public func willDismissSearchController(_ searchController: UISearchController)
+
+    @available(iOS 8.0, *)
+    optional public func didDismissSearchController(_ searchController: UISearchController)
+
     
     // Called after the search controller's search bar has agreed to begin editing or when 'active' is set to YES. If you choose not to present the controller yourself or do not implement this method, a default presentation is performed on your behalf.
-    optional func presentSearchController(searchController: UISearchController)
+    @available(iOS 8.0, *)
+    optional public func presentSearchController(_ searchController: UISearchController)

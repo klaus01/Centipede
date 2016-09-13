@@ -2,15 +2,20 @@ UIPresentationController: NSObject, UIAdaptivePresentationControllerDelegate
 
 
     /* For iOS8.0, the only supported adaptive presentation styles are UIModalPresentationFullScreen and UIModalPresentationOverFullScreen. */
-    optional func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle
+    @available(iOS 8.0, *)
+    optional public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle
+
     
     // Returning UIModalPresentationNone will indicate that an adaptation should not happen.
-    @availability(iOS, introduced=8.3)
-    optional func adaptivePresentationStyleForPresentationController(controller: UIPresentationController!, traitCollection: UITraitCollection!) -> UIModalPresentationStyle
+    @available(iOS 8.3, *)
+    optional public func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle
+
     
     /* If this method is not implemented, or returns nil, then the originally presented view controller is used. */
-    optional func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController?
+    @available(iOS 8.0, *)
+    optional public func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController?
+
     
     // If there is no adaptation happening and an original style is used UIModalPresentationNone will be passed as an argument.
-    @availability(iOS, introduced=8.3)
-    optional func presentationController(presentationController: UIPresentationController!, willPresentWithAdaptiveStyle style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator!)
+    @available(iOS 8.3, *)
+    optional public func presentationController(_ presentationController: UIPresentationController, willPresentWithAdaptiveStyle style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator?)

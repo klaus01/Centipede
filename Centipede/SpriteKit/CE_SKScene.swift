@@ -2,8 +2,8 @@
 //  CE_SKScene.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import SpriteKit
@@ -40,28 +40,28 @@ public extension SKScene {
         return SKScene_Delegate()
     }
     
-    public func ce_update(handle: (currentTime: NSTimeInterval, scene: SKScene) -> Void) -> Self {
+    public func ce_update(handle: ((TimeInterval, SKScene) -> Void)) -> Self {
         ce._update = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didEvaluateActionsFor(handle: (scene: SKScene) -> Void) -> Self {
-        ce._didEvaluateActionsFor = handle
+    public func ce_didEvaluateActions(handle: ((SKScene) -> Void)) -> Self {
+        ce._didEvaluateActions = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didSimulatePhysicsFor(handle: (scene: SKScene) -> Void) -> Self {
-        ce._didSimulatePhysicsFor = handle
+    public func ce_didSimulatePhysics(handle: ((SKScene) -> Void)) -> Self {
+        ce._didSimulatePhysics = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didApplyConstraintsFor(handle: (scene: SKScene) -> Void) -> Self {
-        ce._didApplyConstraintsFor = handle
+    public func ce_didApplyConstraints(handle: ((SKScene) -> Void)) -> Self {
+        ce._didApplyConstraints = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFinishUpdateFor(handle: (scene: SKScene) -> Void) -> Self {
-        ce._didFinishUpdateFor = handle
+    public func ce_didFinishUpdate(handle: ((SKScene) -> Void)) -> Self {
+        ce._didFinishUpdate = handle
         rebindingDelegate()
         return self
     }
@@ -70,43 +70,43 @@ public extension SKScene {
 
 internal class SKScene_Delegate: NSObject, SKSceneDelegate {
     
-    var _update: ((NSTimeInterval, SKScene) -> Void)?
-    var _didEvaluateActionsFor: ((SKScene) -> Void)?
-    var _didSimulatePhysicsFor: ((SKScene) -> Void)?
-    var _didApplyConstraintsFor: ((SKScene) -> Void)?
-    var _didFinishUpdateFor: ((SKScene) -> Void)?
+    var _update: ((TimeInterval, SKScene) -> Void)?
+    var _didEvaluateActions: ((SKScene) -> Void)?
+    var _didSimulatePhysics: ((SKScene) -> Void)?
+    var _didApplyConstraints: ((SKScene) -> Void)?
+    var _didFinishUpdate: ((SKScene) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(update(_:forScene:)) : _update,
-            #selector(didEvaluateActionsForScene(_:)) : _didEvaluateActionsFor,
-            #selector(didSimulatePhysicsForScene(_:)) : _didSimulatePhysicsFor,
-            #selector(didApplyConstraintsForScene(_:)) : _didApplyConstraintsFor,
-            #selector(didFinishUpdateForScene(_:)) : _didFinishUpdateFor,
+            #selector(update(_:for:)) : _update,
+            #selector(didEvaluateActions(for:)) : _didEvaluateActions,
+            #selector(didSimulatePhysics(for:)) : _didSimulatePhysics,
+            #selector(didApplyConstraints(for:)) : _didApplyConstraints,
+            #selector(didFinishUpdate(for:)) : _didFinishUpdate,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func update(currentTime: NSTimeInterval, forScene scene: SKScene) {
+    @objc func update(_ currentTime: TimeInterval, for scene: SKScene) {
         _update!(currentTime, scene)
     }
-    @objc func didEvaluateActionsForScene(scene: SKScene) {
-        _didEvaluateActionsFor!(scene)
+    @objc func didEvaluateActions(for scene: SKScene) {
+        _didEvaluateActions!(scene)
     }
-    @objc func didSimulatePhysicsForScene(scene: SKScene) {
-        _didSimulatePhysicsFor!(scene)
+    @objc func didSimulatePhysics(for scene: SKScene) {
+        _didSimulatePhysics!(scene)
     }
-    @objc func didApplyConstraintsForScene(scene: SKScene) {
-        _didApplyConstraintsFor!(scene)
+    @objc func didApplyConstraints(for scene: SKScene) {
+        _didApplyConstraints!(scene)
     }
-    @objc func didFinishUpdateForScene(scene: SKScene) {
-        _didFinishUpdateFor!(scene)
+    @objc func didFinishUpdate(for scene: SKScene) {
+        _didFinishUpdate!(scene)
     }
 }

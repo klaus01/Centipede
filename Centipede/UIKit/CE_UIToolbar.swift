@@ -2,8 +2,8 @@
 //  CE_UIToolbar.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
@@ -20,7 +20,7 @@ public extension UIToolbar {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UIToolbar_Delegate {
                 return obj as! UIToolbar_Delegate
             }
@@ -40,8 +40,8 @@ public extension UIToolbar {
         return UIToolbar_Delegate()
     }
     
-    public func ce_positionForBar(handle: (bar: UIBarPositioning) -> UIBarPosition) -> Self {
-        ce._positionForBar = handle
+    public func ce_position(handle: ((UIBarPositioning) -> UIBarPosition)) -> Self {
+        ce._position = handle
         rebindingDelegate()
         return self
     }
@@ -50,23 +50,23 @@ public extension UIToolbar {
 
 internal class UIToolbar_Delegate: NSObject, UIToolbarDelegate {
     
-    var _positionForBar: ((UIBarPositioning) -> UIBarPosition)?
+    var _position: ((UIBarPositioning) -> UIBarPosition)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(positionForBar(_:)) : _positionForBar,
+            #selector(position(for:)) : _position,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return _positionForBar!(bar)
+    @objc func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return _position!(bar)
     }
 }

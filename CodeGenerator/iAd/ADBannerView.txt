@@ -7,8 +7,9 @@ ADBannerView: NSObject, ADBannerViewDelegate
      * Called when a banner has confirmation that an ad will be presented, but
      * before the resources necessary for presentation have loaded.
      */
-    @availability(iOS, introduced=5.0)
-    optional func bannerViewWillLoadAd(banner: ADBannerView!)
+    @available(iOS 5.0, *)
+    optional public func bannerViewWillLoadAd(_ banner: ADBannerView!)
+
     
     /*!
      * @method bannerViewDidLoadAd:
@@ -20,7 +21,9 @@ ADBannerView: NSObject, ADBannerViewDelegate
      * It's generally recommended to show the banner view when this method is called,
      * and hide it again when bannerView:didFailToReceiveAdWithError: is called.
      */
-    optional func bannerViewDidLoadAd(banner: ADBannerView!)
+    @available(iOS 4.0, *)
+    optional public func bannerViewDidLoadAd(_ banner: ADBannerView!)
+
     
     /*!
      * @method bannerView:didFailToReceiveAdWithError:
@@ -32,7 +35,9 @@ ADBannerView: NSObject, ADBannerViewDelegate
      *
      * @see ADError for a list of possible error codes.
      */
-    optional func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!)
+    @available(iOS 4.0, *)
+    optional public func bannerView(_ banner: ADBannerView!, didFailToReceiveAdWithError error: Error!)
+
     
     /*!
      * @method bannerViewActionShouldBegin:willLeaveApplication:
@@ -49,7 +54,9 @@ ADBannerView: NSObject, ADBannerViewDelegate
      * Applications should reduce their own activity while the advertisement's action
      * executes.
      */
-    optional func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool
+    @available(iOS 4.0, *)
+    optional public func bannerViewActionShouldBegin(_ banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool
+
     
     /*!
      * @method bannerViewActionDidFinish:
@@ -58,4 +65,5 @@ ADBannerView: NSObject, ADBannerViewDelegate
      * application. Games, media playback, and other activities that were paused in
      * bannerViewActionShouldBegin:willLeaveApplication: should resume at this point.
      */
-    optional func bannerViewActionDidFinish(banner: ADBannerView!)
+    @available(iOS 4.0, *)
+    optional public func bannerViewActionDidFinish(_ banner: ADBannerView!)

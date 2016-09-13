@@ -2,8 +2,8 @@
 //  CE_SKStoreProductViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import StoreKit
@@ -40,7 +40,7 @@ public extension SKStoreProductViewController {
         return SKStoreProductViewController_Delegate()
     }
     
-    public func ce_productViewControllerDidFinish(handle: (viewController: SKStoreProductViewController) -> Void) -> Self {
+    public func ce_productViewControllerDidFinish(handle: ((SKStoreProductViewController) -> Void)) -> Self {
         ce._productViewControllerDidFinish = handle
         rebindingDelegate()
         return self
@@ -53,7 +53,7 @@ internal class SKStoreProductViewController_Delegate: UIViewController_Delegate,
     var _productViewControllerDidFinish: ((SKStoreProductViewController) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
             #selector(productViewControllerDidFinish(_:)) : _productViewControllerDidFinish,
@@ -62,11 +62,11 @@ internal class SKStoreProductViewController_Delegate: UIViewController_Delegate,
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func productViewControllerDidFinish(viewController: SKStoreProductViewController) {
+    @objc func productViewControllerDidFinish(_ viewController: SKStoreProductViewController) {
         _productViewControllerDidFinish!(viewController)
     }
 }

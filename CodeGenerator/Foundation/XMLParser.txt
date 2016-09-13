@@ -1,0 +1,60 @@
+XMLParser : NSObject, XMLParserDelegate
+
+    optional public func parserDidStartDocument(_ parser: XMLParser)
+
+    
+    optional public func parserDidEndDocument(_ parser: XMLParser)
+
+    
+    optional public func parser(_ parser: XMLParser, foundNotationDeclarationWithName name: String, publicID: String?, systemID: String?)
+
+    
+    optional public func parser(_ parser: XMLParser, foundUnparsedEntityDeclarationWithName name: String, publicID: String?, systemID: String?, notationName: String?)
+
+    
+    optional public func parser(_ parser: XMLParser, foundAttributeDeclarationWithName attributeName: String, forElement elementName: String, type: String?, defaultValue: String?)
+
+    
+    optional public func parser(_ parser: XMLParser, foundElementDeclarationWithName elementName: String, model: String)
+
+    
+    optional public func parser(_ parser: XMLParser, foundInternalEntityDeclarationWithName name: String, value: String?)
+
+    
+    optional public func parser(_ parser: XMLParser, foundExternalEntityDeclarationWithName name: String, publicID: String?, systemID: String?)
+
+    
+    optional public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:])
+
+    
+    optional public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
+
+    
+    optional public func parser(_ parser: XMLParser, didStartMappingPrefix prefix: String, toURI namespaceURI: String)
+
+    
+    optional public func parser(_ parser: XMLParser, didEndMappingPrefix prefix: String)
+
+    
+    optional public func parser(_ parser: XMLParser, foundCharacters string: String)
+
+    
+    optional public func parser(_ parser: XMLParser, foundIgnorableWhitespace whitespaceString: String)
+
+    
+    optional public func parser(_ parser: XMLParser, foundProcessingInstructionWithTarget target: String, data: String?)
+
+    
+    optional public func parser(_ parser: XMLParser, foundComment comment: String)
+
+    
+    optional public func parser(_ parser: XMLParser, foundCDATA CDATABlock: Data)
+
+    
+    optional public func parser(_ parser: XMLParser, resolveExternalEntityName name: String, systemID: String?) -> Data?
+
+    
+    optional public func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error)
+
+    
+    optional public func parser(_ parser: XMLParser, validationErrorOccurred validationError: Error)

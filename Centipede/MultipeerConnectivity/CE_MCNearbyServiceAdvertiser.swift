@@ -2,8 +2,8 @@
 //  CE_MCNearbyServiceAdvertiser.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import MultipeerConnectivity
@@ -40,13 +40,13 @@ public extension MCNearbyServiceAdvertiser {
         return MCNearbyServiceAdvertiser_Delegate()
     }
     
-    public func ce_advertiser(handle: (advertiser: MCNearbyServiceAdvertiser, peerID: MCPeerID, context: NSData?, invitationHandler: (Bool, MCSession) -> Void) -> Void) -> Self {
+    public func ce_advertiser(handle: ((MCNearbyServiceAdvertiser, MCPeerID, Data?, @escaping (Bool, MCSession?) -> Void) -> Void)) -> Self {
         ce._advertiser = handle
         rebindingDelegate()
         return self
     }
-    public func ce_advertiserAndDidNotStartAdvertisingPeer(handle: (advertiser: MCNearbyServiceAdvertiser, error: NSError) -> Void) -> Self {
-        ce._advertiserAndDidNotStartAdvertisingPeer = handle
+    public func ce_advertiser_didNotStartAdvertisingPeer(handle: ((MCNearbyServiceAdvertiser, Error) -> Void)) -> Self {
+        ce._advertiser_didNotStartAdvertisingPeer = handle
         rebindingDelegate()
         return self
     }
@@ -55,28 +55,28 @@ public extension MCNearbyServiceAdvertiser {
 
 internal class MCNearbyServiceAdvertiser_Delegate: NSObject, MCNearbyServiceAdvertiserDelegate {
     
-    var _advertiser: ((MCNearbyServiceAdvertiser, MCPeerID, NSData?, (Bool, MCSession) -> Void) -> Void)?
-    var _advertiserAndDidNotStartAdvertisingPeer: ((MCNearbyServiceAdvertiser, NSError) -> Void)?
+    var _advertiser: ((MCNearbyServiceAdvertiser, MCPeerID, Data?, @escaping (Bool, MCSession?) -> Void) -> Void)?
+    var _advertiser_didNotStartAdvertisingPeer: ((MCNearbyServiceAdvertiser, Error) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
             #selector(advertiser(_:didReceiveInvitationFromPeer:withContext:invitationHandler:)) : _advertiser,
-            #selector(advertiser(_:didNotStartAdvertisingPeer:)) : _advertiserAndDidNotStartAdvertisingPeer,
+            #selector(advertiser(_:didNotStartAdvertisingPeer:)) : _advertiser_didNotStartAdvertisingPeer,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func advertiser(advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: NSData?, invitationHandler: (Bool, MCSession) -> Void) -> Void {
-        return _advertiser!(advertiser, peerID, context, invitationHandler)
+    @objc func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        _advertiser!(advertiser, peerID, context, invitationHandler)
     }
-    @objc func advertiser(advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: NSError) {
-        _advertiserAndDidNotStartAdvertisingPeer!(advertiser, error)
+    @objc func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
+        _advertiser_didNotStartAdvertisingPeer!(advertiser, error)
     }
 }

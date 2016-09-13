@@ -2,12 +2,14 @@ NSUserActivity : NSObject, NSUserActivityDelegate
 
     /* The user activity will be saved (to be continued or persisted). The receiver should update the activity with current activity state.
     */
-    optional func userActivityWillSave(userActivity: NSUserActivity)
+    optional public func userActivityWillSave(_ userActivity: NSUserActivity)
+
     
     /* The user activity was continued on another device.
     */
-    optional func userActivityWasContinued(userActivity: NSUserActivity)
+    optional public func userActivityWasContinued(_ userActivity: NSUserActivity)
+
     
     /* If supportsContinuationStreams is set to YES the continuing side can request streams back to this user activity. This delegate callback will be received with the incoming streams from the other side. The streams will be in an unopened state. The streams should be opened immediately to start receiving requests from the continuing side.
     */
-    optional func userActivity(userActivity: NSUserActivity, didReceiveInputStream inputStream: NSInputStream, outputStream: NSOutputStream)
+    optional public func userActivity(_ userActivity: NSUserActivity?, didReceive inputStream: InputStream, outputStream: OutputStream)

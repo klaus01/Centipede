@@ -2,8 +2,8 @@
 //  CE_HMHomeManager.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import HomeKit
@@ -40,23 +40,23 @@ public extension HMHomeManager {
         return HMHomeManager_Delegate()
     }
     
-    public func ce_didUpdateHomes(handle: (manager: HMHomeManager) -> Void) -> Self {
-        ce._didUpdateHomes = handle
+    public func ce_homeManagerDidUpdateHomes(handle: ((HMHomeManager) -> Void)) -> Self {
+        ce._homeManagerDidUpdateHomes = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdatePrimaryHome(handle: (manager: HMHomeManager) -> Void) -> Self {
-        ce._didUpdatePrimaryHome = handle
+    public func ce_homeManagerDidUpdatePrimaryHome(handle: ((HMHomeManager) -> Void)) -> Self {
+        ce._homeManagerDidUpdatePrimaryHome = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddHome(handle: (manager: HMHomeManager, home: HMHome) -> Void) -> Self {
-        ce._didAddHome = handle
+    public func ce_homeManager(handle: ((HMHomeManager, HMHome) -> Void)) -> Self {
+        ce._homeManager = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveHome(handle: (manager: HMHomeManager, home: HMHome) -> Void) -> Self {
-        ce._didRemoveHome = handle
+    public func ce_homeManager_didRemove(handle: ((HMHomeManager, HMHome) -> Void)) -> Self {
+        ce._homeManager_didRemove = handle
         rebindingDelegate()
         return self
     }
@@ -65,38 +65,38 @@ public extension HMHomeManager {
 
 internal class HMHomeManager_Delegate: NSObject, HMHomeManagerDelegate {
     
-    var _didUpdateHomes: ((HMHomeManager) -> Void)?
-    var _didUpdatePrimaryHome: ((HMHomeManager) -> Void)?
-    var _didAddHome: ((HMHomeManager, HMHome) -> Void)?
-    var _didRemoveHome: ((HMHomeManager, HMHome) -> Void)?
+    var _homeManagerDidUpdateHomes: ((HMHomeManager) -> Void)?
+    var _homeManagerDidUpdatePrimaryHome: ((HMHomeManager) -> Void)?
+    var _homeManager: ((HMHomeManager, HMHome) -> Void)?
+    var _homeManager_didRemove: ((HMHomeManager, HMHome) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(homeManagerDidUpdateHomes(_:)) : _didUpdateHomes,
-            #selector(homeManagerDidUpdatePrimaryHome(_:)) : _didUpdatePrimaryHome,
-            #selector(homeManager(_:didAddHome:)) : _didAddHome,
-            #selector(homeManager(_:didRemoveHome:)) : _didRemoveHome,
+            #selector(homeManagerDidUpdateHomes(_:)) : _homeManagerDidUpdateHomes,
+            #selector(homeManagerDidUpdatePrimaryHome(_:)) : _homeManagerDidUpdatePrimaryHome,
+            #selector(homeManager(_:didAdd:)) : _homeManager,
+            #selector(homeManager(_:didRemove:)) : _homeManager_didRemove,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func homeManagerDidUpdateHomes(manager: HMHomeManager) {
-        _didUpdateHomes!(manager)
+    @objc func homeManagerDidUpdateHomes(_ manager: HMHomeManager) {
+        _homeManagerDidUpdateHomes!(manager)
     }
-    @objc func homeManagerDidUpdatePrimaryHome(manager: HMHomeManager) {
-        _didUpdatePrimaryHome!(manager)
+    @objc func homeManagerDidUpdatePrimaryHome(_ manager: HMHomeManager) {
+        _homeManagerDidUpdatePrimaryHome!(manager)
     }
-    @objc func homeManager(manager: HMHomeManager, didAddHome home: HMHome) {
-        _didAddHome!(manager, home)
+    @objc func homeManager(_ manager: HMHomeManager, didAdd home: HMHome) {
+        _homeManager!(manager, home)
     }
-    @objc func homeManager(manager: HMHomeManager, didRemoveHome home: HMHome) {
-        _didRemoveHome!(manager, home)
+    @objc func homeManager(_ manager: HMHomeManager, didRemove home: HMHome) {
+        _homeManager_didRemove!(manager, home)
     }
 }

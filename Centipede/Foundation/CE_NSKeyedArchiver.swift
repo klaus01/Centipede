@@ -2,8 +2,8 @@
 //  CE_NSKeyedArchiver.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import Foundation
@@ -40,27 +40,27 @@ public extension NSKeyedArchiver {
         return NSKeyedArchiver_Delegate()
     }
     
-    public func ce_archiver(handle: (archiver: NSKeyedArchiver, object: AnyObject) -> AnyObject?) -> Self {
+    public func ce_archiver(handle: ((NSKeyedArchiver, Any) -> Any?)) -> Self {
         ce._archiver = handle
         rebindingDelegate()
         return self
     }
-    public func ce_archiverAndDidEncodeObject(handle: (archiver: NSKeyedArchiver, object: AnyObject?) -> Void) -> Self {
-        ce._archiverAndDidEncodeObject = handle
+    public func ce_archiver_didEncode(handle: ((NSKeyedArchiver, Any?) -> Void)) -> Self {
+        ce._archiver_didEncode = handle
         rebindingDelegate()
         return self
     }
-    public func ce_archiverAndWillReplaceObject(handle: (archiver: NSKeyedArchiver, object: AnyObject?, newObject: AnyObject?) -> Void) -> Self {
-        ce._archiverAndWillReplaceObject = handle
+    public func ce_archiver_willReplace(handle: ((NSKeyedArchiver, Any?, Any?) -> Void)) -> Self {
+        ce._archiver_willReplace = handle
         rebindingDelegate()
         return self
     }
-    public func ce_archiverWillFinish(handle: (archiver: NSKeyedArchiver) -> Void) -> Self {
+    public func ce_archiverWillFinish(handle: ((NSKeyedArchiver) -> Void)) -> Self {
         ce._archiverWillFinish = handle
         rebindingDelegate()
         return self
     }
-    public func ce_archiverDidFinish(handle: (archiver: NSKeyedArchiver) -> Void) -> Self {
+    public func ce_archiverDidFinish(handle: ((NSKeyedArchiver) -> Void)) -> Self {
         ce._archiverDidFinish = handle
         rebindingDelegate()
         return self
@@ -70,19 +70,19 @@ public extension NSKeyedArchiver {
 
 internal class NSKeyedArchiver_Delegate: NSObject, NSKeyedArchiverDelegate {
     
-    var _archiver: ((NSKeyedArchiver, AnyObject) -> AnyObject?)?
-    var _archiverAndDidEncodeObject: ((NSKeyedArchiver, AnyObject?) -> Void)?
-    var _archiverAndWillReplaceObject: ((NSKeyedArchiver, AnyObject?, AnyObject?) -> Void)?
+    var _archiver: ((NSKeyedArchiver, Any) -> Any?)?
+    var _archiver_didEncode: ((NSKeyedArchiver, Any?) -> Void)?
+    var _archiver_willReplace: ((NSKeyedArchiver, Any?, Any?) -> Void)?
     var _archiverWillFinish: ((NSKeyedArchiver) -> Void)?
     var _archiverDidFinish: ((NSKeyedArchiver) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(archiver(_:willEncodeObject:)) : _archiver,
-            #selector(archiver(_:didEncodeObject:)) : _archiverAndDidEncodeObject,
-            #selector(archiver(_:willReplaceObject:withObject:)) : _archiverAndWillReplaceObject,
+            #selector(archiver(_:willEncode:)) : _archiver,
+            #selector(archiver(_:didEncode:)) : _archiver_didEncode,
+            #selector(archiver(_:willReplace:with:)) : _archiver_willReplace,
             #selector(archiverWillFinish(_:)) : _archiverWillFinish,
             #selector(archiverDidFinish(_:)) : _archiverDidFinish,
         ]
@@ -90,23 +90,23 @@ internal class NSKeyedArchiver_Delegate: NSObject, NSKeyedArchiverDelegate {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func archiver(archiver: NSKeyedArchiver, willEncodeObject object: AnyObject) -> AnyObject? {
+    @objc func archiver(_ archiver: NSKeyedArchiver, willEncode object: Any) -> Any? {
         return _archiver!(archiver, object)
     }
-    @objc func archiver(archiver: NSKeyedArchiver, didEncodeObject object: AnyObject?) {
-        _archiverAndDidEncodeObject!(archiver, object)
+    @objc func archiver(_ archiver: NSKeyedArchiver, didEncode object: Any?) {
+        _archiver_didEncode!(archiver, object)
     }
-    @objc func archiver(archiver: NSKeyedArchiver, willReplaceObject object: AnyObject?, withObject newObject: AnyObject?) {
-        _archiverAndWillReplaceObject!(archiver, object, newObject)
+    @objc func archiver(_ archiver: NSKeyedArchiver, willReplace object: Any?, with newObject: Any?) {
+        _archiver_willReplace!(archiver, object, newObject)
     }
-    @objc func archiverWillFinish(archiver: NSKeyedArchiver) {
+    @objc func archiverWillFinish(_ archiver: NSKeyedArchiver) {
         _archiverWillFinish!(archiver)
     }
-    @objc func archiverDidFinish(archiver: NSKeyedArchiver) {
+    @objc func archiverDidFinish(_ archiver: NSKeyedArchiver) {
         _archiverDidFinish!(archiver)
     }
 }

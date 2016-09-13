@@ -2,8 +2,8 @@
 //  CE_AVAudioRecorder.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import AVFoundation
@@ -40,23 +40,23 @@ public extension AVAudioRecorder {
         return AVAudioRecorder_Delegate()
     }
     
-    public func ce_didFinishRecording(handle: (recorder: AVAudioRecorder, flag: Bool) -> Void) -> Self {
-        ce._didFinishRecording = handle
+    public func ce_audioRecorderDidFinishRecording(handle: ((AVAudioRecorder, Bool) -> Void)) -> Self {
+        ce._audioRecorderDidFinishRecording = handle
         rebindingDelegate()
         return self
     }
-    public func ce_encodeErrorDidOccur(handle: (recorder: AVAudioRecorder, error: NSError?) -> Void) -> Self {
-        ce._encodeErrorDidOccur = handle
+    public func ce_audioRecorderEncodeErrorDidOccur(handle: ((AVAudioRecorder, Error?) -> Void)) -> Self {
+        ce._audioRecorderEncodeErrorDidOccur = handle
         rebindingDelegate()
         return self
     }
-    public func ce_beginInterruption(handle: (recorder: AVAudioRecorder) -> Void) -> Self {
-        ce._beginInterruption = handle
+    public func ce_audioRecorderBeginInterruption(handle: ((AVAudioRecorder) -> Void)) -> Self {
+        ce._audioRecorderBeginInterruption = handle
         rebindingDelegate()
         return self
     }
-    public func ce_endInterruption(handle: (recorder: AVAudioRecorder, flags: Int) -> Void) -> Self {
-        ce._endInterruption = handle
+    public func ce_audioRecorderEndInterruption(handle: ((AVAudioRecorder, Int) -> Void)) -> Self {
+        ce._audioRecorderEndInterruption = handle
         rebindingDelegate()
         return self
     }
@@ -65,38 +65,38 @@ public extension AVAudioRecorder {
 
 internal class AVAudioRecorder_Delegate: NSObject, AVAudioRecorderDelegate {
     
-    var _didFinishRecording: ((AVAudioRecorder, Bool) -> Void)?
-    var _encodeErrorDidOccur: ((AVAudioRecorder, NSError?) -> Void)?
-    var _beginInterruption: ((AVAudioRecorder) -> Void)?
-    var _endInterruption: ((AVAudioRecorder, Int) -> Void)?
+    var _audioRecorderDidFinishRecording: ((AVAudioRecorder, Bool) -> Void)?
+    var _audioRecorderEncodeErrorDidOccur: ((AVAudioRecorder, Error?) -> Void)?
+    var _audioRecorderBeginInterruption: ((AVAudioRecorder) -> Void)?
+    var _audioRecorderEndInterruption: ((AVAudioRecorder, Int) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(audioRecorderDidFinishRecording(_:successfully:)) : _didFinishRecording,
-            #selector(audioRecorderEncodeErrorDidOccur(_:error:)) : _encodeErrorDidOccur,
-            #selector(audioRecorderBeginInterruption(_:)) : _beginInterruption,
-            #selector(audioRecorderEndInterruption(_:withOptions:)) : _endInterruption,
+            #selector(audioRecorderDidFinishRecording(_:successfully:)) : _audioRecorderDidFinishRecording,
+            #selector(audioRecorderEncodeErrorDidOccur(_:error:)) : _audioRecorderEncodeErrorDidOccur,
+            #selector(audioRecorderBeginInterruption(_:)) : _audioRecorderBeginInterruption,
+            #selector(audioRecorderEndInterruption(_:withOptions:)) : _audioRecorderEndInterruption,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
-        _didFinishRecording!(recorder, flag)
+    @objc func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        _audioRecorderDidFinishRecording!(recorder, flag)
     }
-    @objc func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder, error: NSError?) {
-        _encodeErrorDidOccur!(recorder, error)
+    @objc func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
+        _audioRecorderEncodeErrorDidOccur!(recorder, error)
     }
-    @objc func audioRecorderBeginInterruption(recorder: AVAudioRecorder) {
-        _beginInterruption!(recorder)
+    @objc func audioRecorderBeginInterruption(_ recorder: AVAudioRecorder) {
+        _audioRecorderBeginInterruption!(recorder)
     }
-    @objc func audioRecorderEndInterruption(recorder: AVAudioRecorder, withOptions flags: Int) {
-        _endInterruption!(recorder, flags)
+    @objc func audioRecorderEndInterruption(_ recorder: AVAudioRecorder, withOptions flags: Int) {
+        _audioRecorderEndInterruption!(recorder, flags)
     }
 }

@@ -1,19 +1,37 @@
 UISearchBar: NSObject, UISearchBarDelegate
 
 
-    optional func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool // return NO to not become first responder
-    optional func searchBarTextDidBeginEditing(searchBar: UISearchBar) // called when text starts editing
-    optional func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool // return NO to not resign first responder
-    optional func searchBarTextDidEndEditing(searchBar: UISearchBar) // called when text ends editing
-    optional func searchBar(searchBar: UISearchBar, textDidChange searchText: String) // called when text changes (including clear)
-    @availability(iOS, introduced=3.0)
-    optional func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool // called before text changes
+    @available(iOS 2.0, *)
+    optional public func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool // return NO to not become first responder
+
+    @available(iOS 2.0, *)
+    optional public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) // called when text starts editing
+
+    @available(iOS 2.0, *)
+    optional public func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool // return NO to not resign first responder
+
+    @available(iOS 2.0, *)
+    optional public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) // called when text ends editing
+
+    @available(iOS 2.0, *)
+    optional public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) // called when text changes (including clear)
+
+    @available(iOS 3.0, *)
+    optional public func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool // called before text changes
+
     
-    optional func searchBarSearchButtonClicked(searchBar: UISearchBar) // called when keyboard search button pressed
-    optional func searchBarBookmarkButtonClicked(searchBar: UISearchBar) // called when bookmark button pressed
-    optional func searchBarCancelButtonClicked(searchBar: UISearchBar) // called when cancel button pressed
-    @availability(iOS, introduced=3.2)
-    optional func searchBarResultsListButtonClicked(searchBar: UISearchBar) // called when search results button pressed
+    @available(iOS 2.0, *)
+    optional public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) // called when keyboard search button pressed
+
+    @available(iOS 2.0, *)
+    optional public func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) // called when bookmark button pressed
+
+    @available(iOS 2.0, *)
+    optional public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) // called when cancel button pressed
+
+    @available(iOS 3.2, *)
+    optional public func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) // called when search results button pressed
+
     
-    @availability(iOS, introduced=3.0)
-    optional func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int)
+    @available(iOS 3.0, *)
+    optional public func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int)

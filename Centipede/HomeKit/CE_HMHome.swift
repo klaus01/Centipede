@@ -2,8 +2,8 @@
 //  CE_HMHome.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import HomeKit
@@ -40,148 +40,148 @@ public extension HMHome {
         return HMHome_Delegate()
     }
     
-    public func ce_didUpdateName(handle: (home: HMHome) -> Void) -> Self {
-        ce._didUpdateName = handle
+    public func ce_homeDidUpdateName(handle: ((HMHome) -> Void)) -> Self {
+        ce._homeDidUpdateName = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddAccessory(handle: (home: HMHome, accessory: HMAccessory) -> Void) -> Self {
-        ce._didAddAccessory = handle
+    public func ce_home(handle: ((HMHome, HMAccessory) -> Void)) -> Self {
+        ce._home = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveAccessory(handle: (home: HMHome, accessory: HMAccessory) -> Void) -> Self {
-        ce._didRemoveAccessory = handle
+    public func ce_home_didRemove(handle: ((HMHome, HMAccessory) -> Void)) -> Self {
+        ce._home_didRemove = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddUser(handle: (home: HMHome, user: HMUser) -> Void) -> Self {
-        ce._didAddUser = handle
+    public func ce_home_didAdd(handle: ((HMHome, HMUser) -> Void)) -> Self {
+        ce._home_didAdd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveUser(handle: (home: HMHome, user: HMUser) -> Void) -> Self {
-        ce._didRemoveUser = handle
+    public func ce_home_didRemove_didRemove(handle: ((HMHome, HMUser) -> Void)) -> Self {
+        ce._home_didRemove_didRemove = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateRoom(handle: (home: HMHome, room: HMRoom, accessory: HMAccessory) -> Void) -> Self {
-        ce._didUpdateRoom = handle
+    public func ce_home_didUpdate(handle: ((HMHome, HMRoom, HMAccessory) -> Void)) -> Self {
+        ce._home_didUpdate = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddRoom(handle: (home: HMHome, room: HMRoom) -> Void) -> Self {
-        ce._didAddRoom = handle
+    public func ce_home_didAdd_didAdd(handle: ((HMHome, HMRoom) -> Void)) -> Self {
+        ce._home_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveRoom(handle: (home: HMHome, room: HMRoom) -> Void) -> Self {
-        ce._didRemoveRoom = handle
+    public func ce_home_didRemove_didRemove_didRemove(handle: ((HMHome, HMRoom) -> Void)) -> Self {
+        ce._home_didRemove_didRemove_didRemove = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateNameForRoom(handle: (home: HMHome, room: HMRoom) -> Void) -> Self {
-        ce._didUpdateNameForRoom = handle
+    public func ce_home_didUpdateNameFor(handle: ((HMHome, HMRoom) -> Void)) -> Self {
+        ce._home_didUpdateNameFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddZone(handle: (home: HMHome, zone: HMZone) -> Void) -> Self {
-        ce._didAddZone = handle
+    public func ce_home_didAdd_didAdd_didAdd(handle: ((HMHome, HMZone) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveZone(handle: (home: HMHome, zone: HMZone) -> Void) -> Self {
-        ce._didRemoveZone = handle
+    public func ce_home_didRemove_didRemove_didRemove_didRemove(handle: ((HMHome, HMZone) -> Void)) -> Self {
+        ce._home_didRemove_didRemove_didRemove_didRemove = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateNameForZone(handle: (home: HMHome, zone: HMZone) -> Void) -> Self {
-        ce._didUpdateNameForZone = handle
+    public func ce_home_didUpdateNameFor_didUpdateNameFor(handle: ((HMHome, HMZone) -> Void)) -> Self {
+        ce._home_didUpdateNameFor_didUpdateNameFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddRoomAndDidAddRoom(handle: (home: HMHome, room: HMRoom, zone: HMZone) -> Void) -> Self {
-        ce._didAddRoomAndDidAddRoom = handle
+    public func ce_home_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMRoom, HMZone) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveRoomAndDidRemoveRoom(handle: (home: HMHome, room: HMRoom, zone: HMZone) -> Void) -> Self {
-        ce._didRemoveRoomAndDidRemoveRoom = handle
+    public func ce_home_didRemove_didRemove_didRemove_didRemove_didRemove(handle: ((HMHome, HMRoom, HMZone) -> Void)) -> Self {
+        ce._home_didRemove_didRemove_didRemove_didRemove_didRemove = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddServiceGroup(handle: (home: HMHome, group: HMServiceGroup) -> Void) -> Self {
-        ce._didAddServiceGroup = handle
+    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMServiceGroup) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveServiceGroup(handle: (home: HMHome, group: HMServiceGroup) -> Void) -> Self {
-        ce._didRemoveServiceGroup = handle
+    public func ce_home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove(handle: ((HMHome, HMServiceGroup) -> Void)) -> Self {
+        ce._home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateNameForServiceGroup(handle: (home: HMHome, group: HMServiceGroup) -> Void) -> Self {
-        ce._didUpdateNameForServiceGroup = handle
+    public func ce_home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor(handle: ((HMHome, HMServiceGroup) -> Void)) -> Self {
+        ce._home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddService(handle: (home: HMHome, service: HMService, group: HMServiceGroup) -> Void) -> Self {
-        ce._didAddService = handle
+    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMService, HMServiceGroup) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveService(handle: (home: HMHome, service: HMService, group: HMServiceGroup) -> Void) -> Self {
-        ce._didRemoveService = handle
+    public func ce_home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove(handle: ((HMHome, HMService, HMServiceGroup) -> Void)) -> Self {
+        ce._home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddActionSet(handle: (home: HMHome, actionSet: HMActionSet) -> Void) -> Self {
-        ce._didAddActionSet = handle
+    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMActionSet) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveActionSet(handle: (home: HMHome, actionSet: HMActionSet) -> Void) -> Self {
-        ce._didRemoveActionSet = handle
+    public func ce_home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove(handle: ((HMHome, HMActionSet) -> Void)) -> Self {
+        ce._home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateNameForActionSet(handle: (home: HMHome, actionSet: HMActionSet) -> Void) -> Self {
-        ce._didUpdateNameForActionSet = handle
+    public func ce_home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor(handle: ((HMHome, HMActionSet) -> Void)) -> Self {
+        ce._home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateActionsForActionSet(handle: (home: HMHome, actionSet: HMActionSet) -> Void) -> Self {
-        ce._didUpdateActionsForActionSet = handle
+    public func ce_home_didUpdateActionsFor(handle: ((HMHome, HMActionSet) -> Void)) -> Self {
+        ce._home_didUpdateActionsFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddTrigger(handle: (home: HMHome, trigger: HMTrigger) -> Void) -> Self {
-        ce._didAddTrigger = handle
+    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMTrigger) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveTrigger(handle: (home: HMHome, trigger: HMTrigger) -> Void) -> Self {
-        ce._didRemoveTrigger = handle
+    public func ce_home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove(handle: ((HMHome, HMTrigger) -> Void)) -> Self {
+        ce._home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateNameForTrigger(handle: (home: HMHome, trigger: HMTrigger) -> Void) -> Self {
-        ce._didUpdateNameForTrigger = handle
+    public func ce_home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor(handle: ((HMHome, HMTrigger) -> Void)) -> Self {
+        ce._home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUpdateTrigger(handle: (home: HMHome, trigger: HMTrigger) -> Void) -> Self {
-        ce._didUpdateTrigger = handle
+    public func ce_home_didUpdate_didUpdate(handle: ((HMHome, HMTrigger) -> Void)) -> Self {
+        ce._home_didUpdate_didUpdate = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUnblockAccessory(handle: (home: HMHome, accessory: HMAccessory) -> Void) -> Self {
-        ce._didUnblockAccessory = handle
+    public func ce_home_didUnblockAccessory(handle: ((HMHome, HMAccessory) -> Void)) -> Self {
+        ce._home_didUnblockAccessory = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didEncounterError(handle: (home: HMHome, error: NSError, accessory: HMAccessory) -> Void) -> Self {
-        ce._didEncounterError = handle
+    public func ce_home_didEncounterError(handle: ((HMHome, Error, HMAccessory) -> Void)) -> Self {
+        ce._home_didEncounterError = handle
         rebindingDelegate()
         return self
     }
@@ -190,187 +190,187 @@ public extension HMHome {
 
 internal class HMHome_Delegate: NSObject, HMHomeDelegate {
     
-    var _didUpdateName: ((HMHome) -> Void)?
-    var _didAddAccessory: ((HMHome, HMAccessory) -> Void)?
-    var _didRemoveAccessory: ((HMHome, HMAccessory) -> Void)?
-    var _didAddUser: ((HMHome, HMUser) -> Void)?
-    var _didRemoveUser: ((HMHome, HMUser) -> Void)?
-    var _didUpdateRoom: ((HMHome, HMRoom, HMAccessory) -> Void)?
-    var _didAddRoom: ((HMHome, HMRoom) -> Void)?
-    var _didRemoveRoom: ((HMHome, HMRoom) -> Void)?
-    var _didUpdateNameForRoom: ((HMHome, HMRoom) -> Void)?
-    var _didAddZone: ((HMHome, HMZone) -> Void)?
-    var _didRemoveZone: ((HMHome, HMZone) -> Void)?
-    var _didUpdateNameForZone: ((HMHome, HMZone) -> Void)?
-    var _didAddRoomAndDidAddRoom: ((HMHome, HMRoom, HMZone) -> Void)?
-    var _didRemoveRoomAndDidRemoveRoom: ((HMHome, HMRoom, HMZone) -> Void)?
-    var _didAddServiceGroup: ((HMHome, HMServiceGroup) -> Void)?
-    var _didRemoveServiceGroup: ((HMHome, HMServiceGroup) -> Void)?
-    var _didUpdateNameForServiceGroup: ((HMHome, HMServiceGroup) -> Void)?
-    var _didAddService: ((HMHome, HMService, HMServiceGroup) -> Void)?
-    var _didRemoveService: ((HMHome, HMService, HMServiceGroup) -> Void)?
-    var _didAddActionSet: ((HMHome, HMActionSet) -> Void)?
-    var _didRemoveActionSet: ((HMHome, HMActionSet) -> Void)?
-    var _didUpdateNameForActionSet: ((HMHome, HMActionSet) -> Void)?
-    var _didUpdateActionsForActionSet: ((HMHome, HMActionSet) -> Void)?
-    var _didAddTrigger: ((HMHome, HMTrigger) -> Void)?
-    var _didRemoveTrigger: ((HMHome, HMTrigger) -> Void)?
-    var _didUpdateNameForTrigger: ((HMHome, HMTrigger) -> Void)?
-    var _didUpdateTrigger: ((HMHome, HMTrigger) -> Void)?
-    var _didUnblockAccessory: ((HMHome, HMAccessory) -> Void)?
-    var _didEncounterError: ((HMHome, NSError, HMAccessory) -> Void)?
+    var _homeDidUpdateName: ((HMHome) -> Void)?
+    var _home: ((HMHome, HMAccessory) -> Void)?
+    var _home_didRemove: ((HMHome, HMAccessory) -> Void)?
+    var _home_didAdd: ((HMHome, HMUser) -> Void)?
+    var _home_didRemove_didRemove: ((HMHome, HMUser) -> Void)?
+    var _home_didUpdate: ((HMHome, HMRoom, HMAccessory) -> Void)?
+    var _home_didAdd_didAdd: ((HMHome, HMRoom) -> Void)?
+    var _home_didRemove_didRemove_didRemove: ((HMHome, HMRoom) -> Void)?
+    var _home_didUpdateNameFor: ((HMHome, HMRoom) -> Void)?
+    var _home_didAdd_didAdd_didAdd: ((HMHome, HMZone) -> Void)?
+    var _home_didRemove_didRemove_didRemove_didRemove: ((HMHome, HMZone) -> Void)?
+    var _home_didUpdateNameFor_didUpdateNameFor: ((HMHome, HMZone) -> Void)?
+    var _home_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMRoom, HMZone) -> Void)?
+    var _home_didRemove_didRemove_didRemove_didRemove_didRemove: ((HMHome, HMRoom, HMZone) -> Void)?
+    var _home_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMServiceGroup) -> Void)?
+    var _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove: ((HMHome, HMServiceGroup) -> Void)?
+    var _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor: ((HMHome, HMServiceGroup) -> Void)?
+    var _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMService, HMServiceGroup) -> Void)?
+    var _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove: ((HMHome, HMService, HMServiceGroup) -> Void)?
+    var _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMActionSet) -> Void)?
+    var _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove: ((HMHome, HMActionSet) -> Void)?
+    var _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor: ((HMHome, HMActionSet) -> Void)?
+    var _home_didUpdateActionsFor: ((HMHome, HMActionSet) -> Void)?
+    var _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMTrigger) -> Void)?
+    var _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove: ((HMHome, HMTrigger) -> Void)?
+    var _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor: ((HMHome, HMTrigger) -> Void)?
+    var _home_didUpdate_didUpdate: ((HMHome, HMTrigger) -> Void)?
+    var _home_didUnblockAccessory: ((HMHome, HMAccessory) -> Void)?
+    var _home_didEncounterError: ((HMHome, Error, HMAccessory) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(homeDidUpdateName(_:)) : _didUpdateName,
-            #selector(home(_:didAddAccessory:)) : _didAddAccessory,
-            #selector(home(_:didRemoveAccessory:)) : _didRemoveAccessory,
-            #selector(home(_:didAddUser:)) : _didAddUser,
-            #selector(home(_:didRemoveUser:)) : _didRemoveUser,
-            #selector(home(_:didUpdateRoom:forAccessory:)) : _didUpdateRoom,
-            #selector(home(_:didAddRoom:)) : _didAddRoom,
+            #selector(homeDidUpdateName(_:)) : _homeDidUpdateName,
+            #selector(home(_:didAdd:)) : _home,
+            #selector(home(_:didRemove:)) : _home_didRemove,
+            #selector(home(_:didAdd:)) : _home_didAdd,
+            #selector(home(_:didRemove:)) : _home_didRemove_didRemove,
+            #selector(home(_:didUpdate:for:)) : _home_didUpdate,
+            #selector(home(_:didAdd:)) : _home_didAdd_didAdd,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            #selector(home(_:didRemoveRoom:)) : _didRemoveRoom,
-            #selector(home(_:didUpdateNameForRoom:)) : _didUpdateNameForRoom,
-            #selector(home(_:didAddZone:)) : _didAddZone,
-            #selector(home(_:didRemoveZone:)) : _didRemoveZone,
-            #selector(home(_:didUpdateNameForZone:)) : _didUpdateNameForZone,
-            #selector(home(_:didAddRoom:toZone:)) : _didAddRoomAndDidAddRoom,
-            #selector(home(_:didRemoveRoom:fromZone:)) : _didRemoveRoomAndDidRemoveRoom,
+            #selector(home(_:didRemove:)) : _home_didRemove_didRemove_didRemove,
+            #selector(home(_:didUpdateNameFor:)) : _home_didUpdateNameFor,
+            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd,
+            #selector(home(_:didRemove:)) : _home_didRemove_didRemove_didRemove_didRemove,
+            #selector(home(_:didUpdateNameFor:)) : _home_didUpdateNameFor_didUpdateNameFor,
+            #selector(home(_:didAdd:to:)) : _home_didAdd_didAdd_didAdd_didAdd,
+            #selector(home(_:didRemove:from:)) : _home_didRemove_didRemove_didRemove_didRemove_didRemove,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
         let funcDic3: [Selector : Any?] = [
-            #selector(home(_:didAddServiceGroup:)) : _didAddServiceGroup,
-            #selector(home(_:didRemoveServiceGroup:)) : _didRemoveServiceGroup,
-            #selector(home(_:didUpdateNameForServiceGroup:)) : _didUpdateNameForServiceGroup,
-            #selector(home(_:didAddService:toServiceGroup:)) : _didAddService,
-            #selector(home(_:didRemoveService:fromServiceGroup:)) : _didRemoveService,
-            #selector(home(_:didAddActionSet:)) : _didAddActionSet,
-            #selector(home(_:didRemoveActionSet:)) : _didRemoveActionSet,
+            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd,
+            #selector(home(_:didRemove:)) : _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove,
+            #selector(home(_:didUpdateNameFor:)) : _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor,
+            #selector(home(_:didAdd:to:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd,
+            #selector(home(_:didRemove:from:)) : _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove,
+            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd,
+            #selector(home(_:didRemove:)) : _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove,
         ]
         if let f = funcDic3[aSelector] {
             return f != nil
         }
         
         let funcDic4: [Selector : Any?] = [
-            #selector(home(_:didUpdateNameForActionSet:)) : _didUpdateNameForActionSet,
-            #selector(home(_:didUpdateActionsForActionSet:)) : _didUpdateActionsForActionSet,
-            #selector(home(_:didAddTrigger:)) : _didAddTrigger,
-            #selector(home(_:didRemoveTrigger:)) : _didRemoveTrigger,
-            #selector(home(_:didUpdateNameForTrigger:)) : _didUpdateNameForTrigger,
-            #selector(home(_:didUpdateTrigger:)) : _didUpdateTrigger,
-            #selector(home(_:didUnblockAccessory:)) : _didUnblockAccessory,
+            #selector(home(_:didUpdateNameFor:)) : _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor,
+            #selector(home(_:didUpdateActionsFor:)) : _home_didUpdateActionsFor,
+            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd,
+            #selector(home(_:didRemove:)) : _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove,
+            #selector(home(_:didUpdateNameFor:)) : _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor,
+            #selector(home(_:didUpdate:)) : _home_didUpdate_didUpdate,
+            #selector(home(_:didUnblockAccessory:)) : _home_didUnblockAccessory,
         ]
         if let f = funcDic4[aSelector] {
             return f != nil
         }
         
         let funcDic5: [Selector : Any?] = [
-            #selector(home(_:didEncounterError:forAccessory:)) : _didEncounterError,
+            #selector(home(_:didEncounterError:for:)) : _home_didEncounterError,
         ]
         if let f = funcDic5[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func homeDidUpdateName(home: HMHome) {
-        _didUpdateName!(home)
+    @objc func homeDidUpdateName(_ home: HMHome) {
+        _homeDidUpdateName!(home)
     }
-    @objc func home(home: HMHome, didAddAccessory accessory: HMAccessory) {
-        _didAddAccessory!(home, accessory)
+    @objc func home(_ home: HMHome, didAdd accessory: HMAccessory) {
+        _home!(home, accessory)
     }
-    @objc func home(home: HMHome, didRemoveAccessory accessory: HMAccessory) {
-        _didRemoveAccessory!(home, accessory)
+    @objc func home(_ home: HMHome, didRemove accessory: HMAccessory) {
+        _home_didRemove!(home, accessory)
     }
-    @objc func home(home: HMHome, didAddUser user: HMUser) {
-        _didAddUser!(home, user)
+    @objc func home(_ home: HMHome, didAdd user: HMUser) {
+        _home_didAdd!(home, user)
     }
-    @objc func home(home: HMHome, didRemoveUser user: HMUser) {
-        _didRemoveUser!(home, user)
+    @objc func home(_ home: HMHome, didRemove user: HMUser) {
+        _home_didRemove_didRemove!(home, user)
     }
-    @objc func home(home: HMHome, didUpdateRoom room: HMRoom, forAccessory accessory: HMAccessory) {
-        _didUpdateRoom!(home, room, accessory)
+    @objc func home(_ home: HMHome, didUpdate room: HMRoom, for accessory: HMAccessory) {
+        _home_didUpdate!(home, room, accessory)
     }
-    @objc func home(home: HMHome, didAddRoom room: HMRoom) {
-        _didAddRoom!(home, room)
+    @objc func home(_ home: HMHome, didAdd room: HMRoom) {
+        _home_didAdd_didAdd!(home, room)
     }
-    @objc func home(home: HMHome, didRemoveRoom room: HMRoom) {
-        _didRemoveRoom!(home, room)
+    @objc func home(_ home: HMHome, didRemove room: HMRoom) {
+        _home_didRemove_didRemove_didRemove!(home, room)
     }
-    @objc func home(home: HMHome, didUpdateNameForRoom room: HMRoom) {
-        _didUpdateNameForRoom!(home, room)
+    @objc func home(_ home: HMHome, didUpdateNameFor room: HMRoom) {
+        _home_didUpdateNameFor!(home, room)
     }
-    @objc func home(home: HMHome, didAddZone zone: HMZone) {
-        _didAddZone!(home, zone)
+    @objc func home(_ home: HMHome, didAdd zone: HMZone) {
+        _home_didAdd_didAdd_didAdd!(home, zone)
     }
-    @objc func home(home: HMHome, didRemoveZone zone: HMZone) {
-        _didRemoveZone!(home, zone)
+    @objc func home(_ home: HMHome, didRemove zone: HMZone) {
+        _home_didRemove_didRemove_didRemove_didRemove!(home, zone)
     }
-    @objc func home(home: HMHome, didUpdateNameForZone zone: HMZone) {
-        _didUpdateNameForZone!(home, zone)
+    @objc func home(_ home: HMHome, didUpdateNameFor zone: HMZone) {
+        _home_didUpdateNameFor_didUpdateNameFor!(home, zone)
     }
-    @objc func home(home: HMHome, didAddRoom room: HMRoom, toZone zone: HMZone) {
-        _didAddRoomAndDidAddRoom!(home, room, zone)
+    @objc func home(_ home: HMHome, didAdd room: HMRoom, to zone: HMZone) {
+        _home_didAdd_didAdd_didAdd_didAdd!(home, room, zone)
     }
-    @objc func home(home: HMHome, didRemoveRoom room: HMRoom, fromZone zone: HMZone) {
-        _didRemoveRoomAndDidRemoveRoom!(home, room, zone)
+    @objc func home(_ home: HMHome, didRemove room: HMRoom, from zone: HMZone) {
+        _home_didRemove_didRemove_didRemove_didRemove_didRemove!(home, room, zone)
     }
-    @objc func home(home: HMHome, didAddServiceGroup group: HMServiceGroup) {
-        _didAddServiceGroup!(home, group)
+    @objc func home(_ home: HMHome, didAdd group: HMServiceGroup) {
+        _home_didAdd_didAdd_didAdd_didAdd_didAdd!(home, group)
     }
-    @objc func home(home: HMHome, didRemoveServiceGroup group: HMServiceGroup) {
-        _didRemoveServiceGroup!(home, group)
+    @objc func home(_ home: HMHome, didRemove group: HMServiceGroup) {
+        _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove!(home, group)
     }
-    @objc func home(home: HMHome, didUpdateNameForServiceGroup group: HMServiceGroup) {
-        _didUpdateNameForServiceGroup!(home, group)
+    @objc func home(_ home: HMHome, didUpdateNameFor group: HMServiceGroup) {
+        _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor!(home, group)
     }
-    @objc func home(home: HMHome, didAddService service: HMService, toServiceGroup group: HMServiceGroup) {
-        _didAddService!(home, service, group)
+    @objc func home(_ home: HMHome, didAdd service: HMService, to group: HMServiceGroup) {
+        _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd!(home, service, group)
     }
-    @objc func home(home: HMHome, didRemoveService service: HMService, fromServiceGroup group: HMServiceGroup) {
-        _didRemoveService!(home, service, group)
+    @objc func home(_ home: HMHome, didRemove service: HMService, from group: HMServiceGroup) {
+        _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove!(home, service, group)
     }
-    @objc func home(home: HMHome, didAddActionSet actionSet: HMActionSet) {
-        _didAddActionSet!(home, actionSet)
+    @objc func home(_ home: HMHome, didAdd actionSet: HMActionSet) {
+        _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd!(home, actionSet)
     }
-    @objc func home(home: HMHome, didRemoveActionSet actionSet: HMActionSet) {
-        _didRemoveActionSet!(home, actionSet)
+    @objc func home(_ home: HMHome, didRemove actionSet: HMActionSet) {
+        _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove!(home, actionSet)
     }
-    @objc func home(home: HMHome, didUpdateNameForActionSet actionSet: HMActionSet) {
-        _didUpdateNameForActionSet!(home, actionSet)
+    @objc func home(_ home: HMHome, didUpdateNameFor actionSet: HMActionSet) {
+        _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor!(home, actionSet)
     }
-    @objc func home(home: HMHome, didUpdateActionsForActionSet actionSet: HMActionSet) {
-        _didUpdateActionsForActionSet!(home, actionSet)
+    @objc func home(_ home: HMHome, didUpdateActionsFor actionSet: HMActionSet) {
+        _home_didUpdateActionsFor!(home, actionSet)
     }
-    @objc func home(home: HMHome, didAddTrigger trigger: HMTrigger) {
-        _didAddTrigger!(home, trigger)
+    @objc func home(_ home: HMHome, didAdd trigger: HMTrigger) {
+        _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd!(home, trigger)
     }
-    @objc func home(home: HMHome, didRemoveTrigger trigger: HMTrigger) {
-        _didRemoveTrigger!(home, trigger)
+    @objc func home(_ home: HMHome, didRemove trigger: HMTrigger) {
+        _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove!(home, trigger)
     }
-    @objc func home(home: HMHome, didUpdateNameForTrigger trigger: HMTrigger) {
-        _didUpdateNameForTrigger!(home, trigger)
+    @objc func home(_ home: HMHome, didUpdateNameFor trigger: HMTrigger) {
+        _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor!(home, trigger)
     }
-    @objc func home(home: HMHome, didUpdateTrigger trigger: HMTrigger) {
-        _didUpdateTrigger!(home, trigger)
+    @objc func home(_ home: HMHome, didUpdate trigger: HMTrigger) {
+        _home_didUpdate_didUpdate!(home, trigger)
     }
-    @objc func home(home: HMHome, didUnblockAccessory accessory: HMAccessory) {
-        _didUnblockAccessory!(home, accessory)
+    @objc func home(_ home: HMHome, didUnblockAccessory accessory: HMAccessory) {
+        _home_didUnblockAccessory!(home, accessory)
     }
-    @objc func home(home: HMHome, didEncounterError error: NSError, forAccessory accessory: HMAccessory) {
-        _didEncounterError!(home, error, accessory)
+    @objc func home(_ home: HMHome, didEncounterError error: Error, for accessory: HMAccessory) {
+        _home_didEncounterError!(home, error, accessory)
     }
 }

@@ -2,8 +2,8 @@
 //  CE_MCBrowserViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import MultipeerConnectivity
@@ -40,18 +40,18 @@ public extension MCBrowserViewController {
         return MCBrowserViewController_Delegate()
     }
     
-    public func ce_didFinish(handle: (browserViewController: MCBrowserViewController) -> Void) -> Self {
-        ce._didFinish = handle
+    public func ce_browserViewControllerDidFinish(handle: ((MCBrowserViewController) -> Void)) -> Self {
+        ce._browserViewControllerDidFinish = handle
         rebindingDelegate()
         return self
     }
-    public func ce_wasCancelled(handle: (browserViewController: MCBrowserViewController) -> Void) -> Self {
-        ce._wasCancelled = handle
+    public func ce_browserViewControllerWasCancelled(handle: ((MCBrowserViewController) -> Void)) -> Self {
+        ce._browserViewControllerWasCancelled = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldPresentNearbyPeer(handle: (browserViewController: MCBrowserViewController, peerID: MCPeerID!, info: [String : String]?) -> Bool) -> Self {
-        ce._shouldPresentNearbyPeer = handle
+    public func ce_browserViewController(handle: ((MCBrowserViewController, MCPeerID, [String : String]?) -> Bool)) -> Self {
+        ce._browserViewController = handle
         rebindingDelegate()
         return self
     }
@@ -60,33 +60,33 @@ public extension MCBrowserViewController {
 
 internal class MCBrowserViewController_Delegate: UIViewController_Delegate, MCBrowserViewControllerDelegate {
     
-    var _didFinish: ((MCBrowserViewController) -> Void)?
-    var _wasCancelled: ((MCBrowserViewController) -> Void)?
-    var _shouldPresentNearbyPeer: ((MCBrowserViewController, MCPeerID!, [String : String]?) -> Bool)?
+    var _browserViewControllerDidFinish: ((MCBrowserViewController) -> Void)?
+    var _browserViewControllerWasCancelled: ((MCBrowserViewController) -> Void)?
+    var _browserViewController: ((MCBrowserViewController, MCPeerID, [String : String]?) -> Bool)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(browserViewControllerDidFinish(_:)) : _didFinish,
-            #selector(browserViewControllerWasCancelled(_:)) : _wasCancelled,
-            #selector(browserViewController(_:shouldPresentNearbyPeer:withDiscoveryInfo:)) : _shouldPresentNearbyPeer,
+            #selector(browserViewControllerDidFinish(_:)) : _browserViewControllerDidFinish,
+            #selector(browserViewControllerWasCancelled(_:)) : _browserViewControllerWasCancelled,
+            #selector(browserViewController(_:shouldPresentNearbyPeer:withDiscoveryInfo:)) : _browserViewController,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func browserViewControllerDidFinish(browserViewController: MCBrowserViewController) {
-        _didFinish!(browserViewController)
+    @objc func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
+        _browserViewControllerDidFinish!(browserViewController)
     }
-    @objc func browserViewControllerWasCancelled(browserViewController: MCBrowserViewController) {
-        _wasCancelled!(browserViewController)
+    @objc func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
+        _browserViewControllerWasCancelled!(browserViewController)
     }
-    @objc func browserViewController(browserViewController: MCBrowserViewController, shouldPresentNearbyPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) -> Bool {
-        return _shouldPresentNearbyPeer!(browserViewController, peerID, info)
+    @objc func browserViewController(_ browserViewController: MCBrowserViewController, shouldPresentNearbyPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) -> Bool {
+        return _browserViewController!(browserViewController, peerID, info)
     }
 }

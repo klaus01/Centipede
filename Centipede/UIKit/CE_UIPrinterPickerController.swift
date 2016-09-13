@@ -2,8 +2,8 @@
 //  CE_UIPrinterPickerController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
@@ -20,7 +20,7 @@ public extension UIPrinterPickerController {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UIPrinterPickerController_Delegate {
                 return obj as! UIPrinterPickerController_Delegate
             }
@@ -40,38 +40,38 @@ public extension UIPrinterPickerController {
         return UIPrinterPickerController_Delegate()
     }
     
-    public func ce_parentViewController(handle: (printerPickerController: UIPrinterPickerController) -> UIViewController?) -> Self {
-        ce._parentViewController = handle
+    public func ce_printerPickerControllerParentViewController(handle: ((UIPrinterPickerController) -> UIViewController?)) -> Self {
+        ce._printerPickerControllerParentViewController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldShowPrinter(handle: (printerPickerController: UIPrinterPickerController, printer: UIPrinter) -> Bool) -> Self {
-        ce._shouldShowPrinter = handle
+    public func ce_printerPickerController(handle: ((UIPrinterPickerController, UIPrinter) -> Bool)) -> Self {
+        ce._printerPickerController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willPresent(handle: (printerPickerController: UIPrinterPickerController) -> Void) -> Self {
-        ce._willPresent = handle
+    public func ce_printerPickerControllerWillPresent(handle: ((UIPrinterPickerController) -> Void)) -> Self {
+        ce._printerPickerControllerWillPresent = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didPresent(handle: (printerPickerController: UIPrinterPickerController) -> Void) -> Self {
-        ce._didPresent = handle
+    public func ce_printerPickerControllerDidPresent(handle: ((UIPrinterPickerController) -> Void)) -> Self {
+        ce._printerPickerControllerDidPresent = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willDismiss(handle: (printerPickerController: UIPrinterPickerController) -> Void) -> Self {
-        ce._willDismiss = handle
+    public func ce_printerPickerControllerWillDismiss(handle: ((UIPrinterPickerController) -> Void)) -> Self {
+        ce._printerPickerControllerWillDismiss = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDismiss(handle: (printerPickerController: UIPrinterPickerController) -> Void) -> Self {
-        ce._didDismiss = handle
+    public func ce_printerPickerControllerDidDismiss(handle: ((UIPrinterPickerController) -> Void)) -> Self {
+        ce._printerPickerControllerDidDismiss = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didSelectPrinter(handle: (printerPickerController: UIPrinterPickerController) -> Void) -> Self {
-        ce._didSelectPrinter = handle
+    public func ce_printerPickerControllerDidSelectPrinter(handle: ((UIPrinterPickerController) -> Void)) -> Self {
+        ce._printerPickerControllerDidSelectPrinter = handle
         rebindingDelegate()
         return self
     }
@@ -80,53 +80,53 @@ public extension UIPrinterPickerController {
 
 internal class UIPrinterPickerController_Delegate: NSObject, UIPrinterPickerControllerDelegate {
     
-    var _parentViewController: ((UIPrinterPickerController) -> UIViewController?)?
-    var _shouldShowPrinter: ((UIPrinterPickerController, UIPrinter) -> Bool)?
-    var _willPresent: ((UIPrinterPickerController) -> Void)?
-    var _didPresent: ((UIPrinterPickerController) -> Void)?
-    var _willDismiss: ((UIPrinterPickerController) -> Void)?
-    var _didDismiss: ((UIPrinterPickerController) -> Void)?
-    var _didSelectPrinter: ((UIPrinterPickerController) -> Void)?
+    var _printerPickerControllerParentViewController: ((UIPrinterPickerController) -> UIViewController?)?
+    var _printerPickerController: ((UIPrinterPickerController, UIPrinter) -> Bool)?
+    var _printerPickerControllerWillPresent: ((UIPrinterPickerController) -> Void)?
+    var _printerPickerControllerDidPresent: ((UIPrinterPickerController) -> Void)?
+    var _printerPickerControllerWillDismiss: ((UIPrinterPickerController) -> Void)?
+    var _printerPickerControllerDidDismiss: ((UIPrinterPickerController) -> Void)?
+    var _printerPickerControllerDidSelectPrinter: ((UIPrinterPickerController) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(printerPickerControllerParentViewController(_:)) : _parentViewController,
-            #selector(printerPickerController(_:shouldShowPrinter:)) : _shouldShowPrinter,
-            #selector(printerPickerControllerWillPresent(_:)) : _willPresent,
-            #selector(printerPickerControllerDidPresent(_:)) : _didPresent,
-            #selector(printerPickerControllerWillDismiss(_:)) : _willDismiss,
-            #selector(printerPickerControllerDidDismiss(_:)) : _didDismiss,
-            #selector(printerPickerControllerDidSelectPrinter(_:)) : _didSelectPrinter,
+            #selector(printerPickerControllerParentViewController(_:)) : _printerPickerControllerParentViewController,
+            #selector(printerPickerController(_:shouldShow:)) : _printerPickerController,
+            #selector(printerPickerControllerWillPresent(_:)) : _printerPickerControllerWillPresent,
+            #selector(printerPickerControllerDidPresent(_:)) : _printerPickerControllerDidPresent,
+            #selector(printerPickerControllerWillDismiss(_:)) : _printerPickerControllerWillDismiss,
+            #selector(printerPickerControllerDidDismiss(_:)) : _printerPickerControllerDidDismiss,
+            #selector(printerPickerControllerDidSelectPrinter(_:)) : _printerPickerControllerDidSelectPrinter,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func printerPickerControllerParentViewController(printerPickerController: UIPrinterPickerController) -> UIViewController? {
-        return _parentViewController!(printerPickerController)
+    @objc func printerPickerControllerParentViewController(_ printerPickerController: UIPrinterPickerController) -> UIViewController? {
+        return _printerPickerControllerParentViewController!(printerPickerController)
     }
-    @objc func printerPickerController(printerPickerController: UIPrinterPickerController, shouldShowPrinter printer: UIPrinter) -> Bool {
-        return _shouldShowPrinter!(printerPickerController, printer)
+    @objc func printerPickerController(_ printerPickerController: UIPrinterPickerController, shouldShow printer: UIPrinter) -> Bool {
+        return _printerPickerController!(printerPickerController, printer)
     }
-    @objc func printerPickerControllerWillPresent(printerPickerController: UIPrinterPickerController) {
-        _willPresent!(printerPickerController)
+    @objc func printerPickerControllerWillPresent(_ printerPickerController: UIPrinterPickerController) {
+        _printerPickerControllerWillPresent!(printerPickerController)
     }
-    @objc func printerPickerControllerDidPresent(printerPickerController: UIPrinterPickerController) {
-        _didPresent!(printerPickerController)
+    @objc func printerPickerControllerDidPresent(_ printerPickerController: UIPrinterPickerController) {
+        _printerPickerControllerDidPresent!(printerPickerController)
     }
-    @objc func printerPickerControllerWillDismiss(printerPickerController: UIPrinterPickerController) {
-        _willDismiss!(printerPickerController)
+    @objc func printerPickerControllerWillDismiss(_ printerPickerController: UIPrinterPickerController) {
+        _printerPickerControllerWillDismiss!(printerPickerController)
     }
-    @objc func printerPickerControllerDidDismiss(printerPickerController: UIPrinterPickerController) {
-        _didDismiss!(printerPickerController)
+    @objc func printerPickerControllerDidDismiss(_ printerPickerController: UIPrinterPickerController) {
+        _printerPickerControllerDidDismiss!(printerPickerController)
     }
-    @objc func printerPickerControllerDidSelectPrinter(printerPickerController: UIPrinterPickerController) {
-        _didSelectPrinter!(printerPickerController)
+    @objc func printerPickerControllerDidSelectPrinter(_ printerPickerController: UIPrinterPickerController) {
+        _printerPickerControllerDidSelectPrinter!(printerPickerController)
     }
 }

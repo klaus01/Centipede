@@ -5,7 +5,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param home Sender of this message.
      */
-    optional func homeDidUpdateName(home: HMHome)
+    optional public func homeDidUpdateName(_ home: HMHome)
+
     
     /*!
      * @brief Informs the delegate of addition of an accessory to the home.
@@ -14,7 +15,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param accessory Accessory that was added to the home.
      */
-    optional func home(home: HMHome, didAddAccessory accessory: HMAccessory!)
+    optional public func home(_ home: HMHome, didAdd accessory: HMAccessory)
+
     
     /*!
      * @brief Informs the delegate of removal of an accessory from the home.
@@ -23,16 +25,18 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param accessory Accessory that was removed from the home.
      */
-    optional func home(home: HMHome, didRemoveAccessory accessory: HMAccessory!)
+    optional public func home(_ home: HMHome, didRemove accessory: HMAccessory)
+
     
     /*!
      * @brief Informs the delegate that a user was added to the home.
      *
      * @param home Sender of this message.
      *
-     * @param user User who       was granted access to the home.
+     * @param user User who was granted access to the home.
      */
-    optional func home(home: HMHome, didAddUser user: HMUser!)
+    optional public func home(_ home: HMHome, didAdd user: HMUser)
+
     
     /*!
      * @brief Informs the delegate that a user was removed from the home.
@@ -41,10 +45,11 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param user User whose access was revoked from the home.
      */
-    optional func home(home: HMHome, didRemoveUser user: HMUser!)
+    optional public func home(_ home: HMHome, didRemove user: HMUser)
+
     
     /*!
-     * @brief Informs the delegate when a new room is assigned to an an accessory
+     * @brief Informs the delegate when a new room is assigned to an accessory
      *
      * @param home Sender of the message.
      *
@@ -52,7 +57,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param accessory Accessory that was assigned a new room.
      */
-    optional func home(home: HMHome, didUpdateRoom room: HMRoom!, forAccessory accessory: HMAccessory!)
+    optional public func home(_ home: HMHome, didUpdate room: HMRoom, for accessory: HMAccessory)
+
     
     /*!
      * @brief Informs the delegate of addition of a room to the home.
@@ -61,7 +67,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param room Room that was added to the home.
      */
-    optional func home(home: HMHome, didAddRoom room: HMRoom!)
+    optional public func home(_ home: HMHome, didAdd room: HMRoom)
+
     
     /*!
      * @brief Informs the delegate of removal of a room from the home.
@@ -70,7 +77,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param room Room that was removed from the home.
      */
-    optional func home(home: HMHome, didRemoveRoom room: HMRoom!)
+    optional public func home(_ home: HMHome, didRemove room: HMRoom)
+
     
     /*!
      * @brief Informs the delegate that the name of a room was modified
@@ -79,7 +87,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param room Room that was modified.
      */
-    optional func home(home: HMHome, didUpdateNameForRoom room: HMRoom!)
+    optional public func home(_ home: HMHome, didUpdateNameFor room: HMRoom)
+
     
     /*!
      * @brief Informs the delegate of addition of a zone to the home.
@@ -88,7 +97,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param zone Zone that was added to the home.
      */
-    optional func home(home: HMHome, didAddZone zone: HMZone!)
+    optional public func home(_ home: HMHome, didAdd zone: HMZone)
+
     
     /*!
      * @brief Informs the delegate of removal of a zone from the home.
@@ -97,7 +107,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param zone Zone that was removed from the home.
      */
-    optional func home(home: HMHome, didRemoveZone zone: HMZone!)
+    optional public func home(_ home: HMHome, didRemove zone: HMZone)
+
     
     /*!
      * @brief Informs the delegate that the name of a zone was modified.
@@ -106,7 +117,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param zone Zone that was modified.
      */
-    optional func home(home: HMHome, didUpdateNameForZone zone: HMZone!)
+    optional public func home(_ home: HMHome, didUpdateNameFor zone: HMZone)
+
     
     /*!
      * @brief Informs the delegate that the room was added to a zone.
@@ -117,7 +129,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param zone Zone that was modified.
      */
-    optional func home(home: HMHome, didAddRoom room: HMRoom!, toZone zone: HMZone!)
+    optional public func home(_ home: HMHome, didAdd room: HMRoom, to zone: HMZone)
+
     
     /*!
      * @brief Informs the delegate that the room was removed from a zone.
@@ -128,7 +141,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param zone Zone that was modified.
      */
-    optional func home(home: HMHome, didRemoveRoom room: HMRoom!, fromZone zone: HMZone!)
+    optional public func home(_ home: HMHome, didRemove room: HMRoom, from zone: HMZone)
+
     
     /*!
      * @brief Informs the delegate that a service group was added to the home.
@@ -137,7 +151,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param group Service group that was added to the home.
      */
-    optional func home(home: HMHome, didAddServiceGroup group: HMServiceGroup!)
+    optional public func home(_ home: HMHome, didAdd group: HMServiceGroup)
+
     
     /*!
      * @brief Informs the delegate that a service group was removed from the home.
@@ -146,7 +161,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param group Service group that was removed from the home.
      */
-    optional func home(home: HMHome, didRemoveServiceGroup group: HMServiceGroup!)
+    optional public func home(_ home: HMHome, didRemove group: HMServiceGroup)
+
     
     /*!
      * @brief Informs the delegate that the name of a service group was modified.
@@ -155,7 +171,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param group The service group that was modfied.
      */
-    optional func home(home: HMHome, didUpdateNameForServiceGroup group: HMServiceGroup!)
+    optional public func home(_ home: HMHome, didUpdateNameFor group: HMServiceGroup)
+
     
     /*!
      * @brief Informs the delegate that a service was added to a service group.
@@ -166,7 +183,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param group Service group that was modified.
      */
-    optional func home(home: HMHome, didAddService service: HMService!, toServiceGroup group: HMServiceGroup!)
+    optional public func home(_ home: HMHome, didAdd service: HMService, to group: HMServiceGroup)
+
     
     /*!
      * @brief Informs the delegate that a service was removed from a service group.
@@ -177,7 +195,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param group Service group that was modified.
      */
-    optional func home(home: HMHome, didRemoveService service: HMService!, fromServiceGroup group: HMServiceGroup!)
+    optional public func home(_ home: HMHome, didRemove service: HMService, from group: HMServiceGroup)
+
     
     /*!
      * @brief Informs the delegate that an action set was added to the home.
@@ -186,7 +205,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param actionSet Action set that was added to the home.
      */
-    optional func home(home: HMHome, didAddActionSet actionSet: HMActionSet!)
+    optional public func home(_ home: HMHome, didAdd actionSet: HMActionSet)
+
     
     /*!
      * @brief Informs the delegate that an action set was removed from the home.
@@ -195,7 +215,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param actionSet Action set that was removed from the home.
      */
-    optional func home(home: HMHome, didRemoveActionSet actionSet: HMActionSet!)
+    optional public func home(_ home: HMHome, didRemove actionSet: HMActionSet)
+
     
     /*!
      * @brief Informs the delegate that the name of an action set was modified.
@@ -204,7 +225,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param actionSet Action set that was modified.
      */
-    optional func home(home: HMHome, didUpdateNameForActionSet actionSet: HMActionSet!)
+    optional public func home(_ home: HMHome, didUpdateNameFor actionSet: HMActionSet)
+
     
     /*!
      * @brief Informs the delegate that the actions of an action set was modified.
@@ -214,7 +236,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param actionSet Action set that was modified.
      */
-    optional func home(home: HMHome, didUpdateActionsForActionSet actionSet: HMActionSet!)
+    optional public func home(_ home: HMHome, didUpdateActionsFor actionSet: HMActionSet)
+
     
     /*!
      * @brief Informs the delegate of the addition of a trigger to the home.
@@ -223,7 +246,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param trigger Trigger that was added to the home.
      */
-    optional func home(home: HMHome, didAddTrigger trigger: HMTrigger!)
+    optional public func home(_ home: HMHome, didAdd trigger: HMTrigger)
+
     
     /*!
      * @brief Informs the delegate of removal of a trigger from the home.
@@ -232,7 +256,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param trigger Trigger that was removed from the home.
      */
-    optional func home(home: HMHome, didRemoveTrigger trigger: HMTrigger!)
+    optional public func home(_ home: HMHome, didRemove trigger: HMTrigger)
+
     
     /*!
      * @brief Informs the delegate that the name of the trigger was modified.
@@ -241,7 +266,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param trigger Trigger that was modified.
      */
-    optional func home(home: HMHome, didUpdateNameForTrigger trigger: HMTrigger!)
+    optional public func home(_ home: HMHome, didUpdateNameFor trigger: HMTrigger)
+
     
     /*!
      * @brief Informs the delegate whenever a trigger is updated. For example, this method may be
@@ -252,7 +278,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param trigger The trigger that was updated.
      */
-    optional func home(home: HMHome, didUpdateTrigger trigger: HMTrigger!)
+    optional public func home(_ home: HMHome, didUpdate trigger: HMTrigger)
+
     
     /*!
      * @brief Informs the delegate that an accessory has been unblocked
@@ -261,7 +288,8 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param accessory Accessory that was unblocked
      */
-    optional func home(home: HMHome, didUnblockAccessory accessory: HMAccessory!)
+    optional public func home(_ home: HMHome, didUnblockAccessory accessory: HMAccessory)
+
     
     
     /*!
@@ -274,4 +302,4 @@ HMHome : NSObject, HMHomeDelegate
      *
      * @param accessory Accessory that encountered the error
      */
-    optional func home(home: HMHome, didEncounterError error: NSError!, forAccessory accessory: HMAccessory!)
+    optional public func home(_ home: HMHome, didEncounterError error: Error, for accessory: HMAccessory)

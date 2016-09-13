@@ -2,8 +2,8 @@
 //  CE_GLKView.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import GLKit
@@ -40,8 +40,8 @@ public extension GLKView {
         return GLKView_Delegate()
     }
     
-    public func ce_gl(handle: (view: GLKView, rect: CGRect) -> Void) -> Self {
-        ce._gl = handle
+    public func ce_g(handle: ((GLKView, CGRect) -> Void)) -> Self {
+        ce._g = handle
         rebindingDelegate()
         return self
     }
@@ -50,23 +50,23 @@ public extension GLKView {
 
 internal class GLKView_Delegate: NSObject, GLKViewDelegate {
     
-    var _gl: ((GLKView, CGRect) -> Void)?
+    var _g: ((GLKView, CGRect) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(glkView(_:drawInRect:)) : _gl,
+            #selector(glkView(_:drawIn:)) : _g,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func glkView(view: GLKView, drawInRect rect: CGRect) {
-        _gl!(view, rect)
+    @objc func glkView(_ view: GLKView, drawIn rect: CGRect) {
+        _g!(view, rect)
     }
 }

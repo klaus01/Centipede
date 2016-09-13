@@ -2,8 +2,8 @@
 //  CE_GLKViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import GLKit
@@ -40,13 +40,13 @@ public extension GLKViewController {
         return GLKViewController_Delegate()
     }
     
-    public func ce_glUpdate(handle: (controller: GLKViewController) -> Void) -> Self {
-        ce._glUpdate = handle
+    public func ce_gUpdate(handle: ((GLKViewController) -> Void)) -> Self {
+        ce._gUpdate = handle
         rebindingDelegate()
         return self
     }
-    public func ce_gl(handle: (controller: GLKViewController, pause: Bool) -> Void) -> Self {
-        ce._gl = handle
+    public func ce_g(handle: ((GLKViewController, Bool) -> Void)) -> Self {
+        ce._g = handle
         rebindingDelegate()
         return self
     }
@@ -55,28 +55,28 @@ public extension GLKViewController {
 
 internal class GLKViewController_Delegate: UIViewController_Delegate, GLKViewControllerDelegate {
     
-    var _glUpdate: ((GLKViewController) -> Void)?
-    var _gl: ((GLKViewController, Bool) -> Void)?
+    var _gUpdate: ((GLKViewController) -> Void)?
+    var _g: ((GLKViewController, Bool) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(glkViewControllerUpdate(_:)) : _glUpdate,
-            #selector(glkViewController(_:willPause:)) : _gl,
+            #selector(glkViewControllerUpdate(_:)) : _gUpdate,
+            #selector(glkViewController(_:willPause:)) : _g,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func glkViewControllerUpdate(controller: GLKViewController) {
-        _glUpdate!(controller)
+    @objc func glkViewControllerUpdate(_ controller: GLKViewController) {
+        _gUpdate!(controller)
     }
-    @objc func glkViewController(controller: GLKViewController, willPause pause: Bool) {
-        _gl!(controller, pause)
+    @objc func glkViewController(_ controller: GLKViewController, willPause pause: Bool) {
+        _g!(controller, pause)
     }
 }

@@ -14,7 +14,9 @@ CBCentralManager: NSObject, CBCentralManagerDelegate
      *  @see            state
      *
      */
-    func centralManagerDidUpdateState(central: CBCentralManager!)
+    @available(iOS 5.0, *)
+    public func centralManagerDidUpdateState(_ central: CBCentralManager)
+
     
     /*!
      *  @method centralManager:willRestoreState:
@@ -31,30 +33,9 @@ CBCentralManager: NSObject, CBCentralManagerDelegate
      *  @seealso            CBCentralManagerRestoredStateScanOptionsKey;
      *
      */
-    optional func centralManager(central: CBCentralManager!, willRestoreState dict: [NSObject : AnyObject]!)
-    
-    /*!
-     *  @method centralManager:didRetrievePeripherals:
-     *
-     *  @param central      The central manager providing this information.
-     *  @param peripherals  A list of <code>CBPeripheral</code> objects.
-     *
-     *  @discussion         This method returns the result of a {@link retrievePeripherals} call, with the peripheral(s) that the central manager was
-     *                      able to match to the provided UUID(s).
-     *
-     */
-    optional func centralManager(central: CBCentralManager!, didRetrievePeripherals peripherals: [AnyObject]!)
-    
-    /*!
-     *  @method centralManager:didRetrieveConnectedPeripherals:
-     *
-     *  @param central      The central manager providing this information.
-     *  @param peripherals  A list of <code>CBPeripheral</code> objects representing all peripherals currently connected to the system.
-     *
-     *  @discussion         This method returns the result of a {@link retrieveConnectedPeripherals} call.
-     *
-     */
-    optional func centralManager(central: CBCentralManager!, didRetrieveConnectedPeripherals peripherals: [AnyObject]!)
+    @available(iOS 5.0, *)
+    optional public func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any])
+
     
     /*!
      *  @method centralManager:didDiscoverPeripheral:advertisementData:RSSI:
@@ -72,7 +53,9 @@ CBCentralManager: NSObject, CBCentralManagerDelegate
      *  @seealso                    CBAdvertisementData.h
      *
      */
-    optional func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!)
+    @available(iOS 5.0, *)
+    optional public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber)
+
     
     /*!
      *  @method centralManager:didConnectPeripheral:
@@ -83,7 +66,9 @@ CBCentralManager: NSObject, CBCentralManagerDelegate
      *  @discussion         This method is invoked when a connection initiated by {@link connectPeripheral:options:} has succeeded.
      *
      */
-    optional func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!)
+    @available(iOS 5.0, *)
+    optional public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral)
+
     
     /*!
      *  @method centralManager:didFailToConnectPeripheral:error:
@@ -96,7 +81,9 @@ CBCentralManager: NSObject, CBCentralManagerDelegate
      *                      timeout, the failure of a connection is atypical and usually indicative of a transient issue.
      *
      */
-    optional func centralManager(central: CBCentralManager!, didFailToConnectPeripheral peripheral: CBPeripheral!, error: NSError!)
+    @available(iOS 5.0, *)
+    optional public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?)
+
     
     /*!
      *  @method centralManager:didDisconnectPeripheral:error:
@@ -110,4 +97,5 @@ CBCentralManager: NSObject, CBCentralManagerDelegate
      *                      called, no more methods will be invoked on <i>peripheral</i>'s <code>CBPeripheralDelegate</code>.
      *
      */
-    optional func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!)
+    @available(iOS 5.0, *)
+    optional public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?)

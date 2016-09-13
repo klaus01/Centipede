@@ -2,8 +2,8 @@
 //  CE_EKEventViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import EventKitUI
@@ -40,8 +40,8 @@ public extension EKEventViewController {
         return EKEventViewController_Delegate()
     }
     
-    public func ce_didCompleteWithAction(handle: (controller: EKEventViewController, action: EKEventViewAction) -> Void) -> Self {
-        ce._didCompleteWithAction = handle
+    public func ce_eventViewController(handle: ((EKEventViewController, EKEventViewAction) -> Void)) -> Self {
+        ce._eventViewController = handle
         rebindingDelegate()
         return self
     }
@@ -50,23 +50,23 @@ public extension EKEventViewController {
 
 internal class EKEventViewController_Delegate: UIViewController_Delegate, EKEventViewDelegate {
     
-    var _didCompleteWithAction: ((EKEventViewController, EKEventViewAction) -> Void)?
+    var _eventViewController: ((EKEventViewController, EKEventViewAction) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(eventViewController(_:didCompleteWithAction:)) : _didCompleteWithAction,
+            #selector(eventViewController(_:didCompleteWith:)) : _eventViewController,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func eventViewController(controller: EKEventViewController, didCompleteWithAction action: EKEventViewAction) {
-        _didCompleteWithAction!(controller, action)
+    @objc func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction) {
+        _eventViewController!(controller, action)
     }
 }

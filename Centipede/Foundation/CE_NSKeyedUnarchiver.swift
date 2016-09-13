@@ -2,8 +2,8 @@
 //  CE_NSKeyedUnarchiver.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import Foundation
@@ -40,27 +40,27 @@ public extension NSKeyedUnarchiver {
         return NSKeyedUnarchiver_Delegate()
     }
     
-    public func ce_unarchiver(handle: (unarchiver: NSKeyedUnarchiver, name: String, classNames: [String]) -> AnyClass?) -> Self {
+    public func ce_unarchiver(handle: ((NSKeyedUnarchiver, String, [String]) -> AnyClass?)) -> Self {
         ce._unarchiver = handle
         rebindingDelegate()
         return self
     }
-    public func ce_unarchiverAndDidDecodeObject(handle: (unarchiver: NSKeyedUnarchiver, object: AnyObject?) -> AnyObject?) -> Self {
-        ce._unarchiverAndDidDecodeObject = handle
+    public func ce_unarchiver_didDecode(handle: ((NSKeyedUnarchiver, Any?) -> Any?)) -> Self {
+        ce._unarchiver_didDecode = handle
         rebindingDelegate()
         return self
     }
-    public func ce_unarchiverAndWillReplaceObject(handle: (unarchiver: NSKeyedUnarchiver, object: AnyObject, newObject: AnyObject) -> Void) -> Self {
-        ce._unarchiverAndWillReplaceObject = handle
+    public func ce_unarchiver_willReplace(handle: ((NSKeyedUnarchiver, Any, Any) -> Void)) -> Self {
+        ce._unarchiver_willReplace = handle
         rebindingDelegate()
         return self
     }
-    public func ce_unarchiverWillFinish(handle: (unarchiver: NSKeyedUnarchiver) -> Void) -> Self {
+    public func ce_unarchiverWillFinish(handle: ((NSKeyedUnarchiver) -> Void)) -> Self {
         ce._unarchiverWillFinish = handle
         rebindingDelegate()
         return self
     }
-    public func ce_unarchiverDidFinish(handle: (unarchiver: NSKeyedUnarchiver) -> Void) -> Self {
+    public func ce_unarchiverDidFinish(handle: ((NSKeyedUnarchiver) -> Void)) -> Self {
         ce._unarchiverDidFinish = handle
         rebindingDelegate()
         return self
@@ -71,18 +71,18 @@ public extension NSKeyedUnarchiver {
 internal class NSKeyedUnarchiver_Delegate: NSObject, NSKeyedUnarchiverDelegate {
     
     var _unarchiver: ((NSKeyedUnarchiver, String, [String]) -> AnyClass?)?
-    var _unarchiverAndDidDecodeObject: ((NSKeyedUnarchiver, AnyObject?) -> AnyObject?)?
-    var _unarchiverAndWillReplaceObject: ((NSKeyedUnarchiver, AnyObject, AnyObject) -> Void)?
+    var _unarchiver_didDecode: ((NSKeyedUnarchiver, Any?) -> Any?)?
+    var _unarchiver_willReplace: ((NSKeyedUnarchiver, Any, Any) -> Void)?
     var _unarchiverWillFinish: ((NSKeyedUnarchiver) -> Void)?
     var _unarchiverDidFinish: ((NSKeyedUnarchiver) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
             #selector(unarchiver(_:cannotDecodeObjectOfClassName:originalClasses:)) : _unarchiver,
-            #selector(unarchiver(_:didDecodeObject:)) : _unarchiverAndDidDecodeObject,
-            #selector(unarchiver(_:willReplaceObject:withObject:)) : _unarchiverAndWillReplaceObject,
+            #selector(unarchiver(_:didDecode:)) : _unarchiver_didDecode,
+            #selector(unarchiver(_:willReplace:with:)) : _unarchiver_willReplace,
             #selector(unarchiverWillFinish(_:)) : _unarchiverWillFinish,
             #selector(unarchiverDidFinish(_:)) : _unarchiverDidFinish,
         ]
@@ -90,23 +90,23 @@ internal class NSKeyedUnarchiver_Delegate: NSObject, NSKeyedUnarchiverDelegate {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func unarchiver(unarchiver: NSKeyedUnarchiver, cannotDecodeObjectOfClassName name: String, originalClasses classNames: [String]) -> AnyClass? {
+    @objc func unarchiver(_ unarchiver: NSKeyedUnarchiver, cannotDecodeObjectOfClassName name: String, originalClasses classNames: [String]) -> AnyClass? {
         return _unarchiver!(unarchiver, name, classNames)
     }
-    @objc func unarchiver(unarchiver: NSKeyedUnarchiver, didDecodeObject object: AnyObject?) -> AnyObject? {
-        return _unarchiverAndDidDecodeObject!(unarchiver, object)
+    @objc func unarchiver(_ unarchiver: NSKeyedUnarchiver, didDecode object: Any?) -> Any? {
+        return _unarchiver_didDecode!(unarchiver, object)
     }
-    @objc func unarchiver(unarchiver: NSKeyedUnarchiver, willReplaceObject object: AnyObject, withObject newObject: AnyObject) {
-        _unarchiverAndWillReplaceObject!(unarchiver, object, newObject)
+    @objc func unarchiver(_ unarchiver: NSKeyedUnarchiver, willReplace object: Any, with newObject: Any) {
+        _unarchiver_willReplace!(unarchiver, object, newObject)
     }
-    @objc func unarchiverWillFinish(unarchiver: NSKeyedUnarchiver) {
+    @objc func unarchiverWillFinish(_ unarchiver: NSKeyedUnarchiver) {
         _unarchiverWillFinish!(unarchiver)
     }
-    @objc func unarchiverDidFinish(unarchiver: NSKeyedUnarchiver) {
+    @objc func unarchiverDidFinish(_ unarchiver: NSKeyedUnarchiver) {
         _unarchiverDidFinish!(unarchiver)
     }
 }

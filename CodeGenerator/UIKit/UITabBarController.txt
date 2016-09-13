@@ -2,23 +2,33 @@ UITabBarController: UIViewController, UITabBarControllerDelegate
 
 DELEGATE_LIST:delegate, transitioningDelegate
 
-    @availability(iOS, introduced=3.0)
-    optional func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool
-    optional func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController)
+    @available(iOS 3.0, *)
+    optional public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool
+
+    @available(iOS 2.0, *)
+    optional public func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController)
+
     
-    @availability(iOS, introduced=3.0)
-    optional func tabBarController(tabBarController: UITabBarController, willBeginCustomizingViewControllers viewControllers: [AnyObject])
-    @availability(iOS, introduced=3.0)
-    optional func tabBarController(tabBarController: UITabBarController, willEndCustomizingViewControllers viewControllers: [AnyObject], changed: Bool)
-    optional func tabBarController(tabBarController: UITabBarController, didEndCustomizingViewControllers viewControllers: [AnyObject], changed: Bool)
+    @available(iOS 3.0, *)
+    optional public func tabBarController(_ tabBarController: UITabBarController, willBeginCustomizing viewControllers: [UIViewController])
+
+    @available(iOS 3.0, *)
+    optional public func tabBarController(_ tabBarController: UITabBarController, willEndCustomizing viewControllers: [UIViewController], changed: Bool)
+
+    @available(iOS 2.0, *)
+    optional public func tabBarController(_ tabBarController: UITabBarController, didEndCustomizing viewControllers: [UIViewController], changed: Bool)
+
     
-    @availability(iOS, introduced=7.0)
-    optional func tabBarControllerSupportedInterfaceOrientations(tabBarController: UITabBarController) -> Int
-    @availability(iOS, introduced=7.0)
-    optional func tabBarControllerPreferredInterfaceOrientationForPresentation(tabBarController: UITabBarController) -> UIInterfaceOrientation
+    @available(iOS 7.0, *)
+    optional public func tabBarControllerSupportedInterfaceOrientations(_ tabBarController: UITabBarController) -> UIInterfaceOrientationMask
+
+    @available(iOS 7.0, *)
+    optional public func tabBarControllerPreferredInterfaceOrientationForPresentation(_ tabBarController: UITabBarController) -> UIInterfaceOrientation
+
     
-    @availability(iOS, introduced=7.0)
-    optional func tabBarController(tabBarController: UITabBarController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?
+    @available(iOS 7.0, *)
+    optional public func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?
+
     
-    @availability(iOS, introduced=7.0)
-    optional func tabBarController(tabBarController: UITabBarController, animationControllerForTransitionFromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?
+    @available(iOS 7.0, *)
+    optional public func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?

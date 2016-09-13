@@ -1,6 +1,13 @@
 UINavigationBar: NSObject, UINavigationBarDelegate
 
-    optional func navigationBar(navigationBar: UINavigationBar, shouldPushItem item: UINavigationItem) -> Bool // called to push. return NO not to.
-    optional func navigationBar(navigationBar: UINavigationBar, didPushItem item: UINavigationItem) // called at end of animation of push or immediately if not animated
-    optional func navigationBar(navigationBar: UINavigationBar, shouldPopItem item: UINavigationItem) -> Bool // same as push methods
-    optional func navigationBar(navigationBar: UINavigationBar, didPopItem item: UINavigationItem)
+    @available(iOS 2.0, *)
+    optional public func navigationBar(_ navigationBar: UINavigationBar, shouldPush item: UINavigationItem) -> Bool // called to push. return NO not to.
+
+    @available(iOS 2.0, *)
+    optional public func navigationBar(_ navigationBar: UINavigationBar, didPush item: UINavigationItem) // called at end of animation of push or immediately if not animated
+
+    @available(iOS 2.0, *)
+    optional public func navigationBar(_ navigationBar: UINavigationBar, shouldPop item: UINavigationItem) -> Bool // same as push methods
+
+    @available(iOS 2.0, *)
+    optional public func navigationBar(_ navigationBar: UINavigationBar, didPop item: UINavigationItem)

@@ -1,7 +1,14 @@
 UIWebView: NSObject, UIWebViewDelegate
 
 
-    optional func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool
-    optional func webViewDidStartLoad(webView: UIWebView)
-    optional func webViewDidFinishLoad(webView: UIWebView)
-    optional func webView(webView: UIWebView, didFailLoadWithError error: NSError)
+    @available(iOS 2.0, *)
+    optional public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool
+
+    @available(iOS 2.0, *)
+    optional public func webViewDidStartLoad(_ webView: UIWebView)
+
+    @available(iOS 2.0, *)
+    optional public func webViewDidFinishLoad(_ webView: UIWebView)
+
+    @available(iOS 2.0, *)
+    optional public func webView(_ webView: UIWebView, didFailLoadWithError error: Error)

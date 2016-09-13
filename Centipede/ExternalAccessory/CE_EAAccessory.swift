@@ -2,8 +2,8 @@
 //  CE_EAAccessory.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import ExternalAccessory
@@ -40,8 +40,8 @@ public extension EAAccessory {
         return EAAccessory_Delegate()
     }
     
-    public func ce_didDisconnect(handle: (accessory: EAAccessory) -> Void) -> Self {
-        ce._didDisconnect = handle
+    public func ce_accessoryDidDisconnect(handle: ((EAAccessory) -> Void)) -> Self {
+        ce._accessoryDidDisconnect = handle
         rebindingDelegate()
         return self
     }
@@ -50,23 +50,23 @@ public extension EAAccessory {
 
 internal class EAAccessory_Delegate: NSObject, EAAccessoryDelegate {
     
-    var _didDisconnect: ((EAAccessory) -> Void)?
+    var _accessoryDidDisconnect: ((EAAccessory) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(accessoryDidDisconnect(_:)) : _didDisconnect,
+            #selector(accessoryDidDisconnect(_:)) : _accessoryDidDisconnect,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func accessoryDidDisconnect(accessory: EAAccessory) {
-        _didDisconnect!(accessory)
+    @objc func accessoryDidDisconnect(_ accessory: EAAccessory) {
+        _accessoryDidDisconnect!(accessory)
     }
 }

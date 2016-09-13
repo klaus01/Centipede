@@ -1,7 +1,11 @@
 MCNearbyServiceAdvertiser : NSObject, MCNearbyServiceAdvertiserDelegate
 
-    // Incoming invitation request.  Call the invitationHandler block with YES and a valid session to connect the inviting peer to the session.
-    func advertiser(advertiser: MCNearbyServiceAdvertiser!, didReceiveInvitationFromPeer peerID: MCPeerID!, withContext context: NSData!, invitationHandler: ((Bool, MCSession!) -> Void)!)
+    // Incoming invitation request.  Call the invitationHandler block with YES
+    // and a valid session to connect the inviting peer to the session.
+    @available(iOS 7.0, *)
+    public func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void)
+
     
-    // Advertising did not start due to an error
-    optional func advertiser(advertiser: MCNearbyServiceAdvertiser!, didNotStartAdvertisingPeer error: NSError!)
+    // Advertising did not start due to an error.
+    @available(iOS 7.0, *)
+    optional public func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error)

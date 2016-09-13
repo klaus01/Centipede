@@ -2,8 +2,8 @@
 //  CE_UIDocumentMenuViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
@@ -20,7 +20,7 @@ public extension UIDocumentMenuViewController {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UIDocumentMenuViewController_Delegate {
                 return obj as! UIDocumentMenuViewController_Delegate
             }
@@ -42,12 +42,12 @@ public extension UIDocumentMenuViewController {
         return UIDocumentMenuViewController_Delegate()
     }
     
-    public func ce_documentMenu(handle: (documentMenu: UIDocumentMenuViewController, documentPicker: UIDocumentPickerViewController) -> Void) -> Self {
+    public func ce_documentMenu(handle: ((UIDocumentMenuViewController, UIDocumentPickerViewController) -> Void)) -> Self {
         ce._documentMenu = handle
         rebindingDelegate()
         return self
     }
-    public func ce_documentMenuWasCancelled(handle: (documentMenu: UIDocumentMenuViewController) -> Void) -> Self {
+    public func ce_documentMenuWasCancelled(handle: ((UIDocumentMenuViewController) -> Void)) -> Self {
         ce._documentMenuWasCancelled = handle
         rebindingDelegate()
         return self
@@ -61,7 +61,7 @@ internal class UIDocumentMenuViewController_Delegate: UIViewController_Delegate,
     var _documentMenuWasCancelled: ((UIDocumentMenuViewController) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
             #selector(documentMenu(_:didPickDocumentPicker:)) : _documentMenu,
@@ -71,14 +71,14 @@ internal class UIDocumentMenuViewController_Delegate: UIViewController_Delegate,
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func documentMenu(documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
+    @objc func documentMenu(_ documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
         _documentMenu!(documentMenu, documentPicker)
     }
-    @objc func documentMenuWasCancelled(documentMenu: UIDocumentMenuViewController) {
+    @objc func documentMenuWasCancelled(_ documentMenu: UIDocumentMenuViewController) {
         _documentMenuWasCancelled!(documentMenu)
     }
 }

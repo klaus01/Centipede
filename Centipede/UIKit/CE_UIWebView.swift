@@ -2,8 +2,8 @@
 //  CE_UIWebView.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
@@ -20,7 +20,7 @@ public extension UIWebView {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UIWebView_Delegate {
                 return obj as! UIWebView_Delegate
             }
@@ -40,23 +40,23 @@ public extension UIWebView {
         return UIWebView_Delegate()
     }
     
-    public func ce_shouldStartLoadWithRequest(handle: (webView: UIWebView, request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool) -> Self {
-        ce._shouldStartLoadWithRequest = handle
+    public func ce_webView(handle: ((UIWebView, URLRequest, UIWebViewNavigationType) -> Bool)) -> Self {
+        ce._webView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didStartLoad(handle: (webView: UIWebView) -> Void) -> Self {
-        ce._didStartLoad = handle
+    public func ce_webViewDidStartLoad(handle: ((UIWebView) -> Void)) -> Self {
+        ce._webViewDidStartLoad = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFinishLoad(handle: (webView: UIWebView) -> Void) -> Self {
-        ce._didFinishLoad = handle
+    public func ce_webViewDidFinishLoad(handle: ((UIWebView) -> Void)) -> Self {
+        ce._webViewDidFinishLoad = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFailLoadWithError(handle: (webView: UIWebView, error: NSError?) -> Void) -> Self {
-        ce._didFailLoadWithError = handle
+    public func ce_webView_didFailLoadWithError(handle: ((UIWebView, Error) -> Void)) -> Self {
+        ce._webView_didFailLoadWithError = handle
         rebindingDelegate()
         return self
     }
@@ -65,38 +65,38 @@ public extension UIWebView {
 
 internal class UIWebView_Delegate: NSObject, UIWebViewDelegate {
     
-    var _shouldStartLoadWithRequest: ((UIWebView, NSURLRequest, UIWebViewNavigationType) -> Bool)?
-    var _didStartLoad: ((UIWebView) -> Void)?
-    var _didFinishLoad: ((UIWebView) -> Void)?
-    var _didFailLoadWithError: ((UIWebView, NSError?) -> Void)?
+    var _webView: ((UIWebView, URLRequest, UIWebViewNavigationType) -> Bool)?
+    var _webViewDidStartLoad: ((UIWebView) -> Void)?
+    var _webViewDidFinishLoad: ((UIWebView) -> Void)?
+    var _webView_didFailLoadWithError: ((UIWebView, Error) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(webView(_:shouldStartLoadWithRequest:navigationType:)) : _shouldStartLoadWithRequest,
-            #selector(webViewDidStartLoad(_:)) : _didStartLoad,
-            #selector(webViewDidFinishLoad(_:)) : _didFinishLoad,
-            #selector(webView(_:didFailLoadWithError:)) : _didFailLoadWithError,
+            #selector(webView(_:shouldStartLoadWith:navigationType:)) : _webView,
+            #selector(webViewDidStartLoad(_:)) : _webViewDidStartLoad,
+            #selector(webViewDidFinishLoad(_:)) : _webViewDidFinishLoad,
+            #selector(webView(_:didFailLoadWithError:)) : _webView_didFailLoadWithError,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        return _shouldStartLoadWithRequest!(webView, request, navigationType)
+    @objc func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        return _webView!(webView, request, navigationType)
     }
-    @objc func webViewDidStartLoad(webView: UIWebView) {
-        _didStartLoad!(webView)
+    @objc func webViewDidStartLoad(_ webView: UIWebView) {
+        _webViewDidStartLoad!(webView)
     }
-    @objc func webViewDidFinishLoad(webView: UIWebView) {
-        _didFinishLoad!(webView)
+    @objc func webViewDidFinishLoad(_ webView: UIWebView) {
+        _webViewDidFinishLoad!(webView)
     }
-    @objc func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        _didFailLoadWithError!(webView, error)
+    @objc func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        _webView_didFailLoadWithError!(webView, error)
     }
 }

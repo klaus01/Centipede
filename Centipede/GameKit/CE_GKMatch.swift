@@ -2,8 +2,8 @@
 //  CE_GKMatch.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import GameKit
@@ -40,38 +40,33 @@ public extension GKMatch {
         return GKMatch_Delegate()
     }
     
-    public func ce_didReceiveData(handle: (match: GKMatch, data: NSData, player: GKPlayer) -> Void) -> Self {
-        ce._didReceiveData = handle
+    public func ce_match(handle: ((GKMatch, Data, GKPlayer) -> Void)) -> Self {
+        ce._match = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didReceiveDataAndDidReceiveData(handle: (match: GKMatch, data: NSData, playerID: String) -> Void) -> Self {
-        ce._didReceiveDataAndDidReceiveData = handle
+    public func ce_match_didReceive(handle: ((GKMatch, Data, String) -> Void)) -> Self {
+        ce._match_didReceive = handle
         rebindingDelegate()
         return self
     }
-    public func ce_playerDidChangeConnectionState(handle: (match: GKMatch, player: GKPlayer, state: GKPlayerConnectionState) -> Void) -> Self {
-        ce._playerDidChangeConnectionState = handle
+    public func ce_match_player(handle: ((GKMatch, GKPlayer, GKPlayerConnectionState) -> Void)) -> Self {
+        ce._match_player = handle
         rebindingDelegate()
         return self
     }
-    public func ce_playerDidChangeState(handle: (match: GKMatch, playerID: String, state: GKPlayerConnectionState) -> Void) -> Self {
-        ce._playerDidChangeState = handle
+    public func ce_match_didFailWithError(handle: ((GKMatch, Error?) -> Void)) -> Self {
+        ce._match_didFailWithError = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFailWithError(handle: (match: GKMatch, error: NSError?) -> Void) -> Self {
-        ce._didFailWithError = handle
+    public func ce_match_shouldReinviteDisconnectedPlayer(handle: ((GKMatch, GKPlayer) -> Bool)) -> Self {
+        ce._match_shouldReinviteDisconnectedPlayer = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldReinviteDisconnectedPlayer(handle: (match: GKMatch, player: GKPlayer) -> Bool) -> Self {
-        ce._shouldReinviteDisconnectedPlayer = handle
-        rebindingDelegate()
-        return self
-    }
-    public func ce_shouldReinvitePlayer(handle: (match: GKMatch, playerID: String) -> Bool) -> Self {
-        ce._shouldReinvitePlayer = handle
+    public func ce_match_shouldReinvitePlayer(handle: ((GKMatch, String) -> Bool)) -> Self {
+        ce._match_shouldReinvitePlayer = handle
         rebindingDelegate()
         return self
     }
@@ -80,53 +75,48 @@ public extension GKMatch {
 
 internal class GKMatch_Delegate: NSObject, GKMatchDelegate {
     
-    var _didReceiveData: ((GKMatch, NSData, GKPlayer) -> Void)?
-    var _didReceiveDataAndDidReceiveData: ((GKMatch, NSData, String) -> Void)?
-    var _playerDidChangeConnectionState: ((GKMatch, GKPlayer, GKPlayerConnectionState) -> Void)?
-    var _playerDidChangeState: ((GKMatch, String, GKPlayerConnectionState) -> Void)?
-    var _didFailWithError: ((GKMatch, NSError?) -> Void)?
-    var _shouldReinviteDisconnectedPlayer: ((GKMatch, GKPlayer) -> Bool)?
-    var _shouldReinvitePlayer: ((GKMatch, String) -> Bool)?
+    var _match: ((GKMatch, Data, GKPlayer) -> Void)?
+    var _match_didReceive: ((GKMatch, Data, String) -> Void)?
+    var _match_player: ((GKMatch, GKPlayer, GKPlayerConnectionState) -> Void)?
+    var _match_didFailWithError: ((GKMatch, Error?) -> Void)?
+    var _match_shouldReinviteDisconnectedPlayer: ((GKMatch, GKPlayer) -> Bool)?
+    var _match_shouldReinvitePlayer: ((GKMatch, String) -> Bool)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(match(_:didReceiveData:fromRemotePlayer:)) : _didReceiveData,
-            #selector(match(_:didReceiveData:fromPlayer:)) : _didReceiveDataAndDidReceiveData,
-            #selector(match(_:player:didChangeConnectionState:)) : _playerDidChangeConnectionState,
-            #selector(match(_:player:didChangeState:)) : _playerDidChangeState,
-            #selector(match(_:didFailWithError:)) : _didFailWithError,
-            #selector(match(_:shouldReinviteDisconnectedPlayer:)) : _shouldReinviteDisconnectedPlayer,
-            #selector(match(_:shouldReinvitePlayer:)) : _shouldReinvitePlayer,
+            #selector(match(_:didReceive:fromRemotePlayer:)) : _match,
+            #selector(match(_:didReceive:fromPlayer:)) : _match_didReceive,
+            #selector(match(_:player:didChange:)) : _match_player,
+            #selector(match(_:didFailWithError:)) : _match_didFailWithError,
+            #selector(match(_:shouldReinviteDisconnectedPlayer:)) : _match_shouldReinviteDisconnectedPlayer,
+            #selector(match(_:shouldReinvitePlayer:)) : _match_shouldReinvitePlayer,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func match(match: GKMatch, didReceiveData data: NSData, fromRemotePlayer player: GKPlayer) {
-        _didReceiveData!(match, data, player)
+    @objc func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
+        _match!(match, data, player)
     }
-    @objc func match(match: GKMatch, didReceiveData data: NSData, fromPlayer playerID: String) {
-        _didReceiveDataAndDidReceiveData!(match, data, playerID)
+    @objc func match(_ match: GKMatch, didReceive data: Data, fromPlayer playerID: String) {
+        _match_didReceive!(match, data, playerID)
     }
-    @objc func match(match: GKMatch, player: GKPlayer, didChangeConnectionState state: GKPlayerConnectionState) {
-        _playerDidChangeConnectionState!(match, player, state)
+    @objc func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {
+        _match_player!(match, player, state)
     }
-    @objc func match(match: GKMatch, player playerID: String, didChangeState state: GKPlayerConnectionState) {
-        _playerDidChangeState!(match, playerID, state)
+    @objc func match(_ match: GKMatch, didFailWithError error: Error?) {
+        _match_didFailWithError!(match, error)
     }
-    @objc func match(match: GKMatch, didFailWithError error: NSError?) {
-        _didFailWithError!(match, error)
+    @objc func match(_ match: GKMatch, shouldReinviteDisconnectedPlayer player: GKPlayer) -> Bool {
+        return _match_shouldReinviteDisconnectedPlayer!(match, player)
     }
-    @objc func match(match: GKMatch, shouldReinviteDisconnectedPlayer player: GKPlayer) -> Bool {
-        return _shouldReinviteDisconnectedPlayer!(match, player)
-    }
-    @objc func match(match: GKMatch, shouldReinvitePlayer playerID: String) -> Bool {
-        return _shouldReinvitePlayer!(match, playerID)
+    @objc func match(_ match: GKMatch, shouldReinvitePlayer playerID: String) -> Bool {
+        return _match_shouldReinvitePlayer!(match, playerID)
     }
 }

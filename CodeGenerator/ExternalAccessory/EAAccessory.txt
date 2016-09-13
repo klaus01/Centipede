@@ -1,4 +1,4 @@
 EAAccessory: NSObject, EAAccessoryDelegate
 
-    @availability(iOS, introduced=3.0)
-    optional func accessoryDidDisconnect(accessory: EAAccessory!)
+    @available(iOS 3.0, *)
+    optional public func accessoryDidDisconnect(_ accessory: EAAccessory)

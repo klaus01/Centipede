@@ -9,8 +9,9 @@ EAWiFiUnconfiguredAccessoryBrowser: NSObject, EAWiFiUnconfiguredAccessoryBrowser
      *  @param state   The current state of the EAWiFiUnconfiguredAccessoryBrowser.
      *
      */
-    @availability(iOS, introduced=8.0)
-    func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser!, didUpdateState state: EAWiFiUnconfiguredAccessoryBrowserState)
+    @available(iOS 8.0, *)
+    public func accessoryBrowser(_ browser: EAWiFiUnconfiguredAccessoryBrowser, didUpdate state: EAWiFiUnconfiguredAccessoryBrowserState)
+
     
     /*!
      *  @method accessoryBrowser:didFindUnconfiguredAccessories:
@@ -22,8 +23,9 @@ EAWiFiUnconfiguredAccessoryBrowser: NSObject, EAWiFiUnconfiguredAccessoryBrowser
      *  @param accessories The set of EAWiFiUnconfiguredAccessory objects that have been found since the last update.
      *
      */
-    @availability(iOS, introduced=8.0)
-    func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser!, didFindUnconfiguredAccessories accessories: Set<NSObject>!)
+    @available(iOS 8.0, *)
+    public func accessoryBrowser(_ browser: EAWiFiUnconfiguredAccessoryBrowser, didFindUnconfiguredAccessories accessories: Set<EAWiFiUnconfiguredAccessory>)
+
     
     /*!
      *  @method accessoryBrowser:didRemoveUnconfiguredAccessories:
@@ -35,11 +37,12 @@ EAWiFiUnconfiguredAccessoryBrowser: NSObject, EAWiFiUnconfiguredAccessoryBrowser
      *  @param accessories The set of EAWiFiUnconfiguredAccessory objects that have been removed from the scan results since the last update.
      *
      */
-    @availability(iOS, introduced=8.0)
-    func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser!, didRemoveUnconfiguredAccessories accessories: Set<NSObject>!)
+    @available(iOS 8.0, *)
+    public func accessoryBrowser(_ browser: EAWiFiUnconfiguredAccessoryBrowser, didRemoveUnconfiguredAccessories accessories: Set<EAWiFiUnconfiguredAccessory>)
+
     
     /*!
-     *  @method accessoryBrowser:didFinishConfiguringAccessory:withError:
+     *  @method accessoryBrowser:didFinishConfiguringAccessory:withStatus:
      *
      *  @discussion Invoked whenever the EAWiFiUnconfiguredAccessoryBrowser has completed configuring the selected EAWiFiUnconfiguredAccessory.
      *
@@ -48,5 +51,5 @@ EAWiFiUnconfiguredAccessoryBrowser: NSObject, EAWiFiUnconfiguredAccessoryBrowser
      *  @param status    The status of the configuration process that has completed.
      *
      */
-    @availability(iOS, introduced=8.0)
-    func accessoryBrowser(browser: EAWiFiUnconfiguredAccessoryBrowser!, didFinishConfiguringAccessory accessory: EAWiFiUnconfiguredAccessory!, withStatus status: EAWiFiUnconfiguredAccessoryConfigurationStatus)
+    @available(iOS 8.0, *)
+    public func accessoryBrowser(_ browser: EAWiFiUnconfiguredAccessoryBrowser, didFinishConfiguringAccessory accessory: EAWiFiUnconfiguredAccessory, with status: EAWiFiUnconfiguredAccessoryConfigurationStatus)

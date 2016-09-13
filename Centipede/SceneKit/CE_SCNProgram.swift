@@ -2,8 +2,8 @@
 //  CE_SCNProgram.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import SceneKit
@@ -40,7 +40,7 @@ public extension SCNProgram {
         return SCNProgram_Delegate()
     }
     
-    public func ce_program(handle: (program: SCNProgram, error: NSError) -> Void) -> Self {
+    public func ce_program(handle: ((SCNProgram, Error) -> Void)) -> Self {
         ce._program = handle
         rebindingDelegate()
         return self
@@ -50,10 +50,10 @@ public extension SCNProgram {
 
 internal class SCNProgram_Delegate: NSObject, SCNProgramDelegate {
     
-    var _program: ((SCNProgram, NSError) -> Void)?
+    var _program: ((SCNProgram, Error) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
             #selector(program(_:handleError:)) : _program,
@@ -62,11 +62,11 @@ internal class SCNProgram_Delegate: NSObject, SCNProgramDelegate {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func program(program: SCNProgram, handleError error: NSError) {
+    @objc func program(_ program: SCNProgram, handleError error: Error) {
         _program!(program, error)
     }
 }

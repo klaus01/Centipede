@@ -3,24 +3,38 @@ UIPickerView: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
 
 DELEGATE_LIST:dataSource, delegate
 
-
+// UIPickerViewDataSource
     // returns the number of 'columns' to display.
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
+    @available(iOS 2.0, *)
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int
+
     
     // returns the # of rows in each component..
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    @available(iOS 2.0, *)
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
 
     
+// UIPickerViewDelegate
     // returns width of column and height of row for each component. 
-    optional func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat
-    optional func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
+    @available(iOS 2.0, *)
+    optional public func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat
+
+    @available(iOS 2.0, *)
+    optional public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
+
     
     // these methods return either a plain NSString, a NSAttributedString, or a view (e.g UILabel) to display the row for the component.
     // for the view versions, we cache any hidden and thus unused views and pass them back for reuse. 
     // If you return back a different object, the old one will be released. the view will be centered in the row rect  
-    optional func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!
-    @availability(iOS, introduced=6.0)
-    optional func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? // attributed title is favored if both methods are implemented
-    optional func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView
+    @available(iOS 2.0, *)
+    optional public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+
+    @available(iOS 6.0, *)
+    optional public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? // attributed title is favored if both methods are implemented
+
+    @available(iOS 2.0, *)
+    optional public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
+
     
-    optional func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    @available(iOS 2.0, *)
+    optional public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)

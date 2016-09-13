@@ -1,7 +1,8 @@
 NSKeyedUnarchiver : NSObject, NSKeyedUnarchiverDelegate
 
     // error handling
-    optional func unarchiver(unarchiver: NSKeyedUnarchiver, cannotDecodeObjectOfClassName name: String, originalClasses classNames: [AnyObject]) -> AnyClass
+    optional public func unarchiver(_ unarchiver: NSKeyedUnarchiver, cannotDecodeObjectOfClassName name: String, originalClasses classNames: [String]) -> AnyClass?
+
     // Informs the delegate that the named class is not available during decoding.
     // The delegate may, for example, load some code to introduce the class to the
     // runtime and return it, or substitute a different class object.  If the
@@ -10,7 +11,8 @@ NSKeyedUnarchiver : NSObject, NSKeyedUnarchiverDelegate
     // the immediate superclass, and so on.
     
     // substitution
-    optional func unarchiver(unarchiver: NSKeyedUnarchiver, didDecodeObject object: AnyObject?) -> AnyObject?
+    optional public func unarchiver(_ unarchiver: NSKeyedUnarchiver, didDecode object: Any?) -> Any?
+
     // Informs the delegate that the object has been decoded.  The delegate
     // either returns this object or can return a different object to replace
     // the decoded one.  The object may be nil.  If the delegate returns nil,
@@ -18,13 +20,15 @@ NSKeyedUnarchiver : NSObject, NSKeyedUnarchiverDelegate
     // decoded). The delegate may use this to keep track of the decoded objects.
     
     // notification
-    optional func unarchiver(unarchiver: NSKeyedUnarchiver, willReplaceObject object: AnyObject, withObject newObject: AnyObject)
+    optional public func unarchiver(_ unarchiver: NSKeyedUnarchiver, willReplace object: Any, with newObject: Any)
+
     // Informs the delegate that the newObject is being substituted for the
     // object. This is also called when the delegate itself is doing/has done
     // the substitution. The delegate may use this method if it is keeping track
     // of the encoded or decoded objects.
     
-    optional func unarchiverWillFinish(unarchiver: NSKeyedUnarchiver)
+    optional public func unarchiverWillFinish(_ unarchiver: NSKeyedUnarchiver)
+
     // Notifies the delegate that decoding is about to finish.
     
-    optional func unarchiverDidFinish(unarchiver: NSKeyedUnarchiver)
+    optional public func unarchiverDidFinish(_ unarchiver: NSKeyedUnarchiver)

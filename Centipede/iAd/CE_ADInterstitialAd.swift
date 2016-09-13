@@ -2,8 +2,8 @@
 //  CE_ADInterstitialAd.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import iAd
@@ -40,33 +40,33 @@ public extension ADInterstitialAd {
         return ADInterstitialAd_Delegate()
     }
     
-    public func ce_didUnload(handle: (interstitialAd: ADInterstitialAd) -> Void) -> Self {
-        ce._didUnload = handle
+    public func ce_interstitialAdDidUnload(handle: ((ADInterstitialAd) -> Void)) -> Self {
+        ce._interstitialAdDidUnload = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFailWithError(handle: (interstitialAd: ADInterstitialAd, error: NSError!) -> Void) -> Self {
-        ce._didFailWithError = handle
+    public func ce_interstitialAd(handle: ((ADInterstitialAd, Error) -> Void)) -> Self {
+        ce._interstitialAd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willLoad(handle: (interstitialAd: ADInterstitialAd) -> Void) -> Self {
-        ce._willLoad = handle
+    public func ce_interstitialAdWillLoad(handle: ((ADInterstitialAd) -> Void)) -> Self {
+        ce._interstitialAdWillLoad = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didLoad(handle: (interstitialAd: ADInterstitialAd) -> Void) -> Self {
-        ce._didLoad = handle
+    public func ce_interstitialAdDidLoad(handle: ((ADInterstitialAd) -> Void)) -> Self {
+        ce._interstitialAdDidLoad = handle
         rebindingDelegate()
         return self
     }
-    public func ce_actionShouldBegin(handle: (interstitialAd: ADInterstitialAd, willLeave: Bool) -> Bool) -> Self {
-        ce._actionShouldBegin = handle
+    public func ce_interstitialAdActionShouldBegin(handle: ((ADInterstitialAd, Bool) -> Bool)) -> Self {
+        ce._interstitialAdActionShouldBegin = handle
         rebindingDelegate()
         return self
     }
-    public func ce_actionDidFinish(handle: (interstitialAd: ADInterstitialAd) -> Void) -> Self {
-        ce._actionDidFinish = handle
+    public func ce_interstitialAdActionDidFinish(handle: ((ADInterstitialAd) -> Void)) -> Self {
+        ce._interstitialAdActionDidFinish = handle
         rebindingDelegate()
         return self
     }
@@ -75,48 +75,48 @@ public extension ADInterstitialAd {
 
 internal class ADInterstitialAd_Delegate: NSObject, ADInterstitialAdDelegate {
     
-    var _didUnload: ((ADInterstitialAd) -> Void)?
-    var _didFailWithError: ((ADInterstitialAd, NSError!) -> Void)?
-    var _willLoad: ((ADInterstitialAd) -> Void)?
-    var _didLoad: ((ADInterstitialAd) -> Void)?
-    var _actionShouldBegin: ((ADInterstitialAd, Bool) -> Bool)?
-    var _actionDidFinish: ((ADInterstitialAd) -> Void)?
+    var _interstitialAdDidUnload: ((ADInterstitialAd) -> Void)?
+    var _interstitialAd: ((ADInterstitialAd, Error) -> Void)?
+    var _interstitialAdWillLoad: ((ADInterstitialAd) -> Void)?
+    var _interstitialAdDidLoad: ((ADInterstitialAd) -> Void)?
+    var _interstitialAdActionShouldBegin: ((ADInterstitialAd, Bool) -> Bool)?
+    var _interstitialAdActionDidFinish: ((ADInterstitialAd) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(interstitialAdDidUnload(_:)) : _didUnload,
-            #selector(interstitialAd(_:didFailWithError:)) : _didFailWithError,
-            #selector(interstitialAdWillLoad(_:)) : _willLoad,
-            #selector(interstitialAdDidLoad(_:)) : _didLoad,
-            #selector(interstitialAdActionShouldBegin(_:willLeaveApplication:)) : _actionShouldBegin,
-            #selector(interstitialAdActionDidFinish(_:)) : _actionDidFinish,
+            #selector(interstitialAdDidUnload(_:)) : _interstitialAdDidUnload,
+            #selector(interstitialAd(_:didFailWithError:)) : _interstitialAd,
+            #selector(interstitialAdWillLoad(_:)) : _interstitialAdWillLoad,
+            #selector(interstitialAdDidLoad(_:)) : _interstitialAdDidLoad,
+            #selector(interstitialAdActionShouldBegin(_:willLeaveApplication:)) : _interstitialAdActionShouldBegin,
+            #selector(interstitialAdActionDidFinish(_:)) : _interstitialAdActionDidFinish,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func interstitialAdDidUnload(interstitialAd: ADInterstitialAd) {
-        _didUnload!(interstitialAd)
+    @objc func interstitialAdDidUnload(_ interstitialAd: ADInterstitialAd) {
+        _interstitialAdDidUnload!(interstitialAd)
     }
-    @objc func interstitialAd(interstitialAd: ADInterstitialAd, didFailWithError error: NSError!) {
-        _didFailWithError!(interstitialAd, error)
+    @objc func interstitialAd(_ interstitialAd: ADInterstitialAd, didFailWithError error: Error) {
+        _interstitialAd!(interstitialAd, error)
     }
-    @objc func interstitialAdWillLoad(interstitialAd: ADInterstitialAd) {
-        _willLoad!(interstitialAd)
+    @objc func interstitialAdWillLoad(_ interstitialAd: ADInterstitialAd) {
+        _interstitialAdWillLoad!(interstitialAd)
     }
-    @objc func interstitialAdDidLoad(interstitialAd: ADInterstitialAd) {
-        _didLoad!(interstitialAd)
+    @objc func interstitialAdDidLoad(_ interstitialAd: ADInterstitialAd) {
+        _interstitialAdDidLoad!(interstitialAd)
     }
-    @objc func interstitialAdActionShouldBegin(interstitialAd: ADInterstitialAd, willLeaveApplication willLeave: Bool) -> Bool {
-        return _actionShouldBegin!(interstitialAd, willLeave)
+    @objc func interstitialAdActionShouldBegin(_ interstitialAd: ADInterstitialAd, willLeaveApplication willLeave: Bool) -> Bool {
+        return _interstitialAdActionShouldBegin!(interstitialAd, willLeave)
     }
-    @objc func interstitialAdActionDidFinish(interstitialAd: ADInterstitialAd) {
-        _actionDidFinish!(interstitialAd)
+    @objc func interstitialAdActionDidFinish(_ interstitialAd: ADInterstitialAd) {
+        _interstitialAdActionDidFinish!(interstitialAd)
     }
 }

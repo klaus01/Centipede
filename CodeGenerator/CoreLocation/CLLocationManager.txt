@@ -1,17 +1,6 @@
 CLLocationManager: NSObject, CLLocationManagerDelegate
 
     /*
-     *  locationManager:didUpdateToLocation:fromLocation:
-     *  
-     *  Discussion:
-     *    Invoked when a new location is available. oldLocation may be nil if there is no previous location
-     *    available.
-     *
-     *    This method is deprecated. If locationManager:didUpdateLocations: is
-     *    implemented, this method will not be called.
-     */
-    
-    /*
      *  locationManager:didUpdateLocations:
      *
      *  Discussion:
@@ -21,8 +10,9 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *
      *    locations is an array of CLLocation objects in chronological order.
      */
-    @availability(iOS, introduced=6.0)
-    optional func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!)
+    @available(iOS 6.0, *)
+    optional public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+
     
     /*
      *  locationManager:didUpdateHeading:
@@ -30,8 +20,9 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *  Discussion:
      *    Invoked when a new heading is available.
      */
-    @availability(iOS, introduced=3.0)
-    optional func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!)
+    @available(iOS 3.0, *)
+    optional public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading)
+
     
     /*
      *  locationManagerShouldDisplayHeadingCalibration:
@@ -40,8 +31,9 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *    Invoked when a new heading is available. Return YES to display heading calibration info. The display 
      *    will remain until heading is calibrated, unless dismissed early via dismissHeadingCalibrationDisplay.
      */
-    @availability(iOS, introduced=3.0)
-    optional func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager!) -> Bool
+    @available(iOS 3.0, *)
+    optional public func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool
+
     
     /*
      *  locationManager:didDetermineState:forRegion:
@@ -50,8 +42,9 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *    Invoked when there's a state transition for a monitored region or in response to a request for state via a
      *    a call to requestStateForRegion:.
      */
-    @availability(iOS, introduced=7.0)
-    optional func locationManager(manager: CLLocationManager!, didDetermineState state: CLRegionState, forRegion region: CLRegion!)
+    @available(iOS 7.0, *)
+    optional public func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion)
+
     
     /*
      *  locationManager:didRangeBeacons:inRegion:
@@ -63,8 +56,9 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *    Similarly if a specific beacon no longer appears in beacons, it may be assumed the beacon is no longer received
      *    by the device.
      */
-    @availability(iOS, introduced=7.0)
-    optional func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!)
+    @available(iOS 7.0, *)
+    optional public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion)
+
     
     /*
      *  locationManager:rangingBeaconsDidFailForRegion:withError:
@@ -72,8 +66,9 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *  Discussion:
      *    Invoked when an error has occurred ranging beacons in a region. Error types are defined in "CLError.h".
      */
-    @availability(iOS, introduced=7.0)
-    optional func locationManager(manager: CLLocationManager!, rangingBeaconsDidFailForRegion region: CLBeaconRegion!, withError error: NSError!)
+    @available(iOS 7.0, *)
+    optional public func locationManager(_ manager: CLLocationManager, rangingBeaconsDidFailFor region: CLBeaconRegion, withError error: Error)
+
     
     /*
      *  locationManager:didEnterRegion:
@@ -82,8 +77,9 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *    Invoked when the user enters a monitored region.  This callback will be invoked for every allocated
      *    CLLocationManager instance with a non-nil delegate that implements this method.
      */
-    @availability(iOS, introduced=4.0)
-    optional func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!)
+    @available(iOS 4.0, *)
+    optional public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion)
+
     
     /*
      *  locationManager:didExitRegion:
@@ -92,8 +88,9 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *    Invoked when the user exits a monitored region.  This callback will be invoked for every allocated
      *    CLLocationManager instance with a non-nil delegate that implements this method.
      */
-    @availability(iOS, introduced=4.0)
-    optional func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!)
+    @available(iOS 4.0, *)
+    optional public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion)
+
     
     /*
      *  locationManager:didFailWithError:
@@ -101,7 +98,9 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *  Discussion:
      *    Invoked when an error has occurred. Error types are defined in "CLError.h".
      */
-    optional func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!)
+    @available(iOS 2.0, *)
+    optional public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+
     
     /*
      *  locationManager:monitoringDidFailForRegion:withError:
@@ -109,8 +108,9 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *  Discussion:
      *    Invoked when a region monitoring error has occurred. Error types are defined in "CLError.h".
      */
-    @availability(iOS, introduced=4.0)
-    optional func locationManager(manager: CLLocationManager!, monitoringDidFailForRegion region: CLRegion!, withError error: NSError!)
+    @available(iOS 4.0, *)
+    optional public func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error)
+
     
     /*
      *  locationManager:didChangeAuthorizationStatus:
@@ -118,8 +118,9 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *  Discussion:
      *    Invoked when the authorization status changes for this application.
      */
-    @availability(iOS, introduced=4.2)
-    optional func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    @available(iOS 4.2, *)
+    optional public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
+
     
     /*
      *  locationManager:didStartMonitoringForRegion:
@@ -127,15 +128,17 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *  Discussion:
      *    Invoked when a monitoring for a region started successfully.
      */
-    @availability(iOS, introduced=5.0)
-    optional func locationManager(manager: CLLocationManager!, didStartMonitoringForRegion region: CLRegion!)
+    @available(iOS 5.0, *)
+    optional public func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion)
+
     
     /*
      *  Discussion:
      *    Invoked when location updates are automatically paused.
      */
-    @availability(iOS, introduced=6.0)
-    optional func locationManagerDidPauseLocationUpdates(manager: CLLocationManager!)
+    @available(iOS 6.0, *)
+    optional public func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager)
+
     
     /*
      *  Discussion:
@@ -144,8 +147,9 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *    In the event that your application is terminated while suspended, you will
      *	  not receive this notification.
      */
-    @availability(iOS, introduced=6.0)
-    optional func locationManagerDidResumeLocationUpdates(manager: CLLocationManager!)
+    @available(iOS 6.0, *)
+    optional public func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager)
+
     
     /*
      *  locationManager:didFinishDeferredUpdatesWithError:
@@ -156,10 +160,11 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *    are all possible reasons for finishing deferred updates.
      *
      *    An error will be returned if deferred updates end before the specified
-     *    criteria are met (see CLError).
+     *    criteria are met (see CLError), otherwise error will be nil.
      */
-    @availability(iOS, introduced=6.0)
-    optional func locationManager(manager: CLLocationManager!, didFinishDeferredUpdatesWithError error: NSError!)
+    @available(iOS 6.0, *)
+    optional public func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?)
+
     
     /*
      *  locationManager:didVisit:
@@ -169,4 +174,5 @@ CLLocationManager: NSObject, CLLocationManagerDelegate
      *    a location, if visit monitoring is currently started (possibly from a
      *    prior launch).
      */
-    optional func locationManager(manager: CLLocationManager!, didVisit visit: CLVisit!)
+    @available(iOS 8.0, *)
+    optional public func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit)

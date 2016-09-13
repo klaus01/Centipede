@@ -2,8 +2,8 @@
 //  CE_MPMediaPickerController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import MediaPlayer
@@ -40,12 +40,12 @@ public extension MPMediaPickerController {
         return MPMediaPickerController_Delegate()
     }
     
-    public func ce_mediaPicker(handle: (mediaPicker: MPMediaPickerController, mediaItemCollection: MPMediaItemCollection) -> Void) -> Self {
+    public func ce_mediaPicker(handle: ((MPMediaPickerController, MPMediaItemCollection) -> Void)) -> Self {
         ce._mediaPicker = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mediaPickerDidCancel(handle: (mediaPicker: MPMediaPickerController) -> Void) -> Self {
+    public func ce_mediaPickerDidCancel(handle: ((MPMediaPickerController) -> Void)) -> Self {
         ce._mediaPickerDidCancel = handle
         rebindingDelegate()
         return self
@@ -59,7 +59,7 @@ internal class MPMediaPickerController_Delegate: UIViewController_Delegate, MPMe
     var _mediaPickerDidCancel: ((MPMediaPickerController) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
             #selector(mediaPicker(_:didPickMediaItems:)) : _mediaPicker,
@@ -69,14 +69,14 @@ internal class MPMediaPickerController_Delegate: UIViewController_Delegate, MPMe
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func mediaPicker(mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
+    @objc func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
         _mediaPicker!(mediaPicker, mediaItemCollection)
     }
-    @objc func mediaPickerDidCancel(mediaPicker: MPMediaPickerController) {
+    @objc func mediaPickerDidCancel(_ mediaPicker: MPMediaPickerController) {
         _mediaPickerDidCancel!(mediaPicker)
     }
 }

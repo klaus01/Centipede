@@ -12,5 +12,5 @@ EKEventViewController : UIViewController, EKEventViewDelegate
      @param      controller          the controller in question
      @param      action              the action that is triggering the dismissal
      */
-    @availability(iOS, introduced=4.2)
-    func eventViewController(controller: EKEventViewController!, didCompleteWithAction action: EKEventViewAction)
+    @available(iOS 4.2, *)
+    public func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction)

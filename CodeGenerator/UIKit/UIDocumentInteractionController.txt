@@ -3,27 +3,48 @@ UIDocumentInteractionController: NSObject, UIDocumentInteractionControllerDelega
     // If preview is supported, this provides the view controller on which the preview will be presented.
     // This method is required if preview is supported.
     // If presenting atop a navigation stack, provide the navigation controller in order to animate in a manner consistent with the rest of the platform.
-    optional func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController
+    @available(iOS 3.2, *)
+    optional public func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController
+
     
     // If preview is supported, these provide the view and rect that will be used as the starting point for the animation to the full screen preview.
     // The actual animation that is performed depends upon the platform and other factors.
     // If documentInteractionControllerRectForPreview is not implemented, the specified view's bounds will be used.
     // If documentInteractionControllerViewForPreview is not implemented, the preview controller will simply fade in instead of scaling up.
-    optional func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect
-    optional func documentInteractionControllerViewForPreview(controller: UIDocumentInteractionController) -> UIView?
+    @available(iOS 3.2, *)
+    optional public func documentInteractionControllerRectForPreview(_ controller: UIDocumentInteractionController) -> CGRect
+
+    @available(iOS 3.2, *)
+    optional public func documentInteractionControllerViewForPreview(_ controller: UIDocumentInteractionController) -> UIView?
+
     
     // Preview presented/dismissed on document.  Use to set up any HI underneath.
-    optional func documentInteractionControllerWillBeginPreview(controller: UIDocumentInteractionController)
-    optional func documentInteractionControllerDidEndPreview(controller: UIDocumentInteractionController)
+    @available(iOS 3.2, *)
+    optional public func documentInteractionControllerWillBeginPreview(_ controller: UIDocumentInteractionController)
+
+    @available(iOS 3.2, *)
+    optional public func documentInteractionControllerDidEndPreview(_ controller: UIDocumentInteractionController)
+
     
     // Options menu presented/dismissed on document.  Use to set up any HI underneath.
-    optional func documentInteractionControllerWillPresentOptionsMenu(controller: UIDocumentInteractionController)
-    optional func documentInteractionControllerDidDismissOptionsMenu(controller: UIDocumentInteractionController)
+    @available(iOS 3.2, *)
+    optional public func documentInteractionControllerWillPresentOptionsMenu(_ controller: UIDocumentInteractionController)
+
+    @available(iOS 3.2, *)
+    optional public func documentInteractionControllerDidDismissOptionsMenu(_ controller: UIDocumentInteractionController)
+
     
     // Open in menu presented/dismissed on document.  Use to set up any HI underneath.
-    optional func documentInteractionControllerWillPresentOpenInMenu(controller: UIDocumentInteractionController)
-    optional func documentInteractionControllerDidDismissOpenInMenu(controller: UIDocumentInteractionController)
+    @available(iOS 3.2, *)
+    optional public func documentInteractionControllerWillPresentOpenInMenu(_ controller: UIDocumentInteractionController)
+
+    @available(iOS 3.2, *)
+    optional public func documentInteractionControllerDidDismissOpenInMenu(_ controller: UIDocumentInteractionController)
+
     
     // Synchronous.  May be called when inside preview.  Usually followed by app termination.  Can use willBegin... to set annotation.
-    optional func documentInteractionController(controller: UIDocumentInteractionController, willBeginSendingToApplication application: String) // bundle ID
-    optional func documentInteractionController(controller: UIDocumentInteractionController, didEndSendingToApplication application: String)
+    @available(iOS 3.2, *)
+    optional public func documentInteractionController(_ controller: UIDocumentInteractionController, willBeginSendingToApplication application: String?) // bundle ID
+
+    @available(iOS 3.2, *)
+    optional public func documentInteractionController(_ controller: UIDocumentInteractionController, didEndSendingToApplication application: String?)

@@ -5,7 +5,8 @@ HMAccessory : NSObject, HMAccessoryDelegate
      *
      * @param accessory Sender of the message.
      */
-    optional func accessoryDidUpdateName(accessory: HMAccessory)
+    optional public func accessoryDidUpdateName(_ accessory: HMAccessory)
+
     
     /*!
      * @brief Informs the delegate when the name of a service is modfied.
@@ -14,7 +15,8 @@ HMAccessory : NSObject, HMAccessoryDelegate
      *
      * @param service Service whose name was modified.
      */
-    optional func accessory(accessory: HMAccessory, didUpdateNameForService service: HMService!)
+    optional public func accessory(_ accessory: HMAccessory, didUpdateNameFor service: HMService)
+
     
     /*!
      * @brief Informs the delegate when the associated service type of a service is modified.
@@ -23,7 +25,8 @@ HMAccessory : NSObject, HMAccessoryDelegate
      *
      * @param service Service whose associated service type was modified.
      */
-    optional func accessory(accessory: HMAccessory, didUpdateAssociatedServiceTypeForService service: HMService!)
+    optional public func accessory(_ accessory: HMAccessory, didUpdateAssociatedServiceTypeFor service: HMService)
+
     
     /*!
      * @brief Informs the delegate when the services on the accessory have been dynamically updated.
@@ -31,14 +34,16 @@ HMAccessory : NSObject, HMAccessoryDelegate
      *
      * @param accessory Sender of the message.
      */
-    optional func accessoryDidUpdateServices(accessory: HMAccessory)
+    optional public func accessoryDidUpdateServices(_ accessory: HMAccessory)
+
     
     /*!
      * @brief Informs the delegate when the reachability of the accessory changes.
      *
      * @param accessory Sender of the message.
      */
-    optional func accessoryDidUpdateReachability(accessory: HMAccessory)
+    optional public func accessoryDidUpdateReachability(_ accessory: HMAccessory)
+
     
     /*!
      * @brief Informs the delegate of a change in value of a characteristic. 
@@ -49,4 +54,4 @@ HMAccessory : NSObject, HMAccessoryDelegate
      *
      * @param characteristic The characteristic whose value was changed.
      */
-    optional func accessory(accessory: HMAccessory, service: HMService!, didUpdateValueForCharacteristic characteristic: HMCharacteristic!)
+    optional public func accessory(_ accessory: HMAccessory, service: HMService, didUpdateValueFor characteristic: HMCharacteristic)

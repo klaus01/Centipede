@@ -2,8 +2,8 @@
 //  CE_HMAccessoryBrowser.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/13.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import HomeKit
@@ -40,13 +40,13 @@ public extension HMAccessoryBrowser {
         return HMAccessoryBrowser_Delegate()
     }
     
-    public func ce_didFindNewAccessory(handle: (browser: HMAccessoryBrowser, accessory: HMAccessory) -> Void) -> Self {
-        ce._didFindNewAccessory = handle
+    public func ce_accessoryBrowser(handle: ((HMAccessoryBrowser, HMAccessory) -> Void)) -> Self {
+        ce._accessoryBrowser = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didRemoveNewAccessory(handle: (browser: HMAccessoryBrowser, accessory: HMAccessory) -> Void) -> Self {
-        ce._didRemoveNewAccessory = handle
+    public func ce_accessoryBrowser_didRemoveNewAccessory(handle: ((HMAccessoryBrowser, HMAccessory) -> Void)) -> Self {
+        ce._accessoryBrowser_didRemoveNewAccessory = handle
         rebindingDelegate()
         return self
     }
@@ -55,28 +55,28 @@ public extension HMAccessoryBrowser {
 
 internal class HMAccessoryBrowser_Delegate: NSObject, HMAccessoryBrowserDelegate {
     
-    var _didFindNewAccessory: ((HMAccessoryBrowser, HMAccessory) -> Void)?
-    var _didRemoveNewAccessory: ((HMAccessoryBrowser, HMAccessory) -> Void)?
+    var _accessoryBrowser: ((HMAccessoryBrowser, HMAccessory) -> Void)?
+    var _accessoryBrowser_didRemoveNewAccessory: ((HMAccessoryBrowser, HMAccessory) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(accessoryBrowser(_:didFindNewAccessory:)) : _didFindNewAccessory,
-            #selector(accessoryBrowser(_:didRemoveNewAccessory:)) : _didRemoveNewAccessory,
+            #selector(accessoryBrowser(_:didFindNewAccessory:)) : _accessoryBrowser,
+            #selector(accessoryBrowser(_:didRemoveNewAccessory:)) : _accessoryBrowser_didRemoveNewAccessory,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func accessoryBrowser(browser: HMAccessoryBrowser, didFindNewAccessory accessory: HMAccessory) {
-        _didFindNewAccessory!(browser, accessory)
+    @objc func accessoryBrowser(_ browser: HMAccessoryBrowser, didFindNewAccessory accessory: HMAccessory) {
+        _accessoryBrowser!(browser, accessory)
     }
-    @objc func accessoryBrowser(browser: HMAccessoryBrowser, didRemoveNewAccessory accessory: HMAccessory) {
-        _didRemoveNewAccessory!(browser, accessory)
+    @objc func accessoryBrowser(_ browser: HMAccessoryBrowser, didRemoveNewAccessory accessory: HMAccessory) {
+        _accessoryBrowser_didRemoveNewAccessory!(browser, accessory)
     }
 }

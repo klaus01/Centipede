@@ -1,7 +1,9 @@
 UIPrinterPickerController: NSObject, UIPrinterPickerControllerDelegate
 
 
-    optional func printerPickerControllerParentViewController(printerPickerController: UIPrinterPickerController) -> UIViewController!
+    @available(iOS 8.0, *)
+    optional public func printerPickerControllerParentViewController(_ printerPickerController: UIPrinterPickerController) -> UIViewController?
+
     /*!
      *  @method     printerPickerController:shouldShowPrinter:
      *  @discussion	Use to filter out specific printers from the printer picker.
@@ -12,11 +14,22 @@ UIPrinterPickerController: NSObject, UIPrinterPickerControllerDelegate
      * 	        This method may be called from threads other than the main thread,
      * 	        and may be called simultaneously from several different threads.
      */
-    optional func printerPickerController(printerPickerController: UIPrinterPickerController, shouldShowPrinter printer: UIPrinter) -> Bool
+    @available(iOS 8.0, *)
+    optional public func printerPickerController(_ printerPickerController: UIPrinterPickerController, shouldShow printer: UIPrinter) -> Bool
+
     
-    optional func printerPickerControllerWillPresent(printerPickerController: UIPrinterPickerController)
-    optional func printerPickerControllerDidPresent(printerPickerController: UIPrinterPickerController)
-    optional func printerPickerControllerWillDismiss(printerPickerController: UIPrinterPickerController)
-    optional func printerPickerControllerDidDismiss(printerPickerController: UIPrinterPickerController)
+    @available(iOS 8.0, *)
+    optional public func printerPickerControllerWillPresent(_ printerPickerController: UIPrinterPickerController)
+
+    @available(iOS 8.0, *)
+    optional public func printerPickerControllerDidPresent(_ printerPickerController: UIPrinterPickerController)
+
+    @available(iOS 8.0, *)
+    optional public func printerPickerControllerWillDismiss(_ printerPickerController: UIPrinterPickerController)
+
+    @available(iOS 8.0, *)
+    optional public func printerPickerControllerDidDismiss(_ printerPickerController: UIPrinterPickerController)
+
     
-    optional func printerPickerControllerDidSelectPrinter(printerPickerController: UIPrinterPickerController)
+    @available(iOS 8.0, *)
+    optional public func printerPickerControllerDidSelectPrinter(_ printerPickerController: UIPrinterPickerController)
