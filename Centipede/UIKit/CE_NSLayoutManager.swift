@@ -40,8 +40,8 @@ public extension NSLayoutManager {
         return NSLayoutManager_Delegate()
     }
     
-    public func ce_layoutManager(handle: ((NSLayoutManager, UnsafePointer<CGGlyph>, UnsafePointer<NSGlyphProperty>, UnsafePointer<Int>, UIFont, NSRange) -> Int)) -> Self {
-        ce._layoutManager = handle
+    public func ce_layoutManager_shouldGenerateGlyphs(handle: ((NSLayoutManager, UnsafePointer<CGGlyph>, UnsafePointer<NSGlyphProperty>, UnsafePointer<Int>, UIFont, NSRange) -> Int)) -> Self {
+        ce._layoutManager_shouldGenerateGlyphs = handle
         rebindingDelegate()
         return self
     }
@@ -100,7 +100,7 @@ public extension NSLayoutManager {
 
 internal class NSLayoutManager_Delegate: NSObject, NSLayoutManagerDelegate {
     
-    var _layoutManager: ((NSLayoutManager, UnsafePointer<CGGlyph>, UnsafePointer<NSGlyphProperty>, UnsafePointer<Int>, UIFont, NSRange) -> Int)?
+    var _layoutManager_shouldGenerateGlyphs: ((NSLayoutManager, UnsafePointer<CGGlyph>, UnsafePointer<NSGlyphProperty>, UnsafePointer<Int>, UIFont, NSRange) -> Int)?
     var _layoutManager_lineSpacingAfterGlyphAt: ((NSLayoutManager, Int, CGRect) -> CGFloat)?
     var _layoutManager_paragraphSpacingBeforeGlyphAt: ((NSLayoutManager, Int, CGRect) -> CGFloat)?
     var _layoutManager_paragraphSpacingAfterGlyphAt: ((NSLayoutManager, Int, CGRect) -> CGFloat)?
@@ -116,7 +116,7 @@ internal class NSLayoutManager_Delegate: NSObject, NSLayoutManagerDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(layoutManager(_:shouldGenerateGlyphs:properties:characterIndexes:font:forGlyphRange:)) : _layoutManager,
+            #selector(layoutManager(_:shouldGenerateGlyphs:properties:characterIndexes:font:forGlyphRange:)) : _layoutManager_shouldGenerateGlyphs,
             #selector(layoutManager(_:lineSpacingAfterGlyphAt:withProposedLineFragmentRect:)) : _layoutManager_lineSpacingAfterGlyphAt,
             #selector(layoutManager(_:paragraphSpacingBeforeGlyphAt:withProposedLineFragmentRect:)) : _layoutManager_paragraphSpacingBeforeGlyphAt,
             #selector(layoutManager(_:paragraphSpacingAfterGlyphAt:withProposedLineFragmentRect:)) : _layoutManager_paragraphSpacingAfterGlyphAt,
@@ -143,7 +143,7 @@ internal class NSLayoutManager_Delegate: NSObject, NSLayoutManagerDelegate {
     
     
     @objc func layoutManager(_ layoutManager: NSLayoutManager, shouldGenerateGlyphs glyphs: UnsafePointer<CGGlyph>, properties props: UnsafePointer<NSGlyphProperty>, characterIndexes charIndexes: UnsafePointer<Int>, font aFont: UIFont, forGlyphRange glyphRange: NSRange) -> Int {
-        return _layoutManager!(layoutManager, glyphs, props, charIndexes, aFont, glyphRange)
+        return _layoutManager_shouldGenerateGlyphs!(layoutManager, glyphs, props, charIndexes, aFont, glyphRange)
     }
     @objc func layoutManager(_ layoutManager: NSLayoutManager, lineSpacingAfterGlyphAt glyphIndex: Int, withProposedLineFragmentRect rect: CGRect) -> CGFloat {
         return _layoutManager_lineSpacingAfterGlyphAt!(layoutManager, glyphIndex, rect)

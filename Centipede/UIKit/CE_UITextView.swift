@@ -60,8 +60,8 @@ public extension UITextView {
         rebindingDelegate()
         return self
     }
-    public func ce_textView(handle: ((UITextView, NSRange, String) -> Bool)) -> Self {
-        ce._textView = handle
+    public func ce_textView_shouldChangeTextIn(handle: ((UITextView, NSRange, String) -> Bool)) -> Self {
+        ce._textView_shouldChangeTextIn = handle
         rebindingDelegate()
         return self
     }
@@ -84,7 +84,7 @@ internal class UITextView_Delegate: UIScrollView_Delegate, UITextViewDelegate {
     var _textViewShouldEndEditing: ((UITextView) -> Bool)?
     var _textViewDidBeginEditing: ((UITextView) -> Void)?
     var _textViewDidEndEditing: ((UITextView) -> Void)?
-    var _textView: ((UITextView, NSRange, String) -> Bool)?
+    var _textView_shouldChangeTextIn: ((UITextView, NSRange, String) -> Bool)?
     var _textViewDidChange: ((UITextView) -> Void)?
     var _textViewDidChangeSelection: ((UITextView) -> Void)?
     
@@ -96,7 +96,7 @@ internal class UITextView_Delegate: UIScrollView_Delegate, UITextViewDelegate {
             #selector(textViewShouldEndEditing(_:)) : _textViewShouldEndEditing,
             #selector(textViewDidBeginEditing(_:)) : _textViewDidBeginEditing,
             #selector(textViewDidEndEditing(_:)) : _textViewDidEndEditing,
-            #selector(textView(_:shouldChangeTextIn:replacementText:)) : _textView,
+            #selector(textView(_:shouldChangeTextIn:replacementText:)) : _textView_shouldChangeTextIn,
             #selector(textViewDidChange(_:)) : _textViewDidChange,
             #selector(textViewDidChangeSelection(_:)) : _textViewDidChangeSelection,
         ]
@@ -121,7 +121,7 @@ internal class UITextView_Delegate: UIScrollView_Delegate, UITextViewDelegate {
         _textViewDidEndEditing!(textView)
     }
     @objc func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        return _textView!(textView, range, text)
+        return _textView_shouldChangeTextIn!(textView, range, text)
     }
     @objc func textViewDidChange(_ textView: UITextView) {
         _textViewDidChange!(textView)

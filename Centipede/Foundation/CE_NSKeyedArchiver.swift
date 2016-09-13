@@ -40,8 +40,8 @@ public extension NSKeyedArchiver {
         return NSKeyedArchiver_Delegate()
     }
     
-    public func ce_archiver(handle: ((NSKeyedArchiver, Any) -> Any?)) -> Self {
-        ce._archiver = handle
+    public func ce_archiver_willEncode(handle: ((NSKeyedArchiver, Any) -> Any?)) -> Self {
+        ce._archiver_willEncode = handle
         rebindingDelegate()
         return self
     }
@@ -70,7 +70,7 @@ public extension NSKeyedArchiver {
 
 internal class NSKeyedArchiver_Delegate: NSObject, NSKeyedArchiverDelegate {
     
-    var _archiver: ((NSKeyedArchiver, Any) -> Any?)?
+    var _archiver_willEncode: ((NSKeyedArchiver, Any) -> Any?)?
     var _archiver_didEncode: ((NSKeyedArchiver, Any?) -> Void)?
     var _archiver_willReplace: ((NSKeyedArchiver, Any?, Any?) -> Void)?
     var _archiverWillFinish: ((NSKeyedArchiver) -> Void)?
@@ -80,7 +80,7 @@ internal class NSKeyedArchiver_Delegate: NSObject, NSKeyedArchiverDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(archiver(_:willEncode:)) : _archiver,
+            #selector(archiver(_:willEncode:)) : _archiver_willEncode,
             #selector(archiver(_:didEncode:)) : _archiver_didEncode,
             #selector(archiver(_:willReplace:with:)) : _archiver_willReplace,
             #selector(archiverWillFinish(_:)) : _archiverWillFinish,
@@ -95,7 +95,7 @@ internal class NSKeyedArchiver_Delegate: NSObject, NSKeyedArchiverDelegate {
     
     
     @objc func archiver(_ archiver: NSKeyedArchiver, willEncode object: Any) -> Any? {
-        return _archiver!(archiver, object)
+        return _archiver_willEncode!(archiver, object)
     }
     @objc func archiver(_ archiver: NSKeyedArchiver, didEncode object: Any?) {
         _archiver_didEncode!(archiver, object)

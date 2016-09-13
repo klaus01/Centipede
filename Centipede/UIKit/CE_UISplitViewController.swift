@@ -42,13 +42,13 @@ public extension UISplitViewController {
         return UISplitViewController_Delegate()
     }
     
-    public func ce_splitViewController(handle: ((UISplitViewController, UISplitViewControllerDisplayMode) -> Void)) -> Self {
-        ce._splitViewController = handle
+    public func ce_splitViewController_willChangeTo(handle: ((UISplitViewController, UISplitViewControllerDisplayMode) -> Void)) -> Self {
+        ce._splitViewController_willChangeTo = handle
         rebindingDelegate()
         return self
     }
-    public func ce_targetDisplayModeForAction(handle: ((UISplitViewController) -> UISplitViewControllerDisplayMode)) -> Self {
-        ce._targetDisplayModeForAction = handle
+    public func ce_targetDisplayModeForAction_in(handle: ((UISplitViewController) -> UISplitViewControllerDisplayMode)) -> Self {
+        ce._targetDisplayModeForAction_in = handle
         rebindingDelegate()
         return self
     }
@@ -62,8 +62,8 @@ public extension UISplitViewController {
         rebindingDelegate()
         return self
     }
-    public func ce_primaryViewController(handle: ((UISplitViewController) -> UIViewController?)) -> Self {
-        ce._primaryViewController = handle
+    public func ce_primaryViewController_forCollapsing(handle: ((UISplitViewController) -> UIViewController?)) -> Self {
+        ce._primaryViewController_forCollapsing = handle
         rebindingDelegate()
         return self
     }
@@ -97,11 +97,11 @@ public extension UISplitViewController {
 
 internal class UISplitViewController_Delegate: UIViewController_Delegate, UISplitViewControllerDelegate {
     
-    var _splitViewController: ((UISplitViewController, UISplitViewControllerDisplayMode) -> Void)?
-    var _targetDisplayModeForAction: ((UISplitViewController) -> UISplitViewControllerDisplayMode)?
+    var _splitViewController_willChangeTo: ((UISplitViewController, UISplitViewControllerDisplayMode) -> Void)?
+    var _targetDisplayModeForAction_in: ((UISplitViewController) -> UISplitViewControllerDisplayMode)?
     var _splitViewController_show: ((UISplitViewController, UIViewController, Any?) -> Bool)?
     var _splitViewController_showDetail: ((UISplitViewController, UIViewController, Any?) -> Bool)?
-    var _primaryViewController: ((UISplitViewController) -> UIViewController?)?
+    var _primaryViewController_forCollapsing: ((UISplitViewController) -> UIViewController?)?
     var _primaryViewController_forExpanding: ((UISplitViewController) -> UIViewController?)?
     var _splitViewController_collapseSecondary: ((UISplitViewController, UIViewController, UIViewController) -> Bool)?
     var _splitViewController_separateSecondaryFrom: ((UISplitViewController, UIViewController) -> UIViewController?)?
@@ -112,11 +112,11 @@ internal class UISplitViewController_Delegate: UIViewController_Delegate, UISpli
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(splitViewController(_:willChangeTo:)) : _splitViewController,
-            #selector(targetDisplayModeForAction(in:)) : _targetDisplayModeForAction,
+            #selector(splitViewController(_:willChangeTo:)) : _splitViewController_willChangeTo,
+            #selector(targetDisplayModeForAction(in:)) : _targetDisplayModeForAction_in,
             #selector(splitViewController(_:show:sender:)) : _splitViewController_show,
             #selector(splitViewController(_:showDetail:sender:)) : _splitViewController_showDetail,
-            #selector(primaryViewController(forCollapsing:)) : _primaryViewController,
+            #selector(primaryViewController(forCollapsing:)) : _primaryViewController_forCollapsing,
             #selector(primaryViewController(forExpanding:)) : _primaryViewController_forExpanding,
             #selector(splitViewController(_:collapseSecondary:onto:)) : _splitViewController_collapseSecondary,
         ]
@@ -138,10 +138,10 @@ internal class UISplitViewController_Delegate: UIViewController_Delegate, UISpli
     
     
     @objc func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewControllerDisplayMode) {
-        _splitViewController!(svc, displayMode)
+        _splitViewController_willChangeTo!(svc, displayMode)
     }
     @objc func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
-        return _targetDisplayModeForAction!(svc)
+        return _targetDisplayModeForAction_in!(svc)
     }
     @objc func splitViewController(_ splitViewController: UISplitViewController, show vc: UIViewController, sender: Any?) -> Bool {
         return _splitViewController_show!(splitViewController, vc, sender)
@@ -150,7 +150,7 @@ internal class UISplitViewController_Delegate: UIViewController_Delegate, UISpli
         return _splitViewController_showDetail!(splitViewController, vc, sender)
     }
     @objc func primaryViewController(forCollapsing splitViewController: UISplitViewController) -> UIViewController? {
-        return _primaryViewController!(splitViewController)
+        return _primaryViewController_forCollapsing!(splitViewController)
     }
     @objc func primaryViewController(forExpanding splitViewController: UISplitViewController) -> UIViewController? {
         return _primaryViewController_forExpanding!(splitViewController)

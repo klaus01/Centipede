@@ -40,8 +40,8 @@ public extension UITabBar {
         return UITabBar_Delegate()
     }
     
-    public func ce_tabBar(handle: ((UITabBar, UITabBarItem) -> Void)) -> Self {
-        ce._tabBar = handle
+    public func ce_tabBar_didSelect(handle: ((UITabBar, UITabBarItem) -> Void)) -> Self {
+        ce._tabBar_didSelect = handle
         rebindingDelegate()
         return self
     }
@@ -70,7 +70,7 @@ public extension UITabBar {
 
 internal class UITabBar_Delegate: NSObject, UITabBarDelegate {
     
-    var _tabBar: ((UITabBar, UITabBarItem) -> Void)?
+    var _tabBar_didSelect: ((UITabBar, UITabBarItem) -> Void)?
     var _tabBar_willBeginCustomizing: ((UITabBar, [UITabBarItem]) -> Void)?
     var _tabBar_didBeginCustomizing: ((UITabBar, [UITabBarItem]) -> Void)?
     var _tabBar_willEndCustomizing: ((UITabBar, [UITabBarItem], Bool) -> Void)?
@@ -80,7 +80,7 @@ internal class UITabBar_Delegate: NSObject, UITabBarDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(tabBar(_:didSelect:)) : _tabBar,
+            #selector(tabBar(_:didSelect:)) : _tabBar_didSelect,
             #selector(tabBar(_:willBeginCustomizing:)) : _tabBar_willBeginCustomizing,
             #selector(tabBar(_:didBeginCustomizing:)) : _tabBar_didBeginCustomizing,
             #selector(tabBar(_:willEndCustomizing:changed:)) : _tabBar_willEndCustomizing,
@@ -95,7 +95,7 @@ internal class UITabBar_Delegate: NSObject, UITabBarDelegate {
     
     
     @objc func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        _tabBar!(tabBar, item)
+        _tabBar_didSelect!(tabBar, item)
     }
     @objc func tabBar(_ tabBar: UITabBar, willBeginCustomizing items: [UITabBarItem]) {
         _tabBar_willBeginCustomizing!(tabBar, items)

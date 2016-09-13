@@ -85,8 +85,8 @@ public extension UIDocumentInteractionController {
         rebindingDelegate()
         return self
     }
-    public func ce_documentInteractionController(handle: ((UIDocumentInteractionController, String?) -> Void)) -> Self {
-        ce._documentInteractionController = handle
+    public func ce_documentInteractionController_willBeginSendingToApplication(handle: ((UIDocumentInteractionController, String?) -> Void)) -> Self {
+        ce._documentInteractionController_willBeginSendingToApplication = handle
         rebindingDelegate()
         return self
     }
@@ -109,7 +109,7 @@ internal class UIDocumentInteractionController_Delegate: NSObject, UIDocumentInt
     var _documentInteractionControllerDidDismissOptionsMenu: ((UIDocumentInteractionController) -> Void)?
     var _documentInteractionControllerWillPresentOpenInMenu: ((UIDocumentInteractionController) -> Void)?
     var _documentInteractionControllerDidDismissOpenInMenu: ((UIDocumentInteractionController) -> Void)?
-    var _documentInteractionController: ((UIDocumentInteractionController, String?) -> Void)?
+    var _documentInteractionController_willBeginSendingToApplication: ((UIDocumentInteractionController, String?) -> Void)?
     var _documentInteractionController_didEndSendingToApplication: ((UIDocumentInteractionController, String?) -> Void)?
     
     
@@ -131,7 +131,7 @@ internal class UIDocumentInteractionController_Delegate: NSObject, UIDocumentInt
         let funcDic2: [Selector : Any?] = [
             #selector(documentInteractionControllerWillPresentOpenInMenu(_:)) : _documentInteractionControllerWillPresentOpenInMenu,
             #selector(documentInteractionControllerDidDismissOpenInMenu(_:)) : _documentInteractionControllerDidDismissOpenInMenu,
-            #selector(documentInteractionController(_:willBeginSendingToApplication:)) : _documentInteractionController,
+            #selector(documentInteractionController(_:willBeginSendingToApplication:)) : _documentInteractionController_willBeginSendingToApplication,
             #selector(documentInteractionController(_:didEndSendingToApplication:)) : _documentInteractionController_didEndSendingToApplication,
         ]
         if let f = funcDic2[aSelector] {
@@ -170,7 +170,7 @@ internal class UIDocumentInteractionController_Delegate: NSObject, UIDocumentInt
         _documentInteractionControllerDidDismissOpenInMenu!(controller)
     }
     @objc func documentInteractionController(_ controller: UIDocumentInteractionController, willBeginSendingToApplication application: String?) {
-        _documentInteractionController!(controller, application)
+        _documentInteractionController_willBeginSendingToApplication!(controller, application)
     }
     @objc func documentInteractionController(_ controller: UIDocumentInteractionController, didEndSendingToApplication application: String?) {
         _documentInteractionController_didEndSendingToApplication!(controller, application)

@@ -40,8 +40,8 @@ public extension CLLocationManager {
         return CLLocationManager_Delegate()
     }
     
-    public func ce_locationManager(handle: ((CLLocationManager, [CLLocation]) -> Void)) -> Self {
-        ce._locationManager = handle
+    public func ce_locationManager_didUpdateLocations(handle: ((CLLocationManager, [CLLocation]) -> Void)) -> Self {
+        ce._locationManager_didUpdateLocations = handle
         rebindingDelegate()
         return self
     }
@@ -125,7 +125,7 @@ public extension CLLocationManager {
 
 internal class CLLocationManager_Delegate: NSObject, CLLocationManagerDelegate {
     
-    var _locationManager: ((CLLocationManager, [CLLocation]) -> Void)?
+    var _locationManager_didUpdateLocations: ((CLLocationManager, [CLLocation]) -> Void)?
     var _locationManager_didUpdateHeading: ((CLLocationManager, CLHeading) -> Void)?
     var _locationManagerShouldDisplayHeadingCalibration: ((CLLocationManager) -> Bool)?
     var _locationManager_didDetermineState: ((CLLocationManager, CLRegionState, CLRegion) -> Void)?
@@ -146,7 +146,7 @@ internal class CLLocationManager_Delegate: NSObject, CLLocationManagerDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(locationManager(_:didUpdateLocations:)) : _locationManager,
+            #selector(locationManager(_:didUpdateLocations:)) : _locationManager_didUpdateLocations,
             #selector(locationManager(_:didUpdateHeading:)) : _locationManager_didUpdateHeading,
             #selector(locationManagerShouldDisplayHeadingCalibration(_:)) : _locationManagerShouldDisplayHeadingCalibration,
             #selector(locationManager(_:didDetermineState:for:)) : _locationManager_didDetermineState,
@@ -184,7 +184,7 @@ internal class CLLocationManager_Delegate: NSObject, CLLocationManagerDelegate {
     
     
     @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        _locationManager!(manager, locations)
+        _locationManager_didUpdateLocations!(manager, locations)
     }
     @objc func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         _locationManager_didUpdateHeading!(manager, newHeading)

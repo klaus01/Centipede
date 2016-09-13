@@ -40,8 +40,8 @@ public extension UIVideoEditorController {
         return UIVideoEditorController_Delegate()
     }
     
-    public func ce_videoEditorController(handle: ((UIVideoEditorController, String) -> Void)) -> Self {
-        ce._videoEditorController = handle
+    public func ce_videoEditorController_didSaveEditedVideoToPath(handle: ((UIVideoEditorController, String) -> Void)) -> Self {
+        ce._videoEditorController_didSaveEditedVideoToPath = handle
         rebindingDelegate()
         return self
     }
@@ -60,7 +60,7 @@ public extension UIVideoEditorController {
 
 internal class UIVideoEditorController_Delegate: UINavigationController_Delegate, UIVideoEditorControllerDelegate {
     
-    var _videoEditorController: ((UIVideoEditorController, String) -> Void)?
+    var _videoEditorController_didSaveEditedVideoToPath: ((UIVideoEditorController, String) -> Void)?
     var _videoEditorController_didFailWithError: ((UIVideoEditorController, Error) -> Void)?
     var _videoEditorControllerDidCancel: ((UIVideoEditorController) -> Void)?
     
@@ -68,7 +68,7 @@ internal class UIVideoEditorController_Delegate: UINavigationController_Delegate
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(videoEditorController(_:didSaveEditedVideoToPath:)) : _videoEditorController,
+            #selector(videoEditorController(_:didSaveEditedVideoToPath:)) : _videoEditorController_didSaveEditedVideoToPath,
             #selector(videoEditorController(_:didFailWithError:)) : _videoEditorController_didFailWithError,
             #selector(videoEditorControllerDidCancel(_:)) : _videoEditorControllerDidCancel,
         ]
@@ -81,7 +81,7 @@ internal class UIVideoEditorController_Delegate: UINavigationController_Delegate
     
     
     @objc func videoEditorController(_ editor: UIVideoEditorController, didSaveEditedVideoToPath editedVideoPath: String) {
-        _videoEditorController!(editor, editedVideoPath)
+        _videoEditorController_didSaveEditedVideoToPath!(editor, editedVideoPath)
     }
     @objc func videoEditorController(_ editor: UIVideoEditorController, didFailWithError error: Error) {
         _videoEditorController_didFailWithError!(editor, error)

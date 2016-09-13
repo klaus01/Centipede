@@ -42,13 +42,13 @@ public extension QLPreviewController {
         return QLPreviewController_Delegate()
     }
     
-    public func ce_numberOfPreviewItems(handle: ((QLPreviewController) -> Int)) -> Self {
-        ce._numberOfPreviewItems = handle
+    public func ce_numberOfPreviewItems_in(handle: ((QLPreviewController) -> Int)) -> Self {
+        ce._numberOfPreviewItems_in = handle
         rebindingDelegate()
         return self
     }
-    public func ce_previewController(handle: ((QLPreviewController, Int) -> QLPreviewItem)) -> Self {
-        ce._previewController = handle
+    public func ce_previewController_previewItemAt(handle: ((QLPreviewController, Int) -> QLPreviewItem)) -> Self {
+        ce._previewController_previewItemAt = handle
         rebindingDelegate()
         return self
     }
@@ -82,8 +82,8 @@ public extension QLPreviewController {
 
 internal class QLPreviewController_Delegate: UIViewController_Delegate, QLPreviewControllerDelegate, QLPreviewControllerDataSource {
     
-    var _numberOfPreviewItems: ((QLPreviewController) -> Int)?
-    var _previewController: ((QLPreviewController, Int) -> QLPreviewItem)?
+    var _numberOfPreviewItems_in: ((QLPreviewController) -> Int)?
+    var _previewController_previewItemAt: ((QLPreviewController, Int) -> QLPreviewItem)?
     var _previewControllerWillDismiss: ((QLPreviewController) -> Void)?
     var _previewControllerDidDismiss: ((QLPreviewController) -> Void)?
     var _previewController_shouldOpen: ((QLPreviewController, URL, QLPreviewItem) -> Bool)?
@@ -94,8 +94,8 @@ internal class QLPreviewController_Delegate: UIViewController_Delegate, QLPrevie
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(numberOfPreviewItems(in:)) : _numberOfPreviewItems,
-            #selector(previewController(_:previewItemAt:)) : _previewController,
+            #selector(numberOfPreviewItems(in:)) : _numberOfPreviewItems_in,
+            #selector(previewController(_:previewItemAt:)) : _previewController_previewItemAt,
             #selector(previewControllerWillDismiss(_:)) : _previewControllerWillDismiss,
             #selector(previewControllerDidDismiss(_:)) : _previewControllerDidDismiss,
             #selector(previewController(_:shouldOpen:for:)) : _previewController_shouldOpen,
@@ -111,10 +111,10 @@ internal class QLPreviewController_Delegate: UIViewController_Delegate, QLPrevie
     
     
     @objc func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
-        return _numberOfPreviewItems!(controller)
+        return _numberOfPreviewItems_in!(controller)
     }
     @objc func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        return _previewController!(controller, index)
+        return _previewController_previewItemAt!(controller, index)
     }
     @objc func previewControllerWillDismiss(_ controller: QLPreviewController) {
         _previewControllerWillDismiss!(controller)

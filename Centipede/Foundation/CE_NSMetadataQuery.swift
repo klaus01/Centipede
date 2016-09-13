@@ -40,8 +40,8 @@ public extension NSMetadataQuery {
         return NSMetadataQuery_Delegate()
     }
     
-    public func ce_metadataQuery(handle: ((NSMetadataQuery, NSMetadataItem) -> Any)) -> Self {
-        ce._metadataQuery = handle
+    public func ce_metadataQuery_replacementObjectForResultObject(handle: ((NSMetadataQuery, NSMetadataItem) -> Any)) -> Self {
+        ce._metadataQuery_replacementObjectForResultObject = handle
         rebindingDelegate()
         return self
     }
@@ -55,14 +55,14 @@ public extension NSMetadataQuery {
 
 internal class NSMetadataQuery_Delegate: NSObject, NSMetadataQueryDelegate {
     
-    var _metadataQuery: ((NSMetadataQuery, NSMetadataItem) -> Any)?
+    var _metadataQuery_replacementObjectForResultObject: ((NSMetadataQuery, NSMetadataItem) -> Any)?
     var _metadataQuery_replacementValueForAttribute: ((NSMetadataQuery, String, Any) -> Any)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(metadataQuery(_:replacementObjectForResultObject:)) : _metadataQuery,
+            #selector(metadataQuery(_:replacementObjectForResultObject:)) : _metadataQuery_replacementObjectForResultObject,
             #selector(metadataQuery(_:replacementValueForAttribute:value:)) : _metadataQuery_replacementValueForAttribute,
         ]
         if let f = funcDic1[aSelector] {
@@ -74,7 +74,7 @@ internal class NSMetadataQuery_Delegate: NSObject, NSMetadataQueryDelegate {
     
     
     @objc func metadataQuery(_ query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> Any {
-        return _metadataQuery!(query, result)
+        return _metadataQuery_replacementObjectForResultObject!(query, result)
     }
     @objc func metadataQuery(_ query: NSMetadataQuery, replacementValueForAttribute attrName: String, value attrValue: Any) -> Any {
         return _metadataQuery_replacementValueForAttribute!(query, attrName, attrValue)

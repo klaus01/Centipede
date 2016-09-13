@@ -50,13 +50,13 @@ public extension ADBannerView {
         rebindingDelegate()
         return self
     }
-    public func ce_bannerView(handle: ((ADBannerView, Error) -> Void)) -> Self {
-        ce._bannerView = handle
+    public func ce_bannerView_didFailToReceiveAdWithError(handle: ((ADBannerView, Error) -> Void)) -> Self {
+        ce._bannerView_didFailToReceiveAdWithError = handle
         rebindingDelegate()
         return self
     }
-    public func ce_bannerViewActionShouldBegin(handle: ((ADBannerView, Bool) -> Bool)) -> Self {
-        ce._bannerViewActionShouldBegin = handle
+    public func ce_bannerViewActionShouldBegin_willLeaveApplication(handle: ((ADBannerView, Bool) -> Bool)) -> Self {
+        ce._bannerViewActionShouldBegin_willLeaveApplication = handle
         rebindingDelegate()
         return self
     }
@@ -72,8 +72,8 @@ internal class ADBannerView_Delegate: NSObject, ADBannerViewDelegate {
     
     var _bannerViewWillLoadAd: ((ADBannerView) -> Void)?
     var _bannerViewDidLoadAd: ((ADBannerView) -> Void)?
-    var _bannerView: ((ADBannerView, Error) -> Void)?
-    var _bannerViewActionShouldBegin: ((ADBannerView, Bool) -> Bool)?
+    var _bannerView_didFailToReceiveAdWithError: ((ADBannerView, Error) -> Void)?
+    var _bannerViewActionShouldBegin_willLeaveApplication: ((ADBannerView, Bool) -> Bool)?
     var _bannerViewActionDidFinish: ((ADBannerView) -> Void)?
     
     
@@ -82,8 +82,8 @@ internal class ADBannerView_Delegate: NSObject, ADBannerViewDelegate {
         let funcDic1: [Selector : Any?] = [
             #selector(bannerViewWillLoadAd(_:)) : _bannerViewWillLoadAd,
             #selector(bannerViewDidLoadAd(_:)) : _bannerViewDidLoadAd,
-            #selector(bannerView(_:didFailToReceiveAdWithError:)) : _bannerView,
-            #selector(bannerViewActionShouldBegin(_:willLeaveApplication:)) : _bannerViewActionShouldBegin,
+            #selector(bannerView(_:didFailToReceiveAdWithError:)) : _bannerView_didFailToReceiveAdWithError,
+            #selector(bannerViewActionShouldBegin(_:willLeaveApplication:)) : _bannerViewActionShouldBegin_willLeaveApplication,
             #selector(bannerViewActionDidFinish(_:)) : _bannerViewActionDidFinish,
         ]
         if let f = funcDic1[aSelector] {
@@ -101,10 +101,10 @@ internal class ADBannerView_Delegate: NSObject, ADBannerViewDelegate {
         _bannerViewDidLoadAd!(banner)
     }
     @objc func bannerView(_ banner: ADBannerView, didFailToReceiveAdWithError error: Error) {
-        _bannerView!(banner, error)
+        _bannerView_didFailToReceiveAdWithError!(banner, error)
     }
     @objc func bannerViewActionShouldBegin(_ banner: ADBannerView, willLeaveApplication willLeave: Bool) -> Bool {
-        return _bannerViewActionShouldBegin!(banner, willLeave)
+        return _bannerViewActionShouldBegin_willLeaveApplication!(banner, willLeave)
     }
     @objc func bannerViewActionDidFinish(_ banner: ADBannerView) {
         _bannerViewActionDidFinish!(banner)

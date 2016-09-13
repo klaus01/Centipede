@@ -42,8 +42,8 @@ public extension UITableView {
         return UITableView_Delegate()
     }
     
-    public func ce_tableView(handle: ((UITableView, Int) -> Int)) -> Self {
-        ce._tableView = handle
+    public func ce_tableView_numberOfRowsInSection(handle: ((UITableView, Int) -> Int)) -> Self {
+        ce._tableView_numberOfRowsInSection = handle
         rebindingDelegate()
         return self
     }
@@ -52,8 +52,8 @@ public extension UITableView {
         rebindingDelegate()
         return self
     }
-    public func ce_numberOfSections(handle: ((UITableView) -> Int)) -> Self {
-        ce._numberOfSections = handle
+    public func ce_numberOfSections_in(handle: ((UITableView) -> Int)) -> Self {
+        ce._numberOfSections_in = handle
         rebindingDelegate()
         return self
     }
@@ -77,8 +77,8 @@ public extension UITableView {
         rebindingDelegate()
         return self
     }
-    public func ce_sectionIndexTitles(handle: ((UITableView) -> [String]?)) -> Self {
-        ce._sectionIndexTitles = handle
+    public func ce_sectionIndexTitles_for(handle: ((UITableView) -> [String]?)) -> Self {
+        ce._sectionIndexTitles_for = handle
         rebindingDelegate()
         return self
     }
@@ -267,14 +267,14 @@ public extension UITableView {
 
 internal class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSource, UITableViewDelegate {
     
-    var _tableView: ((UITableView, Int) -> Int)?
+    var _tableView_numberOfRowsInSection: ((UITableView, Int) -> Int)?
     var _tableView_cellForRowAt: ((UITableView, IndexPath) -> UITableViewCell)?
-    var _numberOfSections: ((UITableView) -> Int)?
+    var _numberOfSections_in: ((UITableView) -> Int)?
     var _tableView_titleForHeaderInSection: ((UITableView, Int) -> String?)?
     var _tableView_titleForFooterInSection: ((UITableView, Int) -> String?)?
     var _tableView_canEditRowAt: ((UITableView, IndexPath) -> Bool)?
     var _tableView_canMoveRowAt: ((UITableView, IndexPath) -> Bool)?
-    var _sectionIndexTitles: ((UITableView) -> [String]?)?
+    var _sectionIndexTitles_for: ((UITableView) -> [String]?)?
     var _tableView_sectionForSectionIndexTitle: ((UITableView, String, Int) -> Int)?
     var _tableView_commit: ((UITableView, UITableViewCellEditingStyle, IndexPath) -> Void)?
     var _tableView_moveRowAt: ((UITableView, IndexPath, IndexPath) -> Void)?
@@ -316,9 +316,9 @@ internal class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSourc
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(tableView(_:numberOfRowsInSection:)) : _tableView,
+            #selector(tableView(_:numberOfRowsInSection:)) : _tableView_numberOfRowsInSection,
             #selector(tableView(_:cellForRowAt:)) : _tableView_cellForRowAt,
-            #selector(numberOfSections(in:)) : _numberOfSections,
+            #selector(numberOfSections(in:)) : _numberOfSections_in,
             #selector(tableView(_:titleForHeaderInSection:)) : _tableView_titleForHeaderInSection,
             #selector(tableView(_:titleForFooterInSection:)) : _tableView_titleForFooterInSection,
             #selector(tableView(_:canEditRowAt:)) : _tableView_canEditRowAt,
@@ -329,7 +329,7 @@ internal class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSourc
         }
         
         let funcDic2: [Selector : Any?] = [
-            #selector(sectionIndexTitles(for:)) : _sectionIndexTitles,
+            #selector(sectionIndexTitles(for:)) : _sectionIndexTitles_for,
             #selector(tableView(_:sectionForSectionIndexTitle:at:)) : _tableView_sectionForSectionIndexTitle,
             #selector(tableView(_:commit:forRowAt:)) : _tableView_commit,
             #selector(tableView(_:moveRowAt:to:)) : _tableView_moveRowAt,
@@ -406,13 +406,13 @@ internal class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSourc
     
     
     @objc func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return _tableView!(tableView, section)
+        return _tableView_numberOfRowsInSection!(tableView, section)
     }
     @objc func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return _tableView_cellForRowAt!(tableView, indexPath)
     }
     @objc func numberOfSections(in tableView: UITableView) -> Int {
-        return _numberOfSections!(tableView)
+        return _numberOfSections_in!(tableView)
     }
     @objc func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return _tableView_titleForHeaderInSection!(tableView, section)
@@ -427,7 +427,7 @@ internal class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSourc
         return _tableView_canMoveRowAt!(tableView, indexPath)
     }
     @objc func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return _sectionIndexTitles!(tableView)
+        return _sectionIndexTitles_for!(tableView)
     }
     @objc func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return _tableView_sectionForSectionIndexTitle!(tableView, title, index)

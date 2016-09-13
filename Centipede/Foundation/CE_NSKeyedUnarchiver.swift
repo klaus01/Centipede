@@ -40,8 +40,8 @@ public extension NSKeyedUnarchiver {
         return NSKeyedUnarchiver_Delegate()
     }
     
-    public func ce_unarchiver(handle: ((NSKeyedUnarchiver, String, [String]) -> AnyClass?)) -> Self {
-        ce._unarchiver = handle
+    public func ce_unarchiver_cannotDecodeObjectOfClassName(handle: ((NSKeyedUnarchiver, String, [String]) -> AnyClass?)) -> Self {
+        ce._unarchiver_cannotDecodeObjectOfClassName = handle
         rebindingDelegate()
         return self
     }
@@ -70,7 +70,7 @@ public extension NSKeyedUnarchiver {
 
 internal class NSKeyedUnarchiver_Delegate: NSObject, NSKeyedUnarchiverDelegate {
     
-    var _unarchiver: ((NSKeyedUnarchiver, String, [String]) -> AnyClass?)?
+    var _unarchiver_cannotDecodeObjectOfClassName: ((NSKeyedUnarchiver, String, [String]) -> AnyClass?)?
     var _unarchiver_didDecode: ((NSKeyedUnarchiver, Any?) -> Any?)?
     var _unarchiver_willReplace: ((NSKeyedUnarchiver, Any, Any) -> Void)?
     var _unarchiverWillFinish: ((NSKeyedUnarchiver) -> Void)?
@@ -80,7 +80,7 @@ internal class NSKeyedUnarchiver_Delegate: NSObject, NSKeyedUnarchiverDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(unarchiver(_:cannotDecodeObjectOfClassName:originalClasses:)) : _unarchiver,
+            #selector(unarchiver(_:cannotDecodeObjectOfClassName:originalClasses:)) : _unarchiver_cannotDecodeObjectOfClassName,
             #selector(unarchiver(_:didDecode:)) : _unarchiver_didDecode,
             #selector(unarchiver(_:willReplace:with:)) : _unarchiver_willReplace,
             #selector(unarchiverWillFinish(_:)) : _unarchiverWillFinish,
@@ -95,7 +95,7 @@ internal class NSKeyedUnarchiver_Delegate: NSObject, NSKeyedUnarchiverDelegate {
     
     
     @objc func unarchiver(_ unarchiver: NSKeyedUnarchiver, cannotDecodeObjectOfClassName name: String, originalClasses classNames: [String]) -> AnyClass? {
-        return _unarchiver!(unarchiver, name, classNames)
+        return _unarchiver_cannotDecodeObjectOfClassName!(unarchiver, name, classNames)
     }
     @objc func unarchiver(_ unarchiver: NSKeyedUnarchiver, didDecode object: Any?) -> Any? {
         return _unarchiver_didDecode!(unarchiver, object)

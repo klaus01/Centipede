@@ -40,8 +40,8 @@ public extension MPMediaPickerController {
         return MPMediaPickerController_Delegate()
     }
     
-    public func ce_mediaPicker(handle: ((MPMediaPickerController, MPMediaItemCollection) -> Void)) -> Self {
-        ce._mediaPicker = handle
+    public func ce_mediaPicker_didPickMediaItems(handle: ((MPMediaPickerController, MPMediaItemCollection) -> Void)) -> Self {
+        ce._mediaPicker_didPickMediaItems = handle
         rebindingDelegate()
         return self
     }
@@ -55,14 +55,14 @@ public extension MPMediaPickerController {
 
 internal class MPMediaPickerController_Delegate: UIViewController_Delegate, MPMediaPickerControllerDelegate {
     
-    var _mediaPicker: ((MPMediaPickerController, MPMediaItemCollection) -> Void)?
+    var _mediaPicker_didPickMediaItems: ((MPMediaPickerController, MPMediaItemCollection) -> Void)?
     var _mediaPickerDidCancel: ((MPMediaPickerController) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(mediaPicker(_:didPickMediaItems:)) : _mediaPicker,
+            #selector(mediaPicker(_:didPickMediaItems:)) : _mediaPicker_didPickMediaItems,
             #selector(mediaPickerDidCancel(_:)) : _mediaPickerDidCancel,
         ]
         if let f = funcDic1[aSelector] {
@@ -74,7 +74,7 @@ internal class MPMediaPickerController_Delegate: UIViewController_Delegate, MPMe
     
     
     @objc func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
-        _mediaPicker!(mediaPicker, mediaItemCollection)
+        _mediaPicker_didPickMediaItems!(mediaPicker, mediaItemCollection)
     }
     @objc func mediaPickerDidCancel(_ mediaPicker: MPMediaPickerController) {
         _mediaPickerDidCancel!(mediaPicker)

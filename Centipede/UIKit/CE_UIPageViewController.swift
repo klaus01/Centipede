@@ -44,8 +44,8 @@ public extension UIPageViewController {
         return UIPageViewController_Delegate()
     }
     
-    public func ce_pageViewController(handle: ((UIPageViewController, [UIViewController]) -> Void)) -> Self {
-        ce._pageViewController = handle
+    public func ce_pageViewController_willTransitionTo(handle: ((UIPageViewController, [UIViewController]) -> Void)) -> Self {
+        ce._pageViewController_willTransitionTo = handle
         rebindingDelegate()
         return self
     }
@@ -79,13 +79,13 @@ public extension UIPageViewController {
         rebindingDelegate()
         return self
     }
-    public func ce_presentationCount(handle: ((UIPageViewController) -> Int)) -> Self {
-        ce._presentationCount = handle
+    public func ce_presentationCount_for(handle: ((UIPageViewController) -> Int)) -> Self {
+        ce._presentationCount_for = handle
         rebindingDelegate()
         return self
     }
-    public func ce_presentationIndex(handle: ((UIPageViewController) -> Int)) -> Self {
-        ce._presentationIndex = handle
+    public func ce_presentationIndex_for(handle: ((UIPageViewController) -> Int)) -> Self {
+        ce._presentationIndex_for = handle
         rebindingDelegate()
         return self
     }
@@ -94,21 +94,21 @@ public extension UIPageViewController {
 
 internal class UIPageViewController_Delegate: UIViewController_Delegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
-    var _pageViewController: ((UIPageViewController, [UIViewController]) -> Void)?
+    var _pageViewController_willTransitionTo: ((UIPageViewController, [UIViewController]) -> Void)?
     var _pageViewController_didFinishAnimating: ((UIPageViewController, Bool, [UIViewController], Bool) -> Void)?
     var _pageViewController_spineLocationFor: ((UIPageViewController, UIInterfaceOrientation) -> UIPageViewControllerSpineLocation)?
     var _pageViewControllerSupportedInterfaceOrientations: ((UIPageViewController) -> UIInterfaceOrientationMask)?
     var _pageViewControllerPreferredInterfaceOrientationForPresentation: ((UIPageViewController) -> UIInterfaceOrientation)?
     var _pageViewController_viewControllerBefore: ((UIPageViewController, UIViewController) -> UIViewController?)?
     var _pageViewController_viewControllerAfter: ((UIPageViewController, UIViewController) -> UIViewController?)?
-    var _presentationCount: ((UIPageViewController) -> Int)?
-    var _presentationIndex: ((UIPageViewController) -> Int)?
+    var _presentationCount_for: ((UIPageViewController) -> Int)?
+    var _presentationIndex_for: ((UIPageViewController) -> Int)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(pageViewController(_:willTransitionTo:)) : _pageViewController,
+            #selector(pageViewController(_:willTransitionTo:)) : _pageViewController_willTransitionTo,
             #selector(pageViewController(_:didFinishAnimating:previousViewControllers:transitionCompleted:)) : _pageViewController_didFinishAnimating,
             #selector(pageViewController(_:spineLocationFor:)) : _pageViewController_spineLocationFor,
             #selector(pageViewControllerSupportedInterfaceOrientations(_:)) : _pageViewControllerSupportedInterfaceOrientations,
@@ -121,8 +121,8 @@ internal class UIPageViewController_Delegate: UIViewController_Delegate, UIPageV
         }
         
         let funcDic2: [Selector : Any?] = [
-            #selector(presentationCount(for:)) : _presentationCount,
-            #selector(presentationIndex(for:)) : _presentationIndex,
+            #selector(presentationCount(for:)) : _presentationCount_for,
+            #selector(presentationIndex(for:)) : _presentationIndex_for,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
@@ -133,7 +133,7 @@ internal class UIPageViewController_Delegate: UIViewController_Delegate, UIPageV
     
     
     @objc func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        _pageViewController!(pageViewController, pendingViewControllers)
+        _pageViewController_willTransitionTo!(pageViewController, pendingViewControllers)
     }
     @objc func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         _pageViewController_didFinishAnimating!(pageViewController, finished, previousViewControllers, completed)
@@ -154,9 +154,9 @@ internal class UIPageViewController_Delegate: UIViewController_Delegate, UIPageV
         return _pageViewController_viewControllerAfter!(pageViewController, viewController)
     }
     @objc func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return _presentationCount!(pageViewController)
+        return _presentationCount_for!(pageViewController)
     }
     @objc func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return _presentationIndex!(pageViewController)
+        return _presentationIndex_for!(pageViewController)
     }
 }

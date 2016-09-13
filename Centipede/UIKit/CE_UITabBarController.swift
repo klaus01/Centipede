@@ -42,8 +42,8 @@ public extension UITabBarController {
         return UITabBarController_Delegate()
     }
     
-    public func ce_tabBarController(handle: ((UITabBarController, UIViewController) -> Bool)) -> Self {
-        ce._tabBarController = handle
+    public func ce_tabBarController_shouldSelect(handle: ((UITabBarController, UIViewController) -> Bool)) -> Self {
+        ce._tabBarController_shouldSelect = handle
         rebindingDelegate()
         return self
     }
@@ -92,7 +92,7 @@ public extension UITabBarController {
 
 internal class UITabBarController_Delegate: UIViewController_Delegate, UITabBarControllerDelegate {
     
-    var _tabBarController: ((UITabBarController, UIViewController) -> Bool)?
+    var _tabBarController_shouldSelect: ((UITabBarController, UIViewController) -> Bool)?
     var _tabBarController_didSelect: ((UITabBarController, UIViewController) -> Void)?
     var _tabBarController_willBeginCustomizing: ((UITabBarController, [UIViewController]) -> Void)?
     var _tabBarController_willEndCustomizing: ((UITabBarController, [UIViewController], Bool) -> Void)?
@@ -106,7 +106,7 @@ internal class UITabBarController_Delegate: UIViewController_Delegate, UITabBarC
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(tabBarController(_:shouldSelect:)) : _tabBarController,
+            #selector(tabBarController(_:shouldSelect:)) : _tabBarController_shouldSelect,
             #selector(tabBarController(_:didSelect:)) : _tabBarController_didSelect,
             #selector(tabBarController(_:willBeginCustomizing:)) : _tabBarController_willBeginCustomizing,
             #selector(tabBarController(_:willEndCustomizing:changed:)) : _tabBarController_willEndCustomizing,
@@ -131,7 +131,7 @@ internal class UITabBarController_Delegate: UIViewController_Delegate, UITabBarC
     
     
     @objc func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        return _tabBarController!(tabBarController, viewController)
+        return _tabBarController_shouldSelect!(tabBarController, viewController)
     }
     @objc func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         _tabBarController_didSelect!(tabBarController, viewController)

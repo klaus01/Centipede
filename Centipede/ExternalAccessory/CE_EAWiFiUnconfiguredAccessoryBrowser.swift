@@ -40,8 +40,8 @@ public extension EAWiFiUnconfiguredAccessoryBrowser {
         return EAWiFiUnconfiguredAccessoryBrowser_Delegate()
     }
     
-    public func ce_accessoryBrowser(handle: ((EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessoryBrowserState) -> Void)) -> Self {
-        ce._accessoryBrowser = handle
+    public func ce_accessoryBrowser_didUpdate(handle: ((EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessoryBrowserState) -> Void)) -> Self {
+        ce._accessoryBrowser_didUpdate = handle
         rebindingDelegate()
         return self
     }
@@ -65,7 +65,7 @@ public extension EAWiFiUnconfiguredAccessoryBrowser {
 
 internal class EAWiFiUnconfiguredAccessoryBrowser_Delegate: NSObject, EAWiFiUnconfiguredAccessoryBrowserDelegate {
     
-    var _accessoryBrowser: ((EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessoryBrowserState) -> Void)?
+    var _accessoryBrowser_didUpdate: ((EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessoryBrowserState) -> Void)?
     var _accessoryBrowser_didFindUnconfiguredAccessories: ((EAWiFiUnconfiguredAccessoryBrowser, Set<EAWiFiUnconfiguredAccessory>) -> Void)?
     var _accessoryBrowser_didRemoveUnconfiguredAccessories: ((EAWiFiUnconfiguredAccessoryBrowser, Set<EAWiFiUnconfiguredAccessory>) -> Void)?
     var _accessoryBrowser_didFinishConfiguringAccessory: ((EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessory, EAWiFiUnconfiguredAccessoryConfigurationStatus) -> Void)?
@@ -74,7 +74,7 @@ internal class EAWiFiUnconfiguredAccessoryBrowser_Delegate: NSObject, EAWiFiUnco
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(accessoryBrowser(_:didUpdate:)) : _accessoryBrowser,
+            #selector(accessoryBrowser(_:didUpdate:)) : _accessoryBrowser_didUpdate,
             #selector(accessoryBrowser(_:didFindUnconfiguredAccessories:)) : _accessoryBrowser_didFindUnconfiguredAccessories,
             #selector(accessoryBrowser(_:didRemoveUnconfiguredAccessories:)) : _accessoryBrowser_didRemoveUnconfiguredAccessories,
             #selector(accessoryBrowser(_:didFinishConfiguringAccessory:with:)) : _accessoryBrowser_didFinishConfiguringAccessory,
@@ -88,7 +88,7 @@ internal class EAWiFiUnconfiguredAccessoryBrowser_Delegate: NSObject, EAWiFiUnco
     
     
     @objc func accessoryBrowser(_ browser: EAWiFiUnconfiguredAccessoryBrowser, didUpdate state: EAWiFiUnconfiguredAccessoryBrowserState) {
-        _accessoryBrowser!(browser, state)
+        _accessoryBrowser_didUpdate!(browser, state)
     }
     @objc func accessoryBrowser(_ browser: EAWiFiUnconfiguredAccessoryBrowser, didFindUnconfiguredAccessories accessories: Set<EAWiFiUnconfiguredAccessory>) {
         _accessoryBrowser_didFindUnconfiguredAccessories!(browser, accessories)

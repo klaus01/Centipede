@@ -45,8 +45,8 @@ public extension CBCentralManager {
         rebindingDelegate()
         return self
     }
-    public func ce_centralManager(handle: ((CBCentralManager, [String : Any]) -> Void)) -> Self {
-        ce._centralManager = handle
+    public func ce_centralManager_willRestoreState(handle: ((CBCentralManager, [String : Any]) -> Void)) -> Self {
+        ce._centralManager_willRestoreState = handle
         rebindingDelegate()
         return self
     }
@@ -76,7 +76,7 @@ public extension CBCentralManager {
 internal class CBCentralManager_Delegate: NSObject, CBCentralManagerDelegate {
     
     var _centralManagerDidUpdateState: ((CBCentralManager) -> Void)?
-    var _centralManager: ((CBCentralManager, [String : Any]) -> Void)?
+    var _centralManager_willRestoreState: ((CBCentralManager, [String : Any]) -> Void)?
     var _centralManager_didDiscover: ((CBCentralManager, CBPeripheral, [String : Any], NSNumber) -> Void)?
     var _centralManager_didConnect: ((CBCentralManager, CBPeripheral) -> Void)?
     var _centralManager_didFailToConnect: ((CBCentralManager, CBPeripheral, Error?) -> Void)?
@@ -87,7 +87,7 @@ internal class CBCentralManager_Delegate: NSObject, CBCentralManagerDelegate {
         
         let funcDic1: [Selector : Any?] = [
             #selector(centralManagerDidUpdateState(_:)) : _centralManagerDidUpdateState,
-            #selector(centralManager(_:willRestoreState:)) : _centralManager,
+            #selector(centralManager(_:willRestoreState:)) : _centralManager_willRestoreState,
             #selector(centralManager(_:didDiscover:advertisementData:rssi:)) : _centralManager_didDiscover,
             #selector(centralManager(_:didConnect:)) : _centralManager_didConnect,
             #selector(centralManager(_:didFailToConnect:error:)) : _centralManager_didFailToConnect,
@@ -105,7 +105,7 @@ internal class CBCentralManager_Delegate: NSObject, CBCentralManagerDelegate {
         _centralManagerDidUpdateState!(central)
     }
     @objc func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
-        _centralManager!(central, dict)
+        _centralManager_willRestoreState!(central, dict)
     }
     @objc func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         _centralManager_didDiscover!(central, peripheral, advertisementData, RSSI)

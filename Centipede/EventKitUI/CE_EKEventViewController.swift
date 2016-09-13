@@ -40,8 +40,8 @@ public extension EKEventViewController {
         return EKEventViewController_Delegate()
     }
     
-    public func ce_eventViewController(handle: ((EKEventViewController, EKEventViewAction) -> Void)) -> Self {
-        ce._eventViewController = handle
+    public func ce_eventViewController_didCompleteWith(handle: ((EKEventViewController, EKEventViewAction) -> Void)) -> Self {
+        ce._eventViewController_didCompleteWith = handle
         rebindingDelegate()
         return self
     }
@@ -50,13 +50,13 @@ public extension EKEventViewController {
 
 internal class EKEventViewController_Delegate: UIViewController_Delegate, EKEventViewDelegate {
     
-    var _eventViewController: ((EKEventViewController, EKEventViewAction) -> Void)?
+    var _eventViewController_didCompleteWith: ((EKEventViewController, EKEventViewAction) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(eventViewController(_:didCompleteWith:)) : _eventViewController,
+            #selector(eventViewController(_:didCompleteWith:)) : _eventViewController_didCompleteWith,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -67,6 +67,6 @@ internal class EKEventViewController_Delegate: UIViewController_Delegate, EKEven
     
     
     @objc func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction) {
-        _eventViewController!(controller, action)
+        _eventViewController_didCompleteWith!(controller, action)
     }
 }

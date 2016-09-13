@@ -40,8 +40,8 @@ public extension UIWebView {
         return UIWebView_Delegate()
     }
     
-    public func ce_webView(handle: ((UIWebView, URLRequest, UIWebViewNavigationType) -> Bool)) -> Self {
-        ce._webView = handle
+    public func ce_webView_shouldStartLoadWith(handle: ((UIWebView, URLRequest, UIWebViewNavigationType) -> Bool)) -> Self {
+        ce._webView_shouldStartLoadWith = handle
         rebindingDelegate()
         return self
     }
@@ -65,7 +65,7 @@ public extension UIWebView {
 
 internal class UIWebView_Delegate: NSObject, UIWebViewDelegate {
     
-    var _webView: ((UIWebView, URLRequest, UIWebViewNavigationType) -> Bool)?
+    var _webView_shouldStartLoadWith: ((UIWebView, URLRequest, UIWebViewNavigationType) -> Bool)?
     var _webViewDidStartLoad: ((UIWebView) -> Void)?
     var _webViewDidFinishLoad: ((UIWebView) -> Void)?
     var _webView_didFailLoadWithError: ((UIWebView, Error) -> Void)?
@@ -74,7 +74,7 @@ internal class UIWebView_Delegate: NSObject, UIWebViewDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(webView(_:shouldStartLoadWith:navigationType:)) : _webView,
+            #selector(webView(_:shouldStartLoadWith:navigationType:)) : _webView_shouldStartLoadWith,
             #selector(webViewDidStartLoad(_:)) : _webViewDidStartLoad,
             #selector(webViewDidFinishLoad(_:)) : _webViewDidFinishLoad,
             #selector(webView(_:didFailLoadWithError:)) : _webView_didFailLoadWithError,
@@ -88,7 +88,7 @@ internal class UIWebView_Delegate: NSObject, UIWebViewDelegate {
     
     
     @objc func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        return _webView!(webView, request, navigationType)
+        return _webView_shouldStartLoadWith!(webView, request, navigationType)
     }
     @objc func webViewDidStartLoad(_ webView: UIWebView) {
         _webViewDidStartLoad!(webView)

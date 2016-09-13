@@ -40,8 +40,8 @@ public extension PKPaymentAuthorizationViewController {
         return PKPaymentAuthorizationViewController_Delegate()
     }
     
-    public func ce_paymentAuthorizationViewController(handle: ((PKPaymentAuthorizationViewController, PKPayment, @escaping (PKPaymentAuthorizationStatus) -> Void) -> Void)) -> Self {
-        ce._paymentAuthorizationViewController = handle
+    public func ce_paymentAuthorizationViewController_didAuthorizePayment(handle: ((PKPaymentAuthorizationViewController, PKPayment, @escaping (PKPaymentAuthorizationStatus) -> Void) -> Void)) -> Self {
+        ce._paymentAuthorizationViewController_didAuthorizePayment = handle
         rebindingDelegate()
         return self
     }
@@ -60,7 +60,7 @@ public extension PKPaymentAuthorizationViewController {
 
 internal class PKPaymentAuthorizationViewController_Delegate: UIViewController_Delegate, PKPaymentAuthorizationViewControllerDelegate {
     
-    var _paymentAuthorizationViewController: ((PKPaymentAuthorizationViewController, PKPayment, @escaping (PKPaymentAuthorizationStatus) -> Void) -> Void)?
+    var _paymentAuthorizationViewController_didAuthorizePayment: ((PKPaymentAuthorizationViewController, PKPayment, @escaping (PKPaymentAuthorizationStatus) -> Void) -> Void)?
     var _paymentAuthorizationViewControllerDidFinish: ((PKPaymentAuthorizationViewController) -> Void)?
     var _paymentAuthorizationViewController_didSelect: ((PKPaymentAuthorizationViewController, PKShippingMethod, @escaping (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> Void) -> Void)?
     
@@ -68,7 +68,7 @@ internal class PKPaymentAuthorizationViewController_Delegate: UIViewController_D
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(paymentAuthorizationViewController(_:didAuthorizePayment:completion:)) : _paymentAuthorizationViewController,
+            #selector(paymentAuthorizationViewController(_:didAuthorizePayment:completion:)) : _paymentAuthorizationViewController_didAuthorizePayment,
             #selector(paymentAuthorizationViewControllerDidFinish(_:)) : _paymentAuthorizationViewControllerDidFinish,
             #selector(paymentAuthorizationViewController(_:didSelect:completion:)) : _paymentAuthorizationViewController_didSelect,
         ]
@@ -81,7 +81,7 @@ internal class PKPaymentAuthorizationViewController_Delegate: UIViewController_D
     
     
     @objc func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
-        _paymentAuthorizationViewController!(controller, payment, completion)
+        _paymentAuthorizationViewController_didAuthorizePayment!(controller, payment, completion)
     }
     @objc func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         _paymentAuthorizationViewControllerDidFinish!(controller)

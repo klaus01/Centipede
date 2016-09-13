@@ -40,8 +40,8 @@ public extension GLKView {
         return GLKView_Delegate()
     }
     
-    public func ce_g(handle: ((GLKView, CGRect) -> Void)) -> Self {
-        ce._g = handle
+    public func ce_glkView_drawIn(handle: ((GLKView, CGRect) -> Void)) -> Self {
+        ce._glkView_drawIn = handle
         rebindingDelegate()
         return self
     }
@@ -50,13 +50,13 @@ public extension GLKView {
 
 internal class GLKView_Delegate: NSObject, GLKViewDelegate {
     
-    var _g: ((GLKView, CGRect) -> Void)?
+    var _glkView_drawIn: ((GLKView, CGRect) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(glkView(_:drawIn:)) : _g,
+            #selector(glkView(_:drawIn:)) : _glkView_drawIn,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -67,6 +67,6 @@ internal class GLKView_Delegate: NSObject, GLKViewDelegate {
     
     
     @objc func glkView(_ view: GLKView, drawIn rect: CGRect) {
-        _g!(view, rect)
+        _glkView_drawIn!(view, rect)
     }
 }

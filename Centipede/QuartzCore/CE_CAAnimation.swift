@@ -45,8 +45,8 @@ public extension CAAnimation {
         rebindingDelegate()
         return self
     }
-    public func ce_animationDidStop(handle: ((CAAnimation, Bool) -> Void)) -> Self {
-        ce._animationDidStop = handle
+    public func ce_animationDidStop_finished(handle: ((CAAnimation, Bool) -> Void)) -> Self {
+        ce._animationDidStop_finished = handle
         rebindingDelegate()
         return self
     }
@@ -56,14 +56,14 @@ public extension CAAnimation {
 internal class CAAnimation_Delegate: NSObject, CAAnimationDelegate {
     
     var _animationDidStart: ((CAAnimation) -> Void)?
-    var _animationDidStop: ((CAAnimation, Bool) -> Void)?
+    var _animationDidStop_finished: ((CAAnimation, Bool) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
             #selector(animationDidStart(_:)) : _animationDidStart,
-            #selector(animationDidStop(_:finished:)) : _animationDidStop,
+            #selector(animationDidStop(_:finished:)) : _animationDidStop_finished,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -77,6 +77,6 @@ internal class CAAnimation_Delegate: NSObject, CAAnimationDelegate {
         _animationDidStart!(anim)
     }
     @objc func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        _animationDidStop!(anim, flag)
+        _animationDidStop_finished!(anim, flag)
     }
 }

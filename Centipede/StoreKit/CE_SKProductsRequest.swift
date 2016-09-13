@@ -40,8 +40,8 @@ public extension SKProductsRequest {
         return SKProductsRequest_Delegate()
     }
     
-    public func ce_productsRequest(handle: ((SKProductsRequest, SKProductsResponse) -> Void)) -> Self {
-        ce._productsRequest = handle
+    public func ce_productsRequest_didReceive(handle: ((SKProductsRequest, SKProductsResponse) -> Void)) -> Self {
+        ce._productsRequest_didReceive = handle
         rebindingDelegate()
         return self
     }
@@ -50,13 +50,13 @@ public extension SKProductsRequest {
 
 internal class SKProductsRequest_Delegate: SKRequest_Delegate, SKProductsRequestDelegate {
     
-    var _productsRequest: ((SKProductsRequest, SKProductsResponse) -> Void)?
+    var _productsRequest_didReceive: ((SKProductsRequest, SKProductsResponse) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(productsRequest(_:didReceive:)) : _productsRequest,
+            #selector(productsRequest(_:didReceive:)) : _productsRequest_didReceive,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -67,6 +67,6 @@ internal class SKProductsRequest_Delegate: SKRequest_Delegate, SKProductsRequest
     
     
     @objc func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        _productsRequest!(request, response)
+        _productsRequest_didReceive!(request, response)
     }
 }

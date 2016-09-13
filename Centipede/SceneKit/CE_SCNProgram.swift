@@ -40,8 +40,8 @@ public extension SCNProgram {
         return SCNProgram_Delegate()
     }
     
-    public func ce_program(handle: ((SCNProgram, Error) -> Void)) -> Self {
-        ce._program = handle
+    public func ce_program_handleError(handle: ((SCNProgram, Error) -> Void)) -> Self {
+        ce._program_handleError = handle
         rebindingDelegate()
         return self
     }
@@ -50,13 +50,13 @@ public extension SCNProgram {
 
 internal class SCNProgram_Delegate: NSObject, SCNProgramDelegate {
     
-    var _program: ((SCNProgram, Error) -> Void)?
+    var _program_handleError: ((SCNProgram, Error) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(program(_:handleError:)) : _program,
+            #selector(program(_:handleError:)) : _program_handleError,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -67,6 +67,6 @@ internal class SCNProgram_Delegate: NSObject, SCNProgramDelegate {
     
     
     @objc func program(_ program: SCNProgram, handleError error: Error) {
-        _program!(program, error)
+        _program_handleError!(program, error)
     }
 }

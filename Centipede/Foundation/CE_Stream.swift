@@ -40,8 +40,8 @@ public extension Stream {
         return Stream_Delegate()
     }
     
-    public func ce_s(handle: ((Stream, Stream) -> Void)) -> Self {
-        ce._s = handle
+    public func ce_stream_handle(handle: ((Stream, Stream) -> Void)) -> Self {
+        ce._stream_handle = handle
         rebindingDelegate()
         return self
     }
@@ -50,13 +50,13 @@ public extension Stream {
 
 internal class Stream_Delegate: NSObject, StreamDelegate {
     
-    var _s: ((Stream, Stream) -> Void)?
+    var _stream_handle: ((Stream, Stream) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(stream(_:handle:)) : _s,
+            #selector(stream(_:handle:)) : _stream_handle,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -67,6 +67,6 @@ internal class Stream_Delegate: NSObject, StreamDelegate {
     
     
     @objc func stream(_ aStream: Stream, handle eventCode: Stream) {
-        _s!(aStream, eventCode)
+        _stream_handle!(aStream, eventCode)
     }
 }

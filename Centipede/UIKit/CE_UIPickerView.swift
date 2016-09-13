@@ -42,13 +42,13 @@ public extension UIPickerView {
         return UIPickerView_Delegate()
     }
     
-    public func ce_numberOfComponents(handle: ((UIPickerView) -> Int)) -> Self {
-        ce._numberOfComponents = handle
+    public func ce_numberOfComponents_in(handle: ((UIPickerView) -> Int)) -> Self {
+        ce._numberOfComponents_in = handle
         rebindingDelegate()
         return self
     }
-    public func ce_pickerView(handle: ((UIPickerView, Int) -> Int)) -> Self {
-        ce._pickerView = handle
+    public func ce_pickerView_numberOfRowsInComponent(handle: ((UIPickerView, Int) -> Int)) -> Self {
+        ce._pickerView_numberOfRowsInComponent = handle
         rebindingDelegate()
         return self
     }
@@ -87,8 +87,8 @@ public extension UIPickerView {
 
 internal class UIPickerView_Delegate: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var _numberOfComponents: ((UIPickerView) -> Int)?
-    var _pickerView: ((UIPickerView, Int) -> Int)?
+    var _numberOfComponents_in: ((UIPickerView) -> Int)?
+    var _pickerView_numberOfRowsInComponent: ((UIPickerView, Int) -> Int)?
     var _pickerView_widthForComponent: ((UIPickerView, Int) -> CGFloat)?
     var _pickerView_rowHeightForComponent: ((UIPickerView, Int) -> CGFloat)?
     var _pickerView_titleForRow: ((UIPickerView, Int, Int) -> String?)?
@@ -100,8 +100,8 @@ internal class UIPickerView_Delegate: NSObject, UIPickerViewDataSource, UIPicker
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(numberOfComponents(in:)) : _numberOfComponents,
-            #selector(pickerView(_:numberOfRowsInComponent:)) : _pickerView,
+            #selector(numberOfComponents(in:)) : _numberOfComponents_in,
+            #selector(pickerView(_:numberOfRowsInComponent:)) : _pickerView_numberOfRowsInComponent,
             #selector(pickerView(_:widthForComponent:)) : _pickerView_widthForComponent,
             #selector(pickerView(_:rowHeightForComponent:)) : _pickerView_rowHeightForComponent,
             #selector(pickerView(_:titleForRow:forComponent:)) : _pickerView_titleForRow,
@@ -124,10 +124,10 @@ internal class UIPickerView_Delegate: NSObject, UIPickerViewDataSource, UIPicker
     
     
     @objc func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return _numberOfComponents!(pickerView)
+        return _numberOfComponents_in!(pickerView)
     }
     @objc func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return _pickerView!(pickerView, component)
+        return _pickerView_numberOfRowsInComponent!(pickerView, component)
     }
     @objc func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         return _pickerView_widthForComponent!(pickerView, component)

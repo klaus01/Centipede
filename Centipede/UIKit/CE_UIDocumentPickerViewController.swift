@@ -42,8 +42,8 @@ public extension UIDocumentPickerViewController {
         return UIDocumentPickerViewController_Delegate()
     }
     
-    public func ce_documentPicker(handle: ((UIDocumentPickerViewController, URL) -> Void)) -> Self {
-        ce._documentPicker = handle
+    public func ce_documentPicker_didPickDocumentAt(handle: ((UIDocumentPickerViewController, URL) -> Void)) -> Self {
+        ce._documentPicker_didPickDocumentAt = handle
         rebindingDelegate()
         return self
     }
@@ -57,14 +57,14 @@ public extension UIDocumentPickerViewController {
 
 internal class UIDocumentPickerViewController_Delegate: UIViewController_Delegate, UIDocumentPickerDelegate {
     
-    var _documentPicker: ((UIDocumentPickerViewController, URL) -> Void)?
+    var _documentPicker_didPickDocumentAt: ((UIDocumentPickerViewController, URL) -> Void)?
     var _documentPickerWasCancelled: ((UIDocumentPickerViewController) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(documentPicker(_:didPickDocumentAt:)) : _documentPicker,
+            #selector(documentPicker(_:didPickDocumentAt:)) : _documentPicker_didPickDocumentAt,
             #selector(documentPickerWasCancelled(_:)) : _documentPickerWasCancelled,
         ]
         if let f = funcDic1[aSelector] {
@@ -76,7 +76,7 @@ internal class UIDocumentPickerViewController_Delegate: UIViewController_Delegat
     
     
     @objc func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        _documentPicker!(controller, url)
+        _documentPicker_didPickDocumentAt!(controller, url)
     }
     @objc func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         _documentPickerWasCancelled!(controller)

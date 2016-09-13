@@ -60,8 +60,8 @@ public extension UISearchBar {
         rebindingDelegate()
         return self
     }
-    public func ce_searchBar(handle: ((UISearchBar, String) -> Void)) -> Self {
-        ce._searchBar = handle
+    public func ce_searchBar_textDidChange(handle: ((UISearchBar, String) -> Void)) -> Self {
+        ce._searchBar_textDidChange = handle
         rebindingDelegate()
         return self
     }
@@ -104,7 +104,7 @@ internal class UISearchBar_Delegate: NSObject, UISearchBarDelegate {
     var _searchBarTextDidBeginEditing: ((UISearchBar) -> Void)?
     var _searchBarShouldEndEditing: ((UISearchBar) -> Bool)?
     var _searchBarTextDidEndEditing: ((UISearchBar) -> Void)?
-    var _searchBar: ((UISearchBar, String) -> Void)?
+    var _searchBar_textDidChange: ((UISearchBar, String) -> Void)?
     var _searchBar_shouldChangeTextIn: ((UISearchBar, NSRange, String) -> Bool)?
     var _searchBarSearchButtonClicked: ((UISearchBar) -> Void)?
     var _searchBarBookmarkButtonClicked: ((UISearchBar) -> Void)?
@@ -120,7 +120,7 @@ internal class UISearchBar_Delegate: NSObject, UISearchBarDelegate {
             #selector(searchBarTextDidBeginEditing(_:)) : _searchBarTextDidBeginEditing,
             #selector(searchBarShouldEndEditing(_:)) : _searchBarShouldEndEditing,
             #selector(searchBarTextDidEndEditing(_:)) : _searchBarTextDidEndEditing,
-            #selector(searchBar(_:textDidChange:)) : _searchBar,
+            #selector(searchBar(_:textDidChange:)) : _searchBar_textDidChange,
             #selector(searchBar(_:shouldChangeTextIn:replacementText:)) : _searchBar_shouldChangeTextIn,
             #selector(searchBarSearchButtonClicked(_:)) : _searchBarSearchButtonClicked,
         ]
@@ -155,7 +155,7 @@ internal class UISearchBar_Delegate: NSObject, UISearchBarDelegate {
         _searchBarTextDidEndEditing!(searchBar)
     }
     @objc func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        _searchBar!(searchBar, searchText)
+        _searchBar_textDidChange!(searchBar, searchText)
     }
     @objc func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         return _searchBar_shouldChangeTextIn!(searchBar, range, text)

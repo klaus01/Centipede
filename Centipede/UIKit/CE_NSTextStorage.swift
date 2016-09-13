@@ -40,8 +40,8 @@ public extension NSTextStorage {
         return NSTextStorage_Delegate()
     }
     
-    public func ce_textStorage(handle: ((NSTextStorage, NSTextStorageEditActions, NSRange, Int) -> Void)) -> Self {
-        ce._textStorage = handle
+    public func ce_textStorage_willProcessEditing(handle: ((NSTextStorage, NSTextStorageEditActions, NSRange, Int) -> Void)) -> Self {
+        ce._textStorage_willProcessEditing = handle
         rebindingDelegate()
         return self
     }
@@ -55,14 +55,14 @@ public extension NSTextStorage {
 
 internal class NSTextStorage_Delegate: NSObject, NSTextStorageDelegate {
     
-    var _textStorage: ((NSTextStorage, NSTextStorageEditActions, NSRange, Int) -> Void)?
+    var _textStorage_willProcessEditing: ((NSTextStorage, NSTextStorageEditActions, NSRange, Int) -> Void)?
     var _textStorage_didProcessEditing: ((NSTextStorage, NSTextStorageEditActions, NSRange, Int) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(textStorage(_:willProcessEditing:range:changeInLength:)) : _textStorage,
+            #selector(textStorage(_:willProcessEditing:range:changeInLength:)) : _textStorage_willProcessEditing,
             #selector(textStorage(_:didProcessEditing:range:changeInLength:)) : _textStorage_didProcessEditing,
         ]
         if let f = funcDic1[aSelector] {
@@ -74,7 +74,7 @@ internal class NSTextStorage_Delegate: NSObject, NSTextStorageDelegate {
     
     
     @objc func textStorage(_ textStorage: NSTextStorage, willProcessEditing editedMask: NSTextStorageEditActions, range editedRange: NSRange, changeInLength delta: Int) {
-        _textStorage!(textStorage, editedMask, editedRange, delta)
+        _textStorage_willProcessEditing!(textStorage, editedMask, editedRange, delta)
     }
     @objc func textStorage(_ textStorage: NSTextStorage, didProcessEditing editedMask: NSTextStorageEditActions, range editedRange: NSRange, changeInLength delta: Int) {
         _textStorage_didProcessEditing!(textStorage, editedMask, editedRange, delta)

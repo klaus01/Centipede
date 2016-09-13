@@ -77,7 +77,7 @@
             var reg = new RegExp(classChildName, "i");
             var funcObj = {
                 oldName: result[1],
-                newName: firstLetterLowercase(result[1].replace(reg, "")),
+                newName: "_" + result[1],
                 parameters: [{
                     name: result[2] ? result[2].trim() : result[3],
                     variate: result[3],
@@ -97,29 +97,15 @@
                     type: r[3].replace(/^\s+|[\s\!]+$/g,"")
                 });
             }
-            if (funcObj.newName.length <= 0) {
-                // 使用第二个参数名作为方法名
-                if (funcObj.parameters.length < 2) {
-                    console.log(funcObj);
-                    console.error("无法解析，需要第二个参数来确定方法名。请看控制台日志");
-                    return null;
-                }
-                if (funcObj.parameters[1].name.match(/([A-Z])/))
-                    funcObj.newName = firstLetterLowercase(funcObj.parameters[1].name);
-                else if (funcObj.parameters.length < 3) {
-                    // 第二个参数不存在大写字母，及需要第三个参数来确定方法名
-                    console.log(funcObj);
-                    console.error("无法解析，需要第三个参数来确定方法名。请看控制台日志");
-                    return null;
-                }
-                else {
-                    funcObj.newName = firstLetterLowercase(funcObj.parameters[1].name) + firstLetterUppercase(funcObj.parameters[2].name);
-                }
+
+            // 确定方法名称
+            if (funcObj.parameters.length >= 1 && funcObj.parameters[0].name !== "_") {
+                funcObj.newName += "_" + firstLetterLowercase(funcObj.parameters[0].name);
+            } else if (funcObj.parameters.length >= 2 && funcObj.parameters[0].name === "_") {
+                funcObj.newName += "_" + firstLetterLowercase(funcObj.parameters[1].name);
             }
-            funcObj.newName = "_" + funcObj.newName;
-            // 判断方法名是否已存在，存在则在方法名上加上第二个参数名
-            // func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle
-            // func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection!) -> UIModalPresentationStyle
+
+            // 判断方法名是否已存在，存在则在方法名上加上之后的参数名
             var i = 0;
             while (sourceObj.funcs.find(function(item){ return item.newName === funcObj.newName; })) {
                 if (funcObj.parameters.length <= i) {

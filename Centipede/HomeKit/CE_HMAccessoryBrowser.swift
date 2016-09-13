@@ -40,8 +40,8 @@ public extension HMAccessoryBrowser {
         return HMAccessoryBrowser_Delegate()
     }
     
-    public func ce_accessoryBrowser(handle: ((HMAccessoryBrowser, HMAccessory) -> Void)) -> Self {
-        ce._accessoryBrowser = handle
+    public func ce_accessoryBrowser_didFindNewAccessory(handle: ((HMAccessoryBrowser, HMAccessory) -> Void)) -> Self {
+        ce._accessoryBrowser_didFindNewAccessory = handle
         rebindingDelegate()
         return self
     }
@@ -55,14 +55,14 @@ public extension HMAccessoryBrowser {
 
 internal class HMAccessoryBrowser_Delegate: NSObject, HMAccessoryBrowserDelegate {
     
-    var _accessoryBrowser: ((HMAccessoryBrowser, HMAccessory) -> Void)?
+    var _accessoryBrowser_didFindNewAccessory: ((HMAccessoryBrowser, HMAccessory) -> Void)?
     var _accessoryBrowser_didRemoveNewAccessory: ((HMAccessoryBrowser, HMAccessory) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(accessoryBrowser(_:didFindNewAccessory:)) : _accessoryBrowser,
+            #selector(accessoryBrowser(_:didFindNewAccessory:)) : _accessoryBrowser_didFindNewAccessory,
             #selector(accessoryBrowser(_:didRemoveNewAccessory:)) : _accessoryBrowser_didRemoveNewAccessory,
         ]
         if let f = funcDic1[aSelector] {
@@ -74,7 +74,7 @@ internal class HMAccessoryBrowser_Delegate: NSObject, HMAccessoryBrowserDelegate
     
     
     @objc func accessoryBrowser(_ browser: HMAccessoryBrowser, didFindNewAccessory accessory: HMAccessory) {
-        _accessoryBrowser!(browser, accessory)
+        _accessoryBrowser_didFindNewAccessory!(browser, accessory)
     }
     @objc func accessoryBrowser(_ browser: HMAccessoryBrowser, didRemoveNewAccessory accessory: HMAccessory) {
         _accessoryBrowser_didRemoveNewAccessory!(browser, accessory)

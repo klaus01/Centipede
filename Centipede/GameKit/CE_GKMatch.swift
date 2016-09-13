@@ -40,13 +40,13 @@ public extension GKMatch {
         return GKMatch_Delegate()
     }
     
-    public func ce_match(handle: ((GKMatch, Data, GKPlayer) -> Void)) -> Self {
-        ce._match = handle
+    public func ce_match_didReceive(handle: ((GKMatch, Data, GKPlayer) -> Void)) -> Self {
+        ce._match_didReceive = handle
         rebindingDelegate()
         return self
     }
-    public func ce_match_didReceive(handle: ((GKMatch, Data, String) -> Void)) -> Self {
-        ce._match_didReceive = handle
+    public func ce_match_didReceive_didReceive(handle: ((GKMatch, Data, String) -> Void)) -> Self {
+        ce._match_didReceive_didReceive = handle
         rebindingDelegate()
         return self
     }
@@ -75,8 +75,8 @@ public extension GKMatch {
 
 internal class GKMatch_Delegate: NSObject, GKMatchDelegate {
     
-    var _match: ((GKMatch, Data, GKPlayer) -> Void)?
-    var _match_didReceive: ((GKMatch, Data, String) -> Void)?
+    var _match_didReceive: ((GKMatch, Data, GKPlayer) -> Void)?
+    var _match_didReceive_didReceive: ((GKMatch, Data, String) -> Void)?
     var _match_player: ((GKMatch, GKPlayer, GKPlayerConnectionState) -> Void)?
     var _match_didFailWithError: ((GKMatch, Error?) -> Void)?
     var _match_shouldReinviteDisconnectedPlayer: ((GKMatch, GKPlayer) -> Bool)?
@@ -86,8 +86,8 @@ internal class GKMatch_Delegate: NSObject, GKMatchDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(match(_:didReceive:fromRemotePlayer:)) : _match,
-            #selector(match(_:didReceive:fromPlayer:)) : _match_didReceive,
+            #selector(match(_:didReceive:fromRemotePlayer:)) : _match_didReceive,
+            #selector(match(_:didReceive:fromPlayer:)) : _match_didReceive_didReceive,
             #selector(match(_:player:didChange:)) : _match_player,
             #selector(match(_:didFailWithError:)) : _match_didFailWithError,
             #selector(match(_:shouldReinviteDisconnectedPlayer:)) : _match_shouldReinviteDisconnectedPlayer,
@@ -102,10 +102,10 @@ internal class GKMatch_Delegate: NSObject, GKMatchDelegate {
     
     
     @objc func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
-        _match!(match, data, player)
+        _match_didReceive!(match, data, player)
     }
     @objc func match(_ match: GKMatch, didReceive data: Data, fromPlayer playerID: String) {
-        _match_didReceive!(match, data, playerID)
+        _match_didReceive_didReceive!(match, data, playerID)
     }
     @objc func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {
         _match_player!(match, player, state)

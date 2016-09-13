@@ -40,8 +40,8 @@ public extension UINavigationBar {
         return UINavigationBar_Delegate()
     }
     
-    public func ce_navigationBar(handle: ((UINavigationBar, UINavigationItem) -> Bool)) -> Self {
-        ce._navigationBar = handle
+    public func ce_navigationBar_shouldPush(handle: ((UINavigationBar, UINavigationItem) -> Bool)) -> Self {
+        ce._navigationBar_shouldPush = handle
         rebindingDelegate()
         return self
     }
@@ -65,7 +65,7 @@ public extension UINavigationBar {
 
 internal class UINavigationBar_Delegate: NSObject, UINavigationBarDelegate {
     
-    var _navigationBar: ((UINavigationBar, UINavigationItem) -> Bool)?
+    var _navigationBar_shouldPush: ((UINavigationBar, UINavigationItem) -> Bool)?
     var _navigationBar_didPush: ((UINavigationBar, UINavigationItem) -> Void)?
     var _navigationBar_shouldPop: ((UINavigationBar, UINavigationItem) -> Bool)?
     var _navigationBar_didPop: ((UINavigationBar, UINavigationItem) -> Void)?
@@ -74,7 +74,7 @@ internal class UINavigationBar_Delegate: NSObject, UINavigationBarDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(navigationBar(_:shouldPush:)) : _navigationBar,
+            #selector(navigationBar(_:shouldPush:)) : _navigationBar_shouldPush,
             #selector(navigationBar(_:didPush:)) : _navigationBar_didPush,
             #selector(navigationBar(_:shouldPop:)) : _navigationBar_shouldPop,
             #selector(navigationBar(_:didPop:)) : _navigationBar_didPop,
@@ -88,7 +88,7 @@ internal class UINavigationBar_Delegate: NSObject, UINavigationBarDelegate {
     
     
     @objc func navigationBar(_ navigationBar: UINavigationBar, shouldPush item: UINavigationItem) -> Bool {
-        return _navigationBar!(navigationBar, item)
+        return _navigationBar_shouldPush!(navigationBar, item)
     }
     @objc func navigationBar(_ navigationBar: UINavigationBar, didPush item: UINavigationItem) {
         _navigationBar_didPush!(navigationBar, item)

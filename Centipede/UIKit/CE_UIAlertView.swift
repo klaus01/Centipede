@@ -40,8 +40,8 @@ public extension UIAlertView {
         return UIAlertView_Delegate()
     }
     
-    public func ce_alertView(handle: ((UIAlertView, Int) -> Void)) -> Self {
-        ce._alertView = handle
+    public func ce_alertView_clickedButtonAt(handle: ((UIAlertView, Int) -> Void)) -> Self {
+        ce._alertView_clickedButtonAt = handle
         rebindingDelegate()
         return self
     }
@@ -80,7 +80,7 @@ public extension UIAlertView {
 
 internal class UIAlertView_Delegate: NSObject, UIAlertViewDelegate {
     
-    var _alertView: ((UIAlertView, Int) -> Void)?
+    var _alertView_clickedButtonAt: ((UIAlertView, Int) -> Void)?
     var _alertViewCancel: ((UIAlertView) -> Void)?
     var _willPresent: ((UIAlertView) -> Void)?
     var _didPresent: ((UIAlertView) -> Void)?
@@ -92,7 +92,7 @@ internal class UIAlertView_Delegate: NSObject, UIAlertViewDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(alertView(_:clickedButtonAt:)) : _alertView,
+            #selector(alertView(_:clickedButtonAt:)) : _alertView_clickedButtonAt,
             #selector(alertViewCancel(_:)) : _alertViewCancel,
             #selector(willPresent(_:)) : _willPresent,
             #selector(didPresent(_:)) : _didPresent,
@@ -109,7 +109,7 @@ internal class UIAlertView_Delegate: NSObject, UIAlertViewDelegate {
     
     
     @objc func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
-        _alertView!(alertView, buttonIndex)
+        _alertView_clickedButtonAt!(alertView, buttonIndex)
     }
     @objc func alertViewCancel(_ alertView: UIAlertView) {
         _alertViewCancel!(alertView)

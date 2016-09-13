@@ -50,8 +50,8 @@ public extension NSUserActivity {
         rebindingDelegate()
         return self
     }
-    public func ce_userActivity(handle: ((NSUserActivity?, InputStream, OutputStream) -> Void)) -> Self {
-        ce._userActivity = handle
+    public func ce_userActivity_didReceive(handle: ((NSUserActivity?, InputStream, OutputStream) -> Void)) -> Self {
+        ce._userActivity_didReceive = handle
         rebindingDelegate()
         return self
     }
@@ -62,7 +62,7 @@ internal class NSUserActivity_Delegate: NSObject, NSUserActivityDelegate {
     
     var _userActivityWillSave: ((NSUserActivity) -> Void)?
     var _userActivityWasContinued: ((NSUserActivity) -> Void)?
-    var _userActivity: ((NSUserActivity?, InputStream, OutputStream) -> Void)?
+    var _userActivity_didReceive: ((NSUserActivity?, InputStream, OutputStream) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
@@ -70,7 +70,7 @@ internal class NSUserActivity_Delegate: NSObject, NSUserActivityDelegate {
         let funcDic1: [Selector : Any?] = [
             #selector(userActivityWillSave(_:)) : _userActivityWillSave,
             #selector(userActivityWasContinued(_:)) : _userActivityWasContinued,
-            #selector(userActivity(_:didReceive:outputStream:)) : _userActivity,
+            #selector(userActivity(_:didReceive:outputStream:)) : _userActivity_didReceive,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -87,6 +87,6 @@ internal class NSUserActivity_Delegate: NSObject, NSUserActivityDelegate {
         _userActivityWasContinued!(userActivity)
     }
     @objc func userActivity(_ userActivity: NSUserActivity?, didReceive inputStream: InputStream, outputStream: OutputStream) {
-        _userActivity!(userActivity, inputStream, outputStream)
+        _userActivity_didReceive!(userActivity, inputStream, outputStream)
     }
 }

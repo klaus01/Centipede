@@ -40,13 +40,13 @@ public extension GLKViewController {
         return GLKViewController_Delegate()
     }
     
-    public func ce_gUpdate(handle: ((GLKViewController) -> Void)) -> Self {
-        ce._gUpdate = handle
+    public func ce_glkViewControllerUpdate(handle: ((GLKViewController) -> Void)) -> Self {
+        ce._glkViewControllerUpdate = handle
         rebindingDelegate()
         return self
     }
-    public func ce_g(handle: ((GLKViewController, Bool) -> Void)) -> Self {
-        ce._g = handle
+    public func ce_glkViewController_willPause(handle: ((GLKViewController, Bool) -> Void)) -> Self {
+        ce._glkViewController_willPause = handle
         rebindingDelegate()
         return self
     }
@@ -55,15 +55,15 @@ public extension GLKViewController {
 
 internal class GLKViewController_Delegate: UIViewController_Delegate, GLKViewControllerDelegate {
     
-    var _gUpdate: ((GLKViewController) -> Void)?
-    var _g: ((GLKViewController, Bool) -> Void)?
+    var _glkViewControllerUpdate: ((GLKViewController) -> Void)?
+    var _glkViewController_willPause: ((GLKViewController, Bool) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(glkViewControllerUpdate(_:)) : _gUpdate,
-            #selector(glkViewController(_:willPause:)) : _g,
+            #selector(glkViewControllerUpdate(_:)) : _glkViewControllerUpdate,
+            #selector(glkViewController(_:willPause:)) : _glkViewController_willPause,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -74,9 +74,9 @@ internal class GLKViewController_Delegate: UIViewController_Delegate, GLKViewCon
     
     
     @objc func glkViewControllerUpdate(_ controller: GLKViewController) {
-        _gUpdate!(controller)
+        _glkViewControllerUpdate!(controller)
     }
     @objc func glkViewController(_ controller: GLKViewController, willPause pause: Bool) {
-        _g!(controller, pause)
+        _glkViewController_willPause!(controller, pause)
     }
 }

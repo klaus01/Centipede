@@ -40,8 +40,8 @@ public extension MCNearbyServiceAdvertiser {
         return MCNearbyServiceAdvertiser_Delegate()
     }
     
-    public func ce_advertiser(handle: ((MCNearbyServiceAdvertiser, MCPeerID, Data?, @escaping (Bool, MCSession?) -> Void) -> Void)) -> Self {
-        ce._advertiser = handle
+    public func ce_advertiser_didReceiveInvitationFromPeer(handle: ((MCNearbyServiceAdvertiser, MCPeerID, Data?, @escaping (Bool, MCSession?) -> Void) -> Void)) -> Self {
+        ce._advertiser_didReceiveInvitationFromPeer = handle
         rebindingDelegate()
         return self
     }
@@ -55,14 +55,14 @@ public extension MCNearbyServiceAdvertiser {
 
 internal class MCNearbyServiceAdvertiser_Delegate: NSObject, MCNearbyServiceAdvertiserDelegate {
     
-    var _advertiser: ((MCNearbyServiceAdvertiser, MCPeerID, Data?, @escaping (Bool, MCSession?) -> Void) -> Void)?
+    var _advertiser_didReceiveInvitationFromPeer: ((MCNearbyServiceAdvertiser, MCPeerID, Data?, @escaping (Bool, MCSession?) -> Void) -> Void)?
     var _advertiser_didNotStartAdvertisingPeer: ((MCNearbyServiceAdvertiser, Error) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(advertiser(_:didReceiveInvitationFromPeer:withContext:invitationHandler:)) : _advertiser,
+            #selector(advertiser(_:didReceiveInvitationFromPeer:withContext:invitationHandler:)) : _advertiser_didReceiveInvitationFromPeer,
             #selector(advertiser(_:didNotStartAdvertisingPeer:)) : _advertiser_didNotStartAdvertisingPeer,
         ]
         if let f = funcDic1[aSelector] {
@@ -74,7 +74,7 @@ internal class MCNearbyServiceAdvertiser_Delegate: NSObject, MCNearbyServiceAdve
     
     
     @objc func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        _advertiser!(advertiser, peerID, context, invitationHandler)
+        _advertiser_didReceiveInvitationFromPeer!(advertiser, peerID, context, invitationHandler)
     }
     @objc func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
         _advertiser_didNotStartAdvertisingPeer!(advertiser, error)

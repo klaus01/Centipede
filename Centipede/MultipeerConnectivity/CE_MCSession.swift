@@ -40,8 +40,8 @@ public extension MCSession {
         return MCSession_Delegate()
     }
     
-    public func ce_session(handle: ((MCSession, MCPeerID, MCSessionState) -> Void)) -> Self {
-        ce._session = handle
+    public func ce_session_peer(handle: ((MCSession, MCPeerID, MCSessionState) -> Void)) -> Self {
+        ce._session_peer = handle
         rebindingDelegate()
         return self
     }
@@ -75,7 +75,7 @@ public extension MCSession {
 
 internal class MCSession_Delegate: NSObject, MCSessionDelegate {
     
-    var _session: ((MCSession, MCPeerID, MCSessionState) -> Void)?
+    var _session_peer: ((MCSession, MCPeerID, MCSessionState) -> Void)?
     var _session_didReceive: ((MCSession, Data, MCPeerID) -> Void)?
     var _session_didReceive_didReceive: ((MCSession, InputStream, String, MCPeerID) -> Void)?
     var _session_didStartReceivingResourceWithName: ((MCSession, String, MCPeerID, Progress) -> Void)?
@@ -86,7 +86,7 @@ internal class MCSession_Delegate: NSObject, MCSessionDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(session(_:peer:didChange:)) : _session,
+            #selector(session(_:peer:didChange:)) : _session_peer,
             #selector(session(_:didReceive:fromPeer:)) : _session_didReceive,
             #selector(session(_:didReceive:withName:fromPeer:)) : _session_didReceive_didReceive,
             #selector(session(_:didStartReceivingResourceWithName:fromPeer:with:)) : _session_didStartReceivingResourceWithName,
@@ -102,7 +102,7 @@ internal class MCSession_Delegate: NSObject, MCSessionDelegate {
     
     
     @objc func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        _session!(session, peerID, state)
+        _session_peer!(session, peerID, state)
     }
     @objc func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         _session_didReceive!(session, data, peerID)

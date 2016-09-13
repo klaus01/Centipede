@@ -40,38 +40,38 @@ public extension NetServiceBrowser {
         return NetServiceBrowser_Delegate()
     }
     
-    public func ce_nWillSearch(handle: ((NetServiceBrowser) -> Void)) -> Self {
-        ce._nWillSearch = handle
+    public func ce_netServiceBrowserWillSearch(handle: ((NetServiceBrowser) -> Void)) -> Self {
+        ce._netServiceBrowserWillSearch = handle
         rebindingDelegate()
         return self
     }
-    public func ce_nDidStopSearch(handle: ((NetServiceBrowser) -> Void)) -> Self {
-        ce._nDidStopSearch = handle
+    public func ce_netServiceBrowserDidStopSearch(handle: ((NetServiceBrowser) -> Void)) -> Self {
+        ce._netServiceBrowserDidStopSearch = handle
         rebindingDelegate()
         return self
     }
-    public func ce_n(handle: ((NetServiceBrowser, [String : NSNumber]) -> Void)) -> Self {
-        ce._n = handle
+    public func ce_netServiceBrowser_didNotSearch(handle: ((NetServiceBrowser, [String : NSNumber]) -> Void)) -> Self {
+        ce._netServiceBrowser_didNotSearch = handle
         rebindingDelegate()
         return self
     }
-    public func ce_n_didFindDomain(handle: ((NetServiceBrowser, String, Bool) -> Void)) -> Self {
-        ce._n_didFindDomain = handle
+    public func ce_netServiceBrowser_didFindDomain(handle: ((NetServiceBrowser, String, Bool) -> Void)) -> Self {
+        ce._netServiceBrowser_didFindDomain = handle
         rebindingDelegate()
         return self
     }
-    public func ce_n_didFind(handle: ((NetServiceBrowser, NetService, Bool) -> Void)) -> Self {
-        ce._n_didFind = handle
+    public func ce_netServiceBrowser_didFind(handle: ((NetServiceBrowser, NetService, Bool) -> Void)) -> Self {
+        ce._netServiceBrowser_didFind = handle
         rebindingDelegate()
         return self
     }
-    public func ce_n_didRemoveDomain(handle: ((NetServiceBrowser, String, Bool) -> Void)) -> Self {
-        ce._n_didRemoveDomain = handle
+    public func ce_netServiceBrowser_didRemoveDomain(handle: ((NetServiceBrowser, String, Bool) -> Void)) -> Self {
+        ce._netServiceBrowser_didRemoveDomain = handle
         rebindingDelegate()
         return self
     }
-    public func ce_n_didRemove(handle: ((NetServiceBrowser, NetService, Bool) -> Void)) -> Self {
-        ce._n_didRemove = handle
+    public func ce_netServiceBrowser_didRemove(handle: ((NetServiceBrowser, NetService, Bool) -> Void)) -> Self {
+        ce._netServiceBrowser_didRemove = handle
         rebindingDelegate()
         return self
     }
@@ -80,25 +80,25 @@ public extension NetServiceBrowser {
 
 internal class NetServiceBrowser_Delegate: NSObject, NetServiceBrowserDelegate {
     
-    var _nWillSearch: ((NetServiceBrowser) -> Void)?
-    var _nDidStopSearch: ((NetServiceBrowser) -> Void)?
-    var _n: ((NetServiceBrowser, [String : NSNumber]) -> Void)?
-    var _n_didFindDomain: ((NetServiceBrowser, String, Bool) -> Void)?
-    var _n_didFind: ((NetServiceBrowser, NetService, Bool) -> Void)?
-    var _n_didRemoveDomain: ((NetServiceBrowser, String, Bool) -> Void)?
-    var _n_didRemove: ((NetServiceBrowser, NetService, Bool) -> Void)?
+    var _netServiceBrowserWillSearch: ((NetServiceBrowser) -> Void)?
+    var _netServiceBrowserDidStopSearch: ((NetServiceBrowser) -> Void)?
+    var _netServiceBrowser_didNotSearch: ((NetServiceBrowser, [String : NSNumber]) -> Void)?
+    var _netServiceBrowser_didFindDomain: ((NetServiceBrowser, String, Bool) -> Void)?
+    var _netServiceBrowser_didFind: ((NetServiceBrowser, NetService, Bool) -> Void)?
+    var _netServiceBrowser_didRemoveDomain: ((NetServiceBrowser, String, Bool) -> Void)?
+    var _netServiceBrowser_didRemove: ((NetServiceBrowser, NetService, Bool) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(netServiceBrowserWillSearch(_:)) : _nWillSearch,
-            #selector(netServiceBrowserDidStopSearch(_:)) : _nDidStopSearch,
-            #selector(netServiceBrowser(_:didNotSearch:)) : _n,
-            #selector(netServiceBrowser(_:didFindDomain:moreComing:)) : _n_didFindDomain,
-            #selector(netServiceBrowser(_:didFind:moreComing:)) : _n_didFind,
-            #selector(netServiceBrowser(_:didRemoveDomain:moreComing:)) : _n_didRemoveDomain,
-            #selector(netServiceBrowser(_:didRemove:moreComing:)) : _n_didRemove,
+            #selector(netServiceBrowserWillSearch(_:)) : _netServiceBrowserWillSearch,
+            #selector(netServiceBrowserDidStopSearch(_:)) : _netServiceBrowserDidStopSearch,
+            #selector(netServiceBrowser(_:didNotSearch:)) : _netServiceBrowser_didNotSearch,
+            #selector(netServiceBrowser(_:didFindDomain:moreComing:)) : _netServiceBrowser_didFindDomain,
+            #selector(netServiceBrowser(_:didFind:moreComing:)) : _netServiceBrowser_didFind,
+            #selector(netServiceBrowser(_:didRemoveDomain:moreComing:)) : _netServiceBrowser_didRemoveDomain,
+            #selector(netServiceBrowser(_:didRemove:moreComing:)) : _netServiceBrowser_didRemove,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -109,24 +109,24 @@ internal class NetServiceBrowser_Delegate: NSObject, NetServiceBrowserDelegate {
     
     
     @objc func netServiceBrowserWillSearch(_ browser: NetServiceBrowser) {
-        _nWillSearch!(browser)
+        _netServiceBrowserWillSearch!(browser)
     }
     @objc func netServiceBrowserDidStopSearch(_ browser: NetServiceBrowser) {
-        _nDidStopSearch!(browser)
+        _netServiceBrowserDidStopSearch!(browser)
     }
     @objc func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
-        _n!(browser, errorDict)
+        _netServiceBrowser_didNotSearch!(browser, errorDict)
     }
     @objc func netServiceBrowser(_ browser: NetServiceBrowser, didFindDomain domainString: String, moreComing: Bool) {
-        _n_didFindDomain!(browser, domainString, moreComing)
+        _netServiceBrowser_didFindDomain!(browser, domainString, moreComing)
     }
     @objc func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        _n_didFind!(browser, service, moreComing)
+        _netServiceBrowser_didFind!(browser, service, moreComing)
     }
     @objc func netServiceBrowser(_ browser: NetServiceBrowser, didRemoveDomain domainString: String, moreComing: Bool) {
-        _n_didRemoveDomain!(browser, domainString, moreComing)
+        _netServiceBrowser_didRemoveDomain!(browser, domainString, moreComing)
     }
     @objc func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
-        _n_didRemove!(browser, service, moreComing)
+        _netServiceBrowser_didRemove!(browser, service, moreComing)
     }
 }

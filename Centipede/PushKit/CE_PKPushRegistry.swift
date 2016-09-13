@@ -40,8 +40,8 @@ public extension PKPushRegistry {
         return PKPushRegistry_Delegate()
     }
     
-    public func ce_pushRegistry(handle: ((PKPushRegistry, PKPushCredentials, PKPushType) -> Void)) -> Self {
-        ce._pushRegistry = handle
+    public func ce_pushRegistry_didUpdate(handle: ((PKPushRegistry, PKPushCredentials, PKPushType) -> Void)) -> Self {
+        ce._pushRegistry_didUpdate = handle
         rebindingDelegate()
         return self
     }
@@ -60,7 +60,7 @@ public extension PKPushRegistry {
 
 internal class PKPushRegistry_Delegate: NSObject, PKPushRegistryDelegate {
     
-    var _pushRegistry: ((PKPushRegistry, PKPushCredentials, PKPushType) -> Void)?
+    var _pushRegistry_didUpdate: ((PKPushRegistry, PKPushCredentials, PKPushType) -> Void)?
     var _pushRegistry_didReceiveIncomingPushWith: ((PKPushRegistry, PKPushPayload, PKPushType) -> Void)?
     var _pushRegistry_didInvalidatePushTokenForType: ((PKPushRegistry, PKPushType) -> Void)?
     
@@ -68,7 +68,7 @@ internal class PKPushRegistry_Delegate: NSObject, PKPushRegistryDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(pushRegistry(_:didUpdate:forType:)) : _pushRegistry,
+            #selector(pushRegistry(_:didUpdate:forType:)) : _pushRegistry_didUpdate,
             #selector(pushRegistry(_:didReceiveIncomingPushWith:forType:)) : _pushRegistry_didReceiveIncomingPushWith,
             #selector(pushRegistry(_:didInvalidatePushTokenForType:)) : _pushRegistry_didInvalidatePushTokenForType,
         ]
@@ -81,7 +81,7 @@ internal class PKPushRegistry_Delegate: NSObject, PKPushRegistryDelegate {
     
     
     @objc func pushRegistry(_ registry: PKPushRegistry, didUpdate credentials: PKPushCredentials, forType type: PKPushType) {
-        _pushRegistry!(registry, credentials, type)
+        _pushRegistry_didUpdate!(registry, credentials, type)
     }
     @objc func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, forType type: PKPushType) {
         _pushRegistry_didReceiveIncomingPushWith!(registry, payload, type)

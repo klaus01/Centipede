@@ -45,18 +45,18 @@ public extension CALayer {
         rebindingDelegate()
         return self
     }
-    public func ce_draw(handle: ((CALayer, CGContext) -> Void)) -> Self {
-        ce._draw = handle
+    public func ce_draw_in(handle: ((CALayer, CGContext) -> Void)) -> Self {
+        ce._draw_in = handle
         rebindingDelegate()
         return self
     }
-    public func ce_layoutSublayers(handle: ((CALayer) -> Void)) -> Self {
-        ce._layoutSublayers = handle
+    public func ce_layoutSublayers_of(handle: ((CALayer) -> Void)) -> Self {
+        ce._layoutSublayers_of = handle
         rebindingDelegate()
         return self
     }
-    public func ce_action(handle: ((CALayer, String) -> CAAction?)) -> Self {
-        ce._action = handle
+    public func ce_action_for(handle: ((CALayer, String) -> CAAction?)) -> Self {
+        ce._action_for = handle
         rebindingDelegate()
         return self
     }
@@ -66,18 +66,18 @@ public extension CALayer {
 internal class CALayer_Delegate: NSObject, CALayerDelegate {
     
     var _display: ((CALayer) -> Void)?
-    var _draw: ((CALayer, CGContext) -> Void)?
-    var _layoutSublayers: ((CALayer) -> Void)?
-    var _action: ((CALayer, String) -> CAAction?)?
+    var _draw_in: ((CALayer, CGContext) -> Void)?
+    var _layoutSublayers_of: ((CALayer) -> Void)?
+    var _action_for: ((CALayer, String) -> CAAction?)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
             #selector(display(_:)) : _display,
-            #selector(draw(_:in:)) : _draw,
-            #selector(layoutSublayers(of:)) : _layoutSublayers,
-            #selector(action(for:forKey:)) : _action,
+            #selector(draw(_:in:)) : _draw_in,
+            #selector(layoutSublayers(of:)) : _layoutSublayers_of,
+            #selector(action(for:forKey:)) : _action_for,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -91,12 +91,12 @@ internal class CALayer_Delegate: NSObject, CALayerDelegate {
         _display!(layer)
     }
     @objc func draw(_ layer: CALayer, in ctx: CGContext) {
-        _draw!(layer, ctx)
+        _draw_in!(layer, ctx)
     }
     @objc func layoutSublayers(of layer: CALayer) {
-        _layoutSublayers!(layer)
+        _layoutSublayers_of!(layer)
     }
     @objc func action(for layer: CALayer, forKey event: String) -> CAAction? {
-        return _action!(layer, event)
+        return _action_for!(layer, event)
     }
 }

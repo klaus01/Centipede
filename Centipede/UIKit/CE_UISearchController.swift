@@ -44,8 +44,8 @@ public extension UISearchController {
         return UISearchController_Delegate()
     }
     
-    public func ce_updateSearchResults(handle: ((UISearchController) -> Void)) -> Self {
-        ce._updateSearchResults = handle
+    public func ce_updateSearchResults_for(handle: ((UISearchController) -> Void)) -> Self {
+        ce._updateSearchResults_for = handle
         rebindingDelegate()
         return self
     }
@@ -79,7 +79,7 @@ public extension UISearchController {
 
 internal class UISearchController_Delegate: UIViewController_Delegate, UISearchResultsUpdating, UISearchControllerDelegate {
     
-    var _updateSearchResults: ((UISearchController) -> Void)?
+    var _updateSearchResults_for: ((UISearchController) -> Void)?
     var _willPresentSearchController: ((UISearchController) -> Void)?
     var _didPresentSearchController: ((UISearchController) -> Void)?
     var _willDismissSearchController: ((UISearchController) -> Void)?
@@ -90,7 +90,7 @@ internal class UISearchController_Delegate: UIViewController_Delegate, UISearchR
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(updateSearchResults(for:)) : _updateSearchResults,
+            #selector(updateSearchResults(for:)) : _updateSearchResults_for,
             #selector(willPresentSearchController(_:)) : _willPresentSearchController,
             #selector(didPresentSearchController(_:)) : _didPresentSearchController,
             #selector(willDismissSearchController(_:)) : _willDismissSearchController,
@@ -106,7 +106,7 @@ internal class UISearchController_Delegate: UIViewController_Delegate, UISearchR
     
     
     @objc func updateSearchResults(for searchController: UISearchController) {
-        _updateSearchResults!(searchController)
+        _updateSearchResults_for!(searchController)
     }
     @objc func willPresentSearchController(_ searchController: UISearchController) {
         _willPresentSearchController!(searchController)

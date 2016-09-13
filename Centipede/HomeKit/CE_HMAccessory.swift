@@ -45,8 +45,8 @@ public extension HMAccessory {
         rebindingDelegate()
         return self
     }
-    public func ce_accessory(handle: ((HMAccessory, HMService) -> Void)) -> Self {
-        ce._accessory = handle
+    public func ce_accessory_didUpdateNameFor(handle: ((HMAccessory, HMService) -> Void)) -> Self {
+        ce._accessory_didUpdateNameFor = handle
         rebindingDelegate()
         return self
     }
@@ -76,7 +76,7 @@ public extension HMAccessory {
 internal class HMAccessory_Delegate: NSObject, HMAccessoryDelegate {
     
     var _accessoryDidUpdateName: ((HMAccessory) -> Void)?
-    var _accessory: ((HMAccessory, HMService) -> Void)?
+    var _accessory_didUpdateNameFor: ((HMAccessory, HMService) -> Void)?
     var _accessory_didUpdateAssociatedServiceTypeFor: ((HMAccessory, HMService) -> Void)?
     var _accessoryDidUpdateServices: ((HMAccessory) -> Void)?
     var _accessoryDidUpdateReachability: ((HMAccessory) -> Void)?
@@ -87,7 +87,7 @@ internal class HMAccessory_Delegate: NSObject, HMAccessoryDelegate {
         
         let funcDic1: [Selector : Any?] = [
             #selector(accessoryDidUpdateName(_:)) : _accessoryDidUpdateName,
-            #selector(accessory(_:didUpdateNameFor:)) : _accessory,
+            #selector(accessory(_:didUpdateNameFor:)) : _accessory_didUpdateNameFor,
             #selector(accessory(_:didUpdateAssociatedServiceTypeFor:)) : _accessory_didUpdateAssociatedServiceTypeFor,
             #selector(accessoryDidUpdateServices(_:)) : _accessoryDidUpdateServices,
             #selector(accessoryDidUpdateReachability(_:)) : _accessoryDidUpdateReachability,
@@ -105,7 +105,7 @@ internal class HMAccessory_Delegate: NSObject, HMAccessoryDelegate {
         _accessoryDidUpdateName!(accessory)
     }
     @objc func accessory(_ accessory: HMAccessory, didUpdateNameFor service: HMService) {
-        _accessory!(accessory, service)
+        _accessory_didUpdateNameFor!(accessory, service)
     }
     @objc func accessory(_ accessory: HMAccessory, didUpdateAssociatedServiceTypeFor service: HMService) {
         _accessory_didUpdateAssociatedServiceTypeFor!(accessory, service)

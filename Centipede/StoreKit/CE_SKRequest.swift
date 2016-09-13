@@ -45,8 +45,8 @@ public extension SKRequest {
         rebindingDelegate()
         return self
     }
-    public func ce_request(handle: ((SKRequest, Error) -> Void)) -> Self {
-        ce._request = handle
+    public func ce_request_didFailWithError(handle: ((SKRequest, Error) -> Void)) -> Self {
+        ce._request_didFailWithError = handle
         rebindingDelegate()
         return self
     }
@@ -56,14 +56,14 @@ public extension SKRequest {
 internal class SKRequest_Delegate: NSObject, SKRequestDelegate {
     
     var _requestDidFinish: ((SKRequest) -> Void)?
-    var _request: ((SKRequest, Error) -> Void)?
+    var _request_didFailWithError: ((SKRequest, Error) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
             #selector(requestDidFinish(_:)) : _requestDidFinish,
-            #selector(request(_:didFailWithError:)) : _request,
+            #selector(request(_:didFailWithError:)) : _request_didFailWithError,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -77,6 +77,6 @@ internal class SKRequest_Delegate: NSObject, SKRequestDelegate {
         _requestDidFinish!(request)
     }
     @objc func request(_ request: SKRequest, didFailWithError error: Error) {
-        _request!(request, error)
+        _request_didFailWithError!(request, error)
     }
 }

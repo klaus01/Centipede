@@ -40,8 +40,8 @@ public extension MKMapView {
         return MKMapView_Delegate()
     }
     
-    public func ce_mapView(handle: ((MKMapView, Bool) -> Void)) -> Self {
-        ce._mapView = handle
+    public func ce_mapView_regionWillChangeAnimated(handle: ((MKMapView, Bool) -> Void)) -> Self {
+        ce._mapView_regionWillChangeAnimated = handle
         rebindingDelegate()
         return self
     }
@@ -60,8 +60,8 @@ public extension MKMapView {
         rebindingDelegate()
         return self
     }
-    public func ce_mapViewDidFailLoadingMap(handle: ((MKMapView, Error) -> Void)) -> Self {
-        ce._mapViewDidFailLoadingMap = handle
+    public func ce_mapViewDidFailLoadingMap_withError(handle: ((MKMapView, Error) -> Void)) -> Self {
+        ce._mapViewDidFailLoadingMap_withError = handle
         rebindingDelegate()
         return self
     }
@@ -70,8 +70,8 @@ public extension MKMapView {
         rebindingDelegate()
         return self
     }
-    public func ce_mapViewDidFinishRenderingMap(handle: ((MKMapView, Bool) -> Void)) -> Self {
-        ce._mapViewDidFinishRenderingMap = handle
+    public func ce_mapViewDidFinishRenderingMap_fullyRendered(handle: ((MKMapView, Bool) -> Void)) -> Self {
+        ce._mapViewDidFinishRenderingMap_fullyRendered = handle
         rebindingDelegate()
         return self
     }
@@ -140,13 +140,13 @@ public extension MKMapView {
 
 internal class MKMapView_Delegate: NSObject, MKMapViewDelegate {
     
-    var _mapView: ((MKMapView, Bool) -> Void)?
+    var _mapView_regionWillChangeAnimated: ((MKMapView, Bool) -> Void)?
     var _mapView_regionDidChangeAnimated: ((MKMapView, Bool) -> Void)?
     var _mapViewWillStartLoadingMap: ((MKMapView) -> Void)?
     var _mapViewDidFinishLoadingMap: ((MKMapView) -> Void)?
-    var _mapViewDidFailLoadingMap: ((MKMapView, Error) -> Void)?
+    var _mapViewDidFailLoadingMap_withError: ((MKMapView, Error) -> Void)?
     var _mapViewWillStartRenderingMap: ((MKMapView) -> Void)?
-    var _mapViewDidFinishRenderingMap: ((MKMapView, Bool) -> Void)?
+    var _mapViewDidFinishRenderingMap_fullyRendered: ((MKMapView, Bool) -> Void)?
     var _mapView_viewFor: ((MKMapView, MKAnnotation) -> MKAnnotationView?)?
     var _mapView_didAdd: ((MKMapView, [MKAnnotationView]) -> Void)?
     var _mapView_annotationView: ((MKMapView, MKAnnotationView, UIControl) -> Void)?
@@ -164,13 +164,13 @@ internal class MKMapView_Delegate: NSObject, MKMapViewDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(mapView(_:regionWillChangeAnimated:)) : _mapView,
+            #selector(mapView(_:regionWillChangeAnimated:)) : _mapView_regionWillChangeAnimated,
             #selector(mapView(_:regionDidChangeAnimated:)) : _mapView_regionDidChangeAnimated,
             #selector(mapViewWillStartLoadingMap(_:)) : _mapViewWillStartLoadingMap,
             #selector(mapViewDidFinishLoadingMap(_:)) : _mapViewDidFinishLoadingMap,
-            #selector(mapViewDidFailLoadingMap(_:withError:)) : _mapViewDidFailLoadingMap,
+            #selector(mapViewDidFailLoadingMap(_:withError:)) : _mapViewDidFailLoadingMap_withError,
             #selector(mapViewWillStartRenderingMap(_:)) : _mapViewWillStartRenderingMap,
-            #selector(mapViewDidFinishRenderingMap(_:fullyRendered:)) : _mapViewDidFinishRenderingMap,
+            #selector(mapViewDidFinishRenderingMap(_:fullyRendered:)) : _mapViewDidFinishRenderingMap_fullyRendered,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -205,7 +205,7 @@ internal class MKMapView_Delegate: NSObject, MKMapViewDelegate {
     
     
     @objc func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        _mapView!(mapView, animated)
+        _mapView_regionWillChangeAnimated!(mapView, animated)
     }
     @objc func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         _mapView_regionDidChangeAnimated!(mapView, animated)
@@ -217,13 +217,13 @@ internal class MKMapView_Delegate: NSObject, MKMapViewDelegate {
         _mapViewDidFinishLoadingMap!(mapView)
     }
     @objc func mapViewDidFailLoadingMap(_ mapView: MKMapView, withError error: Error) {
-        _mapViewDidFailLoadingMap!(mapView, error)
+        _mapViewDidFailLoadingMap_withError!(mapView, error)
     }
     @objc func mapViewWillStartRenderingMap(_ mapView: MKMapView) {
         _mapViewWillStartRenderingMap!(mapView)
     }
     @objc func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
-        _mapViewDidFinishRenderingMap!(mapView, fullyRendered)
+        _mapViewDidFinishRenderingMap_fullyRendered!(mapView, fullyRendered)
     }
     @objc func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         return _mapView_viewFor!(mapView, annotation)

@@ -45,8 +45,8 @@ public extension HMHome {
         rebindingDelegate()
         return self
     }
-    public func ce_home(handle: ((HMHome, HMAccessory) -> Void)) -> Self {
-        ce._home = handle
+    public func ce_home_didAdd(handle: ((HMHome, HMAccessory) -> Void)) -> Self {
+        ce._home_didAdd = handle
         rebindingDelegate()
         return self
     }
@@ -55,8 +55,8 @@ public extension HMHome {
         rebindingDelegate()
         return self
     }
-    public func ce_home_didAdd(handle: ((HMHome, HMUser) -> Void)) -> Self {
-        ce._home_didAdd = handle
+    public func ce_home_didAdd_didAdd(handle: ((HMHome, HMUser) -> Void)) -> Self {
+        ce._home_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
@@ -70,8 +70,8 @@ public extension HMHome {
         rebindingDelegate()
         return self
     }
-    public func ce_home_didAdd_didAdd(handle: ((HMHome, HMRoom) -> Void)) -> Self {
-        ce._home_didAdd_didAdd = handle
+    public func ce_home_didAdd_didAdd_didAdd(handle: ((HMHome, HMRoom) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
@@ -85,8 +85,8 @@ public extension HMHome {
         rebindingDelegate()
         return self
     }
-    public func ce_home_didAdd_didAdd_didAdd(handle: ((HMHome, HMZone) -> Void)) -> Self {
-        ce._home_didAdd_didAdd_didAdd = handle
+    public func ce_home_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMZone) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
@@ -100,8 +100,8 @@ public extension HMHome {
         rebindingDelegate()
         return self
     }
-    public func ce_home_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMRoom, HMZone) -> Void)) -> Self {
-        ce._home_didAdd_didAdd_didAdd_didAdd = handle
+    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMRoom, HMZone) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
@@ -110,8 +110,8 @@ public extension HMHome {
         rebindingDelegate()
         return self
     }
-    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMServiceGroup) -> Void)) -> Self {
-        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd = handle
+    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMServiceGroup) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
@@ -125,8 +125,8 @@ public extension HMHome {
         rebindingDelegate()
         return self
     }
-    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMService, HMServiceGroup) -> Void)) -> Self {
-        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd = handle
+    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMService, HMServiceGroup) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
@@ -135,8 +135,8 @@ public extension HMHome {
         rebindingDelegate()
         return self
     }
-    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMActionSet) -> Void)) -> Self {
-        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd = handle
+    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMActionSet) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
@@ -155,8 +155,8 @@ public extension HMHome {
         rebindingDelegate()
         return self
     }
-    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMTrigger) -> Void)) -> Self {
-        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd = handle
+    public func ce_home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd(handle: ((HMHome, HMTrigger) -> Void)) -> Self {
+        ce._home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd = handle
         rebindingDelegate()
         return self
     }
@@ -191,29 +191,29 @@ public extension HMHome {
 internal class HMHome_Delegate: NSObject, HMHomeDelegate {
     
     var _homeDidUpdateName: ((HMHome) -> Void)?
-    var _home: ((HMHome, HMAccessory) -> Void)?
+    var _home_didAdd: ((HMHome, HMAccessory) -> Void)?
     var _home_didRemove: ((HMHome, HMAccessory) -> Void)?
-    var _home_didAdd: ((HMHome, HMUser) -> Void)?
+    var _home_didAdd_didAdd: ((HMHome, HMUser) -> Void)?
     var _home_didRemove_didRemove: ((HMHome, HMUser) -> Void)?
     var _home_didUpdate: ((HMHome, HMRoom, HMAccessory) -> Void)?
-    var _home_didAdd_didAdd: ((HMHome, HMRoom) -> Void)?
+    var _home_didAdd_didAdd_didAdd: ((HMHome, HMRoom) -> Void)?
     var _home_didRemove_didRemove_didRemove: ((HMHome, HMRoom) -> Void)?
     var _home_didUpdateNameFor: ((HMHome, HMRoom) -> Void)?
-    var _home_didAdd_didAdd_didAdd: ((HMHome, HMZone) -> Void)?
+    var _home_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMZone) -> Void)?
     var _home_didRemove_didRemove_didRemove_didRemove: ((HMHome, HMZone) -> Void)?
     var _home_didUpdateNameFor_didUpdateNameFor: ((HMHome, HMZone) -> Void)?
-    var _home_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMRoom, HMZone) -> Void)?
+    var _home_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMRoom, HMZone) -> Void)?
     var _home_didRemove_didRemove_didRemove_didRemove_didRemove: ((HMHome, HMRoom, HMZone) -> Void)?
-    var _home_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMServiceGroup) -> Void)?
+    var _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMServiceGroup) -> Void)?
     var _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove: ((HMHome, HMServiceGroup) -> Void)?
     var _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor: ((HMHome, HMServiceGroup) -> Void)?
-    var _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMService, HMServiceGroup) -> Void)?
+    var _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMService, HMServiceGroup) -> Void)?
     var _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove: ((HMHome, HMService, HMServiceGroup) -> Void)?
-    var _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMActionSet) -> Void)?
+    var _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMActionSet) -> Void)?
     var _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove: ((HMHome, HMActionSet) -> Void)?
     var _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor: ((HMHome, HMActionSet) -> Void)?
     var _home_didUpdateActionsFor: ((HMHome, HMActionSet) -> Void)?
-    var _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMTrigger) -> Void)?
+    var _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd: ((HMHome, HMTrigger) -> Void)?
     var _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove: ((HMHome, HMTrigger) -> Void)?
     var _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor: ((HMHome, HMTrigger) -> Void)?
     var _home_didUpdate_didUpdate: ((HMHome, HMTrigger) -> Void)?
@@ -225,12 +225,12 @@ internal class HMHome_Delegate: NSObject, HMHomeDelegate {
         
         let funcDic1: [Selector : Any?] = [
             #selector(homeDidUpdateName(_:)) : _homeDidUpdateName,
-            #selector(home(_:didAdd:)) : _home,
-            #selector(home(_:didRemove:)) : _home_didRemove,
             #selector(home(_:didAdd:)) : _home_didAdd,
+            #selector(home(_:didRemove:)) : _home_didRemove,
+            #selector(home(_:didAdd:)) : _home_didAdd_didAdd,
             #selector(home(_:didRemove:)) : _home_didRemove_didRemove,
             #selector(home(_:didUpdate:for:)) : _home_didUpdate,
-            #selector(home(_:didAdd:)) : _home_didAdd_didAdd,
+            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -239,10 +239,10 @@ internal class HMHome_Delegate: NSObject, HMHomeDelegate {
         let funcDic2: [Selector : Any?] = [
             #selector(home(_:didRemove:)) : _home_didRemove_didRemove_didRemove,
             #selector(home(_:didUpdateNameFor:)) : _home_didUpdateNameFor,
-            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd,
+            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd_didAdd,
             #selector(home(_:didRemove:)) : _home_didRemove_didRemove_didRemove_didRemove,
             #selector(home(_:didUpdateNameFor:)) : _home_didUpdateNameFor_didUpdateNameFor,
-            #selector(home(_:didAdd:to:)) : _home_didAdd_didAdd_didAdd_didAdd,
+            #selector(home(_:didAdd:to:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd,
             #selector(home(_:didRemove:from:)) : _home_didRemove_didRemove_didRemove_didRemove_didRemove,
         ]
         if let f = funcDic2[aSelector] {
@@ -250,12 +250,12 @@ internal class HMHome_Delegate: NSObject, HMHomeDelegate {
         }
         
         let funcDic3: [Selector : Any?] = [
-            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd,
+            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd,
             #selector(home(_:didRemove:)) : _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove,
             #selector(home(_:didUpdateNameFor:)) : _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor,
-            #selector(home(_:didAdd:to:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd,
+            #selector(home(_:didAdd:to:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd,
             #selector(home(_:didRemove:from:)) : _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove,
-            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd,
+            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd,
             #selector(home(_:didRemove:)) : _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove,
         ]
         if let f = funcDic3[aSelector] {
@@ -265,7 +265,7 @@ internal class HMHome_Delegate: NSObject, HMHomeDelegate {
         let funcDic4: [Selector : Any?] = [
             #selector(home(_:didUpdateNameFor:)) : _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor,
             #selector(home(_:didUpdateActionsFor:)) : _home_didUpdateActionsFor,
-            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd,
+            #selector(home(_:didAdd:)) : _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd,
             #selector(home(_:didRemove:)) : _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove,
             #selector(home(_:didUpdateNameFor:)) : _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor,
             #selector(home(_:didUpdate:)) : _home_didUpdate_didUpdate,
@@ -290,13 +290,13 @@ internal class HMHome_Delegate: NSObject, HMHomeDelegate {
         _homeDidUpdateName!(home)
     }
     @objc func home(_ home: HMHome, didAdd accessory: HMAccessory) {
-        _home!(home, accessory)
+        _home_didAdd!(home, accessory)
     }
     @objc func home(_ home: HMHome, didRemove accessory: HMAccessory) {
         _home_didRemove!(home, accessory)
     }
     @objc func home(_ home: HMHome, didAdd user: HMUser) {
-        _home_didAdd!(home, user)
+        _home_didAdd_didAdd!(home, user)
     }
     @objc func home(_ home: HMHome, didRemove user: HMUser) {
         _home_didRemove_didRemove!(home, user)
@@ -305,7 +305,7 @@ internal class HMHome_Delegate: NSObject, HMHomeDelegate {
         _home_didUpdate!(home, room, accessory)
     }
     @objc func home(_ home: HMHome, didAdd room: HMRoom) {
-        _home_didAdd_didAdd!(home, room)
+        _home_didAdd_didAdd_didAdd!(home, room)
     }
     @objc func home(_ home: HMHome, didRemove room: HMRoom) {
         _home_didRemove_didRemove_didRemove!(home, room)
@@ -314,7 +314,7 @@ internal class HMHome_Delegate: NSObject, HMHomeDelegate {
         _home_didUpdateNameFor!(home, room)
     }
     @objc func home(_ home: HMHome, didAdd zone: HMZone) {
-        _home_didAdd_didAdd_didAdd!(home, zone)
+        _home_didAdd_didAdd_didAdd_didAdd!(home, zone)
     }
     @objc func home(_ home: HMHome, didRemove zone: HMZone) {
         _home_didRemove_didRemove_didRemove_didRemove!(home, zone)
@@ -323,13 +323,13 @@ internal class HMHome_Delegate: NSObject, HMHomeDelegate {
         _home_didUpdateNameFor_didUpdateNameFor!(home, zone)
     }
     @objc func home(_ home: HMHome, didAdd room: HMRoom, to zone: HMZone) {
-        _home_didAdd_didAdd_didAdd_didAdd!(home, room, zone)
+        _home_didAdd_didAdd_didAdd_didAdd_didAdd!(home, room, zone)
     }
     @objc func home(_ home: HMHome, didRemove room: HMRoom, from zone: HMZone) {
         _home_didRemove_didRemove_didRemove_didRemove_didRemove!(home, room, zone)
     }
     @objc func home(_ home: HMHome, didAdd group: HMServiceGroup) {
-        _home_didAdd_didAdd_didAdd_didAdd_didAdd!(home, group)
+        _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd!(home, group)
     }
     @objc func home(_ home: HMHome, didRemove group: HMServiceGroup) {
         _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove!(home, group)
@@ -338,13 +338,13 @@ internal class HMHome_Delegate: NSObject, HMHomeDelegate {
         _home_didUpdateNameFor_didUpdateNameFor_didUpdateNameFor!(home, group)
     }
     @objc func home(_ home: HMHome, didAdd service: HMService, to group: HMServiceGroup) {
-        _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd!(home, service, group)
+        _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd!(home, service, group)
     }
     @objc func home(_ home: HMHome, didRemove service: HMService, from group: HMServiceGroup) {
         _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove!(home, service, group)
     }
     @objc func home(_ home: HMHome, didAdd actionSet: HMActionSet) {
-        _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd!(home, actionSet)
+        _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd!(home, actionSet)
     }
     @objc func home(_ home: HMHome, didRemove actionSet: HMActionSet) {
         _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove!(home, actionSet)
@@ -356,7 +356,7 @@ internal class HMHome_Delegate: NSObject, HMHomeDelegate {
         _home_didUpdateActionsFor!(home, actionSet)
     }
     @objc func home(_ home: HMHome, didAdd trigger: HMTrigger) {
-        _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd!(home, trigger)
+        _home_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd_didAdd!(home, trigger)
     }
     @objc func home(_ home: HMHome, didRemove trigger: HMTrigger) {
         _home_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove_didRemove!(home, trigger)

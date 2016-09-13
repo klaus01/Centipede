@@ -60,8 +60,8 @@ public extension UITextField {
         rebindingDelegate()
         return self
     }
-    public func ce_textField(handle: ((UITextField, NSRange, String) -> Bool)) -> Self {
-        ce._textField = handle
+    public func ce_textField_shouldChangeCharactersIn(handle: ((UITextField, NSRange, String) -> Bool)) -> Self {
+        ce._textField_shouldChangeCharactersIn = handle
         rebindingDelegate()
         return self
     }
@@ -84,7 +84,7 @@ internal class UITextField_Delegate: NSObject, UITextFieldDelegate {
     var _textFieldDidBeginEditing: ((UITextField) -> Void)?
     var _textFieldShouldEndEditing: ((UITextField) -> Bool)?
     var _textFieldDidEndEditing: ((UITextField) -> Void)?
-    var _textField: ((UITextField, NSRange, String) -> Bool)?
+    var _textField_shouldChangeCharactersIn: ((UITextField, NSRange, String) -> Bool)?
     var _textFieldShouldClear: ((UITextField) -> Bool)?
     var _textFieldShouldReturn: ((UITextField) -> Bool)?
     
@@ -96,7 +96,7 @@ internal class UITextField_Delegate: NSObject, UITextFieldDelegate {
             #selector(textFieldDidBeginEditing(_:)) : _textFieldDidBeginEditing,
             #selector(textFieldShouldEndEditing(_:)) : _textFieldShouldEndEditing,
             #selector(textFieldDidEndEditing(_:)) : _textFieldDidEndEditing,
-            #selector(textField(_:shouldChangeCharactersIn:replacementString:)) : _textField,
+            #selector(textField(_:shouldChangeCharactersIn:replacementString:)) : _textField_shouldChangeCharactersIn,
             #selector(textFieldShouldClear(_:)) : _textFieldShouldClear,
             #selector(textFieldShouldReturn(_:)) : _textFieldShouldReturn,
         ]
@@ -121,7 +121,7 @@ internal class UITextField_Delegate: NSObject, UITextFieldDelegate {
         _textFieldDidEndEditing!(textField)
     }
     @objc func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return _textField!(textField, range, string)
+        return _textField_shouldChangeCharactersIn!(textField, range, string)
     }
     @objc func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return _textFieldShouldClear!(textField)

@@ -40,8 +40,8 @@ public extension AVSpeechSynthesizer {
         return AVSpeechSynthesizer_Delegate()
     }
     
-    public func ce_speechSynthesizer(handle: ((AVSpeechSynthesizer, AVSpeechUtterance) -> Void)) -> Self {
-        ce._speechSynthesizer = handle
+    public func ce_speechSynthesizer_didStart(handle: ((AVSpeechSynthesizer, AVSpeechUtterance) -> Void)) -> Self {
+        ce._speechSynthesizer_didStart = handle
         rebindingDelegate()
         return self
     }
@@ -75,7 +75,7 @@ public extension AVSpeechSynthesizer {
 
 internal class AVSpeechSynthesizer_Delegate: NSObject, AVSpeechSynthesizerDelegate {
     
-    var _speechSynthesizer: ((AVSpeechSynthesizer, AVSpeechUtterance) -> Void)?
+    var _speechSynthesizer_didStart: ((AVSpeechSynthesizer, AVSpeechUtterance) -> Void)?
     var _speechSynthesizer_didFinish: ((AVSpeechSynthesizer, AVSpeechUtterance) -> Void)?
     var _speechSynthesizer_didPause: ((AVSpeechSynthesizer, AVSpeechUtterance) -> Void)?
     var _speechSynthesizer_didContinue: ((AVSpeechSynthesizer, AVSpeechUtterance) -> Void)?
@@ -86,7 +86,7 @@ internal class AVSpeechSynthesizer_Delegate: NSObject, AVSpeechSynthesizerDelega
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(speechSynthesizer(_:didStart:)) : _speechSynthesizer,
+            #selector(speechSynthesizer(_:didStart:)) : _speechSynthesizer_didStart,
             #selector(speechSynthesizer(_:didFinish:)) : _speechSynthesizer_didFinish,
             #selector(speechSynthesizer(_:didPause:)) : _speechSynthesizer_didPause,
             #selector(speechSynthesizer(_:didContinue:)) : _speechSynthesizer_didContinue,
@@ -102,7 +102,7 @@ internal class AVSpeechSynthesizer_Delegate: NSObject, AVSpeechSynthesizerDelega
     
     
     @objc func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-        _speechSynthesizer!(synthesizer, utterance)
+        _speechSynthesizer_didStart!(synthesizer, utterance)
     }
     @objc func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         _speechSynthesizer_didFinish!(synthesizer, utterance)

@@ -40,8 +40,8 @@ public extension UINavigationController {
         return UINavigationController_Delegate()
     }
     
-    public func ce_navigationController(handle: ((UINavigationController, UIViewController, Bool) -> Void)) -> Self {
-        ce._navigationController = handle
+    public func ce_navigationController_willShow(handle: ((UINavigationController, UIViewController, Bool) -> Void)) -> Self {
+        ce._navigationController_willShow = handle
         rebindingDelegate()
         return self
     }
@@ -75,7 +75,7 @@ public extension UINavigationController {
 
 internal class UINavigationController_Delegate: UIViewController_Delegate, UINavigationControllerDelegate {
     
-    var _navigationController: ((UINavigationController, UIViewController, Bool) -> Void)?
+    var _navigationController_willShow: ((UINavigationController, UIViewController, Bool) -> Void)?
     var _navigationController_didShow: ((UINavigationController, UIViewController, Bool) -> Void)?
     var _navigationControllerSupportedInterfaceOrientations: ((UINavigationController) -> UIInterfaceOrientationMask)?
     var _navigationControllerPreferredInterfaceOrientationForPresentation: ((UINavigationController) -> UIInterfaceOrientation)?
@@ -86,7 +86,7 @@ internal class UINavigationController_Delegate: UIViewController_Delegate, UINav
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(navigationController(_:willShow:animated:)) : _navigationController,
+            #selector(navigationController(_:willShow:animated:)) : _navigationController_willShow,
             #selector(navigationController(_:didShow:animated:)) : _navigationController_didShow,
             #selector(navigationControllerSupportedInterfaceOrientations(_:)) : _navigationControllerSupportedInterfaceOrientations,
             #selector(navigationControllerPreferredInterfaceOrientationForPresentation(_:)) : _navigationControllerPreferredInterfaceOrientationForPresentation,
@@ -102,7 +102,7 @@ internal class UINavigationController_Delegate: UIViewController_Delegate, UINav
     
     
     @objc func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        _navigationController!(navigationController, viewController, animated)
+        _navigationController_willShow!(navigationController, viewController, animated)
     }
     @objc func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         _navigationController_didShow!(navigationController, viewController, animated)

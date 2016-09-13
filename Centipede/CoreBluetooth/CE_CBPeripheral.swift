@@ -45,13 +45,13 @@ public extension CBPeripheral {
         rebindingDelegate()
         return self
     }
-    public func ce_peripheral(handle: ((CBPeripheral, [CBService]) -> Void)) -> Self {
-        ce._peripheral = handle
+    public func ce_peripheral_didModifyServices(handle: ((CBPeripheral, [CBService]) -> Void)) -> Self {
+        ce._peripheral_didModifyServices = handle
         rebindingDelegate()
         return self
     }
-    public func ce_peripheralDidUpdateRSSI(handle: ((CBPeripheral, Error?) -> Void)) -> Self {
-        ce._peripheralDidUpdateRSSI = handle
+    public func ce_peripheralDidUpdateRSSI_error(handle: ((CBPeripheral, Error?) -> Void)) -> Self {
+        ce._peripheralDidUpdateRSSI_error = handle
         rebindingDelegate()
         return self
     }
@@ -101,8 +101,8 @@ public extension CBPeripheral {
 internal class CBPeripheral_Delegate: NSObject, CBPeripheralDelegate {
     
     var _peripheralDidUpdateName: ((CBPeripheral) -> Void)?
-    var _peripheral: ((CBPeripheral, [CBService]) -> Void)?
-    var _peripheralDidUpdateRSSI: ((CBPeripheral, Error?) -> Void)?
+    var _peripheral_didModifyServices: ((CBPeripheral, [CBService]) -> Void)?
+    var _peripheralDidUpdateRSSI_error: ((CBPeripheral, Error?) -> Void)?
     var _peripheral_didReadRSSI: ((CBPeripheral, NSNumber, Error?) -> Void)?
     var _peripheral_didDiscoverServices: ((CBPeripheral, Error?) -> Void)?
     var _peripheral_didDiscoverIncludedServicesFor: ((CBPeripheral, CBService, Error?) -> Void)?
@@ -117,8 +117,8 @@ internal class CBPeripheral_Delegate: NSObject, CBPeripheralDelegate {
         
         let funcDic1: [Selector : Any?] = [
             #selector(peripheralDidUpdateName(_:)) : _peripheralDidUpdateName,
-            #selector(peripheral(_:didModifyServices:)) : _peripheral,
-            #selector(peripheralDidUpdateRSSI(_:error:)) : _peripheralDidUpdateRSSI,
+            #selector(peripheral(_:didModifyServices:)) : _peripheral_didModifyServices,
+            #selector(peripheralDidUpdateRSSI(_:error:)) : _peripheralDidUpdateRSSI_error,
             #selector(peripheral(_:didReadRSSI:error:)) : _peripheral_didReadRSSI,
             #selector(peripheral(_:didDiscoverServices:)) : _peripheral_didDiscoverServices,
             #selector(peripheral(_:didDiscoverIncludedServicesFor:error:)) : _peripheral_didDiscoverIncludedServicesFor,
@@ -146,10 +146,10 @@ internal class CBPeripheral_Delegate: NSObject, CBPeripheralDelegate {
         _peripheralDidUpdateName!(peripheral)
     }
     @objc func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
-        _peripheral!(peripheral, invalidatedServices)
+        _peripheral_didModifyServices!(peripheral, invalidatedServices)
     }
     @objc func peripheralDidUpdateRSSI(_ peripheral: CBPeripheral, error: Error?) {
-        _peripheralDidUpdateRSSI!(peripheral, error)
+        _peripheralDidUpdateRSSI_error!(peripheral, error)
     }
     @objc func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
         _peripheral_didReadRSSI!(peripheral, RSSI, error)

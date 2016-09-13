@@ -50,8 +50,8 @@ public extension XMLParser {
         rebindingDelegate()
         return self
     }
-    public func ce_parser(handle: ((XMLParser, String, String?, String?) -> Void)) -> Self {
-        ce._parser = handle
+    public func ce_parser_foundNotationDeclarationWithName(handle: ((XMLParser, String, String?, String?) -> Void)) -> Self {
+        ce._parser_foundNotationDeclarationWithName = handle
         rebindingDelegate()
         return self
     }
@@ -147,7 +147,7 @@ internal class XMLParser_Delegate: NSObject, XMLParserDelegate {
     
     var _parserDidStartDocument: ((XMLParser) -> Void)?
     var _parserDidEndDocument: ((XMLParser) -> Void)?
-    var _parser: ((XMLParser, String, String?, String?) -> Void)?
+    var _parser_foundNotationDeclarationWithName: ((XMLParser, String, String?, String?) -> Void)?
     var _parser_foundUnparsedEntityDeclarationWithName: ((XMLParser, String, String?, String?, String?) -> Void)?
     var _parser_foundAttributeDeclarationWithName: ((XMLParser, String, String, String?, String?) -> Void)?
     var _parser_foundElementDeclarationWithName: ((XMLParser, String, String) -> Void)?
@@ -172,7 +172,7 @@ internal class XMLParser_Delegate: NSObject, XMLParserDelegate {
         let funcDic1: [Selector : Any?] = [
             #selector(parserDidStartDocument(_:)) : _parserDidStartDocument,
             #selector(parserDidEndDocument(_:)) : _parserDidEndDocument,
-            #selector(parser(_:foundNotationDeclarationWithName:publicID:systemID:)) : _parser,
+            #selector(parser(_:foundNotationDeclarationWithName:publicID:systemID:)) : _parser_foundNotationDeclarationWithName,
             #selector(parser(_:foundUnparsedEntityDeclarationWithName:publicID:systemID:notationName:)) : _parser_foundUnparsedEntityDeclarationWithName,
             #selector(parser(_:foundAttributeDeclarationWithName:forElement:type:defaultValue:)) : _parser_foundAttributeDeclarationWithName,
             #selector(parser(_:foundElementDeclarationWithName:model:)) : _parser_foundElementDeclarationWithName,
@@ -218,7 +218,7 @@ internal class XMLParser_Delegate: NSObject, XMLParserDelegate {
         _parserDidEndDocument!(parser)
     }
     @objc func parser(_ parser: XMLParser, foundNotationDeclarationWithName name: String, publicID: String?, systemID: String?) {
-        _parser!(parser, name, publicID, systemID)
+        _parser_foundNotationDeclarationWithName!(parser, name, publicID, systemID)
     }
     @objc func parser(_ parser: XMLParser, foundUnparsedEntityDeclarationWithName name: String, publicID: String?, systemID: String?, notationName: String?) {
         _parser_foundUnparsedEntityDeclarationWithName!(parser, name, publicID, systemID, notationName)

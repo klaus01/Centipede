@@ -40,8 +40,8 @@ public extension UIViewController {
         return UIViewController_Delegate()
     }
     
-    public func ce_animationController(handle: ((UIViewController) -> UIViewControllerAnimatedTransitioning?)) -> Self {
-        ce._animationController = handle
+    public func ce_animationController_forDismissed(handle: ((UIViewController) -> UIViewControllerAnimatedTransitioning?)) -> Self {
+        ce._animationController_forDismissed = handle
         rebindingDelegate()
         return self
     }
@@ -50,18 +50,18 @@ public extension UIViewController {
         rebindingDelegate()
         return self
     }
-    public func ce_interactionControllerForPresentation(handle: ((UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)) -> Self {
-        ce._interactionControllerForPresentation = handle
+    public func ce_interactionControllerForPresentation_using(handle: ((UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)) -> Self {
+        ce._interactionControllerForPresentation_using = handle
         rebindingDelegate()
         return self
     }
-    public func ce_interactionControllerForDismissal(handle: ((UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)) -> Self {
-        ce._interactionControllerForDismissal = handle
+    public func ce_interactionControllerForDismissal_using(handle: ((UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)) -> Self {
+        ce._interactionControllerForDismissal_using = handle
         rebindingDelegate()
         return self
     }
-    public func ce_presentationController(handle: ((UIViewController, UIViewController?, UIViewController) -> UIPresentationController?)) -> Self {
-        ce._presentationController = handle
+    public func ce_presentationController_forPresented(handle: ((UIViewController, UIViewController?, UIViewController) -> UIPresentationController?)) -> Self {
+        ce._presentationController_forPresented = handle
         rebindingDelegate()
         return self
     }
@@ -70,21 +70,21 @@ public extension UIViewController {
 
 internal class UIViewController_Delegate: NSObject, UIViewControllerTransitioningDelegate {
     
-    var _animationController: ((UIViewController) -> UIViewControllerAnimatedTransitioning?)?
+    var _animationController_forDismissed: ((UIViewController) -> UIViewControllerAnimatedTransitioning?)?
     var _animationController_forPresented: ((UIViewController, UIViewController, UIViewController) -> UIViewControllerAnimatedTransitioning?)?
-    var _interactionControllerForPresentation: ((UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)?
-    var _interactionControllerForDismissal: ((UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)?
-    var _presentationController: ((UIViewController, UIViewController?, UIViewController) -> UIPresentationController?)?
+    var _interactionControllerForPresentation_using: ((UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)?
+    var _interactionControllerForDismissal_using: ((UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?)?
+    var _presentationController_forPresented: ((UIViewController, UIViewController?, UIViewController) -> UIPresentationController?)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(animationController(forDismissed:)) : _animationController,
+            #selector(animationController(forDismissed:)) : _animationController_forDismissed,
             #selector(animationController(forPresented:presenting:source:)) : _animationController_forPresented,
-            #selector(interactionControllerForPresentation(using:)) : _interactionControllerForPresentation,
-            #selector(interactionControllerForDismissal(using:)) : _interactionControllerForDismissal,
-            #selector(presentationController(forPresented:presenting:source:)) : _presentationController,
+            #selector(interactionControllerForPresentation(using:)) : _interactionControllerForPresentation_using,
+            #selector(interactionControllerForDismissal(using:)) : _interactionControllerForDismissal_using,
+            #selector(presentationController(forPresented:presenting:source:)) : _presentationController_forPresented,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -95,18 +95,18 @@ internal class UIViewController_Delegate: NSObject, UIViewControllerTransitionin
     
     
     @objc func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return _animationController!(dismissed)
+        return _animationController_forDismissed!(dismissed)
     }
     @objc func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return _animationController_forPresented!(presented, presenting, source)
     }
     @objc func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return _interactionControllerForPresentation!(animator)
+        return _interactionControllerForPresentation_using!(animator)
     }
     @objc func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return _interactionControllerForDismissal!(animator)
+        return _interactionControllerForDismissal_using!(animator)
     }
     @objc func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return _presentationController!(presented, presenting, source)
+        return _presentationController_forPresented!(presented, presenting, source)
     }
 }

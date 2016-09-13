@@ -40,13 +40,13 @@ public extension AVAudioRecorder {
         return AVAudioRecorder_Delegate()
     }
     
-    public func ce_audioRecorderDidFinishRecording(handle: ((AVAudioRecorder, Bool) -> Void)) -> Self {
-        ce._audioRecorderDidFinishRecording = handle
+    public func ce_audioRecorderDidFinishRecording_successfully(handle: ((AVAudioRecorder, Bool) -> Void)) -> Self {
+        ce._audioRecorderDidFinishRecording_successfully = handle
         rebindingDelegate()
         return self
     }
-    public func ce_audioRecorderEncodeErrorDidOccur(handle: ((AVAudioRecorder, Error?) -> Void)) -> Self {
-        ce._audioRecorderEncodeErrorDidOccur = handle
+    public func ce_audioRecorderEncodeErrorDidOccur_error(handle: ((AVAudioRecorder, Error?) -> Void)) -> Self {
+        ce._audioRecorderEncodeErrorDidOccur_error = handle
         rebindingDelegate()
         return self
     }
@@ -55,8 +55,8 @@ public extension AVAudioRecorder {
         rebindingDelegate()
         return self
     }
-    public func ce_audioRecorderEndInterruption(handle: ((AVAudioRecorder, Int) -> Void)) -> Self {
-        ce._audioRecorderEndInterruption = handle
+    public func ce_audioRecorderEndInterruption_withOptions(handle: ((AVAudioRecorder, Int) -> Void)) -> Self {
+        ce._audioRecorderEndInterruption_withOptions = handle
         rebindingDelegate()
         return self
     }
@@ -65,19 +65,19 @@ public extension AVAudioRecorder {
 
 internal class AVAudioRecorder_Delegate: NSObject, AVAudioRecorderDelegate {
     
-    var _audioRecorderDidFinishRecording: ((AVAudioRecorder, Bool) -> Void)?
-    var _audioRecorderEncodeErrorDidOccur: ((AVAudioRecorder, Error?) -> Void)?
+    var _audioRecorderDidFinishRecording_successfully: ((AVAudioRecorder, Bool) -> Void)?
+    var _audioRecorderEncodeErrorDidOccur_error: ((AVAudioRecorder, Error?) -> Void)?
     var _audioRecorderBeginInterruption: ((AVAudioRecorder) -> Void)?
-    var _audioRecorderEndInterruption: ((AVAudioRecorder, Int) -> Void)?
+    var _audioRecorderEndInterruption_withOptions: ((AVAudioRecorder, Int) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(audioRecorderDidFinishRecording(_:successfully:)) : _audioRecorderDidFinishRecording,
-            #selector(audioRecorderEncodeErrorDidOccur(_:error:)) : _audioRecorderEncodeErrorDidOccur,
+            #selector(audioRecorderDidFinishRecording(_:successfully:)) : _audioRecorderDidFinishRecording_successfully,
+            #selector(audioRecorderEncodeErrorDidOccur(_:error:)) : _audioRecorderEncodeErrorDidOccur_error,
             #selector(audioRecorderBeginInterruption(_:)) : _audioRecorderBeginInterruption,
-            #selector(audioRecorderEndInterruption(_:withOptions:)) : _audioRecorderEndInterruption,
+            #selector(audioRecorderEndInterruption(_:withOptions:)) : _audioRecorderEndInterruption_withOptions,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -88,15 +88,15 @@ internal class AVAudioRecorder_Delegate: NSObject, AVAudioRecorderDelegate {
     
     
     @objc func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        _audioRecorderDidFinishRecording!(recorder, flag)
+        _audioRecorderDidFinishRecording_successfully!(recorder, flag)
     }
     @objc func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
-        _audioRecorderEncodeErrorDidOccur!(recorder, error)
+        _audioRecorderEncodeErrorDidOccur_error!(recorder, error)
     }
     @objc func audioRecorderBeginInterruption(_ recorder: AVAudioRecorder) {
         _audioRecorderBeginInterruption!(recorder)
     }
     @objc func audioRecorderEndInterruption(_ recorder: AVAudioRecorder, withOptions flags: Int) {
-        _audioRecorderEndInterruption!(recorder, flags)
+        _audioRecorderEndInterruption_withOptions!(recorder, flags)
     }
 }

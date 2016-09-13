@@ -50,8 +50,8 @@ public extension UIPopoverController {
         rebindingDelegate()
         return self
     }
-    public func ce_popoverController(handle: ((UIPopoverController, UnsafeMutablePointer<CGRect>, AutoreleasingUnsafeMutablePointer<UIView>) -> Void)) -> Self {
-        ce._popoverController = handle
+    public func ce_popoverController_willRepositionPopoverTo(handle: ((UIPopoverController, UnsafeMutablePointer<CGRect>, AutoreleasingUnsafeMutablePointer<UIView>) -> Void)) -> Self {
+        ce._popoverController_willRepositionPopoverTo = handle
         rebindingDelegate()
         return self
     }
@@ -62,7 +62,7 @@ internal class UIPopoverController_Delegate: NSObject, UIPopoverControllerDelega
     
     var _popoverControllerShouldDismissPopover: ((UIPopoverController) -> Bool)?
     var _popoverControllerDidDismissPopover: ((UIPopoverController) -> Void)?
-    var _popoverController: ((UIPopoverController, UnsafeMutablePointer<CGRect>, AutoreleasingUnsafeMutablePointer<UIView>) -> Void)?
+    var _popoverController_willRepositionPopoverTo: ((UIPopoverController, UnsafeMutablePointer<CGRect>, AutoreleasingUnsafeMutablePointer<UIView>) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
@@ -70,7 +70,7 @@ internal class UIPopoverController_Delegate: NSObject, UIPopoverControllerDelega
         let funcDic1: [Selector : Any?] = [
             #selector(popoverControllerShouldDismissPopover(_:)) : _popoverControllerShouldDismissPopover,
             #selector(popoverControllerDidDismissPopover(_:)) : _popoverControllerDidDismissPopover,
-            #selector(popoverController(_:willRepositionPopoverTo:in:)) : _popoverController,
+            #selector(popoverController(_:willRepositionPopoverTo:in:)) : _popoverController_willRepositionPopoverTo,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
@@ -87,6 +87,6 @@ internal class UIPopoverController_Delegate: NSObject, UIPopoverControllerDelega
         _popoverControllerDidDismissPopover!(popoverController)
     }
     @objc func popoverController(_ popoverController: UIPopoverController, willRepositionPopoverTo rect: UnsafeMutablePointer<CGRect>, in view: AutoreleasingUnsafeMutablePointer<UIView>) {
-        _popoverController!(popoverController, rect, view)
+        _popoverController_willRepositionPopoverTo!(popoverController, rect, view)
     }
 }

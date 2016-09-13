@@ -45,8 +45,8 @@ public extension UIPrintInteractionController {
         rebindingDelegate()
         return self
     }
-    public func ce_printInteractionController(handle: ((UIPrintInteractionController, [UIPrintPaper]) -> UIPrintPaper)) -> Self {
-        ce._printInteractionController = handle
+    public func ce_printInteractionController_choosePaper(handle: ((UIPrintInteractionController, [UIPrintPaper]) -> UIPrintPaper)) -> Self {
+        ce._printInteractionController_choosePaper = handle
         rebindingDelegate()
         return self
     }
@@ -91,7 +91,7 @@ public extension UIPrintInteractionController {
 internal class UIPrintInteractionController_Delegate: NSObject, UIPrintInteractionControllerDelegate {
     
     var _printInteractionControllerParentViewController: ((UIPrintInteractionController) -> UIViewController?)?
-    var _printInteractionController: ((UIPrintInteractionController, [UIPrintPaper]) -> UIPrintPaper)?
+    var _printInteractionController_choosePaper: ((UIPrintInteractionController, [UIPrintPaper]) -> UIPrintPaper)?
     var _printInteractionControllerWillPresentPrinterOptions: ((UIPrintInteractionController) -> Void)?
     var _printInteractionControllerDidPresentPrinterOptions: ((UIPrintInteractionController) -> Void)?
     var _printInteractionControllerWillDismissPrinterOptions: ((UIPrintInteractionController) -> Void)?
@@ -105,7 +105,7 @@ internal class UIPrintInteractionController_Delegate: NSObject, UIPrintInteracti
         
         let funcDic1: [Selector : Any?] = [
             #selector(printInteractionControllerParentViewController(_:)) : _printInteractionControllerParentViewController,
-            #selector(printInteractionController(_:choosePaper:)) : _printInteractionController,
+            #selector(printInteractionController(_:choosePaper:)) : _printInteractionController_choosePaper,
             #selector(printInteractionControllerWillPresentPrinterOptions(_:)) : _printInteractionControllerWillPresentPrinterOptions,
             #selector(printInteractionControllerDidPresentPrinterOptions(_:)) : _printInteractionControllerDidPresentPrinterOptions,
             #selector(printInteractionControllerWillDismissPrinterOptions(_:)) : _printInteractionControllerWillDismissPrinterOptions,
@@ -132,7 +132,7 @@ internal class UIPrintInteractionController_Delegate: NSObject, UIPrintInteracti
         return _printInteractionControllerParentViewController!(printInteractionController)
     }
     @objc func printInteractionController(_ printInteractionController: UIPrintInteractionController, choosePaper paperList: [UIPrintPaper]) -> UIPrintPaper {
-        return _printInteractionController!(printInteractionController, paperList)
+        return _printInteractionController_choosePaper!(printInteractionController, paperList)
     }
     @objc func printInteractionControllerWillPresentPrinterOptions(_ printInteractionController: UIPrintInteractionController) {
         _printInteractionControllerWillPresentPrinterOptions!(printInteractionController)

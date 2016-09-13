@@ -40,8 +40,8 @@ public extension UIActionSheet {
         return UIActionSheet_Delegate()
     }
     
-    public func ce_actionSheet(handle: ((UIActionSheet, Int) -> Void)) -> Self {
-        ce._actionSheet = handle
+    public func ce_actionSheet_clickedButtonAt(handle: ((UIActionSheet, Int) -> Void)) -> Self {
+        ce._actionSheet_clickedButtonAt = handle
         rebindingDelegate()
         return self
     }
@@ -75,7 +75,7 @@ public extension UIActionSheet {
 
 internal class UIActionSheet_Delegate: NSObject, UIActionSheetDelegate {
     
-    var _actionSheet: ((UIActionSheet, Int) -> Void)?
+    var _actionSheet_clickedButtonAt: ((UIActionSheet, Int) -> Void)?
     var _actionSheetCancel: ((UIActionSheet) -> Void)?
     var _willPresent: ((UIActionSheet) -> Void)?
     var _didPresent: ((UIActionSheet) -> Void)?
@@ -86,7 +86,7 @@ internal class UIActionSheet_Delegate: NSObject, UIActionSheetDelegate {
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(actionSheet(_:clickedButtonAt:)) : _actionSheet,
+            #selector(actionSheet(_:clickedButtonAt:)) : _actionSheet_clickedButtonAt,
             #selector(actionSheetCancel(_:)) : _actionSheetCancel,
             #selector(willPresent(_:)) : _willPresent,
             #selector(didPresent(_:)) : _didPresent,
@@ -102,7 +102,7 @@ internal class UIActionSheet_Delegate: NSObject, UIActionSheetDelegate {
     
     
     @objc func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
-        _actionSheet!(actionSheet, buttonIndex)
+        _actionSheet_clickedButtonAt!(actionSheet, buttonIndex)
     }
     @objc func actionSheetCancel(_ actionSheet: UIActionSheet) {
         _actionSheetCancel!(actionSheet)

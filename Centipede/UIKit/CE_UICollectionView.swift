@@ -42,8 +42,8 @@ public extension UICollectionView {
         return UICollectionView_Delegate()
     }
     
-    public func ce_collectionView(handle: ((UICollectionView, Int) -> Int)) -> Self {
-        ce._collectionView = handle
+    public func ce_collectionView_numberOfItemsInSection(handle: ((UICollectionView, Int) -> Int)) -> Self {
+        ce._collectionView_numberOfItemsInSection = handle
         rebindingDelegate()
         return self
     }
@@ -52,8 +52,8 @@ public extension UICollectionView {
         rebindingDelegate()
         return self
     }
-    public func ce_numberOfSections(handle: ((UICollectionView) -> Int)) -> Self {
-        ce._numberOfSections = handle
+    public func ce_numberOfSections_in(handle: ((UICollectionView) -> Int)) -> Self {
+        ce._numberOfSections_in = handle
         rebindingDelegate()
         return self
     }
@@ -172,9 +172,9 @@ public extension UICollectionView {
 
 internal class UICollectionView_Delegate: UIScrollView_Delegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var _collectionView: ((UICollectionView, Int) -> Int)?
+    var _collectionView_numberOfItemsInSection: ((UICollectionView, Int) -> Int)?
     var _collectionView_cellForItemAt: ((UICollectionView, IndexPath) -> UICollectionViewCell)?
-    var _numberOfSections: ((UICollectionView) -> Int)?
+    var _numberOfSections_in: ((UICollectionView) -> Int)?
     var _collectionView_viewForSupplementaryElementOfKind: ((UICollectionView, String, IndexPath) -> UICollectionReusableView)?
     var _collectionView_shouldHighlightItemAt: ((UICollectionView, IndexPath) -> Bool)?
     var _collectionView_didHighlightItemAt: ((UICollectionView, IndexPath) -> Void)?
@@ -202,9 +202,9 @@ internal class UICollectionView_Delegate: UIScrollView_Delegate, UICollectionVie
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(collectionView(_:numberOfItemsInSection:)) : _collectionView,
+            #selector(collectionView(_:numberOfItemsInSection:)) : _collectionView_numberOfItemsInSection,
             #selector(collectionView(_:cellForItemAt:)) : _collectionView_cellForItemAt,
-            #selector(numberOfSections(in:)) : _numberOfSections,
+            #selector(numberOfSections(in:)) : _numberOfSections_in,
             #selector(collectionView(_:viewForSupplementaryElementOfKind:at:)) : _collectionView_viewForSupplementaryElementOfKind,
             #selector(collectionView(_:shouldHighlightItemAt:)) : _collectionView_shouldHighlightItemAt,
             #selector(collectionView(_:didHighlightItemAt:)) : _collectionView_didHighlightItemAt,
@@ -255,13 +255,13 @@ internal class UICollectionView_Delegate: UIScrollView_Delegate, UICollectionVie
     
     
     @objc func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _collectionView!(collectionView, section)
+        return _collectionView_numberOfItemsInSection!(collectionView, section)
     }
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return _collectionView_cellForItemAt!(collectionView, indexPath)
     }
     @objc func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return _numberOfSections!(collectionView)
+        return _numberOfSections_in!(collectionView)
     }
     @objc func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         return _collectionView_viewForSupplementaryElementOfKind!(collectionView, kind, indexPath)

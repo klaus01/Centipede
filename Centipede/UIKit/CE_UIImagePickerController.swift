@@ -40,8 +40,8 @@ public extension UIImagePickerController {
         return UIImagePickerController_Delegate()
     }
     
-    public func ce_imagePickerController(handle: ((UIImagePickerController, [String : Any]) -> Void)) -> Self {
-        ce._imagePickerController = handle
+    public func ce_imagePickerController_didFinishPickingMediaWithInfo(handle: ((UIImagePickerController, [String : Any]) -> Void)) -> Self {
+        ce._imagePickerController_didFinishPickingMediaWithInfo = handle
         rebindingDelegate()
         return self
     }
@@ -55,14 +55,14 @@ public extension UIImagePickerController {
 
 internal class UIImagePickerController_Delegate: UINavigationController_Delegate, UIImagePickerControllerDelegate {
     
-    var _imagePickerController: ((UIImagePickerController, [String : Any]) -> Void)?
+    var _imagePickerController_didFinishPickingMediaWithInfo: ((UIImagePickerController, [String : Any]) -> Void)?
     var _imagePickerControllerDidCancel: ((UIImagePickerController) -> Void)?
     
     
     override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(imagePickerController(_:didFinishPickingMediaWithInfo:)) : _imagePickerController,
+            #selector(imagePickerController(_:didFinishPickingMediaWithInfo:)) : _imagePickerController_didFinishPickingMediaWithInfo,
             #selector(imagePickerControllerDidCancel(_:)) : _imagePickerControllerDidCancel,
         ]
         if let f = funcDic1[aSelector] {
@@ -74,7 +74,7 @@ internal class UIImagePickerController_Delegate: UINavigationController_Delegate
     
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        _imagePickerController!(picker, info)
+        _imagePickerController_didFinishPickingMediaWithInfo!(picker, info)
     }
     @objc func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         _imagePickerControllerDidCancel!(picker)

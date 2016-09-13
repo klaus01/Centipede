@@ -45,8 +45,8 @@ public extension UIGestureRecognizer {
         rebindingDelegate()
         return self
     }
-    public func ce_gestureRecognizer(handle: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)) -> Self {
-        ce._gestureRecognizer = handle
+    public func ce_gestureRecognizer_shouldRecognizeSimultaneouslyWith(handle: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)) -> Self {
+        ce._gestureRecognizer_shouldRecognizeSimultaneouslyWith = handle
         rebindingDelegate()
         return self
     }
@@ -71,7 +71,7 @@ public extension UIGestureRecognizer {
 internal class UIGestureRecognizer_Delegate: NSObject, UIGestureRecognizerDelegate {
     
     var _gestureRecognizerShouldBegin: ((UIGestureRecognizer) -> Bool)?
-    var _gestureRecognizer: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)?
+    var _gestureRecognizer_shouldRecognizeSimultaneouslyWith: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)?
     var _gestureRecognizer_shouldRequireFailureOf: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)?
     var _gestureRecognizer_shouldBeRequiredToFailBy: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)?
     var _gestureRecognizer_shouldReceive: ((UIGestureRecognizer, UITouch) -> Bool)?
@@ -81,7 +81,7 @@ internal class UIGestureRecognizer_Delegate: NSObject, UIGestureRecognizerDelega
         
         let funcDic1: [Selector : Any?] = [
             #selector(gestureRecognizerShouldBegin(_:)) : _gestureRecognizerShouldBegin,
-            #selector(gestureRecognizer(_:shouldRecognizeSimultaneouslyWith:)) : _gestureRecognizer,
+            #selector(gestureRecognizer(_:shouldRecognizeSimultaneouslyWith:)) : _gestureRecognizer_shouldRecognizeSimultaneouslyWith,
             #selector(gestureRecognizer(_:shouldRequireFailureOf:)) : _gestureRecognizer_shouldRequireFailureOf,
             #selector(gestureRecognizer(_:shouldBeRequiredToFailBy:)) : _gestureRecognizer_shouldBeRequiredToFailBy,
             #selector(gestureRecognizer(_:shouldReceive:)) : _gestureRecognizer_shouldReceive,
@@ -98,7 +98,7 @@ internal class UIGestureRecognizer_Delegate: NSObject, UIGestureRecognizerDelega
         return _gestureRecognizerShouldBegin!(gestureRecognizer)
     }
     @objc func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return _gestureRecognizer!(gestureRecognizer, otherGestureRecognizer)
+        return _gestureRecognizer_shouldRecognizeSimultaneouslyWith!(gestureRecognizer, otherGestureRecognizer)
     }
     @objc func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return _gestureRecognizer_shouldRequireFailureOf!(gestureRecognizer, otherGestureRecognizer)

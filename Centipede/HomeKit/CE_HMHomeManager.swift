@@ -50,8 +50,8 @@ public extension HMHomeManager {
         rebindingDelegate()
         return self
     }
-    public func ce_homeManager(handle: ((HMHomeManager, HMHome) -> Void)) -> Self {
-        ce._homeManager = handle
+    public func ce_homeManager_didAdd(handle: ((HMHomeManager, HMHome) -> Void)) -> Self {
+        ce._homeManager_didAdd = handle
         rebindingDelegate()
         return self
     }
@@ -67,7 +67,7 @@ internal class HMHomeManager_Delegate: NSObject, HMHomeManagerDelegate {
     
     var _homeManagerDidUpdateHomes: ((HMHomeManager) -> Void)?
     var _homeManagerDidUpdatePrimaryHome: ((HMHomeManager) -> Void)?
-    var _homeManager: ((HMHomeManager, HMHome) -> Void)?
+    var _homeManager_didAdd: ((HMHomeManager, HMHome) -> Void)?
     var _homeManager_didRemove: ((HMHomeManager, HMHome) -> Void)?
     
     
@@ -76,7 +76,7 @@ internal class HMHomeManager_Delegate: NSObject, HMHomeManagerDelegate {
         let funcDic1: [Selector : Any?] = [
             #selector(homeManagerDidUpdateHomes(_:)) : _homeManagerDidUpdateHomes,
             #selector(homeManagerDidUpdatePrimaryHome(_:)) : _homeManagerDidUpdatePrimaryHome,
-            #selector(homeManager(_:didAdd:)) : _homeManager,
+            #selector(homeManager(_:didAdd:)) : _homeManager_didAdd,
             #selector(homeManager(_:didRemove:)) : _homeManager_didRemove,
         ]
         if let f = funcDic1[aSelector] {
@@ -94,7 +94,7 @@ internal class HMHomeManager_Delegate: NSObject, HMHomeManagerDelegate {
         _homeManagerDidUpdatePrimaryHome!(manager)
     }
     @objc func homeManager(_ manager: HMHomeManager, didAdd home: HMHome) {
-        _homeManager!(manager, home)
+        _homeManager_didAdd!(manager, home)
     }
     @objc func homeManager(_ manager: HMHomeManager, didRemove home: HMHome) {
         _homeManager_didRemove!(manager, home)
