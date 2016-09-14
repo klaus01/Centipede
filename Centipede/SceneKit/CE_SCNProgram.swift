@@ -2,7 +2,7 @@
 //  CE_SCNProgram.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,6 +40,7 @@ public extension SCNProgram {
         return SCNProgram_Delegate()
     }
     
+    @discardableResult
     public func ce_program_handleError(handle: @escaping (SCNProgram, Error) -> Void) -> Self {
         ce._program_handleError = handle
         rebindingDelegate()

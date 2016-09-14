@@ -2,7 +2,7 @@
 //  CE_UIActionSheet.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,31 +40,37 @@ public extension UIActionSheet {
         return UIActionSheet_Delegate()
     }
     
+    @discardableResult
     public func ce_actionSheet_clickedButtonAt(handle: @escaping (UIActionSheet, Int) -> Void) -> Self {
         ce._actionSheet_clickedButtonAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_actionSheetCancel(handle: @escaping (UIActionSheet) -> Void) -> Self {
         ce._actionSheetCancel = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_willPresent(handle: @escaping (UIActionSheet) -> Void) -> Self {
         ce._willPresent = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_didPresent(handle: @escaping (UIActionSheet) -> Void) -> Self {
         ce._didPresent = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_actionSheet_willDismissWithButtonIndex(handle: @escaping (UIActionSheet, Int) -> Void) -> Self {
         ce._actionSheet_willDismissWithButtonIndex = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_actionSheet_didDismissWithButtonIndex(handle: @escaping (UIActionSheet, Int) -> Void) -> Self {
         ce._actionSheet_didDismissWithButtonIndex = handle
         rebindingDelegate()

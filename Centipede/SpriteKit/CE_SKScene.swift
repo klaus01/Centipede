@@ -2,7 +2,7 @@
 //  CE_SKScene.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,26 +40,31 @@ public extension SKScene {
         return SKScene_Delegate()
     }
     
+    @discardableResult
     public func ce_update_for(handle: @escaping (TimeInterval, SKScene) -> Void) -> Self {
         ce._update_for = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_didEvaluateActions_for(handle: @escaping (SKScene) -> Void) -> Self {
         ce._didEvaluateActions_for = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_didSimulatePhysics_for(handle: @escaping (SKScene) -> Void) -> Self {
         ce._didSimulatePhysics_for = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_didApplyConstraints_for(handle: @escaping (SKScene) -> Void) -> Self {
         ce._didApplyConstraints_for = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_didFinishUpdate_for(handle: @escaping (SKScene) -> Void) -> Self {
         ce._didFinishUpdate_for = handle
         rebindingDelegate()

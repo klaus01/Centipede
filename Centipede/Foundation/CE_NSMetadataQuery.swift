@@ -2,7 +2,7 @@
 //  CE_NSMetadataQuery.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,11 +40,13 @@ public extension NSMetadataQuery {
         return NSMetadataQuery_Delegate()
     }
     
+    @discardableResult
     public func ce_metadataQuery_replacementObjectForResultObject(handle: @escaping (NSMetadataQuery, NSMetadataItem) -> Any) -> Self {
         ce._metadataQuery_replacementObjectForResultObject = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_metadataQuery_replacementValueForAttribute(handle: @escaping (NSMetadataQuery, String, Any) -> Any) -> Self {
         ce._metadataQuery_replacementValueForAttribute = handle
         rebindingDelegate()

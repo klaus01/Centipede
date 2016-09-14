@@ -2,7 +2,7 @@
 //  CE_MCAdvertiserAssistant.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,11 +40,13 @@ public extension MCAdvertiserAssistant {
         return MCAdvertiserAssistant_Delegate()
     }
     
+    @discardableResult
     public func ce_advertiserAssistantWillPresentInvitation(handle: @escaping (MCAdvertiserAssistant) -> Void) -> Self {
         ce._advertiserAssistantWillPresentInvitation = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_advertiserAssistantDidDismissInvitation(handle: @escaping (MCAdvertiserAssistant) -> Void) -> Self {
         ce._advertiserAssistantDidDismissInvitation = handle
         rebindingDelegate()

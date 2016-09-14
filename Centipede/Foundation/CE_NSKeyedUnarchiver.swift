@@ -2,7 +2,7 @@
 //  CE_NSKeyedUnarchiver.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,26 +40,31 @@ public extension NSKeyedUnarchiver {
         return NSKeyedUnarchiver_Delegate()
     }
     
+    @discardableResult
     public func ce_unarchiver_cannotDecodeObjectOfClassName(handle: @escaping (NSKeyedUnarchiver, String, [String]) -> AnyClass?) -> Self {
         ce._unarchiver_cannotDecodeObjectOfClassName = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_unarchiver_didDecode(handle: @escaping (NSKeyedUnarchiver, Any?) -> Any?) -> Self {
         ce._unarchiver_didDecode = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_unarchiver_willReplace(handle: @escaping (NSKeyedUnarchiver, Any, Any) -> Void) -> Self {
         ce._unarchiver_willReplace = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_unarchiverWillFinish(handle: @escaping (NSKeyedUnarchiver) -> Void) -> Self {
         ce._unarchiverWillFinish = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_unarchiverDidFinish(handle: @escaping (NSKeyedUnarchiver) -> Void) -> Self {
         ce._unarchiverDidFinish = handle
         rebindingDelegate()

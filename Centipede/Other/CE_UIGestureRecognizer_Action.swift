@@ -18,6 +18,7 @@ public extension UIGestureRecognizer {
         proxies[""] = proxy
     }
     
+    @discardableResult
     public func action(action: CE_UIGestureRecognizerAction?) -> Self {
         return on(action)
     }

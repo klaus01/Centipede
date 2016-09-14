@@ -2,7 +2,7 @@
 //  CE_NSLayoutManager.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,56 +40,67 @@ public extension NSLayoutManager {
         return NSLayoutManager_Delegate()
     }
     
+    @discardableResult
     public func ce_layoutManager_shouldGenerateGlyphs(handle: @escaping (NSLayoutManager, UnsafePointer<CGGlyph>, UnsafePointer<NSGlyphProperty>, UnsafePointer<Int>, UIFont, NSRange) -> Int) -> Self {
         ce._layoutManager_shouldGenerateGlyphs = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_layoutManager_lineSpacingAfterGlyphAt(handle: @escaping (NSLayoutManager, Int, CGRect) -> CGFloat) -> Self {
         ce._layoutManager_lineSpacingAfterGlyphAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_layoutManager_paragraphSpacingBeforeGlyphAt(handle: @escaping (NSLayoutManager, Int, CGRect) -> CGFloat) -> Self {
         ce._layoutManager_paragraphSpacingBeforeGlyphAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_layoutManager_paragraphSpacingAfterGlyphAt(handle: @escaping (NSLayoutManager, Int, CGRect) -> CGFloat) -> Self {
         ce._layoutManager_paragraphSpacingAfterGlyphAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_layoutManager_shouldUse(handle: @escaping (NSLayoutManager, NSControlCharacterAction, Int) -> NSControlCharacterAction) -> Self {
         ce._layoutManager_shouldUse = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_layoutManager_shouldBreakLineByWordBeforeCharacterAt(handle: @escaping (NSLayoutManager, Int) -> Bool) -> Self {
         ce._layoutManager_shouldBreakLineByWordBeforeCharacterAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_layoutManager_shouldBreakLineByHyphenatingBeforeCharacterAt(handle: @escaping (NSLayoutManager, Int) -> Bool) -> Self {
         ce._layoutManager_shouldBreakLineByHyphenatingBeforeCharacterAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_layoutManager_boundingBoxForControlGlyphAt(handle: @escaping (NSLayoutManager, Int, NSTextContainer, CGRect, CGPoint, Int) -> CGRect) -> Self {
         ce._layoutManager_boundingBoxForControlGlyphAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_layoutManagerDidInvalidateLayout(handle: @escaping (NSLayoutManager) -> Void) -> Self {
         ce._layoutManagerDidInvalidateLayout = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_layoutManager_didCompleteLayoutFor(handle: @escaping (NSLayoutManager, NSTextContainer?, Bool) -> Void) -> Self {
         ce._layoutManager_didCompleteLayoutFor = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_layoutManager_textContainer(handle: @escaping (NSLayoutManager, NSTextContainer, CGSize) -> Void) -> Self {
         ce._layoutManager_textContainer = handle
         rebindingDelegate()

@@ -2,7 +2,7 @@
 //  CE_UINavigationController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,31 +40,37 @@ public extension UINavigationController {
         return UINavigationController_Delegate()
     }
     
+    @discardableResult
     public func ce_navigationController_willShow(handle: @escaping (UINavigationController, UIViewController, Bool) -> Void) -> Self {
         ce._navigationController_willShow = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_navigationController_didShow(handle: @escaping (UINavigationController, UIViewController, Bool) -> Void) -> Self {
         ce._navigationController_didShow = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_navigationControllerSupportedInterfaceOrientations(handle: @escaping (UINavigationController) -> UIInterfaceOrientationMask) -> Self {
         ce._navigationControllerSupportedInterfaceOrientations = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_navigationControllerPreferredInterfaceOrientationForPresentation(handle: @escaping (UINavigationController) -> UIInterfaceOrientation) -> Self {
         ce._navigationControllerPreferredInterfaceOrientationForPresentation = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_navigationController_interactionControllerFor(handle: @escaping (UINavigationController, UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> Self {
         ce._navigationController_interactionControllerFor = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_navigationController_animationControllerFor(handle: @escaping (UINavigationController, UINavigationControllerOperation, UIViewController, UIViewController) -> UIViewControllerAnimatedTransitioning?) -> Self {
         ce._navigationController_animationControllerFor = handle
         rebindingDelegate()

@@ -2,7 +2,7 @@
 //  CE_MCSession.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,31 +40,37 @@ public extension MCSession {
         return MCSession_Delegate()
     }
     
+    @discardableResult
     public func ce_session_peer(handle: @escaping (MCSession, MCPeerID, MCSessionState) -> Void) -> Self {
         ce._session_peer = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_session_didReceive(handle: @escaping (MCSession, Data, MCPeerID) -> Void) -> Self {
         ce._session_didReceive = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_session_didReceive_didReceive(handle: @escaping (MCSession, InputStream, String, MCPeerID) -> Void) -> Self {
         ce._session_didReceive_didReceive = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_session_didStartReceivingResourceWithName(handle: @escaping (MCSession, String, MCPeerID, Progress) -> Void) -> Self {
         ce._session_didStartReceivingResourceWithName = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_session_didFinishReceivingResourceWithName(handle: @escaping (MCSession, String, MCPeerID, URL, Error?) -> Void) -> Self {
         ce._session_didFinishReceivingResourceWithName = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_session_didReceiveCertificate(handle: @escaping (MCSession, [Any]?, MCPeerID) -> Void) -> Self {
         ce._session_didReceiveCertificate = handle
         rebindingDelegate()

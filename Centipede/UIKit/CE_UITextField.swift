@@ -2,7 +2,7 @@
 //  CE_UITextField.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,36 +40,43 @@ public extension UITextField {
         return UITextField_Delegate()
     }
     
+    @discardableResult
     public func ce_textFieldShouldBeginEditing(handle: @escaping (UITextField) -> Bool) -> Self {
         ce._textFieldShouldBeginEditing = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_textFieldDidBeginEditing(handle: @escaping (UITextField) -> Void) -> Self {
         ce._textFieldDidBeginEditing = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_textFieldShouldEndEditing(handle: @escaping (UITextField) -> Bool) -> Self {
         ce._textFieldShouldEndEditing = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_textFieldDidEndEditing(handle: @escaping (UITextField) -> Void) -> Self {
         ce._textFieldDidEndEditing = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_textField_shouldChangeCharactersIn(handle: @escaping (UITextField, NSRange, String) -> Bool) -> Self {
         ce._textField_shouldChangeCharactersIn = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_textFieldShouldClear(handle: @escaping (UITextField) -> Bool) -> Self {
         ce._textFieldShouldClear = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_textFieldShouldReturn(handle: @escaping (UITextField) -> Bool) -> Self {
         ce._textFieldShouldReturn = handle
         rebindingDelegate()

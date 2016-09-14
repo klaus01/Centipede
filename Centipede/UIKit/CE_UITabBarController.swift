@@ -2,7 +2,7 @@
 //  CE_UITabBarController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -42,46 +42,55 @@ public extension UITabBarController {
         return UITabBarController_Delegate()
     }
     
+    @discardableResult
     public func ce_tabBarController_shouldSelect(handle: @escaping (UITabBarController, UIViewController) -> Bool) -> Self {
         ce._tabBarController_shouldSelect = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tabBarController_didSelect(handle: @escaping (UITabBarController, UIViewController) -> Void) -> Self {
         ce._tabBarController_didSelect = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tabBarController_willBeginCustomizing(handle: @escaping (UITabBarController, [UIViewController]) -> Void) -> Self {
         ce._tabBarController_willBeginCustomizing = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tabBarController_willEndCustomizing(handle: @escaping (UITabBarController, [UIViewController], Bool) -> Void) -> Self {
         ce._tabBarController_willEndCustomizing = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tabBarController_didEndCustomizing(handle: @escaping (UITabBarController, [UIViewController], Bool) -> Void) -> Self {
         ce._tabBarController_didEndCustomizing = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tabBarControllerSupportedInterfaceOrientations(handle: @escaping (UITabBarController) -> UIInterfaceOrientationMask) -> Self {
         ce._tabBarControllerSupportedInterfaceOrientations = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tabBarControllerPreferredInterfaceOrientationForPresentation(handle: @escaping (UITabBarController) -> UIInterfaceOrientation) -> Self {
         ce._tabBarControllerPreferredInterfaceOrientationForPresentation = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tabBarController_interactionControllerFor(handle: @escaping (UITabBarController, UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> Self {
         ce._tabBarController_interactionControllerFor = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tabBarController_animationControllerForTransitionFrom(handle: @escaping (UITabBarController, UIViewController, UIViewController) -> UIViewControllerAnimatedTransitioning?) -> Self {
         ce._tabBarController_animationControllerForTransitionFrom = handle
         rebindingDelegate()

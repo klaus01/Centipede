@@ -176,6 +176,7 @@
             };
 
             funcStr += "\
+    @discardableResult\n\
     public func " + EXT_NAME_ACRONYM + funcObj.newName + "(handle: @escaping (" + paramtStr + ") -> " + getFuncReturnType(funcObj.returnType) + ") -> Self {\n\
         " + EXT_NAME_ACRONYM + "." + funcObj.newName + " = handle\n\
         rebindingDelegate()\n\

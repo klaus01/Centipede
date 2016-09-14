@@ -2,7 +2,7 @@
 //  CE_MPPlayableContentManager.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -42,26 +42,31 @@ public extension MPPlayableContentManager {
         return MPPlayableContentManager_Delegate()
     }
     
+    @discardableResult
     public func ce_beginLoadingChildItems_at(handle: @escaping (IndexPath, @escaping (Error?) -> Void) -> Void) -> Self {
         ce._beginLoadingChildItems_at = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_childItemsDisplayPlaybackProgress_at(handle: @escaping (IndexPath) -> Bool) -> Self {
         ce._childItemsDisplayPlaybackProgress_at = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_numberOfChildItems_at(handle: @escaping (IndexPath) -> Int) -> Self {
         ce._numberOfChildItems_at = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_contentItem_at(handle: @escaping (IndexPath) -> MPContentItem?) -> Self {
         ce._contentItem_at = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_playableContentManager_initiatePlaybackOfContentItemAt(handle: @escaping (MPPlayableContentManager, IndexPath, @escaping (Error?) -> Void) -> Void) -> Self {
         ce._playableContentManager_initiatePlaybackOfContentItemAt = handle
         rebindingDelegate()

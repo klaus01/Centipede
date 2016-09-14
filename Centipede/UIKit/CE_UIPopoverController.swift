@@ -2,7 +2,7 @@
 //  CE_UIPopoverController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,16 +40,19 @@ public extension UIPopoverController {
         return UIPopoverController_Delegate()
     }
     
+    @discardableResult
     public func ce_popoverControllerShouldDismissPopover(handle: @escaping (UIPopoverController) -> Bool) -> Self {
         ce._popoverControllerShouldDismissPopover = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_popoverControllerDidDismissPopover(handle: @escaping (UIPopoverController) -> Void) -> Self {
         ce._popoverControllerDidDismissPopover = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_popoverController_willRepositionPopoverTo(handle: @escaping (UIPopoverController, UnsafeMutablePointer<CGRect>, AutoreleasingUnsafeMutablePointer<UIView>) -> Void) -> Self {
         ce._popoverController_willRepositionPopoverTo = handle
         rebindingDelegate()

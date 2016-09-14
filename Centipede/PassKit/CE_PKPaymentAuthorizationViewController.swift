@@ -2,7 +2,7 @@
 //  CE_PKPaymentAuthorizationViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,16 +40,19 @@ public extension PKPaymentAuthorizationViewController {
         return PKPaymentAuthorizationViewController_Delegate()
     }
     
+    @discardableResult
     public func ce_paymentAuthorizationViewController_didAuthorizePayment(handle: @escaping (PKPaymentAuthorizationViewController, PKPayment, @escaping (PKPaymentAuthorizationStatus) -> Void) -> Void) -> Self {
         ce._paymentAuthorizationViewController_didAuthorizePayment = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_paymentAuthorizationViewControllerDidFinish(handle: @escaping (PKPaymentAuthorizationViewController) -> Void) -> Self {
         ce._paymentAuthorizationViewControllerDidFinish = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_paymentAuthorizationViewController_didSelect(handle: @escaping (PKPaymentAuthorizationViewController, PKShippingMethod, @escaping (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> Void) -> Void) -> Self {
         ce._paymentAuthorizationViewController_didSelect = handle
         rebindingDelegate()

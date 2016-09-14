@@ -2,7 +2,7 @@
 //  CE_EAAccessory.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,6 +40,7 @@ public extension EAAccessory {
         return EAAccessory_Delegate()
     }
     
+    @discardableResult
     public func ce_accessoryDidDisconnect(handle: @escaping (EAAccessory) -> Void) -> Self {
         ce._accessoryDidDisconnect = handle
         rebindingDelegate()

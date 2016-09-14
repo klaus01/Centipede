@@ -2,7 +2,7 @@
 //  CE_UINavigationBar.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,21 +40,25 @@ public extension UINavigationBar {
         return UINavigationBar_Delegate()
     }
     
+    @discardableResult
     public func ce_navigationBar_shouldPush(handle: @escaping (UINavigationBar, UINavigationItem) -> Bool) -> Self {
         ce._navigationBar_shouldPush = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_navigationBar_didPush(handle: @escaping (UINavigationBar, UINavigationItem) -> Void) -> Self {
         ce._navigationBar_didPush = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_navigationBar_shouldPop(handle: @escaping (UINavigationBar, UINavigationItem) -> Bool) -> Self {
         ce._navigationBar_shouldPop = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_navigationBar_didPop(handle: @escaping (UINavigationBar, UINavigationItem) -> Void) -> Self {
         ce._navigationBar_didPop = handle
         rebindingDelegate()

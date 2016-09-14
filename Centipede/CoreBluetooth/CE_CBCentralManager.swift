@@ -2,7 +2,7 @@
 //  CE_CBCentralManager.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,31 +40,37 @@ public extension CBCentralManager {
         return CBCentralManager_Delegate()
     }
     
+    @discardableResult
     public func ce_centralManagerDidUpdateState(handle: @escaping (CBCentralManager) -> Void) -> Self {
         ce._centralManagerDidUpdateState = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_centralManager_willRestoreState(handle: @escaping (CBCentralManager, [String : Any]) -> Void) -> Self {
         ce._centralManager_willRestoreState = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_centralManager_didDiscover(handle: @escaping (CBCentralManager, CBPeripheral, [String : Any], NSNumber) -> Void) -> Self {
         ce._centralManager_didDiscover = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_centralManager_didConnect(handle: @escaping (CBCentralManager, CBPeripheral) -> Void) -> Self {
         ce._centralManager_didConnect = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_centralManager_didFailToConnect(handle: @escaping (CBCentralManager, CBPeripheral, Error?) -> Void) -> Self {
         ce._centralManager_didFailToConnect = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_centralManager_didDisconnectPeripheral(handle: @escaping (CBCentralManager, CBPeripheral, Error?) -> Void) -> Self {
         ce._centralManager_didDisconnectPeripheral = handle
         rebindingDelegate()

@@ -2,7 +2,7 @@
 //  CE_NSKeyedArchiver.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,26 +40,31 @@ public extension NSKeyedArchiver {
         return NSKeyedArchiver_Delegate()
     }
     
+    @discardableResult
     public func ce_archiver_willEncode(handle: @escaping (NSKeyedArchiver, Any) -> Any?) -> Self {
         ce._archiver_willEncode = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_archiver_didEncode(handle: @escaping (NSKeyedArchiver, Any?) -> Void) -> Self {
         ce._archiver_didEncode = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_archiver_willReplace(handle: @escaping (NSKeyedArchiver, Any?, Any?) -> Void) -> Self {
         ce._archiver_willReplace = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_archiverWillFinish(handle: @escaping (NSKeyedArchiver) -> Void) -> Self {
         ce._archiverWillFinish = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_archiverDidFinish(handle: @escaping (NSKeyedArchiver) -> Void) -> Self {
         ce._archiverDidFinish = handle
         rebindingDelegate()

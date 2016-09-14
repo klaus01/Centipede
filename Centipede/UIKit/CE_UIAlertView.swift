@@ -2,7 +2,7 @@
 //  CE_UIAlertView.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,36 +40,43 @@ public extension UIAlertView {
         return UIAlertView_Delegate()
     }
     
+    @discardableResult
     public func ce_alertView_clickedButtonAt(handle: @escaping (UIAlertView, Int) -> Void) -> Self {
         ce._alertView_clickedButtonAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_alertViewCancel(handle: @escaping (UIAlertView) -> Void) -> Self {
         ce._alertViewCancel = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_willPresent(handle: @escaping (UIAlertView) -> Void) -> Self {
         ce._willPresent = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_didPresent(handle: @escaping (UIAlertView) -> Void) -> Self {
         ce._didPresent = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_alertView_willDismissWithButtonIndex(handle: @escaping (UIAlertView, Int) -> Void) -> Self {
         ce._alertView_willDismissWithButtonIndex = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_alertView_didDismissWithButtonIndex(handle: @escaping (UIAlertView, Int) -> Void) -> Self {
         ce._alertView_didDismissWithButtonIndex = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_alertViewShouldEnableFirstOtherButton(handle: @escaping (UIAlertView) -> Bool) -> Self {
         ce._alertViewShouldEnableFirstOtherButton = handle
         rebindingDelegate()

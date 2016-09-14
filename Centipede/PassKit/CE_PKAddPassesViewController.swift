@@ -2,7 +2,7 @@
 //  CE_PKAddPassesViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,6 +40,7 @@ public extension PKAddPassesViewController {
         return PKAddPassesViewController_Delegate()
     }
     
+    @discardableResult
     public func ce_addPassesViewControllerDidFinish(handle: @escaping (PKAddPassesViewController) -> Void) -> Self {
         ce._addPassesViewControllerDidFinish = handle
         rebindingDelegate()

@@ -2,7 +2,7 @@
 //  CE_CLLocationManager.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,81 +40,97 @@ public extension CLLocationManager {
         return CLLocationManager_Delegate()
     }
     
+    @discardableResult
     public func ce_locationManager_didUpdateLocations(handle: @escaping (CLLocationManager, [CLLocation]) -> Void) -> Self {
         ce._locationManager_didUpdateLocations = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManager_didUpdateHeading(handle: @escaping (CLLocationManager, CLHeading) -> Void) -> Self {
         ce._locationManager_didUpdateHeading = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManagerShouldDisplayHeadingCalibration(handle: @escaping (CLLocationManager) -> Bool) -> Self {
         ce._locationManagerShouldDisplayHeadingCalibration = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManager_didDetermineState(handle: @escaping (CLLocationManager, CLRegionState, CLRegion) -> Void) -> Self {
         ce._locationManager_didDetermineState = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManager_didRangeBeacons(handle: @escaping (CLLocationManager, [CLBeacon], CLBeaconRegion) -> Void) -> Self {
         ce._locationManager_didRangeBeacons = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManager_rangingBeaconsDidFailFor(handle: @escaping (CLLocationManager, CLBeaconRegion, Error) -> Void) -> Self {
         ce._locationManager_rangingBeaconsDidFailFor = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManager_didEnterRegion(handle: @escaping (CLLocationManager, CLRegion) -> Void) -> Self {
         ce._locationManager_didEnterRegion = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManager_didExitRegion(handle: @escaping (CLLocationManager, CLRegion) -> Void) -> Self {
         ce._locationManager_didExitRegion = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManager_didFailWithError(handle: @escaping (CLLocationManager, Error) -> Void) -> Self {
         ce._locationManager_didFailWithError = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManager_monitoringDidFailFor(handle: @escaping (CLLocationManager, CLRegion?, Error) -> Void) -> Self {
         ce._locationManager_monitoringDidFailFor = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManager_didChangeAuthorization(handle: @escaping (CLLocationManager, CLAuthorizationStatus) -> Void) -> Self {
         ce._locationManager_didChangeAuthorization = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManager_didStartMonitoringFor(handle: @escaping (CLLocationManager, CLRegion) -> Void) -> Self {
         ce._locationManager_didStartMonitoringFor = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManagerDidPauseLocationUpdates(handle: @escaping (CLLocationManager) -> Void) -> Self {
         ce._locationManagerDidPauseLocationUpdates = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManagerDidResumeLocationUpdates(handle: @escaping (CLLocationManager) -> Void) -> Self {
         ce._locationManagerDidResumeLocationUpdates = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManager_didFinishDeferredUpdatesWithError(handle: @escaping (CLLocationManager, Error?) -> Void) -> Self {
         ce._locationManager_didFinishDeferredUpdatesWithError = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_locationManager_didVisit(handle: @escaping (CLLocationManager, CLVisit) -> Void) -> Self {
         ce._locationManager_didVisit = handle
         rebindingDelegate()

@@ -2,7 +2,7 @@
 //  CE_UIDocumentMenuViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -42,11 +42,13 @@ public extension UIDocumentMenuViewController {
         return UIDocumentMenuViewController_Delegate()
     }
     
+    @discardableResult
     public func ce_documentMenu_didPickDocumentPicker(handle: @escaping (UIDocumentMenuViewController, UIDocumentPickerViewController) -> Void) -> Self {
         ce._documentMenu_didPickDocumentPicker = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_documentMenuWasCancelled(handle: @escaping (UIDocumentMenuViewController) -> Void) -> Self {
         ce._documentMenuWasCancelled = handle
         rebindingDelegate()

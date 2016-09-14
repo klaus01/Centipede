@@ -2,7 +2,7 @@
 //  CE_ADInterstitialAd.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,31 +40,37 @@ public extension ADInterstitialAd {
         return ADInterstitialAd_Delegate()
     }
     
+    @discardableResult
     public func ce_interstitialAdDidUnload(handle: @escaping (ADInterstitialAd) -> Void) -> Self {
         ce._interstitialAdDidUnload = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_interstitialAd_didFailWithError(handle: @escaping (ADInterstitialAd, Error) -> Void) -> Self {
         ce._interstitialAd_didFailWithError = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_interstitialAdWillLoad(handle: @escaping (ADInterstitialAd) -> Void) -> Self {
         ce._interstitialAdWillLoad = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_interstitialAdDidLoad(handle: @escaping (ADInterstitialAd) -> Void) -> Self {
         ce._interstitialAdDidLoad = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_interstitialAdActionShouldBegin_willLeaveApplication(handle: @escaping (ADInterstitialAd, Bool) -> Bool) -> Self {
         ce._interstitialAdActionShouldBegin_willLeaveApplication = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_interstitialAdActionDidFinish(handle: @escaping (ADInterstitialAd) -> Void) -> Self {
         ce._interstitialAdActionDidFinish = handle
         rebindingDelegate()

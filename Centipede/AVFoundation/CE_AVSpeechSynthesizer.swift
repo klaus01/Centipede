@@ -2,7 +2,7 @@
 //  CE_AVSpeechSynthesizer.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,31 +40,37 @@ public extension AVSpeechSynthesizer {
         return AVSpeechSynthesizer_Delegate()
     }
     
+    @discardableResult
     public func ce_speechSynthesizer_didStart(handle: @escaping (AVSpeechSynthesizer, AVSpeechUtterance) -> Void) -> Self {
         ce._speechSynthesizer_didStart = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_speechSynthesizer_didFinish(handle: @escaping (AVSpeechSynthesizer, AVSpeechUtterance) -> Void) -> Self {
         ce._speechSynthesizer_didFinish = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_speechSynthesizer_didPause(handle: @escaping (AVSpeechSynthesizer, AVSpeechUtterance) -> Void) -> Self {
         ce._speechSynthesizer_didPause = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_speechSynthesizer_didContinue(handle: @escaping (AVSpeechSynthesizer, AVSpeechUtterance) -> Void) -> Self {
         ce._speechSynthesizer_didContinue = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_speechSynthesizer_didCancel(handle: @escaping (AVSpeechSynthesizer, AVSpeechUtterance) -> Void) -> Self {
         ce._speechSynthesizer_didCancel = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_speechSynthesizer_willSpeakRangeOfSpeechString(handle: @escaping (AVSpeechSynthesizer, NSRange, AVSpeechUtterance) -> Void) -> Self {
         ce._speechSynthesizer_willSpeakRangeOfSpeechString = handle
         rebindingDelegate()

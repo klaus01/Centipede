@@ -2,7 +2,7 @@
 //  CE_EAWiFiUnconfiguredAccessoryBrowser.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,21 +40,25 @@ public extension EAWiFiUnconfiguredAccessoryBrowser {
         return EAWiFiUnconfiguredAccessoryBrowser_Delegate()
     }
     
+    @discardableResult
     public func ce_accessoryBrowser_didUpdate(handle: @escaping (EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessoryBrowserState) -> Void) -> Self {
         ce._accessoryBrowser_didUpdate = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_accessoryBrowser_didFindUnconfiguredAccessories(handle: @escaping (EAWiFiUnconfiguredAccessoryBrowser, Set<EAWiFiUnconfiguredAccessory>) -> Void) -> Self {
         ce._accessoryBrowser_didFindUnconfiguredAccessories = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_accessoryBrowser_didRemoveUnconfiguredAccessories(handle: @escaping (EAWiFiUnconfiguredAccessoryBrowser, Set<EAWiFiUnconfiguredAccessory>) -> Void) -> Self {
         ce._accessoryBrowser_didRemoveUnconfiguredAccessories = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_accessoryBrowser_didFinishConfiguringAccessory(handle: @escaping (EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessory, EAWiFiUnconfiguredAccessoryConfigurationStatus) -> Void) -> Self {
         ce._accessoryBrowser_didFinishConfiguringAccessory = handle
         rebindingDelegate()

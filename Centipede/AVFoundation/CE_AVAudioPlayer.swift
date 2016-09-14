@@ -2,7 +2,7 @@
 //  CE_AVAudioPlayer.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,21 +40,25 @@ public extension AVAudioPlayer {
         return AVAudioPlayer_Delegate()
     }
     
+    @discardableResult
     public func ce_audioPlayerDidFinishPlaying_successfully(handle: @escaping (AVAudioPlayer, Bool) -> Void) -> Self {
         ce._audioPlayerDidFinishPlaying_successfully = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_audioPlayerDecodeErrorDidOccur_error(handle: @escaping (AVAudioPlayer, Error?) -> Void) -> Self {
         ce._audioPlayerDecodeErrorDidOccur_error = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_audioPlayerBeginInterruption(handle: @escaping (AVAudioPlayer) -> Void) -> Self {
         ce._audioPlayerBeginInterruption = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_audioPlayerEndInterruption_withOptions(handle: @escaping (AVAudioPlayer, Int) -> Void) -> Self {
         ce._audioPlayerEndInterruption_withOptions = handle
         rebindingDelegate()

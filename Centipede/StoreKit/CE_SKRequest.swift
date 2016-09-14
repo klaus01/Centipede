@@ -2,7 +2,7 @@
 //  CE_SKRequest.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,11 +40,13 @@ public extension SKRequest {
         return SKRequest_Delegate()
     }
     
+    @discardableResult
     public func ce_requestDidFinish(handle: @escaping (SKRequest) -> Void) -> Self {
         ce._requestDidFinish = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_request_didFailWithError(handle: @escaping (SKRequest, Error) -> Void) -> Self {
         ce._request_didFailWithError = handle
         rebindingDelegate()

@@ -2,7 +2,7 @@
 //  CE_XMLParser.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,101 +40,121 @@ public extension XMLParser {
         return XMLParser_Delegate()
     }
     
+    @discardableResult
     public func ce_parserDidStartDocument(handle: @escaping (XMLParser) -> Void) -> Self {
         ce._parserDidStartDocument = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parserDidEndDocument(handle: @escaping (XMLParser) -> Void) -> Self {
         ce._parserDidEndDocument = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_foundNotationDeclarationWithName(handle: @escaping (XMLParser, String, String?, String?) -> Void) -> Self {
         ce._parser_foundNotationDeclarationWithName = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_foundUnparsedEntityDeclarationWithName(handle: @escaping (XMLParser, String, String?, String?, String?) -> Void) -> Self {
         ce._parser_foundUnparsedEntityDeclarationWithName = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_foundAttributeDeclarationWithName(handle: @escaping (XMLParser, String, String, String?, String?) -> Void) -> Self {
         ce._parser_foundAttributeDeclarationWithName = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_foundElementDeclarationWithName(handle: @escaping (XMLParser, String, String) -> Void) -> Self {
         ce._parser_foundElementDeclarationWithName = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_foundInternalEntityDeclarationWithName(handle: @escaping (XMLParser, String, String?) -> Void) -> Self {
         ce._parser_foundInternalEntityDeclarationWithName = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_foundExternalEntityDeclarationWithName(handle: @escaping (XMLParser, String, String?, String?) -> Void) -> Self {
         ce._parser_foundExternalEntityDeclarationWithName = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_didStartElement(handle: @escaping (XMLParser, String, String?, String?, [String : String]) -> Void) -> Self {
         ce._parser_didStartElement = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_didEndElement(handle: @escaping (XMLParser, String, String?, String?) -> Void) -> Self {
         ce._parser_didEndElement = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_didStartMappingPrefix(handle: @escaping (XMLParser, String, String) -> Void) -> Self {
         ce._parser_didStartMappingPrefix = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_didEndMappingPrefix(handle: @escaping (XMLParser, String) -> Void) -> Self {
         ce._parser_didEndMappingPrefix = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_foundCharacters(handle: @escaping (XMLParser, String) -> Void) -> Self {
         ce._parser_foundCharacters = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_foundIgnorableWhitespace(handle: @escaping (XMLParser, String) -> Void) -> Self {
         ce._parser_foundIgnorableWhitespace = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_foundProcessingInstructionWithTarget(handle: @escaping (XMLParser, String, String?) -> Void) -> Self {
         ce._parser_foundProcessingInstructionWithTarget = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_foundComment(handle: @escaping (XMLParser, String) -> Void) -> Self {
         ce._parser_foundComment = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_foundCDATA(handle: @escaping (XMLParser, Data) -> Void) -> Self {
         ce._parser_foundCDATA = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_resolveExternalEntityName(handle: @escaping (XMLParser, String, String?) -> Data?) -> Self {
         ce._parser_resolveExternalEntityName = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_parseErrorOccurred(handle: @escaping (XMLParser, Error) -> Void) -> Self {
         ce._parser_parseErrorOccurred = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_parser_validationErrorOccurred(handle: @escaping (XMLParser, Error) -> Void) -> Self {
         ce._parser_validationErrorOccurred = handle
         rebindingDelegate()

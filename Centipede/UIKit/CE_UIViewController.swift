@@ -2,7 +2,7 @@
 //  CE_UIViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,26 +40,31 @@ public extension UIViewController {
         return UIViewController_Delegate()
     }
     
+    @discardableResult
     public func ce_animationController_forDismissed(handle: @escaping (UIViewController) -> UIViewControllerAnimatedTransitioning?) -> Self {
         ce._animationController_forDismissed = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_animationController_forPresented(handle: @escaping (UIViewController, UIViewController, UIViewController) -> UIViewControllerAnimatedTransitioning?) -> Self {
         ce._animationController_forPresented = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_interactionControllerForPresentation_using(handle: @escaping (UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> Self {
         ce._interactionControllerForPresentation_using = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_interactionControllerForDismissal_using(handle: @escaping (UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> Self {
         ce._interactionControllerForDismissal_using = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_presentationController_forPresented(handle: @escaping (UIViewController, UIViewController?, UIViewController) -> UIPresentationController?) -> Self {
         ce._presentationController_forPresented = handle
         rebindingDelegate()

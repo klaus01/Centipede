@@ -2,7 +2,7 @@
 //  CE_GKMatch.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,31 +40,37 @@ public extension GKMatch {
         return GKMatch_Delegate()
     }
     
+    @discardableResult
     public func ce_match_didReceive(handle: @escaping (GKMatch, Data, GKPlayer) -> Void) -> Self {
         ce._match_didReceive = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_match_didReceive_didReceive(handle: @escaping (GKMatch, Data, String) -> Void) -> Self {
         ce._match_didReceive_didReceive = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_match_player(handle: @escaping (GKMatch, GKPlayer, GKPlayerConnectionState) -> Void) -> Self {
         ce._match_player = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_match_didFailWithError(handle: @escaping (GKMatch, Error?) -> Void) -> Self {
         ce._match_didFailWithError = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_match_shouldReinviteDisconnectedPlayer(handle: @escaping (GKMatch, GKPlayer) -> Bool) -> Self {
         ce._match_shouldReinviteDisconnectedPlayer = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_match_shouldReinvitePlayer(handle: @escaping (GKMatch, String) -> Bool) -> Self {
         ce._match_shouldReinvitePlayer = handle
         rebindingDelegate()

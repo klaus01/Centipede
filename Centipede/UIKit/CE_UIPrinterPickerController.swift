@@ -2,7 +2,7 @@
 //  CE_UIPrinterPickerController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,36 +40,43 @@ public extension UIPrinterPickerController {
         return UIPrinterPickerController_Delegate()
     }
     
+    @discardableResult
     public func ce_printerPickerControllerParentViewController(handle: @escaping (UIPrinterPickerController) -> UIViewController?) -> Self {
         ce._printerPickerControllerParentViewController = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_printerPickerController_shouldShow(handle: @escaping (UIPrinterPickerController, UIPrinter) -> Bool) -> Self {
         ce._printerPickerController_shouldShow = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_printerPickerControllerWillPresent(handle: @escaping (UIPrinterPickerController) -> Void) -> Self {
         ce._printerPickerControllerWillPresent = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_printerPickerControllerDidPresent(handle: @escaping (UIPrinterPickerController) -> Void) -> Self {
         ce._printerPickerControllerDidPresent = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_printerPickerControllerWillDismiss(handle: @escaping (UIPrinterPickerController) -> Void) -> Self {
         ce._printerPickerControllerWillDismiss = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_printerPickerControllerDidDismiss(handle: @escaping (UIPrinterPickerController) -> Void) -> Self {
         ce._printerPickerControllerDidDismiss = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_printerPickerControllerDidSelectPrinter(handle: @escaping (UIPrinterPickerController) -> Void) -> Self {
         ce._printerPickerControllerDidSelectPrinter = handle
         rebindingDelegate()

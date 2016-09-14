@@ -12,10 +12,12 @@ public typealias CE_UIControlAction = (UIControl, NSSet) -> Void
 
 public extension UIControl {
     
+    @discardableResult
     public func ce_addControlEvents(controlEvents: UIControlEvents, action: @escaping CE_UIControlAction) -> Self {
         return on(controlEvents, action: action)
     }
     
+    @discardableResult
     public func ce_removeControlEvents(controlEvents: UIControlEvents) -> Self {
         return off(controlEvents)
     }

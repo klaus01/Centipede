@@ -2,7 +2,7 @@
 //  CE_CBPeripheralManager.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,46 +40,55 @@ public extension CBPeripheralManager {
         return CBPeripheralManager_Delegate()
     }
     
+    @discardableResult
     public func ce_peripheralManagerDidUpdateState(handle: @escaping (CBPeripheralManager) -> Void) -> Self {
         ce._peripheralManagerDidUpdateState = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheralManager_willRestoreState(handle: @escaping (CBPeripheralManager, [String : Any]) -> Void) -> Self {
         ce._peripheralManager_willRestoreState = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheralManagerDidStartAdvertising_error(handle: @escaping (CBPeripheralManager, Error?) -> Void) -> Self {
         ce._peripheralManagerDidStartAdvertising_error = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheralManager_didAdd(handle: @escaping (CBPeripheralManager, CBService, Error?) -> Void) -> Self {
         ce._peripheralManager_didAdd = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheralManager_central(handle: @escaping (CBPeripheralManager, CBCentral, CBCharacteristic) -> Void) -> Self {
         ce._peripheralManager_central = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheralManager_central_central(handle: @escaping (CBPeripheralManager, CBCentral, CBCharacteristic) -> Void) -> Self {
         ce._peripheralManager_central_central = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheralManager_didReceiveRead(handle: @escaping (CBPeripheralManager, CBATTRequest) -> Void) -> Self {
         ce._peripheralManager_didReceiveRead = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheralManager_didReceiveWrite(handle: @escaping (CBPeripheralManager, [CBATTRequest]) -> Void) -> Self {
         ce._peripheralManager_didReceiveWrite = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheralManagerIsReady_toUpdateSubscribers(handle: @escaping (CBPeripheralManager) -> Void) -> Self {
         ce._peripheralManagerIsReady_toUpdateSubscribers = handle
         rebindingDelegate()

@@ -2,7 +2,7 @@
 //  CE_UIToolbar.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,6 +40,7 @@ public extension UIToolbar {
         return UIToolbar_Delegate()
     }
     
+    @discardableResult
     public func ce_position_for(handle: @escaping (UIBarPositioning) -> UIBarPosition) -> Self {
         ce._position_for = handle
         rebindingDelegate()

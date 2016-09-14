@@ -2,7 +2,7 @@
 //  CE_UIWebView.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,21 +40,25 @@ public extension UIWebView {
         return UIWebView_Delegate()
     }
     
+    @discardableResult
     public func ce_webView_shouldStartLoadWith(handle: @escaping (UIWebView, URLRequest, UIWebViewNavigationType) -> Bool) -> Self {
         ce._webView_shouldStartLoadWith = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_webViewDidStartLoad(handle: @escaping (UIWebView) -> Void) -> Self {
         ce._webViewDidStartLoad = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_webViewDidFinishLoad(handle: @escaping (UIWebView) -> Void) -> Self {
         ce._webViewDidFinishLoad = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_webView_didFailLoadWithError(handle: @escaping (UIWebView, Error) -> Void) -> Self {
         ce._webView_didFailLoadWithError = handle
         rebindingDelegate()

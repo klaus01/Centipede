@@ -2,7 +2,7 @@
 //  CE_EKEventViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,6 +40,7 @@ public extension EKEventViewController {
         return EKEventViewController_Delegate()
     }
     
+    @discardableResult
     public func ce_eventViewController_didCompleteWith(handle: @escaping (EKEventViewController, EKEventViewAction) -> Void) -> Self {
         ce._eventViewController_didCompleteWith = handle
         rebindingDelegate()

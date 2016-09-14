@@ -2,7 +2,7 @@
 //  CE_UITableView.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -42,221 +42,265 @@ public extension UITableView {
         return UITableView_Delegate()
     }
     
+    @discardableResult
     public func ce_tableView_numberOfRowsInSection(handle: @escaping (UITableView, Int) -> Int) -> Self {
         ce._tableView_numberOfRowsInSection = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_cellForRowAt(handle: @escaping (UITableView, IndexPath) -> UITableViewCell) -> Self {
         ce._tableView_cellForRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_numberOfSections_in(handle: @escaping (UITableView) -> Int) -> Self {
         ce._numberOfSections_in = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_titleForHeaderInSection(handle: @escaping (UITableView, Int) -> String?) -> Self {
         ce._tableView_titleForHeaderInSection = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_titleForFooterInSection(handle: @escaping (UITableView, Int) -> String?) -> Self {
         ce._tableView_titleForFooterInSection = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_canEditRowAt(handle: @escaping (UITableView, IndexPath) -> Bool) -> Self {
         ce._tableView_canEditRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_canMoveRowAt(handle: @escaping (UITableView, IndexPath) -> Bool) -> Self {
         ce._tableView_canMoveRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_sectionIndexTitles_for(handle: @escaping (UITableView) -> [String]?) -> Self {
         ce._sectionIndexTitles_for = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_sectionForSectionIndexTitle(handle: @escaping (UITableView, String, Int) -> Int) -> Self {
         ce._tableView_sectionForSectionIndexTitle = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_commit(handle: @escaping (UITableView, UITableViewCellEditingStyle, IndexPath) -> Void) -> Self {
         ce._tableView_commit = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_moveRowAt(handle: @escaping (UITableView, IndexPath, IndexPath) -> Void) -> Self {
         ce._tableView_moveRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_willDisplay(handle: @escaping (UITableView, UITableViewCell, IndexPath) -> Void) -> Self {
         ce._tableView_willDisplay = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_willDisplayHeaderView(handle: @escaping (UITableView, UIView, Int) -> Void) -> Self {
         ce._tableView_willDisplayHeaderView = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_willDisplayFooterView(handle: @escaping (UITableView, UIView, Int) -> Void) -> Self {
         ce._tableView_willDisplayFooterView = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_didEndDisplaying(handle: @escaping (UITableView, UITableViewCell, IndexPath) -> Void) -> Self {
         ce._tableView_didEndDisplaying = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_didEndDisplayingHeaderView(handle: @escaping (UITableView, UIView, Int) -> Void) -> Self {
         ce._tableView_didEndDisplayingHeaderView = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_didEndDisplayingFooterView(handle: @escaping (UITableView, UIView, Int) -> Void) -> Self {
         ce._tableView_didEndDisplayingFooterView = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_heightForRowAt(handle: @escaping (UITableView, IndexPath) -> CGFloat) -> Self {
         ce._tableView_heightForRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_heightForHeaderInSection(handle: @escaping (UITableView, Int) -> CGFloat) -> Self {
         ce._tableView_heightForHeaderInSection = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_heightForFooterInSection(handle: @escaping (UITableView, Int) -> CGFloat) -> Self {
         ce._tableView_heightForFooterInSection = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_estimatedHeightForRowAt(handle: @escaping (UITableView, IndexPath) -> CGFloat) -> Self {
         ce._tableView_estimatedHeightForRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_estimatedHeightForHeaderInSection(handle: @escaping (UITableView, Int) -> CGFloat) -> Self {
         ce._tableView_estimatedHeightForHeaderInSection = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_estimatedHeightForFooterInSection(handle: @escaping (UITableView, Int) -> CGFloat) -> Self {
         ce._tableView_estimatedHeightForFooterInSection = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_viewForHeaderInSection(handle: @escaping (UITableView, Int) -> UIView?) -> Self {
         ce._tableView_viewForHeaderInSection = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_viewForFooterInSection(handle: @escaping (UITableView, Int) -> UIView?) -> Self {
         ce._tableView_viewForFooterInSection = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_accessoryButtonTappedForRowWith(handle: @escaping (UITableView, IndexPath) -> Void) -> Self {
         ce._tableView_accessoryButtonTappedForRowWith = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_shouldHighlightRowAt(handle: @escaping (UITableView, IndexPath) -> Bool) -> Self {
         ce._tableView_shouldHighlightRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_didHighlightRowAt(handle: @escaping (UITableView, IndexPath) -> Void) -> Self {
         ce._tableView_didHighlightRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_didUnhighlightRowAt(handle: @escaping (UITableView, IndexPath) -> Void) -> Self {
         ce._tableView_didUnhighlightRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_willSelectRowAt(handle: @escaping (UITableView, IndexPath) -> IndexPath?) -> Self {
         ce._tableView_willSelectRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_willDeselectRowAt(handle: @escaping (UITableView, IndexPath) -> IndexPath?) -> Self {
         ce._tableView_willDeselectRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_didSelectRowAt(handle: @escaping (UITableView, IndexPath) -> Void) -> Self {
         ce._tableView_didSelectRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_didDeselectRowAt(handle: @escaping (UITableView, IndexPath) -> Void) -> Self {
         ce._tableView_didDeselectRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_editingStyleForRowAt(handle: @escaping (UITableView, IndexPath) -> UITableViewCellEditingStyle) -> Self {
         ce._tableView_editingStyleForRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_titleForDeleteConfirmationButtonForRowAt(handle: @escaping (UITableView, IndexPath) -> String?) -> Self {
         ce._tableView_titleForDeleteConfirmationButtonForRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_editActionsForRowAt(handle: @escaping (UITableView, IndexPath) -> [UITableViewRowAction]?) -> Self {
         ce._tableView_editActionsForRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_shouldIndentWhileEditingRowAt(handle: @escaping (UITableView, IndexPath) -> Bool) -> Self {
         ce._tableView_shouldIndentWhileEditingRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_willBeginEditingRowAt(handle: @escaping (UITableView, IndexPath) -> Void) -> Self {
         ce._tableView_willBeginEditingRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_didEndEditingRowAt(handle: @escaping (UITableView, IndexPath?) -> Void) -> Self {
         ce._tableView_didEndEditingRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_targetIndexPathForMoveFromRowAt(handle: @escaping (UITableView, IndexPath, IndexPath) -> IndexPath) -> Self {
         ce._tableView_targetIndexPathForMoveFromRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_indentationLevelForRowAt(handle: @escaping (UITableView, IndexPath) -> Int) -> Self {
         ce._tableView_indentationLevelForRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_shouldShowMenuForRowAt(handle: @escaping (UITableView, IndexPath) -> Bool) -> Self {
         ce._tableView_shouldShowMenuForRowAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_canPerformAction(handle: @escaping (UITableView, Selector, IndexPath, Any?) -> Bool) -> Self {
         ce._tableView_canPerformAction = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_tableView_performAction(handle: @escaping (UITableView, Selector, IndexPath, Any?) -> Void) -> Self {
         ce._tableView_performAction = handle
         rebindingDelegate()

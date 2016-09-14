@@ -2,7 +2,7 @@
 //  CE_UIDocumentPickerViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -42,11 +42,13 @@ public extension UIDocumentPickerViewController {
         return UIDocumentPickerViewController_Delegate()
     }
     
+    @discardableResult
     public func ce_documentPicker_didPickDocumentAt(handle: @escaping (UIDocumentPickerViewController, URL) -> Void) -> Self {
         ce._documentPicker_didPickDocumentAt = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_documentPickerWasCancelled(handle: @escaping (UIDocumentPickerViewController) -> Void) -> Self {
         ce._documentPickerWasCancelled = handle
         rebindingDelegate()

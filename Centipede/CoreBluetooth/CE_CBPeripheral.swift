@@ -2,7 +2,7 @@
 //  CE_CBPeripheral.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/14.
+//  Created by kelei on 2016/9/15.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,56 +40,67 @@ public extension CBPeripheral {
         return CBPeripheral_Delegate()
     }
     
+    @discardableResult
     public func ce_peripheralDidUpdateName(handle: @escaping (CBPeripheral) -> Void) -> Self {
         ce._peripheralDidUpdateName = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheral_didModifyServices(handle: @escaping (CBPeripheral, [CBService]) -> Void) -> Self {
         ce._peripheral_didModifyServices = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheralDidUpdateRSSI_error(handle: @escaping (CBPeripheral, Error?) -> Void) -> Self {
         ce._peripheralDidUpdateRSSI_error = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheral_didReadRSSI(handle: @escaping (CBPeripheral, NSNumber, Error?) -> Void) -> Self {
         ce._peripheral_didReadRSSI = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheral_didDiscoverServices(handle: @escaping (CBPeripheral, Error?) -> Void) -> Self {
         ce._peripheral_didDiscoverServices = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheral_didDiscoverIncludedServicesFor(handle: @escaping (CBPeripheral, CBService, Error?) -> Void) -> Self {
         ce._peripheral_didDiscoverIncludedServicesFor = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheral_didDiscoverCharacteristicsFor(handle: @escaping (CBPeripheral, CBService, Error?) -> Void) -> Self {
         ce._peripheral_didDiscoverCharacteristicsFor = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheral_didUpdateValueFor(handle: @escaping (CBPeripheral, CBCharacteristic, Error?) -> Void) -> Self {
         ce._peripheral_didUpdateValueFor = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheral_didWriteValueFor(handle: @escaping (CBPeripheral, CBCharacteristic, Error?) -> Void) -> Self {
         ce._peripheral_didWriteValueFor = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheral_didUpdateNotificationStateFor(handle: @escaping (CBPeripheral, CBCharacteristic, Error?) -> Void) -> Self {
         ce._peripheral_didUpdateNotificationStateFor = handle
         rebindingDelegate()
         return self
     }
+    @discardableResult
     public func ce_peripheral_didDiscoverDescriptorsFor(handle: @escaping (CBPeripheral, CBCharacteristic, Error?) -> Void) -> Self {
         ce._peripheral_didDiscoverDescriptorsFor = handle
         rebindingDelegate()

@@ -27,19 +27,23 @@ public extension NSObject {
         return obj
     }
     
+    @discardableResult
     public func ce_addObserver(forName name: String, handle: @escaping CE_NotificationAction) -> Self {
         ce.addNotification(forName: name, handle: handle)
         NotificationCenter.default.addObserver(ce, selector: #selector(NSObject_Delegate.observerHandlerAction(_:)), name: NSNotification.Name(rawValue: name), object: nil)
         return self
     }
     
+    @discardableResult
     public func ce_removeObserverForName(name: String) -> Self {
         NotificationCenter.default.removeObserver(ce, name: NSNotification.Name(rawValue: name), object: nil)
         return self
     }
     
-    public func ce_removeObserver() {
+    @discardableResult
+    public func ce_removeObserver() -> Self {
         NotificationCenter.default.removeObserver(ce)
+        return self
     }
     
 }

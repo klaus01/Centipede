@@ -12,6 +12,7 @@ public typealias CE_UIBarButtonItemAction = (UIBarButtonItem) -> Void
 
 public extension UIBarButtonItem {
     
+    @discardableResult
     public func action(action: CE_UIBarButtonItemAction?) -> Self {
         return on(action)
     }
