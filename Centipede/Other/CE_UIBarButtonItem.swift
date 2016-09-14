@@ -28,7 +28,7 @@ fileprivate class UIBarButtonItemProxy : NSObject {
     
     var action: CE_UIBarButtonItemAction
     
-    init(_ action: CE_UIBarButtonItemAction) {
+    init(_ action: @escaping CE_UIBarButtonItemAction) {
         self.action = action
     }
     

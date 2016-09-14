@@ -2,7 +2,7 @@
 //  CE_UIPickerView.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -42,42 +42,42 @@ public extension UIPickerView {
         return UIPickerView_Delegate()
     }
     
-    public func ce_numberOfComponents_in(handle: ((UIPickerView) -> Int)) -> Self {
+    public func ce_numberOfComponents_in(handle: @escaping (UIPickerView) -> Int) -> Self {
         ce._numberOfComponents_in = handle
         rebindingDelegate()
         return self
     }
-    public func ce_pickerView_numberOfRowsInComponent(handle: ((UIPickerView, Int) -> Int)) -> Self {
+    public func ce_pickerView_numberOfRowsInComponent(handle: @escaping (UIPickerView, Int) -> Int) -> Self {
         ce._pickerView_numberOfRowsInComponent = handle
         rebindingDelegate()
         return self
     }
-    public func ce_pickerView_widthForComponent(handle: ((UIPickerView, Int) -> CGFloat)) -> Self {
+    public func ce_pickerView_widthForComponent(handle: @escaping (UIPickerView, Int) -> CGFloat) -> Self {
         ce._pickerView_widthForComponent = handle
         rebindingDelegate()
         return self
     }
-    public func ce_pickerView_rowHeightForComponent(handle: ((UIPickerView, Int) -> CGFloat)) -> Self {
+    public func ce_pickerView_rowHeightForComponent(handle: @escaping (UIPickerView, Int) -> CGFloat) -> Self {
         ce._pickerView_rowHeightForComponent = handle
         rebindingDelegate()
         return self
     }
-    public func ce_pickerView_titleForRow(handle: ((UIPickerView, Int, Int) -> String?)) -> Self {
+    public func ce_pickerView_titleForRow(handle: @escaping (UIPickerView, Int, Int) -> String?) -> Self {
         ce._pickerView_titleForRow = handle
         rebindingDelegate()
         return self
     }
-    public func ce_pickerView_attributedTitleForRow(handle: ((UIPickerView, Int, Int) -> NSAttributedString?)) -> Self {
+    public func ce_pickerView_attributedTitleForRow(handle: @escaping (UIPickerView, Int, Int) -> NSAttributedString?) -> Self {
         ce._pickerView_attributedTitleForRow = handle
         rebindingDelegate()
         return self
     }
-    public func ce_pickerView_viewForRow(handle: ((UIPickerView, Int, Int, UIView?) -> UIView)) -> Self {
+    public func ce_pickerView_viewForRow(handle: @escaping (UIPickerView, Int, Int, UIView?) -> UIView) -> Self {
         ce._pickerView_viewForRow = handle
         rebindingDelegate()
         return self
     }
-    public func ce_pickerView_didSelectRow(handle: ((UIPickerView, Int, Int) -> Void)) -> Self {
+    public func ce_pickerView_didSelectRow(handle: @escaping (UIPickerView, Int, Int) -> Void) -> Self {
         ce._pickerView_didSelectRow = handle
         rebindingDelegate()
         return self

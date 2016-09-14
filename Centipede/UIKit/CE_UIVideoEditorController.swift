@@ -2,7 +2,7 @@
 //  CE_UIVideoEditorController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,17 +40,17 @@ public extension UIVideoEditorController {
         return UIVideoEditorController_Delegate()
     }
     
-    public func ce_videoEditorController_didSaveEditedVideoToPath(handle: ((UIVideoEditorController, String) -> Void)) -> Self {
+    public func ce_videoEditorController_didSaveEditedVideoToPath(handle: @escaping (UIVideoEditorController, String) -> Void) -> Self {
         ce._videoEditorController_didSaveEditedVideoToPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_videoEditorController_didFailWithError(handle: ((UIVideoEditorController, Error) -> Void)) -> Self {
+    public func ce_videoEditorController_didFailWithError(handle: @escaping (UIVideoEditorController, Error) -> Void) -> Self {
         ce._videoEditorController_didFailWithError = handle
         rebindingDelegate()
         return self
     }
-    public func ce_videoEditorControllerDidCancel(handle: ((UIVideoEditorController) -> Void)) -> Self {
+    public func ce_videoEditorControllerDidCancel(handle: @escaping (UIVideoEditorController) -> Void) -> Self {
         ce._videoEditorControllerDidCancel = handle
         rebindingDelegate()
         return self

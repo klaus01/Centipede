@@ -2,7 +2,7 @@
 //  CE_MKMapView.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,97 +40,97 @@ public extension MKMapView {
         return MKMapView_Delegate()
     }
     
-    public func ce_mapView_regionWillChangeAnimated(handle: ((MKMapView, Bool) -> Void)) -> Self {
+    public func ce_mapView_regionWillChangeAnimated(handle: @escaping (MKMapView, Bool) -> Void) -> Self {
         ce._mapView_regionWillChangeAnimated = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapView_regionDidChangeAnimated(handle: ((MKMapView, Bool) -> Void)) -> Self {
+    public func ce_mapView_regionDidChangeAnimated(handle: @escaping (MKMapView, Bool) -> Void) -> Self {
         ce._mapView_regionDidChangeAnimated = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapViewWillStartLoadingMap(handle: ((MKMapView) -> Void)) -> Self {
+    public func ce_mapViewWillStartLoadingMap(handle: @escaping (MKMapView) -> Void) -> Self {
         ce._mapViewWillStartLoadingMap = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapViewDidFinishLoadingMap(handle: ((MKMapView) -> Void)) -> Self {
+    public func ce_mapViewDidFinishLoadingMap(handle: @escaping (MKMapView) -> Void) -> Self {
         ce._mapViewDidFinishLoadingMap = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapViewDidFailLoadingMap_withError(handle: ((MKMapView, Error) -> Void)) -> Self {
+    public func ce_mapViewDidFailLoadingMap_withError(handle: @escaping (MKMapView, Error) -> Void) -> Self {
         ce._mapViewDidFailLoadingMap_withError = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapViewWillStartRenderingMap(handle: ((MKMapView) -> Void)) -> Self {
+    public func ce_mapViewWillStartRenderingMap(handle: @escaping (MKMapView) -> Void) -> Self {
         ce._mapViewWillStartRenderingMap = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapViewDidFinishRenderingMap_fullyRendered(handle: ((MKMapView, Bool) -> Void)) -> Self {
+    public func ce_mapViewDidFinishRenderingMap_fullyRendered(handle: @escaping (MKMapView, Bool) -> Void) -> Self {
         ce._mapViewDidFinishRenderingMap_fullyRendered = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapView_viewFor(handle: ((MKMapView, MKAnnotation) -> MKAnnotationView?)) -> Self {
+    public func ce_mapView_viewFor(handle: @escaping (MKMapView, MKAnnotation) -> MKAnnotationView?) -> Self {
         ce._mapView_viewFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapView_didAdd(handle: ((MKMapView, [MKAnnotationView]) -> Void)) -> Self {
+    public func ce_mapView_didAdd(handle: @escaping (MKMapView, [MKAnnotationView]) -> Void) -> Self {
         ce._mapView_didAdd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapView_annotationView(handle: ((MKMapView, MKAnnotationView, UIControl) -> Void)) -> Self {
+    public func ce_mapView_annotationView(handle: @escaping (MKMapView, MKAnnotationView, UIControl) -> Void) -> Self {
         ce._mapView_annotationView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapView_didSelect(handle: ((MKMapView, MKAnnotationView) -> Void)) -> Self {
+    public func ce_mapView_didSelect(handle: @escaping (MKMapView, MKAnnotationView) -> Void) -> Self {
         ce._mapView_didSelect = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapView_didDeselect(handle: ((MKMapView, MKAnnotationView) -> Void)) -> Self {
+    public func ce_mapView_didDeselect(handle: @escaping (MKMapView, MKAnnotationView) -> Void) -> Self {
         ce._mapView_didDeselect = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapViewWillStartLocatingUser(handle: ((MKMapView) -> Void)) -> Self {
+    public func ce_mapViewWillStartLocatingUser(handle: @escaping (MKMapView) -> Void) -> Self {
         ce._mapViewWillStartLocatingUser = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapViewDidStopLocatingUser(handle: ((MKMapView) -> Void)) -> Self {
+    public func ce_mapViewDidStopLocatingUser(handle: @escaping (MKMapView) -> Void) -> Self {
         ce._mapViewDidStopLocatingUser = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapView_didUpdate(handle: ((MKMapView, MKUserLocation) -> Void)) -> Self {
+    public func ce_mapView_didUpdate(handle: @escaping (MKMapView, MKUserLocation) -> Void) -> Self {
         ce._mapView_didUpdate = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapView_didFailToLocateUserWithError(handle: ((MKMapView, Error) -> Void)) -> Self {
+    public func ce_mapView_didFailToLocateUserWithError(handle: @escaping (MKMapView, Error) -> Void) -> Self {
         ce._mapView_didFailToLocateUserWithError = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapView_annotationView_annotationView(handle: ((MKMapView, MKAnnotationView, MKAnnotationViewDragState, MKAnnotationViewDragState) -> Void)) -> Self {
+    public func ce_mapView_annotationView_annotationView(handle: @escaping (MKMapView, MKAnnotationView, MKAnnotationViewDragState, MKAnnotationViewDragState) -> Void) -> Self {
         ce._mapView_annotationView_annotationView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapView_didChange(handle: ((MKMapView, MKUserTrackingMode, Bool) -> Void)) -> Self {
+    public func ce_mapView_didChange(handle: @escaping (MKMapView, MKUserTrackingMode, Bool) -> Void) -> Self {
         ce._mapView_didChange = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mapView_rendererFor(handle: ((MKMapView, MKOverlay) -> MKOverlayRenderer)) -> Self {
+    public func ce_mapView_rendererFor(handle: @escaping (MKMapView, MKOverlay) -> MKOverlayRenderer) -> Self {
         ce._mapView_rendererFor = handle
         rebindingDelegate()
         return self

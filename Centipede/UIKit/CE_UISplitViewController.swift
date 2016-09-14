@@ -2,7 +2,7 @@
 //  CE_UISplitViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -42,52 +42,52 @@ public extension UISplitViewController {
         return UISplitViewController_Delegate()
     }
     
-    public func ce_splitViewController_willChangeTo(handle: ((UISplitViewController, UISplitViewControllerDisplayMode) -> Void)) -> Self {
+    public func ce_splitViewController_willChangeTo(handle: @escaping (UISplitViewController, UISplitViewControllerDisplayMode) -> Void) -> Self {
         ce._splitViewController_willChangeTo = handle
         rebindingDelegate()
         return self
     }
-    public func ce_targetDisplayModeForAction_in(handle: ((UISplitViewController) -> UISplitViewControllerDisplayMode)) -> Self {
+    public func ce_targetDisplayModeForAction_in(handle: @escaping (UISplitViewController) -> UISplitViewControllerDisplayMode) -> Self {
         ce._targetDisplayModeForAction_in = handle
         rebindingDelegate()
         return self
     }
-    public func ce_splitViewController_show(handle: ((UISplitViewController, UIViewController, Any?) -> Bool)) -> Self {
+    public func ce_splitViewController_show(handle: @escaping (UISplitViewController, UIViewController, Any?) -> Bool) -> Self {
         ce._splitViewController_show = handle
         rebindingDelegate()
         return self
     }
-    public func ce_splitViewController_showDetail(handle: ((UISplitViewController, UIViewController, Any?) -> Bool)) -> Self {
+    public func ce_splitViewController_showDetail(handle: @escaping (UISplitViewController, UIViewController, Any?) -> Bool) -> Self {
         ce._splitViewController_showDetail = handle
         rebindingDelegate()
         return self
     }
-    public func ce_primaryViewController_forCollapsing(handle: ((UISplitViewController) -> UIViewController?)) -> Self {
+    public func ce_primaryViewController_forCollapsing(handle: @escaping (UISplitViewController) -> UIViewController?) -> Self {
         ce._primaryViewController_forCollapsing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_primaryViewController_forExpanding(handle: ((UISplitViewController) -> UIViewController?)) -> Self {
+    public func ce_primaryViewController_forExpanding(handle: @escaping (UISplitViewController) -> UIViewController?) -> Self {
         ce._primaryViewController_forExpanding = handle
         rebindingDelegate()
         return self
     }
-    public func ce_splitViewController_collapseSecondary(handle: ((UISplitViewController, UIViewController, UIViewController) -> Bool)) -> Self {
+    public func ce_splitViewController_collapseSecondary(handle: @escaping (UISplitViewController, UIViewController, UIViewController) -> Bool) -> Self {
         ce._splitViewController_collapseSecondary = handle
         rebindingDelegate()
         return self
     }
-    public func ce_splitViewController_separateSecondaryFrom(handle: ((UISplitViewController, UIViewController) -> UIViewController?)) -> Self {
+    public func ce_splitViewController_separateSecondaryFrom(handle: @escaping (UISplitViewController, UIViewController) -> UIViewController?) -> Self {
         ce._splitViewController_separateSecondaryFrom = handle
         rebindingDelegate()
         return self
     }
-    public func ce_splitViewControllerSupportedInterfaceOrientations(handle: ((UISplitViewController) -> UIInterfaceOrientationMask)) -> Self {
+    public func ce_splitViewControllerSupportedInterfaceOrientations(handle: @escaping (UISplitViewController) -> UIInterfaceOrientationMask) -> Self {
         ce._splitViewControllerSupportedInterfaceOrientations = handle
         rebindingDelegate()
         return self
     }
-    public func ce_splitViewControllerPreferredInterfaceOrientationForPresentation(handle: ((UISplitViewController) -> UIInterfaceOrientation)) -> Self {
+    public func ce_splitViewControllerPreferredInterfaceOrientationForPresentation(handle: @escaping (UISplitViewController) -> UIInterfaceOrientation) -> Self {
         ce._splitViewControllerPreferredInterfaceOrientationForPresentation = handle
         rebindingDelegate()
         return self

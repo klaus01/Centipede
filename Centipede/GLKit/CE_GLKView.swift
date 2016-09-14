@@ -2,7 +2,7 @@
 //  CE_GLKView.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,7 +40,7 @@ public extension GLKView {
         return GLKView_Delegate()
     }
     
-    public func ce_glkView_drawIn(handle: ((GLKView, CGRect) -> Void)) -> Self {
+    public func ce_glkView_drawIn(handle: @escaping (GLKView, CGRect) -> Void) -> Self {
         ce._glkView_drawIn = handle
         rebindingDelegate()
         return self

@@ -12,7 +12,7 @@ public typealias CE_UIControlAction = (UIControl, NSSet) -> Void
 
 public extension UIControl {
     
-    public func ce_addControlEvents(controlEvents: UIControlEvents, action: CE_UIControlAction) -> Self {
+    public func ce_addControlEvents(controlEvents: UIControlEvents, action: @escaping CE_UIControlAction) -> Self {
         return on(controlEvents, action: action)
     }
     
@@ -32,7 +32,7 @@ fileprivate class UIControlProxy : NSObject {
     
     var action: CE_UIControlAction
     
-    init(_ action: CE_UIControlAction) {
+    init(_ action: @escaping CE_UIControlAction) {
         self.action = action
     }
     
@@ -66,7 +66,7 @@ fileprivate extension UIControl {
         return newValue
     }
     
-    fileprivate func on(_ controlEvents: UIControlEvents, action: CE_UIControlAction) -> Self {
+    fileprivate func on(_ controlEvents: UIControlEvents, action: @escaping CE_UIControlAction) -> Self {
         self.off(controlEvents)
         
         let proxy = UIControlProxy(action)

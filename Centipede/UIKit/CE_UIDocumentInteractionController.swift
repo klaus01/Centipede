@@ -2,7 +2,7 @@
 //  CE_UIDocumentInteractionController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,57 +40,57 @@ public extension UIDocumentInteractionController {
         return UIDocumentInteractionController_Delegate()
     }
     
-    public func ce_documentInteractionControllerViewControllerForPreview(handle: ((UIDocumentInteractionController) -> UIViewController)) -> Self {
+    public func ce_documentInteractionControllerViewControllerForPreview(handle: @escaping (UIDocumentInteractionController) -> UIViewController) -> Self {
         ce._documentInteractionControllerViewControllerForPreview = handle
         rebindingDelegate()
         return self
     }
-    public func ce_documentInteractionControllerRectForPreview(handle: ((UIDocumentInteractionController) -> CGRect)) -> Self {
+    public func ce_documentInteractionControllerRectForPreview(handle: @escaping (UIDocumentInteractionController) -> CGRect) -> Self {
         ce._documentInteractionControllerRectForPreview = handle
         rebindingDelegate()
         return self
     }
-    public func ce_documentInteractionControllerViewForPreview(handle: ((UIDocumentInteractionController) -> UIView?)) -> Self {
+    public func ce_documentInteractionControllerViewForPreview(handle: @escaping (UIDocumentInteractionController) -> UIView?) -> Self {
         ce._documentInteractionControllerViewForPreview = handle
         rebindingDelegate()
         return self
     }
-    public func ce_documentInteractionControllerWillBeginPreview(handle: ((UIDocumentInteractionController) -> Void)) -> Self {
+    public func ce_documentInteractionControllerWillBeginPreview(handle: @escaping (UIDocumentInteractionController) -> Void) -> Self {
         ce._documentInteractionControllerWillBeginPreview = handle
         rebindingDelegate()
         return self
     }
-    public func ce_documentInteractionControllerDidEndPreview(handle: ((UIDocumentInteractionController) -> Void)) -> Self {
+    public func ce_documentInteractionControllerDidEndPreview(handle: @escaping (UIDocumentInteractionController) -> Void) -> Self {
         ce._documentInteractionControllerDidEndPreview = handle
         rebindingDelegate()
         return self
     }
-    public func ce_documentInteractionControllerWillPresentOptionsMenu(handle: ((UIDocumentInteractionController) -> Void)) -> Self {
+    public func ce_documentInteractionControllerWillPresentOptionsMenu(handle: @escaping (UIDocumentInteractionController) -> Void) -> Self {
         ce._documentInteractionControllerWillPresentOptionsMenu = handle
         rebindingDelegate()
         return self
     }
-    public func ce_documentInteractionControllerDidDismissOptionsMenu(handle: ((UIDocumentInteractionController) -> Void)) -> Self {
+    public func ce_documentInteractionControllerDidDismissOptionsMenu(handle: @escaping (UIDocumentInteractionController) -> Void) -> Self {
         ce._documentInteractionControllerDidDismissOptionsMenu = handle
         rebindingDelegate()
         return self
     }
-    public func ce_documentInteractionControllerWillPresentOpenInMenu(handle: ((UIDocumentInteractionController) -> Void)) -> Self {
+    public func ce_documentInteractionControllerWillPresentOpenInMenu(handle: @escaping (UIDocumentInteractionController) -> Void) -> Self {
         ce._documentInteractionControllerWillPresentOpenInMenu = handle
         rebindingDelegate()
         return self
     }
-    public func ce_documentInteractionControllerDidDismissOpenInMenu(handle: ((UIDocumentInteractionController) -> Void)) -> Self {
+    public func ce_documentInteractionControllerDidDismissOpenInMenu(handle: @escaping (UIDocumentInteractionController) -> Void) -> Self {
         ce._documentInteractionControllerDidDismissOpenInMenu = handle
         rebindingDelegate()
         return self
     }
-    public func ce_documentInteractionController_willBeginSendingToApplication(handle: ((UIDocumentInteractionController, String?) -> Void)) -> Self {
+    public func ce_documentInteractionController_willBeginSendingToApplication(handle: @escaping (UIDocumentInteractionController, String?) -> Void) -> Self {
         ce._documentInteractionController_willBeginSendingToApplication = handle
         rebindingDelegate()
         return self
     }
-    public func ce_documentInteractionController_didEndSendingToApplication(handle: ((UIDocumentInteractionController, String?) -> Void)) -> Self {
+    public func ce_documentInteractionController_didEndSendingToApplication(handle: @escaping (UIDocumentInteractionController, String?) -> Void) -> Self {
         ce._documentInteractionController_didEndSendingToApplication = handle
         rebindingDelegate()
         return self

@@ -27,7 +27,7 @@ public extension NSObject {
         return obj
     }
     
-    public func ce_addObserver(forName name: String, handle: CE_NotificationAction) -> Self {
+    public func ce_addObserver(forName name: String, handle: @escaping CE_NotificationAction) -> Self {
         ce.addNotification(forName: name, handle: handle)
         NotificationCenter.default.addObserver(ce, selector: #selector(NSObject_Delegate.observerHandlerAction(_:)), name: NSNotification.Name(rawValue: name), object: nil)
         return self
@@ -48,7 +48,7 @@ private class NSObject_Delegate: NSObject {
     
     private var dic = [String : CE_NotificationAction]()
     
-    func addNotification(forName name: String, handle: CE_NotificationAction) {
+    func addNotification(forName name: String, handle: @escaping CE_NotificationAction) {
         dic[name] = handle
     }
     

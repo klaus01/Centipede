@@ -2,7 +2,7 @@
 //  CE_PKPaymentAuthorizationViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,17 +40,17 @@ public extension PKPaymentAuthorizationViewController {
         return PKPaymentAuthorizationViewController_Delegate()
     }
     
-    public func ce_paymentAuthorizationViewController_didAuthorizePayment(handle: ((PKPaymentAuthorizationViewController, PKPayment, @escaping (PKPaymentAuthorizationStatus) -> Void) -> Void)) -> Self {
+    public func ce_paymentAuthorizationViewController_didAuthorizePayment(handle: @escaping (PKPaymentAuthorizationViewController, PKPayment, @escaping (PKPaymentAuthorizationStatus) -> Void) -> Void) -> Self {
         ce._paymentAuthorizationViewController_didAuthorizePayment = handle
         rebindingDelegate()
         return self
     }
-    public func ce_paymentAuthorizationViewControllerDidFinish(handle: ((PKPaymentAuthorizationViewController) -> Void)) -> Self {
+    public func ce_paymentAuthorizationViewControllerDidFinish(handle: @escaping (PKPaymentAuthorizationViewController) -> Void) -> Self {
         ce._paymentAuthorizationViewControllerDidFinish = handle
         rebindingDelegate()
         return self
     }
-    public func ce_paymentAuthorizationViewController_didSelect(handle: ((PKPaymentAuthorizationViewController, PKShippingMethod, @escaping (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> Void) -> Void)) -> Self {
+    public func ce_paymentAuthorizationViewController_didSelect(handle: @escaping (PKPaymentAuthorizationViewController, PKShippingMethod, @escaping (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> Void) -> Void) -> Self {
         ce._paymentAuthorizationViewController_didSelect = handle
         rebindingDelegate()
         return self

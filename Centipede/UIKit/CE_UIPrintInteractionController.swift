@@ -2,7 +2,7 @@
 //  CE_UIPrintInteractionController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,47 +40,47 @@ public extension UIPrintInteractionController {
         return UIPrintInteractionController_Delegate()
     }
     
-    public func ce_printInteractionControllerParentViewController(handle: ((UIPrintInteractionController) -> UIViewController?)) -> Self {
+    public func ce_printInteractionControllerParentViewController(handle: @escaping (UIPrintInteractionController) -> UIViewController?) -> Self {
         ce._printInteractionControllerParentViewController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_printInteractionController_choosePaper(handle: ((UIPrintInteractionController, [UIPrintPaper]) -> UIPrintPaper)) -> Self {
+    public func ce_printInteractionController_choosePaper(handle: @escaping (UIPrintInteractionController, [UIPrintPaper]) -> UIPrintPaper) -> Self {
         ce._printInteractionController_choosePaper = handle
         rebindingDelegate()
         return self
     }
-    public func ce_printInteractionControllerWillPresentPrinterOptions(handle: ((UIPrintInteractionController) -> Void)) -> Self {
+    public func ce_printInteractionControllerWillPresentPrinterOptions(handle: @escaping (UIPrintInteractionController) -> Void) -> Self {
         ce._printInteractionControllerWillPresentPrinterOptions = handle
         rebindingDelegate()
         return self
     }
-    public func ce_printInteractionControllerDidPresentPrinterOptions(handle: ((UIPrintInteractionController) -> Void)) -> Self {
+    public func ce_printInteractionControllerDidPresentPrinterOptions(handle: @escaping (UIPrintInteractionController) -> Void) -> Self {
         ce._printInteractionControllerDidPresentPrinterOptions = handle
         rebindingDelegate()
         return self
     }
-    public func ce_printInteractionControllerWillDismissPrinterOptions(handle: ((UIPrintInteractionController) -> Void)) -> Self {
+    public func ce_printInteractionControllerWillDismissPrinterOptions(handle: @escaping (UIPrintInteractionController) -> Void) -> Self {
         ce._printInteractionControllerWillDismissPrinterOptions = handle
         rebindingDelegate()
         return self
     }
-    public func ce_printInteractionControllerDidDismissPrinterOptions(handle: ((UIPrintInteractionController) -> Void)) -> Self {
+    public func ce_printInteractionControllerDidDismissPrinterOptions(handle: @escaping (UIPrintInteractionController) -> Void) -> Self {
         ce._printInteractionControllerDidDismissPrinterOptions = handle
         rebindingDelegate()
         return self
     }
-    public func ce_printInteractionControllerWillStartJob(handle: ((UIPrintInteractionController) -> Void)) -> Self {
+    public func ce_printInteractionControllerWillStartJob(handle: @escaping (UIPrintInteractionController) -> Void) -> Self {
         ce._printInteractionControllerWillStartJob = handle
         rebindingDelegate()
         return self
     }
-    public func ce_printInteractionControllerDidFinishJob(handle: ((UIPrintInteractionController) -> Void)) -> Self {
+    public func ce_printInteractionControllerDidFinishJob(handle: @escaping (UIPrintInteractionController) -> Void) -> Self {
         ce._printInteractionControllerDidFinishJob = handle
         rebindingDelegate()
         return self
     }
-    public func ce_printInteractionController_cutLengthFor(handle: ((UIPrintInteractionController, UIPrintPaper) -> CGFloat)) -> Self {
+    public func ce_printInteractionController_cutLengthFor(handle: @escaping (UIPrintInteractionController, UIPrintPaper) -> CGFloat) -> Self {
         ce._printInteractionController_cutLengthFor = handle
         rebindingDelegate()
         return self

@@ -2,7 +2,7 @@
 //  CE_AVAudioRecorder.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,22 +40,22 @@ public extension AVAudioRecorder {
         return AVAudioRecorder_Delegate()
     }
     
-    public func ce_audioRecorderDidFinishRecording_successfully(handle: ((AVAudioRecorder, Bool) -> Void)) -> Self {
+    public func ce_audioRecorderDidFinishRecording_successfully(handle: @escaping (AVAudioRecorder, Bool) -> Void) -> Self {
         ce._audioRecorderDidFinishRecording_successfully = handle
         rebindingDelegate()
         return self
     }
-    public func ce_audioRecorderEncodeErrorDidOccur_error(handle: ((AVAudioRecorder, Error?) -> Void)) -> Self {
+    public func ce_audioRecorderEncodeErrorDidOccur_error(handle: @escaping (AVAudioRecorder, Error?) -> Void) -> Self {
         ce._audioRecorderEncodeErrorDidOccur_error = handle
         rebindingDelegate()
         return self
     }
-    public func ce_audioRecorderBeginInterruption(handle: ((AVAudioRecorder) -> Void)) -> Self {
+    public func ce_audioRecorderBeginInterruption(handle: @escaping (AVAudioRecorder) -> Void) -> Self {
         ce._audioRecorderBeginInterruption = handle
         rebindingDelegate()
         return self
     }
-    public func ce_audioRecorderEndInterruption_withOptions(handle: ((AVAudioRecorder, Int) -> Void)) -> Self {
+    public func ce_audioRecorderEndInterruption_withOptions(handle: @escaping (AVAudioRecorder, Int) -> Void) -> Self {
         ce._audioRecorderEndInterruption_withOptions = handle
         rebindingDelegate()
         return self

@@ -2,7 +2,7 @@
 //  CE_MCBrowserViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,17 +40,17 @@ public extension MCBrowserViewController {
         return MCBrowserViewController_Delegate()
     }
     
-    public func ce_browserViewControllerDidFinish(handle: ((MCBrowserViewController) -> Void)) -> Self {
+    public func ce_browserViewControllerDidFinish(handle: @escaping (MCBrowserViewController) -> Void) -> Self {
         ce._browserViewControllerDidFinish = handle
         rebindingDelegate()
         return self
     }
-    public func ce_browserViewControllerWasCancelled(handle: ((MCBrowserViewController) -> Void)) -> Self {
+    public func ce_browserViewControllerWasCancelled(handle: @escaping (MCBrowserViewController) -> Void) -> Self {
         ce._browserViewControllerWasCancelled = handle
         rebindingDelegate()
         return self
     }
-    public func ce_browserViewController_shouldPresentNearbyPeer(handle: ((MCBrowserViewController, MCPeerID, [String : String]?) -> Bool)) -> Self {
+    public func ce_browserViewController_shouldPresentNearbyPeer(handle: @escaping (MCBrowserViewController, MCPeerID, [String : String]?) -> Bool) -> Self {
         ce._browserViewController_shouldPresentNearbyPeer = handle
         rebindingDelegate()
         return self

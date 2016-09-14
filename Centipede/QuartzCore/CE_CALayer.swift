@@ -2,7 +2,7 @@
 //  CE_CALayer.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,22 +40,22 @@ public extension CALayer {
         return CALayer_Delegate()
     }
     
-    public func ce_display(handle: ((CALayer) -> Void)) -> Self {
+    public func ce_display(handle: @escaping (CALayer) -> Void) -> Self {
         ce._display = handle
         rebindingDelegate()
         return self
     }
-    public func ce_draw_in(handle: ((CALayer, CGContext) -> Void)) -> Self {
+    public func ce_draw_in(handle: @escaping (CALayer, CGContext) -> Void) -> Self {
         ce._draw_in = handle
         rebindingDelegate()
         return self
     }
-    public func ce_layoutSublayers_of(handle: ((CALayer) -> Void)) -> Self {
+    public func ce_layoutSublayers_of(handle: @escaping (CALayer) -> Void) -> Self {
         ce._layoutSublayers_of = handle
         rebindingDelegate()
         return self
     }
-    public func ce_action_for(handle: ((CALayer, String) -> CAAction?)) -> Self {
+    public func ce_action_for(handle: @escaping (CALayer, String) -> CAAction?) -> Self {
         ce._action_for = handle
         rebindingDelegate()
         return self

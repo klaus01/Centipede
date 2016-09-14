@@ -2,7 +2,7 @@
 //  CE_UIGestureRecognizer.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,27 +40,27 @@ public extension UIGestureRecognizer {
         return UIGestureRecognizer_Delegate()
     }
     
-    public func ce_gestureRecognizerShouldBegin(handle: ((UIGestureRecognizer) -> Bool)) -> Self {
+    public func ce_gestureRecognizerShouldBegin(handle: @escaping (UIGestureRecognizer) -> Bool) -> Self {
         ce._gestureRecognizerShouldBegin = handle
         rebindingDelegate()
         return self
     }
-    public func ce_gestureRecognizer_shouldRecognizeSimultaneouslyWith(handle: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)) -> Self {
+    public func ce_gestureRecognizer_shouldRecognizeSimultaneouslyWith(handle: @escaping (UIGestureRecognizer, UIGestureRecognizer) -> Bool) -> Self {
         ce._gestureRecognizer_shouldRecognizeSimultaneouslyWith = handle
         rebindingDelegate()
         return self
     }
-    public func ce_gestureRecognizer_shouldRequireFailureOf(handle: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)) -> Self {
+    public func ce_gestureRecognizer_shouldRequireFailureOf(handle: @escaping (UIGestureRecognizer, UIGestureRecognizer) -> Bool) -> Self {
         ce._gestureRecognizer_shouldRequireFailureOf = handle
         rebindingDelegate()
         return self
     }
-    public func ce_gestureRecognizer_shouldBeRequiredToFailBy(handle: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)) -> Self {
+    public func ce_gestureRecognizer_shouldBeRequiredToFailBy(handle: @escaping (UIGestureRecognizer, UIGestureRecognizer) -> Bool) -> Self {
         ce._gestureRecognizer_shouldBeRequiredToFailBy = handle
         rebindingDelegate()
         return self
     }
-    public func ce_gestureRecognizer_shouldReceive(handle: ((UIGestureRecognizer, UITouch) -> Bool)) -> Self {
+    public func ce_gestureRecognizer_shouldReceive(handle: @escaping (UIGestureRecognizer, UITouch) -> Bool) -> Self {
         ce._gestureRecognizer_shouldReceive = handle
         rebindingDelegate()
         return self

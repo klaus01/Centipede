@@ -2,7 +2,7 @@
 //  CE_NSUserActivity.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,17 +40,17 @@ public extension NSUserActivity {
         return NSUserActivity_Delegate()
     }
     
-    public func ce_userActivityWillSave(handle: ((NSUserActivity) -> Void)) -> Self {
+    public func ce_userActivityWillSave(handle: @escaping (NSUserActivity) -> Void) -> Self {
         ce._userActivityWillSave = handle
         rebindingDelegate()
         return self
     }
-    public func ce_userActivityWasContinued(handle: ((NSUserActivity) -> Void)) -> Self {
+    public func ce_userActivityWasContinued(handle: @escaping (NSUserActivity) -> Void) -> Self {
         ce._userActivityWasContinued = handle
         rebindingDelegate()
         return self
     }
-    public func ce_userActivity_didReceive(handle: ((NSUserActivity?, InputStream, OutputStream) -> Void)) -> Self {
+    public func ce_userActivity_didReceive(handle: @escaping (NSUserActivity?, InputStream, OutputStream) -> Void) -> Self {
         ce._userActivity_didReceive = handle
         rebindingDelegate()
         return self

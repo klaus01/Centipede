@@ -2,7 +2,7 @@
 //  CE_NSKeyedUnarchiver.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,27 +40,27 @@ public extension NSKeyedUnarchiver {
         return NSKeyedUnarchiver_Delegate()
     }
     
-    public func ce_unarchiver_cannotDecodeObjectOfClassName(handle: ((NSKeyedUnarchiver, String, [String]) -> AnyClass?)) -> Self {
+    public func ce_unarchiver_cannotDecodeObjectOfClassName(handle: @escaping (NSKeyedUnarchiver, String, [String]) -> AnyClass?) -> Self {
         ce._unarchiver_cannotDecodeObjectOfClassName = handle
         rebindingDelegate()
         return self
     }
-    public func ce_unarchiver_didDecode(handle: ((NSKeyedUnarchiver, Any?) -> Any?)) -> Self {
+    public func ce_unarchiver_didDecode(handle: @escaping (NSKeyedUnarchiver, Any?) -> Any?) -> Self {
         ce._unarchiver_didDecode = handle
         rebindingDelegate()
         return self
     }
-    public func ce_unarchiver_willReplace(handle: ((NSKeyedUnarchiver, Any, Any) -> Void)) -> Self {
+    public func ce_unarchiver_willReplace(handle: @escaping (NSKeyedUnarchiver, Any, Any) -> Void) -> Self {
         ce._unarchiver_willReplace = handle
         rebindingDelegate()
         return self
     }
-    public func ce_unarchiverWillFinish(handle: ((NSKeyedUnarchiver) -> Void)) -> Self {
+    public func ce_unarchiverWillFinish(handle: @escaping (NSKeyedUnarchiver) -> Void) -> Self {
         ce._unarchiverWillFinish = handle
         rebindingDelegate()
         return self
     }
-    public func ce_unarchiverDidFinish(handle: ((NSKeyedUnarchiver) -> Void)) -> Self {
+    public func ce_unarchiverDidFinish(handle: @escaping (NSKeyedUnarchiver) -> Void) -> Self {
         ce._unarchiverDidFinish = handle
         rebindingDelegate()
         return self

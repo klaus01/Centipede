@@ -2,7 +2,7 @@
 //  CE_GLKViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,12 +40,12 @@ public extension GLKViewController {
         return GLKViewController_Delegate()
     }
     
-    public func ce_glkViewControllerUpdate(handle: ((GLKViewController) -> Void)) -> Self {
+    public func ce_glkViewControllerUpdate(handle: @escaping (GLKViewController) -> Void) -> Self {
         ce._glkViewControllerUpdate = handle
         rebindingDelegate()
         return self
     }
-    public func ce_glkViewController_willPause(handle: ((GLKViewController, Bool) -> Void)) -> Self {
+    public func ce_glkViewController_willPause(handle: @escaping (GLKViewController, Bool) -> Void) -> Self {
         ce._glkViewController_willPause = handle
         rebindingDelegate()
         return self

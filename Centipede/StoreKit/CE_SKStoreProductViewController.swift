@@ -2,7 +2,7 @@
 //  CE_SKStoreProductViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,7 +40,7 @@ public extension SKStoreProductViewController {
         return SKStoreProductViewController_Delegate()
     }
     
-    public func ce_productViewControllerDidFinish(handle: ((SKStoreProductViewController) -> Void)) -> Self {
+    public func ce_productViewControllerDidFinish(handle: @escaping (SKStoreProductViewController) -> Void) -> Self {
         ce._productViewControllerDidFinish = handle
         rebindingDelegate()
         return self

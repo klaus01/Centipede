@@ -2,7 +2,7 @@
 //  CE_UITextView.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,37 +40,37 @@ public extension UITextView {
         return UITextView_Delegate()
     }
     
-    public func ce_textViewShouldBeginEditing(handle: ((UITextView) -> Bool)) -> Self {
+    public func ce_textViewShouldBeginEditing(handle: @escaping (UITextView) -> Bool) -> Self {
         ce._textViewShouldBeginEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_textViewShouldEndEditing(handle: ((UITextView) -> Bool)) -> Self {
+    public func ce_textViewShouldEndEditing(handle: @escaping (UITextView) -> Bool) -> Self {
         ce._textViewShouldEndEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_textViewDidBeginEditing(handle: ((UITextView) -> Void)) -> Self {
+    public func ce_textViewDidBeginEditing(handle: @escaping (UITextView) -> Void) -> Self {
         ce._textViewDidBeginEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_textViewDidEndEditing(handle: ((UITextView) -> Void)) -> Self {
+    public func ce_textViewDidEndEditing(handle: @escaping (UITextView) -> Void) -> Self {
         ce._textViewDidEndEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_textView_shouldChangeTextIn(handle: ((UITextView, NSRange, String) -> Bool)) -> Self {
+    public func ce_textView_shouldChangeTextIn(handle: @escaping (UITextView, NSRange, String) -> Bool) -> Self {
         ce._textView_shouldChangeTextIn = handle
         rebindingDelegate()
         return self
     }
-    public func ce_textViewDidChange(handle: ((UITextView) -> Void)) -> Self {
+    public func ce_textViewDidChange(handle: @escaping (UITextView) -> Void) -> Self {
         ce._textViewDidChange = handle
         rebindingDelegate()
         return self
     }
-    public func ce_textViewDidChangeSelection(handle: ((UITextView) -> Void)) -> Self {
+    public func ce_textViewDidChangeSelection(handle: @escaping (UITextView) -> Void) -> Self {
         ce._textViewDidChangeSelection = handle
         rebindingDelegate()
         return self

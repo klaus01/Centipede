@@ -2,7 +2,7 @@
 //  CE_PKPushRegistry.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,17 +40,17 @@ public extension PKPushRegistry {
         return PKPushRegistry_Delegate()
     }
     
-    public func ce_pushRegistry_didUpdate(handle: ((PKPushRegistry, PKPushCredentials, PKPushType) -> Void)) -> Self {
+    public func ce_pushRegistry_didUpdate(handle: @escaping (PKPushRegistry, PKPushCredentials, PKPushType) -> Void) -> Self {
         ce._pushRegistry_didUpdate = handle
         rebindingDelegate()
         return self
     }
-    public func ce_pushRegistry_didReceiveIncomingPushWith(handle: ((PKPushRegistry, PKPushPayload, PKPushType) -> Void)) -> Self {
+    public func ce_pushRegistry_didReceiveIncomingPushWith(handle: @escaping (PKPushRegistry, PKPushPayload, PKPushType) -> Void) -> Self {
         ce._pushRegistry_didReceiveIncomingPushWith = handle
         rebindingDelegate()
         return self
     }
-    public func ce_pushRegistry_didInvalidatePushTokenForType(handle: ((PKPushRegistry, PKPushType) -> Void)) -> Self {
+    public func ce_pushRegistry_didInvalidatePushTokenForType(handle: @escaping (PKPushRegistry, PKPushType) -> Void) -> Self {
         ce._pushRegistry_didInvalidatePushTokenForType = handle
         rebindingDelegate()
         return self

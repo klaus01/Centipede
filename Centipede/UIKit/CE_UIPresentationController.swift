@@ -2,7 +2,7 @@
 //  CE_UIPresentationController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,22 +40,22 @@ public extension UIPresentationController {
         return UIPresentationController_Delegate()
     }
     
-    public func ce_adaptivePresentationStyle_for(handle: ((UIPresentationController) -> UIModalPresentationStyle)) -> Self {
+    public func ce_adaptivePresentationStyle_for(handle: @escaping (UIPresentationController) -> UIModalPresentationStyle) -> Self {
         ce._adaptivePresentationStyle_for = handle
         rebindingDelegate()
         return self
     }
-    public func ce_adaptivePresentationStyle_for_for(handle: ((UIPresentationController, UITraitCollection) -> UIModalPresentationStyle)) -> Self {
+    public func ce_adaptivePresentationStyle_for_for(handle: @escaping (UIPresentationController, UITraitCollection) -> UIModalPresentationStyle) -> Self {
         ce._adaptivePresentationStyle_for_for = handle
         rebindingDelegate()
         return self
     }
-    public func ce_presentationController_viewControllerForAdaptivePresentationStyle(handle: ((UIPresentationController, UIModalPresentationStyle) -> UIViewController?)) -> Self {
+    public func ce_presentationController_viewControllerForAdaptivePresentationStyle(handle: @escaping (UIPresentationController, UIModalPresentationStyle) -> UIViewController?) -> Self {
         ce._presentationController_viewControllerForAdaptivePresentationStyle = handle
         rebindingDelegate()
         return self
     }
-    public func ce_presentationController_willPresentWithAdaptiveStyle(handle: ((UIPresentationController, UIModalPresentationStyle, UIViewControllerTransitionCoordinator?) -> Void)) -> Self {
+    public func ce_presentationController_willPresentWithAdaptiveStyle(handle: @escaping (UIPresentationController, UIModalPresentationStyle, UIViewControllerTransitionCoordinator?) -> Void) -> Self {
         ce._presentationController_willPresentWithAdaptiveStyle = handle
         rebindingDelegate()
         return self

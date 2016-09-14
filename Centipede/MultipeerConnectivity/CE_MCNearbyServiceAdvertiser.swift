@@ -2,7 +2,7 @@
 //  CE_MCNearbyServiceAdvertiser.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,12 +40,12 @@ public extension MCNearbyServiceAdvertiser {
         return MCNearbyServiceAdvertiser_Delegate()
     }
     
-    public func ce_advertiser_didReceiveInvitationFromPeer(handle: ((MCNearbyServiceAdvertiser, MCPeerID, Data?, @escaping (Bool, MCSession?) -> Void) -> Void)) -> Self {
+    public func ce_advertiser_didReceiveInvitationFromPeer(handle: @escaping (MCNearbyServiceAdvertiser, MCPeerID, Data?, @escaping (Bool, MCSession?) -> Void) -> Void) -> Self {
         ce._advertiser_didReceiveInvitationFromPeer = handle
         rebindingDelegate()
         return self
     }
-    public func ce_advertiser_didNotStartAdvertisingPeer(handle: ((MCNearbyServiceAdvertiser, Error) -> Void)) -> Self {
+    public func ce_advertiser_didNotStartAdvertisingPeer(handle: @escaping (MCNearbyServiceAdvertiser, Error) -> Void) -> Self {
         ce._advertiser_didNotStartAdvertisingPeer = handle
         rebindingDelegate()
         return self

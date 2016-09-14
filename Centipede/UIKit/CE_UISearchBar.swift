@@ -2,7 +2,7 @@
 //  CE_UISearchBar.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,57 +40,57 @@ public extension UISearchBar {
         return UISearchBar_Delegate()
     }
     
-    public func ce_searchBarShouldBeginEditing(handle: ((UISearchBar) -> Bool)) -> Self {
+    public func ce_searchBarShouldBeginEditing(handle: @escaping (UISearchBar) -> Bool) -> Self {
         ce._searchBarShouldBeginEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_searchBarTextDidBeginEditing(handle: ((UISearchBar) -> Void)) -> Self {
+    public func ce_searchBarTextDidBeginEditing(handle: @escaping (UISearchBar) -> Void) -> Self {
         ce._searchBarTextDidBeginEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_searchBarShouldEndEditing(handle: ((UISearchBar) -> Bool)) -> Self {
+    public func ce_searchBarShouldEndEditing(handle: @escaping (UISearchBar) -> Bool) -> Self {
         ce._searchBarShouldEndEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_searchBarTextDidEndEditing(handle: ((UISearchBar) -> Void)) -> Self {
+    public func ce_searchBarTextDidEndEditing(handle: @escaping (UISearchBar) -> Void) -> Self {
         ce._searchBarTextDidEndEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_searchBar_textDidChange(handle: ((UISearchBar, String) -> Void)) -> Self {
+    public func ce_searchBar_textDidChange(handle: @escaping (UISearchBar, String) -> Void) -> Self {
         ce._searchBar_textDidChange = handle
         rebindingDelegate()
         return self
     }
-    public func ce_searchBar_shouldChangeTextIn(handle: ((UISearchBar, NSRange, String) -> Bool)) -> Self {
+    public func ce_searchBar_shouldChangeTextIn(handle: @escaping (UISearchBar, NSRange, String) -> Bool) -> Self {
         ce._searchBar_shouldChangeTextIn = handle
         rebindingDelegate()
         return self
     }
-    public func ce_searchBarSearchButtonClicked(handle: ((UISearchBar) -> Void)) -> Self {
+    public func ce_searchBarSearchButtonClicked(handle: @escaping (UISearchBar) -> Void) -> Self {
         ce._searchBarSearchButtonClicked = handle
         rebindingDelegate()
         return self
     }
-    public func ce_searchBarBookmarkButtonClicked(handle: ((UISearchBar) -> Void)) -> Self {
+    public func ce_searchBarBookmarkButtonClicked(handle: @escaping (UISearchBar) -> Void) -> Self {
         ce._searchBarBookmarkButtonClicked = handle
         rebindingDelegate()
         return self
     }
-    public func ce_searchBarCancelButtonClicked(handle: ((UISearchBar) -> Void)) -> Self {
+    public func ce_searchBarCancelButtonClicked(handle: @escaping (UISearchBar) -> Void) -> Self {
         ce._searchBarCancelButtonClicked = handle
         rebindingDelegate()
         return self
     }
-    public func ce_searchBarResultsListButtonClicked(handle: ((UISearchBar) -> Void)) -> Self {
+    public func ce_searchBarResultsListButtonClicked(handle: @escaping (UISearchBar) -> Void) -> Self {
         ce._searchBarResultsListButtonClicked = handle
         rebindingDelegate()
         return self
     }
-    public func ce_searchBar_selectedScopeButtonIndexDidChange(handle: ((UISearchBar, Int) -> Void)) -> Self {
+    public func ce_searchBar_selectedScopeButtonIndexDidChange(handle: @escaping (UISearchBar, Int) -> Void) -> Self {
         ce._searchBar_selectedScopeButtonIndexDidChange = handle
         rebindingDelegate()
         return self

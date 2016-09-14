@@ -2,7 +2,7 @@
 //  CE_UIScrollView.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,67 +40,67 @@ public extension UIScrollView {
         return UIScrollView_Delegate()
     }
     
-    public func ce_scrollViewDidScroll(handle: ((UIScrollView) -> Void)) -> Self {
+    public func ce_scrollViewDidScroll(handle: @escaping (UIScrollView) -> Void) -> Self {
         ce._scrollViewDidScroll = handle
         rebindingDelegate()
         return self
     }
-    public func ce_scrollViewDidZoom(handle: ((UIScrollView) -> Void)) -> Self {
+    public func ce_scrollViewDidZoom(handle: @escaping (UIScrollView) -> Void) -> Self {
         ce._scrollViewDidZoom = handle
         rebindingDelegate()
         return self
     }
-    public func ce_scrollViewWillBeginDragging(handle: ((UIScrollView) -> Void)) -> Self {
+    public func ce_scrollViewWillBeginDragging(handle: @escaping (UIScrollView) -> Void) -> Self {
         ce._scrollViewWillBeginDragging = handle
         rebindingDelegate()
         return self
     }
-    public func ce_scrollViewWillEndDragging_withVelocity(handle: ((UIScrollView, CGPoint, UnsafeMutablePointer<CGPoint>) -> Void)) -> Self {
+    public func ce_scrollViewWillEndDragging_withVelocity(handle: @escaping (UIScrollView, CGPoint, UnsafeMutablePointer<CGPoint>) -> Void) -> Self {
         ce._scrollViewWillEndDragging_withVelocity = handle
         rebindingDelegate()
         return self
     }
-    public func ce_scrollViewDidEndDragging_willDecelerate(handle: ((UIScrollView, Bool) -> Void)) -> Self {
+    public func ce_scrollViewDidEndDragging_willDecelerate(handle: @escaping (UIScrollView, Bool) -> Void) -> Self {
         ce._scrollViewDidEndDragging_willDecelerate = handle
         rebindingDelegate()
         return self
     }
-    public func ce_scrollViewWillBeginDecelerating(handle: ((UIScrollView) -> Void)) -> Self {
+    public func ce_scrollViewWillBeginDecelerating(handle: @escaping (UIScrollView) -> Void) -> Self {
         ce._scrollViewWillBeginDecelerating = handle
         rebindingDelegate()
         return self
     }
-    public func ce_scrollViewDidEndDecelerating(handle: ((UIScrollView) -> Void)) -> Self {
+    public func ce_scrollViewDidEndDecelerating(handle: @escaping (UIScrollView) -> Void) -> Self {
         ce._scrollViewDidEndDecelerating = handle
         rebindingDelegate()
         return self
     }
-    public func ce_scrollViewDidEndScrollingAnimation(handle: ((UIScrollView) -> Void)) -> Self {
+    public func ce_scrollViewDidEndScrollingAnimation(handle: @escaping (UIScrollView) -> Void) -> Self {
         ce._scrollViewDidEndScrollingAnimation = handle
         rebindingDelegate()
         return self
     }
-    public func ce_viewForZooming_in(handle: ((UIScrollView) -> UIView?)) -> Self {
+    public func ce_viewForZooming_in(handle: @escaping (UIScrollView) -> UIView?) -> Self {
         ce._viewForZooming_in = handle
         rebindingDelegate()
         return self
     }
-    public func ce_scrollViewWillBeginZooming_with(handle: ((UIScrollView, UIView?) -> Void)) -> Self {
+    public func ce_scrollViewWillBeginZooming_with(handle: @escaping (UIScrollView, UIView?) -> Void) -> Self {
         ce._scrollViewWillBeginZooming_with = handle
         rebindingDelegate()
         return self
     }
-    public func ce_scrollViewDidEndZooming_with(handle: ((UIScrollView, UIView?, CGFloat) -> Void)) -> Self {
+    public func ce_scrollViewDidEndZooming_with(handle: @escaping (UIScrollView, UIView?, CGFloat) -> Void) -> Self {
         ce._scrollViewDidEndZooming_with = handle
         rebindingDelegate()
         return self
     }
-    public func ce_scrollViewShouldScrollToTop(handle: ((UIScrollView) -> Bool)) -> Self {
+    public func ce_scrollViewShouldScrollToTop(handle: @escaping (UIScrollView) -> Bool) -> Self {
         ce._scrollViewShouldScrollToTop = handle
         rebindingDelegate()
         return self
     }
-    public func ce_scrollViewDidScrollToTop(handle: ((UIScrollView) -> Void)) -> Self {
+    public func ce_scrollViewDidScrollToTop(handle: @escaping (UIScrollView) -> Void) -> Self {
         ce._scrollViewDidScrollToTop = handle
         rebindingDelegate()
         return self

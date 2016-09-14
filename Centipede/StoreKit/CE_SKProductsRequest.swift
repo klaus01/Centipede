@@ -2,7 +2,7 @@
 //  CE_SKProductsRequest.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,7 +40,7 @@ public extension SKProductsRequest {
         return SKProductsRequest_Delegate()
     }
     
-    public func ce_productsRequest_didReceive(handle: ((SKProductsRequest, SKProductsResponse) -> Void)) -> Self {
+    public func ce_productsRequest_didReceive(handle: @escaping (SKProductsRequest, SKProductsResponse) -> Void) -> Self {
         ce._productsRequest_didReceive = handle
         rebindingDelegate()
         return self

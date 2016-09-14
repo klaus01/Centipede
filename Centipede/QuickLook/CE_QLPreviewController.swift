@@ -2,7 +2,7 @@
 //  CE_QLPreviewController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -42,37 +42,37 @@ public extension QLPreviewController {
         return QLPreviewController_Delegate()
     }
     
-    public func ce_numberOfPreviewItems_in(handle: ((QLPreviewController) -> Int)) -> Self {
+    public func ce_numberOfPreviewItems_in(handle: @escaping (QLPreviewController) -> Int) -> Self {
         ce._numberOfPreviewItems_in = handle
         rebindingDelegate()
         return self
     }
-    public func ce_previewController_previewItemAt(handle: ((QLPreviewController, Int) -> QLPreviewItem)) -> Self {
+    public func ce_previewController_previewItemAt(handle: @escaping (QLPreviewController, Int) -> QLPreviewItem) -> Self {
         ce._previewController_previewItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_previewControllerWillDismiss(handle: ((QLPreviewController) -> Void)) -> Self {
+    public func ce_previewControllerWillDismiss(handle: @escaping (QLPreviewController) -> Void) -> Self {
         ce._previewControllerWillDismiss = handle
         rebindingDelegate()
         return self
     }
-    public func ce_previewControllerDidDismiss(handle: ((QLPreviewController) -> Void)) -> Self {
+    public func ce_previewControllerDidDismiss(handle: @escaping (QLPreviewController) -> Void) -> Self {
         ce._previewControllerDidDismiss = handle
         rebindingDelegate()
         return self
     }
-    public func ce_previewController_shouldOpen(handle: ((QLPreviewController, URL, QLPreviewItem) -> Bool)) -> Self {
+    public func ce_previewController_shouldOpen(handle: @escaping (QLPreviewController, URL, QLPreviewItem) -> Bool) -> Self {
         ce._previewController_shouldOpen = handle
         rebindingDelegate()
         return self
     }
-    public func ce_previewController_frameFor(handle: ((QLPreviewController, QLPreviewItem, AutoreleasingUnsafeMutablePointer<UIView?>) -> CGRect)) -> Self {
+    public func ce_previewController_frameFor(handle: @escaping (QLPreviewController, QLPreviewItem, AutoreleasingUnsafeMutablePointer<UIView?>) -> CGRect) -> Self {
         ce._previewController_frameFor = handle
         rebindingDelegate()
         return self
     }
-    public func ce_previewController_transitionImageFor(handle: ((QLPreviewController, QLPreviewItem, UnsafeMutablePointer<CGRect>) -> UIImage)) -> Self {
+    public func ce_previewController_transitionImageFor(handle: @escaping (QLPreviewController, QLPreviewItem, UnsafeMutablePointer<CGRect>) -> UIImage) -> Self {
         ce._previewController_transitionImageFor = handle
         rebindingDelegate()
         return self

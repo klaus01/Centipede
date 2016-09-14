@@ -2,7 +2,7 @@
 //  CE_UIDynamicAnimator.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,12 +40,12 @@ public extension UIDynamicAnimator {
         return UIDynamicAnimator_Delegate()
     }
     
-    public func ce_dynamicAnimatorWillResume(handle: ((UIDynamicAnimator) -> Void)) -> Self {
+    public func ce_dynamicAnimatorWillResume(handle: @escaping (UIDynamicAnimator) -> Void) -> Self {
         ce._dynamicAnimatorWillResume = handle
         rebindingDelegate()
         return self
     }
-    public func ce_dynamicAnimatorDidPause(handle: ((UIDynamicAnimator) -> Void)) -> Self {
+    public func ce_dynamicAnimatorDidPause(handle: @escaping (UIDynamicAnimator) -> Void) -> Self {
         ce._dynamicAnimatorDidPause = handle
         rebindingDelegate()
         return self

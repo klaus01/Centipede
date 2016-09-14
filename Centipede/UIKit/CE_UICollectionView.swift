@@ -2,7 +2,7 @@
 //  CE_UICollectionView.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -42,127 +42,127 @@ public extension UICollectionView {
         return UICollectionView_Delegate()
     }
     
-    public func ce_collectionView_numberOfItemsInSection(handle: ((UICollectionView, Int) -> Int)) -> Self {
+    public func ce_collectionView_numberOfItemsInSection(handle: @escaping (UICollectionView, Int) -> Int) -> Self {
         ce._collectionView_numberOfItemsInSection = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_cellForItemAt(handle: ((UICollectionView, IndexPath) -> UICollectionViewCell)) -> Self {
+    public func ce_collectionView_cellForItemAt(handle: @escaping (UICollectionView, IndexPath) -> UICollectionViewCell) -> Self {
         ce._collectionView_cellForItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_numberOfSections_in(handle: ((UICollectionView) -> Int)) -> Self {
+    public func ce_numberOfSections_in(handle: @escaping (UICollectionView) -> Int) -> Self {
         ce._numberOfSections_in = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_viewForSupplementaryElementOfKind(handle: ((UICollectionView, String, IndexPath) -> UICollectionReusableView)) -> Self {
+    public func ce_collectionView_viewForSupplementaryElementOfKind(handle: @escaping (UICollectionView, String, IndexPath) -> UICollectionReusableView) -> Self {
         ce._collectionView_viewForSupplementaryElementOfKind = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_shouldHighlightItemAt(handle: ((UICollectionView, IndexPath) -> Bool)) -> Self {
+    public func ce_collectionView_shouldHighlightItemAt(handle: @escaping (UICollectionView, IndexPath) -> Bool) -> Self {
         ce._collectionView_shouldHighlightItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_didHighlightItemAt(handle: ((UICollectionView, IndexPath) -> Void)) -> Self {
+    public func ce_collectionView_didHighlightItemAt(handle: @escaping (UICollectionView, IndexPath) -> Void) -> Self {
         ce._collectionView_didHighlightItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_didUnhighlightItemAt(handle: ((UICollectionView, IndexPath) -> Void)) -> Self {
+    public func ce_collectionView_didUnhighlightItemAt(handle: @escaping (UICollectionView, IndexPath) -> Void) -> Self {
         ce._collectionView_didUnhighlightItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_shouldSelectItemAt(handle: ((UICollectionView, IndexPath) -> Bool)) -> Self {
+    public func ce_collectionView_shouldSelectItemAt(handle: @escaping (UICollectionView, IndexPath) -> Bool) -> Self {
         ce._collectionView_shouldSelectItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_shouldDeselectItemAt(handle: ((UICollectionView, IndexPath) -> Bool)) -> Self {
+    public func ce_collectionView_shouldDeselectItemAt(handle: @escaping (UICollectionView, IndexPath) -> Bool) -> Self {
         ce._collectionView_shouldDeselectItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_didSelectItemAt(handle: ((UICollectionView, IndexPath) -> Void)) -> Self {
+    public func ce_collectionView_didSelectItemAt(handle: @escaping (UICollectionView, IndexPath) -> Void) -> Self {
         ce._collectionView_didSelectItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_didDeselectItemAt(handle: ((UICollectionView, IndexPath) -> Void)) -> Self {
+    public func ce_collectionView_didDeselectItemAt(handle: @escaping (UICollectionView, IndexPath) -> Void) -> Self {
         ce._collectionView_didDeselectItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_willDisplay(handle: ((UICollectionView, UICollectionViewCell, IndexPath) -> Void)) -> Self {
+    public func ce_collectionView_willDisplay(handle: @escaping (UICollectionView, UICollectionViewCell, IndexPath) -> Void) -> Self {
         ce._collectionView_willDisplay = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_willDisplaySupplementaryView(handle: ((UICollectionView, UICollectionReusableView, String, IndexPath) -> Void)) -> Self {
+    public func ce_collectionView_willDisplaySupplementaryView(handle: @escaping (UICollectionView, UICollectionReusableView, String, IndexPath) -> Void) -> Self {
         ce._collectionView_willDisplaySupplementaryView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_didEndDisplaying(handle: ((UICollectionView, UICollectionViewCell, IndexPath) -> Void)) -> Self {
+    public func ce_collectionView_didEndDisplaying(handle: @escaping (UICollectionView, UICollectionViewCell, IndexPath) -> Void) -> Self {
         ce._collectionView_didEndDisplaying = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_didEndDisplayingSupplementaryView(handle: ((UICollectionView, UICollectionReusableView, String, IndexPath) -> Void)) -> Self {
+    public func ce_collectionView_didEndDisplayingSupplementaryView(handle: @escaping (UICollectionView, UICollectionReusableView, String, IndexPath) -> Void) -> Self {
         ce._collectionView_didEndDisplayingSupplementaryView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_shouldShowMenuForItemAt(handle: ((UICollectionView, IndexPath) -> Bool)) -> Self {
+    public func ce_collectionView_shouldShowMenuForItemAt(handle: @escaping (UICollectionView, IndexPath) -> Bool) -> Self {
         ce._collectionView_shouldShowMenuForItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_canPerformAction(handle: ((UICollectionView, Selector, IndexPath, Any?) -> Bool)) -> Self {
+    public func ce_collectionView_canPerformAction(handle: @escaping (UICollectionView, Selector, IndexPath, Any?) -> Bool) -> Self {
         ce._collectionView_canPerformAction = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_performAction(handle: ((UICollectionView, Selector, IndexPath, Any?) -> Void)) -> Self {
+    public func ce_collectionView_performAction(handle: @escaping (UICollectionView, Selector, IndexPath, Any?) -> Void) -> Self {
         ce._collectionView_performAction = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_transitionLayoutForOldLayout(handle: ((UICollectionView, UICollectionViewLayout, UICollectionViewLayout) -> UICollectionViewTransitionLayout)) -> Self {
+    public func ce_collectionView_transitionLayoutForOldLayout(handle: @escaping (UICollectionView, UICollectionViewLayout, UICollectionViewLayout) -> UICollectionViewTransitionLayout) -> Self {
         ce._collectionView_transitionLayoutForOldLayout = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_layout(handle: ((UICollectionView, UICollectionViewLayout, IndexPath) -> CGSize)) -> Self {
+    public func ce_collectionView_layout(handle: @escaping (UICollectionView, UICollectionViewLayout, IndexPath) -> CGSize) -> Self {
         ce._collectionView_layout = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_layout_layout(handle: ((UICollectionView, UICollectionViewLayout, Int) -> UIEdgeInsets)) -> Self {
+    public func ce_collectionView_layout_layout(handle: @escaping (UICollectionView, UICollectionViewLayout, Int) -> UIEdgeInsets) -> Self {
         ce._collectionView_layout_layout = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_layout_layout_layout(handle: ((UICollectionView, UICollectionViewLayout, Int) -> CGFloat)) -> Self {
+    public func ce_collectionView_layout_layout_layout(handle: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGFloat) -> Self {
         ce._collectionView_layout_layout_layout = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_layout_layout_layout_layout(handle: ((UICollectionView, UICollectionViewLayout, Int) -> CGFloat)) -> Self {
+    public func ce_collectionView_layout_layout_layout_layout(handle: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGFloat) -> Self {
         ce._collectionView_layout_layout_layout_layout = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_layout_layout_layout_layout_layout(handle: ((UICollectionView, UICollectionViewLayout, Int) -> CGSize)) -> Self {
+    public func ce_collectionView_layout_layout_layout_layout_layout(handle: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGSize) -> Self {
         ce._collectionView_layout_layout_layout_layout_layout = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collectionView_layout_layout_layout_layout_layout_layout(handle: ((UICollectionView, UICollectionViewLayout, Int) -> CGSize)) -> Self {
+    public func ce_collectionView_layout_layout_layout_layout_layout_layout(handle: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGSize) -> Self {
         ce._collectionView_layout_layout_layout_layout_layout_layout = handle
         rebindingDelegate()
         return self

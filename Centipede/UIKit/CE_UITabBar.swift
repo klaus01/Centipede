@@ -2,7 +2,7 @@
 //  CE_UITabBar.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,27 +40,27 @@ public extension UITabBar {
         return UITabBar_Delegate()
     }
     
-    public func ce_tabBar_didSelect(handle: ((UITabBar, UITabBarItem) -> Void)) -> Self {
+    public func ce_tabBar_didSelect(handle: @escaping (UITabBar, UITabBarItem) -> Void) -> Self {
         ce._tabBar_didSelect = handle
         rebindingDelegate()
         return self
     }
-    public func ce_tabBar_willBeginCustomizing(handle: ((UITabBar, [UITabBarItem]) -> Void)) -> Self {
+    public func ce_tabBar_willBeginCustomizing(handle: @escaping (UITabBar, [UITabBarItem]) -> Void) -> Self {
         ce._tabBar_willBeginCustomizing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_tabBar_didBeginCustomizing(handle: ((UITabBar, [UITabBarItem]) -> Void)) -> Self {
+    public func ce_tabBar_didBeginCustomizing(handle: @escaping (UITabBar, [UITabBarItem]) -> Void) -> Self {
         ce._tabBar_didBeginCustomizing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_tabBar_willEndCustomizing(handle: ((UITabBar, [UITabBarItem], Bool) -> Void)) -> Self {
+    public func ce_tabBar_willEndCustomizing(handle: @escaping (UITabBar, [UITabBarItem], Bool) -> Void) -> Self {
         ce._tabBar_willEndCustomizing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_tabBar_didEndCustomizing(handle: ((UITabBar, [UITabBarItem], Bool) -> Void)) -> Self {
+    public func ce_tabBar_didEndCustomizing(handle: @escaping (UITabBar, [UITabBarItem], Bool) -> Void) -> Self {
         ce._tabBar_didEndCustomizing = handle
         rebindingDelegate()
         return self

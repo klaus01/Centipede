@@ -2,7 +2,7 @@
 //  CE_CAAnimation.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,12 +40,12 @@ public extension CAAnimation {
         return CAAnimation_Delegate()
     }
     
-    public func ce_animationDidStart(handle: ((CAAnimation) -> Void)) -> Self {
+    public func ce_animationDidStart(handle: @escaping (CAAnimation) -> Void) -> Self {
         ce._animationDidStart = handle
         rebindingDelegate()
         return self
     }
-    public func ce_animationDidStop_finished(handle: ((CAAnimation, Bool) -> Void)) -> Self {
+    public func ce_animationDidStop_finished(handle: @escaping (CAAnimation, Bool) -> Void) -> Self {
         ce._animationDidStop_finished = handle
         rebindingDelegate()
         return self

@@ -2,7 +2,7 @@
 //  CE_EAWiFiUnconfiguredAccessoryBrowser.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,22 +40,22 @@ public extension EAWiFiUnconfiguredAccessoryBrowser {
         return EAWiFiUnconfiguredAccessoryBrowser_Delegate()
     }
     
-    public func ce_accessoryBrowser_didUpdate(handle: ((EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessoryBrowserState) -> Void)) -> Self {
+    public func ce_accessoryBrowser_didUpdate(handle: @escaping (EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessoryBrowserState) -> Void) -> Self {
         ce._accessoryBrowser_didUpdate = handle
         rebindingDelegate()
         return self
     }
-    public func ce_accessoryBrowser_didFindUnconfiguredAccessories(handle: ((EAWiFiUnconfiguredAccessoryBrowser, Set<EAWiFiUnconfiguredAccessory>) -> Void)) -> Self {
+    public func ce_accessoryBrowser_didFindUnconfiguredAccessories(handle: @escaping (EAWiFiUnconfiguredAccessoryBrowser, Set<EAWiFiUnconfiguredAccessory>) -> Void) -> Self {
         ce._accessoryBrowser_didFindUnconfiguredAccessories = handle
         rebindingDelegate()
         return self
     }
-    public func ce_accessoryBrowser_didRemoveUnconfiguredAccessories(handle: ((EAWiFiUnconfiguredAccessoryBrowser, Set<EAWiFiUnconfiguredAccessory>) -> Void)) -> Self {
+    public func ce_accessoryBrowser_didRemoveUnconfiguredAccessories(handle: @escaping (EAWiFiUnconfiguredAccessoryBrowser, Set<EAWiFiUnconfiguredAccessory>) -> Void) -> Self {
         ce._accessoryBrowser_didRemoveUnconfiguredAccessories = handle
         rebindingDelegate()
         return self
     }
-    public func ce_accessoryBrowser_didFinishConfiguringAccessory(handle: ((EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessory, EAWiFiUnconfiguredAccessoryConfigurationStatus) -> Void)) -> Self {
+    public func ce_accessoryBrowser_didFinishConfiguringAccessory(handle: @escaping (EAWiFiUnconfiguredAccessoryBrowser, EAWiFiUnconfiguredAccessory, EAWiFiUnconfiguredAccessoryConfigurationStatus) -> Void) -> Self {
         ce._accessoryBrowser_didFinishConfiguringAccessory = handle
         rebindingDelegate()
         return self

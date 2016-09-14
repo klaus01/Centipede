@@ -12,7 +12,7 @@ public typealias CE_UIGestureRecognizerAction = (UIGestureRecognizer) -> Void
 
 public extension UIGestureRecognizer {
     
-    public convenience init(action: CE_UIGestureRecognizerAction) {
+    public convenience init(action: @escaping CE_UIGestureRecognizerAction) {
         let proxy = UIGestureRecognizerProxy(action)
         self.init(target:proxy, action:#selector(UIGestureRecognizerProxy.act(gestureRecognizer:)))
         proxies[""] = proxy
@@ -34,7 +34,7 @@ fileprivate class UIGestureRecognizerProxy : NSObject {
     
     var action: CE_UIGestureRecognizerAction
     
-    init(_ action: CE_UIGestureRecognizerAction) {
+    init(_ action: @escaping CE_UIGestureRecognizerAction) {
         self.action = action
     }
     

@@ -2,7 +2,7 @@
 //  CE_NSKeyedArchiver.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,27 +40,27 @@ public extension NSKeyedArchiver {
         return NSKeyedArchiver_Delegate()
     }
     
-    public func ce_archiver_willEncode(handle: ((NSKeyedArchiver, Any) -> Any?)) -> Self {
+    public func ce_archiver_willEncode(handle: @escaping (NSKeyedArchiver, Any) -> Any?) -> Self {
         ce._archiver_willEncode = handle
         rebindingDelegate()
         return self
     }
-    public func ce_archiver_didEncode(handle: ((NSKeyedArchiver, Any?) -> Void)) -> Self {
+    public func ce_archiver_didEncode(handle: @escaping (NSKeyedArchiver, Any?) -> Void) -> Self {
         ce._archiver_didEncode = handle
         rebindingDelegate()
         return self
     }
-    public func ce_archiver_willReplace(handle: ((NSKeyedArchiver, Any?, Any?) -> Void)) -> Self {
+    public func ce_archiver_willReplace(handle: @escaping (NSKeyedArchiver, Any?, Any?) -> Void) -> Self {
         ce._archiver_willReplace = handle
         rebindingDelegate()
         return self
     }
-    public func ce_archiverWillFinish(handle: ((NSKeyedArchiver) -> Void)) -> Self {
+    public func ce_archiverWillFinish(handle: @escaping (NSKeyedArchiver) -> Void) -> Self {
         ce._archiverWillFinish = handle
         rebindingDelegate()
         return self
     }
-    public func ce_archiverDidFinish(handle: ((NSKeyedArchiver) -> Void)) -> Self {
+    public func ce_archiverDidFinish(handle: @escaping (NSKeyedArchiver) -> Void) -> Self {
         ce._archiverDidFinish = handle
         rebindingDelegate()
         return self

@@ -2,7 +2,7 @@
 //  CE_MPMediaPickerController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,12 +40,12 @@ public extension MPMediaPickerController {
         return MPMediaPickerController_Delegate()
     }
     
-    public func ce_mediaPicker_didPickMediaItems(handle: ((MPMediaPickerController, MPMediaItemCollection) -> Void)) -> Self {
+    public func ce_mediaPicker_didPickMediaItems(handle: @escaping (MPMediaPickerController, MPMediaItemCollection) -> Void) -> Self {
         ce._mediaPicker_didPickMediaItems = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mediaPickerDidCancel(handle: ((MPMediaPickerController) -> Void)) -> Self {
+    public func ce_mediaPickerDidCancel(handle: @escaping (MPMediaPickerController) -> Void) -> Self {
         ce._mediaPickerDidCancel = handle
         rebindingDelegate()
         return self

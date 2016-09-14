@@ -2,7 +2,7 @@
 //  CE_UISearchController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -44,32 +44,32 @@ public extension UISearchController {
         return UISearchController_Delegate()
     }
     
-    public func ce_updateSearchResults_for(handle: ((UISearchController) -> Void)) -> Self {
+    public func ce_updateSearchResults_for(handle: @escaping (UISearchController) -> Void) -> Self {
         ce._updateSearchResults_for = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willPresentSearchController(handle: ((UISearchController) -> Void)) -> Self {
+    public func ce_willPresentSearchController(handle: @escaping (UISearchController) -> Void) -> Self {
         ce._willPresentSearchController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didPresentSearchController(handle: ((UISearchController) -> Void)) -> Self {
+    public func ce_didPresentSearchController(handle: @escaping (UISearchController) -> Void) -> Self {
         ce._didPresentSearchController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willDismissSearchController(handle: ((UISearchController) -> Void)) -> Self {
+    public func ce_willDismissSearchController(handle: @escaping (UISearchController) -> Void) -> Self {
         ce._willDismissSearchController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDismissSearchController(handle: ((UISearchController) -> Void)) -> Self {
+    public func ce_didDismissSearchController(handle: @escaping (UISearchController) -> Void) -> Self {
         ce._didDismissSearchController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_presentSearchController(handle: ((UISearchController) -> Void)) -> Self {
+    public func ce_presentSearchController(handle: @escaping (UISearchController) -> Void) -> Self {
         ce._presentSearchController = handle
         rebindingDelegate()
         return self

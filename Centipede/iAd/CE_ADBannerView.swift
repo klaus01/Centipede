@@ -2,7 +2,7 @@
 //  CE_ADBannerView.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,27 +40,27 @@ public extension ADBannerView {
         return ADBannerView_Delegate()
     }
     
-    public func ce_bannerViewWillLoadAd(handle: ((ADBannerView) -> Void)) -> Self {
+    public func ce_bannerViewWillLoadAd(handle: @escaping (ADBannerView) -> Void) -> Self {
         ce._bannerViewWillLoadAd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_bannerViewDidLoadAd(handle: ((ADBannerView) -> Void)) -> Self {
+    public func ce_bannerViewDidLoadAd(handle: @escaping (ADBannerView) -> Void) -> Self {
         ce._bannerViewDidLoadAd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_bannerView_didFailToReceiveAdWithError(handle: ((ADBannerView, Error) -> Void)) -> Self {
+    public func ce_bannerView_didFailToReceiveAdWithError(handle: @escaping (ADBannerView, Error) -> Void) -> Self {
         ce._bannerView_didFailToReceiveAdWithError = handle
         rebindingDelegate()
         return self
     }
-    public func ce_bannerViewActionShouldBegin_willLeaveApplication(handle: ((ADBannerView, Bool) -> Bool)) -> Self {
+    public func ce_bannerViewActionShouldBegin_willLeaveApplication(handle: @escaping (ADBannerView, Bool) -> Bool) -> Self {
         ce._bannerViewActionShouldBegin_willLeaveApplication = handle
         rebindingDelegate()
         return self
     }
-    public func ce_bannerViewActionDidFinish(handle: ((ADBannerView) -> Void)) -> Self {
+    public func ce_bannerViewActionDidFinish(handle: @escaping (ADBannerView) -> Void) -> Self {
         ce._bannerViewActionDidFinish = handle
         rebindingDelegate()
         return self

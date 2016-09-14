@@ -2,7 +2,7 @@
 //  CE_GKMatch.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,32 +40,32 @@ public extension GKMatch {
         return GKMatch_Delegate()
     }
     
-    public func ce_match_didReceive(handle: ((GKMatch, Data, GKPlayer) -> Void)) -> Self {
+    public func ce_match_didReceive(handle: @escaping (GKMatch, Data, GKPlayer) -> Void) -> Self {
         ce._match_didReceive = handle
         rebindingDelegate()
         return self
     }
-    public func ce_match_didReceive_didReceive(handle: ((GKMatch, Data, String) -> Void)) -> Self {
+    public func ce_match_didReceive_didReceive(handle: @escaping (GKMatch, Data, String) -> Void) -> Self {
         ce._match_didReceive_didReceive = handle
         rebindingDelegate()
         return self
     }
-    public func ce_match_player(handle: ((GKMatch, GKPlayer, GKPlayerConnectionState) -> Void)) -> Self {
+    public func ce_match_player(handle: @escaping (GKMatch, GKPlayer, GKPlayerConnectionState) -> Void) -> Self {
         ce._match_player = handle
         rebindingDelegate()
         return self
     }
-    public func ce_match_didFailWithError(handle: ((GKMatch, Error?) -> Void)) -> Self {
+    public func ce_match_didFailWithError(handle: @escaping (GKMatch, Error?) -> Void) -> Self {
         ce._match_didFailWithError = handle
         rebindingDelegate()
         return self
     }
-    public func ce_match_shouldReinviteDisconnectedPlayer(handle: ((GKMatch, GKPlayer) -> Bool)) -> Self {
+    public func ce_match_shouldReinviteDisconnectedPlayer(handle: @escaping (GKMatch, GKPlayer) -> Bool) -> Self {
         ce._match_shouldReinviteDisconnectedPlayer = handle
         rebindingDelegate()
         return self
     }
-    public func ce_match_shouldReinvitePlayer(handle: ((GKMatch, String) -> Bool)) -> Self {
+    public func ce_match_shouldReinvitePlayer(handle: @escaping (GKMatch, String) -> Bool) -> Self {
         ce._match_shouldReinvitePlayer = handle
         rebindingDelegate()
         return self

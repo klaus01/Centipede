@@ -2,7 +2,7 @@
 //  CE_MCNearbyServiceBrowser.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,17 +40,17 @@ public extension MCNearbyServiceBrowser {
         return MCNearbyServiceBrowser_Delegate()
     }
     
-    public func ce_browser_foundPeer(handle: ((MCNearbyServiceBrowser, MCPeerID, [String : String]?) -> Void)) -> Self {
+    public func ce_browser_foundPeer(handle: @escaping (MCNearbyServiceBrowser, MCPeerID, [String : String]?) -> Void) -> Self {
         ce._browser_foundPeer = handle
         rebindingDelegate()
         return self
     }
-    public func ce_browser_lostPeer(handle: ((MCNearbyServiceBrowser, MCPeerID) -> Void)) -> Self {
+    public func ce_browser_lostPeer(handle: @escaping (MCNearbyServiceBrowser, MCPeerID) -> Void) -> Self {
         ce._browser_lostPeer = handle
         rebindingDelegate()
         return self
     }
-    public func ce_browser_didNotStartBrowsingForPeers(handle: ((MCNearbyServiceBrowser, Error) -> Void)) -> Self {
+    public func ce_browser_didNotStartBrowsingForPeers(handle: @escaping (MCNearbyServiceBrowser, Error) -> Void) -> Self {
         ce._browser_didNotStartBrowsingForPeers = handle
         rebindingDelegate()
         return self

@@ -2,7 +2,7 @@
 //  CE_UIImagePickerController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,12 +40,12 @@ public extension UIImagePickerController {
         return UIImagePickerController_Delegate()
     }
     
-    public func ce_imagePickerController_didFinishPickingMediaWithInfo(handle: ((UIImagePickerController, [String : Any]) -> Void)) -> Self {
+    public func ce_imagePickerController_didFinishPickingMediaWithInfo(handle: @escaping (UIImagePickerController, [String : Any]) -> Void) -> Self {
         ce._imagePickerController_didFinishPickingMediaWithInfo = handle
         rebindingDelegate()
         return self
     }
-    public func ce_imagePickerControllerDidCancel(handle: ((UIImagePickerController) -> Void)) -> Self {
+    public func ce_imagePickerControllerDidCancel(handle: @escaping (UIImagePickerController) -> Void) -> Self {
         ce._imagePickerControllerDidCancel = handle
         rebindingDelegate()
         return self

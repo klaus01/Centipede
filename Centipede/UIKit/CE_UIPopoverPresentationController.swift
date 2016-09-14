@@ -2,7 +2,7 @@
 //  CE_UIPopoverPresentationController.swift
 //  Centipede
 //
-//  Created by kelei on 2016/9/13.
+//  Created by kelei on 2016/9/14.
 //  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
@@ -40,22 +40,22 @@ public extension UIPopoverPresentationController {
         return UIPopoverPresentationController_Delegate()
     }
     
-    public func ce_prepareForPopoverPresentation(handle: ((UIPopoverPresentationController) -> Void)) -> Self {
+    public func ce_prepareForPopoverPresentation(handle: @escaping (UIPopoverPresentationController) -> Void) -> Self {
         ce._prepareForPopoverPresentation = handle
         rebindingDelegate()
         return self
     }
-    public func ce_popoverPresentationControllerShouldDismissPopover(handle: ((UIPopoverPresentationController) -> Bool)) -> Self {
+    public func ce_popoverPresentationControllerShouldDismissPopover(handle: @escaping (UIPopoverPresentationController) -> Bool) -> Self {
         ce._popoverPresentationControllerShouldDismissPopover = handle
         rebindingDelegate()
         return self
     }
-    public func ce_popoverPresentationControllerDidDismissPopover(handle: ((UIPopoverPresentationController) -> Void)) -> Self {
+    public func ce_popoverPresentationControllerDidDismissPopover(handle: @escaping (UIPopoverPresentationController) -> Void) -> Self {
         ce._popoverPresentationControllerDidDismissPopover = handle
         rebindingDelegate()
         return self
     }
-    public func ce_popoverPresentationController_willRepositionPopoverTo(handle: ((UIPopoverPresentationController, UnsafeMutablePointer<CGRect>, AutoreleasingUnsafeMutablePointer<UIView>) -> Void)) -> Self {
+    public func ce_popoverPresentationController_willRepositionPopoverTo(handle: @escaping (UIPopoverPresentationController, UnsafeMutablePointer<CGRect>, AutoreleasingUnsafeMutablePointer<UIView>) -> Void) -> Self {
         ce._popoverPresentationController_willRepositionPopoverTo = handle
         rebindingDelegate()
         return self
