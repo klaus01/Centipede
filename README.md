@@ -2,7 +2,78 @@
 
 一个 Swift 库，使用闭包实现 UIKit 等组件的 delegate 和 dataSource 方法
 
-# 解决什么问题
+# 使用
+
+Xcode 8, Swift 3.0, iOS 8+
+
+所有方法名称以`ce_`开头
+
+```swift
+// UITableView
+let kCellReuseIdentifier = "MYCELL"
+tableView.register(UITableViewCell.self, forCellReuseIdentifier: kCellReuseIdentifier)
+tableView.ce_numberOfSections_in { (tableView) -> Int in
+    return 3
+}.ce_tableView_numberOfRowsInSection { (tableView, section) -> Int in
+    return 5
+}.ce_tableView_cellForRowAt { (tableView, indexPath) -> UITableViewCell in
+    return tableView.dequeueReusableCell(withIdentifier: kCellReuseIdentifier, for: indexPath)
+}.ce_tableView_willDisplay { (tableView, cell, indexPath) in
+    cell.textLabel?.text = "\(indexPath.section) - \(indexPath.row)"
+}.ce_scrollViewDidScroll { (scrollView) in
+    print(scrollView.contentOffset)
+}
+
+// UIControl
+button.ce_addControlEvents(.touchDown) { (control, touches) in
+    print("TouchDown")
+}.ce_addControlEvents(.touchUpInside) { (control, touches) in
+    print("TouchUpInside")
+}
+button.ce_removeControlEvents(.touchDown)
+
+textField.ce_addControlEvents([.editingChanged, .editingDidBegin]) { (control, touches) in
+    print("TextChanged")
+}
+
+// UIBarButtonItem
+let barButtonItem = UIBarButtonItem()
+barButtonItem.action { (barButtonItem) in
+    print("UIBarButtonItem action")
+}
+
+// UIGestureRecognizer
+let gestureRecognizer = UIPanGestureRecognizer { (gestureRecognizer) in
+    print(gestureRecognizer.state.rawValue)
+}
+self.view.addGestureRecognizer(gestureRecognizer)
+```
+
+#### 源码使用
+
+将`Centipede`目录复制到您的项目中及可。
+
+#### CocoaPods
+
+```
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'Centipede'
+```
+
+#### Carthage
+
+```
+github "klaus01/Centipede"
+```
+
+#### 注意
+
+使用闭包需要注意循环引用问题，Swift 使用 weak 或 unowned 解决循环引用问题
+
+# 原由
+
 在实现 delegate 的各个方法时：
 
 - 方法遍布整个 ViewController，散乱。
@@ -22,62 +93,9 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 - 代码连续。组件的构造、样式设置和各 delegate 实现方法可写在一个位置。
 - 独立。有多个 UITableView 时，tableViewA 和tableViewB 的 delegate 方法实现是独立的，互不干扰。
 
-# 使用
-
-Xcode 8, Swift 3.0, iOS 8+
-
-所有方法名称以`ce_`开头
-
-### 直接源码
-
-将`Centipede`目录复制到您的项目中及可。
-
-### CocoaPods
-
-```
-platform :ios, '8.0'
-use_frameworks!
-
-pod 'Centipede'
-```
-
-### Carthage
-
-```
-github "klaus01/Centipede"
-```
-
-### 注意
-
-使用闭包需要注意循环引用问题，Swift 使用 weak 或 unowned 解决循环引用问题
+# 实现列表
 
 ### UIKit `delegate` and `dataSource` method
-
-```swift
-import Centipede
-
-class ViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView! {
-        didSet {
-            let kCellReuseIdentifier = "MYCELL"
-            tableView.register(UITableViewCell.self, forCellReuseIdentifier: kCellReuseIdentifier)
-            tableView.ce_numberOfSections_in { (tableView) -> Int in
-                return 3
-            }.ce_tableView_numberOfRowsInSection { (tableView, section) -> Int in
-                return 5
-            }.ce_tableView_cellForRowAt { (tableView, indexPath) -> UITableViewCell in
-                return tableView.dequeueReusableCell(withIdentifier: kCellReuseIdentifier, for: indexPath)
-            }.ce_tableView_willDisplay { (tableView, cell, indexPath) in
-                cell.textLabel?.text = "\(indexPath.section) - \(indexPath.row)"
-            }.ce_scrollViewDidScroll { (scrollView) in
-                print(scrollView.contentOffset)
-            }
-        }
-    }
-
-}
-```
 
 - AVFoundation/AVAudioPlayer
 - AVFoundation/AVAudioRecorder
@@ -152,33 +170,6 @@ class ViewController: UIViewController {
 - UIKit/UIWebView
 
 ### Other add target action method
-
-```swift
-// UIControl
-button.ce_addControlEvents(.touchDown) { (control, touches) in
-    print("TouchDown")
-}.ce_addControlEvents(.touchUpInside) { (control, touches) in
-    print("TouchUpInside")
-}
-
-button.ce_removeControlEvents(.touchDown)
-
-textField.ce_addControlEvents([.editingChanged, .editingDidBegin]) { (control, touches) in
-    print("TextChanged")
-}
-
-// UIBarButtonItem
-let barButtonItem = UIBarButtonItem()
-barButtonItem.action { (barButtonItem) in
-    print("UIBarButtonItem action")
-}
-
-// UIGestureRecognizer
-let gestureRecognizer = UIPanGestureRecognizer { (gestureRecognizer) in
-    print(gestureRecognizer.state.rawValue)
-}
-self.view.addGestureRecognizer(gestureRecognizer)
-```
 
 - UIControl
     - UIButton
