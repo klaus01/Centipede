@@ -80,8 +80,6 @@
 		2485E5521D89A6FF00CA4BA0 /* CE_CBPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2485E5311D89A6FF00CA4BA0 /* CE_CBPeripheral.swift */; };
 		2485E5531D89A6FF00CA4BA0 /* CE_CBPeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2485E5321D89A6FF00CA4BA0 /* CE_CBPeripheralManager.swift */; };
 		2485E5541D89A6FF00CA4BA0 /* CE_CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2485E5341D89A6FF00CA4BA0 /* CE_CLLocationManager.swift */; };
-		2485E5551D89A6FF00CA4BA0 /* CE_EKCalendarChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2485E5361D89A6FF00CA4BA0 /* CE_EKCalendarChooser.swift */; };
-		2485E5561D89A6FF00CA4BA0 /* CE_EKEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2485E5371D89A6FF00CA4BA0 /* CE_EKEventViewController.swift */; };
 		2485E5571D89A6FF00CA4BA0 /* CE_EAAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2485E5391D89A6FF00CA4BA0 /* CE_EAAccessory.swift */; };
 		2485E5581D89A6FF00CA4BA0 /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2485E53A1D89A6FF00CA4BA0 /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift */; };
 		24E8A74C1B1E056A008D963A /* Centipede.h in Headers */ = {isa = PBXBuildFile; fileRef = 24E8A74B1B1E056A008D963A /* Centipede.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -161,8 +159,6 @@
 		2485E5311D89A6FF00CA4BA0 /* CE_CBPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CBPeripheral.swift; sourceTree = "<group>"; };
 		2485E5321D89A6FF00CA4BA0 /* CE_CBPeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CBPeripheralManager.swift; sourceTree = "<group>"; };
 		2485E5341D89A6FF00CA4BA0 /* CE_CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CLLocationManager.swift; sourceTree = "<group>"; };
-		2485E5361D89A6FF00CA4BA0 /* CE_EKCalendarChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EKCalendarChooser.swift; sourceTree = "<group>"; };
-		2485E5371D89A6FF00CA4BA0 /* CE_EKEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EKEventViewController.swift; sourceTree = "<group>"; };
 		2485E5391D89A6FF00CA4BA0 /* CE_EAAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EAAccessory.swift; sourceTree = "<group>"; };
 		2485E53A1D89A6FF00CA4BA0 /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EAWiFiUnconfiguredAccessoryBrowser.swift; sourceTree = "<group>"; };
 		24E8A7461B1E056A008D963A /* Centipede.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Centipede.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -387,15 +383,6 @@
 			path = CoreLocation;
 			sourceTree = "<group>";
 		};
-		2485E5351D89A6FF00CA4BA0 /* EventKitUI */ = {
-			isa = PBXGroup;
-			children = (
-				2485E5361D89A6FF00CA4BA0 /* CE_EKCalendarChooser.swift */,
-				2485E5371D89A6FF00CA4BA0 /* CE_EKEventViewController.swift */,
-			);
-			path = EventKitUI;
-			sourceTree = "<group>";
-		};
 		2485E5381D89A6FF00CA4BA0 /* ExternalAccessory */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,7 +415,6 @@
 				2485E52B1D89A6FF00CA4BA0 /* AVFoundation */,
 				2485E52F1D89A6FF00CA4BA0 /* CoreBluetooth */,
 				2485E5331D89A6FF00CA4BA0 /* CoreLocation */,
-				2485E5351D89A6FF00CA4BA0 /* EventKitUI */,
 				2485E5381D89A6FF00CA4BA0 /* ExternalAccessory */,
 				246F5FEA1D89A77E002A06FB /* Foundation */,
 				246F5FF01D89A77E002A06FB /* GameKit */,
@@ -549,7 +535,6 @@
 				24044C9A1D85311D00691E99 /* CE_UIPrinterPickerController.swift in Sources */,
 				2485E5501D89A6FF00CA4BA0 /* CE_AVSpeechSynthesizer.swift in Sources */,
 				24044CA41D85311D00691E99 /* CE_UITextField.swift in Sources */,
-				2485E5561D89A6FF00CA4BA0 /* CE_EKEventViewController.swift in Sources */,
 				2485E5541D89A6FF00CA4BA0 /* CE_CLLocationManager.swift in Sources */,
 				2485E5511D89A6FF00CA4BA0 /* CE_CBCentralManager.swift in Sources */,
 				2441B3661D89A7D300477D69 /* CE_ADInterstitialAd.swift in Sources */,
@@ -605,7 +590,6 @@
 				2485E54F1D89A6FF00CA4BA0 /* CE_AVAudioRecorder.swift in Sources */,
 				2441B36B1D89A7D300477D69 /* CE_MCBrowserViewController.swift in Sources */,
 				2441B3781D89A7D300477D69 /* CE_SKRequest.swift in Sources */,
-				2485E5551D89A6FF00CA4BA0 /* CE_EKCalendarChooser.swift in Sources */,
 				2441B3731D89A7D300477D69 /* CE_CALayer.swift in Sources */,
 				240B748C1B2B14500067475E /* CE_NotificationCenter.swift in Sources */,
 				2441B3681D89A7D300477D69 /* CE_MPMediaPickerController.swift in Sources */,
@@ -721,6 +705,7 @@
 		24E8A75D1B1E056A008D963A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
@@ -741,6 +726,7 @@
 		24E8A75E1B1E056A008D963A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
