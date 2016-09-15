@@ -31,4 +31,5 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
   s.source_files        = "Centipede/**/*.swift", "Centipede/Centipede.h"
   s.public_header_files = "Centipede/Centipede.h"
   s.requires_arc        = true
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
 end
