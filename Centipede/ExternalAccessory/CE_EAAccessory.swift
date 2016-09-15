@@ -8,7 +8,7 @@
 
 import ExternalAccessory
 
-public extension EAAccessory {
+extension EAAccessory {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: EAAccessory_Delegate? {

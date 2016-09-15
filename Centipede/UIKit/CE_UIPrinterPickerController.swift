@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UIPrinterPickerController {
+extension UIPrinterPickerController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIPrinterPickerController_Delegate? {

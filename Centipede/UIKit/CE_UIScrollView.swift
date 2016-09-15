@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UIScrollView {
+extension UIScrollView {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIScrollView_Delegate? {

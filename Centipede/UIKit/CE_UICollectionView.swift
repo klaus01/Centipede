@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UICollectionView {
+extension UICollectionView {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UICollectionView_Delegate? {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UISplitViewController {
+extension UISplitViewController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UISplitViewController_Delegate? {

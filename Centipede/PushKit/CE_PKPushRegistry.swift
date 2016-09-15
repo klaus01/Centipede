@@ -8,7 +8,7 @@
 
 import PushKit
 
-public extension PKPushRegistry {
+extension PKPushRegistry {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: PKPushRegistry_Delegate? {

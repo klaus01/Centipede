@@ -8,7 +8,7 @@
 
 import MediaPlayer
 
-public extension MPMediaPickerController {
+extension MPMediaPickerController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MPMediaPickerController_Delegate? {

@@ -8,7 +8,7 @@
 
 import StoreKit
 
-public extension SKStoreProductViewController {
+extension SKStoreProductViewController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: SKStoreProductViewController_Delegate? {

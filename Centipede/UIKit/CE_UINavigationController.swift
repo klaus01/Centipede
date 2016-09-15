@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UINavigationController {
+extension UINavigationController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UINavigationController_Delegate? {

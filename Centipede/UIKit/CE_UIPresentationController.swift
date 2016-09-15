@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UIPresentationController {
+extension UIPresentationController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIPresentationController_Delegate? {

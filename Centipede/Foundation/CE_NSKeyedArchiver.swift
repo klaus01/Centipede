@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension NSKeyedArchiver {
+extension NSKeyedArchiver {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSKeyedArchiver_Delegate? {

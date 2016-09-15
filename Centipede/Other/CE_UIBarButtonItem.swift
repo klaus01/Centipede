@@ -10,10 +10,10 @@ import UIKit
 
 public typealias CE_UIBarButtonItemAction = (UIBarButtonItem) -> Void
 
-public extension UIBarButtonItem {
+extension UIBarButtonItem {
     
     @discardableResult
-    public func action(action: CE_UIBarButtonItemAction?) -> Self {
+    public func action(_ action: CE_UIBarButtonItemAction?) -> Self {
         return on(action)
     }
     

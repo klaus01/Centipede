@@ -8,7 +8,7 @@
 
 import MultipeerConnectivity
 
-public extension MCSession {
+extension MCSession {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MCSession_Delegate? {

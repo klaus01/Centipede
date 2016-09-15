@@ -8,7 +8,7 @@
 
 import GameKit
 
-public extension GKMatch {
+extension GKMatch {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: GKMatch_Delegate? {

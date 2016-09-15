@@ -8,7 +8,7 @@
 
 import MapKit
 
-public extension MKMapView {
+extension MKMapView {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MKMapView_Delegate? {

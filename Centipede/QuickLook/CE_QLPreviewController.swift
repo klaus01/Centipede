@@ -8,7 +8,7 @@
 
 import QuickLook
 
-public extension QLPreviewController {
+extension QLPreviewController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: QLPreviewController_Delegate? {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UIPageViewController {
+extension UIPageViewController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIPageViewController_Delegate? {

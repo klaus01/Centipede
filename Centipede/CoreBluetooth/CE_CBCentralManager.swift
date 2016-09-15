@@ -8,7 +8,7 @@
 
 import CoreBluetooth
 
-public extension CBCentralManager {
+extension CBCentralManager {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CBCentralManager_Delegate? {

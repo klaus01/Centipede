@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UIGestureRecognizer {
+extension UIGestureRecognizer {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIGestureRecognizer_Delegate? {

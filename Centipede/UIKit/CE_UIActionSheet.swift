@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UIActionSheet {
+extension UIActionSheet {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIActionSheet_Delegate? {

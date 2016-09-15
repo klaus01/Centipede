@@ -8,7 +8,7 @@
 
 import SceneKit
 
-public extension SCNProgram {
+extension SCNProgram {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: SCNProgram_Delegate? {

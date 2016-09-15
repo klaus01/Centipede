@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension NSLayoutManager {
+extension NSLayoutManager {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSLayoutManager_Delegate? {

@@ -8,7 +8,7 @@
 
 import iAd
 
-public extension ADBannerView {
+extension ADBannerView {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: ADBannerView_Delegate? {

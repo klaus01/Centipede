@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UISearchBar {
+extension UISearchBar {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UISearchBar_Delegate? {

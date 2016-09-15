@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UITabBar {
+extension UITabBar {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UITabBar_Delegate? {

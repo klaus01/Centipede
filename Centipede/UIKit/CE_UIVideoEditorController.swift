@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UIVideoEditorController {
+extension UIVideoEditorController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIVideoEditorController_Delegate? {

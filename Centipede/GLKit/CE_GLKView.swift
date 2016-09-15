@@ -8,7 +8,7 @@
 
 import GLKit
 
-public extension GLKView {
+extension GLKView {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: GLKView_Delegate? {

@@ -8,7 +8,7 @@
 
 import CoreBluetooth
 
-public extension CBPeripheral {
+extension CBPeripheral {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CBPeripheral_Delegate? {

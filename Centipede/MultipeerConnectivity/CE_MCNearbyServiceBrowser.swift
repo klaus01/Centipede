@@ -8,7 +8,7 @@
 
 import MultipeerConnectivity
 
-public extension MCNearbyServiceBrowser {
+extension MCNearbyServiceBrowser {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MCNearbyServiceBrowser_Delegate? {

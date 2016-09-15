@@ -8,7 +8,7 @@
 
 import MultipeerConnectivity
 
-public extension MCBrowserViewController {
+extension MCBrowserViewController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MCBrowserViewController_Delegate? {

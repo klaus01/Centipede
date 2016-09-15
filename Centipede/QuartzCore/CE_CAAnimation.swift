@@ -8,7 +8,7 @@
 
 import QuartzCore
 
-public extension CAAnimation {
+extension CAAnimation {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CAAnimation_Delegate? {

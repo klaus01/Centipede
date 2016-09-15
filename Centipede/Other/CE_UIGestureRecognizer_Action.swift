@@ -10,7 +10,7 @@ import UIKit
 
 public typealias CE_UIGestureRecognizerAction = (UIGestureRecognizer) -> Void
 
-public extension UIGestureRecognizer {
+extension UIGestureRecognizer {
     
     public convenience init(action: @escaping CE_UIGestureRecognizerAction) {
         let proxy = UIGestureRecognizerProxy(action)
@@ -19,7 +19,7 @@ public extension UIGestureRecognizer {
     }
     
     @discardableResult
-    public func action(action: CE_UIGestureRecognizerAction?) -> Self {
+    public func action(_ action: CE_UIGestureRecognizerAction?) -> Self {
         return on(action)
     }
     

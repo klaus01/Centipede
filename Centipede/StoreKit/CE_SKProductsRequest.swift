@@ -8,7 +8,7 @@
 
 import StoreKit
 
-public extension SKProductsRequest {
+extension SKProductsRequest {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: SKProductsRequest_Delegate? {

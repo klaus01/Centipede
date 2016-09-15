@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-public extension SKScene {
+extension SKScene {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: SKScene_Delegate? {

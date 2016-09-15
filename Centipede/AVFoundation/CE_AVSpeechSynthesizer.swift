@@ -8,7 +8,7 @@
 
 import AVFoundation
 
-public extension AVSpeechSynthesizer {
+extension AVSpeechSynthesizer {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: AVSpeechSynthesizer_Delegate? {

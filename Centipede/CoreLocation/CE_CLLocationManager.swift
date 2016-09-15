@@ -8,7 +8,7 @@
 
 import CoreLocation
 
-public extension CLLocationManager {
+extension CLLocationManager {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CLLocationManager_Delegate? {

@@ -8,7 +8,7 @@
 
 import PassKit
 
-public extension PKPaymentAuthorizationViewController {
+extension PKPaymentAuthorizationViewController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: PKPaymentAuthorizationViewController_Delegate? {

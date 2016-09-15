@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UIPopoverController {
+extension UIPopoverController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIPopoverController_Delegate? {

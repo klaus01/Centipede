@@ -8,7 +8,7 @@
 
 import AVFoundation
 
-public extension AVAudioPlayer {
+extension AVAudioPlayer {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: AVAudioPlayer_Delegate? {

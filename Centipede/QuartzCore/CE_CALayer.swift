@@ -8,7 +8,7 @@
 
 import QuartzCore
 
-public extension CALayer {
+extension CALayer {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CALayer_Delegate? {

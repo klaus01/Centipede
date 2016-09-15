@@ -8,7 +8,7 @@
 
 import PassKit
 
-public extension PKAddPassesViewController {
+extension PKAddPassesViewController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: PKAddPassesViewController_Delegate? {

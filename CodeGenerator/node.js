@@ -198,7 +198,7 @@
 \n\
 import " + frameworkName + "\n\
 \n\
-public extension " + sourceObj.className + " {\n\
+extension " + sourceObj.className + " {\n\
     \n\
     private struct Static { static var AssociationKey: UInt8 = 0 }\n\
     private var _delegate: " + CLASS_DELEGATE_NAME + "? {\n\

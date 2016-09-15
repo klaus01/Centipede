@@ -8,7 +8,7 @@
 
 import MediaPlayer
 
-public extension MPPlayableContentManager {
+extension MPPlayableContentManager {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MPPlayableContentManager_Delegate? {

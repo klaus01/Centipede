@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UIPrintInteractionController {
+extension UIPrintInteractionController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIPrintInteractionController_Delegate? {

@@ -8,7 +8,7 @@
 
 import ExternalAccessory
 
-public extension EAWiFiUnconfiguredAccessoryBrowser {
+extension EAWiFiUnconfiguredAccessoryBrowser {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: EAWiFiUnconfiguredAccessoryBrowser_Delegate? {

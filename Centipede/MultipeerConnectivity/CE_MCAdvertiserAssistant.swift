@@ -8,7 +8,7 @@
 
 import MultipeerConnectivity
 
-public extension MCAdvertiserAssistant {
+extension MCAdvertiserAssistant {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MCAdvertiserAssistant_Delegate? {

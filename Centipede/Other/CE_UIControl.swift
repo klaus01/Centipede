@@ -10,15 +10,15 @@ import UIKit
 
 public typealias CE_UIControlAction = (UIControl, NSSet) -> Void
 
-public extension UIControl {
+extension UIControl {
     
     @discardableResult
-    public func ce_addControlEvents(controlEvents: UIControlEvents, action: @escaping CE_UIControlAction) -> Self {
+    public func ce_addControlEvents(_ controlEvents: UIControlEvents, action: @escaping CE_UIControlAction) -> Self {
         return on(controlEvents, action: action)
     }
     
     @discardableResult
-    public func ce_removeControlEvents(controlEvents: UIControlEvents) -> Self {
+    public func ce_removeControlEvents(_ controlEvents: UIControlEvents) -> Self {
         return off(controlEvents)
     }
     

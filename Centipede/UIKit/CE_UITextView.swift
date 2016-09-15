@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UITextView {
+extension UITextView {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UITextView_Delegate? {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension UIDocumentPickerViewController {
+extension UIDocumentPickerViewController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIDocumentPickerViewController_Delegate? {

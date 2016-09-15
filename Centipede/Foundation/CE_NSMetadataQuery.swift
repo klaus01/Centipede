@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension NSMetadataQuery {
+extension NSMetadataQuery {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSMetadataQuery_Delegate? {
