@@ -40,7 +40,6 @@
 		24044CA71D85311D00691E99 /* CE_UIVideoEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24044C5A1D85311D00691E99 /* CE_UIVideoEditorController.swift */; };
 		24044CA81D85311D00691E99 /* CE_UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24044C5B1D85311D00691E99 /* CE_UIViewController.swift */; };
 		24044CA91D85311D00691E99 /* CE_UIWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24044C5C1D85311D00691E99 /* CE_UIWebView.swift */; };
-		240B748C1B2B14500067475E /* CE_NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B742C1B2B14500067475E /* CE_NotificationCenter.swift */; };
 		240B748D1B2B14500067475E /* CE_UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B742D1B2B14500067475E /* CE_UIBarButtonItem.swift */; };
 		240B748E1B2B14500067475E /* CE_UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B742E1B2B14500067475E /* CE_UIControl.swift */; };
 		240B748F1B2B14500067475E /* CE_UIGestureRecognizer_Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B742F1B2B14500067475E /* CE_UIGestureRecognizer_Action.swift */; };
@@ -119,7 +118,6 @@
 		24044C5A1D85311D00691E99 /* CE_UIVideoEditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIVideoEditorController.swift; sourceTree = "<group>"; };
 		24044C5B1D85311D00691E99 /* CE_UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIViewController.swift; sourceTree = "<group>"; };
 		24044C5C1D85311D00691E99 /* CE_UIWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIWebView.swift; sourceTree = "<group>"; };
-		240B742C1B2B14500067475E /* CE_NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NotificationCenter.swift; sourceTree = "<group>"; };
 		240B742D1B2B14500067475E /* CE_UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIBarButtonItem.swift; sourceTree = "<group>"; };
 		240B742E1B2B14500067475E /* CE_UIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIControl.swift; sourceTree = "<group>"; };
 		240B742F1B2B14500067475E /* CE_UIGestureRecognizer_Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIGestureRecognizer_Action.swift; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 		240B742B1B2B14500067475E /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				240B742C1B2B14500067475E /* CE_NotificationCenter.swift */,
 				240B742D1B2B14500067475E /* CE_UIBarButtonItem.swift */,
 				240B742E1B2B14500067475E /* CE_UIControl.swift */,
 				240B742F1B2B14500067475E /* CE_UIGestureRecognizer_Action.swift */,
@@ -591,7 +588,6 @@
 				2441B36B1D89A7D300477D69 /* CE_MCBrowserViewController.swift in Sources */,
 				2441B3781D89A7D300477D69 /* CE_SKRequest.swift in Sources */,
 				2441B3731D89A7D300477D69 /* CE_CALayer.swift in Sources */,
-				240B748C1B2B14500067475E /* CE_NotificationCenter.swift in Sources */,
 				2441B3681D89A7D300477D69 /* CE_MPMediaPickerController.swift in Sources */,
 				240B748F1B2B14500067475E /* CE_UIGestureRecognizer_Action.swift in Sources */,
 				2441B3711D89A7D300477D69 /* CE_PKPushRegistry.swift in Sources */,
