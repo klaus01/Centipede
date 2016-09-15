@@ -25,6 +25,7 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 # 使用
 
 Xcode 8, Swift 3.0, iOS 8+
+
 所有方法名称以`ce_`开头
 
 ### 直接源码
@@ -40,9 +41,15 @@ use_frameworks!
 pod 'Centipede'
 ```
 
+### Carthage
+
+```
+github "klaus01/Centipede"
+```
+
 ### 注意
 
-使用闭包需要注意循环引用问题，Swift使用weak或unowned关键字解决循环引用问题
+使用闭包需要注意循环引用问题，Swift 使用 weak 或 unowned 解决循环引用问题
 
 ### UIKit `delegate` and `dataSource` method
 
@@ -68,7 +75,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+
 }
 ```
 
@@ -153,9 +160,9 @@ button.ce_addControlEvents(.touchDown) { (control, touches) in
 }.ce_addControlEvents(.touchUpInside) { (control, touches) in
     print("TouchUpInside")
 }
-   
+
 button.ce_removeControlEvents(.touchDown)
-   
+
 textField.ce_addControlEvents([.editingChanged, .editingDidBegin]) { (control, touches) in
     print("TextChanged")
 }
