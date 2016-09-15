@@ -1,5 +1,8 @@
 UIDynamicAnimator: NSObject, UIDynamicAnimatorDelegate
 
 
-    optional func dynamicAnimatorWillResume(animator: UIDynamicAnimator)
-    optional func dynamicAnimatorDidPause(animator: UIDynamicAnimator)
+    @available(iOS 7.0, *)
+    optional public func dynamicAnimatorWillResume(_ animator: UIDynamicAnimator)
+
+    @available(iOS 7.0, *)
+    optional public func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator)

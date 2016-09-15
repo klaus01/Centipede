@@ -32,7 +32,7 @@
 
 
         // 解析类定义
-        var re = /^ *([A-Z]{2}(\w+)) *: *(\w+)(?:, \w+)*/;
+        var re = /^ *([A-Z]{1}(\w+)) *: *(\w+)(?:, \w+)*/;
         var result = re.exec(sourceText);
         if (result == null) {
             console.error("缺少类定义信息");
@@ -71,68 +71,59 @@
 
         // 解析方法
         sourceObj.funcs = [];
-        re = / *(?:optional )*func (\w+)\((\w+): (\w+)[^\n]+/g;
+        re = / *(?:optional |public )*func (\w+)\(((?:_|\w+) ?)(\w+): (\w+(?:<\w+>)?\??)[^\n]+/g;
         while ((result = re.exec(sourceText)) !== null) {
             var funcStr = result[0];
             var reg = new RegExp(classChildName, "i");
             var funcObj = {
                 oldName: result[1],
-                newName: firstLetterLowercase(result[1].replace(reg, "")),
+                newName: "_" + result[1],
                 parameters: [{
-                    name: result[2],
-                    variate: result[2],
-                    type: result[3]
+                    name: result[2] ? result[2].trim() : result[3],
+                    variate: result[3],
+                    type: result[4]
                 }],
                 returnType: undefined
             }
 
             // 更多的参数
-            var TYPE_REGEXP_STR = "[ <>\\[\\:\\]\\w\\!\\?]+|\\(?\\([ ,<>\\[\\:\\]\\w\\!\\?]+\\) -> Void\\)?!?\\??";
+            var BLOCK_REGEXP_STR = "(?:\@escaping )\\([ ,<>\\[\\:\\]\\w\\!\\?]+\\) -> (?:\\w+!?\\??)?"; 
+            var TYPE_REGEXP_STR = "[ <>\\[\\:\\]\\w\\!\\?]+|" + BLOCK_REGEXP_STR + "|\\(" + BLOCK_REGEXP_STR + "\\)";
             var tRegExp = new RegExp(",(?: (\\w+))? (\\w+): (" + TYPE_REGEXP_STR + ")", "g");
             while ((r = tRegExp.exec(funcStr)) !== null) {
                 funcObj.parameters.push({
                     name: r[1] ? r[1] : r[2],
                     variate: r[2],
-                    type: r[3].replace(/^\s+|\s+$/g,"")
+                    type: r[3].replace(/^\s+|[\s\!]+$/g,"")
                 });
             }
-            if (funcObj.newName.length <= 0) {
-                // 使用第二个参数名作为方法名
-                if (funcObj.parameters.length < 2) {
-                    console.log(funcObj);
-                    console.error("无法解析，需要第二个参数来确定方法名。请看控制台日志");
-                    return null;
-                }
-                if (funcObj.parameters[1].name.match(/([A-Z])/))
-                    funcObj.newName = firstLetterLowercase(funcObj.parameters[1].name);
-                else if (funcObj.parameters.length < 3) {
-                    // 第二个参数不存在大写字母，及需要第三个参数来确定方法名
-                    console.log(funcObj);
-                    console.error("无法解析，需要第三个参数来确定方法名。请看控制台日志");
-                    return null;
-                }
-                else {
-                    funcObj.newName = firstLetterLowercase(funcObj.parameters[1].name) + firstLetterUppercase(funcObj.parameters[2].name);
-                }
+
+            // 确定方法名称
+            if (funcObj.parameters.length >= 1 && funcObj.parameters[0].name !== "_") {
+                funcObj.newName += "_" + firstLetterLowercase(funcObj.parameters[0].name);
+            } else if (funcObj.parameters.length >= 2 && funcObj.parameters[0].name === "_") {
+                funcObj.newName += "_" + firstLetterLowercase(funcObj.parameters[1].name);
             }
-            funcObj.newName = "_" + funcObj.newName;
-            // 判断方法名是否已存在，存在则在方法名上加上第二个参数名
-            // func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle
-            // func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection!) -> UIModalPresentationStyle
-            var i = 1;
+
+            // 判断方法名是否已存在，存在则在方法名上加上之后的参数名
+            var i = 0;
             while (sourceObj.funcs.find(function(item){ return item.newName === funcObj.newName; })) {
                 if (funcObj.parameters.length <= i) {
                     console.log(funcObj);
                     console.error("无法解析，需要第" + i + "个参数来确定方法名。请看控制台日志");
                     return null;
                 }
-                funcObj.newName += "And" + firstLetterUppercase(funcObj.parameters[i].name);
+                if (funcObj.parameters[i].name === "_") {
+                    i++;
+                    continue;
+                }
+                funcObj.newName += "_" + firstLetterLowercase(funcObj.parameters[i].name);
             }
 
             // 返回类型
-            var tRegExp = new RegExp(" -> (" + TYPE_REGEXP_STR + ")");
+            var tRegExp = new RegExp(" -> (" + TYPE_REGEXP_STR + ")$");
             if ((r = tRegExp.exec(funcStr)) !== null)
-                funcObj.returnType = r[1].replace(/^\s+|\s+$/g,"");
+                funcObj.returnType = r[1].trim();
 
             sourceObj.funcs.push(funcObj);
         }
@@ -181,11 +172,12 @@
                 var paramtObj = funcObj.parameters[j];
                 if (paramtStr.length > 0)
                     paramtStr += ", ";
-                paramtStr += paramtObj.variate + ": " + paramtObj.type;
+                paramtStr += paramtObj.type;
             };
 
             funcStr += "\
-    public func " + EXT_NAME_ACRONYM + funcObj.newName + "(handle: (" + paramtStr + ") -> " + getFuncReturnType(funcObj.returnType) + ") -> Self {\n\
+    @discardableResult\n\
+    public func " + EXT_NAME_ACRONYM + funcObj.newName + "(handle: @escaping (" + paramtStr + ") -> " + getFuncReturnType(funcObj.returnType) + ") -> Self {\n\
         " + EXT_NAME_ACRONYM + "." + funcObj.newName + " = handle\n\
         rebindingDelegate()\n\
         return self\n\
@@ -206,7 +198,7 @@
 \n\
 import " + frameworkName + "\n\
 \n\
-public extension " + sourceObj.className + " {\n\
+extension " + sourceObj.className + " {\n\
     \n\
     private struct Static { static var AssociationKey: UInt8 = 0 }\n\
     private var _delegate: " + CLASS_DELEGATE_NAME + "? {\n\
@@ -273,11 +265,9 @@ public extension " + sourceObj.className + " {\n\
                 var paramtObj = funcObj.parameters[j];
 
                 if (j === 0) {
-                    respondsStr += funcObj.oldName + "(_:"
+                    respondsStr += funcObj.oldName + "(";
                 }
-                else {
-                    respondsStr += paramtObj.name + ":"
-                }
+                respondsStr += paramtObj.name + ":";
             };
             respondsStr += ")) : " + funcObj.newName + ",\n";
             // 尾
@@ -305,9 +295,9 @@ public extension " + sourceObj.className + " {\n\
 
                 if (parameterStr.length > 0)
                     parameterStr += ", ";
-                if (paramtObj.name === paramtObj.variate) {
+
+                if (paramtObj.name === paramtObj.variate)
                     parameterStr += (paramtObj.variate + ": " + paramtObj.type);
-                }
                 else
                     parameterStr += paramtObj.name + " " + paramtObj.variate + ": " + paramtObj.type;
 
@@ -327,9 +317,9 @@ public extension " + sourceObj.className + " {\n\
 internal class " + CLASS_DELEGATE_NAME + ": " + sourceObj.superClass + (sourceObj.superClass === "NSObject" ? "" : "_Delegate") + (protocolStr.length > 0 ? ", " + protocolStr : "")+ " {\n\
     \n" + classVarStr + "\n\
     \n\
-    override func respondsToSelector(aSelector: Selector) -> Bool {\n\
+    override func responds(to aSelector: Selector!) -> Bool {\n\
         " + respondsStr + "\n\
-        return super.respondsToSelector(aSelector)\n\
+        return super.responds(to: aSelector)\n\
     }\n\
     \n\
     " + funcStr + "\n\
@@ -371,35 +361,40 @@ var files = walk(__dirname);
 // 生成文件
 files.forEach(function(item){
     var ext = path.extname(item);
-    if(ext === '.txt'){
-        fs.readFile(item, 'utf8', function(err, data) { 
-            if(err) { 
-                console.error(err); 
-            } else{ 
-                var sourceObj = getSourceObj(data);
-                if (sourceObj != null) {
-                    var frameworkName = item.split(path.sep)[currentDirLevel];
-                    var resultContent = getConvertContent(frameworkName, sourceObj);
-
-                    var dirnames = item.split(path.sep);
-                    var filename = path.basename(dirnames.pop(), '.txt');
-                    var kitname = dirnames.pop();
-                    dirnames.pop();
-
-                    dirnames.push('Centipede', kitname);
-                    var targetPath = dirnames.join(path.sep);
-                    var targetFile = 'CE_' + filename + '.swift';
-
-                    if (!fs.existsSync(targetPath)) {
-                        fs.mkdirSync(targetPath);
-                    }
-                    var target = path.join(targetPath, targetFile);
-                    console.log(target); 
-                    fs.writeFile(target, resultContent, {encoding: 'utf8'}, function(err) {
-                        if (err) throw err;
-                    });
-                }
-            } 
-        });
+    if (ext !== '.txt') {
+        return;
     }
+    
+    fs.readFile(item, 'utf8', function(err, data) { 
+        if(err) { 
+            console.error(item, 'READ ERROR:', err);
+            return;
+        }
+        var sourceObj = getSourceObj(data);
+        if (sourceObj == null) {
+            console.error(item, 'getSourceObj ERROR');
+            return;
+        }
+        
+        var frameworkName = item.split(path.sep)[currentDirLevel];
+        var resultContent = getConvertContent(frameworkName, sourceObj);
+
+        var dirnames = item.split(path.sep);
+        var filename = path.basename(dirnames.pop(), '.txt');
+        var kitname = dirnames.pop();
+        dirnames.pop();
+
+        dirnames.push('Centipede', kitname);
+        var targetPath = dirnames.join(path.sep);
+        var targetFile = 'CE_' + filename + '.swift';
+
+        if (!fs.existsSync(targetPath)) {
+            fs.mkdirSync(targetPath);
+        }
+        var target = path.join(targetPath, targetFile);
+        console.log(target); 
+        fs.writeFile(target, resultContent, {encoding: 'utf8'}, function(err) {
+            if (err) throw err;
+        });
+    });
 });

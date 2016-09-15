@@ -2,13 +2,13 @@
 //  CE_CBPeripheralManager.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import CoreBluetooth
 
-public extension CBPeripheralManager {
+extension CBPeripheralManager {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CBPeripheralManager_Delegate? {
@@ -40,48 +40,57 @@ public extension CBPeripheralManager {
         return CBPeripheralManager_Delegate()
     }
     
-    public func ce_didUpdateState(handle: (peripheral: CBPeripheralManager) -> Void) -> Self {
-        ce._didUpdateState = handle
+    @discardableResult
+    public func ce_peripheralManagerDidUpdateState(handle: @escaping (CBPeripheralManager) -> Void) -> Self {
+        ce._peripheralManagerDidUpdateState = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willRestoreState(handle: (peripheral: CBPeripheralManager, dict: [String : AnyObject]) -> Void) -> Self {
-        ce._willRestoreState = handle
+    @discardableResult
+    public func ce_peripheralManager_willRestoreState(handle: @escaping (CBPeripheralManager, [String : Any]) -> Void) -> Self {
+        ce._peripheralManager_willRestoreState = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didStartAdvertising(handle: (peripheral: CBPeripheralManager, error: NSError?) -> Void) -> Self {
-        ce._didStartAdvertising = handle
+    @discardableResult
+    public func ce_peripheralManagerDidStartAdvertising_error(handle: @escaping (CBPeripheralManager, Error?) -> Void) -> Self {
+        ce._peripheralManagerDidStartAdvertising_error = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didAddService(handle: (peripheral: CBPeripheralManager, service: CBService, error: NSError?) -> Void) -> Self {
-        ce._didAddService = handle
+    @discardableResult
+    public func ce_peripheralManager_didAdd(handle: @escaping (CBPeripheralManager, CBService, Error?) -> Void) -> Self {
+        ce._peripheralManager_didAdd = handle
         rebindingDelegate()
         return self
     }
-    public func ce_centralDidSubscribeToCharacteristic(handle: (peripheral: CBPeripheralManager, central: CBCentral, characteristic: CBCharacteristic) -> Void) -> Self {
-        ce._centralDidSubscribeToCharacteristic = handle
+    @discardableResult
+    public func ce_peripheralManager_central(handle: @escaping (CBPeripheralManager, CBCentral, CBCharacteristic) -> Void) -> Self {
+        ce._peripheralManager_central = handle
         rebindingDelegate()
         return self
     }
-    public func ce_centralDidUnsubscribeFromCharacteristic(handle: (peripheral: CBPeripheralManager, central: CBCentral, characteristic: CBCharacteristic) -> Void) -> Self {
-        ce._centralDidUnsubscribeFromCharacteristic = handle
+    @discardableResult
+    public func ce_peripheralManager_central_central(handle: @escaping (CBPeripheralManager, CBCentral, CBCharacteristic) -> Void) -> Self {
+        ce._peripheralManager_central_central = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didReceiveReadRequest(handle: (peripheral: CBPeripheralManager, request: CBATTRequest) -> Void) -> Self {
-        ce._didReceiveReadRequest = handle
+    @discardableResult
+    public func ce_peripheralManager_didReceiveRead(handle: @escaping (CBPeripheralManager, CBATTRequest) -> Void) -> Self {
+        ce._peripheralManager_didReceiveRead = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didReceiveWriteRequests(handle: (peripheral: CBPeripheralManager, requests: [CBATTRequest]) -> Void) -> Self {
-        ce._didReceiveWriteRequests = handle
+    @discardableResult
+    public func ce_peripheralManager_didReceiveWrite(handle: @escaping (CBPeripheralManager, [CBATTRequest]) -> Void) -> Self {
+        ce._peripheralManager_didReceiveWrite = handle
         rebindingDelegate()
         return self
     }
-    public func ce_isReadyToUpdateSubscribers(handle: (peripheral: CBPeripheralManager) -> Void) -> Self {
-        ce._isReadyToUpdateSubscribers = handle
+    @discardableResult
+    public func ce_peripheralManagerIsReady_toUpdateSubscribers(handle: @escaping (CBPeripheralManager) -> Void) -> Self {
+        ce._peripheralManagerIsReady_toUpdateSubscribers = handle
         rebindingDelegate()
         return self
     }
@@ -90,69 +99,69 @@ public extension CBPeripheralManager {
 
 internal class CBPeripheralManager_Delegate: NSObject, CBPeripheralManagerDelegate {
     
-    var _didUpdateState: ((CBPeripheralManager) -> Void)?
-    var _willRestoreState: ((CBPeripheralManager, [String : AnyObject]) -> Void)?
-    var _didStartAdvertising: ((CBPeripheralManager, NSError?) -> Void)?
-    var _didAddService: ((CBPeripheralManager, CBService, NSError?) -> Void)?
-    var _centralDidSubscribeToCharacteristic: ((CBPeripheralManager, CBCentral, CBCharacteristic) -> Void)?
-    var _centralDidUnsubscribeFromCharacteristic: ((CBPeripheralManager, CBCentral, CBCharacteristic) -> Void)?
-    var _didReceiveReadRequest: ((CBPeripheralManager, CBATTRequest) -> Void)?
-    var _didReceiveWriteRequests: ((CBPeripheralManager, [CBATTRequest]) -> Void)?
-    var _isReadyToUpdateSubscribers: ((CBPeripheralManager) -> Void)?
+    var _peripheralManagerDidUpdateState: ((CBPeripheralManager) -> Void)?
+    var _peripheralManager_willRestoreState: ((CBPeripheralManager, [String : Any]) -> Void)?
+    var _peripheralManagerDidStartAdvertising_error: ((CBPeripheralManager, Error?) -> Void)?
+    var _peripheralManager_didAdd: ((CBPeripheralManager, CBService, Error?) -> Void)?
+    var _peripheralManager_central: ((CBPeripheralManager, CBCentral, CBCharacteristic) -> Void)?
+    var _peripheralManager_central_central: ((CBPeripheralManager, CBCentral, CBCharacteristic) -> Void)?
+    var _peripheralManager_didReceiveRead: ((CBPeripheralManager, CBATTRequest) -> Void)?
+    var _peripheralManager_didReceiveWrite: ((CBPeripheralManager, [CBATTRequest]) -> Void)?
+    var _peripheralManagerIsReady_toUpdateSubscribers: ((CBPeripheralManager) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(peripheralManagerDidUpdateState(_:)) : _didUpdateState,
-            #selector(peripheralManager(_:willRestoreState:)) : _willRestoreState,
-            #selector(peripheralManagerDidStartAdvertising(_:error:)) : _didStartAdvertising,
-            #selector(peripheralManager(_:didAddService:error:)) : _didAddService,
-            #selector(peripheralManager(_:central:didSubscribeToCharacteristic:)) : _centralDidSubscribeToCharacteristic,
-            #selector(peripheralManager(_:central:didUnsubscribeFromCharacteristic:)) : _centralDidUnsubscribeFromCharacteristic,
-            #selector(peripheralManager(_:didReceiveReadRequest:)) : _didReceiveReadRequest,
+            #selector(peripheralManagerDidUpdateState(_:)) : _peripheralManagerDidUpdateState,
+            #selector(peripheralManager(_:willRestoreState:)) : _peripheralManager_willRestoreState,
+            #selector(peripheralManagerDidStartAdvertising(_:error:)) : _peripheralManagerDidStartAdvertising_error,
+            #selector(peripheralManager(_:didAdd:error:)) : _peripheralManager_didAdd,
+            #selector(peripheralManager(_:central:didSubscribeTo:)) : _peripheralManager_central,
+            #selector(peripheralManager(_:central:didUnsubscribeFrom:)) : _peripheralManager_central_central,
+            #selector(peripheralManager(_:didReceiveRead:)) : _peripheralManager_didReceiveRead,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            #selector(peripheralManager(_:didReceiveWriteRequests:)) : _didReceiveWriteRequests,
-            #selector(peripheralManagerIsReadyToUpdateSubscribers(_:)) : _isReadyToUpdateSubscribers,
+            #selector(peripheralManager(_:didReceiveWrite:)) : _peripheralManager_didReceiveWrite,
+            #selector(peripheralManagerIsReady(toUpdateSubscribers:)) : _peripheralManagerIsReady_toUpdateSubscribers,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
-        _didUpdateState!(peripheral)
+    @objc func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+        _peripheralManagerDidUpdateState!(peripheral)
     }
-    @objc func peripheralManager(peripheral: CBPeripheralManager, willRestoreState dict: [String : AnyObject]) {
-        _willRestoreState!(peripheral, dict)
+    @objc func peripheralManager(_ peripheral: CBPeripheralManager, willRestoreState dict: [String : Any]) {
+        _peripheralManager_willRestoreState!(peripheral, dict)
     }
-    @objc func peripheralManagerDidStartAdvertising(peripheral: CBPeripheralManager, error: NSError?) {
-        _didStartAdvertising!(peripheral, error)
+    @objc func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
+        _peripheralManagerDidStartAdvertising_error!(peripheral, error)
     }
-    @objc func peripheralManager(peripheral: CBPeripheralManager, didAddService service: CBService, error: NSError?) {
-        _didAddService!(peripheral, service, error)
+    @objc func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
+        _peripheralManager_didAdd!(peripheral, service, error)
     }
-    @objc func peripheralManager(peripheral: CBPeripheralManager, central: CBCentral, didSubscribeToCharacteristic characteristic: CBCharacteristic) {
-        _centralDidSubscribeToCharacteristic!(peripheral, central, characteristic)
+    @objc func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
+        _peripheralManager_central!(peripheral, central, characteristic)
     }
-    @objc func peripheralManager(peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFromCharacteristic characteristic: CBCharacteristic) {
-        _centralDidUnsubscribeFromCharacteristic!(peripheral, central, characteristic)
+    @objc func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFrom characteristic: CBCharacteristic) {
+        _peripheralManager_central_central!(peripheral, central, characteristic)
     }
-    @objc func peripheralManager(peripheral: CBPeripheralManager, didReceiveReadRequest request: CBATTRequest) {
-        _didReceiveReadRequest!(peripheral, request)
+    @objc func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
+        _peripheralManager_didReceiveRead!(peripheral, request)
     }
-    @objc func peripheralManager(peripheral: CBPeripheralManager, didReceiveWriteRequests requests: [CBATTRequest]) {
-        _didReceiveWriteRequests!(peripheral, requests)
+    @objc func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
+        _peripheralManager_didReceiveWrite!(peripheral, requests)
     }
-    @objc func peripheralManagerIsReadyToUpdateSubscribers(peripheral: CBPeripheralManager) {
-        _isReadyToUpdateSubscribers!(peripheral)
+    @objc func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager) {
+        _peripheralManagerIsReady_toUpdateSubscribers!(peripheral)
     }
 }

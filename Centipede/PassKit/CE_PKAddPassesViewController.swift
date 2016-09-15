@@ -2,13 +2,13 @@
 //  CE_PKAddPassesViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import PassKit
 
-public extension PKAddPassesViewController {
+extension PKAddPassesViewController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: PKAddPassesViewController_Delegate? {
@@ -40,8 +40,9 @@ public extension PKAddPassesViewController {
         return PKAddPassesViewController_Delegate()
     }
     
-    public func ce_didFinish(handle: (controller: PKAddPassesViewController) -> Void) -> Self {
-        ce._didFinish = handle
+    @discardableResult
+    public func ce_addPassesViewControllerDidFinish(handle: @escaping (PKAddPassesViewController) -> Void) -> Self {
+        ce._addPassesViewControllerDidFinish = handle
         rebindingDelegate()
         return self
     }
@@ -50,23 +51,23 @@ public extension PKAddPassesViewController {
 
 internal class PKAddPassesViewController_Delegate: UIViewController_Delegate, PKAddPassesViewControllerDelegate {
     
-    var _didFinish: ((PKAddPassesViewController) -> Void)?
+    var _addPassesViewControllerDidFinish: ((PKAddPassesViewController) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(addPassesViewControllerDidFinish(_:)) : _didFinish,
+            #selector(addPassesViewControllerDidFinish(_:)) : _addPassesViewControllerDidFinish,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func addPassesViewControllerDidFinish(controller: PKAddPassesViewController) {
-        _didFinish!(controller)
+    @objc func addPassesViewControllerDidFinish(_ controller: PKAddPassesViewController) {
+        _addPassesViewControllerDidFinish!(controller)
     }
 }

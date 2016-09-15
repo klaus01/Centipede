@@ -2,13 +2,13 @@
 //  CE_CALayer.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/11.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import QuartzCore
 
-public extension CALayer {
+extension CALayer {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CALayer_Delegate? {
@@ -40,67 +40,67 @@ public extension CALayer {
         return CALayer_Delegate()
     }
     
-    public func ce_display(handle: (layer: CALayer) -> Void) -> Self {
+    @discardableResult
+    public func ce_display(handle: @escaping (CALayer) -> Void) -> Self {
         ce._display = handle
         rebindingDelegate()
         return self
     }
-    public func ce_draw(handle: (layer: CALayer, ctx: CGContext) -> Void) -> Self {
-        ce._draw = handle
+    @discardableResult
+    public func ce_draw_in(handle: @escaping (CALayer, CGContext) -> Void) -> Self {
+        ce._draw_in = handle
         rebindingDelegate()
         return self
     }
-    public func ce_layoutSubsOfLayer(handle: (layer: CALayer) -> Void) -> Self {
-        ce._layoutSubsOfLayer = handle
+    @discardableResult
+    public func ce_layoutSublayers_of(handle: @escaping (CALayer) -> Void) -> Self {
+        ce._layoutSublayers_of = handle
         rebindingDelegate()
         return self
     }
-    public func ce_actionFor(handle: (layer: CALayer, event: String) -> CAAction) -> Self {
-        ce._actionFor = handle
+    @discardableResult
+    public func ce_action_for(handle: @escaping (CALayer, String) -> CAAction?) -> Self {
+        ce._action_for = handle
         rebindingDelegate()
         return self
     }
     
 }
 
-internal class CALayer_Delegate: NSObject {
+internal class CALayer_Delegate: NSObject, CALayerDelegate {
     
     var _display: ((CALayer) -> Void)?
-    var _draw: ((CALayer, CGContext) -> Void)?
-    var _layoutSubsOfLayer: ((CALayer) -> Void)?
-    var _actionFor: ((CALayer, String) -> CAAction)?
+    var _draw_in: ((CALayer, CGContext) -> Void)?
+    var _layoutSublayers_of: ((CALayer) -> Void)?
+    var _action_for: ((CALayer, String) -> CAAction?)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(displayLayer(_:)) : _display,
-            #selector(drawLayer(_:inContext:)) : _draw,
-            #selector(layoutSublayersOfLayer(_:)) : _layoutSubsOfLayer,
-            #selector(actionForLayer(_:forKey:)) : _actionFor,
+            #selector(display(_:)) : _display,
+            #selector(draw(_:in:)) : _draw_in,
+            #selector(layoutSublayers(of:)) : _layoutSublayers_of,
+            #selector(action(for:forKey:)) : _action_for,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc override func displayLayer(layer: CALayer) {
-        super.displayLayer(layer)
+    @objc func display(_ layer: CALayer) {
         _display!(layer)
     }
-    @objc override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        super.drawLayer(layer, inContext: ctx)
-        _draw!(layer, ctx)
+    @objc func draw(_ layer: CALayer, in ctx: CGContext) {
+        _draw_in!(layer, ctx)
     }
-    @objc override func layoutSublayersOfLayer(layer: CALayer) {
-        super.layoutSublayersOfLayer(layer)
-        _layoutSubsOfLayer!(layer)
+    @objc func layoutSublayers(of layer: CALayer) {
+        _layoutSublayers_of!(layer)
     }
-    @objc override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction {
-        super.actionForLayer(layer, forKey: event)
-        return _actionFor!(layer, event)
+    @objc func action(for layer: CALayer, forKey event: String) -> CAAction? {
+        return _action_for!(layer, event)
     }
 }

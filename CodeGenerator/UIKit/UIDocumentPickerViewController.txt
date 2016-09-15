@@ -2,7 +2,10 @@ UIDocumentPickerViewController: UIViewController, UIDocumentPickerDelegate
 
 DELEGATE_LIST:delegate, transitioningDelegate
 
-    func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL)
+    @available(iOS 8.0, *)
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL)
+
     
     // called if the user dismisses the document picker without selecting a document (using the Cancel button)
-    optional func documentPickerWasCancelled(controller: UIDocumentPickerViewController)
+    @available(iOS 8.0, *)
+    optional public func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController)

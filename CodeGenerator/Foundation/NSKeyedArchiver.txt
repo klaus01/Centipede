@@ -1,7 +1,8 @@
 NSKeyedArchiver : NSObject, NSKeyedArchiverDelegate
 
     // substitution
-    optional func archiver(archiver: NSKeyedArchiver, willEncodeObject object: AnyObject) -> AnyObject?
+    optional public func archiver(_ archiver: NSKeyedArchiver, willEncode object: Any) -> Any?
+
     // Informs the delegate that the object is about to be encoded.  The delegate
     // either returns this object or can return a different object to be encoded
     // instead.  The delegate can also fiddle with the coder state.  If the delegate
@@ -12,20 +13,23 @@ NSKeyedArchiver : NSObject, NSKeyedArchiverDelegate
     // been encoded).  This is also not called when nil is about to be encoded.
     // This method is called whether or not the object is being encoded conditionally.
     
-    optional func archiver(archiver: NSKeyedArchiver, didEncodeObject object: AnyObject?)
+    optional public func archiver(_ archiver: NSKeyedArchiver, didEncode object: Any?)
+
     // Informs the delegate that the given object has been encoded.  The delegate
     // might restore some state it had fiddled previously, or use this to keep
     // track of the objects which are encoded.  The object may be nil.  Not called
     // for conditional objects until they are really encoded (if ever).
     
     // notification
-    optional func archiver(archiver: NSKeyedArchiver, willReplaceObject object: AnyObject, withObject newObject: AnyObject)
+    optional public func archiver(_ archiver: NSKeyedArchiver, willReplace object: Any?, with newObject: Any?)
+
     // Informs the delegate that the newObject is being substituted for the
     // object. This is also called when the delegate itself is doing/has done
     // the substitution. The delegate may use this method if it is keeping track
     // of the encoded or decoded objects.
     
-    optional func archiverWillFinish(archiver: NSKeyedArchiver)
+    optional public func archiverWillFinish(_ archiver: NSKeyedArchiver)
+
     // Notifies the delegate that encoding is about to finish.
     
-    optional func archiverDidFinish(archiver: NSKeyedArchiver)
+    optional public func archiverDidFinish(_ archiver: NSKeyedArchiver)

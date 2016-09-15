@@ -2,13 +2,13 @@
 //  CE_PKPushRegistry.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import PushKit
 
-public extension PKPushRegistry {
+extension PKPushRegistry {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: PKPushRegistry_Delegate? {
@@ -40,18 +40,21 @@ public extension PKPushRegistry {
         return PKPushRegistry_Delegate()
     }
     
-    public func ce_didUpdatePushCredentials(handle: (registry: PKPushRegistry, credentials: PKPushCredentials!, type: String!) -> Void) -> Self {
-        ce._didUpdatePushCredentials = handle
+    @discardableResult
+    public func ce_pushRegistry_didUpdate(handle: @escaping (PKPushRegistry, PKPushCredentials, PKPushType) -> Void) -> Self {
+        ce._pushRegistry_didUpdate = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didReceiveIncomingPushWithPayload(handle: (registry: PKPushRegistry, payload: PKPushPayload!, type: String!) -> Void) -> Self {
-        ce._didReceiveIncomingPushWithPayload = handle
+    @discardableResult
+    public func ce_pushRegistry_didReceiveIncomingPushWith(handle: @escaping (PKPushRegistry, PKPushPayload, PKPushType) -> Void) -> Self {
+        ce._pushRegistry_didReceiveIncomingPushWith = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didInvalidatePushTokenForType(handle: (registry: PKPushRegistry, type: String!) -> Void) -> Self {
-        ce._didInvalidatePushTokenForType = handle
+    @discardableResult
+    public func ce_pushRegistry_didInvalidatePushTokenForType(handle: @escaping (PKPushRegistry, PKPushType) -> Void) -> Self {
+        ce._pushRegistry_didInvalidatePushTokenForType = handle
         rebindingDelegate()
         return self
     }
@@ -60,33 +63,33 @@ public extension PKPushRegistry {
 
 internal class PKPushRegistry_Delegate: NSObject, PKPushRegistryDelegate {
     
-    var _didUpdatePushCredentials: ((PKPushRegistry, PKPushCredentials!, String!) -> Void)?
-    var _didReceiveIncomingPushWithPayload: ((PKPushRegistry, PKPushPayload!, String!) -> Void)?
-    var _didInvalidatePushTokenForType: ((PKPushRegistry, String!) -> Void)?
+    var _pushRegistry_didUpdate: ((PKPushRegistry, PKPushCredentials, PKPushType) -> Void)?
+    var _pushRegistry_didReceiveIncomingPushWith: ((PKPushRegistry, PKPushPayload, PKPushType) -> Void)?
+    var _pushRegistry_didInvalidatePushTokenForType: ((PKPushRegistry, PKPushType) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(pushRegistry(_:didUpdatePushCredentials:forType:)) : _didUpdatePushCredentials,
-            #selector(pushRegistry(_:didReceiveIncomingPushWithPayload:forType:)) : _didReceiveIncomingPushWithPayload,
-            #selector(pushRegistry(_:didInvalidatePushTokenForType:)) : _didInvalidatePushTokenForType,
+            #selector(pushRegistry(_:didUpdate:forType:)) : _pushRegistry_didUpdate,
+            #selector(pushRegistry(_:didReceiveIncomingPushWith:forType:)) : _pushRegistry_didReceiveIncomingPushWith,
+            #selector(pushRegistry(_:didInvalidatePushTokenForType:)) : _pushRegistry_didInvalidatePushTokenForType,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func pushRegistry(registry: PKPushRegistry, didUpdatePushCredentials credentials: PKPushCredentials!, forType type: String!) {
-        _didUpdatePushCredentials!(registry, credentials, type)
+    @objc func pushRegistry(_ registry: PKPushRegistry, didUpdate credentials: PKPushCredentials, forType type: PKPushType) {
+        _pushRegistry_didUpdate!(registry, credentials, type)
     }
-    @objc func pushRegistry(registry: PKPushRegistry, didReceiveIncomingPushWithPayload payload: PKPushPayload!, forType type: String!) {
-        _didReceiveIncomingPushWithPayload!(registry, payload, type)
+    @objc func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, forType type: PKPushType) {
+        _pushRegistry_didReceiveIncomingPushWith!(registry, payload, type)
     }
-    @objc func pushRegistry(registry: PKPushRegistry, didInvalidatePushTokenForType type: String!) {
-        _didInvalidatePushTokenForType!(registry, type)
+    @objc func pushRegistry(_ registry: PKPushRegistry, didInvalidatePushTokenForType type: PKPushType) {
+        _pushRegistry_didInvalidatePushTokenForType!(registry, type)
     }
 }

@@ -1,4 +1,7 @@
 NSMetadataQuery : NSObject, NSMetadataQueryDelegate
 
-    optional func metadataQuery(query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> AnyObject
-    optional func metadataQuery(query: NSMetadataQuery, replacementValueForAttribute attrName: String, value attrValue: AnyObject) -> AnyObject
+    @available(iOS 5.0, *)
+    optional public func metadataQuery(_ query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> Any
+
+    @available(iOS 5.0, *)
+    optional public func metadataQuery(_ query: NSMetadataQuery, replacementValueForAttribute attrName: String, value attrValue: Any) -> Any

@@ -13,7 +13,9 @@ ADInterstitialAd: NSObject, ADInterstitialAdDelegate
      * the app should be updated to reflect that an ad is no longer visible. e.g.
      * by removing the view used for presentation and replacing it with another view.
      */
-    func interstitialAdDidUnload(interstitialAd: ADInterstitialAd!)
+    @available(iOS 4.3, *)
+    public func interstitialAdDidUnload(_ interstitialAd: ADInterstitialAd!)
+
     
     /*!
      * @method interstitialAd:didFailWithError:
@@ -23,7 +25,9 @@ ADInterstitialAd: NSObject, ADInterstitialAdDelegate
      *
      * @see ADError for a list of possible error codes.
      */
-    func interstitialAd(interstitialAd: ADInterstitialAd!, didFailWithError error: NSError!)
+    @available(iOS 4.3, *)
+    public func interstitialAd(_ interstitialAd: ADInterstitialAd!, didFailWithError error: Error!)
+
     
     /*!
      * @method interstitialAdWillLoad:
@@ -32,8 +36,9 @@ ADInterstitialAd: NSObject, ADInterstitialAdDelegate
      * Called when the interstitial has confirmation that an ad will be presented,
      * but before the ad has loaded resources necessary for presentation.
      */
-    @availability(iOS, introduced=5.0)
-    optional func interstitialAdWillLoad(interstitialAd: ADInterstitialAd!)
+    @available(iOS 5.0, *)
+    optional public func interstitialAdWillLoad(_ interstitialAd: ADInterstitialAd!)
+
     
     /*!
      * @method interstitialAdDidLoad:
@@ -43,7 +48,9 @@ ADInterstitialAd: NSObject, ADInterstitialAdDelegate
      * should implement this method so it knows when the interstitial ad is ready to
      * be presented.
      */
-    optional func interstitialAdDidLoad(interstitialAd: ADInterstitialAd!)
+    @available(iOS 4.3, *)
+    optional public func interstitialAdDidLoad(_ interstitialAd: ADInterstitialAd!)
+
     
     /*!
      * @method interstitialAdActionShouldBegin:willLeaveApplication:
@@ -59,7 +66,9 @@ ADInterstitialAd: NSObject, ADInterstitialAdDelegate
      * Applications should reduce their own activity while the advertisement's action
      * executes.
      */
-    optional func interstitialAdActionShouldBegin(interstitialAd: ADInterstitialAd!, willLeaveApplication willLeave: Bool) -> Bool
+    @available(iOS 4.3, *)
+    optional public func interstitialAdActionShouldBegin(_ interstitialAd: ADInterstitialAd!, willLeaveApplication willLeave: Bool) -> Bool
+
     
     /*!
      * @method interstitialAdActionDidFinish:
@@ -67,4 +76,5 @@ ADInterstitialAd: NSObject, ADInterstitialAdDelegate
      * the application. Games, media playback, and other activities that were paused
      * in response to the beginning of the action should resume at this point.
      */
-    optional func interstitialAdActionDidFinish(interstitialAd: ADInterstitialAd!)
+    @available(iOS 4.3, *)
+    optional public func interstitialAdActionDidFinish(_ interstitialAd: ADInterstitialAd!)

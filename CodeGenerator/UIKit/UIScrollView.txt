@@ -1,27 +1,48 @@
 UIScrollView: NSObject, UIScrollViewDelegate
 
-// MAKE: - UIScrollViewDelegate
-    optional func scrollViewDidScroll(scrollView: UIScrollView) // any offset changes
-    @availability(iOS, introduced=3.2)
-    optional func scrollViewDidZoom(scrollView: UIScrollView) // any zoom scale changes
+    @available(iOS 2.0, *)
+    optional public func scrollViewDidScroll(_ scrollView: UIScrollView) // any offset changes
+
+    @available(iOS 3.2, *)
+    optional public func scrollViewDidZoom(_ scrollView: UIScrollView) // any zoom scale changes
+
     
     // called on start of dragging (may require some time and or distance to move)
-    optional func scrollViewWillBeginDragging(scrollView: UIScrollView)
+    @available(iOS 2.0, *)
+    optional public func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
+
     // called on finger up if the user dragged. velocity is in points/millisecond. targetContentOffset may be changed to adjust where the scroll view comes to rest
-    @availability(iOS, introduced=5.0)
-    optional func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
+    @available(iOS 5.0, *)
+    optional public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
+
     // called on finger up if the user dragged. decelerate is true if it will continue moving afterwards
-    optional func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool)
+    @available(iOS 2.0, *)
+    optional public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool)
+
     
-    optional func scrollViewWillBeginDecelerating(scrollView: UIScrollView) // called on finger up as we are moving
-    optional func scrollViewDidEndDecelerating(scrollView: UIScrollView) // called when scroll view grinds to a halt
+    @available(iOS 2.0, *)
+    optional public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) // called on finger up as we are moving
+
+    @available(iOS 2.0, *)
+    optional public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) // called when scroll view grinds to a halt
+
     
-    optional func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) // called when setContentOffset/scrollRectVisible:animated: finishes. not called if not animating
+    @available(iOS 2.0, *)
+    optional public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) // called when setContentOffset/scrollRectVisible:animated: finishes. not called if not animating
+
     
-    optional func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? // return a view that will be scaled. if delegate returns nil, nothing happens
-    @availability(iOS, introduced=3.2)
-    optional func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView!) // called before the scroll view begins zooming its content
-    optional func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) // scale between minimum and maximum. called after any 'bounce' animations
+    @available(iOS 2.0, *)
+    optional public func viewForZooming(in scrollView: UIScrollView) -> UIView? // return a view that will be scaled. if delegate returns nil, nothing happens
+
+    @available(iOS 3.2, *)
+    optional public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) // called before the scroll view begins zooming its content
+
+    @available(iOS 2.0, *)
+    optional public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) // scale between minimum and maximum. called after any 'bounce' animations
+
     
-    optional func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool // return a yes if you want to scroll to the top. if not defined, assumes YES
-    optional func scrollViewDidScrollToTop(scrollView: UIScrollView) // called when scrolling animation finished. may be called immediately if already at top
+    @available(iOS 2.0, *)
+    optional public func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool // return a yes if you want to scroll to the top. if not defined, assumes YES
+
+    @available(iOS 2.0, *)
+    optional public func scrollViewDidScrollToTop(_ scrollView: UIScrollView) // called when scrolling animation finished. may be called immediately if already at top

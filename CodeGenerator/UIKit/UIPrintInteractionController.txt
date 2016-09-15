@@ -1,17 +1,33 @@
 UIPrintInteractionController: NSObject, UIPrintInteractionControllerDelegate
 
 
-    optional func printInteractionControllerParentViewController(printInteractionController: UIPrintInteractionController) -> UIViewController?
+    @available(iOS 4.2, *)
+    optional public func printInteractionControllerParentViewController(_ printInteractionController: UIPrintInteractionController) -> UIViewController?
+
     
-    optional func printInteractionController(printInteractionController: UIPrintInteractionController, choosePaper paperList: [AnyObject]) -> UIPrintPaper?
+    @available(iOS 4.2, *)
+    optional public func printInteractionController(_ printInteractionController: UIPrintInteractionController, choosePaper paperList: [UIPrintPaper]) -> UIPrintPaper
+
     
-    optional func printInteractionControllerWillPresentPrinterOptions(printInteractionController: UIPrintInteractionController)
-    optional func printInteractionControllerDidPresentPrinterOptions(printInteractionController: UIPrintInteractionController)
-    optional func printInteractionControllerWillDismissPrinterOptions(printInteractionController: UIPrintInteractionController)
-    optional func printInteractionControllerDidDismissPrinterOptions(printInteractionController: UIPrintInteractionController)
+    @available(iOS 4.2, *)
+    optional public func printInteractionControllerWillPresentPrinterOptions(_ printInteractionController: UIPrintInteractionController)
+
+    @available(iOS 4.2, *)
+    optional public func printInteractionControllerDidPresentPrinterOptions(_ printInteractionController: UIPrintInteractionController)
+
+    @available(iOS 4.2, *)
+    optional public func printInteractionControllerWillDismissPrinterOptions(_ printInteractionController: UIPrintInteractionController)
+
+    @available(iOS 4.2, *)
+    optional public func printInteractionControllerDidDismissPrinterOptions(_ printInteractionController: UIPrintInteractionController)
+
     
-    optional func printInteractionControllerWillStartJob(printInteractionController: UIPrintInteractionController)
-    optional func printInteractionControllerDidFinishJob(printInteractionController: UIPrintInteractionController)
+    @available(iOS 4.2, *)
+    optional public func printInteractionControllerWillStartJob(_ printInteractionController: UIPrintInteractionController)
+
+    @available(iOS 4.2, *)
+    optional public func printInteractionControllerDidFinishJob(_ printInteractionController: UIPrintInteractionController)
+
     
-    @availability(iOS, introduced=7.0)
-    optional func printInteractionController(printInteractionController: UIPrintInteractionController, cutLengthForPaper paper: UIPrintPaper) -> CGFloat
+    @available(iOS 7.0, *)
+    optional public func printInteractionController(_ printInteractionController: UIPrintInteractionController, cutLengthFor paper: UIPrintPaper) -> CGFloat

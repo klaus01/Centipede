@@ -2,13 +2,13 @@
 //  CE_UISearchController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
 
-public extension UISearchController {
+extension UISearchController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UISearchController_Delegate? {
@@ -20,7 +20,7 @@ public extension UISearchController {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UISearchController_Delegate {
                 return obj as! UISearchController_Delegate
             }
@@ -44,33 +44,39 @@ public extension UISearchController {
         return UISearchController_Delegate()
     }
     
-    public func ce_updateSearchResultsFor(handle: (searchController: UISearchController) -> Void) -> Self {
-        ce._updateSearchResultsFor = handle
+    @discardableResult
+    public func ce_updateSearchResults_for(handle: @escaping (UISearchController) -> Void) -> Self {
+        ce._updateSearchResults_for = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willPresent(handle: (searchController: UISearchController) -> Void) -> Self {
-        ce._willPresent = handle
+    @discardableResult
+    public func ce_willPresentSearchController(handle: @escaping (UISearchController) -> Void) -> Self {
+        ce._willPresentSearchController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didPresent(handle: (searchController: UISearchController) -> Void) -> Self {
-        ce._didPresent = handle
+    @discardableResult
+    public func ce_didPresentSearchController(handle: @escaping (UISearchController) -> Void) -> Self {
+        ce._didPresentSearchController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willDismiss(handle: (searchController: UISearchController) -> Void) -> Self {
-        ce._willDismiss = handle
+    @discardableResult
+    public func ce_willDismissSearchController(handle: @escaping (UISearchController) -> Void) -> Self {
+        ce._willDismissSearchController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDismiss(handle: (searchController: UISearchController) -> Void) -> Self {
-        ce._didDismiss = handle
+    @discardableResult
+    public func ce_didDismissSearchController(handle: @escaping (UISearchController) -> Void) -> Self {
+        ce._didDismissSearchController = handle
         rebindingDelegate()
         return self
     }
-    public func ce_present(handle: (searchController: UISearchController) -> Void) -> Self {
-        ce._present = handle
+    @discardableResult
+    public func ce_presentSearchController(handle: @escaping (UISearchController) -> Void) -> Self {
+        ce._presentSearchController = handle
         rebindingDelegate()
         return self
     }
@@ -79,48 +85,48 @@ public extension UISearchController {
 
 internal class UISearchController_Delegate: UIViewController_Delegate, UISearchResultsUpdating, UISearchControllerDelegate {
     
-    var _updateSearchResultsFor: ((UISearchController) -> Void)?
-    var _willPresent: ((UISearchController) -> Void)?
-    var _didPresent: ((UISearchController) -> Void)?
-    var _willDismiss: ((UISearchController) -> Void)?
-    var _didDismiss: ((UISearchController) -> Void)?
-    var _present: ((UISearchController) -> Void)?
+    var _updateSearchResults_for: ((UISearchController) -> Void)?
+    var _willPresentSearchController: ((UISearchController) -> Void)?
+    var _didPresentSearchController: ((UISearchController) -> Void)?
+    var _willDismissSearchController: ((UISearchController) -> Void)?
+    var _didDismissSearchController: ((UISearchController) -> Void)?
+    var _presentSearchController: ((UISearchController) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(updateSearchResultsForSearchController(_:)) : _updateSearchResultsFor,
-            #selector(willPresentSearchController(_:)) : _willPresent,
-            #selector(didPresentSearchController(_:)) : _didPresent,
-            #selector(willDismissSearchController(_:)) : _willDismiss,
-            #selector(didDismissSearchController(_:)) : _didDismiss,
-            #selector(presentSearchController(_:)) : _present,
+            #selector(updateSearchResults(for:)) : _updateSearchResults_for,
+            #selector(willPresentSearchController(_:)) : _willPresentSearchController,
+            #selector(didPresentSearchController(_:)) : _didPresentSearchController,
+            #selector(willDismissSearchController(_:)) : _willDismissSearchController,
+            #selector(didDismissSearchController(_:)) : _didDismissSearchController,
+            #selector(presentSearchController(_:)) : _presentSearchController,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func updateSearchResultsForSearchController(searchController: UISearchController) {
-        _updateSearchResultsFor!(searchController)
+    @objc func updateSearchResults(for searchController: UISearchController) {
+        _updateSearchResults_for!(searchController)
     }
-    @objc func willPresentSearchController(searchController: UISearchController) {
-        _willPresent!(searchController)
+    @objc func willPresentSearchController(_ searchController: UISearchController) {
+        _willPresentSearchController!(searchController)
     }
-    @objc func didPresentSearchController(searchController: UISearchController) {
-        _didPresent!(searchController)
+    @objc func didPresentSearchController(_ searchController: UISearchController) {
+        _didPresentSearchController!(searchController)
     }
-    @objc func willDismissSearchController(searchController: UISearchController) {
-        _willDismiss!(searchController)
+    @objc func willDismissSearchController(_ searchController: UISearchController) {
+        _willDismissSearchController!(searchController)
     }
-    @objc func didDismissSearchController(searchController: UISearchController) {
-        _didDismiss!(searchController)
+    @objc func didDismissSearchController(_ searchController: UISearchController) {
+        _didDismissSearchController!(searchController)
     }
-    @objc func presentSearchController(searchController: UISearchController) {
-        _present!(searchController)
+    @objc func presentSearchController(_ searchController: UISearchController) {
+        _presentSearchController!(searchController)
     }
 }

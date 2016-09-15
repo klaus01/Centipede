@@ -2,13 +2,13 @@
 //  CE_UITextField.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
 
-public extension UITextField {
+extension UITextField {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UITextField_Delegate? {
@@ -20,7 +20,7 @@ public extension UITextField {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UITextField_Delegate {
                 return obj as! UITextField_Delegate
             }
@@ -40,38 +40,45 @@ public extension UITextField {
         return UITextField_Delegate()
     }
     
-    public func ce_shouldBeginEditing(handle: (textField: UITextField) -> Bool) -> Self {
-        ce._shouldBeginEditing = handle
+    @discardableResult
+    public func ce_textFieldShouldBeginEditing(handle: @escaping (UITextField) -> Bool) -> Self {
+        ce._textFieldShouldBeginEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didBeginEditing(handle: (textField: UITextField) -> Void) -> Self {
-        ce._didBeginEditing = handle
+    @discardableResult
+    public func ce_textFieldDidBeginEditing(handle: @escaping (UITextField) -> Void) -> Self {
+        ce._textFieldDidBeginEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldEndEditing(handle: (textField: UITextField) -> Bool) -> Self {
-        ce._shouldEndEditing = handle
+    @discardableResult
+    public func ce_textFieldShouldEndEditing(handle: @escaping (UITextField) -> Bool) -> Self {
+        ce._textFieldShouldEndEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didEndEditing(handle: (textField: UITextField) -> Void) -> Self {
-        ce._didEndEditing = handle
+    @discardableResult
+    public func ce_textFieldDidEndEditing(handle: @escaping (UITextField) -> Void) -> Self {
+        ce._textFieldDidEndEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldChangeCharactersInRange(handle: (textField: UITextField, range: NSRange, string: String) -> Bool) -> Self {
-        ce._shouldChangeCharactersInRange = handle
+    @discardableResult
+    public func ce_textField_shouldChangeCharactersIn(handle: @escaping (UITextField, NSRange, String) -> Bool) -> Self {
+        ce._textField_shouldChangeCharactersIn = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldClear(handle: (textField: UITextField) -> Bool) -> Self {
-        ce._shouldClear = handle
+    @discardableResult
+    public func ce_textFieldShouldClear(handle: @escaping (UITextField) -> Bool) -> Self {
+        ce._textFieldShouldClear = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldReturn(handle: (textField: UITextField) -> Bool) -> Self {
-        ce._shouldReturn = handle
+    @discardableResult
+    public func ce_textFieldShouldReturn(handle: @escaping (UITextField) -> Bool) -> Self {
+        ce._textFieldShouldReturn = handle
         rebindingDelegate()
         return self
     }
@@ -80,53 +87,53 @@ public extension UITextField {
 
 internal class UITextField_Delegate: NSObject, UITextFieldDelegate {
     
-    var _shouldBeginEditing: ((UITextField) -> Bool)?
-    var _didBeginEditing: ((UITextField) -> Void)?
-    var _shouldEndEditing: ((UITextField) -> Bool)?
-    var _didEndEditing: ((UITextField) -> Void)?
-    var _shouldChangeCharactersInRange: ((UITextField, NSRange, String) -> Bool)?
-    var _shouldClear: ((UITextField) -> Bool)?
-    var _shouldReturn: ((UITextField) -> Bool)?
+    var _textFieldShouldBeginEditing: ((UITextField) -> Bool)?
+    var _textFieldDidBeginEditing: ((UITextField) -> Void)?
+    var _textFieldShouldEndEditing: ((UITextField) -> Bool)?
+    var _textFieldDidEndEditing: ((UITextField) -> Void)?
+    var _textField_shouldChangeCharactersIn: ((UITextField, NSRange, String) -> Bool)?
+    var _textFieldShouldClear: ((UITextField) -> Bool)?
+    var _textFieldShouldReturn: ((UITextField) -> Bool)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(textFieldShouldBeginEditing(_:)) : _shouldBeginEditing,
-            #selector(textFieldDidBeginEditing(_:)) : _didBeginEditing,
-            #selector(textFieldShouldEndEditing(_:)) : _shouldEndEditing,
-            #selector(textFieldDidEndEditing(_:)) : _didEndEditing,
-            #selector(textField(_:shouldChangeCharactersInRange:replacementString:)) : _shouldChangeCharactersInRange,
-            #selector(textFieldShouldClear(_:)) : _shouldClear,
-            #selector(textFieldShouldReturn(_:)) : _shouldReturn,
+            #selector(textFieldShouldBeginEditing(_:)) : _textFieldShouldBeginEditing,
+            #selector(textFieldDidBeginEditing(_:)) : _textFieldDidBeginEditing,
+            #selector(textFieldShouldEndEditing(_:)) : _textFieldShouldEndEditing,
+            #selector(textFieldDidEndEditing(_:)) : _textFieldDidEndEditing,
+            #selector(textField(_:shouldChangeCharactersIn:replacementString:)) : _textField_shouldChangeCharactersIn,
+            #selector(textFieldShouldClear(_:)) : _textFieldShouldClear,
+            #selector(textFieldShouldReturn(_:)) : _textFieldShouldReturn,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        return _shouldBeginEditing!(textField)
+    @objc func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return _textFieldShouldBeginEditing!(textField)
     }
-    @objc func textFieldDidBeginEditing(textField: UITextField) {
-        _didBeginEditing!(textField)
+    @objc func textFieldDidBeginEditing(_ textField: UITextField) {
+        _textFieldDidBeginEditing!(textField)
     }
-    @objc func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        return _shouldEndEditing!(textField)
+    @objc func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return _textFieldShouldEndEditing!(textField)
     }
-    @objc func textFieldDidEndEditing(textField: UITextField) {
-        _didEndEditing!(textField)
+    @objc func textFieldDidEndEditing(_ textField: UITextField) {
+        _textFieldDidEndEditing!(textField)
     }
-    @objc func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        return _shouldChangeCharactersInRange!(textField, range, string)
+    @objc func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return _textField_shouldChangeCharactersIn!(textField, range, string)
     }
-    @objc func textFieldShouldClear(textField: UITextField) -> Bool {
-        return _shouldClear!(textField)
+    @objc func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return _textFieldShouldClear!(textField)
     }
-    @objc func textFieldShouldReturn(textField: UITextField) -> Bool {
-        return _shouldReturn!(textField)
+    @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return _textFieldShouldReturn!(textField)
     }
 }

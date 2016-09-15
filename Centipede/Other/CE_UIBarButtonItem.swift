@@ -8,36 +8,37 @@
 
 import UIKit
 
-public typealias CE_UIBarButtonItemAction = (gestureRecognizer: UIBarButtonItem) -> Void
+public typealias CE_UIBarButtonItemAction = (UIBarButtonItem) -> Void
 
-public extension UIBarButtonItem {
+extension UIBarButtonItem {
     
-    public func action(action: CE_UIBarButtonItemAction?) -> Self {
+    @discardableResult
+    public func action(_ action: CE_UIBarButtonItemAction?) -> Self {
         return on(action)
     }
     
 }
 
-// MARK: - Internal
+// MARK: - private
 
 private struct Static { static var AssociationKey: UInt8 = 0 }
 
 private typealias UIBarButtonItemProxies = [String: UIBarButtonItemProxy]
 
-internal class UIBarButtonItemProxy : NSObject {
+fileprivate class UIBarButtonItemProxy : NSObject {
     
     var action: CE_UIBarButtonItemAction
     
-    init(_ action: CE_UIBarButtonItemAction) {
+    init(_ action: @escaping CE_UIBarButtonItemAction) {
         self.action = action
     }
     
     func act(gestureRecognizer: UIBarButtonItem) {
-        action(gestureRecognizer: gestureRecognizer)
+        action(gestureRecognizer)
     }
 }
 
-internal extension UIBarButtonItem {
+fileprivate extension UIBarButtonItem {
     
     private var proxies: UIBarButtonItemProxies {
         get {
@@ -52,12 +53,13 @@ internal extension UIBarButtonItem {
         }
     }
     
-    private func setter(newValue: UIBarButtonItemProxies) -> UIBarButtonItemProxies {
+    @discardableResult
+    private func setter(_ newValue: UIBarButtonItemProxies) -> UIBarButtonItemProxies {
         objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
         return newValue
     }
     
-    internal func on(action: CE_UIBarButtonItemAction?) -> Self {
+    fileprivate func on(_ action: CE_UIBarButtonItemAction?) -> Self {
         self.off()
         
         if action == nil {
@@ -66,17 +68,18 @@ internal extension UIBarButtonItem {
         
         let proxy = UIBarButtonItemProxy(action!)
         self.target = proxy
-        self.action = #selector(UIBarButtonItemProxy.act(_:))
+        self.action = #selector(UIBarButtonItemProxy.act(gestureRecognizer:))
         proxies[""] = proxy
 
         return self
     }
     
-    internal func off() -> Self {
+    @discardableResult
+    fileprivate func off() -> Self {
         if let _ = proxies[""] {
             target = nil
             action = nil
-            proxies.removeValueForKey("")
+            proxies.removeValue(forKey: "")
         }
         return self
     }

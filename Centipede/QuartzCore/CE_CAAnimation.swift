@@ -2,13 +2,13 @@
 //  CE_CAAnimation.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/11.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import QuartzCore
 
-public extension CAAnimation {
+extension CAAnimation {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: CAAnimation_Delegate? {
@@ -40,45 +40,45 @@ public extension CAAnimation {
         return CAAnimation_Delegate()
     }
     
-    public func ce_didStart(handle: (anim: CAAnimation) -> Void) -> Self {
-        ce._didStart = handle
+    @discardableResult
+    public func ce_animationDidStart(handle: @escaping (CAAnimation) -> Void) -> Self {
+        ce._animationDidStart = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didStop(handle: (anim: CAAnimation, flag: Bool) -> Void) -> Self {
-        ce._didStop = handle
+    @discardableResult
+    public func ce_animationDidStop_finished(handle: @escaping (CAAnimation, Bool) -> Void) -> Self {
+        ce._animationDidStop_finished = handle
         rebindingDelegate()
         return self
     }
     
 }
 
-internal class CAAnimation_Delegate: NSObject {
+internal class CAAnimation_Delegate: NSObject, CAAnimationDelegate {
     
-    var _didStart: ((CAAnimation) -> Void)?
-    var _didStop: ((CAAnimation, Bool) -> Void)?
+    var _animationDidStart: ((CAAnimation) -> Void)?
+    var _animationDidStop_finished: ((CAAnimation, Bool) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(animationDidStart(_:)) : _didStart,
-            #selector(animationDidStop(_:finished:)) : _didStop,
+            #selector(animationDidStart(_:)) : _animationDidStart,
+            #selector(animationDidStop(_:finished:)) : _animationDidStop_finished,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc override func animationDidStart(anim: CAAnimation) {
-        super.animationDidStart(anim)
-        _didStart!(anim)
+    @objc func animationDidStart(_ anim: CAAnimation) {
+        _animationDidStart!(anim)
     }
-    @objc override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        super.animationDidStop(anim, finished: flag)
-        _didStop!(anim, flag)
+    @objc func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        _animationDidStop_finished!(anim, flag)
     }
 }

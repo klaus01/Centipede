@@ -2,13 +2,13 @@
 //  CE_NSUserActivity.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import Foundation
 
-public extension NSUserActivity {
+extension NSUserActivity {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSUserActivity_Delegate? {
@@ -40,18 +40,21 @@ public extension NSUserActivity {
         return NSUserActivity_Delegate()
     }
     
-    public func ce_willSave(handle: (userActivity: NSUserActivity) -> Void) -> Self {
-        ce._willSave = handle
+    @discardableResult
+    public func ce_userActivityWillSave(handle: @escaping (NSUserActivity) -> Void) -> Self {
+        ce._userActivityWillSave = handle
         rebindingDelegate()
         return self
     }
-    public func ce_wasContinued(handle: (userActivity: NSUserActivity) -> Void) -> Self {
-        ce._wasContinued = handle
+    @discardableResult
+    public func ce_userActivityWasContinued(handle: @escaping (NSUserActivity) -> Void) -> Self {
+        ce._userActivityWasContinued = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didReceiveInputStream(handle: (userActivity: NSUserActivity?, inputStream: NSInputStream, outputStream: NSOutputStream) -> Void) -> Self {
-        ce._didReceiveInputStream = handle
+    @discardableResult
+    public func ce_userActivity_didReceive(handle: @escaping (NSUserActivity?, InputStream, OutputStream) -> Void) -> Self {
+        ce._userActivity_didReceive = handle
         rebindingDelegate()
         return self
     }
@@ -60,33 +63,33 @@ public extension NSUserActivity {
 
 internal class NSUserActivity_Delegate: NSObject, NSUserActivityDelegate {
     
-    var _willSave: ((NSUserActivity) -> Void)?
-    var _wasContinued: ((NSUserActivity) -> Void)?
-    var _didReceiveInputStream: ((NSUserActivity?, NSInputStream, NSOutputStream) -> Void)?
+    var _userActivityWillSave: ((NSUserActivity) -> Void)?
+    var _userActivityWasContinued: ((NSUserActivity) -> Void)?
+    var _userActivity_didReceive: ((NSUserActivity?, InputStream, OutputStream) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(userActivityWillSave(_:)) : _willSave,
-            #selector(userActivityWasContinued(_:)) : _wasContinued,
-            #selector(userActivity(_:didReceiveInputStream:outputStream:)) : _didReceiveInputStream,
+            #selector(userActivityWillSave(_:)) : _userActivityWillSave,
+            #selector(userActivityWasContinued(_:)) : _userActivityWasContinued,
+            #selector(userActivity(_:didReceive:outputStream:)) : _userActivity_didReceive,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func userActivityWillSave(userActivity: NSUserActivity) {
-        _willSave!(userActivity)
+    @objc func userActivityWillSave(_ userActivity: NSUserActivity) {
+        _userActivityWillSave!(userActivity)
     }
-    @objc func userActivityWasContinued(userActivity: NSUserActivity) {
-        _wasContinued!(userActivity)
+    @objc func userActivityWasContinued(_ userActivity: NSUserActivity) {
+        _userActivityWasContinued!(userActivity)
     }
-    @objc func userActivity(userActivity: NSUserActivity?, didReceiveInputStream inputStream: NSInputStream, outputStream: NSOutputStream) {
-        _didReceiveInputStream!(userActivity, inputStream, outputStream)
+    @objc func userActivity(_ userActivity: NSUserActivity?, didReceive inputStream: InputStream, outputStream: OutputStream) {
+        _userActivity_didReceive!(userActivity, inputStream, outputStream)
     }
 }

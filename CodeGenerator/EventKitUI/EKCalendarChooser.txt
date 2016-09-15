@@ -1,9 +1,0 @@
-EKCalendarChooser : UIViewController, EKCalendarChooserDelegate
-
-    // Called whenever the selection is changed by the user
-    optional func calendarChooserSelectionDidChange(calendarChooser: EKCalendarChooser!)
-    
-    // These are called when the corresponding button is pressed to dismiss the
-    // controller. It is up to the recipient to dismiss the chooser.
-    optional func calendarChooserDidFinish(calendarChooser: EKCalendarChooser!)
-    optional func calendarChooserDidCancel(calendarChooser: EKCalendarChooser!)

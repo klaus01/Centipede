@@ -2,13 +2,13 @@
 //  CE_UIDynamicAnimator.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
 
-public extension UIDynamicAnimator {
+extension UIDynamicAnimator {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIDynamicAnimator_Delegate? {
@@ -20,7 +20,7 @@ public extension UIDynamicAnimator {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UIDynamicAnimator_Delegate {
                 return obj as! UIDynamicAnimator_Delegate
             }
@@ -40,13 +40,15 @@ public extension UIDynamicAnimator {
         return UIDynamicAnimator_Delegate()
     }
     
-    public func ce_willResume(handle: (animator: UIDynamicAnimator) -> Void) -> Self {
-        ce._willResume = handle
+    @discardableResult
+    public func ce_dynamicAnimatorWillResume(handle: @escaping (UIDynamicAnimator) -> Void) -> Self {
+        ce._dynamicAnimatorWillResume = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didPause(handle: (animator: UIDynamicAnimator) -> Void) -> Self {
-        ce._didPause = handle
+    @discardableResult
+    public func ce_dynamicAnimatorDidPause(handle: @escaping (UIDynamicAnimator) -> Void) -> Self {
+        ce._dynamicAnimatorDidPause = handle
         rebindingDelegate()
         return self
     }
@@ -55,28 +57,28 @@ public extension UIDynamicAnimator {
 
 internal class UIDynamicAnimator_Delegate: NSObject, UIDynamicAnimatorDelegate {
     
-    var _willResume: ((UIDynamicAnimator) -> Void)?
-    var _didPause: ((UIDynamicAnimator) -> Void)?
+    var _dynamicAnimatorWillResume: ((UIDynamicAnimator) -> Void)?
+    var _dynamicAnimatorDidPause: ((UIDynamicAnimator) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(dynamicAnimatorWillResume(_:)) : _willResume,
-            #selector(dynamicAnimatorDidPause(_:)) : _didPause,
+            #selector(dynamicAnimatorWillResume(_:)) : _dynamicAnimatorWillResume,
+            #selector(dynamicAnimatorDidPause(_:)) : _dynamicAnimatorDidPause,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
-        _willResume!(animator)
+    @objc func dynamicAnimatorWillResume(_ animator: UIDynamicAnimator) {
+        _dynamicAnimatorWillResume!(animator)
     }
-    @objc func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
-        _didPause!(animator)
+    @objc func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
+        _dynamicAnimatorDidPause!(animator)
     }
 }

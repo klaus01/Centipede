@@ -2,6 +2,9 @@ UIDocumentMenuViewController: UIViewController, UIDocumentMenuDelegate
 
 DELEGATE_LIST:delegate, transitioningDelegate
 
-    func documentMenu(documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController)
+    @available(iOS 8.0, *)
+    public func documentMenu(_ documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController)
+
     
-    optional func documentMenuWasCancelled(documentMenu: UIDocumentMenuViewController)
+    @available(iOS 8.0, *)
+    optional public func documentMenuWasCancelled(_ documentMenu: UIDocumentMenuViewController)

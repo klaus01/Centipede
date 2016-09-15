@@ -1,7 +1,10 @@
 MCAdvertiserAssistant : NSObject, MCAdvertiserAssistantDelegate
 
-    // An invitation will be presented to the user
-    optional func advertiserAssistantWillPresentInvitation(advertiserAssistant: MCAdvertiserAssistant!)
+    // An invitation will be presented to the user.
+    @available(iOS 7.0, *)
+    optional public func advertiserAssistantWillPresentInvitation(_ advertiserAssistant: MCAdvertiserAssistant)
+
     
-    // An invitation was dismissed from screen
-    optional func advertiserAssistantDidDismissInvitation(advertiserAssistant: MCAdvertiserAssistant!)
+    // An invitation was dismissed from screen.
+    @available(iOS 7.0, *)
+    optional public func advertiserAssistantDidDismissInvitation(_ advertiserAssistant: MCAdvertiserAssistant)

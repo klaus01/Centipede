@@ -1,17 +1,25 @@
 UITextView: UIScrollView, UITextViewDelegate
 
-    optional func textViewShouldBeginEditing(textView: UITextView) -> Bool
-    optional func textViewShouldEndEditing(textView: UITextView) -> Bool
+    @available(iOS 2.0, *)
+    optional public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool
+
+    @available(iOS 2.0, *)
+    optional public func textViewShouldEndEditing(_ textView: UITextView) -> Bool
+
     
-    optional func textViewDidBeginEditing(textView: UITextView)
-    optional func textViewDidEndEditing(textView: UITextView)
+    @available(iOS 2.0, *)
+    optional public func textViewDidBeginEditing(_ textView: UITextView)
+
+    @available(iOS 2.0, *)
+    optional public func textViewDidEndEditing(_ textView: UITextView)
+
     
-    optional func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool
-    optional func textViewDidChange(textView: UITextView)
+    @available(iOS 2.0, *)
+    optional public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+
+    @available(iOS 2.0, *)
+    optional public func textViewDidChange(_ textView: UITextView)
+
     
-    optional func textViewDidChangeSelection(textView: UITextView)
-    
-    @availability(iOS, introduced=7.0)
-    optional func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool
-    @availability(iOS, introduced=7.0)
-    optional func textView(textView: UITextView, shouldInteractWithTextAttachment textAttachment: NSTextAttachment, inRange characterRange: NSRange) -> Bool
+    @available(iOS 2.0, *)
+    optional public func textViewDidChangeSelection(_ textView: UITextView)

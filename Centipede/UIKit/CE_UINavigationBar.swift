@@ -2,13 +2,13 @@
 //  CE_UINavigationBar.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
 
-public extension UINavigationBar {
+extension UINavigationBar {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UINavigationBar_Delegate? {
@@ -20,7 +20,7 @@ public extension UINavigationBar {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UINavigationBar_Delegate {
                 return obj as! UINavigationBar_Delegate
             }
@@ -40,23 +40,27 @@ public extension UINavigationBar {
         return UINavigationBar_Delegate()
     }
     
-    public func ce_shouldPushItem(handle: (navigationBar: UINavigationBar, item: UINavigationItem) -> Bool) -> Self {
-        ce._shouldPushItem = handle
+    @discardableResult
+    public func ce_navigationBar_shouldPush(handle: @escaping (UINavigationBar, UINavigationItem) -> Bool) -> Self {
+        ce._navigationBar_shouldPush = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didPushItem(handle: (navigationBar: UINavigationBar, item: UINavigationItem) -> Void) -> Self {
-        ce._didPushItem = handle
+    @discardableResult
+    public func ce_navigationBar_didPush(handle: @escaping (UINavigationBar, UINavigationItem) -> Void) -> Self {
+        ce._navigationBar_didPush = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldPopItem(handle: (navigationBar: UINavigationBar, item: UINavigationItem) -> Bool) -> Self {
-        ce._shouldPopItem = handle
+    @discardableResult
+    public func ce_navigationBar_shouldPop(handle: @escaping (UINavigationBar, UINavigationItem) -> Bool) -> Self {
+        ce._navigationBar_shouldPop = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didPopItem(handle: (navigationBar: UINavigationBar, item: UINavigationItem) -> Void) -> Self {
-        ce._didPopItem = handle
+    @discardableResult
+    public func ce_navigationBar_didPop(handle: @escaping (UINavigationBar, UINavigationItem) -> Void) -> Self {
+        ce._navigationBar_didPop = handle
         rebindingDelegate()
         return self
     }
@@ -65,38 +69,38 @@ public extension UINavigationBar {
 
 internal class UINavigationBar_Delegate: NSObject, UINavigationBarDelegate {
     
-    var _shouldPushItem: ((UINavigationBar, UINavigationItem) -> Bool)?
-    var _didPushItem: ((UINavigationBar, UINavigationItem) -> Void)?
-    var _shouldPopItem: ((UINavigationBar, UINavigationItem) -> Bool)?
-    var _didPopItem: ((UINavigationBar, UINavigationItem) -> Void)?
+    var _navigationBar_shouldPush: ((UINavigationBar, UINavigationItem) -> Bool)?
+    var _navigationBar_didPush: ((UINavigationBar, UINavigationItem) -> Void)?
+    var _navigationBar_shouldPop: ((UINavigationBar, UINavigationItem) -> Bool)?
+    var _navigationBar_didPop: ((UINavigationBar, UINavigationItem) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(navigationBar(_:shouldPushItem:)) : _shouldPushItem,
-            #selector(navigationBar(_:didPushItem:)) : _didPushItem,
-            #selector(navigationBar(_:shouldPopItem:)) : _shouldPopItem,
-            #selector(navigationBar(_:didPopItem:)) : _didPopItem,
+            #selector(navigationBar(_:shouldPush:)) : _navigationBar_shouldPush,
+            #selector(navigationBar(_:didPush:)) : _navigationBar_didPush,
+            #selector(navigationBar(_:shouldPop:)) : _navigationBar_shouldPop,
+            #selector(navigationBar(_:didPop:)) : _navigationBar_didPop,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func navigationBar(navigationBar: UINavigationBar, shouldPushItem item: UINavigationItem) -> Bool {
-        return _shouldPushItem!(navigationBar, item)
+    @objc func navigationBar(_ navigationBar: UINavigationBar, shouldPush item: UINavigationItem) -> Bool {
+        return _navigationBar_shouldPush!(navigationBar, item)
     }
-    @objc func navigationBar(navigationBar: UINavigationBar, didPushItem item: UINavigationItem) {
-        _didPushItem!(navigationBar, item)
+    @objc func navigationBar(_ navigationBar: UINavigationBar, didPush item: UINavigationItem) {
+        _navigationBar_didPush!(navigationBar, item)
     }
-    @objc func navigationBar(navigationBar: UINavigationBar, shouldPopItem item: UINavigationItem) -> Bool {
-        return _shouldPopItem!(navigationBar, item)
+    @objc func navigationBar(_ navigationBar: UINavigationBar, shouldPop item: UINavigationItem) -> Bool {
+        return _navigationBar_shouldPop!(navigationBar, item)
     }
-    @objc func navigationBar(navigationBar: UINavigationBar, didPopItem item: UINavigationItem) {
-        _didPopItem!(navigationBar, item)
+    @objc func navigationBar(_ navigationBar: UINavigationBar, didPop item: UINavigationItem) {
+        _navigationBar_didPop!(navigationBar, item)
     }
 }

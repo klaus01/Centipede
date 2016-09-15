@@ -2,13 +2,13 @@
 //  CE_SKRequest.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import StoreKit
 
-public extension SKRequest {
+extension SKRequest {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: SKRequest_Delegate? {
@@ -40,13 +40,15 @@ public extension SKRequest {
         return SKRequest_Delegate()
     }
     
-    public func ce_didFinish(handle: (request: SKRequest) -> Void) -> Self {
-        ce._didFinish = handle
+    @discardableResult
+    public func ce_requestDidFinish(handle: @escaping (SKRequest) -> Void) -> Self {
+        ce._requestDidFinish = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFailWithError(handle: (request: SKRequest, error: NSError) -> Void) -> Self {
-        ce._didFailWithError = handle
+    @discardableResult
+    public func ce_request_didFailWithError(handle: @escaping (SKRequest, Error) -> Void) -> Self {
+        ce._request_didFailWithError = handle
         rebindingDelegate()
         return self
     }
@@ -55,28 +57,28 @@ public extension SKRequest {
 
 internal class SKRequest_Delegate: NSObject, SKRequestDelegate {
     
-    var _didFinish: ((SKRequest) -> Void)?
-    var _didFailWithError: ((SKRequest, NSError) -> Void)?
+    var _requestDidFinish: ((SKRequest) -> Void)?
+    var _request_didFailWithError: ((SKRequest, Error) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(requestDidFinish(_:)) : _didFinish,
-            #selector(request(_:didFailWithError:)) : _didFailWithError,
+            #selector(requestDidFinish(_:)) : _requestDidFinish,
+            #selector(request(_:didFailWithError:)) : _request_didFailWithError,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func requestDidFinish(request: SKRequest) {
-        _didFinish!(request)
+    @objc func requestDidFinish(_ request: SKRequest) {
+        _requestDidFinish!(request)
     }
-    @objc func request(request: SKRequest, didFailWithError error: NSError) {
-        _didFailWithError!(request, error)
+    @objc func request(_ request: SKRequest, didFailWithError error: Error) {
+        _request_didFailWithError!(request, error)
     }
 }

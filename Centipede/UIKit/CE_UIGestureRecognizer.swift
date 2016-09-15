@@ -2,13 +2,13 @@
 //  CE_UIGestureRecognizer.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
 
-public extension UIGestureRecognizer {
+extension UIGestureRecognizer {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIGestureRecognizer_Delegate? {
@@ -20,7 +20,7 @@ public extension UIGestureRecognizer {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UIGestureRecognizer_Delegate {
                 return obj as! UIGestureRecognizer_Delegate
             }
@@ -40,28 +40,33 @@ public extension UIGestureRecognizer {
         return UIGestureRecognizer_Delegate()
     }
     
-    public func ce_shouldBegin(handle: (gestureRecognizer: UIGestureRecognizer) -> Bool) -> Self {
-        ce._shouldBegin = handle
+    @discardableResult
+    public func ce_gestureRecognizerShouldBegin(handle: @escaping (UIGestureRecognizer) -> Bool) -> Self {
+        ce._gestureRecognizerShouldBegin = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldRecognizeSimultaneouslyWithGestureRecognizer(handle: (gestureRecognizer: UIGestureRecognizer, otherGestureRecognizer: UIGestureRecognizer) -> Bool) -> Self {
-        ce._shouldRecognizeSimultaneouslyWithGestureRecognizer = handle
+    @discardableResult
+    public func ce_gestureRecognizer_shouldRecognizeSimultaneouslyWith(handle: @escaping (UIGestureRecognizer, UIGestureRecognizer) -> Bool) -> Self {
+        ce._gestureRecognizer_shouldRecognizeSimultaneouslyWith = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldRequireFailureOfGestureRecognizer(handle: (gestureRecognizer: UIGestureRecognizer, otherGestureRecognizer: UIGestureRecognizer) -> Bool) -> Self {
-        ce._shouldRequireFailureOfGestureRecognizer = handle
+    @discardableResult
+    public func ce_gestureRecognizer_shouldRequireFailureOf(handle: @escaping (UIGestureRecognizer, UIGestureRecognizer) -> Bool) -> Self {
+        ce._gestureRecognizer_shouldRequireFailureOf = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldBeRequiredToFailByGestureRecognizer(handle: (gestureRecognizer: UIGestureRecognizer, otherGestureRecognizer: UIGestureRecognizer) -> Bool) -> Self {
-        ce._shouldBeRequiredToFailByGestureRecognizer = handle
+    @discardableResult
+    public func ce_gestureRecognizer_shouldBeRequiredToFailBy(handle: @escaping (UIGestureRecognizer, UIGestureRecognizer) -> Bool) -> Self {
+        ce._gestureRecognizer_shouldBeRequiredToFailBy = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldReceiveTouch(handle: (gestureRecognizer: UIGestureRecognizer, touch: UITouch) -> Bool) -> Self {
-        ce._shouldReceiveTouch = handle
+    @discardableResult
+    public func ce_gestureRecognizer_shouldReceive(handle: @escaping (UIGestureRecognizer, UITouch) -> Bool) -> Self {
+        ce._gestureRecognizer_shouldReceive = handle
         rebindingDelegate()
         return self
     }
@@ -70,43 +75,43 @@ public extension UIGestureRecognizer {
 
 internal class UIGestureRecognizer_Delegate: NSObject, UIGestureRecognizerDelegate {
     
-    var _shouldBegin: ((UIGestureRecognizer) -> Bool)?
-    var _shouldRecognizeSimultaneouslyWithGestureRecognizer: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)?
-    var _shouldRequireFailureOfGestureRecognizer: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)?
-    var _shouldBeRequiredToFailByGestureRecognizer: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)?
-    var _shouldReceiveTouch: ((UIGestureRecognizer, UITouch) -> Bool)?
+    var _gestureRecognizerShouldBegin: ((UIGestureRecognizer) -> Bool)?
+    var _gestureRecognizer_shouldRecognizeSimultaneouslyWith: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)?
+    var _gestureRecognizer_shouldRequireFailureOf: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)?
+    var _gestureRecognizer_shouldBeRequiredToFailBy: ((UIGestureRecognizer, UIGestureRecognizer) -> Bool)?
+    var _gestureRecognizer_shouldReceive: ((UIGestureRecognizer, UITouch) -> Bool)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(gestureRecognizerShouldBegin(_:)) : _shouldBegin,
-            #selector(gestureRecognizer(_:shouldRecognizeSimultaneouslyWithGestureRecognizer:)) : _shouldRecognizeSimultaneouslyWithGestureRecognizer,
-            #selector(gestureRecognizer(_:shouldRequireFailureOfGestureRecognizer:)) : _shouldRequireFailureOfGestureRecognizer,
-            #selector(gestureRecognizer(_:shouldBeRequiredToFailByGestureRecognizer:)) : _shouldBeRequiredToFailByGestureRecognizer,
-            #selector(gestureRecognizer(_:shouldReceiveTouch:)) : _shouldReceiveTouch,
+            #selector(gestureRecognizerShouldBegin(_:)) : _gestureRecognizerShouldBegin,
+            #selector(gestureRecognizer(_:shouldRecognizeSimultaneouslyWith:)) : _gestureRecognizer_shouldRecognizeSimultaneouslyWith,
+            #selector(gestureRecognizer(_:shouldRequireFailureOf:)) : _gestureRecognizer_shouldRequireFailureOf,
+            #selector(gestureRecognizer(_:shouldBeRequiredToFailBy:)) : _gestureRecognizer_shouldBeRequiredToFailBy,
+            #selector(gestureRecognizer(_:shouldReceive:)) : _gestureRecognizer_shouldReceive,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return _shouldBegin!(gestureRecognizer)
+    @objc func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return _gestureRecognizerShouldBegin!(gestureRecognizer)
     }
-    @objc func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return _shouldRecognizeSimultaneouslyWithGestureRecognizer!(gestureRecognizer, otherGestureRecognizer)
+    @objc func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return _gestureRecognizer_shouldRecognizeSimultaneouslyWith!(gestureRecognizer, otherGestureRecognizer)
     }
-    @objc func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOfGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return _shouldRequireFailureOfGestureRecognizer!(gestureRecognizer, otherGestureRecognizer)
+    @objc func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return _gestureRecognizer_shouldRequireFailureOf!(gestureRecognizer, otherGestureRecognizer)
     }
-    @objc func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailByGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return _shouldBeRequiredToFailByGestureRecognizer!(gestureRecognizer, otherGestureRecognizer)
+    @objc func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return _gestureRecognizer_shouldBeRequiredToFailBy!(gestureRecognizer, otherGestureRecognizer)
     }
-    @objc func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        return _shouldReceiveTouch!(gestureRecognizer, touch)
+    @objc func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return _gestureRecognizer_shouldReceive!(gestureRecognizer, touch)
     }
 }

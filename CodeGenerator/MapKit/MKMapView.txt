@@ -1,51 +1,78 @@
 MKMapView: NSObject, MKMapViewDelegate
 
-    optional func mapView(mapView: MKMapView!, regionWillChangeAnimated animated: Bool)
-    optional func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool)
+    @available(iOS 3.0, *)
+    optional public func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool)
+
+    @available(iOS 3.0, *)
+    optional public func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool)
+
     
-    optional func mapViewWillStartLoadingMap(mapView: MKMapView!)
-    optional func mapViewDidFinishLoadingMap(mapView: MKMapView!)
-    optional func mapViewDidFailLoadingMap(mapView: MKMapView!, withError error: NSError!)
+    @available(iOS 3.0, *)
+    optional public func mapViewWillStartLoadingMap(_ mapView: MKMapView)
+
+    @available(iOS 3.0, *)
+    optional public func mapViewDidFinishLoadingMap(_ mapView: MKMapView)
+
+    @available(iOS 3.0, *)
+    optional public func mapViewDidFailLoadingMap(_ mapView: MKMapView, withError error: Error)
+
     
-    @availability(iOS, introduced=7.0)
-    optional func mapViewWillStartRenderingMap(mapView: MKMapView!)
-    @availability(iOS, introduced=7.0)
-    optional func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool)
+    @available(iOS 7.0, *)
+    optional public func mapViewWillStartRenderingMap(_ mapView: MKMapView)
+
+    @available(iOS 7.0, *)
+    optional public func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool)
+
     
     // mapView:viewForAnnotation: provides the view for each annotation.
     // This method may be called for all or some of the added annotations.
     // For MapKit provided annotations (eg. MKUserLocation) return nil to use the MapKit provided annotation view.
-    optional func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!
+    @available(iOS 3.0, *)
+    optional public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+
     
     // mapView:didAddAnnotationViews: is called after the annotation views have been added and positioned in the map.
     // The delegate can implement this method to animate the adding of the annotations views.
     // Use the current positions of the annotation views as the destinations of the animation.
-    optional func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!)
+    @available(iOS 3.0, *)
+    optional public func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView])
+
     
     // mapView:annotationView:calloutAccessoryControlTapped: is called when the user taps on left & right callout accessory UIControls.
-    optional func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!)
+    @available(iOS 3.0, *)
+    optional public func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
+
     
-    @availability(iOS, introduced=4.0)
-    optional func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!)
-    @availability(iOS, introduced=4.0)
-    optional func mapView(mapView: MKMapView!, didDeselectAnnotationView view: MKAnnotationView!)
+    @available(iOS 4.0, *)
+    optional public func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
+
+    @available(iOS 4.0, *)
+    optional public func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView)
+
     
-    @availability(iOS, introduced=4.0)
-    optional func mapViewWillStartLocatingUser(mapView: MKMapView!)
-    @availability(iOS, introduced=4.0)
-    optional func mapViewDidStopLocatingUser(mapView: MKMapView!)
-    @availability(iOS, introduced=4.0)
-    optional func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!)
-    @availability(iOS, introduced=4.0)
-    optional func mapView(mapView: MKMapView!, didFailToLocateUserWithError error: NSError!)
+    @available(iOS 4.0, *)
+    optional public func mapViewWillStartLocatingUser(_ mapView: MKMapView)
+
+    @available(iOS 4.0, *)
+    optional public func mapViewDidStopLocatingUser(_ mapView: MKMapView)
+
+    @available(iOS 4.0, *)
+    optional public func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation)
+
+    @available(iOS 4.0, *)
+    optional public func mapView(_ mapView: MKMapView, didFailToLocateUserWithError error: Error)
+
     
-    @availability(iOS, introduced=4.0)
-    optional func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState)
+    @available(iOS 4.0, *)
+    optional public func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState)
+
     
-    @availability(iOS, introduced=5.0)
-    optional func mapView(mapView: MKMapView!, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool)
+    @available(iOS 5.0, *)
+    optional public func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool)
+
     
-    @availability(iOS, introduced=7.0)
-    optional func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer!
-    @availability(iOS, introduced=7.0)
-    optional func mapView(mapView: MKMapView!, didAddOverlayRenderers renderers: [AnyObject]!)
+    @available(iOS 7.0, *)
+    optional public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
+
+    @available(iOS 7.0, *)
+    // optional public func mapView(_ mapView: MKMapView, didAdd renderers: [MKOverlayRenderer])

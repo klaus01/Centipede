@@ -2,13 +2,13 @@
 //  CE_UIVideoEditorController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
 
-public extension UIVideoEditorController {
+extension UIVideoEditorController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIVideoEditorController_Delegate? {
@@ -20,7 +20,7 @@ public extension UIVideoEditorController {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UIVideoEditorController_Delegate {
                 return obj as! UIVideoEditorController_Delegate
             }
@@ -40,18 +40,21 @@ public extension UIVideoEditorController {
         return UIVideoEditorController_Delegate()
     }
     
-    public func ce_didSaveEditedVideoToPath(handle: (editor: UIVideoEditorController, editedVideoPath: String) -> Void) -> Self {
-        ce._didSaveEditedVideoToPath = handle
+    @discardableResult
+    public func ce_videoEditorController_didSaveEditedVideoToPath(handle: @escaping (UIVideoEditorController, String) -> Void) -> Self {
+        ce._videoEditorController_didSaveEditedVideoToPath = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didFailWithError(handle: (editor: UIVideoEditorController, error: NSError) -> Void) -> Self {
-        ce._didFailWithError = handle
+    @discardableResult
+    public func ce_videoEditorController_didFailWithError(handle: @escaping (UIVideoEditorController, Error) -> Void) -> Self {
+        ce._videoEditorController_didFailWithError = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didCancel(handle: (editor: UIVideoEditorController) -> Void) -> Self {
-        ce._didCancel = handle
+    @discardableResult
+    public func ce_videoEditorControllerDidCancel(handle: @escaping (UIVideoEditorController) -> Void) -> Self {
+        ce._videoEditorControllerDidCancel = handle
         rebindingDelegate()
         return self
     }
@@ -60,33 +63,33 @@ public extension UIVideoEditorController {
 
 internal class UIVideoEditorController_Delegate: UINavigationController_Delegate, UIVideoEditorControllerDelegate {
     
-    var _didSaveEditedVideoToPath: ((UIVideoEditorController, String) -> Void)?
-    var _didFailWithError: ((UIVideoEditorController, NSError) -> Void)?
-    var _didCancel: ((UIVideoEditorController) -> Void)?
+    var _videoEditorController_didSaveEditedVideoToPath: ((UIVideoEditorController, String) -> Void)?
+    var _videoEditorController_didFailWithError: ((UIVideoEditorController, Error) -> Void)?
+    var _videoEditorControllerDidCancel: ((UIVideoEditorController) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(videoEditorController(_:didSaveEditedVideoToPath:)) : _didSaveEditedVideoToPath,
-            #selector(videoEditorController(_:didFailWithError:)) : _didFailWithError,
-            #selector(videoEditorControllerDidCancel(_:)) : _didCancel,
+            #selector(videoEditorController(_:didSaveEditedVideoToPath:)) : _videoEditorController_didSaveEditedVideoToPath,
+            #selector(videoEditorController(_:didFailWithError:)) : _videoEditorController_didFailWithError,
+            #selector(videoEditorControllerDidCancel(_:)) : _videoEditorControllerDidCancel,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func videoEditorController(editor: UIVideoEditorController, didSaveEditedVideoToPath editedVideoPath: String) {
-        _didSaveEditedVideoToPath!(editor, editedVideoPath)
+    @objc func videoEditorController(_ editor: UIVideoEditorController, didSaveEditedVideoToPath editedVideoPath: String) {
+        _videoEditorController_didSaveEditedVideoToPath!(editor, editedVideoPath)
     }
-    @objc func videoEditorController(editor: UIVideoEditorController, didFailWithError error: NSError) {
-        _didFailWithError!(editor, error)
+    @objc func videoEditorController(_ editor: UIVideoEditorController, didFailWithError error: Error) {
+        _videoEditorController_didFailWithError!(editor, error)
     }
-    @objc func videoEditorControllerDidCancel(editor: UIVideoEditorController) {
-        _didCancel!(editor)
+    @objc func videoEditorControllerDidCancel(_ editor: UIVideoEditorController) {
+        _videoEditorControllerDidCancel!(editor)
     }
 }

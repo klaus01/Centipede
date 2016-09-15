@@ -2,13 +2,13 @@
 //  CE_UISplitViewController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
 
-public extension UISplitViewController {
+extension UISplitViewController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UISplitViewController_Delegate? {
@@ -20,7 +20,7 @@ public extension UISplitViewController {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UISplitViewController_Delegate {
                 return obj as! UISplitViewController_Delegate
             }
@@ -42,73 +42,63 @@ public extension UISplitViewController {
         return UISplitViewController_Delegate()
     }
     
-    public func ce_willChangeToDisplayMode(handle: (svc: UISplitViewController, displayMode: UISplitViewControllerDisplayMode) -> Void) -> Self {
-        ce._willChangeToDisplayMode = handle
+    @discardableResult
+    public func ce_splitViewController_willChangeTo(handle: @escaping (UISplitViewController, UISplitViewControllerDisplayMode) -> Void) -> Self {
+        ce._splitViewController_willChangeTo = handle
         rebindingDelegate()
         return self
     }
-    public func ce_targetDisplayModeForActionIn(handle: (svc: UISplitViewController) -> UISplitViewControllerDisplayMode) -> Self {
-        ce._targetDisplayModeForActionIn = handle
+    @discardableResult
+    public func ce_targetDisplayModeForAction_in(handle: @escaping (UISplitViewController) -> UISplitViewControllerDisplayMode) -> Self {
+        ce._targetDisplayModeForAction_in = handle
         rebindingDelegate()
         return self
     }
-    public func ce_showViewController(handle: (splitViewController: UISplitViewController, vc: UIViewController, sender: AnyObject?) -> Bool) -> Self {
-        ce._showViewController = handle
+    @discardableResult
+    public func ce_splitViewController_show(handle: @escaping (UISplitViewController, UIViewController, Any?) -> Bool) -> Self {
+        ce._splitViewController_show = handle
         rebindingDelegate()
         return self
     }
-    public func ce_showDetailViewController(handle: (splitViewController: UISplitViewController, vc: UIViewController, sender: AnyObject?) -> Bool) -> Self {
-        ce._showDetailViewController = handle
+    @discardableResult
+    public func ce_splitViewController_showDetail(handle: @escaping (UISplitViewController, UIViewController, Any?) -> Bool) -> Self {
+        ce._splitViewController_showDetail = handle
         rebindingDelegate()
         return self
     }
-    public func ce_primaryViewControllerForCollapsing(handle: (splitViewController: UISplitViewController) -> UIViewController?) -> Self {
-        ce._primaryViewControllerForCollapsing = handle
+    @discardableResult
+    public func ce_primaryViewController_forCollapsing(handle: @escaping (UISplitViewController) -> UIViewController?) -> Self {
+        ce._primaryViewController_forCollapsing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_primaryViewControllerForExpanding(handle: (splitViewController: UISplitViewController) -> UIViewController?) -> Self {
-        ce._primaryViewControllerForExpanding = handle
+    @discardableResult
+    public func ce_primaryViewController_forExpanding(handle: @escaping (UISplitViewController) -> UIViewController?) -> Self {
+        ce._primaryViewController_forExpanding = handle
         rebindingDelegate()
         return self
     }
-    public func ce_collapseSecondaryViewController(handle: (splitViewController: UISplitViewController, secondaryViewController: UIViewController, primaryViewController: UIViewController) -> Bool) -> Self {
-        ce._collapseSecondaryViewController = handle
+    @discardableResult
+    public func ce_splitViewController_collapseSecondary(handle: @escaping (UISplitViewController, UIViewController, UIViewController) -> Bool) -> Self {
+        ce._splitViewController_collapseSecondary = handle
         rebindingDelegate()
         return self
     }
-    public func ce_separateSecondaryViewControllerFromPrimaryViewController(handle: (splitViewController: UISplitViewController, primaryViewController: UIViewController) -> UIViewController?) -> Self {
-        ce._separateSecondaryViewControllerFromPrimaryViewController = handle
+    @discardableResult
+    public func ce_splitViewController_separateSecondaryFrom(handle: @escaping (UISplitViewController, UIViewController) -> UIViewController?) -> Self {
+        ce._splitViewController_separateSecondaryFrom = handle
         rebindingDelegate()
         return self
     }
-    public func ce_supportedInterfaceOrientations(handle: (splitViewController: UISplitViewController) -> UIInterfaceOrientationMask) -> Self {
-        ce._supportedInterfaceOrientations = handle
+    @discardableResult
+    public func ce_splitViewControllerSupportedInterfaceOrientations(handle: @escaping (UISplitViewController) -> UIInterfaceOrientationMask) -> Self {
+        ce._splitViewControllerSupportedInterfaceOrientations = handle
         rebindingDelegate()
         return self
     }
-    public func ce_preferredInterfaceOrientationForPresentation(handle: (splitViewController: UISplitViewController) -> UIInterfaceOrientation) -> Self {
-        ce._preferredInterfaceOrientationForPresentation = handle
-        rebindingDelegate()
-        return self
-    }
-    public func ce_willHideViewController(handle: (svc: UISplitViewController, aViewController: UIViewController, barButtonItem: UIBarButtonItem, pc: UIPopoverController) -> Void) -> Self {
-        ce._willHideViewController = handle
-        rebindingDelegate()
-        return self
-    }
-    public func ce_willShowViewController(handle: (svc: UISplitViewController, aViewController: UIViewController, barButtonItem: UIBarButtonItem) -> Void) -> Self {
-        ce._willShowViewController = handle
-        rebindingDelegate()
-        return self
-    }
-    public func ce_popoverController(handle: (svc: UISplitViewController, pc: UIPopoverController, aViewController: UIViewController) -> Void) -> Self {
-        ce._popoverController = handle
-        rebindingDelegate()
-        return self
-    }
-    public func ce_shouldHideViewController(handle: (svc: UISplitViewController, vc: UIViewController, orientation: UIInterfaceOrientation) -> Bool) -> Self {
-        ce._shouldHideViewController = handle
+    @discardableResult
+    public func ce_splitViewControllerPreferredInterfaceOrientationForPresentation(handle: @escaping (UISplitViewController) -> UIInterfaceOrientation) -> Self {
+        ce._splitViewControllerPreferredInterfaceOrientationForPresentation = handle
         rebindingDelegate()
         return self
     }
@@ -117,94 +107,74 @@ public extension UISplitViewController {
 
 internal class UISplitViewController_Delegate: UIViewController_Delegate, UISplitViewControllerDelegate {
     
-    var _willChangeToDisplayMode: ((UISplitViewController, UISplitViewControllerDisplayMode) -> Void)?
-    var _targetDisplayModeForActionIn: ((UISplitViewController) -> UISplitViewControllerDisplayMode)?
-    var _showViewController: ((UISplitViewController, UIViewController, AnyObject?) -> Bool)?
-    var _showDetailViewController: ((UISplitViewController, UIViewController, AnyObject?) -> Bool)?
-    var _primaryViewControllerForCollapsing: ((UISplitViewController) -> UIViewController?)?
-    var _primaryViewControllerForExpanding: ((UISplitViewController) -> UIViewController?)?
-    var _collapseSecondaryViewController: ((UISplitViewController, UIViewController, UIViewController) -> Bool)?
-    var _separateSecondaryViewControllerFromPrimaryViewController: ((UISplitViewController, UIViewController) -> UIViewController?)?
-    var _supportedInterfaceOrientations: ((UISplitViewController) -> UIInterfaceOrientationMask)?
-    var _preferredInterfaceOrientationForPresentation: ((UISplitViewController) -> UIInterfaceOrientation)?
-    var _willHideViewController: ((UISplitViewController, UIViewController, UIBarButtonItem, UIPopoverController) -> Void)?
-    var _willShowViewController: ((UISplitViewController, UIViewController, UIBarButtonItem) -> Void)?
-    var _popoverController: ((UISplitViewController, UIPopoverController, UIViewController) -> Void)?
-    var _shouldHideViewController: ((UISplitViewController, UIViewController, UIInterfaceOrientation) -> Bool)?
+    var _splitViewController_willChangeTo: ((UISplitViewController, UISplitViewControllerDisplayMode) -> Void)?
+    var _targetDisplayModeForAction_in: ((UISplitViewController) -> UISplitViewControllerDisplayMode)?
+    var _splitViewController_show: ((UISplitViewController, UIViewController, Any?) -> Bool)?
+    var _splitViewController_showDetail: ((UISplitViewController, UIViewController, Any?) -> Bool)?
+    var _primaryViewController_forCollapsing: ((UISplitViewController) -> UIViewController?)?
+    var _primaryViewController_forExpanding: ((UISplitViewController) -> UIViewController?)?
+    var _splitViewController_collapseSecondary: ((UISplitViewController, UIViewController, UIViewController) -> Bool)?
+    var _splitViewController_separateSecondaryFrom: ((UISplitViewController, UIViewController) -> UIViewController?)?
+    var _splitViewControllerSupportedInterfaceOrientations: ((UISplitViewController) -> UIInterfaceOrientationMask)?
+    var _splitViewControllerPreferredInterfaceOrientationForPresentation: ((UISplitViewController) -> UIInterfaceOrientation)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(splitViewController(_:willChangeToDisplayMode:)) : _willChangeToDisplayMode,
-            #selector(targetDisplayModeForActionInSplitViewController(_:)) : _targetDisplayModeForActionIn,
-            #selector(splitViewController(_:showViewController:sender:)) : _showViewController,
-            #selector(splitViewController(_:showDetailViewController:sender:)) : _showDetailViewController,
-            #selector(primaryViewControllerForCollapsingSplitViewController(_:)) : _primaryViewControllerForCollapsing,
-            #selector(primaryViewControllerForExpandingSplitViewController(_:)) : _primaryViewControllerForExpanding,
-            #selector(splitViewController(_:collapseSecondaryViewController:ontoPrimaryViewController:)) : _collapseSecondaryViewController,
+            #selector(splitViewController(_:willChangeTo:)) : _splitViewController_willChangeTo,
+            #selector(targetDisplayModeForAction(in:)) : _targetDisplayModeForAction_in,
+            #selector(splitViewController(_:show:sender:)) : _splitViewController_show,
+            #selector(splitViewController(_:showDetail:sender:)) : _splitViewController_showDetail,
+            #selector(primaryViewController(forCollapsing:)) : _primaryViewController_forCollapsing,
+            #selector(primaryViewController(forExpanding:)) : _primaryViewController_forExpanding,
+            #selector(splitViewController(_:collapseSecondary:onto:)) : _splitViewController_collapseSecondary,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            #selector(splitViewController(_:separateSecondaryViewControllerFromPrimaryViewController:)) : _separateSecondaryViewControllerFromPrimaryViewController,
-            #selector(splitViewControllerSupportedInterfaceOrientations(_:)) : _supportedInterfaceOrientations,
-            #selector(splitViewControllerPreferredInterfaceOrientationForPresentation(_:)) : _preferredInterfaceOrientationForPresentation,
-            #selector(splitViewController(_:willHideViewController:withBarButtonItem:forPopoverController:)) : _willHideViewController,
-            #selector(splitViewController(_:willShowViewController:invalidatingBarButtonItem:)) : _willShowViewController,
-            #selector(splitViewController(_:popoverController:willPresentViewController:)) : _popoverController,
-            #selector(splitViewController(_:shouldHideViewController:inOrientation:)) : _shouldHideViewController,
+            #selector(splitViewController(_:separateSecondaryFrom:)) : _splitViewController_separateSecondaryFrom,
+            #selector(splitViewControllerSupportedInterfaceOrientations(_:)) : _splitViewControllerSupportedInterfaceOrientations,
+            #selector(splitViewControllerPreferredInterfaceOrientationForPresentation(_:)) : _splitViewControllerPreferredInterfaceOrientationForPresentation,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func splitViewController(svc: UISplitViewController, willChangeToDisplayMode displayMode: UISplitViewControllerDisplayMode) {
-        _willChangeToDisplayMode!(svc, displayMode)
+    @objc func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewControllerDisplayMode) {
+        _splitViewController_willChangeTo!(svc, displayMode)
     }
-    @objc func targetDisplayModeForActionInSplitViewController(svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
-        return _targetDisplayModeForActionIn!(svc)
+    @objc func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
+        return _targetDisplayModeForAction_in!(svc)
     }
-    @objc func splitViewController(splitViewController: UISplitViewController, showViewController vc: UIViewController, sender: AnyObject?) -> Bool {
-        return _showViewController!(splitViewController, vc, sender)
+    @objc func splitViewController(_ splitViewController: UISplitViewController, show vc: UIViewController, sender: Any?) -> Bool {
+        return _splitViewController_show!(splitViewController, vc, sender)
     }
-    @objc func splitViewController(splitViewController: UISplitViewController, showDetailViewController vc: UIViewController, sender: AnyObject?) -> Bool {
-        return _showDetailViewController!(splitViewController, vc, sender)
+    @objc func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
+        return _splitViewController_showDetail!(splitViewController, vc, sender)
     }
-    @objc func primaryViewControllerForCollapsingSplitViewController(splitViewController: UISplitViewController) -> UIViewController? {
-        return _primaryViewControllerForCollapsing!(splitViewController)
+    @objc func primaryViewController(forCollapsing splitViewController: UISplitViewController) -> UIViewController? {
+        return _primaryViewController_forCollapsing!(splitViewController)
     }
-    @objc func primaryViewControllerForExpandingSplitViewController(splitViewController: UISplitViewController) -> UIViewController? {
-        return _primaryViewControllerForExpanding!(splitViewController)
+    @objc func primaryViewController(forExpanding splitViewController: UISplitViewController) -> UIViewController? {
+        return _primaryViewController_forExpanding!(splitViewController)
     }
-    @objc func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
-        return _collapseSecondaryViewController!(splitViewController, secondaryViewController, primaryViewController)
+    @objc func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        return _splitViewController_collapseSecondary!(splitViewController, secondaryViewController, primaryViewController)
     }
-    @objc func splitViewController(splitViewController: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController) -> UIViewController? {
-        return _separateSecondaryViewControllerFromPrimaryViewController!(splitViewController, primaryViewController)
+    @objc func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
+        return _splitViewController_separateSecondaryFrom!(splitViewController, primaryViewController)
     }
-    @objc func splitViewControllerSupportedInterfaceOrientations(splitViewController: UISplitViewController) -> UIInterfaceOrientationMask {
-        return _supportedInterfaceOrientations!(splitViewController)
+    @objc func splitViewControllerSupportedInterfaceOrientations(_ splitViewController: UISplitViewController) -> UIInterfaceOrientationMask {
+        return _splitViewControllerSupportedInterfaceOrientations!(splitViewController)
     }
-    @objc func splitViewControllerPreferredInterfaceOrientationForPresentation(splitViewController: UISplitViewController) -> UIInterfaceOrientation {
-        return _preferredInterfaceOrientationForPresentation!(splitViewController)
-    }
-    @objc func splitViewController(svc: UISplitViewController, willHideViewController aViewController: UIViewController, withBarButtonItem barButtonItem: UIBarButtonItem, forPopoverController pc: UIPopoverController) {
-        _willHideViewController!(svc, aViewController, barButtonItem, pc)
-    }
-    @objc func splitViewController(svc: UISplitViewController, willShowViewController aViewController: UIViewController, invalidatingBarButtonItem barButtonItem: UIBarButtonItem) {
-        _willShowViewController!(svc, aViewController, barButtonItem)
-    }
-    @objc func splitViewController(svc: UISplitViewController, popoverController pc: UIPopoverController, willPresentViewController aViewController: UIViewController) {
-        _popoverController!(svc, pc, aViewController)
-    }
-    @objc func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
-        return _shouldHideViewController!(svc, vc, orientation)
+    @objc func splitViewControllerPreferredInterfaceOrientationForPresentation(_ splitViewController: UISplitViewController) -> UIInterfaceOrientation {
+        return _splitViewControllerPreferredInterfaceOrientationForPresentation!(splitViewController)
     }
 }

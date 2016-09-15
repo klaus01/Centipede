@@ -2,13 +2,13 @@
 //  CE_UICollectionView.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
 
-public extension UICollectionView {
+extension UICollectionView {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UICollectionView_Delegate? {
@@ -20,7 +20,7 @@ public extension UICollectionView {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UICollectionView_Delegate {
                 return obj as! UICollectionView_Delegate
             }
@@ -42,128 +42,153 @@ public extension UICollectionView {
         return UICollectionView_Delegate()
     }
     
-    public func ce_numberOfItemsInSection(handle: (collectionView: UICollectionView, section: Int) -> Int) -> Self {
-        ce._numberOfItemsInSection = handle
+    @discardableResult
+    public func ce_collectionView_numberOfItemsInSection(handle: @escaping (UICollectionView, Int) -> Int) -> Self {
+        ce._collectionView_numberOfItemsInSection = handle
         rebindingDelegate()
         return self
     }
-    public func ce_cellForItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionViewCell) -> Self {
-        ce._cellForItemAtIndexPath = handle
+    @discardableResult
+    public func ce_collectionView_cellForItemAt(handle: @escaping (UICollectionView, IndexPath) -> UICollectionViewCell) -> Self {
+        ce._collectionView_cellForItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_numberOfSectionsIn(handle: (collectionView: UICollectionView) -> Int) -> Self {
-        ce._numberOfSectionsIn = handle
+    @discardableResult
+    public func ce_numberOfSections_in(handle: @escaping (UICollectionView) -> Int) -> Self {
+        ce._numberOfSections_in = handle
         rebindingDelegate()
         return self
     }
-    public func ce_viewForSupplementaryElementOfKind(handle: (collectionView: UICollectionView, kind: String, indexPath: NSIndexPath) -> UICollectionReusableView) -> Self {
-        ce._viewForSupplementaryElementOfKind = handle
+    @discardableResult
+    public func ce_collectionView_viewForSupplementaryElementOfKind(handle: @escaping (UICollectionView, String, IndexPath) -> UICollectionReusableView) -> Self {
+        ce._collectionView_viewForSupplementaryElementOfKind = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldHighlightItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Bool) -> Self {
-        ce._shouldHighlightItemAtIndexPath = handle
+    @discardableResult
+    public func ce_collectionView_shouldHighlightItemAt(handle: @escaping (UICollectionView, IndexPath) -> Bool) -> Self {
+        ce._collectionView_shouldHighlightItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didHighlightItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Void) -> Self {
-        ce._didHighlightItemAtIndexPath = handle
+    @discardableResult
+    public func ce_collectionView_didHighlightItemAt(handle: @escaping (UICollectionView, IndexPath) -> Void) -> Self {
+        ce._collectionView_didHighlightItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didUnhighlightItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Void) -> Self {
-        ce._didUnhighlightItemAtIndexPath = handle
+    @discardableResult
+    public func ce_collectionView_didUnhighlightItemAt(handle: @escaping (UICollectionView, IndexPath) -> Void) -> Self {
+        ce._collectionView_didUnhighlightItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldSelectItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Bool) -> Self {
-        ce._shouldSelectItemAtIndexPath = handle
+    @discardableResult
+    public func ce_collectionView_shouldSelectItemAt(handle: @escaping (UICollectionView, IndexPath) -> Bool) -> Self {
+        ce._collectionView_shouldSelectItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldDeselectItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Bool) -> Self {
-        ce._shouldDeselectItemAtIndexPath = handle
+    @discardableResult
+    public func ce_collectionView_shouldDeselectItemAt(handle: @escaping (UICollectionView, IndexPath) -> Bool) -> Self {
+        ce._collectionView_shouldDeselectItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didSelectItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Void) -> Self {
-        ce._didSelectItemAtIndexPath = handle
+    @discardableResult
+    public func ce_collectionView_didSelectItemAt(handle: @escaping (UICollectionView, IndexPath) -> Void) -> Self {
+        ce._collectionView_didSelectItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDeselectItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Void) -> Self {
-        ce._didDeselectItemAtIndexPath = handle
+    @discardableResult
+    public func ce_collectionView_didDeselectItemAt(handle: @escaping (UICollectionView, IndexPath) -> Void) -> Self {
+        ce._collectionView_didDeselectItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willDisplayCell(handle: (collectionView: UICollectionView, cell: UICollectionViewCell, indexPath: NSIndexPath) -> Void) -> Self {
-        ce._willDisplayCell = handle
+    @discardableResult
+    public func ce_collectionView_willDisplay(handle: @escaping (UICollectionView, UICollectionViewCell, IndexPath) -> Void) -> Self {
+        ce._collectionView_willDisplay = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willDisplaySupplementaryView(handle: (collectionView: UICollectionView, view: UICollectionReusableView, elementKind: String, indexPath: NSIndexPath) -> Void) -> Self {
-        ce._willDisplaySupplementaryView = handle
+    @discardableResult
+    public func ce_collectionView_willDisplaySupplementaryView(handle: @escaping (UICollectionView, UICollectionReusableView, String, IndexPath) -> Void) -> Self {
+        ce._collectionView_willDisplaySupplementaryView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didEndDisplayingCell(handle: (collectionView: UICollectionView, cell: UICollectionViewCell, indexPath: NSIndexPath) -> Void) -> Self {
-        ce._didEndDisplayingCell = handle
+    @discardableResult
+    public func ce_collectionView_didEndDisplaying(handle: @escaping (UICollectionView, UICollectionViewCell, IndexPath) -> Void) -> Self {
+        ce._collectionView_didEndDisplaying = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didEndDisplayingSupplementaryView(handle: (collectionView: UICollectionView, view: UICollectionReusableView, elementKind: String, indexPath: NSIndexPath) -> Void) -> Self {
-        ce._didEndDisplayingSupplementaryView = handle
+    @discardableResult
+    public func ce_collectionView_didEndDisplayingSupplementaryView(handle: @escaping (UICollectionView, UICollectionReusableView, String, IndexPath) -> Void) -> Self {
+        ce._collectionView_didEndDisplayingSupplementaryView = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldShowMenuForItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Bool) -> Self {
-        ce._shouldShowMenuForItemAtIndexPath = handle
+    @discardableResult
+    public func ce_collectionView_shouldShowMenuForItemAt(handle: @escaping (UICollectionView, IndexPath) -> Bool) -> Self {
+        ce._collectionView_shouldShowMenuForItemAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_canPerformAction(handle: (collectionView: UICollectionView, action: Selector, indexPath: NSIndexPath, sender: AnyObject?) -> Bool) -> Self {
-        ce._canPerformAction = handle
+    @discardableResult
+    public func ce_collectionView_canPerformAction(handle: @escaping (UICollectionView, Selector, IndexPath, Any?) -> Bool) -> Self {
+        ce._collectionView_canPerformAction = handle
         rebindingDelegate()
         return self
     }
-    public func ce_performAction(handle: (collectionView: UICollectionView, action: Selector, indexPath: NSIndexPath, sender: AnyObject?) -> Void) -> Self {
-        ce._performAction = handle
+    @discardableResult
+    public func ce_collectionView_performAction(handle: @escaping (UICollectionView, Selector, IndexPath, Any?) -> Void) -> Self {
+        ce._collectionView_performAction = handle
         rebindingDelegate()
         return self
     }
-    public func ce_transitionLayoutForOldLayout(handle: (collectionView: UICollectionView, fromLayout: UICollectionViewLayout, toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout) -> Self {
-        ce._transitionLayoutForOldLayout = handle
+    @discardableResult
+    public func ce_collectionView_transitionLayoutForOldLayout(handle: @escaping (UICollectionView, UICollectionViewLayout, UICollectionViewLayout) -> UICollectionViewTransitionLayout) -> Self {
+        ce._collectionView_transitionLayoutForOldLayout = handle
         rebindingDelegate()
         return self
     }
-    public func ce_layoutSizeForItemAtIndexPath(handle: (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, indexPath: NSIndexPath) -> CGSize) -> Self {
-        ce._layoutSizeForItemAtIndexPath = handle
+    @discardableResult
+    public func ce_collectionView_layout(handle: @escaping (UICollectionView, UICollectionViewLayout, IndexPath) -> CGSize) -> Self {
+        ce._collectionView_layout = handle
         rebindingDelegate()
         return self
     }
-    public func ce_layoutInsetForSectionAtIndex(handle: (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, section: Int) -> UIEdgeInsets) -> Self {
-        ce._layoutInsetForSectionAtIndex = handle
+    @discardableResult
+    public func ce_collectionView_layout_layout(handle: @escaping (UICollectionView, UICollectionViewLayout, Int) -> UIEdgeInsets) -> Self {
+        ce._collectionView_layout_layout = handle
         rebindingDelegate()
         return self
     }
-    public func ce_layoutMinimumLineSpacingForSectionAtIndex(handle: (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, section: Int) -> CGFloat) -> Self {
-        ce._layoutMinimumLineSpacingForSectionAtIndex = handle
+    @discardableResult
+    public func ce_collectionView_layout_layout_layout(handle: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGFloat) -> Self {
+        ce._collectionView_layout_layout_layout = handle
         rebindingDelegate()
         return self
     }
-    public func ce_layoutMinimumInteritemSpacingForSectionAtIndex(handle: (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, section: Int) -> CGFloat) -> Self {
-        ce._layoutMinimumInteritemSpacingForSectionAtIndex = handle
+    @discardableResult
+    public func ce_collectionView_layout_layout_layout_layout(handle: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGFloat) -> Self {
+        ce._collectionView_layout_layout_layout_layout = handle
         rebindingDelegate()
         return self
     }
-    public func ce_layoutReferenceSizeForHeaderInSection(handle: (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, section: Int) -> CGSize) -> Self {
-        ce._layoutReferenceSizeForHeaderInSection = handle
+    @discardableResult
+    public func ce_collectionView_layout_layout_layout_layout_layout(handle: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGSize) -> Self {
+        ce._collectionView_layout_layout_layout_layout_layout = handle
         rebindingDelegate()
         return self
     }
-    public func ce_layoutReferenceSizeForFooterInSection(handle: (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, section: Int) -> CGSize) -> Self {
-        ce._layoutReferenceSizeForFooterInSection = handle
+    @discardableResult
+    public func ce_collectionView_layout_layout_layout_layout_layout_layout(handle: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGSize) -> Self {
+        ce._collectionView_layout_layout_layout_layout_layout_layout = handle
         rebindingDelegate()
         return self
     }
@@ -172,161 +197,161 @@ public extension UICollectionView {
 
 internal class UICollectionView_Delegate: UIScrollView_Delegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var _numberOfItemsInSection: ((UICollectionView, Int) -> Int)?
-    var _cellForItemAtIndexPath: ((UICollectionView, NSIndexPath) -> UICollectionViewCell)?
-    var _numberOfSectionsIn: ((UICollectionView) -> Int)?
-    var _viewForSupplementaryElementOfKind: ((UICollectionView, String, NSIndexPath) -> UICollectionReusableView)?
-    var _shouldHighlightItemAtIndexPath: ((UICollectionView, NSIndexPath) -> Bool)?
-    var _didHighlightItemAtIndexPath: ((UICollectionView, NSIndexPath) -> Void)?
-    var _didUnhighlightItemAtIndexPath: ((UICollectionView, NSIndexPath) -> Void)?
-    var _shouldSelectItemAtIndexPath: ((UICollectionView, NSIndexPath) -> Bool)?
-    var _shouldDeselectItemAtIndexPath: ((UICollectionView, NSIndexPath) -> Bool)?
-    var _didSelectItemAtIndexPath: ((UICollectionView, NSIndexPath) -> Void)?
-    var _didDeselectItemAtIndexPath: ((UICollectionView, NSIndexPath) -> Void)?
-    var _willDisplayCell: ((UICollectionView, UICollectionViewCell, NSIndexPath) -> Void)?
-    var _willDisplaySupplementaryView: ((UICollectionView, UICollectionReusableView, String, NSIndexPath) -> Void)?
-    var _didEndDisplayingCell: ((UICollectionView, UICollectionViewCell, NSIndexPath) -> Void)?
-    var _didEndDisplayingSupplementaryView: ((UICollectionView, UICollectionReusableView, String, NSIndexPath) -> Void)?
-    var _shouldShowMenuForItemAtIndexPath: ((UICollectionView, NSIndexPath) -> Bool)?
-    var _canPerformAction: ((UICollectionView, Selector, NSIndexPath, AnyObject?) -> Bool)?
-    var _performAction: ((UICollectionView, Selector, NSIndexPath, AnyObject?) -> Void)?
-    var _transitionLayoutForOldLayout: ((UICollectionView, UICollectionViewLayout, UICollectionViewLayout) -> UICollectionViewTransitionLayout)?
-    var _layoutSizeForItemAtIndexPath: ((UICollectionView, UICollectionViewLayout, NSIndexPath) -> CGSize)?
-    var _layoutInsetForSectionAtIndex: ((UICollectionView, UICollectionViewLayout, Int) -> UIEdgeInsets)?
-    var _layoutMinimumLineSpacingForSectionAtIndex: ((UICollectionView, UICollectionViewLayout, Int) -> CGFloat)?
-    var _layoutMinimumInteritemSpacingForSectionAtIndex: ((UICollectionView, UICollectionViewLayout, Int) -> CGFloat)?
-    var _layoutReferenceSizeForHeaderInSection: ((UICollectionView, UICollectionViewLayout, Int) -> CGSize)?
-    var _layoutReferenceSizeForFooterInSection: ((UICollectionView, UICollectionViewLayout, Int) -> CGSize)?
+    var _collectionView_numberOfItemsInSection: ((UICollectionView, Int) -> Int)?
+    var _collectionView_cellForItemAt: ((UICollectionView, IndexPath) -> UICollectionViewCell)?
+    var _numberOfSections_in: ((UICollectionView) -> Int)?
+    var _collectionView_viewForSupplementaryElementOfKind: ((UICollectionView, String, IndexPath) -> UICollectionReusableView)?
+    var _collectionView_shouldHighlightItemAt: ((UICollectionView, IndexPath) -> Bool)?
+    var _collectionView_didHighlightItemAt: ((UICollectionView, IndexPath) -> Void)?
+    var _collectionView_didUnhighlightItemAt: ((UICollectionView, IndexPath) -> Void)?
+    var _collectionView_shouldSelectItemAt: ((UICollectionView, IndexPath) -> Bool)?
+    var _collectionView_shouldDeselectItemAt: ((UICollectionView, IndexPath) -> Bool)?
+    var _collectionView_didSelectItemAt: ((UICollectionView, IndexPath) -> Void)?
+    var _collectionView_didDeselectItemAt: ((UICollectionView, IndexPath) -> Void)?
+    var _collectionView_willDisplay: ((UICollectionView, UICollectionViewCell, IndexPath) -> Void)?
+    var _collectionView_willDisplaySupplementaryView: ((UICollectionView, UICollectionReusableView, String, IndexPath) -> Void)?
+    var _collectionView_didEndDisplaying: ((UICollectionView, UICollectionViewCell, IndexPath) -> Void)?
+    var _collectionView_didEndDisplayingSupplementaryView: ((UICollectionView, UICollectionReusableView, String, IndexPath) -> Void)?
+    var _collectionView_shouldShowMenuForItemAt: ((UICollectionView, IndexPath) -> Bool)?
+    var _collectionView_canPerformAction: ((UICollectionView, Selector, IndexPath, Any?) -> Bool)?
+    var _collectionView_performAction: ((UICollectionView, Selector, IndexPath, Any?) -> Void)?
+    var _collectionView_transitionLayoutForOldLayout: ((UICollectionView, UICollectionViewLayout, UICollectionViewLayout) -> UICollectionViewTransitionLayout)?
+    var _collectionView_layout: ((UICollectionView, UICollectionViewLayout, IndexPath) -> CGSize)?
+    var _collectionView_layout_layout: ((UICollectionView, UICollectionViewLayout, Int) -> UIEdgeInsets)?
+    var _collectionView_layout_layout_layout: ((UICollectionView, UICollectionViewLayout, Int) -> CGFloat)?
+    var _collectionView_layout_layout_layout_layout: ((UICollectionView, UICollectionViewLayout, Int) -> CGFloat)?
+    var _collectionView_layout_layout_layout_layout_layout: ((UICollectionView, UICollectionViewLayout, Int) -> CGSize)?
+    var _collectionView_layout_layout_layout_layout_layout_layout: ((UICollectionView, UICollectionViewLayout, Int) -> CGSize)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(collectionView(_:numberOfItemsInSection:)) : _numberOfItemsInSection,
-            #selector(collectionView(_:cellForItemAtIndexPath:)) : _cellForItemAtIndexPath,
-            #selector(numberOfSectionsInCollectionView(_:)) : _numberOfSectionsIn,
-            #selector(collectionView(_:viewForSupplementaryElementOfKind:atIndexPath:)) : _viewForSupplementaryElementOfKind,
-            #selector(collectionView(_:shouldHighlightItemAtIndexPath:)) : _shouldHighlightItemAtIndexPath,
-            #selector(collectionView(_:didHighlightItemAtIndexPath:)) : _didHighlightItemAtIndexPath,
-            #selector(collectionView(_:didUnhighlightItemAtIndexPath:)) : _didUnhighlightItemAtIndexPath,
+            #selector(collectionView(_:numberOfItemsInSection:)) : _collectionView_numberOfItemsInSection,
+            #selector(collectionView(_:cellForItemAt:)) : _collectionView_cellForItemAt,
+            #selector(numberOfSections(in:)) : _numberOfSections_in,
+            #selector(collectionView(_:viewForSupplementaryElementOfKind:at:)) : _collectionView_viewForSupplementaryElementOfKind,
+            #selector(collectionView(_:shouldHighlightItemAt:)) : _collectionView_shouldHighlightItemAt,
+            #selector(collectionView(_:didHighlightItemAt:)) : _collectionView_didHighlightItemAt,
+            #selector(collectionView(_:didUnhighlightItemAt:)) : _collectionView_didUnhighlightItemAt,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            #selector(collectionView(_:shouldSelectItemAtIndexPath:)) : _shouldSelectItemAtIndexPath,
-            #selector(collectionView(_:shouldDeselectItemAtIndexPath:)) : _shouldDeselectItemAtIndexPath,
-            #selector(collectionView(_:didSelectItemAtIndexPath:)) : _didSelectItemAtIndexPath,
-            #selector(collectionView(_:didDeselectItemAtIndexPath:)) : _didDeselectItemAtIndexPath,
-            #selector(collectionView(_:willDisplayCell:forItemAtIndexPath:)) : _willDisplayCell,
-            #selector(collectionView(_:willDisplaySupplementaryView:forElementKind:atIndexPath:)) : _willDisplaySupplementaryView,
-            #selector(collectionView(_:didEndDisplayingCell:forItemAtIndexPath:)) : _didEndDisplayingCell,
+            #selector(collectionView(_:shouldSelectItemAt:)) : _collectionView_shouldSelectItemAt,
+            #selector(collectionView(_:shouldDeselectItemAt:)) : _collectionView_shouldDeselectItemAt,
+            #selector(collectionView(_:didSelectItemAt:)) : _collectionView_didSelectItemAt,
+            #selector(collectionView(_:didDeselectItemAt:)) : _collectionView_didDeselectItemAt,
+            #selector(collectionView(_:willDisplay:forItemAt:)) : _collectionView_willDisplay,
+            #selector(collectionView(_:willDisplaySupplementaryView:forElementKind:at:)) : _collectionView_willDisplaySupplementaryView,
+            #selector(collectionView(_:didEndDisplaying:forItemAt:)) : _collectionView_didEndDisplaying,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
         let funcDic3: [Selector : Any?] = [
-            #selector(collectionView(_:didEndDisplayingSupplementaryView:forElementOfKind:atIndexPath:)) : _didEndDisplayingSupplementaryView,
-            #selector(collectionView(_:shouldShowMenuForItemAtIndexPath:)) : _shouldShowMenuForItemAtIndexPath,
-            #selector(collectionView(_:canPerformAction:forItemAtIndexPath:withSender:)) : _canPerformAction,
-            #selector(collectionView(_:performAction:forItemAtIndexPath:withSender:)) : _performAction,
-            #selector(collectionView(_:transitionLayoutForOldLayout:newLayout:)) : _transitionLayoutForOldLayout,
-            #selector(collectionView(_:layout:sizeForItemAtIndexPath:)) : _layoutSizeForItemAtIndexPath,
-            #selector(collectionView(_:layout:insetForSectionAtIndex:)) : _layoutInsetForSectionAtIndex,
+            #selector(collectionView(_:didEndDisplayingSupplementaryView:forElementOfKind:at:)) : _collectionView_didEndDisplayingSupplementaryView,
+            #selector(collectionView(_:shouldShowMenuForItemAt:)) : _collectionView_shouldShowMenuForItemAt,
+            #selector(collectionView(_:canPerformAction:forItemAt:withSender:)) : _collectionView_canPerformAction,
+            #selector(collectionView(_:performAction:forItemAt:withSender:)) : _collectionView_performAction,
+            #selector(collectionView(_:transitionLayoutForOldLayout:newLayout:)) : _collectionView_transitionLayoutForOldLayout,
+            #selector(collectionView(_:layout:sizeForItemAt:)) : _collectionView_layout,
+            #selector(collectionView(_:layout:insetForSectionAt:)) : _collectionView_layout_layout,
         ]
         if let f = funcDic3[aSelector] {
             return f != nil
         }
         
         let funcDic4: [Selector : Any?] = [
-            #selector(collectionView(_:layout:minimumLineSpacingForSectionAtIndex:)) : _layoutMinimumLineSpacingForSectionAtIndex,
-            #selector(collectionView(_:layout:minimumInteritemSpacingForSectionAtIndex:)) : _layoutMinimumInteritemSpacingForSectionAtIndex,
-            #selector(collectionView(_:layout:referenceSizeForHeaderInSection:)) : _layoutReferenceSizeForHeaderInSection,
-            #selector(collectionView(_:layout:referenceSizeForFooterInSection:)) : _layoutReferenceSizeForFooterInSection,
+            #selector(collectionView(_:layout:minimumLineSpacingForSectionAt:)) : _collectionView_layout_layout_layout,
+            #selector(collectionView(_:layout:minimumInteritemSpacingForSectionAt:)) : _collectionView_layout_layout_layout_layout,
+            #selector(collectionView(_:layout:referenceSizeForHeaderInSection:)) : _collectionView_layout_layout_layout_layout_layout,
+            #selector(collectionView(_:layout:referenceSizeForFooterInSection:)) : _collectionView_layout_layout_layout_layout_layout_layout,
         ]
         if let f = funcDic4[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _numberOfItemsInSection!(collectionView, section)
+    @objc func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return _collectionView_numberOfItemsInSection!(collectionView, section)
     }
-    @objc func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return _cellForItemAtIndexPath!(collectionView, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return _collectionView_cellForItemAt!(collectionView, indexPath)
     }
-    @objc func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return _numberOfSectionsIn!(collectionView)
+    @objc func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return _numberOfSections_in!(collectionView)
     }
-    @objc func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        return _viewForSupplementaryElementOfKind!(collectionView, kind, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return _collectionView_viewForSupplementaryElementOfKind!(collectionView, kind, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return _shouldHighlightItemAtIndexPath!(collectionView, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return _collectionView_shouldHighlightItemAt!(collectionView, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        _didHighlightItemAtIndexPath!(collectionView, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        _collectionView_didHighlightItemAt!(collectionView, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-        _didUnhighlightItemAtIndexPath!(collectionView, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        _collectionView_didUnhighlightItemAt!(collectionView, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return _shouldSelectItemAtIndexPath!(collectionView, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return _collectionView_shouldSelectItemAt!(collectionView, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, shouldDeselectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return _shouldDeselectItemAtIndexPath!(collectionView, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        return _collectionView_shouldDeselectItemAt!(collectionView, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        _didSelectItemAtIndexPath!(collectionView, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        _collectionView_didSelectItemAt!(collectionView, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        _didDeselectItemAtIndexPath!(collectionView, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        _collectionView_didDeselectItemAt!(collectionView, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        _willDisplayCell!(collectionView, cell, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        _collectionView_willDisplay!(collectionView, cell, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, atIndexPath indexPath: NSIndexPath) {
-        _willDisplaySupplementaryView!(collectionView, view, elementKind, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        _collectionView_willDisplaySupplementaryView!(collectionView, view, elementKind, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        _didEndDisplayingCell!(collectionView, cell, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        _collectionView_didEndDisplaying!(collectionView, cell, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, atIndexPath indexPath: NSIndexPath) {
-        _didEndDisplayingSupplementaryView!(collectionView, view, elementKind, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+        _collectionView_didEndDisplayingSupplementaryView!(collectionView, view, elementKind, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return _shouldShowMenuForItemAtIndexPath!(collectionView, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        return _collectionView_shouldShowMenuForItemAt!(collectionView, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return _canPerformAction!(collectionView, action, indexPath, sender)
+    @objc func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        return _collectionView_canPerformAction!(collectionView, action, indexPath, sender)
     }
-    @objc func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-        _performAction!(collectionView, action, indexPath, sender)
+    @objc func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+        _collectionView_performAction!(collectionView, action, indexPath, sender)
     }
-    @objc func collectionView(collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
-        return _transitionLayoutForOldLayout!(collectionView, fromLayout, toLayout)
+    @objc func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
+        return _collectionView_transitionLayoutForOldLayout!(collectionView, fromLayout, toLayout)
     }
-    @objc func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return _layoutSizeForItemAtIndexPath!(collectionView, collectionViewLayout, indexPath)
+    @objc func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return _collectionView_layout!(collectionView, collectionViewLayout, indexPath)
     }
-    @objc func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return _layoutInsetForSectionAtIndex!(collectionView, collectionViewLayout, section)
+    @objc func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return _collectionView_layout_layout!(collectionView, collectionViewLayout, section)
     }
-    @objc func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return _layoutMinimumLineSpacingForSectionAtIndex!(collectionView, collectionViewLayout, section)
+    @objc func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return _collectionView_layout_layout_layout!(collectionView, collectionViewLayout, section)
     }
-    @objc func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return _layoutMinimumInteritemSpacingForSectionAtIndex!(collectionView, collectionViewLayout, section)
+    @objc func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return _collectionView_layout_layout_layout_layout!(collectionView, collectionViewLayout, section)
     }
-    @objc func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return _layoutReferenceSizeForHeaderInSection!(collectionView, collectionViewLayout, section)
+    @objc func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return _collectionView_layout_layout_layout_layout_layout!(collectionView, collectionViewLayout, section)
     }
-    @objc func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return _layoutReferenceSizeForFooterInSection!(collectionView, collectionViewLayout, section)
+    @objc func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return _collectionView_layout_layout_layout_layout_layout_layout!(collectionView, collectionViewLayout, section)
     }
 }

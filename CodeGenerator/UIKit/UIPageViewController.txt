@@ -2,33 +2,45 @@ UIPageViewController: UIViewController, UIPageViewControllerDelegate, UIPageView
 
 DELEGATE_LIST:delegate, dataSource, transitioningDelegate
 
+// UIPageViewControllerDelegate
     // Sent when a gesture-initiated transition begins.
-    @availability(iOS, introduced=6.0)
-    optional func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject])
+    @available(iOS 6.0, *)
+    optional public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController])
+
     
     // Sent when a gesture-initiated transition ends. The 'finished' parameter indicates whether the animation finished, while the 'completed' parameter indicates whether the transition completed or bailed out (if the user let go early).
-    optional func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool)
+    @available(iOS 5.0, *)
+    optional public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)
+
     
     // Delegate may specify a different spine location for after the interface orientation change. Only sent for transition style 'UIPageViewControllerTransitionStylePageCurl'.
     // Delegate may set new view controllers or update double-sided state within this method's implementation as well.
-    optional func pageViewController(pageViewController: UIPageViewController, spineLocationForInterfaceOrientation orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation
-    
-    @availability(iOS, introduced=7.0)
-    optional func pageViewControllerSupportedInterfaceOrientations(pageViewController: UIPageViewController) -> Int
-    @availability(iOS, introduced=7.0)
-    optional func pageViewControllerPreferredInterfaceOrientationForPresentation(pageViewController: UIPageViewController) -> UIInterfaceOrientation
-
+    @available(iOS 5.0, *)
+    optional public func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation
 
     
+    @available(iOS 7.0, *)
+    optional public func pageViewControllerSupportedInterfaceOrientations(_ pageViewController: UIPageViewController) -> UIInterfaceOrientationMask
+
+    @available(iOS 7.0, *)
+    optional public func pageViewControllerPreferredInterfaceOrientationForPresentation(_ pageViewController: UIPageViewController) -> UIInterfaceOrientation
+
+    
+// UIPageViewControllerDataSource
     // In terms of navigation direction. For example, for 'UIPageViewControllerNavigationOrientationHorizontal', view controllers coming 'before' would be to the left of the argument view controller, those coming 'after' would be to the right.
     // Return 'nil' to indicate that no more progress can be made in the given direction.
     // For gesture-initiated transitions, the page view controller obtains view controllers via these methods, so use of setViewControllers:direction:animated:completion: is not required.
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
+    @available(iOS 5.0, *)
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController?
+
+    @available(iOS 5.0, *)
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
+
     
     // A page indicator will be visible if both methods are implemented, transition style is 'UIPageViewControllerTransitionStyleScroll', and navigation orientation is 'UIPageViewControllerNavigationOrientationHorizontal'.
     // Both methods are called in response to a 'setViewControllers:...' call, but the presentation index is updated automatically in the case of gesture-driven navigation.
-    @availability(iOS, introduced=6.0)
-    optional func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int // The number of items reflected in the page indicator.
-    @availability(iOS, introduced=6.0)
-    optional func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int // The selected item reflected in the page indicator.
+    @available(iOS 6.0, *)
+    optional public func presentationCount(for pageViewController: UIPageViewController) -> Int // The number of items reflected in the page indicator.
+
+    @available(iOS 6.0, *)
+    optional public func presentationIndex(for pageViewController: UIPageViewController) -> Int // The selected item reflected in the page indicator.

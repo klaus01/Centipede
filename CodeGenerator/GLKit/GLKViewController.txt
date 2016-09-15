@@ -5,9 +5,12 @@ GLKViewController : UIViewController, GLKViewControllerDelegate
      when not subclassing GLKViewController. This method will not be called if the GLKViewController object
      has been subclassed and implements -(void)update.
      */
-    func glkViewControllerUpdate(controller: GLKViewController!)
+    @available(iOS 5.0, *)
+    public func glkViewControllerUpdate(_ controller: GLKViewController)
+
     
     /*
      Delegate method that gets called when the pause state changes. 
      */
-    optional func glkViewController(controller: GLKViewController!, willPause pause: Bool)
+    @available(iOS 5.0, *)
+    optional public func glkViewController(_ controller: GLKViewController, willPause pause: Bool)

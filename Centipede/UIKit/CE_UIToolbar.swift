@@ -2,13 +2,13 @@
 //  CE_UIToolbar.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
 
-public extension UIToolbar {
+extension UIToolbar {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIToolbar_Delegate? {
@@ -20,7 +20,7 @@ public extension UIToolbar {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UIToolbar_Delegate {
                 return obj as! UIToolbar_Delegate
             }
@@ -40,8 +40,9 @@ public extension UIToolbar {
         return UIToolbar_Delegate()
     }
     
-    public func ce_positionForBar(handle: (bar: UIBarPositioning) -> UIBarPosition) -> Self {
-        ce._positionForBar = handle
+    @discardableResult
+    public func ce_position_for(handle: @escaping (UIBarPositioning) -> UIBarPosition) -> Self {
+        ce._position_for = handle
         rebindingDelegate()
         return self
     }
@@ -50,23 +51,23 @@ public extension UIToolbar {
 
 internal class UIToolbar_Delegate: NSObject, UIToolbarDelegate {
     
-    var _positionForBar: ((UIBarPositioning) -> UIBarPosition)?
+    var _position_for: ((UIBarPositioning) -> UIBarPosition)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(positionForBar(_:)) : _positionForBar,
+            #selector(position(for:)) : _position_for,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return _positionForBar!(bar)
+    @objc func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return _position_for!(bar)
     }
 }

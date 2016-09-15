@@ -1,16 +1,29 @@
 UIAlertView: NSObject, UIAlertViewDelegate
     // Called when a button is clicked. The view will be automatically dismissed after this call returns
-    optional func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
+    @available(iOS, introduced: 2.0, deprecated: 9.0)
+    optional public func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int)
+
     
     // Called when we cancel a view (eg. the user clicks the Home button). This is not called when the user clicks the cancel button.
     // If not defined in the delegate, we simulate a click in the cancel button
-    optional func alertViewCancel(alertView: UIAlertView)
+    @available(iOS, introduced: 2.0, deprecated: 9.0)
+    optional public func alertViewCancel(_ alertView: UIAlertView)
+
     
-    optional func willPresentAlertView(alertView: UIAlertView) // before animation and showing view
-    optional func didPresentAlertView(alertView: UIAlertView) // after animation
+    @available(iOS, introduced: 2.0, deprecated: 9.0)
+    optional public func willPresent(_ alertView: UIAlertView) // before animation and showing view
+
+    @available(iOS, introduced: 2.0, deprecated: 9.0)
+    optional public func didPresent(_ alertView: UIAlertView) // after animation
+
     
-    optional func alertView(alertView: UIAlertView, willDismissWithButtonIndex buttonIndex: Int) // before animation and hiding view
-    optional func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) // after animation
+    @available(iOS, introduced: 2.0, deprecated: 9.0)
+    optional public func alertView(_ alertView: UIAlertView, willDismissWithButtonIndex buttonIndex: Int) // before animation and hiding view
+
+    @available(iOS, introduced: 2.0, deprecated: 9.0)
+    optional public func alertView(_ alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) // after animation
+
     
     // Called after edits in any of the default fields added by the style
-    optional func alertViewShouldEnableFirstOtherButton(alertView: UIAlertView) -> Bool
+    @available(iOS, introduced: 2.0, deprecated: 9.0)
+    optional public func alertViewShouldEnableFirstOtherButton(_ alertView: UIAlertView) -> Bool

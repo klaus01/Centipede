@@ -1,5 +1,8 @@
 UIImagePickerController: UINavigationController, UIImagePickerControllerDelegate
 
 
-    optional func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
-    optional func imagePickerControllerDidCancel(picker: UIImagePickerController)
+    @available(iOS 2.0, *)
+    optional public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
+
+    @available(iOS 2.0, *)
+    optional public func imagePickerControllerDidCancel(_ picker: UIImagePickerController)

@@ -2,13 +2,13 @@
 //  CE_UISearchBar.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
 
-public extension UISearchBar {
+extension UISearchBar {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UISearchBar_Delegate? {
@@ -20,7 +20,7 @@ public extension UISearchBar {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UISearchBar_Delegate {
                 return obj as! UISearchBar_Delegate
             }
@@ -40,58 +40,69 @@ public extension UISearchBar {
         return UISearchBar_Delegate()
     }
     
-    public func ce_shouldBeginEditing(handle: (searchBar: UISearchBar) -> Bool) -> Self {
-        ce._shouldBeginEditing = handle
+    @discardableResult
+    public func ce_searchBarShouldBeginEditing(handle: @escaping (UISearchBar) -> Bool) -> Self {
+        ce._searchBarShouldBeginEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_textDidBeginEditing(handle: (searchBar: UISearchBar) -> Void) -> Self {
-        ce._textDidBeginEditing = handle
+    @discardableResult
+    public func ce_searchBarTextDidBeginEditing(handle: @escaping (UISearchBar) -> Void) -> Self {
+        ce._searchBarTextDidBeginEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldEndEditing(handle: (searchBar: UISearchBar) -> Bool) -> Self {
-        ce._shouldEndEditing = handle
+    @discardableResult
+    public func ce_searchBarShouldEndEditing(handle: @escaping (UISearchBar) -> Bool) -> Self {
+        ce._searchBarShouldEndEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_textDidEndEditing(handle: (searchBar: UISearchBar) -> Void) -> Self {
-        ce._textDidEndEditing = handle
+    @discardableResult
+    public func ce_searchBarTextDidEndEditing(handle: @escaping (UISearchBar) -> Void) -> Self {
+        ce._searchBarTextDidEndEditing = handle
         rebindingDelegate()
         return self
     }
-    public func ce_textDidChange(handle: (searchBar: UISearchBar, searchText: String) -> Void) -> Self {
-        ce._textDidChange = handle
+    @discardableResult
+    public func ce_searchBar_textDidChange(handle: @escaping (UISearchBar, String) -> Void) -> Self {
+        ce._searchBar_textDidChange = handle
         rebindingDelegate()
         return self
     }
-    public func ce_shouldChangeTextInRange(handle: (searchBar: UISearchBar, range: NSRange, text: String) -> Bool) -> Self {
-        ce._shouldChangeTextInRange = handle
+    @discardableResult
+    public func ce_searchBar_shouldChangeTextIn(handle: @escaping (UISearchBar, NSRange, String) -> Bool) -> Self {
+        ce._searchBar_shouldChangeTextIn = handle
         rebindingDelegate()
         return self
     }
-    public func ce_searchButtonClicked(handle: (searchBar: UISearchBar) -> Void) -> Self {
-        ce._searchButtonClicked = handle
+    @discardableResult
+    public func ce_searchBarSearchButtonClicked(handle: @escaping (UISearchBar) -> Void) -> Self {
+        ce._searchBarSearchButtonClicked = handle
         rebindingDelegate()
         return self
     }
-    public func ce_bookmarkButtonClicked(handle: (searchBar: UISearchBar) -> Void) -> Self {
-        ce._bookmarkButtonClicked = handle
+    @discardableResult
+    public func ce_searchBarBookmarkButtonClicked(handle: @escaping (UISearchBar) -> Void) -> Self {
+        ce._searchBarBookmarkButtonClicked = handle
         rebindingDelegate()
         return self
     }
-    public func ce_cancelButtonClicked(handle: (searchBar: UISearchBar) -> Void) -> Self {
-        ce._cancelButtonClicked = handle
+    @discardableResult
+    public func ce_searchBarCancelButtonClicked(handle: @escaping (UISearchBar) -> Void) -> Self {
+        ce._searchBarCancelButtonClicked = handle
         rebindingDelegate()
         return self
     }
-    public func ce_resultsListButtonClicked(handle: (searchBar: UISearchBar) -> Void) -> Self {
-        ce._resultsListButtonClicked = handle
+    @discardableResult
+    public func ce_searchBarResultsListButtonClicked(handle: @escaping (UISearchBar) -> Void) -> Self {
+        ce._searchBarResultsListButtonClicked = handle
         rebindingDelegate()
         return self
     }
-    public func ce_selectedScopeButtonIndexDidChange(handle: (searchBar: UISearchBar, selectedScope: Int) -> Void) -> Self {
-        ce._selectedScopeButtonIndexDidChange = handle
+    @discardableResult
+    public func ce_searchBar_selectedScopeButtonIndexDidChange(handle: @escaping (UISearchBar, Int) -> Void) -> Self {
+        ce._searchBar_selectedScopeButtonIndexDidChange = handle
         rebindingDelegate()
         return self
     }
@@ -100,79 +111,79 @@ public extension UISearchBar {
 
 internal class UISearchBar_Delegate: NSObject, UISearchBarDelegate {
     
-    var _shouldBeginEditing: ((UISearchBar) -> Bool)?
-    var _textDidBeginEditing: ((UISearchBar) -> Void)?
-    var _shouldEndEditing: ((UISearchBar) -> Bool)?
-    var _textDidEndEditing: ((UISearchBar) -> Void)?
-    var _textDidChange: ((UISearchBar, String) -> Void)?
-    var _shouldChangeTextInRange: ((UISearchBar, NSRange, String) -> Bool)?
-    var _searchButtonClicked: ((UISearchBar) -> Void)?
-    var _bookmarkButtonClicked: ((UISearchBar) -> Void)?
-    var _cancelButtonClicked: ((UISearchBar) -> Void)?
-    var _resultsListButtonClicked: ((UISearchBar) -> Void)?
-    var _selectedScopeButtonIndexDidChange: ((UISearchBar, Int) -> Void)?
+    var _searchBarShouldBeginEditing: ((UISearchBar) -> Bool)?
+    var _searchBarTextDidBeginEditing: ((UISearchBar) -> Void)?
+    var _searchBarShouldEndEditing: ((UISearchBar) -> Bool)?
+    var _searchBarTextDidEndEditing: ((UISearchBar) -> Void)?
+    var _searchBar_textDidChange: ((UISearchBar, String) -> Void)?
+    var _searchBar_shouldChangeTextIn: ((UISearchBar, NSRange, String) -> Bool)?
+    var _searchBarSearchButtonClicked: ((UISearchBar) -> Void)?
+    var _searchBarBookmarkButtonClicked: ((UISearchBar) -> Void)?
+    var _searchBarCancelButtonClicked: ((UISearchBar) -> Void)?
+    var _searchBarResultsListButtonClicked: ((UISearchBar) -> Void)?
+    var _searchBar_selectedScopeButtonIndexDidChange: ((UISearchBar, Int) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(searchBarShouldBeginEditing(_:)) : _shouldBeginEditing,
-            #selector(searchBarTextDidBeginEditing(_:)) : _textDidBeginEditing,
-            #selector(searchBarShouldEndEditing(_:)) : _shouldEndEditing,
-            #selector(searchBarTextDidEndEditing(_:)) : _textDidEndEditing,
-            #selector(searchBar(_:textDidChange:)) : _textDidChange,
-            #selector(searchBar(_:shouldChangeTextInRange:replacementText:)) : _shouldChangeTextInRange,
-            #selector(searchBarSearchButtonClicked(_:)) : _searchButtonClicked,
+            #selector(searchBarShouldBeginEditing(_:)) : _searchBarShouldBeginEditing,
+            #selector(searchBarTextDidBeginEditing(_:)) : _searchBarTextDidBeginEditing,
+            #selector(searchBarShouldEndEditing(_:)) : _searchBarShouldEndEditing,
+            #selector(searchBarTextDidEndEditing(_:)) : _searchBarTextDidEndEditing,
+            #selector(searchBar(_:textDidChange:)) : _searchBar_textDidChange,
+            #selector(searchBar(_:shouldChangeTextIn:replacementText:)) : _searchBar_shouldChangeTextIn,
+            #selector(searchBarSearchButtonClicked(_:)) : _searchBarSearchButtonClicked,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
         let funcDic2: [Selector : Any?] = [
-            #selector(searchBarBookmarkButtonClicked(_:)) : _bookmarkButtonClicked,
-            #selector(searchBarCancelButtonClicked(_:)) : _cancelButtonClicked,
-            #selector(searchBarResultsListButtonClicked(_:)) : _resultsListButtonClicked,
-            #selector(searchBar(_:selectedScopeButtonIndexDidChange:)) : _selectedScopeButtonIndexDidChange,
+            #selector(searchBarBookmarkButtonClicked(_:)) : _searchBarBookmarkButtonClicked,
+            #selector(searchBarCancelButtonClicked(_:)) : _searchBarCancelButtonClicked,
+            #selector(searchBarResultsListButtonClicked(_:)) : _searchBarResultsListButtonClicked,
+            #selector(searchBar(_:selectedScopeButtonIndexDidChange:)) : _searchBar_selectedScopeButtonIndexDidChange,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
-        return _shouldBeginEditing!(searchBar)
+    @objc func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        return _searchBarShouldBeginEditing!(searchBar)
     }
-    @objc func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        _textDidBeginEditing!(searchBar)
+    @objc func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        _searchBarTextDidBeginEditing!(searchBar)
     }
-    @objc func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
-        return _shouldEndEditing!(searchBar)
+    @objc func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        return _searchBarShouldEndEditing!(searchBar)
     }
-    @objc func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        _textDidEndEditing!(searchBar)
+    @objc func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        _searchBarTextDidEndEditing!(searchBar)
     }
-    @objc func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        _textDidChange!(searchBar, searchText)
+    @objc func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        _searchBar_textDidChange!(searchBar, searchText)
     }
-    @objc func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        return _shouldChangeTextInRange!(searchBar, range, text)
+    @objc func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        return _searchBar_shouldChangeTextIn!(searchBar, range, text)
     }
-    @objc func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        _searchButtonClicked!(searchBar)
+    @objc func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        _searchBarSearchButtonClicked!(searchBar)
     }
-    @objc func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
-        _bookmarkButtonClicked!(searchBar)
+    @objc func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        _searchBarBookmarkButtonClicked!(searchBar)
     }
-    @objc func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        _cancelButtonClicked!(searchBar)
+    @objc func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        _searchBarCancelButtonClicked!(searchBar)
     }
-    @objc func searchBarResultsListButtonClicked(searchBar: UISearchBar) {
-        _resultsListButtonClicked!(searchBar)
+    @objc func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
+        _searchBarResultsListButtonClicked!(searchBar)
     }
-    @objc func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        _selectedScopeButtonIndexDidChange!(searchBar, selectedScope)
+    @objc func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        _searchBar_selectedScopeButtonIndexDidChange!(searchBar, selectedScope)
     }
 }

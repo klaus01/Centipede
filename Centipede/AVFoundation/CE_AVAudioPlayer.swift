@@ -2,13 +2,13 @@
 //  CE_AVAudioPlayer.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import AVFoundation
 
-public extension AVAudioPlayer {
+extension AVAudioPlayer {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: AVAudioPlayer_Delegate? {
@@ -40,23 +40,27 @@ public extension AVAudioPlayer {
         return AVAudioPlayer_Delegate()
     }
     
-    public func ce_didFinishPlaying(handle: (player: AVAudioPlayer, flag: Bool) -> Void) -> Self {
-        ce._didFinishPlaying = handle
+    @discardableResult
+    public func ce_audioPlayerDidFinishPlaying_successfully(handle: @escaping (AVAudioPlayer, Bool) -> Void) -> Self {
+        ce._audioPlayerDidFinishPlaying_successfully = handle
         rebindingDelegate()
         return self
     }
-    public func ce_decodeErrorDidOccur(handle: (player: AVAudioPlayer, error: NSError?) -> Void) -> Self {
-        ce._decodeErrorDidOccur = handle
+    @discardableResult
+    public func ce_audioPlayerDecodeErrorDidOccur_error(handle: @escaping (AVAudioPlayer, Error?) -> Void) -> Self {
+        ce._audioPlayerDecodeErrorDidOccur_error = handle
         rebindingDelegate()
         return self
     }
-    public func ce_beginInterruption(handle: (player: AVAudioPlayer) -> Void) -> Self {
-        ce._beginInterruption = handle
+    @discardableResult
+    public func ce_audioPlayerBeginInterruption(handle: @escaping (AVAudioPlayer) -> Void) -> Self {
+        ce._audioPlayerBeginInterruption = handle
         rebindingDelegate()
         return self
     }
-    public func ce_endInterruption(handle: (player: AVAudioPlayer, flags: Int) -> Void) -> Self {
-        ce._endInterruption = handle
+    @discardableResult
+    public func ce_audioPlayerEndInterruption_withOptions(handle: @escaping (AVAudioPlayer, Int) -> Void) -> Self {
+        ce._audioPlayerEndInterruption_withOptions = handle
         rebindingDelegate()
         return self
     }
@@ -65,38 +69,38 @@ public extension AVAudioPlayer {
 
 internal class AVAudioPlayer_Delegate: NSObject, AVAudioPlayerDelegate {
     
-    var _didFinishPlaying: ((AVAudioPlayer, Bool) -> Void)?
-    var _decodeErrorDidOccur: ((AVAudioPlayer, NSError?) -> Void)?
-    var _beginInterruption: ((AVAudioPlayer) -> Void)?
-    var _endInterruption: ((AVAudioPlayer, Int) -> Void)?
+    var _audioPlayerDidFinishPlaying_successfully: ((AVAudioPlayer, Bool) -> Void)?
+    var _audioPlayerDecodeErrorDidOccur_error: ((AVAudioPlayer, Error?) -> Void)?
+    var _audioPlayerBeginInterruption: ((AVAudioPlayer) -> Void)?
+    var _audioPlayerEndInterruption_withOptions: ((AVAudioPlayer, Int) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(audioPlayerDidFinishPlaying(_:successfully:)) : _didFinishPlaying,
-            #selector(audioPlayerDecodeErrorDidOccur(_:error:)) : _decodeErrorDidOccur,
-            #selector(audioPlayerBeginInterruption(_:)) : _beginInterruption,
-            #selector(audioPlayerEndInterruption(_:withOptions:)) : _endInterruption,
+            #selector(audioPlayerDidFinishPlaying(_:successfully:)) : _audioPlayerDidFinishPlaying_successfully,
+            #selector(audioPlayerDecodeErrorDidOccur(_:error:)) : _audioPlayerDecodeErrorDidOccur_error,
+            #selector(audioPlayerBeginInterruption(_:)) : _audioPlayerBeginInterruption,
+            #selector(audioPlayerEndInterruption(_:withOptions:)) : _audioPlayerEndInterruption_withOptions,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
-        _didFinishPlaying!(player, flag)
+    @objc func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        _audioPlayerDidFinishPlaying_successfully!(player, flag)
     }
-    @objc func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer, error: NSError?) {
-        _decodeErrorDidOccur!(player, error)
+    @objc func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        _audioPlayerDecodeErrorDidOccur_error!(player, error)
     }
-    @objc func audioPlayerBeginInterruption(player: AVAudioPlayer) {
-        _beginInterruption!(player)
+    @objc func audioPlayerBeginInterruption(_ player: AVAudioPlayer) {
+        _audioPlayerBeginInterruption!(player)
     }
-    @objc func audioPlayerEndInterruption(player: AVAudioPlayer, withOptions flags: Int) {
-        _endInterruption!(player, flags)
+    @objc func audioPlayerEndInterruption(_ player: AVAudioPlayer, withOptions flags: Int) {
+        _audioPlayerEndInterruption_withOptions!(player, flags)
     }
 }

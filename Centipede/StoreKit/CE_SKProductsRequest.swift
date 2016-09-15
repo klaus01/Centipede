@@ -2,13 +2,13 @@
 //  CE_SKProductsRequest.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/11.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import StoreKit
 
-public extension SKProductsRequest {
+extension SKProductsRequest {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: SKProductsRequest_Delegate? {
@@ -40,8 +40,9 @@ public extension SKProductsRequest {
         return SKProductsRequest_Delegate()
     }
     
-    public func ce_didReceiveResponse(handle: (request: SKProductsRequest, response: SKProductsResponse) -> Void) -> Self {
-        ce._didReceiveResponse = handle
+    @discardableResult
+    public func ce_productsRequest_didReceive(handle: @escaping (SKProductsRequest, SKProductsResponse) -> Void) -> Self {
+        ce._productsRequest_didReceive = handle
         rebindingDelegate()
         return self
     }
@@ -50,23 +51,23 @@ public extension SKProductsRequest {
 
 internal class SKProductsRequest_Delegate: SKRequest_Delegate, SKProductsRequestDelegate {
     
-    var _didReceiveResponse: ((SKProductsRequest, SKProductsResponse) -> Void)?
+    var _productsRequest_didReceive: ((SKProductsRequest, SKProductsResponse) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(productsRequest(_:didReceiveResponse:)) : _didReceiveResponse,
+            #selector(productsRequest(_:didReceive:)) : _productsRequest_didReceive,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
-        _didReceiveResponse!(request, response)
+    @objc func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        _productsRequest_didReceive!(request, response)
     }
 }

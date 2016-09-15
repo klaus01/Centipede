@@ -1,3 +1,0 @@
-NSStream : NSObject, NSStreamDelegate
-
-    optional func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent)

@@ -2,13 +2,13 @@
 //  CE_MPMediaPickerController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import MediaPlayer
 
-public extension MPMediaPickerController {
+extension MPMediaPickerController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: MPMediaPickerController_Delegate? {
@@ -40,12 +40,14 @@ public extension MPMediaPickerController {
         return MPMediaPickerController_Delegate()
     }
     
-    public func ce_mediaPicker(handle: (mediaPicker: MPMediaPickerController, mediaItemCollection: MPMediaItemCollection) -> Void) -> Self {
-        ce._mediaPicker = handle
+    @discardableResult
+    public func ce_mediaPicker_didPickMediaItems(handle: @escaping (MPMediaPickerController, MPMediaItemCollection) -> Void) -> Self {
+        ce._mediaPicker_didPickMediaItems = handle
         rebindingDelegate()
         return self
     }
-    public func ce_mediaPickerDidCancel(handle: (mediaPicker: MPMediaPickerController) -> Void) -> Self {
+    @discardableResult
+    public func ce_mediaPickerDidCancel(handle: @escaping (MPMediaPickerController) -> Void) -> Self {
         ce._mediaPickerDidCancel = handle
         rebindingDelegate()
         return self
@@ -55,28 +57,28 @@ public extension MPMediaPickerController {
 
 internal class MPMediaPickerController_Delegate: UIViewController_Delegate, MPMediaPickerControllerDelegate {
     
-    var _mediaPicker: ((MPMediaPickerController, MPMediaItemCollection) -> Void)?
+    var _mediaPicker_didPickMediaItems: ((MPMediaPickerController, MPMediaItemCollection) -> Void)?
     var _mediaPickerDidCancel: ((MPMediaPickerController) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(mediaPicker(_:didPickMediaItems:)) : _mediaPicker,
+            #selector(mediaPicker(_:didPickMediaItems:)) : _mediaPicker_didPickMediaItems,
             #selector(mediaPickerDidCancel(_:)) : _mediaPickerDidCancel,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func mediaPicker(mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
-        _mediaPicker!(mediaPicker, mediaItemCollection)
+    @objc func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
+        _mediaPicker_didPickMediaItems!(mediaPicker, mediaItemCollection)
     }
-    @objc func mediaPickerDidCancel(mediaPicker: MPMediaPickerController) {
+    @objc func mediaPickerDidCancel(_ mediaPicker: MPMediaPickerController) {
         _mediaPickerDidCancel!(mediaPicker)
     }
 }

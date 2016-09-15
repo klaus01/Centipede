@@ -2,13 +2,13 @@
 //  CE_UIImagePickerController.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
 
-public extension UIImagePickerController {
+extension UIImagePickerController {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIImagePickerController_Delegate? {
@@ -20,7 +20,7 @@ public extension UIImagePickerController {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UIImagePickerController_Delegate {
                 return obj as! UIImagePickerController_Delegate
             }
@@ -40,13 +40,15 @@ public extension UIImagePickerController {
         return UIImagePickerController_Delegate()
     }
     
-    public func ce_didFinishPickingMediaWithInfo(handle: (picker: UIImagePickerController, info: [String : AnyObject]) -> Void) -> Self {
-        ce._didFinishPickingMediaWithInfo = handle
+    @discardableResult
+    public func ce_imagePickerController_didFinishPickingMediaWithInfo(handle: @escaping (UIImagePickerController, [String : Any]) -> Void) -> Self {
+        ce._imagePickerController_didFinishPickingMediaWithInfo = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didCancel(handle: (picker: UIImagePickerController) -> Void) -> Self {
-        ce._didCancel = handle
+    @discardableResult
+    public func ce_imagePickerControllerDidCancel(handle: @escaping (UIImagePickerController) -> Void) -> Self {
+        ce._imagePickerControllerDidCancel = handle
         rebindingDelegate()
         return self
     }
@@ -55,28 +57,28 @@ public extension UIImagePickerController {
 
 internal class UIImagePickerController_Delegate: UINavigationController_Delegate, UIImagePickerControllerDelegate {
     
-    var _didFinishPickingMediaWithInfo: ((UIImagePickerController, [String : AnyObject]) -> Void)?
-    var _didCancel: ((UIImagePickerController) -> Void)?
+    var _imagePickerController_didFinishPickingMediaWithInfo: ((UIImagePickerController, [String : Any]) -> Void)?
+    var _imagePickerControllerDidCancel: ((UIImagePickerController) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(imagePickerController(_:didFinishPickingMediaWithInfo:)) : _didFinishPickingMediaWithInfo,
-            #selector(imagePickerControllerDidCancel(_:)) : _didCancel,
+            #selector(imagePickerController(_:didFinishPickingMediaWithInfo:)) : _imagePickerController_didFinishPickingMediaWithInfo,
+            #selector(imagePickerControllerDidCancel(_:)) : _imagePickerControllerDidCancel,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        _didFinishPickingMediaWithInfo!(picker, info)
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        _imagePickerController_didFinishPickingMediaWithInfo!(picker, info)
     }
-    @objc func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        _didCancel!(picker)
+    @objc func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        _imagePickerControllerDidCancel!(picker)
     }
 }

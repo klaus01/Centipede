@@ -2,13 +2,13 @@
 //  CE_NSMetadataQuery.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import Foundation
 
-public extension NSMetadataQuery {
+extension NSMetadataQuery {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: NSMetadataQuery_Delegate? {
@@ -40,13 +40,15 @@ public extension NSMetadataQuery {
         return NSMetadataQuery_Delegate()
     }
     
-    public func ce_replacementObjectForResultObject(handle: (query: NSMetadataQuery, result: NSMetadataItem) -> AnyObject) -> Self {
-        ce._replacementObjectForResultObject = handle
+    @discardableResult
+    public func ce_metadataQuery_replacementObjectForResultObject(handle: @escaping (NSMetadataQuery, NSMetadataItem) -> Any) -> Self {
+        ce._metadataQuery_replacementObjectForResultObject = handle
         rebindingDelegate()
         return self
     }
-    public func ce_replacementValueForAttribute(handle: (query: NSMetadataQuery, attrName: String, attrValue: AnyObject) -> AnyObject) -> Self {
-        ce._replacementValueForAttribute = handle
+    @discardableResult
+    public func ce_metadataQuery_replacementValueForAttribute(handle: @escaping (NSMetadataQuery, String, Any) -> Any) -> Self {
+        ce._metadataQuery_replacementValueForAttribute = handle
         rebindingDelegate()
         return self
     }
@@ -55,28 +57,28 @@ public extension NSMetadataQuery {
 
 internal class NSMetadataQuery_Delegate: NSObject, NSMetadataQueryDelegate {
     
-    var _replacementObjectForResultObject: ((NSMetadataQuery, NSMetadataItem) -> AnyObject)?
-    var _replacementValueForAttribute: ((NSMetadataQuery, String, AnyObject) -> AnyObject)?
+    var _metadataQuery_replacementObjectForResultObject: ((NSMetadataQuery, NSMetadataItem) -> Any)?
+    var _metadataQuery_replacementValueForAttribute: ((NSMetadataQuery, String, Any) -> Any)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(metadataQuery(_:replacementObjectForResultObject:)) : _replacementObjectForResultObject,
-            #selector(metadataQuery(_:replacementValueForAttribute:value:)) : _replacementValueForAttribute,
+            #selector(metadataQuery(_:replacementObjectForResultObject:)) : _metadataQuery_replacementObjectForResultObject,
+            #selector(metadataQuery(_:replacementValueForAttribute:value:)) : _metadataQuery_replacementValueForAttribute,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func metadataQuery(query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> AnyObject {
-        return _replacementObjectForResultObject!(query, result)
+    @objc func metadataQuery(_ query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> Any {
+        return _metadataQuery_replacementObjectForResultObject!(query, result)
     }
-    @objc func metadataQuery(query: NSMetadataQuery, replacementValueForAttribute attrName: String, value attrValue: AnyObject) -> AnyObject {
-        return _replacementValueForAttribute!(query, attrName, attrValue)
+    @objc func metadataQuery(_ query: NSMetadataQuery, replacementValueForAttribute attrName: String, value attrValue: Any) -> Any {
+        return _metadataQuery_replacementValueForAttribute!(query, attrName, attrValue)
     }
 }

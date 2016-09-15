@@ -9,9 +9,11 @@ PKPushRegistry : NSObject, PKPushRegistryDelegate
      @param         credentials
                     The push credentials that can be used to send pushes to the device for the specified PKPushType.
      @param         type
-                    This is a PKPushType NSString constant which is present in [registry desiredPushTypes].
+                    This is a PKPushType constant which is present in [registry desiredPushTypes].
      */
-    func pushRegistry(registry: PKPushRegistry!, didUpdatePushCredentials credentials: PKPushCredentials!, forType type: String!)
+    @available(iOS 8.0, *)
+    public func pushRegistry(_ registry: PKPushRegistry, didUpdate credentials: PKPushCredentials, forType type: PKPushType)
+
     
     /*!
      @method        pushRegistry:didReceiveIncomingPushWithPayload:forType:
@@ -21,9 +23,11 @@ PKPushRegistry : NSObject, PKPushRegistryDelegate
      @param         payload
                     The push payload sent by a developer via APNS server API.
      @param         type
-                    This is a PKPushType NSString constant which is present in [registry desiredPushTypes].
+                    This is a PKPushType constant which is present in [registry desiredPushTypes].
      */
-    func pushRegistry(registry: PKPushRegistry!, didReceiveIncomingPushWithPayload payload: PKPushPayload!, forType type: String!)
+    @available(iOS 8.0, *)
+    public func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, forType type: PKPushType)
+
     
     /*!
      @method        pushRegistry:didInvalidatePushTokenForType:
@@ -33,6 +37,7 @@ PKPushRegistry : NSObject, PKPushRegistryDelegate
      @param         registry
                     The PKPushRegistry instance responsible for the delegate callback.
      @param         type
-                    This is a PKPushType NSString constant which is present in [registry desiredPushTypes].
+                    This is a PKPushType constant which is present in [registry desiredPushTypes].
      */
-    optional func pushRegistry(registry: PKPushRegistry!, didInvalidatePushTokenForType type: String!)
+    @available(iOS 8.0, *)
+    optional public func pushRegistry(_ registry: PKPushRegistry, didInvalidatePushTokenForType type: PKPushType)

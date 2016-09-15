@@ -8,44 +8,45 @@
 
 import UIKit
 
-public typealias CE_UIGestureRecognizerAction = (gestureRecognizer: UIGestureRecognizer) -> Void
+public typealias CE_UIGestureRecognizerAction = (UIGestureRecognizer) -> Void
 
-public extension UIGestureRecognizer {
+extension UIGestureRecognizer {
     
-    public convenience init(action: CE_UIGestureRecognizerAction) {
+    public convenience init(action: @escaping CE_UIGestureRecognizerAction) {
         let proxy = UIGestureRecognizerProxy(action)
-        self.init(target:proxy, action:#selector(UIGestureRecognizerProxy.act(_:)))
+        self.init(target:proxy, action:#selector(UIGestureRecognizerProxy.act(gestureRecognizer:)))
         proxies[""] = proxy
     }
     
-    public func action(action: CE_UIGestureRecognizerAction?) -> Self {
+    @discardableResult
+    public func action(_ action: CE_UIGestureRecognizerAction?) -> Self {
         return on(action)
     }
     
 }
 
-// MARK: - Internal
+// MARK: - private
 
 private struct Static { static var AssociationKey: UInt8 = 0 }
 
-private typealias UIGestureRecognizerProxies = [String: UIGestureRecognizerProxy]
+fileprivate typealias UIGestureRecognizerProxies = [String: UIGestureRecognizerProxy]
 
-internal class UIGestureRecognizerProxy : NSObject {
+fileprivate class UIGestureRecognizerProxy : NSObject {
     
     var action: CE_UIGestureRecognizerAction
     
-    init(_ action: CE_UIGestureRecognizerAction) {
+    init(_ action: @escaping CE_UIGestureRecognizerAction) {
         self.action = action
     }
     
     func act(gestureRecognizer: UIGestureRecognizer) {
-        action(gestureRecognizer: gestureRecognizer)
+        action(gestureRecognizer)
     }
 }
 
-internal extension UIGestureRecognizer {
+fileprivate extension UIGestureRecognizer {
     
-    private var proxies: UIGestureRecognizerProxies {
+    fileprivate var proxies: UIGestureRecognizerProxies {
         get {
             if let result = objc_getAssociatedObject(self, &Static.AssociationKey) as? UIGestureRecognizerProxies {
                 return result
@@ -58,12 +59,13 @@ internal extension UIGestureRecognizer {
         }
     }
     
-    private func setter(newValue: UIGestureRecognizerProxies) -> UIGestureRecognizerProxies {
+    @discardableResult
+    private func setter(_ newValue: UIGestureRecognizerProxies) -> UIGestureRecognizerProxies {
         objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
         return newValue
     }
     
-    internal func on(action: CE_UIGestureRecognizerAction?) -> Self {
+    fileprivate func on(_ action: CE_UIGestureRecognizerAction?) -> Self {
         self.off()
         
         if action == nil {
@@ -71,16 +73,17 @@ internal extension UIGestureRecognizer {
         }
         
         let proxy = UIGestureRecognizerProxy(action!)
-        addTarget(proxy, action: #selector(UIGestureRecognizerProxy.act(_:)))
+        addTarget(proxy, action: #selector(UIGestureRecognizerProxy.act(gestureRecognizer:)))
         proxies[""] = proxy
         
         return self
     }
     
-    internal func off() -> Self {
+    @discardableResult
+    fileprivate func off() -> Self {
         if let proxy = proxies[""] {
-            self.removeTarget(proxy, action: #selector(UIGestureRecognizerProxy.act(_:)))
-            proxies.removeValueForKey("")
+            self.removeTarget(proxy, action: #selector(UIGestureRecognizerProxy.act(gestureRecognizer:)))
+            proxies.removeValue(forKey: "")
         }
         return self
     }

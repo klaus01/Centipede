@@ -2,13 +2,13 @@
 //  CE_UIActionSheet.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/4.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import UIKit
 
-public extension UIActionSheet {
+extension UIActionSheet {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: UIActionSheet_Delegate? {
@@ -20,7 +20,7 @@ public extension UIActionSheet {
         if let obj = _delegate {
             return obj
         }
-        if let obj = self.delegate {
+        if let obj: AnyObject = self.delegate {
             if obj is UIActionSheet_Delegate {
                 return obj as! UIActionSheet_Delegate
             }
@@ -40,48 +40,39 @@ public extension UIActionSheet {
         return UIActionSheet_Delegate()
     }
     
-    public convenience init(title: String?, cancelButtonTitle: String?, destructiveButtonTitle: String?, otherButtonTitles firstButtonTitle: String, _ moreButtonTitles: String...) {
-        self.init(title: title, cancelButtonTitle: cancelButtonTitle, destructiveButtonTitle: destructiveButtonTitle)
-        addButtonWithTitle(firstButtonTitle)
-        
-        for buttonTitle in moreButtonTitles {
-            addButtonWithTitle(buttonTitle)
-        }
-    }
-    
-    public convenience init(title: String?, cancelButtonTitle: String?, destructiveButtonTitle: String?) {
-        let obj = UIActionSheet_Delegate()
-        self.init(title: title, delegate: obj, cancelButtonTitle: cancelButtonTitle, destructiveButtonTitle: destructiveButtonTitle)
-        _delegate = obj
-    }
-    
-    public func ce_clickedButtonAtIndex(handle: (actionSheet: UIActionSheet, buttonIndex: Int) -> Void) -> Self {
-        ce._clickedButtonAtIndex = handle
+    @discardableResult
+    public func ce_actionSheet_clickedButtonAt(handle: @escaping (UIActionSheet, Int) -> Void) -> Self {
+        ce._actionSheet_clickedButtonAt = handle
         rebindingDelegate()
         return self
     }
-    public func ce_cancel(handle: (actionSheet: UIActionSheet) -> Void) -> Self {
-        ce._cancel = handle
+    @discardableResult
+    public func ce_actionSheetCancel(handle: @escaping (UIActionSheet) -> Void) -> Self {
+        ce._actionSheetCancel = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willPresent(handle: (actionSheet: UIActionSheet) -> Void) -> Self {
+    @discardableResult
+    public func ce_willPresent(handle: @escaping (UIActionSheet) -> Void) -> Self {
         ce._willPresent = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didPresent(handle: (actionSheet: UIActionSheet) -> Void) -> Self {
+    @discardableResult
+    public func ce_didPresent(handle: @escaping (UIActionSheet) -> Void) -> Self {
         ce._didPresent = handle
         rebindingDelegate()
         return self
     }
-    public func ce_willDismissWithButtonIndex(handle: (actionSheet: UIActionSheet, buttonIndex: Int) -> Void) -> Self {
-        ce._willDismissWithButtonIndex = handle
+    @discardableResult
+    public func ce_actionSheet_willDismissWithButtonIndex(handle: @escaping (UIActionSheet, Int) -> Void) -> Self {
+        ce._actionSheet_willDismissWithButtonIndex = handle
         rebindingDelegate()
         return self
     }
-    public func ce_didDismissWithButtonIndex(handle: (actionSheet: UIActionSheet, buttonIndex: Int) -> Void) -> Self {
-        ce._didDismissWithButtonIndex = handle
+    @discardableResult
+    public func ce_actionSheet_didDismissWithButtonIndex(handle: @escaping (UIActionSheet, Int) -> Void) -> Self {
+        ce._actionSheet_didDismissWithButtonIndex = handle
         rebindingDelegate()
         return self
     }
@@ -90,48 +81,48 @@ public extension UIActionSheet {
 
 internal class UIActionSheet_Delegate: NSObject, UIActionSheetDelegate {
     
-    var _clickedButtonAtIndex: ((UIActionSheet, Int) -> Void)?
-    var _cancel: ((UIActionSheet) -> Void)?
+    var _actionSheet_clickedButtonAt: ((UIActionSheet, Int) -> Void)?
+    var _actionSheetCancel: ((UIActionSheet) -> Void)?
     var _willPresent: ((UIActionSheet) -> Void)?
     var _didPresent: ((UIActionSheet) -> Void)?
-    var _willDismissWithButtonIndex: ((UIActionSheet, Int) -> Void)?
-    var _didDismissWithButtonIndex: ((UIActionSheet, Int) -> Void)?
+    var _actionSheet_willDismissWithButtonIndex: ((UIActionSheet, Int) -> Void)?
+    var _actionSheet_didDismissWithButtonIndex: ((UIActionSheet, Int) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(actionSheet(_:clickedButtonAtIndex:)) : _clickedButtonAtIndex,
-            #selector(actionSheetCancel(_:)) : _cancel,
-            #selector(willPresentActionSheet(_:)) : _willPresent,
-            #selector(didPresentActionSheet(_:)) : _didPresent,
-            #selector(actionSheet(_:willDismissWithButtonIndex:)) : _willDismissWithButtonIndex,
-            #selector(actionSheet(_:didDismissWithButtonIndex:)) : _didDismissWithButtonIndex,
+            #selector(actionSheet(_:clickedButtonAt:)) : _actionSheet_clickedButtonAt,
+            #selector(actionSheetCancel(_:)) : _actionSheetCancel,
+            #selector(willPresent(_:)) : _willPresent,
+            #selector(didPresent(_:)) : _didPresent,
+            #selector(actionSheet(_:willDismissWithButtonIndex:)) : _actionSheet_willDismissWithButtonIndex,
+            #selector(actionSheet(_:didDismissWithButtonIndex:)) : _actionSheet_didDismissWithButtonIndex,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        _clickedButtonAtIndex!(actionSheet, buttonIndex)
+    @objc func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
+        _actionSheet_clickedButtonAt!(actionSheet, buttonIndex)
     }
-    @objc func actionSheetCancel(actionSheet: UIActionSheet) {
-        _cancel!(actionSheet)
+    @objc func actionSheetCancel(_ actionSheet: UIActionSheet) {
+        _actionSheetCancel!(actionSheet)
     }
-    @objc func willPresentActionSheet(actionSheet: UIActionSheet) {
+    @objc func willPresent(_ actionSheet: UIActionSheet) {
         _willPresent!(actionSheet)
     }
-    @objc func didPresentActionSheet(actionSheet: UIActionSheet) {
+    @objc func didPresent(_ actionSheet: UIActionSheet) {
         _didPresent!(actionSheet)
     }
-    @objc func actionSheet(actionSheet: UIActionSheet, willDismissWithButtonIndex buttonIndex: Int) {
-        _willDismissWithButtonIndex!(actionSheet, buttonIndex)
+    @objc func actionSheet(_ actionSheet: UIActionSheet, willDismissWithButtonIndex buttonIndex: Int) {
+        _actionSheet_willDismissWithButtonIndex!(actionSheet, buttonIndex)
     }
-    @objc func actionSheet(actionSheet: UIActionSheet, didDismissWithButtonIndex buttonIndex: Int) {
-        _didDismissWithButtonIndex!(actionSheet, buttonIndex)
+    @objc func actionSheet(_ actionSheet: UIActionSheet, didDismissWithButtonIndex buttonIndex: Int) {
+        _actionSheet_didDismissWithButtonIndex!(actionSheet, buttonIndex)
     }
 }

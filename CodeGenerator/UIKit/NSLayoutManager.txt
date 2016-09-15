@@ -3,50 +3,58 @@ NSLayoutManager : NSObject, NSLayoutManagerDelegate
 
     // This is sent whenever layoutManager is about to store the initial glyph information via -setGlyphs:properties:characterIndexes:forGlyphRange:.  This method allows customizing the initial glyph generation process.  It can invoke -setGlyphs:properties:characterIndexes:forGlyphRange: with modified glyph information.  The return value specifies the actual glyph range stored in this method.  By returning 0, it can indicate layoutManager to do the default processing. Note that querying glyph information surrounding glyphRange could lead to recursion since the data might not be available, yet.
     /************************ Glyph generation ************************/
-    @availability(iOS, introduced=7.0)
-    optional func layoutManager(layoutManager: NSLayoutManager, shouldGenerateGlyphs glyphs: UnsafePointer<CGGlyph>, properties props: UnsafePointer<NSGlyphProperty>, characterIndexes charIndexes: UnsafePointer<Int>, font aFont: UIFont!, forGlyphRange glyphRange: NSRange) -> Int
+    @available(iOS 7.0, *)
+    optional public func layoutManager(_ layoutManager: NSLayoutManager, shouldGenerateGlyphs glyphs: UnsafePointer<CGGlyph>, properties props: UnsafePointer<NSGlyphProperty>, characterIndexes charIndexes: UnsafePointer<Int>, font aFont: UIFont, forGlyphRange glyphRange: NSRange) -> Int
+
     
-    /* These methods are invoked while each line is laid out.  They allow NSLayoutManager delegate to customize the shape of line.
-    */
+    // These methods are invoked while each line is laid out.  They allow NSLayoutManager delegate to customize the shape of line.
     
     // Returns the spacing after the line ending with glyphIndex.
     /************************ Line layout ************************/
-    @availability(iOS, introduced=7.0)
-    optional func layoutManager(layoutManager: NSLayoutManager, lineSpacingAfterGlyphAtIndex glyphIndex: Int, withProposedLineFragmentRect rect: CGRect) -> CGFloat
+    @available(iOS 7.0, *)
+    optional public func layoutManager(_ layoutManager: NSLayoutManager, lineSpacingAfterGlyphAt glyphIndex: Int, withProposedLineFragmentRect rect: CGRect) -> CGFloat
+
     
     // Returns the paragraph spacing before the line starting with glyphIndex.
-    @availability(iOS, introduced=7.0)
-    optional func layoutManager(layoutManager: NSLayoutManager, paragraphSpacingBeforeGlyphAtIndex glyphIndex: Int, withProposedLineFragmentRect rect: CGRect) -> CGFloat
+    @available(iOS 7.0, *)
+    optional public func layoutManager(_ layoutManager: NSLayoutManager, paragraphSpacingBeforeGlyphAt glyphIndex: Int, withProposedLineFragmentRect rect: CGRect) -> CGFloat
+
     
     // Returns the paragraph spacing after the line ending with glyphIndex.
-    @availability(iOS, introduced=7.0)
-    optional func layoutManager(layoutManager: NSLayoutManager, paragraphSpacingAfterGlyphAtIndex glyphIndex: Int, withProposedLineFragmentRect rect: CGRect) -> CGFloat
+    @available(iOS 7.0, *)
+    optional public func layoutManager(_ layoutManager: NSLayoutManager, paragraphSpacingAfterGlyphAt glyphIndex: Int, withProposedLineFragmentRect rect: CGRect) -> CGFloat
+
     
     // Returns the control character action for the control character at charIndex.
-    @availability(iOS, introduced=7.0)
-    optional func layoutManager(layoutManager: NSLayoutManager, shouldUseAction action: NSControlCharacterAction, forControlCharacterAtIndex charIndex: Int) -> NSControlCharacterAction
+    @available(iOS 7.0, *)
+    optional public func layoutManager(_ layoutManager: NSLayoutManager, shouldUse action: NSControlCharacterAction, forControlCharacterAt charIndex: Int) -> NSControlCharacterAction
+
     
     // Invoked while determining the soft line break point.  When NO, NSLayoutManager tries to find the next line break opportunity before charIndex
-    @availability(iOS, introduced=7.0)
-    optional func layoutManager(layoutManager: NSLayoutManager, shouldBreakLineByWordBeforeCharacterAtIndex charIndex: Int) -> Bool
+    @available(iOS 7.0, *)
+    optional public func layoutManager(_ layoutManager: NSLayoutManager, shouldBreakLineByWordBeforeCharacterAt charIndex: Int) -> Bool
+
     
     // Invoked while determining the hyphenation point.  When NO, NSLayoutManager tries to find the next hyphenation opportunity before charIndex
-    @availability(iOS, introduced=7.0)
-    optional func layoutManager(layoutManager: NSLayoutManager, shouldBreakLineByHyphenatingBeforeCharacterAtIndex charIndex: Int) -> Bool
+    @available(iOS 7.0, *)
+    optional public func layoutManager(_ layoutManager: NSLayoutManager, shouldBreakLineByHyphenatingBeforeCharacterAt charIndex: Int) -> Bool
+
     
     // Invoked for resolving the glyph metrics for NSControlCharacterWhitespaceAction control character.
-    @availability(iOS, introduced=7.0)
-    optional func layoutManager(layoutManager: NSLayoutManager, boundingBoxForControlGlyphAtIndex glyphIndex: Int, forTextContainer textContainer: NSTextContainer, proposedLineFragment proposedRect: CGRect, glyphPosition: CGPoint, characterIndex charIndex: Int) -> CGRect
+    @available(iOS 7.0, *)
+    optional public func layoutManager(_ layoutManager: NSLayoutManager, boundingBoxForControlGlyphAt glyphIndex: Int, for textContainer: NSTextContainer, proposedLineFragment proposedRect: CGRect, glyphPosition: CGPoint, characterIndex charIndex: Int) -> CGRect
     
     // This is sent whenever layout or glyphs become invalidated in a layout manager which previously had all layout complete.
     /************************ Layout processing ************************/
-    @availability(iOS, introduced=7.0)
-    optional func layoutManagerDidInvalidateLayout(sender: NSLayoutManager)
+    @available(iOS 7.0, *)
+    optional public func layoutManagerDidInvalidateLayout(_ sender: NSLayoutManager)
+
     
     // This is sent whenever a container has been filled.  This method can be useful for paginating.  The textContainer might be nil if we have completed all layout and not all of it fit into the existing containers.  The atEnd flag indicates whether all layout is complete.
-    @availability(iOS, introduced=7.0)
-    optional func layoutManager(layoutManager: NSLayoutManager, didCompleteLayoutForTextContainer textContainer: NSTextContainer?, atEnd layoutFinishedFlag: Bool)
+    @available(iOS 7.0, *)
+    optional public func layoutManager(_ layoutManager: NSLayoutManager, didCompleteLayoutFor textContainer: NSTextContainer?, atEnd layoutFinishedFlag: Bool)
+
     
-    // This is sent right before layoutManager invalidates the layout due to textContainer changing geometry.  The receiver of this method can react to the geometry change and perform adjustments such as recreate the exclusion path.
-    @availability(iOS, introduced=7.0)
-    optional func layoutManager(layoutManager: NSLayoutManager, textContainer: NSTextContainer, didChangeGeometryFromSize oldSize: CGSize)
+    // This is sent right before layoutManager invalidates the layout due to textContainer changing geometry.  The receiver of this method can react to the geometry change and perform adjustments such as recreating the exclusion path.
+    @available(iOS 7.0, *)
+    optional public func layoutManager(_ layoutManager: NSLayoutManager, textContainer: NSTextContainer, didChangeGeometryFrom oldSize: CGSize)

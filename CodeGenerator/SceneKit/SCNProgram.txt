@@ -7,4 +7,4 @@ SCNProgram : NSObject, SCNProgramDelegate
      @param program The program that generated a compilation error.
      @param error The compilation error.
      */
-    optional func program(program: SCNProgram, handleError error: NSError)
+    optional public func program(_ program: SCNProgram, handleError error: Error)

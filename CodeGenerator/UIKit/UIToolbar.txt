@@ -5,4 +5,5 @@ UIToolbar: NSObject, UIToolbarDelegate
      UINavigationBar and UISearchBar default to UIBarPositionTop, UIToolbar defaults to UIBarPositionBottom.
      This message will be sent when the bar moves to a window.
      */
-    optional func positionForBar(bar: UIBarPositioning) -> UIBarPosition // UINavigationBarDelegate, UIToolbarDelegate, and UISearchBarDelegate all extend from this
+    @available(iOS 7.0, *)
+    optional public func position(for bar: UIBarPositioning) -> UIBarPosition // UINavigationBarDelegate, UIToolbarDelegate, and UISearchBarDelegate all extend from this

@@ -2,13 +2,13 @@
 //  CE_SCNProgram.swift
 //  Centipede
 //
-//  Created by kelei on 2015/6/12.
-//  Copyright (c) 2015年 kelei. All rights reserved.
+//  Created by kelei on 2016/9/15.
+//  Copyright (c) 2016年 kelei. All rights reserved.
 //
 
 import SceneKit
 
-public extension SCNProgram {
+extension SCNProgram {
     
     private struct Static { static var AssociationKey: UInt8 = 0 }
     private var _delegate: SCNProgram_Delegate? {
@@ -40,8 +40,9 @@ public extension SCNProgram {
         return SCNProgram_Delegate()
     }
     
-    public func ce_program(handle: (program: SCNProgram, error: NSError) -> Void) -> Self {
-        ce._program = handle
+    @discardableResult
+    public func ce_program_handleError(handle: @escaping (SCNProgram, Error) -> Void) -> Self {
+        ce._program_handleError = handle
         rebindingDelegate()
         return self
     }
@@ -50,23 +51,23 @@ public extension SCNProgram {
 
 internal class SCNProgram_Delegate: NSObject, SCNProgramDelegate {
     
-    var _program: ((SCNProgram, NSError) -> Void)?
+    var _program_handleError: ((SCNProgram, Error) -> Void)?
     
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func responds(to aSelector: Selector!) -> Bool {
         
         let funcDic1: [Selector : Any?] = [
-            #selector(program(_:handleError:)) : _program,
+            #selector(program(_:handleError:)) : _program_handleError,
         ]
         if let f = funcDic1[aSelector] {
             return f != nil
         }
         
-        return super.respondsToSelector(aSelector)
+        return super.responds(to: aSelector)
     }
     
     
-    @objc func program(program: SCNProgram, handleError error: NSError) {
-        _program!(program, error)
+    @objc func program(_ program: SCNProgram, handleError error: Error) {
+        _program_handleError!(program, error)
     }
 }

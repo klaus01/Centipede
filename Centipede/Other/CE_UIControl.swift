@@ -8,40 +8,42 @@
 
 import UIKit
 
-public typealias CE_UIControlAction = (control: UIControl, touches: NSSet) -> Void
+public typealias CE_UIControlAction = (UIControl, NSSet) -> Void
 
-public extension UIControl {
+extension UIControl {
     
-    public func ce_addControlEvents(controlEvents: UIControlEvents, action: CE_UIControlAction) -> Self {
+    @discardableResult
+    public func ce_addControlEvents(_ controlEvents: UIControlEvents, action: @escaping CE_UIControlAction) -> Self {
         return on(controlEvents, action: action)
     }
     
-    public func ce_removeControlEvents(controlEvents: UIControlEvents) -> Self {
+    @discardableResult
+    public func ce_removeControlEvents(_ controlEvents: UIControlEvents) -> Self {
         return off(controlEvents)
     }
     
 }
 
-// MARK: - Internal
+// MARK: - private
 
 private struct Static { static var AssociationKey: UInt8 = 0 }
 
 private typealias UIControlProxies = [String: UIControlProxy]
 
-internal class UIControlProxy : NSObject {
+fileprivate class UIControlProxy : NSObject {
     
     var action: CE_UIControlAction
     
-    init(_ action: CE_UIControlAction) {
+    init(_ action: @escaping CE_UIControlAction) {
         self.action = action
     }
     
     func act(source: UIControl, touches: NSSet) {
-        action(control: source, touches: touches)
+        action(source, touches)
     }
 }
 
-internal extension UIControl {
+fileprivate extension UIControl {
     
     private var proxies: UIControlProxies {
         get {
@@ -56,20 +58,21 @@ internal extension UIControl {
         }
     }
     
-    private func proxyKey(event: UIControlEvents) -> String {
+    private func proxyKey(_ event: UIControlEvents) -> String {
         return "UIControl:\(event.rawValue)"
     }
     
-    private func setter(newValue: UIControlProxies) -> UIControlProxies {
+    @discardableResult
+    private func setter(_ newValue: UIControlProxies) -> UIControlProxies {
         objc_setAssociatedObject(self, &Static.AssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
         return newValue
     }
     
-    internal func on(controlEvents: UIControlEvents, action: CE_UIControlAction) -> Self {
+    fileprivate func on(_ controlEvents: UIControlEvents, action: @escaping CE_UIControlAction) -> Self {
         self.off(controlEvents)
         
         let proxy = UIControlProxy(action)
-        self.addTarget(proxy, action: #selector(UIControlProxy.act(_:touches:)), forControlEvents: controlEvents)
+        self.addTarget(proxy, action: #selector(UIControlProxy.act(source:touches:)), for: controlEvents)
         
         let eventKey: String = proxyKey(controlEvents)
         proxies[eventKey] = proxy
@@ -77,11 +80,11 @@ internal extension UIControl {
         return self
     }
     
-    internal func off(controlEvents: UIControlEvents) -> Self {
-        
+    @discardableResult
+    fileprivate func off(_ controlEvents: UIControlEvents) -> Self {
         if let proxy = proxies[proxyKey(controlEvents)] {
-            self.removeTarget(proxy, action: #selector(UIControlProxy.act(_:touches:)), forControlEvents: controlEvents)
-            proxies.removeValueForKey(proxyKey(controlEvents))
+            self.removeTarget(proxy, action: #selector(UIControlProxy.act(source:touches:)), for: controlEvents)
+            proxies.removeValue(forKey: proxyKey(controlEvents))
         }
         return self
     }
