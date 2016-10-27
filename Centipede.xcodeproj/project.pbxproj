@@ -81,8 +81,39 @@
 		2485E5541D89A6FF00CA4BA0 /* CE_CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2485E5341D89A6FF00CA4BA0 /* CE_CLLocationManager.swift */; };
 		2485E5571D89A6FF00CA4BA0 /* CE_EAAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2485E5391D89A6FF00CA4BA0 /* CE_EAAccessory.swift */; };
 		2485E5581D89A6FF00CA4BA0 /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2485E53A1D89A6FF00CA4BA0 /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift */; };
+		24DE00581DC21CE8004AA741 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DE00571DC21CE8004AA741 /* AppDelegate.swift */; };
+		24DE005A1DC21CE8004AA741 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DE00591DC21CE8004AA741 /* ViewController.swift */; };
+		24DE005D1DC21CE8004AA741 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24DE005B1DC21CE8004AA741 /* Main.storyboard */; };
+		24DE005F1DC21CE8004AA741 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24DE005E1DC21CE8004AA741 /* Assets.xcassets */; };
+		24DE00621DC21CE8004AA741 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24DE00601DC21CE8004AA741 /* LaunchScreen.storyboard */; };
+		24DE00671DC22021004AA741 /* Centipede.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E8A7461B1E056A008D963A /* Centipede.framework */; };
+		24DE00691DC22028004AA741 /* Centipede.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24E8A7461B1E056A008D963A /* Centipede.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24E8A74C1B1E056A008D963A /* Centipede.h in Headers */ = {isa = PBXBuildFile; fileRef = 24E8A74B1B1E056A008D963A /* Centipede.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		24DE006A1DC22028004AA741 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24E8A73D1B1E056A008D963A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24E8A7451B1E056A008D963A;
+			remoteInfo = Centipede;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		24DE006C1DC22028004AA741 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				24DE00691DC22028004AA741 /* Centipede.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		24044C3B1D85311D00691E99 /* CE_NSLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NSLayoutManager.swift; sourceTree = "<group>"; };
@@ -159,12 +190,27 @@
 		2485E5341D89A6FF00CA4BA0 /* CE_CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_CLLocationManager.swift; sourceTree = "<group>"; };
 		2485E5391D89A6FF00CA4BA0 /* CE_EAAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EAAccessory.swift; sourceTree = "<group>"; };
 		2485E53A1D89A6FF00CA4BA0 /* CE_EAWiFiUnconfiguredAccessoryBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_EAWiFiUnconfiguredAccessoryBrowser.swift; sourceTree = "<group>"; };
+		24DE00551DC21CE8004AA741 /* CentipedeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CentipedeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		24DE00571DC21CE8004AA741 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		24DE00591DC21CE8004AA741 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		24DE005C1DC21CE8004AA741 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		24DE005E1DC21CE8004AA741 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		24DE00611DC21CE8004AA741 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		24DE00631DC21CE8004AA741 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E8A7461B1E056A008D963A /* Centipede.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Centipede.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E8A74A1B1E056A008D963A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E8A74B1B1E056A008D963A /* Centipede.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Centipede.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		24DE00521DC21CE8004AA741 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24DE00671DC22021004AA741 /* Centipede.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		24E8A7421B1E056A008D963A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -389,10 +435,24 @@
 			path = ExternalAccessory;
 			sourceTree = "<group>";
 		};
+		24DE00561DC21CE8004AA741 /* CentipedeExample */ = {
+			isa = PBXGroup;
+			children = (
+				24DE00571DC21CE8004AA741 /* AppDelegate.swift */,
+				24DE00591DC21CE8004AA741 /* ViewController.swift */,
+				24DE005B1DC21CE8004AA741 /* Main.storyboard */,
+				24DE005E1DC21CE8004AA741 /* Assets.xcassets */,
+				24DE00601DC21CE8004AA741 /* LaunchScreen.storyboard */,
+				24DE00631DC21CE8004AA741 /* Info.plist */,
+			);
+			path = CentipedeExample;
+			sourceTree = "<group>";
+		};
 		24E8A73C1B1E056A008D963A = {
 			isa = PBXGroup;
 			children = (
 				24E8A7481B1E056A008D963A /* Centipede */,
+				24DE00561DC21CE8004AA741 /* CentipedeExample */,
 				24E8A7471B1E056A008D963A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -401,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				24E8A7461B1E056A008D963A /* Centipede.framework */,
+				24DE00551DC21CE8004AA741 /* CentipedeExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -456,6 +517,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		24DE00541DC21CE8004AA741 /* CentipedeExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24DE00661DC21CE8004AA741 /* Build configuration list for PBXNativeTarget "CentipedeExample" */;
+			buildPhases = (
+				24DE00511DC21CE8004AA741 /* Sources */,
+				24DE00521DC21CE8004AA741 /* Frameworks */,
+				24DE00531DC21CE8004AA741 /* Resources */,
+				24DE006C1DC22028004AA741 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24DE006B1DC22028004AA741 /* PBXTargetDependency */,
+			);
+			name = CentipedeExample;
+			productName = CentipedeExample;
+			productReference = 24DE00551DC21CE8004AA741 /* CentipedeExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		24E8A7451B1E056A008D963A /* Centipede */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 24E8A75C1B1E056A008D963A /* Build configuration list for PBXNativeTarget "Centipede" */;
@@ -481,10 +561,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0720;
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = kelei;
 				TargetAttributes = {
+					24DE00541DC21CE8004AA741 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
 					24E8A7451B1E056A008D963A = {
 						CreatedOnToolsVersion = 6.3.2;
 						LastSwiftMigration = 0800;
@@ -497,6 +581,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 24E8A73C1B1E056A008D963A;
 			productRefGroup = 24E8A7471B1E056A008D963A /* Products */;
@@ -504,11 +589,22 @@
 			projectRoot = "";
 			targets = (
 				24E8A7451B1E056A008D963A /* Centipede */,
+				24DE00541DC21CE8004AA741 /* CentipedeExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		24DE00531DC21CE8004AA741 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24DE00621DC21CE8004AA741 /* LaunchScreen.storyboard in Resources */,
+				24DE005F1DC21CE8004AA741 /* Assets.xcassets in Resources */,
+				24DE005D1DC21CE8004AA741 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		24E8A7441B1E056A008D963A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -519,6 +615,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		24DE00511DC21CE8004AA741 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24DE005A1DC21CE8004AA741 /* ViewController.swift in Sources */,
+				24DE00581DC21CE8004AA741 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		24E8A7411B1E056A008D963A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -602,7 +707,68 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		24DE006B1DC22028004AA741 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24E8A7451B1E056A008D963A /* Centipede */;
+			targetProxy = 24DE006A1DC22028004AA741 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		24DE005B1DC21CE8004AA741 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24DE005C1DC21CE8004AA741 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		24DE00601DC21CE8004AA741 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24DE00611DC21CE8004AA741 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		24DE00641DC21CE8004AA741 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = CentipedeExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kelei.CentipedeExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		24DE00651DC21CE8004AA741 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = CentipedeExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kelei.CentipedeExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		24E8A75A1B1E056A008D963A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -742,6 +908,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		24DE00661DC21CE8004AA741 /* Build configuration list for PBXNativeTarget "CentipedeExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24DE00641DC21CE8004AA741 /* Debug */,
+				24DE00651DC21CE8004AA741 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		24E8A7401B1E056A008D963A /* Build configuration list for PBXProject "Centipede" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
